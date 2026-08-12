@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 1, Lesson 3: the hard cutout. Combine AI selection, Refine Edge, a channel mask, and decontamination to extract flowing hair cleanly.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 1.3: The Hard Cutout | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 1 • Lesson 3</span><span class="lesson-title">✂️ Select &amp; Mask Mastery: The Hard Cutout</span></h1>
+                <p class="lead">The Module 1 deliverable, and the true test of everything so far. Flowing, curly hair is the hardest common cutout there is. The secret is that a pro cutout is never one tool — it is a short, layered pipeline: let AI rough it in, refine the wisps, rescue the gaps with a channel mask, and clean the fringe.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Run the full <strong>Select &amp; Mask</strong> workflow, tuned for hair</li>
+                        <li>Rebuild wispy strands with the <strong>Refine Edge Brush</strong></li>
+                        <li>Rescue what refinement misses with a <strong>channel mask</strong> (Lesson 1.2)</li>
+                        <li>Kill the fringe with <strong>Decontaminate Colors</strong> and pressure-test the edge</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 60 minutes</p>
+                    <p><strong>🎯 Project (Module 1 deliverable):</strong> Extract a hard subject — flowing hair — onto a new background with an edge that survives any scene.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Every Strand Survives</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: A Pipeline, Not a Tool</a></li>
+                        <li><a href="#panel" class="toc-link">The Select &amp; Mask Workspace</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: The Hard Cutout</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Hard Cutout</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Module 1 Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>💇 The Goal: Every Strand Survives</h2>
+                <p>Curly hair against one background, then lifted cleanly onto another, individual flyaway curls intact. On the right, the original studio shot; on the left, the same subject cut out and placed on a new backdrop. Drag the handle and inspect the edge:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after: a subject with intricate curly hair extracted onto a new background.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <img src="images/l03_after.jpg" alt="The same subject cut out and composited onto a new blue studio background, with the intricate curls preserved.">
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <img src="images/l03_before.jpg" alt="A portrait of a smiling woman with a large curly afro on a plain cream studio background.">
+                        </div>
+                        <span class="ba-label after">After</span>
+                        <span class="ba-label before">Before</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="55" aria-label="Reveal the cutout on its new background">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A real cutout: the curls, including the fine flyaways, carried onto a brand-new background with no fringe. This is the standard to aim for.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: A Pipeline, Not a Tool</h2>
+                <p>Beginners look for the one button that cuts out hair. There isn't one. A professional hard cutout is a <strong>short pipeline</strong>, where each step cleans up what the previous one could not:</p>
+                <ol>
+                    <li><strong>Rough in</strong> the whole subject with Select Subject or Quick Selection — get the solid mass right, ignore the wisps.</li>
+                    <li><strong>Refine</strong> the hairline with the Refine Edge Brush, which rebuilds fine strands.</li>
+                    <li><strong>Rescue</strong> anything still missing with a <strong>channel mask</strong> (Lesson 1.2) painted into the layer mask.</li>
+                    <li><strong>Decontaminate</strong> the edge so the old background's color lets go.</li>
+                </ol>
+                <p>No single step is hard. The skill is knowing the order and not expecting step one to do step three's job.</p>
+
+                <div class="card card-accent">
+                    <h3>🧠 Everything so far, converging</h3>
+                    <p>This lesson uses luminosity/edge thinking (1.1), channel masks (1.2), and the decontamination you met in the intro's compositing module. A hard cutout is where the whole masking toolkit earns its keep at once.</p>
+                </div>
+
+                <figure>
+                    <div class="mermaid">
+                        flowchart LR
+                            A["Select Subject&lt;br/&gt;(rough mass)"] --> B["Refine Edge Brush&lt;br/&gt;on the hairline"]
+                            B --> C["Channel mask&lt;br/&gt;rescue missed strands"]
+                            C --> D["Decontaminate Colors&lt;br/&gt;(kill the fringe)"]
+                            D --> E["Output: layer + mask"]
+                            E --> F["Test on a saturated bg"]
+                    </div>
+                    <figcaption>Figure 1: The hard-cutout pipeline. Each stage fixes what the last left behind; the final test is a garish background that exposes any surviving fringe.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🎛️ The Select &amp; Mask Workspace</h2>
+                <p>Most of this happens in <strong>Select &amp; Mask</strong>. For hair, three controls matter most, shown here as a diagram:</p>
+                <figure>
+                    <div class="ps-mock">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Ps &nbsp; Select &amp; Mask (for hair)</span>
+                        </div>
+                        <svg viewBox="0 0 720 360" role="img" aria-label="Select and Mask: tools at left including the Refine Edge Brush, a subject preview on an onion-skin overlay, and Global Refinements plus Output Settings at right.">
+                            <rect width="720" height="360" fill="#2b2b2b"/>
+                            <!-- left tools -->
+                            <rect x="0" y="0" width="46" height="360" fill="#3a3a3a"/>
+                            <g fill="#9aa4ad"><rect x="14" y="18" width="18" height="14" rx="2"/><rect x="14" y="44" width="18" height="14" rx="2"/></g>
+                            <rect x="11" y="70" width="24" height="20" rx="2" fill="#1473E6"/>
+                            <text x="23" y="84" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="8" font-weight="bold">Refine</text>
+                            <text x="23" y="104" text-anchor="middle" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="8">Edge</text>
+                            <!-- preview: subject on red overlay -->
+                            <rect x="58" y="16" width="420" height="328" fill="#7a2a2a"/>
+                            <ellipse cx="268" cy="150" rx="120" ry="120" fill="#2a2018"/>
+                            <circle cx="268" cy="175" r="58" fill="#c88a5c"/>
+                            <g stroke="#2a2018" stroke-width="3" fill="none"><path d="M170 120 q-18 -20 -26 -44 M366 120 q18 -20 26 -44 M150 180 q-24 -6 -44 4 M386 180 q24 -6 44 4 M190 250 q-14 20 -20 44 M346 250 q14 20 20 44"/></g>
+                            <text x="268" y="332" text-anchor="middle" style="fill:#ffd7d7" font-family="Segoe UI, sans-serif" font-size="12">brush the wispy hairline; strands rebuild</text>
+                            <!-- right controls -->
+                            <rect x="490" y="0" width="230" height="360" fill="#3a3a3a"/>
+                            <text x="504" y="30" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Global Refinements</text>
+                            <text x="504" y="54" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Smooth</text><rect x="504" y="60" width="196" height="6" rx="3" fill="#555"/><circle cx="536" cy="63" r="7" fill="#1473E6"/>
+                            <text x="504" y="82" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Feather</text><rect x="504" y="88" width="196" height="6" rx="3" fill="#555"/><circle cx="560" cy="91" r="7" fill="#1473E6"/>
+                            <text x="504" y="110" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Shift Edge</text><rect x="504" y="116" width="196" height="6" rx="3" fill="#555"/><circle cx="576" cy="119" r="7" fill="#1473E6"/>
+                            <line x1="504" y1="140" x2="700" y2="140" stroke="#4a4a4a"/>
+                            <text x="504" y="164" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Output Settings</text>
+                            <rect x="504" y="176" width="16" height="16" fill="#1473E6"/><text x="512" y="189" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="12">✓</text>
+                            <text x="528" y="189" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Decontaminate Colors</text>
+                            <rect x="504" y="206" width="196" height="24" fill="#1473E6"/><text x="602" y="222" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">New Layer with Layer Mask ▾</text>
+                            <text x="504" y="256" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">Shift Edge slightly negative</text>
+                            <text x="504" y="272" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">bites off the last halo.</text>
+                        </svg>
+                        <figcaption>Figure 2: Paint the hairline with the <strong>Refine Edge Brush</strong>, keep <strong>Smooth/Feather</strong> low, nudge <strong>Shift Edge</strong> negative, tick <strong>Decontaminate Colors</strong>, and output to a <strong>New Layer with Layer Mask</strong>.</figcaption>
+                    </div>
+                </figure>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: The Hard Cutout</h2>
+                <p>Open a portrait with loose or curly hair against a reasonably plain background. Save as <code>cutout-working.psd</code>, 16-bit. Duplicate the layer so the original stays intact beneath.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Rough in the mass <small>· 6 min</small></h3>
+                    <ol>
+                        <li><strong>Select ▸ Subject</strong>. It nails the body and solid hair, and gives up on the wisps. That is expected.</li>
+                        <li>Tidy obvious misses with Quick Selection (paint to add, <kbd>Alt/⌥</kbd> to subtract). Do not chase strands yet.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Refine the hairline <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Click <strong>Select and Mask</strong>. Set View to <strong>On Layers</strong> or the red <strong>Overlay</strong>.</li>
+                        <li>Take the <strong>Refine Edge Brush</strong> and paint <em>along</em> the wispy hairline (not the solid interior). Photoshop rebuilds the fine strands and their partial transparency.</li>
+                        <li>Keep <strong>Smooth</strong> and <strong>Feather</strong> low; nudge <strong>Shift Edge</strong> slightly negative.</li>
+                    </ol>
+                    <div class="card card-warning">
+                        <h4>⚠️ Refine the edge, not the middle</h4>
+                        <p>Dragging the Refine Edge Brush across solid hair turns it translucent and mushy. Stay on the boundary between hair and background; that is the only place it belongs.</p>
+                    </div>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Rescue gaps with a channel mask <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Output the current result to a <strong>New Layer with Layer Mask</strong>. Inspect: some flyaways may still be missing.</li>
+                        <li>From Lesson 1.2, build a quick <strong>channel mask</strong> of the hair (pick the channel with the most hair-vs-background contrast, push with Levels), then paint that detail <em>into</em> your layer mask with a low-opacity brush to bring lost strands back.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Decontaminate &amp; pressure-test <small>· 8 min</small></h3>
+                    <ol>
+                        <li>If you did not already, re-enter Select &amp; Mask and tick <strong>Decontaminate Colors</strong>, raising Amount until the old background's color leaves the edge.</li>
+                        <li><strong>The test:</strong> drop a temporary <em>saturated</em> color layer behind the cutout. Any surviving fringe screams against it. Fix, then place your real new background. Module 1 deliverable: done. 🏆</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ The standard</h4>
+                        <p>A believable hair cutout keeps the fine strands, shows no colored halo against a garish test background, and has a soft (not razor) edge. Hit those three and your composites will hold up anywhere.</p>
+                    </div>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Solid mass selected, then the hairline refined with the Refine Edge Brush</li>
+                        <li>☐ Missing strands rescued via a channel mask painted into the layer mask</li>
+                        <li>☐ Edge decontaminated; no fringe against a saturated test background</li>
+                        <li>☐ Output as a layer + mask; original kept as a hidden backup</li>
+                        <li>☐ Subject placed convincingly on a new background</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Cut out a subject shot against a <em>busy</em> background (not a plain studio wall). This is where the channel-mask rescue step earns its place.</li>
+                        <li>Cut out something non-human and tricky: a glass, a potted fern, a pet. Each stresses a different part of the pipeline.</li>
+                        <li>Place one cutout on a dark background and one on a light background. Decontamination that looks fine on light often reveals a halo on dark.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> keep the whole thing non-destructive by outputting to a Smart Object, so you can re-open Select &amp; Mask and adjust the refinement later without starting over.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Hard Cutout</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Extract flowing hair</h3>
+                    <ol>
+                        <li><strong>Select ▸ Subject</strong> for the solid mass</li>
+                        <li><strong>Select &amp; Mask</strong> → <strong>Refine Edge Brush</strong> along the hairline; low Smooth/Feather, Shift Edge slightly negative</li>
+                        <li>Rescue missed strands with a <strong>channel mask</strong> painted into the layer mask</li>
+                        <li>Tick <strong>Decontaminate Colors</strong>; output to <strong>New Layer with Layer Mask</strong></li>
+                        <li>Test against a <strong>saturated</strong> background; fix any fringe</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: rough in, refine, rescue, decontaminate — in that order.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Which pipeline step did the heavy lifting on your image, and which did you almost skip but shouldn't have? Noticing that tells you where your cutouts usually go wrong.</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Module 1 Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>A hard cutout is a <strong>pipeline</strong>: rough in, refine, rescue, decontaminate.</li>
+                        <li>The <strong>Refine Edge Brush</strong> rebuilds wisps; a <strong>channel mask</strong> rescues what it misses.</li>
+                        <li><strong>Decontaminate Colors</strong> strips the old fringe so the edge adopts any scene.</li>
+                        <li>Always pressure-test the edge on a <strong>saturated</strong> background.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished — Across All of Module 1</h3>
+                <p>You have rebuilt your selection and masking skills at a professional level: <strong>luminosity masks</strong> that let the image paint its own stencil (1.1), <strong>channel masks and Blend-If</strong> for subjects tone or color makes distinct (1.2), and a full <strong>hard-cutout pipeline</strong> for flowing hair (1.3). Between them, almost nothing is truly unmaskable anymore. Everything downstream — color, retouching, compositing — depends on exactly this control.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Select Subject already did the hair. Do I still need all this?</summary>
+                    <p>Its automatic hair is good and getting better, and for easy cases it is enough. This pipeline is for the hard cases it fumbles — dark hair on a dark background, fine flyaways, busy backgrounds — and for when you need to refine the result by hand rather than accept the automatic guess.</p>
+                </details>
+                <details>
+                    <summary>My cutout looks fine on white but has a halo on dark backgrounds.</summary>
+                    <p>Classic under-decontamination. Raise the Decontaminate Colors amount, and consider a tiny inward Shift Edge. Always test on the darkest background the cutout will actually sit on.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>With selection mastered, we turn to <strong>Module 2 — Color &amp; Tone, Deep</strong>: real color management and working spaces, grading with Curves, gradient maps, and LUTs, matching color across images, and soft proofing so your work survives the trip to print.</p>
+
+                <h3>✅ Before the Next Module</h3>
+                <ul>
+                    <li>Do three hard cutouts of increasing difficulty (studio hair, busy-background hair, a glass).</li>
+                    <li>Save a reusable Action for your Select &amp; Mask output settings.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/select-mask.html" target="_blank" rel="noopener">Adobe: Select &amp; Mask workspace</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/refine-edge-selections.html" target="_blank" rel="noopener">Adobe: Refine hair &amp; edges</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Cutting out hair used to be a rite of passage that took hours. You just did it with a repeatable four-step pipeline. That is a genuine professional skill, and the confidence it gives you carries into every composite you will ever build.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_02.html" class="prev-lesson">← Previous: Channel Masking &amp; Blend-If</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_04.html" class="next-lesson">Next: Module 2 — Color Management →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

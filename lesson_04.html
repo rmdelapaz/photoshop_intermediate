@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 2, Lesson 1: color management. Working spaces, bit depth, and the histogram — the professional color pipeline that keeps your edits honest.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 2.1: Color Management &amp; Working Spaces | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 2 • Lesson 1</span><span class="lesson-title">🎨 Color Management &amp; Working Spaces</span></h1>
+                <p class="lead">This is the least glamorous lesson in the course and quietly the most important. Get your color pipeline right and every grade you make is trustworthy and repeatable. Get it wrong and you are grading on a lie: colors that shift when you export, banding in your skies, prints that look nothing like your screen.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Explain <strong>working spaces</strong> (sRGB, Adobe RGB, ProPhoto) and pick the right one</li>
+                        <li>Say why you edit in <strong>16-bit</strong> and what banding actually is</li>
+                        <li>Read the <strong>histogram</strong> and diagnose an image before touching a slider</li>
+                        <li>Set up Photoshop's <strong>Color Settings</strong> once, correctly, for the rest of the course</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 50 minutes</p>
+                    <p><strong>🎯 Project:</strong> Configure a professional color pipeline and re-open a favorite image in it, diagnosing it from the histogram before any edit.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Smooth, Trustworthy Color</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: A Color Container</a></li>
+                        <li><a href="#spaces" class="toc-link">Which Working Space?</a></li>
+                        <li><a href="#panel" class="toc-link">Set Color Settings Once</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Set Up &amp; Diagnose</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Color Pipeline</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>🌈 The Goal: Smooth, Trustworthy Color</h2>
+                <p>A gentle sky gradient, edited hard. On the right, an 8-bit file has run out of tonal steps and broken into visible bands. On the left, the same edit in 16-bit stays perfectly smooth. Same adjustment, different container. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after: banded 8-bit gradient versus smooth 16-bit gradient after a strong edit.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Smooth 16-bit gradient">
+                                <defs><linearGradient id="cm2-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c4f8a"/><stop offset="1" stop-color="#dfeaf3"/></linearGradient></defs>
+                                <rect width="600" height="400" fill="url(#cm2-a)"/>
+                                <text x="300" y="380" text-anchor="middle" style="fill:#0b2540" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">16-bit: smooth</text>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Banded 8-bit gradient with visible steps">
+                                <g>
+                                    <rect x="0" y="0" width="600" height="45" fill="#1c4f8a"/>
+                                    <rect x="0" y="45" width="600" height="45" fill="#2b5c93"/>
+                                    <rect x="0" y="90" width="600" height="45" fill="#3d6a9e"/>
+                                    <rect x="0" y="135" width="600" height="45" fill="#5079a9"/>
+                                    <rect x="0" y="180" width="600" height="45" fill="#6a8db6"/>
+                                    <rect x="0" y="225" width="600" height="45" fill="#89a5c6"/>
+                                    <rect x="0" y="270" width="600" height="45" fill="#a8bdd5"/>
+                                    <rect x="0" y="315" width="600" height="45" fill="#c6d4e4"/>
+                                    <rect x="0" y="360" width="600" height="40" fill="#dfeaf3"/>
+                                </g>
+                                <text x="300" y="392" text-anchor="middle" style="fill:#0b2540" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">8-bit: banding</text>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">16-bit</span>
+                        <span class="ba-label before">8-bit</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="55" aria-label="Reveal the smooth version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>Banding is what happens when an edit demands more tonal steps than the file has. 16-bit has hundreds of times more steps, so gradients survive aggressive grading.</figcaption>
+                    <span class="ba-placeholder-note">Illustrated stand-in of the 8-bit vs 16-bit difference.</span>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: A Color Container</h2>
+                <p>Think of every image as color poured into a container with two properties:</p>
+                <ul>
+                    <li><strong>How wide</strong> the container is — the <strong>working space</strong> (gamut). A wide space like ProPhoto can hold vivid colors sRGB cannot even describe.</li>
+                    <li><strong>How finely divided</strong> it is — the <strong>bit depth</strong>. 8-bit gives 256 steps per channel; 16-bit gives over 32,000. More steps means smoother gradients and more room to push before things break.</li>
+                </ul>
+                <p>A number like "R 220" is meaningless without knowing the container. The same 220 is a different real-world color in sRGB than in Adobe RGB. Color management is simply keeping track of the container so a color means the same thing from capture to screen to print.</p>
+
+                <div class="card card-accent">
+                    <h3>🧠 Why the intro could skip this</h3>
+                    <p>For quick web edits, sRGB / 8-bit is fine and Photoshop's defaults handle it. The moment you grade hard, print, or work in wide gamut, the container starts to matter. That is why it lives here, at the front of the professional tier.</p>
+                </div>
+
+                <figure>
+                    <div class="mermaid">
+                        flowchart LR
+                            A["📷 Capture&lt;br/&gt;RAW / wide gamut"] --> B["✏️ Edit&lt;br/&gt;16-bit, wide working space"]
+                            B --> C1["🌐 Export web&lt;br/&gt;sRGB, 8-bit"]
+                            B --> C2["🖨️ Export print&lt;br/&gt;soft-proof → CMYK"]
+                    </div>
+                    <figcaption>Figure 1: Capture wide, edit wide and deep, then convert <em>down</em> to the destination at the very end. Never edit in the narrow export space.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Spaces -->
+            <section id="spaces" class="lesson-section">
+                <h2>📐 Which Working Space?</h2>
+                <p>The three common working spaces are nested: each larger one contains every color of the smaller. Bigger is not automatically better; it is a tool you match to the job.</p>
+                <figure>
+                    <svg viewBox="0 0 520 240" role="img" aria-label="Nested color gamuts: ProPhoto RGB largest, containing Adobe RGB, containing sRGB." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:8px;">
+                        <polygon points="60,210 260,20 480,210" fill="#1473E6" opacity="0.14" stroke="#1473E6"/>
+                        <text x="90" y="200" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">ProPhoto RGB</text>
+                        <polygon points="110,205 260,70 430,205" fill="#31A8FF" opacity="0.2" stroke="#31A8FF"/>
+                        <text x="150" y="196" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">Adobe RGB</text>
+                        <polygon points="165,200 260,120 380,200" fill="#ffd23f" opacity="0.35" stroke="#c99a1e"/>
+                        <text x="235" y="192" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">sRGB</text>
+                        <text x="300" y="230" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11">larger space = more colors it can describe</text>
+                    </svg>
+                    <figcaption>Figure 2: sRGB fits inside Adobe RGB fits inside ProPhoto. Colors outside a space simply cannot be represented in it.</figcaption>
+                </figure>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Space</th><th>Use for</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>sRGB</strong></td><td>Web, social, most screens, email</td><td>The safe default for anything that lives online. Assume the internet is sRGB.</td></tr>
+                            <tr><td><strong>Adobe RGB</strong></td><td>Print work, especially CMYK</td><td>Holds the cyans/greens many printers can reproduce but sRGB clips.</td></tr>
+                            <tr><td><strong>ProPhoto RGB</strong></td><td>Heavy RAW grading, archival masters</td><td>Enormous gamut — always pair with <strong>16-bit</strong> or you will band.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card card-warning">
+                    <h4>⚠️ Convert, don't assign, at the end</h4>
+                    <p>When you output, <strong>Convert to Profile</strong> (Edit ▸ Convert to Profile) remaps the colors to fit the new space and keeps them looking right. <em>Assign</em> Profile just relabels the container and will shift your colors. For web, the last step is almost always "Convert to sRGB."</p>
+                </div>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🎛️ Set Color Settings Once</h2>
+                <p><strong>Edit ▸ Color Settings</strong> is where you set the defaults you will live in. Here it is as a diagram:</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:440px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Color Settings</span>
+                        </div>
+                        <svg viewBox="0 0 440 200" role="img" aria-label="Color Settings dialog: Working Spaces RGB set to a working space, and color management policies.">
+                            <rect width="440" height="200" fill="#3a3a3a"/>
+                            <text x="16" y="26" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Working Spaces</text>
+                            <text x="16" y="52" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">RGB:</text>
+                            <rect x="60" y="40" width="260" height="20" fill="#1473E6"/><text x="190" y="54" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Adobe RGB (1998) ▾</text>
+                            <text x="16" y="80" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">CMYK:</text>
+                            <rect x="60" y="68" width="260" height="20" fill="#2f2f2f" stroke="#555"/><text x="70" y="82" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">(your printer's profile) ▾</text>
+                            <line x1="16" y1="104" x2="424" y2="104" stroke="#4a4a4a"/>
+                            <text x="16" y="126" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Color Management Policies</text>
+                            <text x="16" y="150" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">RGB: Preserve Embedded Profiles</text>
+                            <rect x="16" y="160" width="16" height="16" fill="#1473E6"/><text x="24" y="173" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">✓</text>
+                            <text x="40" y="173" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Ask When Opening (profile mismatch)</text>
+                        </svg>
+                        <figcaption>Figure 3: Set a working RGB space, your CMYK printer profile, and <strong>Preserve Embedded Profiles</strong> so a file's own tag is respected. Tick the mismatch warnings so you always know which container you are in.</figcaption>
+                    </div>
+                </figure>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Set Up &amp; Diagnose</h2>
+
+                <div class="card card-info">
+                    <h3>Step 1: Configure the pipeline <small>· 6 min</small></h3>
+                    <ol>
+                        <li><strong>Edit ▸ Color Settings.</strong> Set RGB working space to <strong>Adobe RGB (1998)</strong> for print-capable work (or sRGB if you are strictly web), CMYK to your printer's profile, and policies to <strong>Preserve Embedded Profiles</strong> with mismatch warnings on.</li>
+                        <li>Open your image and confirm its bit depth: <strong>Image ▸ Mode ▸ 16 Bits/Channel</strong> for anything you will grade hard.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Diagnose from the histogram <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Open the <strong>Histogram</strong> (Window ▸ Histogram). Before any edit, read it: Is it crammed left (underexposed) or right (overexposed)? Is it clipped at either end (a spike against the wall = lost detail)? Is it narrow (flat, low contrast)?</li>
+                        <li>Write down, in one sentence, what the image needs. That sentence is your edit plan.</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Diagnose before you edit</h4>
+                        <p>This is the habit that runs through the whole course. Amateurs grab a slider and push; pros read the histogram, name the problem, then reach for the right tool. Thirty seconds of diagnosis saves ten minutes of flailing.</p>
+                    </div>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Prove the container matters <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Duplicate a smooth-gradient image. Convert one copy to 8-bit, keep the other 16-bit.</li>
+                        <li>Apply the same aggressive Curves to both, then a strong brighten. Zoom in: the 8-bit copy bands; the 16-bit stays smooth. Now you have seen why the pipeline is not optional.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Export correctly <small>· 4 min</small></h3>
+                    <ol>
+                        <li>Keep your layered master in the wide space and 16-bit.</li>
+                        <li>For web: <strong>Convert to Profile ▸ sRGB</strong>, flatten a copy, and export. The color you graded is the color the world sees.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Color Settings configured with a deliberate working space</li>
+                        <li>☐ Working file is 16-bit</li>
+                        <li>☐ I diagnosed the image from its histogram in one sentence before editing</li>
+                        <li>☐ I saw 8-bit banding versus 16-bit smoothness with my own eyes</li>
+                        <li>☐ Web export was Converted to sRGB, not just assigned</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Take one image and export it two ways: correctly Converted to sRGB, and deliberately with the profile stripped. View both in a browser and note the color shift. That shift is what viewers see when color management is ignored.</li>
+                        <li>Practice reading five histograms cold: guess the problem, then open the image and check.</li>
+                        <li>Set up a wide-gamut, 16-bit document template you can start pro work from.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> if you have a calibrated monitor, turn calibration off for a minute and watch your careful grade fall apart. That is why colorists calibrate.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Color Pipeline</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Trustworthy color, start to finish</h3>
+                    <ol>
+                        <li><strong>Edit ▸ Color Settings</strong>: deliberate working space, Preserve Embedded Profiles</li>
+                        <li>Work in <strong>16-bit</strong> for anything you will grade hard</li>
+                        <li><strong>Read the histogram</strong> and name the problem before editing</li>
+                        <li>Keep the master wide + 16-bit</li>
+                        <li>Export: <strong>Convert to Profile</strong> (sRGB for web) at the very end</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: capture wide, edit deep, convert down last.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Have you ever had colors "change" on export or a print come back wrong? Now that you understand containers, what was probably going on?</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>An image is color in a container: <strong>working space</strong> (how wide) and <strong>bit depth</strong> (how finely divided).</li>
+                        <li>Edit in <strong>16-bit</strong>; hard grades in 8-bit cause <strong>banding</strong>.</li>
+                        <li>sRGB for web, Adobe RGB for print, ProPhoto for heavy RAW work.</li>
+                        <li><strong>Convert to Profile</strong> at the end; read the <strong>histogram</strong> at the start.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You now edit on a foundation you can trust. Every grade in the rest of this module lands the way you intend, survives export, and stands a chance of printing correctly. It is invisible work that makes all the visible work possible.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Should I just edit everything in ProPhoto to be safe?</summary>
+                    <p>Only if you commit to 16-bit and understand you will convert down for output. ProPhoto in 8-bit bands badly, and its gamut is so wide that much of it is imaginary color no device shows. For most work, Adobe RGB (print) or sRGB (web) is the pragmatic choice.</p>
+                </details>
+                <details>
+                    <summary>My edited photo looks duller on Instagram than in Photoshop.</summary>
+                    <p>Classic un-converted Adobe RGB or ProPhoto file shown in an sRGB world. Convert to sRGB before exporting for the web and it will match.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Container sorted, we can grade with confidence. <strong>Lesson 2.2 — Grading with Curves, Gradient Maps &amp; LUTs</strong> builds real cinematic looks and shows how a LUT bottles a grade you can reuse across a whole shoot.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Configure Color Settings and make a 16-bit wide-gamut template.</li>
+                    <li>Diagnose five images from their histograms.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/color-management.html" target="_blank" rel="noopener">Adobe: Color management</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/histogram.html" target="_blank" rel="noopener">Adobe: The Histogram panel</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Color management is where a lot of people glaze over, and pushing through it is exactly what separates hobby edits from professional ones. You now understand something most Photoshop users never bother to learn. Everything downstream just got more trustworthy.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_03.html" class="prev-lesson">← Previous: The Hard Cutout (Module 1 finale)</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_05.html" class="next-lesson">Next: Grading with Curves, Gradient Maps &amp; LUTs →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

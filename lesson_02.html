@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 1, Lesson 2: channel masking and Blend-If. Turn the image's own color channels into selections, and blend layers by tone with no mask at all.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 1.2: Channel Masking &amp; Blend-If | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 1 • Lesson 2</span><span class="lesson-title">📡 Channel Masking &amp; Blend-If</span></h1>
+                <p class="lead">Some subjects defeat every brush and every AI selection: a bare tree against a bright sky, a lace veil, wind-blown hair. The trick the pros use is to stop fighting and look at the <strong>channels</strong> — because one of them is often already a near-perfect mask. Then there is Blend-If, which hides pixels by tone with no mask at all.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Read the <strong>Red, Green &amp; Blue channels</strong> as ready-made grayscale masks</li>
+                        <li>Turn the highest-contrast channel into a selection (duplicate, push with Levels)</li>
+                        <li>Use <strong>Blend-If</strong> to drop out a layer's lights or darks instantly</li>
+                        <li>Pick the right technique for the subject: luminosity, channel, Blend-If, or a blend of all three</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 60 minutes</p>
+                    <p><strong>🎯 Project:</strong> Extract an intricate subject (a bare tree or wispy edge) from its background using a channel mask, and knock a texture cleanly into a scene with Blend-If.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Mask the Unmaskable</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Three Masks You Already Have</a></li>
+                        <li><a href="#channels" class="toc-link">Reading the Channels</a></li>
+                        <li><a href="#blendif" class="toc-link">Blend-If: Masking Without a Mask</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Extract a Tree</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Channel Mask</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>🌳 The Goal: Mask the Unmaskable</h2>
+                <p>A bare winter tree has thousands of tiny branches. No one paints that by hand, and Select Subject chokes on it. But against a bright sky, the <strong>Blue channel</strong> already separates them almost perfectly. On the left, the tree cleanly moved to a new sky; on the right, the original. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after: an intricate bare tree extracted from a bright sky onto a new sunset background.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="The tree composited onto a new warm sky">
+                                <defs><linearGradient id="cm-sky-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb15e"/><stop offset="1" stop-color="#ffe3b0"/></linearGradient></defs>
+                                <rect width="600" height="400" fill="url(#cm-sky-a)"/>
+                                <circle cx="300" cy="150" r="60" fill="#fff2cf" opacity="0.8"/>
+                                <rect y="330" width="600" height="70" fill="#7a5a34"/>
+                                <g stroke="#241a10" fill="none">
+                                    <path d="M300 340 V180" stroke-width="10"/>
+                                    <path d="M300 250 q-40 -30 -70 -70 M300 250 q40 -30 70 -70 M300 210 q-30 -26 -55 -30 M300 210 q30 -26 55 -30 M300 185 q-20 -22 -40 -40 M300 185 q20 -22 40 -40 M300 300 q-30 -6 -55 -26 M300 300 q30 -6 55 -26" stroke-width="5"/>
+                                    <path d="M230 180 q-16 -18 -26 -40 M370 180 q16 -18 26 -40 M245 155 q-10 -14 -14 -30 M355 155 q10 -14 14 -30 M300 145 v-30" stroke-width="3"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="The original tree against a plain overcast sky">
+                                <rect width="600" height="400" fill="#dfe6ea"/>
+                                <rect y="330" width="600" height="70" fill="#9aa08f"/>
+                                <g stroke="#3a3f42" fill="none">
+                                    <path d="M300 340 V180" stroke-width="10"/>
+                                    <path d="M300 250 q-40 -30 -70 -70 M300 250 q40 -30 70 -70 M300 210 q-30 -26 -55 -30 M300 210 q30 -26 55 -30 M300 185 q-20 -22 -40 -40 M300 185 q20 -22 40 -40 M300 300 q-30 -6 -55 -26 M300 300 q30 -6 55 -26" stroke-width="5"/>
+                                    <path d="M230 180 q-16 -18 -26 -40 M370 180 q16 -18 26 -40 M245 155 q-10 -14 -14 -30 M355 155 q10 -14 14 -30 M300 145 v-30" stroke-width="3"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">After</span>
+                        <span class="ba-label before">Before</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="55" aria-label="Reveal the extracted tree">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>Every twig came along, because the mask was the Blue channel itself, not a hand-drawn outline.</figcaption>
+                    <span class="ba-placeholder-note">Illustrated process stand-in. Channel masking is a technique the connector can't auto-produce.</span>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Three Masks You Already Have</h2>
+                <p>Every RGB image is secretly three grayscale images stacked together — the <strong>Red</strong>, <strong>Green</strong>, and <strong>Blue</strong> channels. Each is a full-resolution grayscale picture in its own right, which means each is a potential mask. You are not making a mask from scratch; you are <em>shopping</em> among three that already exist for the one with the most separation between your subject and its background.</p>
+                <p>The move is simple once you see it: find the channel where subject and background are furthest apart in brightness, duplicate it, then push it toward pure black and white with Levels so it becomes a crisp mask.</p>
+
+                <div class="card card-accent">
+                    <h3>🧠 The spiral continues</h3>
+                    <p>Lesson 1.1 built a mask from overall <em>luminance</em>. Channel masking is the same idea aimed at a single color's brightness — and a single channel often separates a subject that luminance blurs together. Same principle, sharper tool.</p>
+                </div>
+
+                <figure>
+                    <div class="mermaid">
+                        flowchart LR
+                            A["Open the Channels panel"] --> B["Click through R, G, B&lt;br/&gt;find the highest contrast"]
+                            B --> C["Duplicate that channel"]
+                            C --> D["Levels: push to&lt;br/&gt;near black &amp; white"]
+                            D --> E["Ctrl/⌘-click = load as selection"]
+                            E --> F["Apply as a layer mask"]
+                    </div>
+                    <figcaption>Figure 1: The channel-mask pipeline. The whole skill is choosing the right channel; the rest is two clicks and a Levels push.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Channels -->
+            <section id="channels" class="lesson-section">
+                <h2>🔴🟢🔵 Reading the Channels</h2>
+                <p>Here are the three channels of that tree-against-sky. Watch how differently each one separates the tree from the sky:</p>
+                <figure>
+                    <svg viewBox="0 0 600 210" role="img" aria-label="Red, Green and Blue channels of a tree against sky, shown as grayscale. The Blue channel has the brightest sky and darkest tree, the best mask." style="max-width:600px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:8px;">
+                        <!-- Red channel: low contrast -->
+                        <g>
+                            <rect x="14" y="20" width="180" height="120" fill="#8a8a8a"/>
+                            <path d="M104 140 V70 M104 100 q-20 -14 -34 -30 M104 100 q20 -14 34 -30 M104 85 q-14 -12 -24 -24 M104 85 q14 -12 24 -24" stroke="#6f6f6f" stroke-width="3" fill="none"/>
+                            <text x="104" y="160" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12">Red — low contrast</text>
+                        </g>
+                        <!-- Green channel: medium -->
+                        <g>
+                            <rect x="210" y="20" width="180" height="120" fill="#b4b4b4"/>
+                            <path d="M300 140 V70 M300 100 q-20 -14 -34 -30 M300 100 q20 -14 34 -30 M300 85 q-14 -12 -24 -24 M300 85 q14 -12 24 -24" stroke="#5a5a5a" stroke-width="3" fill="none"/>
+                            <text x="300" y="160" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12">Green — better</text>
+                        </g>
+                        <!-- Blue channel: high contrast (winner) -->
+                        <g>
+                            <rect x="406" y="20" width="180" height="120" fill="#f0f0f0" stroke="#31A8FF" stroke-width="3"/>
+                            <path d="M496 140 V70 M496 100 q-20 -14 -34 -30 M496 100 q20 -14 34 -30 M496 85 q-14 -12 -24 -24 M496 85 q14 -12 24 -24" stroke="#1a1a1a" stroke-width="3" fill="none"/>
+                            <text x="496" y="160" text-anchor="middle" style="fill:var(--primary-color)" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">Blue — the winner ✓</text>
+                        </g>
+                        <text x="300" y="192" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11.5">bright sky + dark tree = the cleanest separation to push into a mask</text>
+                    </svg>
+                    <figcaption>Figure 2: Skies are blue, so the Blue channel keeps the sky bright while the tree stays dark — maximum contrast, the best mask candidate. (For skin, the Blue channel is where blemishes hide; different job, same habit of channel-shopping.)</figcaption>
+                </figure>
+            </section>
+
+            <!-- Blend If -->
+            <section id="blendif" class="lesson-section">
+                <h2>🎚️ Blend-If: Masking Without a Mask</h2>
+                <p>Sometimes you do not even need a saved mask. <strong>Blend-If</strong> (in Layer Style ▸ Blending Options) hides a layer's pixels by tone in real time. Drag the white slider of "This Layer" inward and the layer's brightest pixels vanish; drag the black slider and its darkest pixels drop out. <kbd>Alt/⌥</kbd>-drag to split a slider for a soft, feathered transition.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:440px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Layer Style — Blending Options</span>
+                        </div>
+                        <svg viewBox="0 0 440 200" role="img" aria-label="The Blend If sliders: This Layer and Underlying Layer, each a black-to-white gradient with split slider handles.">
+                            <rect width="440" height="200" fill="#3a3a3a"/>
+                            <text x="16" y="26" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Blend If:  <tspan style="fill:#9aa4ad">Gray ▾</tspan></text>
+                            <defs><linearGradient id="bw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#fff"/></linearGradient></defs>
+                            <!-- This Layer -->
+                            <text x="16" y="58" style="fill:#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">This Layer</text>
+                            <rect x="16" y="66" width="408" height="18" fill="url(#bw)" stroke="#555"/>
+                            <path d="M16 88 l7 12 -14 0 Z" fill="#e2e8f0"/>
+                            <path d="M356 88 l7 12 -14 0 Z" fill="#e2e8f0"/><path d="M372 88 l7 12 -14 0 Z" fill="#9aa4ad"/>
+                            <text x="300" y="112" style="fill:#31A8FF" font-family="Segoe UI, sans-serif" font-size="10">↑ split (Alt-drag) = soft cutoff</text>
+                            <!-- Underlying Layer -->
+                            <text x="16" y="140" style="fill:#cbd5e1" font-family="Segoe UI, sans-serif" font-size="11">Underlying Layer</text>
+                            <rect x="16" y="148" width="408" height="18" fill="url(#bw)" stroke="#555"/>
+                            <path d="M16 170 l7 12 -14 0 Z" fill="#e2e8f0"/>
+                            <path d="M420 170 l7 12 -14 0 Z" fill="#e2e8f0"/>
+                        </svg>
+                        <figcaption>Figure 3: Pull "This Layer" white slider left to drop the layer's highlights (great for knocking a white background off a texture); pull the black slider right to drop its shadows. Alt-split for a gradual blend.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-success">
+                    <h4>✅ When to use which</h4>
+                    <p><strong>Blend-If</strong> is instant and non-destructive but tone-global (it affects the whole layer). A <strong>channel mask</strong> is editable and spatial (you can paint on it afterward). Reach for Blend-If to knock out skies/whites fast; reach for a channel mask when you need to refine the result by hand.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Extract a Tree</h2>
+                <p>Open a photo of a bare tree, power lines, or any intricate subject against a plain bright sky. Save as <code>channel-working.psd</code>, 16-bit.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Channel-shop <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Open <strong>Channels</strong> and click Red, then Green, then Blue, watching the preview each time.</li>
+                        <li>Pick the one where the subject is darkest and the background brightest. Against sky, that is almost always <strong>Blue</strong>.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Forge the mask <small>· 8 min</small></h3>
+                    <ol>
+                        <li><strong>Duplicate</strong> the winning channel (drag it to the New Channel icon) so you never damage the original.</li>
+                        <li>Run <strong>Levels</strong> (or Curves) on the duplicate: pull the black and white points inward until the sky is pure white and the tree pure black, with the fine twigs still intact.</li>
+                        <li>Paint any stray gaps with a hard black/white brush directly on the channel.</li>
+                    </ol>
+                    <div class="card card-warning">
+                        <h4>⚠️ Do not over-push</h4>
+                        <p>Crank Levels too hard and the delicate twigs snap off (they go white and disappear). Push just until the big areas are solid; the mask does not need to be perfect everywhere, only at the edges.</p>
+                    </div>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Load it and cut <small>· 6 min</small></h3>
+                    <ol>
+                        <li><kbd>Ctrl/⌘</kbd>-click the duplicated channel to load it as a selection. If the sky is selected instead of the tree, <strong>invert</strong> (<kbd>Ctrl/⌘ + Shift + I</kbd>).</li>
+                        <li>Back on the RGB composite, add a <strong>layer mask</strong> from the selection. The tree, every twig, is now cut out.</li>
+                        <li>Drop a new sky behind it to check the edges.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: A Blend-If finish <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Place a texture (clouds, grain, a light leak) as a new layer over your scene.</li>
+                        <li>Open <strong>Blending Options</strong> and pull the "This Layer" white slider left until only the texture's darker parts remain, letting your scene show through the whites. <kbd>Alt/⌥</kbd>-split for a soft blend.</li>
+                        <li>Note you did this with <em>no mask at all</em>, purely by tone.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Chose the highest-contrast channel by eye</li>
+                        <li>☐ Built a black-and-white mask on a <strong>duplicate</strong> channel with Levels</li>
+                        <li>☐ Fine detail (twigs / wisps) survived against a new background</li>
+                        <li>☐ Blended a texture into the scene with <strong>Blend-If</strong>, no mask</li>
+                        <li>☐ Worked non-destructively in 16-bit</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Extract something intricate against a busy (not plain) background. When no channel is clean, combine: channel mask for the easy 90%, then paint and luminosity-mask the rest.</li>
+                        <li>Use Blend-If the other direction: drop a layer's <em>shadows</em> to let a dark background show through a subject's edges (a quick way to blend flames, smoke, or fireworks).</li>
+                        <li>On a portrait, inspect the <strong>Blue channel</strong> and notice how it exaggerates skin texture. That is the classic starting point for a blemish or dodge-and-burn mask, which Module 3 uses.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> Blend-If lives inside Layer Style, so it travels with copied layer styles and can be combined with a real mask on the same layer for hybrid control.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Channel Mask</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Mask an intricate subject</h3>
+                    <ol>
+                        <li>Channels panel: click R / G / B, pick the highest-contrast one</li>
+                        <li><strong>Duplicate</strong> it → <strong>Levels</strong> to force near black &amp; white</li>
+                        <li>Clean gaps with a hard brush on the channel</li>
+                        <li><kbd>Ctrl/⌘</kbd>-click to load → invert if needed → add layer mask</li>
+                        <li>Fast alternative: <strong>Blend-If</strong> to drop lights or darks by tone (Alt-split to feather)</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: shop the channels before you paint.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Channel masking feels like a cheat code the first time it works. What subject have you given up on cutting out before that you would now attempt?</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>The <strong>R, G, B channels</strong> are three grayscale images, each a potential mask.</li>
+                        <li>Pick the highest-contrast channel, <strong>duplicate</strong> it, and push with <strong>Levels</strong> to forge a mask.</li>
+                        <li><strong>Blend-If</strong> hides a layer's lights or darks instantly, no mask required.</li>
+                        <li>Channel masks are editable and spatial; Blend-If is fast and tonal. Use both.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You can now mask subjects that stop most people cold — trees, hair, lace, wires — by letting the image's own channels do the heavy lifting. Combined with Lesson 1.1's luminosity masks, you have a professional selection toolkit that reaches almost anything distinguished by tone or color.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>What if no single channel separates my subject?</summary>
+                    <p>Combine channels (Apply Image can add or subtract one channel from another), or use the best channel for most of it and finish with a hand-painted / luminosity mask. Hard cutouts are usually layered, not one perfect trick — which is exactly Lesson 1.3.</p>
+                </details>
+                <details>
+                    <summary>Blend-If looks great but disappears when I move the layer.</summary>
+                    <p>Blend-If on "Underlying Layer" depends on what is beneath, so it re-evaluates as you move things. To lock the look, right-click the layer and <strong>Convert to Smart Object</strong>, or create a clipped/merged copy.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p><strong>Lesson 1.3 — Select &amp; Mask Mastery</strong> brings it all together on the hardest case of all: flowing human hair. You will combine AI selection, the Refine Edge brush, a channel mask for the gaps, and color decontamination into one clean cutout, the Module 1 deliverable.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Channel-mask two intricate subjects against sky.</li>
+                    <li>Knock a white-background texture into a scene with Blend-If alone.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/channels.html" target="_blank" rel="noopener">Adobe: Channels &amp; channel masks</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/blending-modes.html" target="_blank" rel="noopener">Adobe: Blending options &amp; Blend If</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Channels look intimidating in the panel and then become one of your favorite tools within a week. You have just added the technique that separates people who "try to select the tree" from people who simply extract it. Onward to the hard cutout.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_01.html" class="prev-lesson">← Previous: Luminosity Masks</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_03.html" class="next-lesson">Next: Select &amp; Mask Mastery — The Hard Cutout →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

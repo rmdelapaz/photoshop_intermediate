@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 2, Lesson 2: grading with Curves, gradient maps, and LUTs. Build cinematic looks and bottle them for reuse across a whole shoot.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 2.2: Grading with Curves, Gradient Maps &amp; LUTs | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 2 • Lesson 2</span><span class="lesson-title">🎬 Grading with Curves, Gradient Maps &amp; LUTs</span></h1>
+                <p class="lead">Color grading is where a correct photo becomes a photo with a <em>mood</em>. In the intro you met the S-curve; now you will build full cinematic looks with per-channel Curves and gradient maps, then bottle a look as a <strong>LUT</strong> you can pour over an entire shoot in one click.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Grade with <strong>per-channel Curves</strong> for precise color in shadows, mids, and highlights</li>
+                        <li>Use a <strong>Gradient Map</strong> to remap tones to a color ramp</li>
+                        <li>Apply and <strong>save a LUT</strong> (Color Lookup) to reuse a grade consistently</li>
+                        <li>Keep the whole grade non-destructive and dialable</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 60 minutes</p>
+                    <p><strong>🎯 Project:</strong> Build a cinematic grade on a scene, then export it as a LUT and prove it drops onto a different photo.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: A Look, Not Just a Fix</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Remapping Color</a></li>
+                        <li><a href="#gradmap" class="toc-link">Gradient Maps</a></li>
+                        <li><a href="#panel" class="toc-link">LUTs: Bottling a Grade</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Grade &amp; Bottle It</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Cinematic Grade</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>🎞️ The Goal: A Look, Not Just a Fix</h2>
+                <p>The same pier at sunset, straight out of camera on the right and cinematically graded on the left: deeper teal water and sky, richer contrast, a unified mood. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after: a sunset pier given a moody cinematic color grade.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <img src="images/l05_after.jpg" alt="The pier scene with a moody, cinematic teal-and-gold grade and richer contrast.">
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <img src="images/l05_before.jpg" alt="A sunset over a wooden pier, straight out of camera.">
+                        </div>
+                        <span class="ba-label after">After</span>
+                        <span class="ba-label before">Before</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="55" aria-label="Reveal the graded version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A real grade, applied through the Adobe tools: the exposure is barely touched, but the color relationships are completely re-authored.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Remapping Color</h2>
+                <p>Correcting an image asks "what is wrong?" Grading asks "what should it <em>feel</em> like?" Technically, every grade is a <strong>remap</strong>: you decide what color each tone becomes. Shadows do not have to stay neutral; you can send them teal. Highlights can lean gold. That deliberate reassignment is the whole art.</p>
+                <p>Three tools do the remapping, from most surgical to most sweeping:</p>
+                <ul>
+                    <li><strong>Per-channel Curves</strong> — the precision instrument. Bend the Red, Green, or Blue curve in the shadows or highlights to push exact color into exact tones.</li>
+                    <li><strong>Gradient Map</strong> — map the whole tonal range onto a chosen color ramp at once. Fast, bold, great for stylized looks.</li>
+                    <li><strong>LUT (Color Lookup)</strong> — a saved recipe of a finished grade you can re-apply instantly to any image.</li>
+                </ul>
+
+                <div class="card card-accent">
+                    <h3>🧠 The spiral from the intro</h3>
+                    <p>You already S-curved for contrast and split the Blue channel for teal-and-orange. This lesson formalizes that into a repeatable grading craft and, crucially, teaches you to <em>save</em> the look so it is not a one-off you can never reproduce.</p>
+                </div>
+
+                <figure>
+                    <div class="mermaid">
+                        flowchart LR
+                            A["Correct first&lt;br/&gt;(neutral, from Module 2.1)"] --> B["Contrast&lt;br/&gt;(S-curve)"]
+                            B --> C["Color&lt;br/&gt;(per-channel Curves / Gradient Map)"]
+                            C --> D["Refine locally&lt;br/&gt;(masks from Module 1)"]
+                            D --> E["Bottle it&lt;br/&gt;(export a LUT)"]
+                    </div>
+                    <figcaption>Figure 1: Correct, then grade, then bottle. Grading on top of a neutral base is what makes a look portable to other images.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Gradient map -->
+            <section id="gradmap" class="lesson-section">
+                <h2>🌗 Gradient Maps</h2>
+                <p>A <strong>Gradient Map</strong> takes your image's tones and replaces them with the colors of a gradient: the darkest pixels get the gradient's left color, the brightest get its right color, everything else in between. Choose a teal-to-gold gradient and you have an instant cinematic split-tone.</p>
+                <figure>
+                    <svg viewBox="0 0 560 200" role="img" aria-label="A tonal bar from black to white mapped onto a teal-to-gold color ramp, showing shadows becoming teal and highlights becoming gold." style="max-width:560px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:8px;">
+                        <defs>
+                            <linearGradient id="tonebar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#fff"/></linearGradient>
+                            <linearGradient id="ramp" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0e3b45"/><stop offset="0.5" stop-color="#6f7a70"/><stop offset="1" stop-color="#f0c070"/></linearGradient>
+                        </defs>
+                        <text x="40" y="40" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="12">image tones</text>
+                        <rect x="40" y="50" width="480" height="40" fill="url(#tonebar)" stroke="#94a3b8"/>
+                        <g stroke="var(--text-light)"><line x1="120" y1="92" x2="120" y2="120"/><line x1="440" y1="92" x2="440" y2="120"/></g>
+                        <text x="280" y="112" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="18">↓ mapped to ↓</text>
+                        <text x="40" y="140" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="12">color ramp</text>
+                        <rect x="40" y="150" width="480" height="40" fill="url(#ramp)" stroke="#94a3b8"/>
+                        <text x="70" y="176" style="fill:#dfeaf3" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">teal shadows</text>
+                        <text x="470" y="176" text-anchor="end" style="fill:#3a2c10" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">gold highlights</text>
+                    </svg>
+                    <figcaption>Figure 2: Tones in, colors out. Lower the Gradient Map layer's opacity (or set it to Color / Soft Light blend mode) so it tints rather than flattens the image.</figcaption>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Blend it, don't bake it</h4>
+                    <p>At 100% Normal a Gradient Map looks garish and kills detail. Drop the opacity to 15–40%, or switch the layer to <strong>Color</strong> or <strong>Soft Light</strong>, so it lends its palette to the real image underneath.</p>
+                </div>
+            </section>
+
+            <!-- LUT panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🧴 LUTs: Bottling a Grade</h2>
+                <p>A <strong>LUT</strong> (Look-Up Table, a <code>.cube</code> or <code>.3dl</code> file) is a saved recipe that says "turn this input color into that output color," for every color. Build a grade you love, export it as a LUT, and you can pour the exact look onto a hundred other photos, or hand it to a teammate. Apply one with a <strong>Color Lookup</strong> adjustment layer:</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:420px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Properties — Color Lookup</span>
+                        </div>
+                        <svg viewBox="0 0 420 180" role="img" aria-label="Color Lookup adjustment with a 3DLUT File dropdown listing LUT files.">
+                            <rect width="420" height="180" fill="#3a3a3a"/>
+                            <text x="16" y="28" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">3DLUT File</text>
+                            <rect x="16" y="40" width="388" height="22" fill="#1473E6"/><text x="210" y="55" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Teal-Gold Cinematic.cube ▾</text>
+                            <g font-family="Segoe UI, sans-serif" font-size="11" style="fill:#cbd5e1">
+                                <rect x="16" y="68" width="388" height="22" fill="#454545"/><text x="26" y="83">Faded Film.cube</text>
+                                <rect x="16" y="92" width="388" height="22" fill="#414141"/><text x="26" y="107">Bleach Bypass.cube</text>
+                                <rect x="16" y="116" width="388" height="22" fill="#454545"/><text x="26" y="131">Load 3D LUT…  /  Export Color Lookup Tables…</text>
+                            </g>
+                            <text x="16" y="164" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">Photoshop ships dozens; File ▸ Export ▸ Color Lookup Tables saves your own.</text>
+                        </svg>
+                        <figcaption>Figure 3: Drop a <strong>Color Lookup</strong> layer and choose a LUT, or build your own grade and use <strong>File ▸ Export ▸ Color Lookup Tables</strong> to save it as a reusable <code>.cube</code>.</figcaption>
+                    </div>
+                </figure>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Grade &amp; Bottle It</h2>
+                <p>Open a corrected, neutral image (from Lesson 2.1), 16-bit. Grade in this order.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Contrast, then color <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Add a <strong>Curves</strong> layer and set your contrast with a gentle RGB S-curve.</li>
+                        <li>New Curves layer. Switch to the <strong>Blue</strong> channel: lift the shadow end (teal shadows), drop the highlight end (warm highlights). Nudge <strong>Red</strong> and <strong>Green</strong> in tiny amounts to taste. This is the classic teal-and-gold in Curves.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: A Gradient Map accent <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Add a <strong>Gradient Map</strong> with a teal-to-gold ramp.</li>
+                        <li>Set the layer to <strong>Color</strong> or <strong>Soft Light</strong> and drop opacity to ~20–30% so it unifies the palette without flattening.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Refine locally <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Grades rarely suit every part of a frame. Mask a Curves or the Gradient Map layer (Module 1 skills) so, say, skin stays natural while the background goes moody.</li>
+                        <li>A luminosity mask (Lesson 1.1) is perfect for keeping the grade out of the brightest highlights.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Bottle it as a LUT <small>· 6 min</small></h3>
+                    <ol>
+                        <li>With your grading layers active (over a neutral base, no image-specific masks), choose <strong>File ▸ Export ▸ Color Lookup Tables</strong> and save a <code>.cube</code>.</li>
+                        <li>Open a <em>different</em> photo, add a <strong>Color Lookup</strong> layer, load your LUT, and watch the whole look transfer. That is your grade, now reusable forever. 🏆</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Why bottle it</h4>
+                        <p>A LUT is how a look becomes a <em>brand</em>: the same feel across an entire shoot, a client's whole feed, or a team's output. Building the grade is craft; saving it is professionalism.</p>
+                    </div>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Contrast set before color</li>
+                        <li>☐ Color graded with <strong>per-channel Curves</strong></li>
+                        <li>☐ A <strong>Gradient Map</strong> used at reduced opacity / a blend mode</li>
+                        <li>☐ Grade refined with at least one mask</li>
+                        <li>☐ Look <strong>exported as a LUT</strong> and re-applied to a second image</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Build three distinct LUTs: a warm-summer look, a cold-thriller look, and a faded-matte look. Apply each to the same photo to feel how much mood is pure color.</li>
+                        <li>Reverse-engineer a film still or a favorite photo: name its shadow color and highlight color, then recreate it with per-channel Curves.</li>
+                        <li>Apply one of your LUTs across five different photos and note where it needs per-image tweaking. A LUT is a starting point, not a finisher.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> stack a subtle Gradient Map <em>under</em> a Color Lookup and mask both — layered grading is how the richest looks are built.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Cinematic Grade</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Build a look and save it</h3>
+                    <ol>
+                        <li><strong>Curves</strong>: contrast (RGB S-curve) first</li>
+                        <li><strong>Curves</strong> per channel: teal shadows, warm highlights (Blue channel split)</li>
+                        <li><strong>Gradient Map</strong> (teal→gold) at ~20–30% / Color blend</li>
+                        <li>Mask locally (luminosity or subject masks)</li>
+                        <li><strong>File ▸ Export ▸ Color Lookup Tables</strong> → reuse as a <code>.cube</code></li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: correct, then grade, then bottle.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Describe the "look" you are drawn to as an editor in terms of shadow color, highlight color, and contrast. Naming your taste is the first step to building it into a LUT.</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>Grading is deliberate <strong>color remapping</strong>: tones become chosen colors.</li>
+                        <li><strong>Per-channel Curves</strong> are the precision tool; <strong>Gradient Maps</strong> are the fast, bold one.</li>
+                        <li>Blend a Gradient Map (low opacity / Color mode); never bake it at 100%.</li>
+                        <li>Save a look as a <strong>LUT</strong> to reuse it across a shoot or a brand.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You can now author a look, not just fix an image — and, just as importantly, save it so it is repeatable. That combination of taste plus reusability is exactly what studios and clients pay for.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Gradient Map vs a LUT — when do I use which?</summary>
+                    <p>A Gradient Map is a live tool you build inside one document. A LUT is a saved, portable file. Often you build a look with Curves + Gradient Maps, then <em>export</em> that look as a LUT to reuse. They are stages of the same craft.</p>
+                </details>
+                <details>
+                    <summary>My grade looks great on this photo but wrong on others.</summary>
+                    <p>A LUT assumes a similar starting point. Correct each image to a neutral base first (Module 2.1), then apply the LUT. Grading un-corrected images is why a look "breaks" from photo to photo.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p><strong>Lesson 2.3 — Match, Split-Tone &amp; Soft-Proof</strong> finishes the module: making two different photos share one color identity, refining split-tones, and soft-proofing so your grade survives the trip to print.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Build and save two LUTs you would actually use.</li>
+                    <li>Grade one image with Curves only, then match it with a Gradient Map, and compare.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/curves-adjustment.html" target="_blank" rel="noopener">Adobe: Curves</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/color-lookup-adjustment.html" target="_blank" rel="noopener">Adobe: Color Lookup (LUTs)</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Grading is the most expressive thing you can do to a photo, and you just went from "add contrast" to authoring and bottling a look. That is a colorist's skill. Now go build the palette that feels like <em>you</em>.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_04.html" class="prev-lesson">← Previous: Color Management &amp; Working Spaces</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_06.html" class="next-lesson">Next: Match, Split-Tone &amp; Soft-Proof →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

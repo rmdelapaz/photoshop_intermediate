@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photoshop Intermediate: professional technique, real color management, and client-ready work. The sequel to the intro course.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Photoshop Intermediate: From Practitioner to Pro</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="#introduction">About</a>
+                <a href="#start">Before You Start</a>
+                <a href="#path">The Path</a>
+                <a href="#recipes">Recipes</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- NOTE: No breadcrumb nav — omitted per the Courseware Authoring Standard. -->
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="ps-chip">Ps</span> From Practitioner to Pro</h1>
+                <p class="lead">You can already drive Photoshop. This course teaches you to work like a professional: selections driven by the image itself, real color management, high-end retouching, commercial compositing, and automation that scales. Fewer first steps, much deeper craft.</p>
+            </header>
+
+            <section id="introduction" class="card">
+                <h2>📚 What This Course Is</h2>
+                <p>This is the sequel to <a href="https://rays-home.netlify.app/" target="_blank" rel="noopener">the intro course</a>. It does not re-teach layers, masks, or the basics of Camera Raw and Curves. Instead, every technique you met once at a basic level returns here as a full professional workflow, and three genuinely new pillars appear: <strong>color management</strong>, <strong>luminosity and channel masking</strong>, and <strong>data-driven, scripted automation</strong>.</p>
+                <p>The teaching model is unchanged: <strong>project-driven and spiral</strong>. Every module ships a finished, portfolio-worthy deliverable, and the four ideas that run all of Photoshop (non-destructive editing, the layer stack, masks as grayscale, and selections) keep returning at greater depth.</p>
+
+                <h3>By the end you will be able to…</h3>
+                <ul>
+                    <li>Build <strong>luminosity and channel masks</strong> and cut out genuinely hard subjects</li>
+                    <li>Manage color properly: working spaces, bit depth, and <strong>soft proofing for print</strong></li>
+                    <li>Grade with <strong>Curves, gradient maps, and LUTs</strong>, and match color across images</li>
+                    <li>Retouch a portrait to a <strong>magazine standard</strong>, naturally</li>
+                    <li>Build a <strong>believable multi-image composite</strong> with matched light, shadow, and atmosphere</li>
+                    <li>Run <strong>design systems, data-driven graphics, and scripted batches</strong></li>
+                </ul>
+
+                <div class="card card-warning" style="margin-top:1.5rem;">
+                    <h4>✅ Prerequisite</h4>
+                    <p>The intro course, or equivalent comfort with layers, masks, selections, Camera Raw, Curves, Smart Objects, and a basic two-image composite. If any of those feel shaky, spend a little time there first; this course moves fast and assumes them.</p>
+                </div>
+            </section>
+
+            <!-- Before You Start (onboarding, not a module) -->
+            <section id="start" class="card card-info">
+                <h2>🧭 Before You Start</h2>
+                <p>Two minutes of setup keeps the whole course honest. This is not a module (there is nothing to deliver), just the professional baseline you will work from:</p>
+                <ul>
+                    <li><strong>Work in a sane color pipeline.</strong> Edit in <strong>16-bit</strong> when you can, and know your working space (sRGB for web, wider gamut for print). We go deep on this in Module 2.</li>
+                    <li><strong>Calibrate your monitor</strong> if you are doing color-critical work. An uncalibrated screen makes every grading decision a guess.</li>
+                    <li><strong>Learn to read the histogram.</strong> Before you touch a slider, look at where the tones actually sit. "Diagnose before you edit" is a habit you will use in every module.</li>
+                    <li><strong>Set up your workspace</strong> and a few keyboard shortcuts for the tools you reach for most. Speed is a professional skill.</li>
+                </ul>
+                <p><small>Full color-management detail lives in <strong>Module 2 · Lesson 1</strong>; this is just the orientation.</small></p>
+            </section>
+
+            <section id="path">
+                <h2>🗺️ The Learning Path</h2>
+                <p>Eight modules in three tiers. Alongside them runs a parallel <a href="#recipes">Recipes II</a> library for the harder how-tos.</p>
+
+                <div class="mermaid">
+                    flowchart LR
+                        subgraph PATH["📚 Learning Path (in order)"]
+                            direction TB
+                            M1["Module 1&lt;br/&gt;Selection &amp; Masking"] --> M2["Module 2&lt;br/&gt;Color &amp; Tone"] --> M3["Module 3&lt;br/&gt;Retouching"] --> M4["Module 4&lt;br/&gt;Compositing"] --> M5["Module 5&lt;br/&gt;Design Systems"] --> M6["Module 6&lt;br/&gt;Generative &amp; Automation"] --> M7["Module 7&lt;br/&gt;Multi-Shot"] --> M8["Module 8&lt;br/&gt;Capstone"]
+                        end
+                        R["↔ Recipes II&lt;br/&gt;(jump in any time)"]
+                        R -.-> M2
+                        R -.-> M4
+                        R -.-> M6
+                </div>
+
+                <!-- Tier: Core Craft -->
+                <h3>🟦 Core Craft</h3>
+                <p class="ba-caption" style="text-align:left;">The three skills every serious edit rests on: selection, color, and skin.</p>
+
+                <div class="card lesson-card">
+                    <h3>Module 1: Advanced Selection &amp; Masking <span class="ba-placeholder-note" style="color:#166534;background:#f0fdf4;border-color:#86efac;">✓ Built</span></h3>
+                    <p><strong>Deliverable:</strong> a flawless cutout of a hard subject (wispy hair, glass, foliage) on a new background.</p>
+                    <ul>
+                        <li><a href="lesson_01.html" class="lesson-link">Lesson 1.1: Luminosity Masks — Select by Tone</a> <small>· 55 min</small></li>
+                        <li><a href="lesson_02.html" class="lesson-link">Lesson 1.2: Channel Masking &amp; Blend-If</a> <small>· 60 min</small></li>
+                        <li><a href="lesson_03.html" class="lesson-link">Lesson 1.3: Select &amp; Mask Mastery — The Hard Cutout</a> <small>· 60 min</small></li>
+                    </ul>
+                </div>
+
+                <div class="card lesson-card">
+                    <h3>Module 2: Color &amp; Tone, Deep <span class="ba-placeholder-note" style="color:#166534;background:#f0fdf4;border-color:#86efac;">✓ Built</span></h3>
+                    <p><strong>Deliverable:</strong> a cinematic grade plus a print-ready, soft-proofed export.</p>
+                    <ul>
+                        <li><a href="lesson_04.html" class="lesson-link">Lesson 2.1: Color Management &amp; Working Spaces</a> <small>· 50 min</small></li>
+                        <li><a href="lesson_05.html" class="lesson-link">Lesson 2.2: Grading with Curves, Gradient Maps &amp; LUTs</a> <small>· 60 min</small></li>
+                        <li><a href="lesson_06.html" class="lesson-link">Lesson 2.3: Match, Split-Tone &amp; Soft-Proof</a> <small>· 55 min</small></li>
+                    </ul>
+                </div>
+
+                <div class="card lesson-card">
+                    <h3>Module 3: High-End Retouching <span class="ba-placeholder-note" style="color:#166534;background:#f0fdf4;border-color:#86efac;">✓ Built</span></h3>
+                    <p><strong>Deliverable:</strong> a magazine-quality portrait. Frequency separation in production, dodge &amp; burn sculpting, a natural finish.</p>
+                    <ul>
+                        <li><a href="lesson_07.html" class="lesson-link">Lesson 3.1: Skin &amp; Frequency Separation</a> <small>· 55 min</small></li>
+                        <li><a href="lesson_08.html" class="lesson-link">Lesson 3.2: Dodge &amp; Burn Sculpting</a> <small>· 50 min</small></li>
+                        <li><a href="lesson_09.html" class="lesson-link">Lesson 3.3: Eyes, Teeth &amp; Hair — Natural Finish</a> <small>· 55 min</small></li>
+                    </ul>
+                </div>
+
+                <!-- Tier: Commercial Work -->
+                <h3>🟪 Commercial Work</h3>
+                <p class="ba-caption" style="text-align:left;">Turn craft into client-ready output: composites, campaigns, and scale.</p>
+
+                <div class="card lesson-card">
+                    <h3>Module 4: Commercial Compositing <span class="ba-placeholder-note">Planned</span></h3>
+                    <p><strong>Deliverable:</strong> an advertising-style key visual. Matched perspective, light direction, shadows, reflections, and atmosphere.</p>
+                </div>
+                <div class="card lesson-card">
+                    <h3>Module 5: Design Systems &amp; Type <span class="ba-placeholder-note">Planned</span></h3>
+                    <p><strong>Deliverable:</strong> a campaign (poster + social set) from one master. Type systems, templates, linked assets, multi-deliverable export.</p>
+                </div>
+                <div class="card lesson-card">
+                    <h3>Module 6: Generative + Automation, Advanced <span class="ba-placeholder-note">Planned</span></h3>
+                    <p><strong>Deliverable:</strong> a data-driven batch plus a generative-assisted composite. Conditional Actions, variables, a scripting intro.</p>
+                </div>
+
+                <!-- Tier: Going Further -->
+                <h3>🟥 Going Further</h3>
+                <p class="ba-caption" style="text-align:left;">Combine many frames, then make something of your own.</p>
+
+                <div class="card lesson-card">
+                    <h3>Module 7: Multi-Shot Techniques <span class="ba-placeholder-note">Planned · bonus</span></h3>
+                    <p><strong>Deliverable:</strong> a merged panorama or focus-stacked image, and a short animated social asset.</p>
+                </div>
+                <div class="card lesson-card">
+                    <h3>Module 8: Capstone <span class="ba-placeholder-note">Planned</span></h3>
+                    <p><strong>Deliverable:</strong> a self-directed professional brief with a written case study, presented.</p>
+                </div>
+            </section>
+
+            <section id="recipes" class="card">
+                <h2>↔ Recipes II <span class="ba-placeholder-note">Planned</span></h2>
+                <p>A parallel library of advanced how-tos for the tasks you will want to look up out of order:</p>
+                <ul>
+                    <li>"How do I luminosity-mask a bright sky?"</li>
+                    <li>"How do I match the color of two different photos?"</li>
+                    <li>"How do I soft-proof for a specific printer?"</li>
+                    <li>"How do I set up a data merge for 50 product cards?"</li>
+                </ul>
+                <p>Each recipe links back to the module where the idea is taught in depth.</p>
+            </section>
+
+            <section id="prerequisites" class="card">
+                <h2>🛠️ Required Software</h2>
+                <ul>
+                    <li><strong>Adobe Photoshop</strong> (2024 or newer recommended — Module 6 uses recent generative and data-driven features).</li>
+                    <li>A calibrated monitor is strongly recommended for the color and retouching modules.</li>
+                    <li>Optional: a pen tablet makes the retouching and masking modules far more comfortable.</li>
+                </ul>
+                <div class="card card-info">
+                    <h4>💡 About the pictures in this course</h4>
+                    <p>As in the intro, panels and dialogs are <strong>hand-drawn diagrams</strong>, not live screenshots, so they stay crisp and highlight only what matters. Before/after examples are <strong>real edited photos</strong> where the technique allows it; techniques that must be demonstrated as a <em>process</em> (like a luminosity mask) use clear labeled diagrams instead.</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>🔍 Search Course Content</h2>
+                <div style="position: relative;">
+                    <input type="text" id="search-input" placeholder="Search lessons, topics, or keywords..." aria-label="Search course content">
+                    <div id="search-results" style="display: none; position: absolute; top: 100%; left: 0; right: 0;"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

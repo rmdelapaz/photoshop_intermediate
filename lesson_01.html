@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 1, Lesson 1: luminosity masks. Build selections from the image's own brightness to adjust highlights and shadows independently, non-destructively.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 1.1: Luminosity Masks | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 1 • Lesson 1</span><span class="lesson-title">🌗 Luminosity Masks: Select by Tone</span></h1>
+                <p class="lead">In the intro, a mask was a grayscale stencil you painted by hand. A luminosity mask is a stencil the image paints <em>for</em> you, from its own brightness. It is the professional way to adjust highlights and shadows separately, and it is the foundation of natural landscape and portrait work.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Explain a <strong>luminosity mask</strong>: a selection built from the image's own luminance</li>
+                        <li>Load a <strong>Lights</strong> or <strong>Darks</strong> selection from the channels</li>
+                        <li>Adjust highlights and shadows <strong>independently</strong>, edges self-feathered and invisible</li>
+                        <li>Narrow a mask to a tonal <em>band</em> (just the brightest highlights) by intersecting</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55 minutes</p>
+                    <p><strong>🎯 Project:</strong> Rescue a high-contrast landscape, recovering a blown sky and lifting a dark foreground without a single visible mask edge.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Two Exposures, One Frame</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: The Image Paints the Mask</a></li>
+                        <li><a href="#zones" class="toc-link">Lights, Midtones &amp; Darks</a></li>
+                        <li><a href="#panel" class="toc-link">Loading Luminosity from Channels</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Rescue the Landscape</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Luminosity Mask</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>🏔️ The Goal: Two Exposures, One Frame</h2>
+                <p>A scene the camera cannot hold in one shot: expose for the sky and the land goes black; expose for the land and the sky blows out. Luminosity masks let you treat each tonal range on its own. On the right, the raw high-contrast capture; on the left, the balanced result. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after: a high-contrast scene balanced with luminosity masks.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Balanced: recovered sky and lifted foreground">
+                                <defs>
+                                    <linearGradient id="lm-sky-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f86c6"/><stop offset="1" stop-color="#cfe6f5"/></linearGradient>
+                                </defs>
+                                <rect width="600" height="400" fill="url(#lm-sky-a)"/>
+                                <circle cx="470" cy="90" r="40" fill="#fff3cf"/>
+                                <ellipse cx="180" cy="70" rx="70" ry="22" fill="#ffffff" opacity="0.55"/>
+                                <ellipse cx="360" cy="120" rx="90" ry="24" fill="#ffffff" opacity="0.4"/>
+                                <path d="M0 250 Q150 210 300 245 T600 240 V400 H0 Z" fill="#5f9e5a"/>
+                                <path d="M0 300 Q180 260 340 300 T600 296 V400 H0 Z" fill="#3f7a44"/>
+                                <path d="M0 350 Q160 322 320 352 T600 348 V400 H0 Z" fill="#2c5c34"/>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Raw capture: blown sky and near-black foreground">
+                                <rect width="600" height="400" fill="#eef1f3"/>
+                                <rect width="600" height="230" fill="#f5f7f8"/>
+                                <circle cx="470" cy="90" r="40" fill="#ffffff"/>
+                                <path d="M0 250 Q150 210 300 245 T600 240 V400 H0 Z" fill="#232a25"/>
+                                <path d="M0 300 Q180 260 340 300 T600 296 V400 H0 Z" fill="#191e1b"/>
+                                <path d="M0 350 Q160 322 320 352 T600 348 V400 H0 Z" fill="#10130f"/>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">After</span>
+                        <span class="ba-label before">Before</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="55" aria-label="Reveal the balanced version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>The sky's highlights were pulled back and the land's shadows lifted, each through a mask made from those very tones. No brush touched the mask.</figcaption>
+                    <span class="ba-placeholder-note">Illustrated process stand-in. Luminosity masking is a technique the connector can't auto-produce, so this is a diagrammatic before/after.</span>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: The Image Paints the Mask</h2>
+                <p>Recall the intro's rule: on a mask, <strong>white reveals and black hides</strong>. A luminosity mask simply says: <em>let the picture's own brightness be that black-and-white stencil.</em> Load a <strong>Lights</strong> mask and the bright pixels become white (selected, editable) while the dark pixels become black (protected). The mask is literally a grayscale copy of the photo's luminance.</p>
+                <p>Two things make this powerful:</p>
+                <ul>
+                    <li><strong>The edges are perfect.</strong> Because the mask follows the actual tones, its transitions are exactly as soft as the light in the scene. No haloes, no hand-feathering.</li>
+                    <li><strong>It is self-targeting.</strong> You never have to paint around the sky to darken it; the sky <em>is</em> the bright part, so a Lights mask already contains it.</li>
+                </ul>
+
+                <div class="card card-accent">
+                    <h3>🧠 The spiral, one turn deeper</h3>
+                    <p>You already know masks are grayscale and selections become masks (intro, Modules 1 and 4). Luminosity masking is those two ideas fused: a selection <em>derived from</em> the image, saved as a mask. Nothing new to believe, just a smarter source for the stencil.</p>
+                </div>
+
+                <figure>
+                    <svg viewBox="0 0 560 210" role="img" aria-label="A color photo, its grayscale luminance which is the Lights mask, and the inverted version which is the Darks mask." style="max-width:560px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--code-bg);padding:8px;">
+                        <!-- color source -->
+                        <g>
+                            <rect x="16" y="30" width="150" height="100" fill="#7fb0d8"/>
+                            <path d="M16 95 Q70 78 120 92 T166 90 V130 H16 Z" fill="#3f7a44"/>
+                            <text x="91" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12">the photo</text>
+                        </g>
+                        <text x="185" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">→</text>
+                        <!-- luminance = lights mask -->
+                        <g>
+                            <rect x="205" y="30" width="150" height="100" fill="#d9d9d9"/>
+                            <path d="M205 95 Q259 78 309 92 T355 90 V130 H205 Z" fill="#3a3a3a"/>
+                            <text x="280" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12">luminance = LIGHTS mask</text>
+                            <text x="280" y="166" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">bright sky = white = selected</text>
+                        </g>
+                        <text x="374" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20">↔</text>
+                        <!-- inverted = darks mask -->
+                        <g>
+                            <rect x="394" y="30" width="150" height="100" fill="#262626"/>
+                            <path d="M394 95 Q448 78 498 92 T544 90 V130 H394 Z" fill="#cfcfcf"/>
+                            <text x="469" y="150" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12">inverted = DARKS mask</text>
+                            <text x="469" y="166" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">dark land = white = selected</text>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 1: The photo's luminance <em>is</em> the Lights mask (bright = selected). Invert it and you have the Darks mask (shadows = selected). The scene builds both for you.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Zones -->
+            <section id="zones" class="lesson-section">
+                <h2>🎚️ Lights, Midtones &amp; Darks</h2>
+                <p>Pros do not stop at one Lights mask. They build a small family of tonal selections and pick the one that matches the job. Think of the full tonal range as a bar from black to white, with overlapping selections living in different regions:</p>
+
+                <figure>
+                    <svg viewBox="0 0 560 200" role="img" aria-label="A black-to-white tonal bar with three overlapping selection ranges: Darks on the left, Midtones in the center, Lights on the right." style="max-width:560px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:8px;">
+                        <defs>
+                            <linearGradient id="tone" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#fff"/></linearGradient>
+                        </defs>
+                        <rect x="30" y="24" width="500" height="40" fill="url(#tone)" stroke="#94a3b8"/>
+                        <text x="40" y="80" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11">shadows</text>
+                        <text x="280" y="80" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11">midtones</text>
+                        <text x="520" y="80" text-anchor="end" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11">highlights</text>
+                        <!-- selection ranges -->
+                        <rect x="30" y="104" width="200" height="22" rx="4" fill="#1473E6" opacity="0.75"/>
+                        <text x="130" y="120" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">DARKS</text>
+                        <rect x="190" y="134" width="180" height="22" rx="4" fill="#31A8FF" opacity="0.8"/>
+                        <text x="280" y="150" text-anchor="middle" style="fill:#08243a" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">MIDTONES</text>
+                        <rect x="330" y="164" width="200" height="22" rx="4" fill="#1473E6" opacity="0.75"/>
+                        <text x="430" y="180" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">LIGHTS</text>
+                    </svg>
+                    <figcaption>Figure 2: Each selection covers a tonal region and fades where it meets the next. Darker/lighter variants (Darks 2, Lights 3…) bite into narrower, more extreme bands.</figcaption>
+                </figure>
+
+                <div class="card card-success">
+                    <h4>✅ Narrowing to a band</h4>
+                    <p>Need <em>only</em> the brightest highlights (a blown sky, not the whole upper half)? Load Lights, then <strong>intersect</strong> it with Lights again (<kbd>Ctrl/⌘ + Shift + Alt/⌥</kbd>-click the channel). Each intersection keeps only the region both masks share, pushing the selection further into the extreme tones. That is how you target a sky without touching a bright shirt below it.</p>
+                </div>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🗂️ Loading Luminosity from Channels</h2>
+                <p>The fastest source of a Lights mask is the composite <strong>RGB channel</strong>. Here is the Channels panel, drawn as a diagram, not a live screenshot:</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:420px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Channels</span>
+                        </div>
+                        <svg viewBox="0 0 420 210" role="img" aria-label="Channels panel: RGB composite highlighted, with a note to Ctrl-click its thumbnail to load luminosity as a selection.">
+                            <rect width="420" height="210" fill="#3a3a3a"/>
+                            <!-- RGB row highlighted -->
+                            <rect x="12" y="14" width="396" height="34" fill="#1473E6"/>
+                            <text x="26" y="35" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="12.5" font-weight="bold">RGB</text>
+                            <rect x="60" y="19" width="34" height="24" fill="#cfcfcf"/><path d="M60 36 Q77 30 94 34 V43 H60 Z" fill="#444"/>
+                            <text x="150" y="30" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10.5">⌘/Ctrl-click the thumbnail →</text>
+                            <text x="150" y="43" style="fill:#dbeafe" font-family="Segoe UI, sans-serif" font-size="10.5">loads luminosity as a selection</text>
+                            <!-- channels -->
+                            <g font-family="Segoe UI, sans-serif" font-size="12">
+                                <rect x="12" y="52" width="396" height="30" fill="#454545"/><rect x="60" y="57" width="34" height="20" fill="#7a2a2a"/><text x="26" y="71" style="fill:#e2e8f0">Red</text>
+                                <rect x="12" y="84" width="396" height="30" fill="#414141"/><rect x="60" y="89" width="34" height="20" fill="#2a5a2a"/><text x="26" y="103" style="fill:#e2e8f0">Green</text>
+                                <rect x="12" y="116" width="396" height="30" fill="#454545"/><rect x="60" y="121" width="34" height="20" fill="#2a3a7a"/><text x="26" y="135" style="fill:#e2e8f0">Blue</text>
+                            </g>
+                            <rect x="12" y="158" width="396" height="40" fill="#2f2f2f"/>
+                            <text x="24" y="175" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">then: add an adjustment layer — the live</text>
+                            <text x="24" y="190" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">selection becomes its mask automatically.</text>
+                        </svg>
+                        <figcaption>Figure 3: <kbd>Ctrl/⌘</kbd>-click the <strong>RGB</strong> thumbnail to load a Lights selection. Add a Curves layer with that selection active and the mask writes itself. Add <kbd>Shift</kbd> to add, <kbd>Alt/⌥</kbd> to subtract, both to intersect.</figcaption>
+                    </div>
+                </figure>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Rescue the Landscape</h2>
+                <p>Open a high-contrast photo (a bright sky over a darker foreground is ideal). Save as <code>luminosity-working.psd</code>, and work in <strong>16-bit</strong> if the file allows — smoother masks, no banding.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Diagnose, then load Lights <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Read the histogram. Confirm the highlights are piling up near the right (the bright sky) and shadows near the left (the dark land).</li>
+                        <li>Open the <strong>Channels</strong> panel and <kbd>Ctrl/⌘</kbd>-click the <strong>RGB</strong> thumbnail. Marching ants appear around the brighter half of the image.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Tame the highlights through the mask <small>· 8 min</small></h3>
+                    <ol>
+                        <li>With that selection active, add a <strong>Curves</strong> adjustment layer. The Lights selection becomes its mask automatically.</li>
+                        <li>Pull the curve <em>down</em> to bring the sky back. Because the mask is the luminance, the darkening fades out naturally before it reaches the land.</li>
+                    </ol>
+                    <div class="card card-warning">
+                        <h4>⚠️ If it spills onto the land</h4>
+                        <p>Your Lights mask was too broad. Undo the layer, reload Lights, then <strong>intersect</strong> once or twice (<kbd>Ctrl/⌘ + Shift + Alt/⌥</kbd>-click RGB) to push the selection into just the brightest tones before adding the adjustment.</p>
+                    </div>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Lift the shadows through a Darks mask <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Reload the RGB luminosity selection, then <strong>invert</strong> it (<kbd>Ctrl/⌘ + Shift + I</kbd>) so the dark land is now selected.</li>
+                        <li>Add another <strong>Curves</strong> layer and lift the shadows. The foreground opens up; the already-correct sky is protected because it is black on this mask.</li>
+                    </ol>
+                    <div class="card card-success">
+                        <h4>✅ Why this beats one global Curves</h4>
+                        <p>A single S-curve would brighten the sky while it lifts the land, undoing your highlight recovery. Two luminosity-masked curves move highlights and shadows in <em>opposite</em> directions at once. That is a range only masks can reach.</p>
+                    </div>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Check the edges &amp; finish <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Zoom to 100% along the horizon. A luminosity-masked edit should have <em>no</em> visible seam where sky meets land. If you see a glow, your masks overlap; reduce one layer's opacity or re-intersect.</li>
+                        <li>Optional: a gentle global Curves on top for overall contrast. Save the layered master.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Highlights recovered through a <strong>Lights</strong> (RGB) mask</li>
+                        <li>☐ Shadows lifted through an inverted <strong>Darks</strong> mask</li>
+                        <li>☐ No visible seam or halo at the horizon at 100%</li>
+                        <li>☐ Every edit is a non-destructive adjustment layer with a luminosity mask</li>
+                        <li>☐ Worked in 16-bit where possible</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>On a portrait or still life, load a <strong>Lights</strong> mask and add a subtle glow by lifting only the brightest highlights. Notice how it never touches the shadows.</li>
+                        <li>Build a <strong>Midtones</strong> mask (load Lights, then subtract Darks) and add contrast to <em>only</em> the mids, a classic way to add depth without clipping.</li>
+                        <li>Compare a luminosity-masked sky darken against a hand-painted mask on the same image. The self-feathered edge is the whole point.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> the pros automate this. Record an Action that loads Lights, Darks, and Midtones as saved channel masks in one click, or try a free luminosity-mask panel. You will reuse these selections constantly.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Luminosity Mask</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Adjust highlights and shadows separately</h3>
+                    <ol>
+                        <li>Channels panel: <kbd>Ctrl/⌘</kbd>-click <strong>RGB</strong> = Lights selection</li>
+                        <li>Add a <strong>Curves</strong> layer → the selection becomes its mask</li>
+                        <li>Too broad? <strong>Intersect</strong> (<kbd>Ctrl/⌘ + Shift + Alt/⌥</kbd>-click RGB) to reach extreme tones</li>
+                        <li>Shadows: reload, <strong>invert</strong> (<kbd>Ctrl/⌘ + Shift + I</kbd>), add another Curves</li>
+                        <li>Check the horizon at 100% for seams; work in 16-bit</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: let the image paint the mask.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Where have you fought a hand-painted mask that a luminosity mask would have solved instantly? Name one past edit you would redo with this technique.</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>A <strong>luminosity mask</strong> is a selection built from the image's own brightness.</li>
+                        <li><kbd>Ctrl/⌘</kbd>-click <strong>RGB</strong> loads Lights; <strong>invert</strong> for Darks; <strong>intersect</strong> to reach extreme bands.</li>
+                        <li>Its edges self-feather to the scene's light, so there are no haloes.</li>
+                        <li>Two masked curves move highlights and shadows in opposite directions at once.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You just used the technique that underpins virtually all high-end landscape and natural-light work. Luminosity masking is the difference between "I brightened the photo" and "I placed light exactly where it belonged," and you will lean on it in the color, retouching, and compositing modules ahead.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Is a luminosity mask the same as the "Blend If" sliders?</summary>
+                    <p>They are cousins — both target tones — but Blend If acts per layer at blend time and is instant, while a luminosity mask is an explicit, editable selection you can refine and reuse. You will meet Blend If in Lesson 1.2; often you will use both.</p>
+                </details>
+                <details>
+                    <summary>Why load from RGB instead of a single channel?</summary>
+                    <p>RGB gives the true perceived luminance. Individual channels (Red, Green, Blue) make great <em>specialized</em> masks — the Blue channel is famous for isolating skies and skin — which is exactly where Lesson 1.2 goes next.</p>
+                </details>
+                <details>
+                    <summary>My masks look blocky or banded.</summary>
+                    <p>You are almost certainly in 8-bit. Convert to <strong>16-bit</strong> (Image ▸ Mode) before building luminosity masks; the extra tonal resolution keeps the gradients smooth.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p><strong>Lesson 1.2 — Channel Masking &amp; Blend-If</strong> pushes further: using individual color channels to isolate skies, hair, and skin, and the instant tonal blending of Blend If. Together with luminosity masks, they let you select almost anything the tone or color makes distinct.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Rescue two more high-contrast scenes with Lights + Darks curves.</li>
+                    <li>Build and save a Midtones mask by subtracting Darks from Lights.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/channels.html" target="_blank" rel="noopener">Adobe: Channels</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/masking-layers.html" target="_blank" rel="noopener">Adobe: Layer &amp; channel masks</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Luminosity masks feel like a secret handshake the first time they click, and then you cannot stop seeing where they apply. You have just stepped from "editing photos" toward "shaping light." Welcome to the pro tier.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="index.html" class="prev-lesson">← Course Home</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_02.html" class="next-lesson">Next: Channel Masking &amp; Blend-If →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
