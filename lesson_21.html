@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 8, Lesson 1: turn a vague idea into a real brief and a staged plan — objective, audience, deliverables, constraints, success criteria, and a moodboard.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 8.1: The Brief &amp; the Plan | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 8 • Lesson 1</span><span class="lesson-title">📋 The Brief &amp; the Plan</span></h1>
+                <p class="lead">The capstone begins here — not in Photoshop, but on paper. Professionals do not start with a canvas; they start with a <strong>brief</strong> that defines what success looks like, and a <strong>plan</strong> that maps the route. This lesson turns "make something cool" into a project you can actually finish and be proud of.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Write a tight <strong>creative brief</strong>: objective, audience, deliverables, constraints, success criteria</li>
+                        <li>Translate a vague idea into <strong>specific, checkable</strong> requirements</li>
+                        <li>Build a <strong>moodboard</strong> that fixes the visual direction before you start</li>
+                        <li>Draft a staged <strong>plan</strong> that maps each phase to the skills you have learned</li>
+                        <li>Scope realistically so the project is ambitious but finishable</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 45 minutes</p>
+                    <p><strong>🎯 Project:</strong> A one-page brief, a moodboard, and a staged plan for your self-directed capstone.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: A Spec, Not a Wish</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: The Brief Is the Contract</a></li>
+                        <li><a href="#panel" class="toc-link">Anatomy of a Brief</a></li>
+                        <li><a href="#plan" class="toc-link">The Plan: Map Skills to Stages</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Brief, Moodboard, Plan</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Pick Your Project</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: The Brief</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: A Spec, Not a Wish</h2>
+                <p>The same project, framed two ways. On the right, a scatter of vague sticky notes — "make it pop", "something modern" — that guarantees endless revisions. On the left, a structured brief that anyone could build against and measure. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: scattered vague notes versus a structured creative brief.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A structured brief document with labeled sections for objective, audience, deliverables, constraints, and success." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#f4f8fc"/>
+                                <rect x="120" y="30" width="360" height="340" rx="10" fill="#ffffff" stroke="#9bc0ea"/>
+                                <rect x="120" y="30" width="360" height="44" rx="10" fill="#1473E6"/><text x="300" y="58" text-anchor="middle" fill="#fff" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">Creative Brief</text>
+                                <g font-family="Segoe UI, sans-serif">
+                                    <text x="140" y="100" fill="#1473E6" font-size="12" font-weight="700">Objective</text><rect x="140" y="108" width="320" height="7" fill="#dbe4ee"/>
+                                    <text x="140" y="140" fill="#1473E6" font-size="12" font-weight="700">Audience</text><rect x="140" y="148" width="300" height="7" fill="#dbe4ee"/>
+                                    <text x="140" y="180" fill="#1473E6" font-size="12" font-weight="700">Deliverables + specs</text><rect x="140" y="188" width="320" height="7" fill="#dbe4ee"/><rect x="140" y="200" width="240" height="7" fill="#dbe4ee"/>
+                                    <text x="140" y="240" fill="#1473E6" font-size="12" font-weight="700">Constraints</text><rect x="140" y="248" width="280" height="7" fill="#dbe4ee"/>
+                                    <text x="140" y="280" fill="#1473E6" font-size="12" font-weight="700">Success criteria</text><rect x="140" y="288" width="300" height="7" fill="#dbe4ee"/>
+                                    <text x="140" y="320" fill="#1473E6" font-size="12" font-weight="700">References / moodboard</text><rect x="140" y="328" width="200" height="7" fill="#dbe4ee"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="Scattered sticky notes with vague phrases." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#fdf9f0"/>
+                                <g font-family="Segoe UI, sans-serif" font-size="13" fill="#5a4a2a">
+                                    <g transform="rotate(-6 150 110)"><rect x="90" y="80" width="120" height="80" fill="#fde68a"/><text x="150" y="125" text-anchor="middle">make it pop</text></g>
+                                    <g transform="rotate(5 360 120)"><rect x="300" y="90" width="120" height="80" fill="#fca5a5"/><text x="360" y="135" text-anchor="middle">modern vibe</text></g>
+                                    <g transform="rotate(-3 220 260)"><rect x="160" y="230" width="120" height="80" fill="#a7f3d0"/><text x="220" y="275" text-anchor="middle">clean but bold</text></g>
+                                    <g transform="rotate(7 430 280)"><rect x="370" y="250" width="130" height="80" fill="#bfdbfe"/><text x="435" y="285" text-anchor="middle">you'll know it</text><text x="435" y="303" text-anchor="middle">when you see it</text></g>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Brief</span>
+                        <span class="ba-label before">Vague notes</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the structured brief">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. The brief converts taste and vibes into requirements you can build toward and, crucially, know when you have met.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: The Brief Is the Contract</h2>
+                <p>A brief is the agreement between the vision and the work — with a client, or just with your future self at 2 a.m. wondering if you are done. Its job is to make success <strong>checkable</strong>. "Make it modern" cannot be checked; "a 3000×2000 hero image for a coffee brand's homepage, warm and editorial, readable at a glance on mobile, delivered as web + print by Friday" can.</p>
+                <p>The discipline that makes a brief work is <strong>specificity</strong>. Every vague adjective should be pinned to something concrete: a reference image, a measurable spec, a named constraint. When you can point at the brief and say "done — here is each requirement met", you have escaped the infinite-revision trap.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 150" role="img" aria-label="A vague idea passes through a brief that makes it specific, then a plan that makes it buildable." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif">
+                            <rect x="16" y="52" width="120" height="46" rx="8" fill="#fdf6ec" stroke="#c2410c"/><text x="76" y="72" text-anchor="middle" style="fill:#7a2e0c" font-size="12" font-weight="700">Vague idea</text><text x="76" y="88" text-anchor="middle" style="fill:#9a3412" font-size="10">"something cool"</text>
+                            <line x1="136" y1="75" x2="176" y2="75" stroke="#94a3b8" stroke-width="2"/><polygon points="176,70 186,75 176,80" fill="#94a3b8"/>
+                            <rect x="190" y="52" width="120" height="46" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="250" y="72" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">Brief</text><text x="250" y="88" text-anchor="middle" style="fill:#40566b" font-size="10">specific &amp; checkable</text>
+                            <line x1="310" y1="75" x2="350" y2="75" stroke="#94a3b8" stroke-width="2"/><polygon points="350,70 360,75 350,80" fill="#94a3b8"/>
+                            <rect x="364" y="52" width="140" height="46" rx="8" fill="#173a5e" stroke="#1473E6"/><text x="434" y="72" text-anchor="middle" fill="#cfe3ff" font-size="12" font-weight="700">Plan</text><text x="434" y="88" text-anchor="middle" fill="#9bc0ea" font-size="10">staged &amp; buildable</text>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 1: Idea → brief → plan. Each step removes ambiguity, so by the time you open Photoshop there are no unanswered questions to stall you.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🧾 Anatomy of a Brief</h2>
+                <p>A one-page brief has six parts. Keep it short — a page forces the clarity that three pages let you avoid.</p>
+                <div class="card card-info">
+                    <ul>
+                        <li><strong>Objective</strong> — the one sentence on what this must achieve and why.</li>
+                        <li><strong>Audience</strong> — who it is for; their context and what should make them stop.</li>
+                        <li><strong>Deliverables + specs</strong> — exact outputs, sizes, formats, and where they will live.</li>
+                        <li><strong>Constraints</strong> — brand rules, colors, fonts, budget, and the deadline.</li>
+                        <li><strong>Success criteria</strong> — the checkable tests that mean "done and good".</li>
+                        <li><strong>References / moodboard</strong> — images that fix tone, so words like "bold" have a picture.</li>
+                    </ul>
+                </div>
+                <p>The <strong>moodboard</strong> deserves its own moment. Before designing, gather 6–12 references — photography, grading, type, layout — that capture the target feel, and note <em>why</em> each is there. It aligns you (and a client) on direction while it is still cheap to change, and it becomes the yardstick you grade your drafts against.</p>
+                <figure>
+                    <svg viewBox="0 0 460 170" role="img" aria-label="A moodboard grid of reference tiles with notes on tone, color, type, and layout." style="max-width:460px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g stroke="#94a3b8">
+                            <rect x="16" y="16" width="96" height="66" fill="#c9b7a0"/><rect x="120" y="16" width="96" height="66" fill="#7f9aa8"/><rect x="224" y="16" width="96" height="66" fill="#3f5162"/><rect x="328" y="16" width="112" height="66" fill="#d8a48a"/>
+                            <rect x="16" y="90" width="96" height="64" fill="#e2c8b0"/><rect x="120" y="90" width="96" height="64" fill="#5c7285"/><rect x="224" y="90" width="216" height="64" fill="#f1e9df"/>
+                        </g>
+                        <text x="332" y="120" style="fill:#0b2540" font-family="Georgia, serif" font-size="20" font-weight="700">Aa</text>
+                        <text x="240" y="120" style="fill:#334155" font-family="Segoe UI, sans-serif" font-size="11">type + layout refs</text>
+                        <text x="16" y="168" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">tone · color · type · composition — each with a note on why it's here</text>
+                    </svg>
+                    <figcaption>Figure 2: A moodboard fixes the visual target in pictures. Every tile earns its place with a reason, so the board guides decisions instead of just decorating.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Plan -->
+            <section id="plan" class="lesson-section">
+                <h2>🗺️ The Plan: Map Skills to Stages</h2>
+                <p>With the brief fixed, the plan is almost mechanical: break the build into stages and name which of your skills each one uses. This capstone is deliberately a chance to touch the whole course, so a typical plan reads like the syllabus in reverse:</p>
+                <figure>
+                    <div class="mermaid">
+flowchart TD
+    A["Assets &amp; cutouts&lt;br/&gt;Module 1 · masking"] --> B["Color base&lt;br/&gt;Module 2 · grade/space"]
+    B --> C["Subject retouch&lt;br/&gt;Module 3"]
+    C --> D["Composite&lt;br/&gt;Module 4 · light/shadow/atmos"]
+    D --> E["Type &amp; system&lt;br/&gt;Module 5"]
+    E --> F["Automate &amp; export&lt;br/&gt;Module 6 · maybe 7"]
+    F --> G["Present&lt;br/&gt;Module 8.3"]
+                    </div>
+                    <figcaption>Figure 3: A capstone plan mapped to the course. Not every project needs every stage — but naming them turns a blank canvas into a checklist you can start on with confidence.</figcaption>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Scope for finishing, not for showing off</h4>
+                    <p>The commonest capstone failure is over-scoping. A tightly executed simple idea beats an ambitious half-finished one every time. Pick something you can complete to a high polish in your available time, then add stretch goals you can cut without breaking the deliverable.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Brief, Moodboard, Plan</h2>
+                <p>Decide on a project. A strong capstone is a single, real-feeling deliverable: a movie-style key art poster, a product campaign hero, an editorial portrait spread, an album cover.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Write the brief <small>· 15 min</small></h3>
+                    <ol>
+                        <li>Fill the six parts on one page. Force every adjective to a spec or a reference.</li>
+                        <li>Write the success criteria as a checklist you could hand to someone else to grade.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Build the moodboard <small>· 15 min</small></h3>
+                    <ol>
+                        <li>Collect 6–12 references for tone, color, type, and composition. A contact-sheet PSD or a simple grid is fine.</li>
+                        <li>Annotate each with the one thing you are taking from it.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Draft the plan <small>· 10 min</small></h3>
+                    <ol>
+                        <li>List the stages and the module skill each uses. Note the assets you must source or shoot (free Stock, your own photos).</li>
+                        <li>Set two or three milestones and a realistic finish date. Mark stretch goals as optional. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ A one-page brief with all six parts</li>
+                        <li>☐ Every vague term pinned to a spec or reference</li>
+                        <li>☐ Success criteria written as a checkable list</li>
+                        <li>☐ An annotated moodboard of 6–12 references</li>
+                        <li>☐ A staged plan mapping skills, assets, and milestones</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Pick Your Project</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Choose one to brief</h4>
+                    <ol>
+                        <li><strong>Key art poster</strong> — a composited hero with title treatment (touches Modules 1, 3, 4, 5).</li>
+                        <li><strong>Product campaign</strong> — a hero plus a sized social set from one master (Modules 2, 4, 5, 6).</li>
+                        <li><strong>Editorial portrait</strong> — a retouched, graded portrait with layout and type (Modules 2, 3, 5).</li>
+                        <li><strong>Your own</strong> — anything that lets you show the skills you most want on your portfolio.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> write the brief as if a real client sent it, then a second version as your own artist statement. Compare — client work and personal work reward different success criteria.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: The Brief</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Idea → brief → plan</h3>
+                    <ol>
+                        <li>Six parts: <strong>objective · audience · deliverables+specs · constraints · success · references</strong></li>
+                        <li>Pin every adjective to a spec or a moodboard image</li>
+                        <li>Write success criteria as a checkable list</li>
+                        <li>Stage the plan; map each stage to a module skill</li>
+                        <li>Scope to finish; make stretch goals cuttable</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: if you can't check it, it isn't in the brief.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Write your capstone's one-sentence objective. If you can't say what success looks like in a sentence, the idea isn't ready — keep refining until you can.</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>Brief written, moodboard set, plan drawn — now you build. <strong>Lesson 8.2 — Studio Session</strong> is the self-paced execution: taking your plan through the full pipeline with the file discipline that keeps a big project from collapsing under its own layers.</p>
+                </div>
+                <details>
+                    <summary>How long should a capstone take?</summary>
+                    <p>Scope it to your time, not the calendar. A focused weekend can produce a portfolio-grade single deliverable; a campaign set might take a week of evenings. The plan's milestones are there so you can tell whether you're on track and cut stretch goals early if not.</p>
+                </details>
+                <details>
+                    <summary>What if I don't have a client or a real brief?</summary>
+                    <p>Invent one — a fictional brand, a favorite band's next album, a film that doesn't exist. Self-authored briefs are how most portfolios are built. Just hold yourself to the same specificity a client would demand.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_20.html" class="prev-lesson">← Previous: Timeline Animation &amp; Export</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_22.html" class="next-lesson">Next: Studio Session — Build It →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

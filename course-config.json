@@ -9,7 +9,7 @@
       "website": "https://rays-home.netlify.app/",
       "bio": "Technical trainer, full-stack developer, and course developer with 30+ years of experience."
     },
-    "version": "0.1.0-prototype",
+    "version": "1.0.0",
     "lastUpdated": "2026-08-12",
     "language": "en",
     "difficulty": "intermediate",
@@ -132,8 +132,8 @@
       "deliverable": "A merged panorama or focus-stacked image, and a short animated social asset.",
       "description": "Bonus module: combining many frames into one, plus timeline animation.",
       "lessons": [
-        { "id": "module-7-1", "title": "Panoramas, HDR & Focus Stacking", "filename": "lesson_19.html", "duration": "55 minutes", "difficulty": "advanced", "status": "planned" },
-        { "id": "module-7-2", "title": "Timeline Animation & Export", "filename": "lesson_20.html", "duration": "50 minutes", "difficulty": "intermediate", "status": "planned" }
+        { "id": "module-7-1", "title": "Panoramas, HDR & Focus Stacking", "filename": "lesson_19.html", "duration": "55 minutes", "difficulty": "advanced", "status": "built" },
+        { "id": "module-7-2", "title": "Timeline Animation & Export", "filename": "lesson_20.html", "duration": "50 minutes", "difficulty": "intermediate", "status": "built" }
       ]
     },
     {
@@ -143,9 +143,9 @@
       "deliverable": "A self-directed professional brief with a written case study, presented.",
       "description": "Plan, execute, and present a client-shaped deliverable end to end.",
       "lessons": [
-        { "id": "module-8-1", "title": "The Brief & the Plan", "filename": "lesson_21.html", "duration": "45 minutes", "difficulty": "advanced", "status": "planned" },
-        { "id": "module-8-2", "title": "Studio Session: Build It", "filename": "lesson_22.html", "duration": "self-paced", "difficulty": "advanced", "status": "planned" },
-        { "id": "module-8-3", "title": "Present & Case Study", "filename": "lesson_23.html", "duration": "50 minutes", "difficulty": "advanced", "status": "planned" }
+        { "id": "module-8-1", "title": "The Brief & the Plan", "filename": "lesson_21.html", "duration": "45 minutes", "difficulty": "advanced", "status": "built" },
+        { "id": "module-8-2", "title": "Studio Session: Build It", "filename": "lesson_22.html", "duration": "self-paced", "difficulty": "advanced", "status": "built" },
+        { "id": "module-8-3", "title": "Present & Case Study", "filename": "lesson_23.html", "duration": "50 minutes", "difficulty": "advanced", "status": "built" }
       ]
     },
     {
@@ -156,7 +156,7 @@
       "description": "\"How do I luminosity-mask a sky?\" \"How do I match two images' color?\" \"How do I set up a data merge?\" Short answers for the harder tasks, each linking to the module that teaches it in depth.",
       "filename": "recipes.html",
       "lessons": [],
-      "status": "planned"
+      "status": "built"
     }
   ],
 

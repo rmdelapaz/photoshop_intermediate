@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 8, Lesson 2: the self-paced studio session — execute your capstone through the full pipeline with the layer discipline and pass-based workflow that keep a big project coherent.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 8.2: Studio Session — Build It | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 8 • Lesson 2</span><span class="lesson-title">🎨 Studio Session — Build It</span></h1>
+                <p class="lead">This is the self-paced heart of the capstone: you build. The techniques are all in your hands now, so this lesson is about <em>process</em> — working in passes, keeping the file clean, and staying non-destructive so a hundred-layer project never becomes a trap you can't edit your way out of.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Execute a project in <strong>passes</strong>: block-in, refine, polish</li>
+                        <li>Keep ruthless <strong>layer hygiene</strong> — groups, names, color labels</li>
+                        <li>Stay <strong>non-destructive</strong> with Smart Objects and adjustment layers throughout</li>
+                        <li>Version and save so you can always step back safely</li>
+                        <li>Use fresh-eyes tricks to judge your own work honestly</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> Self-paced (a focused session or several)</p>
+                    <p><strong>🎯 Project:</strong> The finished capstone artwork from your Lesson 8.1 brief, built through the full pipeline in a clean, editable file.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Chaos into Craft</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Work in Passes</a></li>
+                        <li><a href="#panel" class="toc-link">Layer Hygiene</a></li>
+                        <li><a href="#eyes" class="toc-link">Judging Your Own Work</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: The Studio Session</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Push It Further</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Studio Session</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: Chaos into Craft</h2>
+                <p>The same project's layer stack, two ways. On the right: forty layers named "Layer 12 copy", no groups, effects baked in — a file you dread reopening. On the left: tidy groups, named layers, adjustments live, Smart Objects intact — a file you can revise in seconds. Same artwork; only one is professional. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: a messy unnamed layer stack versus a clean grouped, labeled, non-destructive stack.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A tidy layers panel with named groups for grade, type, subject, and background." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#232323"/>
+                                <g font-family="Segoe UI, sans-serif">
+                                    <rect x="60" y="40" width="480" height="42" fill="#173a5e" stroke="#1473E6"/><text x="80" y="66" fill="#cfe3ff" font-size="15" font-weight="700">▸ ★ Grade (Curves + LUT)</text>
+                                    <rect x="60" y="90" width="480" height="42" fill="#2f3a2f" stroke="#5a7a52"/><text x="80" y="116" fill="#d7f0cf" font-size="15" font-weight="700">▸ Type &amp; layout</text>
+                                    <rect x="60" y="140" width="480" height="42" fill="#3a2f3a" stroke="#8a6a8a"/><text x="80" y="166" fill="#f0d7ec" font-size="15" font-weight="700">▸ Subject (Smart Object)</text>
+                                    <rect x="60" y="190" width="480" height="42" fill="#3a3630" stroke="#8a7a52"/><text x="80" y="216" fill="#f0e6cf" font-size="15" font-weight="700">▸ Atmosphere &amp; light</text>
+                                    <rect x="60" y="240" width="480" height="42" fill="#2f3640" stroke="#52708a"/><text x="80" y="266" fill="#cfe0f0" font-size="15" font-weight="700">▸ Background</text>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A messy layers panel with dozens of unnamed copies." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#232323"/>
+                                <g font-family="Segoe UI, sans-serif" font-size="12" fill="#c9c9c9">
+                                    <text x="80" y="56">Layer 12 copy 3</text>
+                                    <text x="80" y="82">Layer 12 copy 2</text>
+                                    <text x="80" y="108">Layer 9 copy</text>
+                                    <text x="80" y="134">Background copy 7</text>
+                                    <text x="80" y="160">Layer 4</text>
+                                    <text x="80" y="186">Layer 12 copy</text>
+                                    <text x="80" y="212">Layer 22</text>
+                                    <text x="80" y="238">Layer 3 copy 5</text>
+                                    <text x="80" y="264">Layer 1</text>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Clean</span>
+                        <span class="ba-label before">Chaos</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the clean layer stack">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. Both files render the same image today; only the clean one is still editable next week when the client asks for "one small change".</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Work in Passes</h2>
+                <p>Amateurs try to finish one corner perfectly, then the next. Professionals work the whole image in <strong>passes</strong>, each raising the finish level everywhere before going deeper. A <strong>block-in</strong> pass gets every element placed roughly right. A <strong>refine</strong> pass fixes selections, light, and color across the frame. A <strong>polish</strong> pass adds the small, high-value details last.</p>
+                <p>Passes protect you from two traps: sinking hours into a corner you later cut, and losing the whole-image balance while zoomed to 300%. Zoom out between passes and judge the frame, not the pixel. The image is done when a pass changes almost nothing — not when you run out of things you <em>could</em> do.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 130" role="img" aria-label="Three passes over the whole image: block-in, refine, polish, each raising finish level." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif">
+                            <rect x="24" y="44" width="130" height="44" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="89" y="64" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">1 · Block-in</text><text x="89" y="80" text-anchor="middle" style="fill:#40566b" font-size="10">everything rough</text>
+                            <line x1="154" y1="66" x2="190" y2="66" stroke="#94a3b8" stroke-width="2"/><polygon points="190,61 200,66 190,71" fill="#94a3b8"/>
+                            <rect x="200" y="44" width="130" height="44" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="265" y="64" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">2 · Refine</text><text x="265" y="80" text-anchor="middle" style="fill:#40566b" font-size="10">light · color · edges</text>
+                            <line x1="330" y1="66" x2="366" y2="66" stroke="#94a3b8" stroke-width="2"/><polygon points="366,61 376,66 366,71" fill="#94a3b8"/>
+                            <rect x="376" y="44" width="130" height="44" rx="8" fill="#173a5e" stroke="#1473E6"/><text x="441" y="64" text-anchor="middle" fill="#cfe3ff" font-size="12" font-weight="700">3 · Polish</text><text x="441" y="80" text-anchor="middle" fill="#9bc0ea" font-size="10">small details last</text>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 1: Raise the whole image a level at a time. Each pass is done across the frame before you start the next — never one perfect corner at a time.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🗂️ Layer Hygiene</h2>
+                <p>A big composite is only as editable as its layer stack is organized. Group by role, name everything, and color-label groups so the panel reads at a glance. Keep every adjustment as a live layer, every scaled element a Smart Object, every filter a Smart Filter — so any decision stays reversible to the end.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:440px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Layers — organized</span>
+                        </div>
+                        <svg viewBox="0 0 440 190" role="img" aria-label="Layers panel with color-labeled groups: Grade, Type, Subject smart object, Atmosphere, Background, all named.">
+                            <rect width="440" height="190" fill="#2f2f2f"/>
+                            <g font-family="Segoe UI, sans-serif" font-size="11.5">
+                                <rect x="12" y="12" width="416" height="30" fill="#3a3a3a" stroke="#4a4a4a"/><rect x="12" y="12" width="5" height="30" fill="#3b82f6"/><text x="26" y="31" fill="#e2e8f0" font-weight="bold">▸ ★ Grade</text><text x="360" y="31" fill="#9aa4ad">Curves</text>
+                                <rect x="12" y="44" width="416" height="30" fill="#353535" stroke="#4a4a4a"/><rect x="12" y="44" width="5" height="30" fill="#22c55e"/><text x="26" y="63" fill="#e2e8f0" font-weight="bold">▸ Type &amp; layout</text>
+                                <rect x="12" y="76" width="416" height="30" fill="#3a3a3a" stroke="#4a4a4a"/><rect x="12" y="76" width="5" height="30" fill="#a855f7"/><text x="26" y="95" fill="#e2e8f0" font-weight="bold">▸ Subject</text><text x="352" y="95" fill="#9aa4ad">SO 🔗</text>
+                                <rect x="12" y="108" width="416" height="30" fill="#353535" stroke="#4a4a4a"/><rect x="12" y="108" width="5" height="30" fill="#eab308"/><text x="26" y="127" fill="#e2e8f0" font-weight="bold">▸ Atmosphere &amp; light</text>
+                                <rect x="12" y="140" width="416" height="30" fill="#3a3a3a" stroke="#4a4a4a"/><rect x="12" y="140" width="5" height="30" fill="#38bdf8"/><text x="26" y="159" fill="#e2e8f0" font-weight="bold">▸ Background</text>
+                            </g>
+                            <text x="16" y="182" fill="#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">grouped top-to-bottom in render order · labeled by role</text>
+                        </svg>
+                        <figcaption>Figure 2: Groups by role, top-to-bottom in render order, each color-labeled. A stranger (or future you) can navigate this file in seconds.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Save versions, and save often</h4>
+                    <p>Save incrementally — <code>capstone_v01</code>, <code>v02</code> — at each pass, so a bold experiment is never a one-way door. Keep a flattened "reference" JPG of milestones too, so you can compare where you were with where you are. Crashes and regrets both get much cheaper.</p>
+                </div>
+            </section>
+
+            <!-- Fresh eyes -->
+            <section id="eyes" class="lesson-section">
+                <h2>👀 Judging Your Own Work</h2>
+                <p>The hardest part of finishing is seeing your work as a stranger would. You go blind to your own image after an hour. A few reliable tricks force fresh eyes:</p>
+                <ul>
+                    <li><strong>Flip horizontal</strong> (Image ▸ Image Rotation) — composition and balance errors leap out in the mirror.</li>
+                    <li><strong>Zoom to fit</strong> and squint — if the focal point and read survive at thumbnail size and blurred, the structure is sound.</li>
+                    <li><strong>Desaturate to check</strong> — a Black &amp; White view exposes tonal problems that color hides.</li>
+                    <li><strong>Walk away</strong> — even ten minutes resets your eye; a night is better. Compare against the brief and moodboard, not your last zoom.</li>
+                </ul>
+                <div class="card card-success">
+                    <h4>✅ Grade against the brief, not your mood</h4>
+                    <p>When you think you are done, open the brief's success criteria and check each one. "Done" is meeting the brief at a high polish — not exhaustion, and not endless fiddling past the point of improvement.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: The Studio Session</h2>
+                <p>Open a new document at your brief's largest size. Bring in your plan and moodboard. Work the passes — this is your session, take the time it needs.</p>
+
+                <div class="card card-info">
+                    <h3>Pass 1: Block-in <small>· structure</small></h3>
+                    <ol>
+                        <li>Source and roughly place every element. Cut out subjects (Module 1). Get scale and position right against the horizon (Module 4.1).</li>
+                        <li>Set up your groups and name them now, while the file is small.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Pass 2: Refine <small>· light, color, edges</small></h3>
+                    <ol>
+                        <li>Correct color and set the working space (Module 2). Retouch subjects (Module 3). Match light and build shadows (Module 4.2). Tighten every mask.</li>
+                        <li>Lay in the type system (Module 5.1) and any templated elements (5.2).</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Pass 3: Polish <small>· atmosphere, grade, details</small></h3>
+                    <ol>
+                        <li>Add depth and atmosphere, then the single unifying grade on top (Module 4.3). Bring in multi-shot elements if your brief uses them (Module 7).</li>
+                        <li>Final details: rim light, grain, vignette. Run the fresh-eyes checks. Automate any repetitive export (Module 6).</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Finish: check against the brief <small>· the gate</small></h3>
+                    <ol>
+                        <li>Open your 8.1 success criteria and tick each one on the artwork.</li>
+                        <li>Save the layered master and export the deliverables at spec. The capstone artwork is done. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Built in passes, whole-image at each level</li>
+                        <li>☐ Grouped, named, color-labeled, non-destructive layer stack</li>
+                        <li>☐ Incremental versions saved along the way</li>
+                        <li>☐ Fresh-eyes checks (flip, squint, desaturate, walk away) done</li>
+                        <li>☐ Every brief success criterion met and ticked</li>
+                        <li>☐ Layered master saved; deliverables exported at spec</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Push It Further</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Stretch your capstone</h4>
+                    <ol>
+                        <li>Produce an alternate grade or a day/night variant from the same master to show range (Modules 4.3, 5.2).</li>
+                        <li>Spin the hero into a sized campaign set (Module 5.3) or a short animated version (Module 7.2).</li>
+                        <li>Record the repetitive export as an Action or data set (Module 6) so the whole deliverable set ships in one pass.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> keep a running screenshot at the end of each pass. You'll need those progress shots for the case study in the next lesson — capture them while you build, not after.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Studio Session</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Build clean, in passes</h3>
+                    <ol>
+                        <li>Pass 1 <strong>block-in</strong> (place, scale, group + name early)</li>
+                        <li>Pass 2 <strong>refine</strong> (color, retouch, light/shadow, masks, type)</li>
+                        <li>Pass 3 <strong>polish</strong> (atmosphere, unifying grade, details)</li>
+                        <li>Stay non-destructive; save versions each pass</li>
+                        <li>Fresh-eyes check, then grade against the brief</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: raise the whole image a level at a time, and keep every decision reversible.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Which pass was hardest to leave "good enough" and move on from? Learning when to stop refining a corner is a professional skill worth naming.</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>The artwork is finished — but a finished file in a folder isn't a portfolio piece yet. The final lesson turns it into one: <strong>Lesson 8.3 — Present &amp; Case Study</strong> packages your capstone with the story of how and why you made it, the version that actually gets you hired.</p>
+                </div>
+                <details>
+                    <summary>My file is getting slow and huge. What do I do?</summary>
+                    <p>Convert heavy element groups to Smart Objects (or linked ones), rasterize truly-final elements you're sure of, purge history, and keep working-res sensible. Good hygiene from Pass 1 is the real fix; these are the mid-project rescues.</p>
+                </details>
+                <details>
+                    <summary>How do I know when it's actually finished?</summary>
+                    <p>When a fresh-eyes pass changes almost nothing and every brief success criterion is met. If you're only moving things a pixel back and forth, you're past done — save it and present it.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_21.html" class="prev-lesson">← Previous: The Brief &amp; the Plan</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_23.html" class="next-lesson">Next: Present &amp; Case Study →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

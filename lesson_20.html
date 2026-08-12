@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 7, Lesson 2: animate layers with the Photoshop Timeline — frame animation and keyframed video — then export a looping GIF or an MP4.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 7.2: Timeline Animation &amp; Export | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 7 • Lesson 2</span><span class="lesson-title">🎬 Timeline Animation &amp; Export</span></h1>
+                <p class="lead">Photoshop is a capable animator hiding in plain sight. The Timeline turns your layers into motion — a looping social GIF, an animated logo, a subtle cinemagraph — with frame animation for simple loops and a keyframed video timeline for smooth moves.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Choose between <strong>Frame Animation</strong> and the <strong>Video Timeline</strong></li>
+                        <li>Build a frame loop with <strong>tweening</strong> and onion-skin guidance</li>
+                        <li>Animate layer <strong>position, opacity, and style</strong> with keyframes</li>
+                        <li>Loop cleanly and control timing and easing</li>
+                        <li>Export a <strong>GIF</strong> (Save for Web) or an <strong>MP4</strong> (Render Video)</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 50 minutes</p>
+                    <p><strong>🎯 Project:</strong> One short, clean-looping animation — a GIF and an MP4 — built entirely from layers you already know how to make.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Make It Move</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Frames vs Keyframes</a></li>
+                        <li><a href="#panel" class="toc-link">The Timeline Panel</a></li>
+                        <li><a href="#export" class="toc-link">Exporting GIF &amp; Video</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: A Looping Animation</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Animate &amp; Export</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Module 7 Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: Make It Move</h2>
+                <p>The same design, still and moving. On the right, a static poster. On the left, the "frames" of a short loop — the badge pops in, the text slides up — the kind of motion that stops a thumb in a feed. Drag the handle to compare a single still with the animation's frames laid out:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: a single static frame versus the sequence of frames that make up a short animation.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A filmstrip of four frames showing a badge growing and text sliding up across the sequence." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#0f172a"/>
+                                <!-- filmstrip -->
+                                <g>
+                                    <rect x="24" y="120" width="126" height="160" rx="6" fill="#1e293b" stroke="#334155"/>
+                                    <rect x="162" y="120" width="126" height="160" rx="6" fill="#1e293b" stroke="#334155"/>
+                                    <rect x="300" y="120" width="126" height="160" rx="6" fill="#1e293b" stroke="#334155"/>
+                                    <rect x="438" y="120" width="126" height="160" rx="6" fill="#1e293b" stroke="#334155"/>
+                                </g>
+                                <!-- badge grows across frames -->
+                                <circle cx="87" cy="175" r="8" fill="#31A8FF"/>
+                                <circle cx="225" cy="175" r="16" fill="#31A8FF"/>
+                                <circle cx="363" cy="175" r="24" fill="#31A8FF"/>
+                                <circle cx="501" cy="175" r="30" fill="#31A8FF"/>
+                                <!-- text slides up -->
+                                <rect x="52" y="262" width="70" height="8" fill="#64748b"/>
+                                <rect x="190" y="250" width="70" height="8" fill="#94a3b8"/>
+                                <rect x="328" y="238" width="70" height="8" fill="#cbd5e1"/>
+                                <rect x="466" y="226" width="70" height="8" fill="#f1f5f9"/>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A single static poster frame." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#0f172a"/>
+                                <rect x="210" y="90" width="180" height="220" rx="8" fill="#1e293b" stroke="#334155"/>
+                                <circle cx="300" cy="150" r="26" fill="#31A8FF"/>
+                                <rect x="250" y="220" width="100" height="10" fill="#cbd5e1"/>
+                                <rect x="262" y="242" width="76" height="8" fill="#64748b"/>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Animated</span>
+                        <span class="ba-label before">Static</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the animation frames">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle (a still page can't loop). Each panel is a moment in the animation; played back, the badge grows and the text rises into place.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Frames vs Keyframes</h2>
+                <p>The Timeline works two ways. <strong>Frame Animation</strong> is the flip-book: you make discrete frames, each a layer arrangement, and set how long each holds — perfect for simple GIF loops and pixel-precise timing. The <strong>Video Timeline</strong> is the smooth path: each layer gets a track, and you set <strong>keyframes</strong> for properties (Position, Opacity, Style) that Photoshop interpolates between — perfect for glides, fades, and easing.</p>
+                <p>Rule of thumb: reach for <strong>Frame Animation</strong> when you want a short, loopy GIF with exact frames; reach for the <strong>Video Timeline</strong> when you want smooth movement or plan to export video. You can convert between them, but picking the right one first saves rework.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 160" role="img" aria-label="Frame animation shown as discrete flip-book cells versus a video timeline shown as a smooth keyframed curve." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif">
+                            <text x="130" y="24" text-anchor="middle" style="fill:var(--text-color)" font-size="12" font-weight="700">Frame Animation</text>
+                            <g fill="#eef5ff" stroke="#1473E6"><rect x="30" y="40" width="40" height="46"/><rect x="80" y="40" width="40" height="46"/><rect x="130" y="40" width="40" height="46"/><rect x="180" y="40" width="40" height="46"/></g>
+                            <g fill="#1473E6"><circle cx="50" cy="63" r="5"/><circle cx="100" cy="63" r="8"/><circle cx="150" cy="63" r="11"/><circle cx="200" cy="63" r="14"/></g>
+                            <text x="130" y="112" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">discrete cells · exact timing</text>
+                            <line x1="260" y1="30" x2="260" y2="120" stroke="#94a3b8" stroke-dasharray="3 3"/>
+                            <text x="400" y="24" text-anchor="middle" style="fill:var(--text-color)" font-size="12" font-weight="700">Video Timeline</text>
+                            <path d="M300 84 C 340 84, 360 48, 420 48 S 470 60, 500 56" fill="none" stroke="#1473E6" stroke-width="2.5"/>
+                            <circle cx="300" cy="84" r="4" fill="#e11d48"/><circle cx="420" cy="48" r="4" fill="#e11d48"/><circle cx="500" cy="56" r="4" fill="#e11d48"/>
+                            <text x="400" y="112" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">keyframes · smooth interpolation</text>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 1: Two modes, two feels. Frames give you flip-book control; keyframes give you smooth motion the app fills in between the dots.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🎞️ The Timeline Panel</h2>
+                <p>Open <strong>Window ▸ Timeline</strong>. The middle button creates either a frame animation or a video timeline. In frame mode, add frames and use <strong>Tween</strong> to auto-generate the in-between frames for position or opacity. In video mode, twirl a layer open, click the stopwatch on a property to drop a keyframe, move the playhead, change the value, and Photoshop keyframes the rest. <strong>Onion skin</strong> ghosts adjacent frames so you can register motion.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Timeline (Video)</span>
+                        </div>
+                        <svg viewBox="0 0 460 176" role="img" aria-label="Video timeline with two layer tracks, keyframe diamonds on position and opacity, and a playhead.">
+                            <rect width="460" height="176" fill="#2f2f2f"/>
+                            <!-- ruler -->
+                            <rect x="120" y="14" width="330" height="16" fill="#262626"/>
+                            <g fill="#6b7280" font-family="Segoe UI, sans-serif" font-size="9"><text x="126" y="26">0f</text><text x="230" y="26">0:15</text><text x="340" y="26">1:00</text></g>
+                            <!-- playhead -->
+                            <line x1="196" y1="12" x2="196" y2="168" stroke="#31A8FF" stroke-width="1.5"/><polygon points="190,12 202,12 196,20" fill="#31A8FF"/>
+                            <!-- track 1: badge / position -->
+                            <rect x="10" y="40" width="108" height="40" fill="#3a3a3a"/><text x="18" y="56" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Badge</text><text x="18" y="72" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">Position ⏱</text>
+                            <rect x="120" y="40" width="330" height="40" fill="#333"/>
+                            <g fill="#31A8FF"><rect x="150" y="54" width="10" height="10" transform="rotate(45 155 59)"/><rect x="300" y="54" width="10" height="10" transform="rotate(45 305 59)"/></g>
+                            <line x1="155" y1="59" x2="305" y2="59" stroke="#31A8FF" stroke-width="1.5"/>
+                            <!-- track 2: text / opacity -->
+                            <rect x="10" y="86" width="108" height="40" fill="#353535"/><text x="18" y="102" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Headline</text><text x="18" y="118" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">Opacity ⏱</text>
+                            <rect x="120" y="86" width="330" height="40" fill="#2f2f2f"/>
+                            <g fill="#31A8FF"><rect x="170" y="100" width="10" height="10" transform="rotate(45 175 105)"/><rect x="340" y="100" width="10" height="10" transform="rotate(45 345 105)"/></g>
+                            <line x1="175" y1="105" x2="345" y2="105" stroke="#31A8FF" stroke-width="1.5"/>
+                            <!-- transport -->
+                            <polygon points="20,150 20,164 32,157" fill="#e2e8f0"/><rect x="40" y="150" width="10" height="14" fill="#e2e8f0"/>
+                            <text x="60" y="161" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">loop · onion skin · 24 fps</text>
+                        </svg>
+                        <figcaption>Figure 2: Two layer tracks with keyframe diamonds — Position on the badge, Opacity on the headline. The stopwatch (⏱) starts keyframing a property; the playhead scrubs the result.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Convert layers you'll transform to Smart Objects</h4>
+                    <p>Animating scale or a warp on a raster layer degrades it frame by frame. Make anything you'll move or resize a Smart Object first (Module 5) so it stays crisp across the whole animation.</p>
+                </div>
+            </section>
+
+            <!-- Export -->
+            <section id="export" class="lesson-section">
+                <h2>📤 Exporting GIF &amp; Video</h2>
+                <p>Two doors out. For a looping <strong>GIF</strong>, use <strong>File ▸ Export ▸ Save for Web (Legacy)</strong>: choose GIF, set the color count and dither, and set <strong>Looping Options ▸ Forever</strong>. For <strong>video</strong>, use <strong>File ▸ Export ▸ Render Video</strong>: choose H.264/MP4, a preset (e.g. 1080p), and a frame rate. GIFs are universal but heavy and limited to 256 colors; MP4 is smaller and full-color for anywhere that plays video.</p>
+                <div class="card card-success">
+                    <h4>✅ Keep GIFs short and small</h4>
+                    <p>A GIF's size explodes with dimensions, colors, and frames. Crop tight, hold the palette modest, reuse frames in the loop, and keep it a few seconds. If it is ballooning past a couple of megabytes, an MP4 or a shorter loop is the better answer.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: A Looping Animation</h2>
+                <p>Open a simple layered design (a logo, a badge, a headline). Convert anything you'll scale to a Smart Object.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Start the timeline <small>· 6 min</small></h3>
+                    <ol>
+                        <li><strong>Window ▸ Timeline</strong> ▸ Create Video Timeline. Set a short duration (2–3 s) and a frame rate (24 fps).</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Keyframe the moves <small>· 14 min</small></h3>
+                    <ol>
+                        <li>On the badge layer, twirl open, click the <strong>Transform</strong>/Position stopwatch at frame 0 (small/off-screen), move the playhead, set it to final size/spot — a keyframe drops automatically.</li>
+                        <li>On the headline, keyframe <strong>Opacity</strong> 0 → 100 and a small upward <strong>Position</strong> move so it rises in.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Loop and ease <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Match the first and last frames so the loop is seamless. Right-click keyframes for <strong>Ease In/Out</strong> to soften the motion.</li>
+                        <li>Play back; adjust timing until it feels natural, not robotic.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Export both <small>· 6 min</small></h3>
+                    <ol>
+                        <li><strong>Save for Web (Legacy)</strong> → GIF, Looping Forever, tuned palette.</li>
+                        <li><strong>Render Video</strong> → H.264 1080p. One animation, two delivery formats. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ A video timeline with keyframed Position and Opacity</li>
+                        <li>☐ Transformed layers converted to Smart Objects (stay sharp)</li>
+                        <li>☐ A seamless loop with eased motion</li>
+                        <li>☐ Exported a GIF (looping forever) and an MP4</li>
+                        <li>☐ GIF kept short and reasonably small</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Make a <strong>cinemagraph</strong>: a mostly-still photo with one looping moving area (steam, a flag), masked so only that part animates.</li>
+                        <li>Animate a layer <strong>style</strong> — a glow or gradient overlay pulsing — for a subtle shimmer.</li>
+                        <li>Rebuild the same 3-second loop once in Frame Animation and once in the Video Timeline, and note which fit better and why.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> drive an animation with your Module 6 skills — script or batch a sequence of data-set frames, then assemble them on the Timeline for a data-driven motion graphic.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Animate &amp; Export</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Layers into motion</h3>
+                    <ol>
+                        <li>Smart-Object anything you'll transform; <strong>Window ▸ Timeline</strong></li>
+                        <li>Video timeline → keyframe <strong>Position / Opacity / Style</strong> (stopwatch)</li>
+                        <li>Match first/last frame for a seamless loop; add <strong>Ease</strong></li>
+                        <li><strong>Save for Web</strong> → GIF (loop Forever) — small &amp; short</li>
+                        <li><strong>Render Video</strong> → H.264 MP4 for full-color playback</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: keyframe the start and end, let Photoshop travel the middle.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> What is one still design of yours that a few seconds of motion would improve — and which single element should move? Restraint matters in animation too.</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Module 7 Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>Multi-shot stills — <strong>panorama, HDR, focus stacking</strong> — all run one align-and-blend engine on many frames.</li>
+                        <li>Shoot carefully: overlap, bracket, or refocus, and change only the one intended variable.</li>
+                        <li>The <strong>Timeline</strong> animates layers: Frame Animation for loops, the Video Timeline for smooth keyframed motion.</li>
+                        <li>Export a looping <strong>GIF</strong> (Save for Web) or a full-color <strong>MP4</strong> (Render Video).</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished — Across All of Module 7</h3>
+                <p>This bonus tier stretched Photoshop past the single still: you combined many frames into one richer image (7.1) and turned layers into motion (7.2). These techniques open landscape, product, and social-motion work that a one-frame mindset simply can't reach — a versatile bonus to the core pro toolkit.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Should I animate in Photoshop or After Effects?</summary>
+                    <p>Photoshop is ideal for short loops, GIFs, cinemagraphs, and simple keyframed motion straight from your layered design. For complex motion graphics, precise timing, and effects, After Effects is the specialist. Use Photoshop for quick, self-contained animation; graduate to AE when the brief outgrows it.</p>
+                </details>
+                <details>
+                    <summary>My GIF colors look banded and dirty.</summary>
+                    <p>GIF is limited to 256 colors, so gradients band. Increase colors in Save for Web, add a little dither, or — better for gradient-heavy work — deliver an MP4 instead, which has no such limit.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Every technique in this course is now in your hands. One module remains, and it is the one that matters most to a portfolio: <strong>Module 8 — The Capstone</strong>, where you take a real brief from plan to finished, presented project and a case study you can show a client or employer.</p>
+
+                <h3>✅ Before the Next Module</h3>
+                <ul>
+                    <li>Produce one multi-shot still (pano, HDR, or stack) and one short animation.</li>
+                    <li>Export a GIF and an MP4 of your loop.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/create-panoramic-images-photomerge.html" target="_blank" rel="noopener">Adobe: Photomerge panoramas</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/creating-frame-animations.html" target="_blank" rel="noopener">Adobe: Timeline animation</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>You have now gone further than most Photoshop users ever do — wider, higher-range, deeper, and into motion. Only the capstone remains: the project that turns everything you have learned into something you can show the world. Let's build it.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_19.html" class="prev-lesson">← Previous: Panoramas, HDR &amp; Focus Stacking</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_21.html" class="next-lesson">Next: The Brief &amp; the Plan →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

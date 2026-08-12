@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 7, Lesson 1: combine many frames into one — panoramas with Photomerge, wider dynamic range with Merge to HDR Pro, and deeper focus with auto-align and auto-blend.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 7.1: Panoramas, HDR &amp; Focus Stacking | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 7 • Lesson 1</span><span class="lesson-title">🏔️ Panoramas, HDR &amp; Focus Stacking</span></h1>
+                <p class="lead">A single frame is limited: only so wide, only so much dynamic range, only so much in focus. The fix for all three is the same idea — shoot several frames and let Photoshop <strong>align and blend</strong> them into one image no single exposure could capture.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Shoot overlapping frames and stitch a <strong>panorama</strong> with Photomerge</li>
+                        <li>Bracket exposures and combine them with <strong>Merge to HDR Pro</strong> for wider range</li>
+                        <li>Shoot a focus series and <strong>focus-stack</strong> it with Auto-Align + Auto-Blend</li>
+                        <li>See the shared engine — <strong>auto-align</strong> then <strong>blend</strong> — behind all three</li>
+                        <li>Clean the seams, ghosts, and edges these merges leave behind</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55 minutes</p>
+                    <p><strong>🎯 Project:</strong> One stitched panorama, one HDR merge, and one focus stack — each cleaned up so the join is invisible.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Beat a Single Frame</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Align, Then Blend</a></li>
+                        <li><a href="#panel" class="toc-link">Photomerge, HDR Pro &amp; Auto-Blend</a></li>
+                        <li><a href="#three" class="toc-link">Three Jobs, One Engine</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Merge Three Ways</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Multi-Shot Merge</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: Beat a Single Frame</h2>
+                <p>The same vista, two ways. On the right, one frame catches only a slice of the scene. On the left, three overlapping frames stitched into a sweeping panorama that no single shot at that focal length could hold. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: a single narrow frame versus a wide panorama stitched from three overlapping frames.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A wide panoramic landscape stitched from three frames, with faint seam lines." style="width:100%;height:100%;display:block;">
+                                <defs>
+                                    <linearGradient id="skyP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ec5e8"/><stop offset="1" stop-color="#e8f2f7"/></linearGradient>
+                                </defs>
+                                <rect width="600" height="400" fill="url(#skyP)"/>
+                                <circle cx="470" cy="90" r="34" fill="#fff3c4"/>
+                                <!-- distant range -->
+                                <polygon points="0,260 90,190 180,240 280,170 380,230 480,180 600,250 600,400 0,400" fill="#8fa9bd"/>
+                                <!-- near range -->
+                                <polygon points="0,320 120,250 240,310 360,240 480,300 600,250 600,400 0,400" fill="#5c7285"/>
+                                <rect y="330" width="600" height="70" fill="#3f5162"/>
+                                <!-- faint seams -->
+                                <g stroke="#ffffff" stroke-opacity="0.25" stroke-dasharray="5 6"><line x1="200" y1="0" x2="200" y2="400"/><line x1="400" y1="0" x2="400" y2="400"/></g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A single narrow frame capturing only the center slice of the scene." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#e5e7eb"/>
+                                <!-- only center third has the photo -->
+                                <clipPath id="oneframe"><rect x="210" y="60" width="180" height="280"/></clipPath>
+                                <g clip-path="url(#oneframe)">
+                                    <rect x="210" y="60" width="180" height="280" fill="#8ec5e8"/>
+                                    <polygon points="150,260 240,190 330,240 430,170 480,230 480,400 150,400" fill="#8fa9bd"/>
+                                    <polygon points="150,320 270,250 390,310 480,260 480,400 150,400" fill="#5c7285"/>
+                                    <rect x="150" y="330" width="340" height="70" fill="#3f5162"/>
+                                </g>
+                                <rect x="210" y="60" width="180" height="280" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"/>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Panorama</span>
+                        <span class="ba-label before">Single frame</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the stitched panorama">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. The dashed lines on the panorama mark where three frames were stitched — invisible in the final blend. Panorama widens the field; HDR and focus stacking apply the same trick to range and depth.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Align, Then Blend</h2>
+                <p>Every multi-shot technique is two steps. <strong>Auto-Align</strong> finds common detail across the frames and warps them into perfect registration, correcting for the small shifts, rotations, and lens distortion between shots. <strong>Blend</strong> then chooses, per pixel, the best contribution from the aligned stack — the overlapping edge for a panorama, the well-exposed tone for HDR, the sharpest region for a focus stack.</p>
+                <p>Because the engine is shared, the shooting discipline is shared too: keep the camera as steady and consistent as you can, overlap generously, and change only the one variable the technique needs (angle for pano, shutter for HDR, focus for stacking). Everything else held constant makes the align-and-blend clean.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 150" role="img" aria-label="Several source frames feed auto-align, then blend, producing one merged result." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif">
+                            <g fill="#dbe4ee" stroke="#94a3b8"><rect x="16" y="46" width="48" height="58"/><rect x="30" y="52" width="48" height="58"/><rect x="44" y="58" width="48" height="58"/></g>
+                            <text x="56" y="122" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">source frames</text>
+                            <line x1="100" y1="80" x2="150" y2="80" stroke="#94a3b8" stroke-width="2"/><polygon points="150,75 160,80 150,85" fill="#94a3b8"/>
+                            <rect x="166" y="56" width="96" height="48" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="214" y="84" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">Auto-Align</text>
+                            <line x1="264" y1="80" x2="300" y2="80" stroke="#94a3b8" stroke-width="2"/><polygon points="300,75 310,80 300,85" fill="#94a3b8"/>
+                            <rect x="316" y="56" width="96" height="48" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="364" y="84" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">Blend</text>
+                            <line x1="414" y1="80" x2="450" y2="80" stroke="#94a3b8" stroke-width="2"/><polygon points="450,75 460,80 450,85" fill="#94a3b8"/>
+                            <rect x="466" y="56" width="42" height="48" fill="#5c7285" stroke="#1473E6"/><text x="487" y="122" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">one image</text>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 1: The universal pipeline. Whatever you varied between frames, Photoshop aligns them first, then blends the best of each into a single result.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🧰 Photomerge, HDR Pro &amp; Auto-Blend</h2>
+                <p>Each technique has a front door. <strong>File ▸ Automate ▸ Photomerge</strong> stitches panoramas (with layout options and a "Content-Aware Fill Transparent Areas" tick for the ragged edges). <strong>File ▸ Automate ▸ Merge to HDR Pro</strong> fuses an exposure bracket into a 32-bit file you then tone-map. For focus stacking you load frames as a stack, <strong>Edit ▸ Auto-Align Layers</strong>, then <strong>Edit ▸ Auto-Blend Layers ▸ Stack Images</strong>.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">File ▸ Automate ▸ Photomerge</span>
+                        </div>
+                        <svg viewBox="0 0 460 176" role="img" aria-label="Photomerge dialog with layout set to Auto, a list of source frames, and blend and content-aware fill options ticked.">
+                            <rect width="460" height="176" fill="#3a3a3a"/>
+                            <text x="16" y="26" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Layout</text>
+                            <rect x="16" y="34" width="120" height="22" fill="#1473E6"/><text x="76" y="49" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Auto ▾</text>
+                            <rect x="150" y="30" width="294" height="88" fill="#2f2f2f" stroke="#4a4a4a"/>
+                            <text x="160" y="48" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">frame_01.jpg</text>
+                            <text x="160" y="68" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">frame_02.jpg</text>
+                            <text x="160" y="88" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">frame_03.jpg</text>
+                            <text x="160" y="108" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">overlap ~30%</text>
+                            <rect x="16" y="128" width="13" height="13" fill="#1473E6"/><text x="22" y="139" text-anchor="middle" style="fill:#fff" font-size="9">✓</text><text x="36" y="139" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Blend Images Together</text>
+                            <rect x="16" y="150" width="13" height="13" fill="#1473E6"/><text x="22" y="161" text-anchor="middle" style="fill:#fff" font-size="9">✓</text><text x="36" y="161" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Content-Aware Fill Transparent Areas</text>
+                        </svg>
+                        <figcaption>Figure 2: Photomerge on Auto with blending and content-aware edge fill. HDR Pro and Auto-Blend share the same spirit — point them at your frames and let the align-and-blend engine do the heavy lifting.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Garbage frames in, garbage merge out</h4>
+                    <p>These tools can't invent detail that isn't in the frames. Too little overlap and a panorama won't stitch; a moving subject mid-bracket leaves HDR ghosts; a focus series that skips a distance leaves a soft band. Shoot the source carefully and the merge is nearly automatic.</p>
+                </div>
+            </section>
+
+            <!-- Three jobs -->
+            <section id="three" class="lesson-section">
+                <h2>🎯 Three Jobs, One Engine</h2>
+                <p>The only thing that differs is which variable you change between frames:</p>
+                <figure>
+                    <svg viewBox="0 0 520 190" role="img" aria-label="Three columns: panorama varies angle, HDR varies exposure, focus stack varies focus distance." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif">
+                            <!-- pano -->
+                            <text x="90" y="26" text-anchor="middle" style="fill:var(--text-color)" font-size="12" font-weight="700">Panorama</text>
+                            <g fill="#8fa9bd" stroke="#64748b"><rect x="30" y="40" width="40" height="40"/><rect x="70" y="40" width="40" height="40"/><rect x="110" y="40" width="40" height="40"/></g>
+                            <text x="90" y="100" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">vary angle →</text>
+                            <text x="90" y="118" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">wider field</text>
+                            <!-- hdr -->
+                            <text x="260" y="26" text-anchor="middle" style="fill:var(--text-color)" font-size="12" font-weight="700">HDR</text>
+                            <g stroke="#64748b"><rect x="205" y="40" width="36" height="40" fill="#2b2b2b"/><rect x="242" y="40" width="36" height="40" fill="#8a8a8a"/><rect x="279" y="40" width="36" height="40" fill="#e8e8e8"/></g>
+                            <text x="260" y="100" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">vary exposure →</text>
+                            <text x="260" y="118" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">wider range</text>
+                            <!-- stack -->
+                            <text x="430" y="26" text-anchor="middle" style="fill:var(--text-color)" font-size="12" font-weight="700">Focus stack</text>
+                            <g stroke="#64748b" fill="#c9d6e0"><rect x="375" y="40" width="36" height="40"/><rect x="412" y="40" width="36" height="40"/><rect x="449" y="40" width="36" height="40"/></g>
+                            <circle cx="393" cy="60" r="8" fill="#3f5162"/><circle cx="430" cy="60" r="5" fill="#3f5162"/><circle cx="467" cy="60" r="3" fill="#3f5162"/>
+                            <text x="430" y="100" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">vary focus →</text>
+                            <text x="430" y="118" text-anchor="middle" style="fill:var(--text-light)" font-size="10.5">deeper focus</text>
+                            <text x="260" y="160" text-anchor="middle" style="fill:var(--text-color)" font-size="12">same align-and-blend engine, one variable changed per technique</text>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 3: Panorama, HDR, and focus stacking are the same move aimed at three different limits — field of view, dynamic range, and depth of field.</figcaption>
+                </figure>
+                <div class="card card-success">
+                    <h4>✅ Shoot on a tripod when you can</h4>
+                    <p>Auto-Align is remarkable, but a tripod (and a 2-second timer) removes the frame-to-frame movement that causes ghosts and soft edges — especially for HDR and focus stacking, where the frames must register to the pixel.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Merge Three Ways</h2>
+                <p>Gather three small frame sets: an overlapping pan, an exposure bracket (−2 / 0 / +2), and a focus series of a close subject.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Panorama <small>· 10 min</small></h3>
+                    <ol>
+                        <li><strong>File ▸ Automate ▸ Photomerge</strong>, add the pan frames, Layout Auto, tick Blend + Content-Aware Fill Transparent Areas.</li>
+                        <li>Crop or accept the filled edges; heal any obvious stitch artifact.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: HDR <small>· 12 min</small></h3>
+                    <ol>
+                        <li><strong>File ▸ Automate ▸ Merge to HDR Pro</strong>, add the bracket, tick Remove Ghosts if anything moved.</li>
+                        <li>Tone-map to taste (keep it believable), or output 32-bit and grade with Camera Raw.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Focus stack <small>· 10 min</small></h3>
+                    <ol>
+                        <li><strong>File ▸ Scripts ▸ Load Files into Stack</strong> (tick Attempt to Automatically Align).</li>
+                        <li>Select all layers, <strong>Edit ▸ Auto-Blend Layers ▸ Stack Images</strong> with seamless tones. Mask-fix any soft patch.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Clean the joins <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Zoom to 100% on each result and heal seams, ghosts, or soft bands.</li>
+                        <li>Apply a Module 4 unifying grade so all three feel like your work. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ A stitched panorama with invisible seams</li>
+                        <li>☐ An HDR merge with recovered highlights and shadows, no ghosts</li>
+                        <li>☐ A focus stack sharp front-to-back</li>
+                        <li>☐ Edges cropped/filled, joins healed at 100%</li>
+                        <li>☐ A consistent grade across all three</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Shoot a vertical panorama (a tall building or waterfall) — the same technique, rotated 90°.</li>
+                        <li>Make a subtle HDR and a deliberately overcooked one; learn the line where recovered range tips into fake.</li>
+                        <li>Focus-stack a small object (a flower, a watch) from front to back and compare it to a single f/8 frame. The depth gain is the payoff.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> combine techniques — a bracketed <em>panorama</em> (HDR each position, then stitch) for a high-range wide vista. It is exactly the same engine run twice.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Multi-Shot Merge</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Shoot many, blend to one</h3>
+                    <ol>
+                        <li><strong>Panorama</strong>: Photomerge (Auto + Blend + Content-Aware edges)</li>
+                        <li><strong>HDR</strong>: Merge to HDR Pro (bracket, Remove Ghosts, tone-map)</li>
+                        <li><strong>Focus stack</strong>: Load into Stack → Auto-Align → Auto-Blend (Stack Images)</li>
+                        <li>Overlap generously; change only the one intended variable</li>
+                        <li>Heal seams/ghosts at 100%, then one shared grade</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: align first, blend second, and one careful shoot beats any repair.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Which single-frame limit frustrates you most — width, range, or depth? Plan the shoot that would beat it with a multi-shot merge.</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>You have combined many frames into one <em>still</em>. The last technique in this tier combines frames into <em>motion</em>: <strong>Lesson 7.2 — Timeline Animation &amp; Export</strong> uses Photoshop's Timeline to animate layers and export a GIF or video — and closes out Module 7.</p>
+                </div>
+                <details>
+                    <summary>Is HDR the same as the "HDR look" on phones?</summary>
+                    <p>Related but not identical. Phones auto-merge a bracket instantly; desktop Merge to HDR Pro gives you a true 32-bit file and full control over the tone-map, so you decide between natural range recovery and the stylized look.</p>
+                </details>
+                <details>
+                    <summary>My panorama bows or bends. What happened?</summary>
+                    <p>Wide pans on a flat projection curve straight lines. Try a different Photomerge layout (Cylindrical or Spherical), keep the horizon centered while shooting, and finish with Adaptive Wide Angle (Filter menu) to straighten.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_18.html" class="prev-lesson">← Previous: Data-Driven Graphics &amp; Scripting</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_20.html" class="next-lesson">Next: Timeline Animation &amp; Export →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

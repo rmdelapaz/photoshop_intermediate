@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 8, Lesson 3: present your capstone as a case study — the story of challenge, approach, process, and result that turns a finished file into a portfolio piece. The course finale.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 8.3: Present &amp; Case Study | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 8 • Lesson 3</span><span class="lesson-title">🏆 Present &amp; Case Study</span></h1>
+                <p class="lead">The course finale. A finished image in a folder is not yet a portfolio piece — a <strong>case study</strong> is. Telling the story of the challenge, your approach, the process, and the result is what turns good work into work that gets you hired, and it is the last skill this course gives you.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Structure a <strong>case study</strong>: challenge → approach → process → result → reflection</li>
+                        <li>Present the final piece in <strong>context</strong> with mockups, not floating in space</li>
+                        <li>Use <strong>before/after and progress shots</strong> to show your thinking</li>
+                        <li>Write about your work clearly, for clients and employers</li>
+                        <li>Package and export a portfolio-ready presentation</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 50 minutes</p>
+                    <p><strong>🎯 Project (course capstone):</strong> A complete case study of your capstone — the artwork, its story, and its results — ready for a portfolio or a client.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: The Work Plus Its Story</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Tell the Story</a></li>
+                        <li><a href="#panel" class="toc-link">Anatomy of a Case Study</a></li>
+                        <li><a href="#present" class="toc-link">Presenting in Context</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: The Case Study</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Ship It</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Case Study</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Course Summary &amp; Farewell</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: The Work Plus Its Story</h2>
+                <p>The same capstone, presented two ways. On the right: the final image alone, no context — nice, forgettable. On the left: a case study — hero shot, the brief, before/after, key decisions, results — that shows not just what you made but that you <em>think</em> like a professional. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: a lone final image versus a structured case-study layout.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A case-study page with a hero image, brief, before/after, process steps, and result." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#f4f8fc"/>
+                                <!-- hero -->
+                                <rect x="40" y="30" width="520" height="120" rx="6" fill="#2f3640"/><rect x="60" y="52" width="180" height="76" fill="#31A8FF" opacity="0.5"/><text x="300" y="96" text-anchor="middle" fill="#e2e8f0" font-family="Georgia, serif" font-size="22" font-weight="700">Capstone — Hero</text>
+                                <!-- brief + process row -->
+                                <rect x="40" y="164" width="160" height="90" rx="6" fill="#fff" stroke="#9bc0ea"/><text x="56" y="186" fill="#1473E6" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">Challenge</text><rect x="56" y="196" width="128" height="6" fill="#dbe4ee"/><rect x="56" y="210" width="112" height="6" fill="#dbe4ee"/><rect x="56" y="224" width="120" height="6" fill="#dbe4ee"/>
+                                <rect x="216" y="164" width="160" height="90" rx="6" fill="#fff" stroke="#9bc0ea"/><text x="232" y="186" fill="#1473E6" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">Before → After</text><rect x="232" y="196" width="58" height="46" fill="#c9b7a0"/><rect x="300" y="196" width="58" height="46" fill="#5c7285"/>
+                                <rect x="392" y="164" width="168" height="90" rx="6" fill="#fff" stroke="#9bc0ea"/><text x="408" y="186" fill="#1473E6" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">Process</text><circle cx="416" cy="206" r="6" fill="#31A8FF"/><circle cx="444" cy="206" r="6" fill="#31A8FF"/><circle cx="472" cy="206" r="6" fill="#31A8FF"/><rect x="408" y="222" width="140" height="6" fill="#dbe4ee"/>
+                                <!-- result -->
+                                <rect x="40" y="268" width="520" height="96" rx="6" fill="#fff" stroke="#9bc0ea"/><text x="56" y="292" fill="#1473E6" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">Result &amp; reflection</text><rect x="56" y="304" width="480" height="6" fill="#dbe4ee"/><rect x="56" y="318" width="440" height="6" fill="#dbe4ee"/><rect x="56" y="332" width="300" height="6" fill="#dbe4ee"/>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A single final image alone with no context." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#eef1f5"/>
+                                <rect x="180" y="130" width="240" height="140" rx="6" fill="#2f3640"/><rect x="200" y="150" width="90" height="100" fill="#31A8FF" opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Case study</span>
+                        <span class="ba-label before">Image only</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the case-study layout">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. Two people can make the same image; the one who can explain the decisions behind it is the one who gets the next job.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Tell the Story</h2>
+                <p>A portfolio full of pretty pictures says "I can operate Photoshop." A portfolio of <strong>case studies</strong> says "I can solve problems." Reviewers and clients hire the second one, because every real job is a problem, not a picture. The case study proves you understood a goal, chose an approach, executed it, and can judge the result.</p>
+                <p>The arc is simple and always the same: <strong>Challenge</strong> (what needed solving), <strong>Approach</strong> (your strategy and why), <strong>Process</strong> (how you built it, with progress shots), <strong>Result</strong> (the finished work in context), and <strong>Reflection</strong> (what worked, what you would change). Show the thinking, not just the pixels.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 120" role="img" aria-label="The case-study arc: challenge, approach, process, result, reflection." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif" font-size="11.5" font-weight="700">
+                            <rect x="10" y="44" width="92" height="34" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="56" y="65" text-anchor="middle" style="fill:#0b2540">Challenge</text>
+                            <rect x="112" y="44" width="92" height="34" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="158" y="65" text-anchor="middle" style="fill:#0b2540">Approach</text>
+                            <rect x="214" y="44" width="92" height="34" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="260" y="65" text-anchor="middle" style="fill:#0b2540">Process</text>
+                            <rect x="316" y="44" width="92" height="34" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="362" y="65" text-anchor="middle" style="fill:#0b2540">Result</text>
+                            <rect x="418" y="44" width="92" height="34" rx="8" fill="#173a5e" stroke="#1473E6"/><text x="464" y="65" text-anchor="middle" fill="#cfe3ff">Reflection</text>
+                        </g>
+                        <g stroke="#94a3b8" stroke-width="2"><line x1="102" y1="61" x2="112" y2="61"/><line x1="204" y1="61" x2="214" y2="61"/><line x1="306" y1="61" x2="316" y2="61"/><line x1="408" y1="61" x2="418" y2="61"/></g>
+                    </svg>
+                    <figcaption>Figure 1: The universal case-study arc. Every strong portfolio piece walks a reviewer through these five beats, in order.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🧱 Anatomy of a Case Study</h2>
+                <p>Lay it out top to bottom like a story. A workable structure:</p>
+                <div class="card card-info">
+                    <ul>
+                        <li><strong>Hero shot</strong> — the finished piece, big, first. Earn the scroll.</li>
+                        <li><strong>The brief in a line</strong> — the challenge and who it was for, from Lesson 8.1.</li>
+                        <li><strong>Approach</strong> — your strategy in a sentence or two: the key idea that solved it.</li>
+                        <li><strong>Process</strong> — 3–5 progress shots or a before/after that reveal how it was built.</li>
+                        <li><strong>Details</strong> — a few close crops of craft you're proud of (a clean cutout, the grade, the type).</li>
+                        <li><strong>Result</strong> — deliverables in context/mockups, plus any outcome you can claim.</li>
+                        <li><strong>Reflection</strong> — one honest paragraph on what you learned.</li>
+                    </ul>
+                </div>
+                <div class="card card-warning">
+                    <h4>⚠️ Show the decisions, not every step</h4>
+                    <p>A case study is a highlight reel, not a tutorial. Pick the three or four moments that show judgment — the tricky mask, the grade choice, the composition call — and skip the routine. Reviewers spend seconds; make each one earn its place.</p>
+                </div>
+            </section>
+
+            <!-- Present -->
+            <section id="present" class="lesson-section">
+                <h2>🖼️ Presenting in Context</h2>
+                <p>An image floating on white reads as an exercise; the same image <em>in context</em> reads as real work. Use the Smart-Object mockups from Module 5.2 to place your poster on a wall, your campaign in a phone feed, your album on a record sleeve. Context tells the reviewer what the thing is <em>for</em>, and it makes your work look shipped rather than sketched.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Presentation mockups</span>
+                        </div>
+                        <svg viewBox="0 0 460 170" role="img" aria-label="Three mockups: a framed poster on a wall, the design on a phone screen, and a printed piece in hand.">
+                            <rect width="460" height="170" fill="#20242b"/>
+                            <!-- wall poster -->
+                            <rect x="20" y="24" width="120" height="120" fill="#3a4049"/><rect x="42" y="42" width="76" height="84" fill="#31A8FF" opacity="0.55" stroke="#0b2540" stroke-width="3"/><text x="80" y="160" text-anchor="middle" fill="#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">framed print</text>
+                            <!-- phone -->
+                            <rect x="170" y="30" width="70" height="120" rx="10" fill="#0f172a" stroke="#3a4049"/><rect x="178" y="44" width="54" height="92" fill="#31A8FF" opacity="0.5"/><text x="205" y="164" text-anchor="middle" fill="#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">social feed</text>
+                            <!-- record -->
+                            <rect x="280" y="34" width="110" height="110" fill="#2a2f36"/><circle cx="335" cy="89" r="46" fill="#31A8FF" opacity="0.5"/><circle cx="335" cy="89" r="8" fill="#0f172a"/><text x="335" y="160" text-anchor="middle" fill="#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">album sleeve</text>
+                        </svg>
+                        <figcaption>Figure 2: The same artwork shown in context — wall, screen, sleeve. Mockups (Smart-Object templates from Module 5.2) make a portfolio piece look like it lives in the world.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-success">
+                    <h4>✅ Keep before/after honest</h4>
+                    <p>Before/after and progress shots are persuasive precisely because they're true. Show the real starting point and the real steps; a fabricated "before" is obvious to anyone who does the work and costs you all your credibility. Your honest process is impressive enough.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: The Case Study</h2>
+                <p>Gather your capstone artwork, the brief and moodboard from 8.1, and the progress screenshots you saved during 8.2.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Assemble the assets <small>· 12 min</small></h3>
+                    <ol>
+                        <li>Export a clean hero, 3–5 progress shots, a couple of detail crops, and a before/after.</li>
+                        <li>Place the hero and deliverables into mockups for context.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Write the story <small>· 15 min</small></h3>
+                    <ol>
+                        <li>Write the five beats: challenge, approach, process, result, reflection. Keep each tight — a few sentences.</li>
+                        <li>Lead with the outcome or the idea, not the tools. "A warm, editorial key art that reads on mobile" beats "I used Curves and Generative Fill."</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Lay it out <small>· 12 min</small></h3>
+                    <ol>
+                        <li>Build the case-study page top to bottom: hero → brief → approach → process → details → result → reflection. Use your Module 5 type system for a clean, consistent read.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Export &amp; publish <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Export the case study (PDF and web-sized images, or a page). Automate the export if you built an Action (Module 6).</li>
+                        <li>Put it where people will see it — portfolio site, PDF, a post. The capstone, and the course, are complete. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist (course capstone)</h3>
+                    <ul>
+                        <li>☐ A big, clean hero shot leading the piece</li>
+                        <li>☐ The five story beats written tight and outcome-first</li>
+                        <li>☐ Honest before/after and 3–5 progress shots</li>
+                        <li>☐ Deliverables shown in context via mockups</li>
+                        <li>☐ Laid out with your type system, exported, and published</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Ship It</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Finish the job</h4>
+                    <ol>
+                        <li>Publish the case study somewhere public and share it. Shipping is a skill; practice it here.</li>
+                        <li>Write a 30-second spoken version of the story — the answer to "tell me about this piece" in an interview.</li>
+                        <li>Turn your best two or three earlier lessons' projects into mini case studies so this capstone isn't alone in your portfolio.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> ask someone in the field for honest feedback on the case study, then revise. The willingness to seek and act on critique is the growth habit that outlasts any single technique.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Case Study</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Work plus story</h3>
+                    <ol>
+                        <li>Lead with a big <strong>hero</strong>; earn the scroll</li>
+                        <li>Five beats: <strong>challenge · approach · process · result · reflection</strong></li>
+                        <li>Show <strong>honest</strong> before/after + 3–5 progress shots</li>
+                        <li>Present deliverables in <strong>context</strong> (mockups)</li>
+                        <li>Lay out with your type system; export &amp; <strong>publish</strong></li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: show that you think like a professional, not just that you can push pixels.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ Final prompt:</strong> Read back through your whole journal, from Module 1 to here. What can you do now that you couldn't when you started? Write that down — it is the real deliverable of this course.</p>
+                </div>
+            </section>
+
+            <!-- Course Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>🎓 Course Summary &amp; Farewell</h2>
+
+                <div class="card card-success">
+                    <h3>🏁 What You Have Learned — The Whole Course</h3>
+                    <p>You arrived able to operate Photoshop. You leave able to work like a professional. Here is the ground you covered:</p>
+                    <ul>
+                        <li><strong>Module 1 — Advanced Selection &amp; Masking:</strong> luminosity and channel masks, Blend-If, and flawless hard cutouts.</li>
+                        <li><strong>Module 2 — Color &amp; Tone, Deep:</strong> color management, Curves and gradient-map grading, LUTs, and print-safe soft proofing.</li>
+                        <li><strong>Module 3 — High-End Retouching:</strong> frequency separation, dodge &amp; burn sculpting, and a natural finish that never looks retouched.</li>
+                        <li><strong>Module 4 — Commercial Compositing:</strong> matched perspective, light, shadow, atmosphere, and one unifying grade.</li>
+                        <li><strong>Module 5 — Design Systems &amp; Type:</strong> type systems, Smart-Object templates, and a full campaign from one master.</li>
+                        <li><strong>Module 6 — Generative + Automation:</strong> generative assist, conditional Actions, and data-driven graphics with a taste of scripting.</li>
+                        <li><strong>Module 7 — Multi-Shot Techniques:</strong> panoramas, HDR, focus stacking, and Timeline animation.</li>
+                        <li><strong>Module 8 — The Capstone:</strong> brief, plan, disciplined execution, and a portfolio-ready case study.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 You Can Now…</h3>
+                <p>Cut anything out cleanly, grade for any screen or press, retouch a portrait invisibly, build a believable composite from nothing, run a consistent design system, automate volume work, combine many frames into one, and present it all like a pro. That is a genuinely professional toolkit — and, just as importantly, you built the <em>judgment</em> to know which tool a problem needs and when to stop.</p>
+
+                <h3>🌱 Keep Growing</h3>
+                <ul>
+                    <li><strong>Build your portfolio</strong> — turn each capstone-quality project into a case study.</li>
+                    <li><strong>Practice deliberately</strong> — pick one weak spot and drill it until it's a strength.</li>
+                    <li><strong>Study work you admire</strong> — reverse-engineer the grade, the light, the type. Naming why it works is how taste grows.</li>
+                    <li><strong>Seek critique</strong> — the growth mindset that carried you through this course is what carries a career.</li>
+                    <li><strong>Specialize or broaden</strong> — go deep on retouching, compositing, or design, or widen into motion and 3D. You have the base for any of them.</li>
+                </ul>
+
+                <h3>❓ A Last Question</h3>
+                <details>
+                    <summary>What should my very next project be?</summary>
+                    <p>Something slightly beyond comfortable, briefed the way you learned in 8.1, finished and presented the way you learned in 8.3. Growth lives just past the edge of what you're sure you can do — and now you have the process to get there safely.</p>
+                </details>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Thank You, and Well Done</h3>
+                    <p>Finishing an entire course of deliberate, deep practice is rare — most people quit at the easy part. You did the hard part, module after module, and it shows in what you can now make. Be proud of it. Now go build the work only you can, and show it to the world. This is not the end of your Photoshop journey; it's the point where it becomes yours.</p>
+                    <p style="margin-bottom:0;"><strong>— Ray</strong></p>
+                </div>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="index.html#path">Revisit any module</a> in this course</li>
+                    <li><a href="https://helpx.adobe.com/photoshop/user-guide.html" target="_blank" rel="noopener">Adobe: Photoshop User Guide</a></li>
+                </ul>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_22.html" class="prev-lesson">← Previous: Studio Session — Build It</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="index.html#path" class="next-lesson">🎉 Course Complete — All Modules →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
