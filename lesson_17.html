@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 6, Lesson 2: record Actions, branch them with conditionals, batch a whole folder, and build droplets so repetitive editing runs itself.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 6.2: Advanced Actions &amp; Conditionals | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 6 • Lesson 2</span><span class="lesson-title">⚙️ Advanced Actions &amp; Conditionals</span></h1>
+                <p class="lead">If you have done a task twice, Photoshop can do it a thousand times. Actions record your exact steps; conditionals let one Action branch on what it finds; batches run it over a folder; droplets turn it into a file you drag images onto. This is where hours become seconds.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li><strong>Record</strong> a clean, reusable Action and re-order or re-record steps</li>
+                        <li>Insert <strong>stops</strong>, <strong>menu items</strong>, and modal pauses for input</li>
+                        <li>Add a <strong>Conditional</strong> so one Action handles landscape and portrait differently</li>
+                        <li><strong>Batch</strong> an Action across a folder and save out automatically</li>
+                        <li>Build a <strong>droplet</strong> — a drag-and-drop executable for your workflow</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 50 minutes</p>
+                    <p><strong>🎯 Project:</strong> A single Action that resizes, sharpens, watermarks, and exports — branching by orientation — then batched across a whole folder.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Do It Once, Run It Forever</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Record, Branch, Batch</a></li>
+                        <li><a href="#panel" class="toc-link">The Actions Panel</a></li>
+                        <li><a href="#cond" class="toc-link">Conditionals &amp; Batch</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: A Delivery Action</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Actions &amp; Batch</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: Do It Once, Run It Forever</h2>
+                <p>The same 200 images to prep for the web. On the right, by hand: open, resize, sharpen, watermark, save, close — repeat until your afternoon is gone. On the left, one Action batched over the folder does all 200 while you get coffee. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: processing files one by one by hand versus one Action batching the whole folder.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="One Action running over a whole folder of files at once." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#eef7f0"/>
+                                <rect x="60" y="170" width="120" height="70" rx="10" fill="#16a34a"/><text x="120" y="205" text-anchor="middle" fill="#fff" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700">1 Action</text><text x="120" y="225" text-anchor="middle" fill="#dcfce7" font-family="Segoe UI, sans-serif" font-size="11">▶ Batch</text>
+                                <g stroke="#16a34a" stroke-width="2"><line x1="180" y1="190" x2="380" y2="110"/><line x1="180" y1="205" x2="380" y2="205"/><line x1="180" y1="220" x2="380" y2="300"/></g>
+                                <g fill="#ffffff" stroke="#86c9a0"><rect x="380" y="86" width="150" height="48" rx="6"/><rect x="380" y="181" width="150" height="48" rx="6"/><rect x="380" y="276" width="150" height="48" rx="6"/></g>
+                                <g fill="#16a34a" font-family="Segoe UI, sans-serif" font-size="12"><text x="396" y="115">img_001 ✓</text><text x="396" y="210">img_002 ✓</text><text x="396" y="305">img_200 ✓</text></g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="Files being processed one at a time by hand with a clock." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#fdf6f0"/>
+                                <circle cx="300" cy="150" r="54" fill="none" stroke="#c2410c" stroke-width="6"/><line x1="300" y1="150" x2="300" y2="112" stroke="#c2410c" stroke-width="6" stroke-linecap="round"/><line x1="300" y1="150" x2="332" y2="168" stroke="#c2410c" stroke-width="6" stroke-linecap="round"/>
+                                <g fill="#e7d4c4" stroke="#c9a98a"><rect x="150" y="250" width="60" height="76" rx="4"/><rect x="230" y="250" width="60" height="76" rx="4"/><rect x="310" y="250" width="60" height="76" rx="4"/><rect x="390" y="250" width="60" height="76" rx="4"/></g>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Batched</span>
+                        <span class="ba-label before">By hand</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the batched version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. The setup cost of recording an Action is paid back the second time you run it — and every time after is free.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Record, Branch, Batch</h2>
+                <p>An <strong>Action</strong> is a recorded macro: you hit record, perform your steps once, and Photoshop stores them as a replayable list. A <strong>Conditional</strong> is an <em>if</em> inside that list — "if the document is landscape, play the Landscape action; otherwise the Portrait one" — so one Action copes with mixed input. A <strong>Batch</strong> points an Action at a folder and runs it on every file; a <strong>droplet</strong> saves that batch as an icon you drop files onto.</p>
+                <p>Two rules make Actions reliable. Record with the <strong>right units and relative moves</strong> (percentages, not fixed pixels tied to one image size), and remember that Actions capture <em>what you did</em>, not <em>what you meant</em> — so record on a representative file and test on odd ones.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 160" role="img" aria-label="A recorded action branches with a conditional into landscape and portrait paths, then runs over a folder as a batch." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif">
+                            <rect x="12" y="60" width="96" height="40" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="60" y="85" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">Record</text>
+                            <rect x="140" y="60" width="96" height="40" rx="8" fill="#fff7ed" stroke="#c2410c"/><text x="188" y="80" text-anchor="middle" style="fill:#7a2e0c" font-size="12" font-weight="700">if landscape?</text><text x="188" y="94" text-anchor="middle" style="fill:#9a3412" font-size="9.5">conditional</text>
+                            <rect x="268" y="26" width="120" height="34" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="328" y="47" text-anchor="middle" style="fill:#0b2540" font-size="11">→ wide crop</text>
+                            <rect x="268" y="98" width="120" height="34" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="328" y="119" text-anchor="middle" style="fill:#0b2540" font-size="11">→ tall crop</text>
+                            <rect x="410" y="60" width="96" height="40" rx="8" fill="#16a34a" stroke="#166534"/><text x="458" y="85" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Batch ▶</text>
+                            <g stroke="#94a3b8" stroke-width="2"><line x1="108" y1="80" x2="138" y2="80"/><line x1="236" y1="72" x2="266" y2="45"/><line x1="236" y1="88" x2="266" y2="115"/><line x1="390" y1="45" x2="440" y2="62"/><line x1="390" y1="115" x2="440" y2="98"/></g>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 1: Record once, branch with a conditional, then batch the whole thing. One Action, mixed input, no supervision.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🎬 The Actions Panel</h2>
+                <p>Open <strong>Window ▸ Actions</strong>. Group related Actions into a <strong>set</strong>, hit the record button, and every eligible step you take is logged. You can drag steps to re-order, double-click a step to re-record its values, toggle a step off, or add a <strong>modal</strong> (the dialog icon) so the Action pauses for you to confirm settings on each run.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:440px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Actions</span>
+                        </div>
+                        <svg viewBox="0 0 440 190" role="img" aria-label="Actions panel showing a Web Delivery action with recorded steps: resize, unsharp mask, place watermark, save as JPG.">
+                            <rect width="440" height="190" fill="#2f2f2f"/>
+                            <text x="16" y="26" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">📁 Delivery set</text>
+                            <rect x="16" y="34" width="408" height="22" fill="#1473E6"/><text x="30" y="49" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">▾ Web Delivery</text>
+                            <g font-family="Segoe UI, sans-serif" font-size="11" fill="#e2e8f0">
+                                <text x="40" y="74">✓ Image Size — 2000 px long edge</text>
+                                <text x="40" y="94">✓ Unsharp Mask — 80% / 1.0 / 0</text>
+                                <text x="40" y="114">▣ Conditional — if Landscape…</text>
+                                <text x="40" y="134">✓ Place — watermark.png</text>
+                                <text x="40" y="154">✓ Save As — JPG (quality 10)</text>
+                            </g>
+                            <!-- transport -->
+                            <circle cx="30" cy="176" r="6" fill="#e11d48"/><polygon points="52,170 52,182 62,176" fill="#e2e8f0"/><rect x="74" y="170" width="10" height="12" fill="#e2e8f0"/>
+                            <text x="96" y="180" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">record · play · stop</text>
+                        </svg>
+                        <figcaption>Figure 2: A recorded delivery Action. Checkmarks mean the step runs; the dialog toggle (▣) makes a step pause for input. Re-record any step by double-clicking it.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Record relative, not absolute</h4>
+                    <p>An Action that crops to "1080×1080 from position 340,120" breaks on a differently sized image. Use Image Size by long-edge, percentage crops, and content-relative selections so the Action survives varied input. Test it on your weirdest file before trusting a batch.</p>
+                </div>
+            </section>
+
+            <!-- Conditionals & batch -->
+            <section id="cond" class="lesson-section">
+                <h2>🔀 Conditionals &amp; Batch</h2>
+                <p>From the Actions panel menu, <strong>Insert Conditional…</strong> lets a step ask a question — is the document landscape, square, portrait; is it a certain size; is a layer present — and play one Action if true and another if false. Chain a couple and one Action gracefully handles a mixed folder.</p>
+                <p>To run it, <strong>File ▸ Automate ▸ Batch</strong>: choose the Action, a source folder (or "Import"), a destination, and file-naming rules. Tick <strong>Override Action "Save As"</strong> commands so files land where you say. For a reusable icon, <strong>File ▸ Automate ▸ Create Droplet</strong> writes a small app; drop any images or folders onto it and the batch runs.</p>
+                <div class="card card-success">
+                    <h4>✅ Suppress dialogs for a hands-off run</h4>
+                    <p>In Batch, set errors to "Log errors to file" and leave dialog toggles off so nothing stops the run halfway. A true batch should complete 500 files without asking you a single question — that is the whole point.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: A Delivery Action</h2>
+                <p>Gather a folder of mixed landscape and portrait images to prep for the web.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Record the core <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Window ▸ Actions ▸ new set "Delivery", new action "Web Delivery", Record.</li>
+                        <li>Image Size to 2000px long edge, Unsharp Mask, Place your watermark PNG, Save As JPG. Stop recording.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Add the branch <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Record two tiny helper actions: "Crop Wide" and "Crop Tall".</li>
+                        <li>In Web Delivery, panel menu ▸ <strong>Insert Conditional</strong>: if <em>Document is Landscape</em> play Crop Wide, else Crop Tall.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Batch it <small>· 8 min</small></h3>
+                    <ol>
+                        <li><strong>File ▸ Automate ▸ Batch</strong>: Action = Web Delivery, Source = your folder, Destination = an output folder, tick Override Save As, set naming.</li>
+                        <li>Run. Watch the whole folder process untouched, landscape and portrait each cropped correctly.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Make a droplet <small>· 6 min</small></h3>
+                    <ol>
+                        <li><strong>File ▸ Automate ▸ Create Droplet</strong>, point it at Web Delivery, save the droplet to your desktop.</li>
+                        <li>Drag a folder of new images onto it. Instant delivery set, no Photoshop menus. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ A recorded, relative (long-edge/percentage) delivery Action</li>
+                        <li>☐ A conditional branching landscape vs portrait</li>
+                        <li>☐ A batch that runs the folder hands-off with Override Save As</li>
+                        <li>☐ Errors logged, no mid-run dialogs</li>
+                        <li>☐ A working droplet on the desktop</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Record an Action that outputs three sizes of each image (thumb, web, print) into three subfolders in one run.</li>
+                        <li>Add a conditional that skips already-watermarked files (test for a layer) so re-running the batch is safe.</li>
+                        <li>Build a droplet a non-Photoshop colleague could use, with a Stop step that explains what to do if something looks wrong.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> Actions can't loop or read a spreadsheet — when you hit that wall, the next lesson's variables and scripting take over. Note down the tasks Actions couldn't handle.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Actions &amp; Batch</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Record once, run forever</h3>
+                    <ol>
+                        <li>Window ▸ Actions → new set + action → <strong>Record</strong> relative steps</li>
+                        <li><strong>Insert Conditional</strong> to branch (landscape / portrait / size)</li>
+                        <li>Insert stops / modals only where human input is truly needed</li>
+                        <li><strong>File ▸ Automate ▸ Batch</strong> over a folder, Override Save As, log errors</li>
+                        <li><strong>Create Droplet</strong> for a drag-and-drop reusable</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: if you'll do it twice, record it once.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> List three repetitive tasks in your own workflow. For each, could an Action do it, or do you need a conditional or a script? Sorting them is the start of automating your practice.</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>Actions replay fixed steps; they can't read data or loop with logic. When the job is "make 300 badges from a spreadsheet," you need <strong>Lesson 6.3 — Data-Driven Graphics &amp; a Scripting Intro</strong>, the Module 6 deliverable, where variables and a little JavaScript take automation the last mile.</p>
+                </div>
+                <details>
+                    <summary>My Action works on one image but breaks in the batch. Why?</summary>
+                    <p>Almost always an absolute value — a fixed crop, a hard-coded size, a named layer that doesn't exist in every file. Re-record those steps as relative, and add conditionals to skip files that don't match the assumptions.</p>
+                </details>
+                <details>
+                    <summary>Actions vs droplets vs scripts — when each?</summary>
+                    <p>Action for repeatable steps; droplet to hand that Action to someone or a folder-watch; script when you need loops, math, external data, or decisions Actions can't express. They stack: scripts can even call Actions.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_16.html" class="prev-lesson">← Previous: Generative for Compositing</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_18.html" class="next-lesson">Next: Data-Driven Graphics &amp; a Scripting Intro →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

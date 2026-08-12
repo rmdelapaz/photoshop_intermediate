@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 5, Lesson 1: build a type system — a modular scale, paragraph and character styles, OpenType features, and a baseline grid — so every layout shares one typographic voice.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 5.1: Type Systems, Styles &amp; Grids | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 5 • Lesson 1</span><span class="lesson-title">🔤 Type Systems, Styles &amp; Grids</span></h1>
+                <p class="lead">Photoshop is not a typesetting app, but professional design work still lives and dies on type. A <strong>type system</strong> — a fixed scale, reusable styles, real OpenType, and a baseline grid — replaces "eyeball each label" with decisions you make once and reuse everywhere.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Build a <strong>modular type scale</strong> and a clear hierarchy from it</li>
+                        <li>Create and apply <strong>Paragraph</strong> and <strong>Character Styles</strong> so type is consistent and editable</li>
+                        <li>Turn on real <strong>OpenType</strong> features: ligatures, true small caps, oldstyle figures</li>
+                        <li>Set a <strong>baseline grid</strong> and columns so text sits on a shared rhythm</li>
+                        <li>Pair typefaces from Adobe Fonts with intent, not by accident</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55 minutes</p>
+                    <p><strong>🎯 Project:</strong> A one-page layout whose every text element is driven by a scale, a grid, and named styles — change one style, the whole page updates.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: One Voice, Not Twenty</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: The Modular Scale</a></li>
+                        <li><a href="#panel" class="toc-link">Styles: Decide Once, Apply Everywhere</a></li>
+                        <li><a href="#grid" class="toc-link">The Baseline Grid</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: A Type System</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Type System</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: One Voice, Not Twenty</h2>
+                <p>The same words, set two ways. On the right: mixed fonts, random sizes, nothing aligned — the "ransom note" that shouts amateur. On the left: one scale, two typefaces, a shared left margin, clear hierarchy. Same content, completely different credibility. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after: chaotic mixed-font text versus a clean, systemized type hierarchy.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A tidy layout with a clear type hierarchy aligned to a left margin." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#ffffff"/>
+                                <line x1="60" y1="40" x2="60" y2="360" stroke="#dbe4ee" stroke-width="1"/>
+                                <text x="60" y="90" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#0b2540">Northwind</text>
+                                <text x="60" y="120" font-family="Segoe UI, Arial, sans-serif" font-size="15" letter-spacing="3" fill="#1473E6">COASTAL COFFEE ROASTERS</text>
+                                <text x="60" y="175" font-family="Georgia, serif" font-size="21" font-weight="700" fill="#0b2540">Slow-roasted, small batch</text>
+                                <text x="60" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#40566b">Sourced from single estates and roasted</text>
+                                <text x="60" y="232" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#40566b">the morning we ship. Tasted, not guessed.</text>
+                                <text x="60" y="300" font-family="Segoe UI, Arial, sans-serif" font-size="13" letter-spacing="2" fill="#1473E6">EST. 2019 · PORTLAND</text>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A chaotic layout with many mismatched fonts and sizes." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#fffdf5"/>
+                                <text x="40" y="80" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#7a2e2e">Northwind</text>
+                                <text x="330" y="70" font-family="Impact, sans-serif" font-size="26" fill="#2e6e7a">COFFEE</text>
+                                <text x="70" y="140" font-family="Comic Sans MS, cursive" font-size="22" fill="#8a6a1e">Slow-roasted, small batch</text>
+                                <text x="300" y="180" font-family="Courier New, monospace" font-size="15" fill="#444">Sourced from single estates</text>
+                                <text x="55" y="215" font-family="Segoe UI, sans-serif" font-size="19" font-style="italic" fill="#3a3a3a">and roasted the morning we ship.</text>
+                                <text x="360" y="250" font-family="Georgia, serif" font-size="24" font-weight="700" fill="#7a2e2e">Tasted!</text>
+                                <text x="80" y="300" font-family="Impact, sans-serif" font-size="18" fill="#2e6e7a">EST 2019 portland</text>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">System</span>
+                        <span class="ba-label before">Ransom note</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the systemized version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle (fonts here are stand-ins). The system version uses one display face, one text face, a single scale, and one alignment. Restraint reads as quality.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: The Modular Scale</h2>
+                <p>Pick a base size (say 16px body) and a <strong>ratio</strong> (1.25, 1.333, the golden 1.618). Multiply up and down and you get a <strong>modular scale</strong>: a small set of sizes that relate to each other mathematically, so any two feel intentional together. You then assign roles — display, heading, subhead, body, caption — to steps on that scale and never freehand a size again.</p>
+                <p>Hierarchy is not just size. You have four cheap levers: <strong>size, weight, color, and space</strong>. Often changing weight or adding space communicates hierarchy more elegantly than making something bigger. A system decides how those levers are used and applies the decision consistently.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 210" role="img" aria-label="A modular type scale ramp showing display, H1, H2, body, and caption sizes stepping down by a fixed ratio." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:12px;">
+                        <text x="16" y="42" font-family="Georgia, serif" font-size="34" font-weight="700" style="fill:var(--text-color)">Display 39</text>
+                        <text x="16" y="78" font-family="Georgia, serif" font-size="26" font-weight="700" style="fill:var(--text-color)">Heading 31</text>
+                        <text x="16" y="108" font-family="Georgia, serif" font-size="20" font-weight="700" style="fill:var(--text-color)">Subhead 25</text>
+                        <text x="16" y="134" font-family="Segoe UI, sans-serif" font-size="15" style="fill:var(--text-color)">Body 16 — the reading size everything else is tuned around</text>
+                        <text x="16" y="156" font-family="Segoe UI, sans-serif" font-size="12" style="fill:var(--text-light)">Caption 13</text>
+                        <line x1="360" y1="20" x2="360" y2="165" stroke="#94a3b8" stroke-dasharray="3 3"/>
+                        <text x="372" y="60" font-family="Segoe UI, sans-serif" font-size="12" style="fill:var(--text-light)">× 1.25</text>
+                        <text x="372" y="90" font-family="Segoe UI, sans-serif" font-size="12" style="fill:var(--text-light)">× 1.25</text>
+                        <text x="372" y="120" font-family="Segoe UI, sans-serif" font-size="12" style="fill:var(--text-light)">× 1.25</text>
+                        <text x="16" y="192" font-family="Segoe UI, sans-serif" font-size="11.5" style="fill:var(--text-light)">one base size × one ratio → a scale where every pairing already agrees</text>
+                    </svg>
+                    <figcaption>Figure 1: A modular scale from a 16px base and a 1.25 ratio. Assign roles to steps; the maths guarantees the sizes relate.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel: styles -->
+            <section id="panel" class="lesson-section">
+                <h2>🎛️ Styles: Decide Once, Apply Everywhere</h2>
+                <p>Photoshop has <strong>Paragraph Styles</strong> and <strong>Character Styles</strong> (Window ▸ Paragraph Styles). A style bottles a full spec — font, size, leading, tracking, color, OpenType — under a name like "Body" or "H1". Apply it to text and, when the client wants the body a point larger everywhere, you edit the style once and every instance updates. This is the difference between a document and a system.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Paragraph Styles &amp; OpenType</span>
+                        </div>
+                        <svg viewBox="0 0 460 190" role="img" aria-label="Paragraph Styles panel listing Display, H1, Body, and Caption styles, with OpenType ligature and oldstyle-figure toggles.">
+                            <rect width="460" height="190" fill="#2f2f2f"/>
+                            <rect x="12" y="14" width="230" height="150" fill="#3a3a3a" stroke="#4a4a4a"/>
+                            <text x="22" y="32" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Paragraph Styles</text>
+                            <rect x="18" y="40" width="218" height="24" fill="#1473E6"/><text x="28" y="56" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="12">Display / Georgia 39 · 700</text>
+                            <text x="28" y="84" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12">H1 / Georgia 31 · 700</text>
+                            <text x="28" y="108" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12">Body / Source Sans 16</text>
+                            <text x="28" y="132" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12">Caption / Source Sans 13</text>
+                            <text x="28" y="156" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">+ Character Styles: Link, Emphasis</text>
+                            <!-- opentype -->
+                            <rect x="252" y="14" width="196" height="150" fill="#353535" stroke="#4a4a4a"/>
+                            <text x="262" y="32" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">OpenType</text>
+                            <rect x="262" y="42" width="13" height="13" fill="#1473E6"/><text x="268" y="53" text-anchor="middle" style="fill:#fff" font-size="9">✓</text><text x="282" y="53" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Standard Ligatures</text>
+                            <rect x="262" y="64" width="13" height="13" fill="#1473E6"/><text x="268" y="75" text-anchor="middle" style="fill:#fff" font-size="9">✓</text><text x="282" y="75" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Oldstyle Figures</text>
+                            <rect x="262" y="86" width="13" height="13" fill="#555"/><text x="282" y="97" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">True Small Caps</text>
+                            <text x="262" y="126" style="fill:#e2e8f0" font-family="Georgia, serif" font-size="16">fi fl  →  ﬁ ﬂ</text>
+                            <text x="262" y="150" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">real glyphs, not faux styling</text>
+                        </svg>
+                        <figcaption>Figure 2: Named styles plus real OpenType. Prefer true small caps and real italics over the faux buttons — faux styling distorts the letterforms and looks cheap up close.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Faux bold and faux italic are traps</h4>
+                    <p>The faux Bold/Italic buttons algorithmically smear a regular weight. If a typeface ships a real Bold or Italic, use that; if it doesn't, choose a different face. Faux styling is one of the fastest ways to make good type look amateur.</p>
+                </div>
+            </section>
+
+            <!-- Grid -->
+            <section id="grid" class="lesson-section">
+                <h2>📐 The Baseline Grid</h2>
+                <p>A <strong>baseline grid</strong> is a set of evenly spaced horizontal lines (often matching your body leading) that every line of text snaps to. Columns divide the page horizontally. Together they give a layout an invisible skeleton, so text blocks line up across columns and white space becomes rhythmic instead of random. Set guides via <strong>View ▸ New Guide Layout</strong>.</p>
+                <figure>
+                    <svg viewBox="0 0 520 200" role="img" aria-label="A page with three columns and evenly spaced baseline lines, text snapping to the baselines." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <rect x="30" y="14" width="460" height="170" fill="#ffffff" stroke="#cbd5e1"/>
+                        <!-- baselines -->
+                        <g stroke="#e2e8f0" stroke-width="1">
+                            <line x1="30" y1="40" x2="490" y2="40"/><line x1="30" y1="62" x2="490" y2="62"/><line x1="30" y1="84" x2="490" y2="84"/><line x1="30" y1="106" x2="490" y2="106"/><line x1="30" y1="128" x2="490" y2="128"/><line x1="30" y1="150" x2="490" y2="150"/><line x1="30" y1="172" x2="490" y2="172"/>
+                        </g>
+                        <!-- columns -->
+                        <g fill="#1473E6" opacity="0.06"><rect x="46" y="22" width="128" height="154"/><rect x="196" y="22" width="128" height="154"/><rect x="346" y="22" width="128" height="154"/></g>
+                        <!-- text on baselines -->
+                        <g fill="#334155"><rect x="46" y="34" width="120" height="4"/><rect x="46" y="56" width="120" height="4"/><rect x="46" y="78" width="96" height="4"/>
+                            <rect x="196" y="34" width="120" height="4"/><rect x="196" y="56" width="120" height="4"/><rect x="196" y="78" width="108" height="4"/>
+                            <rect x="346" y="34" width="120" height="4"/><rect x="346" y="56" width="90" height="4"/></g>
+                        <text x="30" y="197" font-family="Segoe UI, sans-serif" font-size="11" style="fill:var(--text-light)">columns × baselines = an invisible skeleton every element aligns to</text>
+                    </svg>
+                    <figcaption>Figure 3: Text snapped to a shared baseline grid across three columns. Alignment you can feel but can't quite see is the signature of designed work.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: A Type System</h2>
+                <p>New document at your target size (say a poster). Pick two Adobe Fonts: one display, one text.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Set the scale <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Choose a base (16px) and ratio (1.25). Write the resulting sizes down: 13 / 16 / 20 / 25 / 31 / 39.</li>
+                        <li>Assign roles: Body 16, Caption 13, Subhead 20, H1 31, Display 39.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Build the grid <small>· 8 min</small></h3>
+                    <ol>
+                        <li><strong>View ▸ New Guide Layout</strong>: set columns (e.g. 3 or 6) with a gutter, plus margins.</li>
+                        <li>Enable a baseline via preferences/guides at your body leading so text can snap to it.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Create styles <small>· 12 min</small></h3>
+                    <ol>
+                        <li>Set one line of each role correctly (font, size from your scale, leading, tracking, color, OpenType on).</li>
+                        <li>With it selected, create a new <strong>Paragraph Style</strong> from it and name it. Repeat for each role. Add Character Styles for links/emphasis.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Prove the system <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Lay out your page using only the named styles, snapping to the grid.</li>
+                        <li>Now edit the Body style's size by one step and watch the whole page re-flow consistently. That propagation is the win. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ A written modular scale with roles assigned</li>
+                        <li>☐ Columns + baseline grid via New Guide Layout</li>
+                        <li>☐ Paragraph &amp; Character Styles created and named</li>
+                        <li>☐ Real OpenType on; no faux bold/italic</li>
+                        <li>☐ Editing one style updates every instance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Build the same layout with two different ratios (1.2 vs 1.618) and feel how a tighter or looser scale changes the mood.</li>
+                        <li>Restrict yourself to <em>one</em> typeface and create hierarchy using only weight and space. Learning to do more with less is the whole game.</li>
+                        <li>Take an ugly flyer you have seen and rebuild it on a scale and grid. Keep the content identical; fix only the system.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> use Adobe Fonts' pairing suggestions to audition a display+text combo, then lock those two into your styles as the project's voice.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Type System</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Scale, styles, grid</h3>
+                    <ol>
+                        <li>Pick a <strong>base size × ratio</strong> → a modular scale; assign roles</li>
+                        <li><strong>New Guide Layout</strong>: columns + gutters; baseline at body leading</li>
+                        <li>Create named <strong>Paragraph / Character Styles</strong> for each role</li>
+                        <li>Turn on real <strong>OpenType</strong>; never faux bold/italic</li>
+                        <li>Lay out using only styles; edit a style to update everywhere</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: make the decision once, name it, and let the system carry it everywhere.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Find two typefaces you think pair well and articulate <em>why</em> — contrast in structure, shared era, matching x-height? Naming the reason turns taste into a repeatable skill.</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>Your type is now a system, not a pile of text layers. Next you make the whole <em>document</em> reusable: <strong>Lesson 5.2 — Smart-Object Templates &amp; Linked Assets</strong> turns a design into a template that updates itself when the source art changes.</p>
+                </div>
+                <details>
+                    <summary>Should I typeset long copy in Photoshop at all?</summary>
+                    <p>For a paragraph or two on a poster, yes. For a brochure or anything text-heavy, set it in InDesign and place it. Photoshop type systems shine for image-led design with limited, high-impact copy.</p>
+                </details>
+                <details>
+                    <summary>How many typefaces should a project use?</summary>
+                    <p>Usually two: one display/heading face and one text face, chosen to contrast. Three is an advanced move; four is almost always the ransom note. Constraint is what makes a voice recognizable.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_12.html" class="prev-lesson">← Previous: Atmosphere &amp; the Unifying Grade</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_14.html" class="next-lesson">Next: Smart-Object Templates &amp; Linked Assets →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

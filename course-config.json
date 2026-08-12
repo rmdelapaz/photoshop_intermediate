@@ -96,9 +96,9 @@
       "deliverable": "An advertising-style key visual from three or more elements.",
       "description": "Believable light direction, shadows, reflections, atmosphere, and scale.",
       "lessons": [
-        { "id": "module-4-1", "title": "Match Perspective, Scale & Lens", "filename": "lesson_10.html", "duration": "55 minutes", "difficulty": "advanced", "status": "planned" },
-        { "id": "module-4-2", "title": "Light Direction, Shadows & Reflections", "filename": "lesson_11.html", "duration": "60 minutes", "difficulty": "advanced", "status": "planned" },
-        { "id": "module-4-3", "title": "Atmosphere & the Unifying Grade", "filename": "lesson_12.html", "duration": "55 minutes", "difficulty": "advanced", "status": "planned" }
+        { "id": "module-4-1", "title": "Match Perspective, Scale & Lens", "filename": "lesson_10.html", "duration": "55 minutes", "difficulty": "advanced", "status": "built" },
+        { "id": "module-4-2", "title": "Light, Shadows & Reflections", "filename": "lesson_11.html", "duration": "60 minutes", "difficulty": "advanced", "status": "built" },
+        { "id": "module-4-3", "title": "Atmosphere & the Unifying Grade", "filename": "lesson_12.html", "duration": "55 minutes", "difficulty": "advanced", "status": "built" }
       ]
     },
     {
@@ -108,9 +108,9 @@
       "deliverable": "A small campaign (poster + matched social set) from one master file.",
       "description": "Type systems, templates, linked assets, and multi-deliverable output.",
       "lessons": [
-        { "id": "module-5-1", "title": "Type Systems: OpenType, Styles & Grids", "filename": "lesson_13.html", "duration": "55 minutes", "difficulty": "intermediate", "status": "planned" },
-        { "id": "module-5-2", "title": "Smart-Object Templates & Linked Assets", "filename": "lesson_14.html", "duration": "55 minutes", "difficulty": "advanced", "status": "planned" },
-        { "id": "module-5-3", "title": "Campaign from One Master: Mockups & Export", "filename": "lesson_15.html", "duration": "60 minutes", "difficulty": "advanced", "status": "planned" }
+        { "id": "module-5-1", "title": "Type Systems, Styles & Grids", "filename": "lesson_13.html", "duration": "55 minutes", "difficulty": "intermediate", "status": "built" },
+        { "id": "module-5-2", "title": "Smart-Object Templates & Linked Assets", "filename": "lesson_14.html", "duration": "55 minutes", "difficulty": "advanced", "status": "built" },
+        { "id": "module-5-3", "title": "Campaign from One Master", "filename": "lesson_15.html", "duration": "60 minutes", "difficulty": "advanced", "status": "built" }
       ]
     },
     {
@@ -120,9 +120,9 @@
       "deliverable": "A data-driven batch (e.g. 20 product cards) plus a generative-assisted composite.",
       "description": "Generative tools for real production, and automation from Actions to scripting.",
       "lessons": [
-        { "id": "module-6-1", "title": "Generative for Compositing & Harmonizing", "filename": "lesson_16.html", "duration": "55 minutes", "difficulty": "advanced", "status": "planned" },
-        { "id": "module-6-2", "title": "Advanced Actions & Conditionals", "filename": "lesson_17.html", "duration": "50 minutes", "difficulty": "advanced", "status": "planned" },
-        { "id": "module-6-3", "title": "Data-Driven Graphics & a Scripting Intro", "filename": "lesson_18.html", "duration": "60 minutes", "difficulty": "advanced", "status": "planned" }
+        { "id": "module-6-1", "title": "Generative for Compositing & Harmonizing", "filename": "lesson_16.html", "duration": "55 minutes", "difficulty": "advanced", "status": "built" },
+        { "id": "module-6-2", "title": "Advanced Actions & Conditionals", "filename": "lesson_17.html", "duration": "50 minutes", "difficulty": "advanced", "status": "built" },
+        { "id": "module-6-3", "title": "Data-Driven Graphics & a Scripting Intro", "filename": "lesson_18.html", "duration": "60 minutes", "difficulty": "advanced", "status": "built" }
       ]
     },
     {

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 4, Lesson 1: match perspective, scale, and lens so a pasted element sits in a scene as if it was photographed there — the foundation of believable compositing.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 4.1: Match Perspective, Scale &amp; Lens | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 4 • Lesson 1</span><span class="lesson-title">📐 Match Perspective, Scale &amp; Lens</span></h1>
+                <p class="lead">A composite lives or dies in the first ten seconds, and it dies on geometry. Before light, before color, an added element has to agree with the scene's <strong>horizon</strong>, its <strong>vanishing points</strong>, and the <strong>lens</strong> the background was shot on. Get those right and the eye stops asking questions.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Find a photo's <strong>horizon line</strong> and read the camera's eye level from it</li>
+                        <li>Match an element's <strong>eye level</strong> and <strong>vanishing points</strong> to the background</li>
+                        <li>Scale an element correctly using the <strong>ground-contact</strong> rule, not guesswork</li>
+                        <li>Recognize and match a <strong>lens</strong>: wide vs long, and the distortion each brings</li>
+                        <li>Use <strong>Perspective Warp</strong> and Free Transform to correct a mismatch</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55 minutes</p>
+                    <p><strong>🎯 Project:</strong> Place one cut-out element into a background so its perspective and scale are undeniably correct — the setup for the Module 4 key visual.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: It Belongs There</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Everyone Shares a Horizon</a></li>
+                        <li><a href="#panel" class="toc-link">Scale by the Ground, Not the Eye</a></li>
+                        <li><a href="#lens" class="toc-link">Matching the Lens</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Place One Element</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Match Perspective</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: It Belongs There</h2>
+                <p>The same figure dropped onto the same ground plane, twice. On the right it ignores the scene: too big, feet off the ground line, facing its own direction. On the left it sits on the perspective grid at the right size, and it instantly reads as <em>there</em>. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: a figure that ignores the scene's perspective grid, versus one aligned to the horizon and vanishing point.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A figure correctly scaled and standing on a perspective ground plane that converges to a vanishing point on the horizon." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#dfeaf2"/>
+                                <rect y="0" width="600" height="150" fill="#cfe0ef"/>
+                                <!-- horizon -->
+                                <line x1="0" y1="150" x2="600" y2="150" stroke="#1473E6" stroke-width="2"/>
+                                <!-- ground grid to VP at 300,150 -->
+                                <g stroke="#9bb4c8" stroke-width="1">
+                                    <line x1="300" y1="150" x2="-40" y2="400"/><line x1="300" y1="150" x2="120" y2="400"/><line x1="300" y1="150" x2="300" y2="400"/><line x1="300" y1="150" x2="480" y2="400"/><line x1="300" y1="150" x2="640" y2="400"/>
+                                    <line x1="60" y1="210" x2="540" y2="210"/><line x1="10" y1="270" x2="590" y2="270"/><line x1="-40" y1="340" x2="640" y2="340"/>
+                                </g>
+                                <!-- figure grounded, sized to horizon -->
+                                <g transform="translate(210,196)">
+                                    <ellipse cx="0" cy="92" rx="26" ry="7" fill="#00000033"/>
+                                    <circle cx="0" cy="8" r="13" fill="#37516b"/>
+                                    <rect x="-13" y="22" width="26" height="50" rx="8" fill="#37516b"/>
+                                    <rect x="-11" y="70" width="9" height="22" fill="#2a3f54"/><rect x="2" y="70" width="9" height="22" fill="#2a3f54"/>
+                                </g>
+                                <text x="14" y="142" style="fill:#1473E6" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700">horizon = eye level</text>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A figure floating above the ground, too large, ignoring the perspective grid." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#dfeaf2"/>
+                                <rect y="0" width="600" height="150" fill="#cfe0ef"/>
+                                <line x1="0" y1="150" x2="600" y2="150" stroke="#1473E6" stroke-width="2"/>
+                                <g stroke="#9bb4c8" stroke-width="1">
+                                    <line x1="300" y1="150" x2="-40" y2="400"/><line x1="300" y1="150" x2="120" y2="400"/><line x1="300" y1="150" x2="300" y2="400"/><line x1="300" y1="150" x2="480" y2="400"/><line x1="300" y1="150" x2="640" y2="400"/>
+                                    <line x1="60" y1="210" x2="540" y2="210"/><line x1="10" y1="270" x2="590" y2="270"/><line x1="-40" y1="340" x2="640" y2="340"/>
+                                </g>
+                                <!-- figure floating, too big, tilted -->
+                                <g transform="translate(360,150) rotate(9)">
+                                    <circle cx="0" cy="8" r="22" fill="#8a4b4b"/>
+                                    <rect x="-22" y="32" width="44" height="86" rx="12" fill="#8a4b4b"/>
+                                    <rect x="-18" y="116" width="15" height="36" fill="#6e3a3a"/><rect x="4" y="116" width="15" height="36" fill="#6e3a3a"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Matched</span>
+                        <span class="ba-label before">Ignored</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the matched version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. Perspective matching is geometric, so it reads clearest as a grid — on a real composite you align to the same horizon and vanishing lines, just hidden inside the photo.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Everyone Shares a Horizon</h2>
+                <p>Every photograph has a <strong>horizon line</strong> at the camera's <strong>eye level</strong>, whether or not you can see it. It is the height the lens was at. The single most important rule of compositing is that <em>every element must share that one horizon.</em> Two people photographed by cameras held at different heights will never sit together until you put their horizons on the same line.</p>
+                <p>Find the horizon by extending the receding parallel lines already in the scene — the edges of a road, the tops of a row of windows, a table's sides. Where they converge is a <strong>vanishing point</strong>, and that point sits on the horizon. Now you know the eye level to match everything else to.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 210" role="img" aria-label="Two receding edges of a road converge at a vanishing point that sits on the horizon line, which marks the camera's eye level." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <rect x="20" y="24" width="480" height="60" fill="#cfe0ef" opacity="0.5"/>
+                        <line x1="20" y1="84" x2="500" y2="84" stroke="#1473E6" stroke-width="2"/>
+                        <text x="26" y="78" style="fill:#1473E6" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">horizon (eye level)</text>
+                        <!-- vanishing point -->
+                        <circle cx="300" cy="84" r="5" fill="#e11d48"/><text x="310" y="80" style="fill:#e11d48" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">vanishing point</text>
+                        <!-- road edges converging -->
+                        <line x1="120" y1="200" x2="300" y2="84" stroke="#64748b" stroke-width="2"/>
+                        <line x1="440" y1="200" x2="300" y2="84" stroke="#64748b" stroke-width="2"/>
+                        <line x1="180" y1="200" x2="300" y2="84" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
+                        <line x1="380" y1="200" x2="300" y2="84" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
+                        <text x="90" y="196" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">road edge</text>
+                        <text x="410" y="196" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">road edge</text>
+                    </svg>
+                    <figcaption>Figure 1: Extend the lines the scene already gives you. They meet on the horizon, and that horizon is the eye level every added element must respect.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel: scale -->
+            <section id="panel" class="lesson-section">
+                <h2>📏 Scale by the Ground, Not the Eye</h2>
+                <p>Beginners scale a pasted person until "it looks about right," and it never does. The reliable method uses the horizon: for people of similar height standing on the same flat ground, <strong>the horizon crosses each of them at the same point on their body</strong> — usually around the eyes when the camera was at standing eye level. Slide your element along the ground and size it so the horizon still cuts it at that same spot.</p>
+                <figure>
+                    <svg viewBox="0 0 520 200" role="img" aria-label="Three figures at different distances all cut by the horizon at eye height, showing correct relative scale." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <line x1="20" y1="70" x2="500" y2="70" stroke="#1473E6" stroke-width="2"/>
+                        <text x="24" y="64" style="fill:#1473E6" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">horizon</text>
+                        <!-- near figure -->
+                        <g transform="translate(120,70)"><circle cx="0" cy="0" r="10" fill="#37516b"/><rect x="-10" y="10" width="20" height="60" rx="6" fill="#37516b"/><ellipse cx="0" cy="72" rx="16" ry="4" fill="#00000022"/></g>
+                        <!-- mid -->
+                        <g transform="translate(260,70)"><circle cx="0" cy="0" r="7" fill="#4a6785"/><rect x="-7" y="7" width="14" height="42" rx="4" fill="#4a6785"/><ellipse cx="0" cy="50" rx="11" ry="3" fill="#00000022"/></g>
+                        <!-- far -->
+                        <g transform="translate(380,70)"><circle cx="0" cy="0" r="5" fill="#6a86a3"/><rect x="-5" y="5" width="10" height="30" rx="3" fill="#6a86a3"/><ellipse cx="0" cy="36" rx="8" ry="2" fill="#00000022"/></g>
+                        <text x="260" y="150" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="12">the horizon hits every figure at eye height, near or far</text>
+                        <text x="260" y="172" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">so their heads rise above it and their feet drop below it by the right amount</text>
+                    </svg>
+                    <figcaption>Figure 2: The horizon rule for scale. Line the element up so the horizon crosses it at the same body height as the people already in the shot; distance then sets its size for you.</figcaption>
+                </figure>
+                <div class="card card-success">
+                    <h4>✅ Feet on the ground line</h4>
+                    <p>An element's contact point with the ground fixes both its distance and its size. Decide where the feet (or base) touch the floor first, then scale up to the horizon. Getting the contact point right is what kills the "floating sticker" look.</p>
+                </div>
+            </section>
+
+            <!-- Lens -->
+            <section id="lens" class="lesson-section">
+                <h2>🔎 Matching the Lens</h2>
+                <p>A wide-angle lens (e.g. 24mm) exaggerates depth and bends verticals near the edges; a long lens (e.g. 200mm) compresses depth and flattens features. Paste a telephoto headshot onto a wide-angle street and the face looks subtly wrong even with perspective matched, because the <em>lens character</em> disagrees.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:440px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Edit ▸ Perspective Warp</span>
+                        </div>
+                        <svg viewBox="0 0 440 180" role="img" aria-label="Perspective Warp: a quad mesh over a pasted building being tilted to match the scene's vanishing lines.">
+                            <rect width="440" height="180" fill="#2f2f2f"/>
+                            <!-- original upright quad -->
+                            <polygon points="60,40 170,40 170,150 60,150" fill="#3f5876" opacity="0.5" stroke="#8fb0d6"/>
+                            <text x="115" y="168" text-anchor="middle" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">pasted (flat)</text>
+                            <!-- arrow -->
+                            <line x1="185" y1="95" x2="235" y2="95" stroke="#9aa4ad" stroke-width="2"/><polygon points="235,90 246,95 235,100" fill="#9aa4ad"/>
+                            <!-- warped quad matching perspective -->
+                            <polygon points="270,55 390,40 380,150 275,135" fill="#1473E6" opacity="0.45" stroke="#8fb0d6"/>
+                            <circle cx="270" cy="55" r="4" fill="#fff"/><circle cx="390" cy="40" r="4" fill="#fff"/><circle cx="380" cy="150" r="4" fill="#fff"/><circle cx="275" cy="135" r="4" fill="#fff"/>
+                            <text x="330" y="168" text-anchor="middle" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="10.5">warped to vanishing lines</text>
+                        </svg>
+                        <figcaption>Figure 3: <strong>Edit ▸ Perspective Warp</strong> drops a quad mesh you pin to the scene's planes, then bends the element onto them. For quick jobs, Free Transform's <strong>Distort</strong> and <strong>Perspective</strong> handles do the same by hand.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ You can't add depth a long lens removed</h4>
+                    <p>Warp fixes geometry, not optics. If the lenses are wildly different you are better off finding a better source photo than fighting it. When you can choose your source, shoot or pick elements on a focal length close to the background's.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Place One Element</h2>
+                <p>Open a background with clear perspective (a street, a room) and a cleanly cut-out element from your Module 1 masking work.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Find the horizon <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Drag guides along two receding edges in the background and note where they converge. Draw a horizontal guide through that point — your horizon.</li>
+                        <li>If people are already in the scene, confirm the horizon crosses them at eye height. It should.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Place and scale <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Bring in the element, set where its feet/base touch the ground. That contact point is now fixed.</li>
+                        <li>Free Transform (hold Shift to keep proportion) until the horizon crosses it at the same body height as the scene's people. It now reads at the right distance and size.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Match the perspective <small>· 10 min</small></h3>
+                    <ol>
+                        <li>If the element has its own strong planes (a box, a sign, a building), use <strong>Edit ▸ Perspective Warp</strong>: lay a quad on its face, then bend it toward the scene's vanishing point.</li>
+                        <li>For a person or organic subject, a touch of Free Transform ▸ Distort to align the lean is usually enough.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Sanity-check the lens <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Step back from the screen. Does the element feel flatter or rounder than its surroundings? If so, a small amount of Lens Correction or a subtle warp can nudge it toward the scene's feel.</li>
+                        <li>Save this file — it is the geometry base you will light and grade in 4.2 and 4.3. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Horizon found from the scene's own converging lines</li>
+                        <li>☐ Element's ground-contact point placed before scaling</li>
+                        <li>☐ Scaled so the horizon crosses it at the correct body height</li>
+                        <li>☐ Strong planes warped toward the scene's vanishing point</li>
+                        <li>☐ Lens character sanity-checked, no obvious flat/round mismatch</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Place the same cut-out person at three distances down one street. If your scaling is right, all three should look like the same person walking away.</li>
+                        <li>Deliberately break it: drop an element with an obviously different horizon (a shot taken from a ladder) and feel exactly why it refuses to sit. Then fix it.</li>
+                        <li>Composite a product onto a table shot on a phone. Phones are wide; watch how much Perspective Warp the box edges need.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> try the <strong>Vanishing Point</strong> filter (Filter menu) to paste an element that automatically conforms to a plane you define — magic for wall posters and floor graphics.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Match Perspective</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Make it belong</h3>
+                    <ol>
+                        <li>Find the <strong>horizon</strong> by extending the scene's receding edges to their vanishing point</li>
+                        <li>Set the element's <strong>ground-contact</strong> point first</li>
+                        <li>Scale so the horizon crosses it at the right body height</li>
+                        <li><strong>Perspective Warp</strong> / Distort strong planes toward the vanishing point</li>
+                        <li>Check <strong>lens</strong> feel; nudge with Lens Correction if needed</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: share one horizon, and everything agrees to be in the same photo.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Find a composite ad or movie poster that feels "off." Can you locate the horizon and spot the element whose eye level disagrees with the rest?</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>Your element now sits in the right place at the right size — but it is still lit like a different photo, and it casts no shadow, so the eye knows. Next: <strong>Lesson 4.2 — Light Direction, Shadows &amp; Reflections</strong>, where you match the light and anchor the element to the ground with a believable shadow.</p>
+                </div>
+                <details>
+                    <summary>Do I really need a visible horizon in every photo?</summary>
+                    <p>The horizon is always there at eye level even when hidden behind buildings or a hill. You infer it from converging lines. Once you can place that invisible line, you can composite into almost any scene.</p>
+                </details>
+                <details>
+                    <summary>My element has no straight edges to warp. How do I match perspective?</summary>
+                    <p>Organic subjects (people, trees) mostly need correct <em>scale and eye level</em> rather than plane-warping. Get the ground contact and horizon crossing right and you are 90% there; a slight Distort handles any lean.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_09.html" class="prev-lesson">← Previous: Eyes, Teeth &amp; Hair — Natural Finish</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_11.html" class="next-lesson">Next: Light Direction, Shadows &amp; Reflections →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 5, Lesson 2: build reusable templates with Smart Objects and linked assets so one change to the source updates every design that uses it.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 5.2: Smart-Object Templates &amp; Linked Assets | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 5 • Lesson 2</span><span class="lesson-title">🧩 Smart-Object Templates &amp; Linked Assets</span></h1>
+                <p class="lead">A design you can only use once is a craft; a design that updates itself across ten files is a system. Smart Objects and linked assets turn a layout into a reusable template — change the source art once and every deliverable that references it re-renders.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Explain what a <strong>Smart Object</strong> protects and why it is non-destructive</li>
+                        <li>Choose between <strong>embedded</strong> and <strong>linked</strong> Smart Objects for a job</li>
+                        <li>Build a <strong>mockup template</strong> with a warped Smart-Object placeholder</li>
+                        <li>Use <strong>Replace Contents</strong> and <strong>Place Linked</strong> to swap art in one move</li>
+                        <li>Update one linked file and have every design using it refresh</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55 minutes</p>
+                    <p><strong>🎯 Project:</strong> A reusable mockup template where dropping in new artwork — once — flows into the placeholder with its warp, shadows, and lighting intact.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Change Once, Update Everywhere</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: A Container You Can Refill</a></li>
+                        <li><a href="#panel" class="toc-link">Embedded vs Linked</a></li>
+                        <li><a href="#mockup" class="toc-link">Building a Mockup Placeholder</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: A Reusable Template</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Smart-Object Template</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: Change Once, Update Everywhere</h2>
+                <p>One source logo feeding three deliverables. On the right, the old way: the logo is baked into each file, so a rebrand means opening and re-editing all three. On the left, one <strong>linked</strong> source flows into all three — update it once and every deliverable refreshes. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: art copied separately into three files, versus one linked source feeding all three.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="One linked source asset connected by lines to three deliverables, updating all at once." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#f4f8fc"/>
+                                <!-- source -->
+                                <rect x="40" y="165" width="120" height="80" rx="10" fill="#1473E6"/>
+                                <text x="100" y="200" text-anchor="middle" fill="#fff" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700">source</text>
+                                <text x="100" y="222" text-anchor="middle" fill="#cfe3ff" font-family="Segoe UI, sans-serif" font-size="12">logo.psb</text>
+                                <!-- links -->
+                                <g stroke="#1473E6" stroke-width="2.5"><line x1="160" y1="185" x2="360" y2="90"/><line x1="160" y1="205" x2="360" y2="205"/><line x1="160" y1="225" x2="360" y2="320"/></g>
+                                <!-- deliverables -->
+                                <g fill="#ffffff" stroke="#9bc0ea"><rect x="360" y="60" width="180" height="70" rx="8"/><rect x="360" y="175" width="180" height="70" rx="8"/><rect x="360" y="290" width="180" height="70" rx="8"/></g>
+                                <g fill="#1473E6"><rect x="376" y="80" width="30" height="30" rx="5"/><rect x="376" y="195" width="30" height="30" rx="5"/><rect x="376" y="310" width="30" height="30" rx="5"/></g>
+                                <g fill="#40566b" font-family="Segoe UI, sans-serif" font-size="13"><text x="418" y="100">Poster</text><text x="418" y="215">Instagram</text><text x="418" y="330">Web banner</text></g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="Three separate copies of the art pasted into three files with no connection." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#fdf6f4"/>
+                                <g fill="#ffffff" stroke="#e0b3ac"><rect x="360" y="60" width="180" height="70" rx="8"/><rect x="360" y="175" width="180" height="70" rx="8"/><rect x="360" y="290" width="180" height="70" rx="8"/></g>
+                                <g fill="#b45447"><rect x="376" y="80" width="30" height="30" rx="5"/><rect x="376" y="195" width="30" height="30" rx="5"/><rect x="376" y="310" width="30" height="30" rx="5"/></g>
+                                <g fill="#8a5a52" font-family="Segoe UI, sans-serif" font-size="13"><text x="418" y="100">Poster (copy)</text><text x="418" y="215">Instagram (copy)</text><text x="418" y="330">Banner (copy)</text></g>
+                                <text x="120" y="205" text-anchor="middle" fill="#b45447" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700">3 baked-in copies</text>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Linked</span>
+                        <span class="ba-label before">Copied</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the linked-source version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. The linked model costs a little setup and repays it every single time the art changes — which, on real jobs, is constantly.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: A Container You Can Refill</h2>
+                <p>A <strong>Smart Object</strong> wraps one or more layers in a protective container. Scale it down and back up and it stays sharp; apply a filter and it becomes an editable <em>Smart Filter</em> you can retune later; double-click it and you edit its contents in their own tab, then save and the parent updates. Nothing you do to the container destroys what is inside.</p>
+                <p>The container also has a superpower: <strong>Replace Contents</strong>. Any transforms, warps, filters, and layer styles you applied to the container stay put while the artwork inside is swapped. That is what makes templates possible — the wrapping is the template, the contents are the variable.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 190" role="img" aria-label="A Smart Object container keeps its transform and effects while its inner artwork is replaced from art A to art B." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <!-- container -->
+                        <rect x="40" y="40" width="150" height="110" rx="10" fill="none" stroke="#1473E6" stroke-width="2.5" stroke-dasharray="6 4"/>
+                        <text x="115" y="32" text-anchor="middle" style="fill:#1473E6" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">Smart Object</text>
+                        <rect x="62" y="62" width="106" height="66" rx="6" fill="#93c5fd"/><text x="115" y="100" text-anchor="middle" fill="#0b2540" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">Art A</text>
+                        <text x="115" y="168" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">warp + shadow live on the container</text>
+                        <!-- arrow -->
+                        <line x1="205" y1="95" x2="285" y2="95" stroke="var(--text-light)" stroke-width="2"/><polygon points="285,90 296,95 285,100" fill="var(--text-light)"/>
+                        <text x="245" y="86" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="11">Replace Contents</text>
+                        <!-- after -->
+                        <rect x="310" y="40" width="150" height="110" rx="10" fill="none" stroke="#1473E6" stroke-width="2.5" stroke-dasharray="6 4"/>
+                        <rect x="332" y="62" width="106" height="66" rx="6" fill="#fca5a5"/><text x="385" y="100" text-anchor="middle" fill="#3b0b0b" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">Art B</text>
+                        <text x="385" y="168" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">same warp + shadow, new art</text>
+                    </svg>
+                    <figcaption>Figure 1: The container holds the treatment; the contents are swappable. Replace A with B and the mockup's perspective and lighting carry straight over.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel: embedded vs linked -->
+            <section id="panel" class="lesson-section">
+                <h2>🔗 Embedded vs Linked</h2>
+                <p>An <strong>embedded</strong> Smart Object stores its contents inside the PSD — portable, self-contained, but each copy is independent. A <strong>linked</strong> Smart Object (<strong>File ▸ Place Linked</strong>) points at an external file on disk; many documents can link the same file, and editing that one file updates them all on open. Embedded is best for one-off protection; linked is the backbone of a multi-file system.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Layers — Smart Objects</span>
+                        </div>
+                        <svg viewBox="0 0 460 170" role="img" aria-label="Layers panel showing an embedded Smart Object badge and a linked Smart Object badge with a link icon.">
+                            <rect width="460" height="170" fill="#2f2f2f"/>
+                            <rect x="12" y="16" width="436" height="42" fill="#3a3a3a" stroke="#4a4a4a"/>
+                            <rect x="22" y="24" width="40" height="26" fill="#93c5fd"/><rect x="52" y="40" width="12" height="12" fill="#1473E6" stroke="#fff" stroke-width="1"/>
+                            <text x="76" y="38" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Logo — Embedded SO</text>
+                            <text x="76" y="52" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">contents stored inside this PSD</text>
+                            <rect x="12" y="62" width="436" height="42" fill="#353535" stroke="#4a4a4a"/>
+                            <rect x="22" y="70" width="40" height="26" fill="#fca5a5"/>
+                            <text x="52" y="94" style="fill:#7dd3fc" font-family="Segoe UI, sans-serif" font-size="15">🔗</text>
+                            <text x="76" y="84" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Artwork — Linked SO</text>
+                            <text x="76" y="98" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">points to artwork.psb on disk · shared by many files</text>
+                            <rect x="12" y="108" width="436" height="46" fill="#313131" stroke="#4a4a4a"/>
+                            <text x="24" y="130" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Right-click ▸ Replace Contents… / Relink to File…</text>
+                            <text x="24" y="147" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">Package (File ▸ Package) collects linked files for handoff</text>
+                        </svg>
+                        <figcaption>Figure 2: Two badges to recognize. Linked objects show a link icon; if a link goes missing the layer flags it, and <strong>File ▸ Package</strong> gathers all linked files so nothing breaks on another machine.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Linked files can go missing</h4>
+                    <p>Move or rename a linked file and Photoshop loses it (the layer shows a warning). Keep linked assets in a project folder you don't reshuffle, and <strong>Package</strong> the project before sending it on. The power of links comes with the discipline of not moving them.</p>
+                </div>
+            </section>
+
+            <!-- Mockup -->
+            <section id="mockup" class="lesson-section">
+                <h2>🖼️ Building a Mockup Placeholder</h2>
+                <p>A mockup (art on a mug, a billboard, a phone screen) is just a Smart Object placeholder shaped to the surface. Build it once: put a plain rectangle Smart Object where the art goes, <strong>warp</strong> it to the surface's perspective, then add the surface's shadow and highlight <em>above</em> it on Multiply/Screen layers. Forever after, Replace Contents drops any new art straight onto that surface, lit and warped.</p>
+                <div class="card card-success">
+                    <h4>✅ Effects on the container, not the art</h4>
+                    <p>Apply the warp, shadows, and blend modes to the placeholder Smart Object and the layers around it — never bake them into the art itself. Then the art stays a clean, swappable rectangle and the treatment is permanent. That separation is the entire trick of a good mockup.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: A Reusable Template</h2>
+                <p>Grab a photo of a surface you want to brand — a mug, a poster on a wall, a laptop lid.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Place the placeholder <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Make a rectangle roughly the size of the art area. Right-click ▸ <strong>Convert to Smart Object</strong>.</li>
+                        <li>Free Transform ▸ <strong>Warp</strong> (or Perspective Warp) to conform it to the surface's shape and angle.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Light it into the scene <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Above the placeholder, add a layer set to <strong>Multiply</strong> and paint the surface's existing shadows/creases back over the art.</li>
+                        <li>Add a <strong>Screen</strong> layer for highlights/reflections. Clip both to the placeholder so they only affect the art area.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Swap in real art <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Double-click the placeholder (opens its own tab), paste or place your design, save, close. It flows onto the surface, warped and lit.</li>
+                        <li>Prefer <strong>Place Linked</strong> for the art if several mockups should share it — then one edit updates them all.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Prove reuse <small>· 6 min</small></h3>
+                    <ol>
+                        <li>Replace Contents with a different design. The perspective, shadows, and highlights hold automatically.</li>
+                        <li>Save this file as your reusable mockup template. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Placeholder is a Smart Object, warped to the surface</li>
+                        <li>☐ Shadows (Multiply) + highlights (Screen) on the container, clipped</li>
+                        <li>☐ Art swaps via Replace Contents / double-click edit</li>
+                        <li>☐ Shared art uses Place Linked where appropriate</li>
+                        <li>☐ Saved as a reusable template; Package if handing off</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Build a three-surface mockup (front, side, angled) and drop one design across all three at once via a shared linked file.</li>
+                        <li>Make a "brand sheet" PSD whose logo is a linked SO; then change the logo file and watch every placement update on reopen.</li>
+                        <li>Turn a filter you use often into a Smart Filter on a Smart Object and retune it a week later without redoing the layer.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> nest Smart Objects — a placeholder inside a placeholder — so a whole sub-design (with its own type system from 5.1) becomes one swappable unit.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Smart-Object Template</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Wrap it, treat it, refill it</h3>
+                    <ol>
+                        <li>Rectangle → <strong>Convert to Smart Object</strong> placeholder</li>
+                        <li><strong>Warp</strong> to the surface; add Multiply shadows + Screen highlights (clipped)</li>
+                        <li>Double-click to edit contents, or <strong>Replace Contents</strong> to swap</li>
+                        <li><strong>Place Linked</strong> for art shared across files</li>
+                        <li><strong>Package</strong> the project before handoff so links survive</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: put the treatment on the container and the artwork stays free to change.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Think of a repetitive design task you have done by hand. How would a Smart-Object template and a linked asset have collapsed it into a single edit?</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>You can now build a template that refills itself. Next you scale that idea to a whole campaign: <strong>Lesson 5.3 — Campaign from One Master</strong>, where artboards and linked Smart Objects spin one design into a full set of sized, export-ready deliverables — the Module 5 deliverable.</p>
+                </div>
+                <details>
+                    <summary>Why .psb for linked files, not .psd?</summary>
+                    <p>Either works; large-format or high-bit files may exceed the 2GB PSD limit, and PSB (large document format) handles them. For most brand assets a PSD or even a PNG/SVG linked file is fine.</p>
+                </details>
+                <details>
+                    <summary>Do Smart Objects make my file huge?</summary>
+                    <p>Embedded ones add the contents' full weight to the PSD. Linked ones keep the data external, so the working file stays lighter. That is another reason linked assets scale better across a big project.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_13.html" class="prev-lesson">← Previous: Type Systems, Styles &amp; Grids</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_15.html" class="next-lesson">Next: Campaign from One Master →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

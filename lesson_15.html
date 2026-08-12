@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 5, Lesson 3: produce a whole campaign — poster, social sizes, banner — from one master file using artboards, linked Smart Objects, and multi-size export. The Module 5 deliverable.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 5.3: Campaign from One Master | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 5 • Lesson 3</span><span class="lesson-title">📣 Campaign from One Master</span></h1>
+                <p class="lead">The Module 5 deliverable. A real brief is never one image — it's a poster, an Instagram square, a story, and a web banner, all on-brand and due together. You will build them from a single master using artboards, linked Smart Objects, and multi-size export, so the set stays consistent and updates as one.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Use <strong>artboards</strong> to hold multiple sizes in one document</li>
+                        <li>Share art across artboards with <strong>linked Smart Objects</strong></li>
+                        <li>Adapt one design to portrait, square, and landscape without redrawing it</li>
+                        <li>Export every artboard at once with <strong>Export As</strong> and presets</li>
+                        <li>Deliver a coherent, on-brand campaign set from one file</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 60 minutes</p>
+                    <p><strong>🎯 Project (Module 5 deliverable):</strong> One master file that outputs a full campaign — poster, IG square, story, and banner — all sharing type, art, and grade, all exportable in one pass.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: One Idea, Every Size</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Master &amp; Instances</a></li>
+                        <li><a href="#panel" class="toc-link">Artboards &amp; Multi-Size Export</a></li>
+                        <li><a href="#reflow" class="toc-link">Reflowing a Design to Fit</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: The Campaign</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Campaign Set</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Module 5 Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: One Idea, Every Size</h2>
+                <p>One campaign idea, four deliverables. On the right, the slow way: four separate files, each edited by hand, drifting out of sync. On the left, one master with four artboards fed by shared linked art — change the key art or the tagline once and all four stay identical. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: four disconnected files versus one master with four artboards sharing linked art.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="One master document containing four artboards of different sizes, all fed by a shared linked source." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#f4f8fc"/>
+                                <!-- shared source chip -->
+                                <rect x="250" y="52" width="100" height="30" rx="6" fill="#1473E6"/><text x="300" y="72" text-anchor="middle" fill="#fff" font-family="Segoe UI, sans-serif" font-size="12">shared art</text>
+                                <g stroke="#1473E6" stroke-width="2"><line x1="270" y1="82" x2="130" y2="150"/><line x1="290" y1="82" x2="270" y2="150"/><line x1="310" y1="82" x2="400" y2="150"/><line x1="330" y1="82" x2="500" y2="150"/></g>
+                                <!-- artboards different sizes -->
+                                <g fill="#ffffff" stroke="#9bc0ea" stroke-width="1.5">
+                                    <rect x="70" y="150" width="110" height="150"/><rect x="230" y="150" width="120" height="120"/><rect x="370" y="150" width="140" height="80"/><rect x="440" y="150" width="120" height="150"/>
+                                </g>
+                                <g fill="#93c5fd"><rect x="86" y="170" width="78" height="46"/><rect x="246" y="166" width="88" height="46"/><rect x="386" y="164" width="108" height="30"/><rect x="456" y="170" width="88" height="46"/></g>
+                                <g fill="#40566b" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle"><text x="125" y="292">Poster</text><text x="290" y="262">IG square</text><text x="440" y="222">Banner</text><text x="500" y="292">Story</text></g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="Four disconnected files drifting out of sync." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#fdf6f4"/>
+                                <g fill="#ffffff" stroke="#e0b3ac" stroke-width="1.5">
+                                    <rect x="70" y="150" width="110" height="150"/><rect x="230" y="150" width="120" height="120"/><rect x="370" y="150" width="140" height="80"/><rect x="440" y="150" width="120" height="150"/>
+                                </g>
+                                <g fill="#fca5a5"><rect x="86" y="170" width="78" height="46"/><rect x="246" y="166" width="88" height="40"/><rect x="386" y="168" width="100" height="26"/><rect x="456" y="176" width="88" height="40"/></g>
+                                <g fill="#8a5a52" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle"><text x="125" y="292">poster_v3</text><text x="290" y="262">insta_FINAL</text><text x="440" y="222">banner_old</text><text x="500" y="292">story_v2</text></g>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">One master</span>
+                        <span class="ba-label before">Four files</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="60" aria-label="Reveal the one-master version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. Artboards keep every size in one place; linked art keeps them in agreement. Consistency stops being willpower and becomes structure.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Master &amp; Instances</h2>
+                <p>Think of one <strong>master</strong> that owns the campaign's shared truth — the key art, the logo, the tagline, the grade — and several <strong>instances</strong> (the artboards) that each present that truth at a specific size and crop. The shared elements are <em>linked</em> Smart Objects, so they exist once and appear everywhere; only layout and framing differ per instance.</p>
+                <p>This is the same idea as 5.1's styles and 5.2's templates, scaled up to a whole deliverable set: decide the shared things once, place them by reference, and let each size be a view onto the same source rather than a fresh copy of it.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 180" role="img" aria-label="A master source feeds a poster, square, and banner instance, each a differently-cropped view of the same content." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <rect x="30" y="60" width="110" height="70" rx="8" fill="#1473E6"/><text x="85" y="92" text-anchor="middle" fill="#fff" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700">Master</text><text x="85" y="110" text-anchor="middle" fill="#cfe3ff" font-family="Segoe UI, sans-serif" font-size="10.5">art · logo · grade</text>
+                        <g stroke="#1473E6" stroke-width="2"><line x1="140" y1="80" x2="230" y2="55"/><line x1="140" y1="95" x2="230" y2="95"/><line x1="140" y1="110" x2="230" y2="135"/></g>
+                        <rect x="235" y="30" width="70" height="46" fill="#eef5ff" stroke="#9bc0ea"/><text x="270" y="58" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="10">Poster</text>
+                        <rect x="235" y="82" width="60" height="46" fill="#eef5ff" stroke="#9bc0ea"/><text x="265" y="110" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="10">Square</text>
+                        <rect x="235" y="134" width="90" height="34" fill="#eef5ff" stroke="#9bc0ea"/><text x="280" y="155" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="10">Banner</text>
+                        <text x="380" y="80" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11">each instance =</text>
+                        <text x="380" y="98" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11">a view onto</text>
+                        <text x="380" y="116" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11">the same master</text>
+                    </svg>
+                    <figcaption>Figure 1: One master, many framed instances. Update the master and every instance inherits the change; only the crop and layout are per-size.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel: artboards & export -->
+            <section id="panel" class="lesson-section">
+                <h2>🗂️ Artboards &amp; Multi-Size Export</h2>
+                <p>Artboards are independent canvases inside one PSD, each with its own size (there are presets for common social and ad sizes). You lay out each artboard, then <strong>File ▸ Export ▸ Export As</strong> renders <em>every</em> artboard to its own file in one pass — pick format, scale, and even multiple scales (1×, 2×) at once. One command, the whole set out the door.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Export As — all artboards</span>
+                        </div>
+                        <svg viewBox="0 0 460 176" role="img" aria-label="Export As dialog listing four artboards to export with format PNG/JPG and scale options.">
+                            <rect width="460" height="176" fill="#3a3a3a"/>
+                            <rect x="12" y="14" width="150" height="148" fill="#2f2f2f" stroke="#4a4a4a"/>
+                            <text x="22" y="32" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Artboards (4)</text>
+                            <rect x="18" y="40" width="138" height="20" fill="#1473E6"/><text x="26" y="54" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10.5">Poster 3300×5100</text>
+                            <text x="26" y="78" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="10.5">IG square 1080²</text>
+                            <text x="26" y="98" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="10.5">Story 1080×1920</text>
+                            <text x="26" y="118" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="10.5">Banner 1500×500</text>
+                            <!-- settings -->
+                            <text x="180" y="32" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Format</text>
+                            <rect x="180" y="40" width="120" height="22" fill="#1473E6"/><text x="240" y="55" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">PNG ▾</text>
+                            <text x="180" y="86" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Scale</text>
+                            <rect x="180" y="94" width="56" height="22" fill="#555"/><text x="208" y="109" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">1×</text>
+                            <rect x="242" y="94" width="56" height="22" fill="#555"/><text x="270" y="109" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">2×</text>
+                            <rect x="330" y="138" width="112" height="24" fill="#1473E6"/><text x="386" y="155" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Export All</text>
+                        </svg>
+                        <figcaption>Figure 2: <strong>Export As</strong> renders every artboard to its own file at once. Set format and scale globally; the whole campaign exports in a single click.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Design at the biggest size, export down</h4>
+                    <p>Build the key art at (or above) the largest deliverable's resolution — usually the print poster — and let smaller sizes scale down from it. Scaling a small master <em>up</em> for print softens everything. Biggest first, always.</p>
+                </div>
+            </section>
+
+            <!-- Reflow -->
+            <section id="reflow" class="lesson-section">
+                <h2>↔️ Reflowing a Design to Fit</h2>
+                <p>The same idea has to survive a tall story (9:16), a square, and a wide banner (3:1). Don't just squash it — <strong>re-compose</strong>. Keep the focal point and the shared elements, but let the layout breathe differently in each frame: stack elements vertically for the story, center for the square, spread horizontally for the banner.</p>
+                <ul>
+                    <li><strong>Anchor the focal point</strong> (logo, hero, headline) first in each frame, then arrange the rest around it.</li>
+                    <li><strong>Reuse, don't recreate:</strong> the linked art and named styles come along; only position and size change.</li>
+                    <li><strong>Protect safe zones:</strong> keep text clear of a story's UI overlays and a banner's crop edges.</li>
+                </ul>
+                <div class="card card-success">
+                    <h4>✅ One idea, three compositions</h4>
+                    <p>A campaign feels cohesive when every size is clearly the same idea, not literally the same crop. Recomposing per aspect ratio — while the art, type, and grade stay shared — is exactly that balance.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: The Campaign</h2>
+                <p>Bring your key art (ideally a Module 4 composite), your 5.1 type styles, and your 5.2 linked logo.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Set up artboards <small>· 10 min</small></h3>
+                    <ol>
+                        <li>New document, Artboard on. Add artboards from presets: a poster, IG square (1080²), story (1080×1920), banner (1500×500).</li>
+                        <li>Design the poster (largest) at full resolution first.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Share the essentials <small>· 12 min</small></h3>
+                    <ol>
+                        <li><strong>Place Linked</strong> the logo and key art into each artboard so they're the same source everywhere.</li>
+                        <li>Apply your Paragraph Styles to each headline/subhead so the type voice is identical across sizes.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Recompose per size <small>· 14 min</small></h3>
+                    <ol>
+                        <li>On each artboard, anchor the focal point, then rearrange around the aspect ratio. Respect safe zones on the story and banner.</li>
+                        <li>Optional: put your unifying grade (Module 4) as a linked or duplicated top layer on each so color stays shared.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Export the set <small>· 8 min</small></h3>
+                    <ol>
+                        <li><strong>File ▸ Export ▸ Export As</strong>, select all artboards, choose format and scale, Export All.</li>
+                        <li>Change the tagline in the linked source and re-export to prove the whole set updates from one edit. Module 5 deliverable done. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist (Module 5 deliverable)</h3>
+                    <ul>
+                        <li>☐ One master PSD with poster, square, story, and banner artboards</li>
+                        <li>☐ Logo &amp; key art placed as linked Smart Objects (shared source)</li>
+                        <li>☐ Type driven by the 5.1 Paragraph/Character Styles</li>
+                        <li>☐ Each size recomposed for its aspect ratio, safe zones respected</li>
+                        <li>☐ All artboards exported in one pass via Export As</li>
+                        <li>☐ A single source edit updates the whole set</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Extend the campaign with two more sizes (a billboard and an email header) without recreating any shared element.</li>
+                        <li>Produce a light and a dark variant of the whole set by swapping one linked background — everything else stays put.</li>
+                        <li>Hand the project to a "client" (a friend): Package it, have them change the linked logo, and confirm every artboard updates on their machine.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> pair this with data-driven graphics (a taste of Module 6) to spin out dozens of localized versions — same layout, different text and image per row of a data set.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Campaign Set</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>One master, every size</h3>
+                    <ol>
+                        <li><strong>Artboards</strong> for each size; design the largest first</li>
+                        <li><strong>Place Linked</strong> logo + key art into every artboard</li>
+                        <li>Apply shared <strong>Paragraph Styles</strong> for one type voice</li>
+                        <li><strong>Recompose</strong> per aspect ratio; respect safe zones</li>
+                        <li><strong>Export As</strong> all artboards at once (format + scale)</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: share the idea, reframe the layout, export the set in one breath.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Find a brand you admire and list every place its campaign appears (feed, story, print, web). What stays identical across them, and what is recomposed? That is the master-and-instances split in the wild.</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Module 5 Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>A <strong>type system</strong> (scale + styles + grid) gives every layout one consistent voice.</li>
+                        <li><strong>Smart Objects</strong> protect art and, via <strong>linked</strong> files, let one source update many designs.</li>
+                        <li><strong>Artboards</strong> hold every size in one master; <strong>Export As</strong> ships them together.</li>
+                        <li>Design the largest first, share the essentials, recompose per aspect ratio.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished — Across All of Module 5</h3>
+                <p>You have moved from making one good image to running a small production system: a named type voice (5.1), self-updating templates (5.2), and a full campaign from a single master (5.3). This is the skill set that turns a designer into a studio — consistent, fast, and scalable output that clients and teams can rely on.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Isn't this really an Illustrator/InDesign job?</summary>
+                    <p>For vector-heavy branding and long documents, yes. But image-led campaigns — anything built on photography or composites — live in Photoshop, and artboards plus linked Smart Objects make it a genuinely capable production tool for that work.</p>
+                </details>
+                <details>
+                    <summary>How do I keep a big multi-artboard file manageable?</summary>
+                    <p>Lean on linked assets (keep data external), name layers and groups, and use layer color labels per artboard. If a file gets unwieldy, split shared art into its own linked PSD so each campaign file stays light.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You have systems for consistency; next you get systems for <em>speed and volume</em>. <strong>Module 6 — Generative + Automation, Advanced</strong> covers generative compositing, conditional Actions, and data-driven graphics that produce dozens of variations from one template.</p>
+
+                <h3>✅ Before the Next Module</h3>
+                <ul>
+                    <li>Ship one campaign set (4+ sizes) from a single master file.</li>
+                    <li>Prove a one-edit update propagates across every artboard.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/artboards.html" target="_blank" rel="noopener">Adobe: Artboards</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/create-paragraph-character-styles.html" target="_blank" rel="noopener">Adobe: Paragraph &amp; Character Styles</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>You just learned to make consistency automatic — the quiet superpower that separates a hobbyist from a studio. With the Commercial Work tier complete, only the Going Further tier remains. Next we teach Photoshop to do the repetitive work for you. Onward.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_14.html" class="prev-lesson">← Previous: Smart-Object Templates &amp; Linked Assets</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_16.html" class="next-lesson">Next: Generative for Compositing →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 4, Lesson 3: add atmospheric depth and lay one unifying grade over an entire composite so separate photos read as a single frame. The Module 4 deliverable.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 4.3: Atmosphere &amp; the Unifying Grade | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 4 • Lesson 3</span><span class="lesson-title">🌫️ Atmosphere &amp; the Unifying Grade</span></h1>
+                <p class="lead">The Module 4 deliverable. Even a perfectly placed, perfectly lit composite can still look like separate photos sitting near each other. Atmosphere adds depth, and a single grade laid over everything is the final handshake that makes disparate elements agree they were shot together.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Use <strong>atmospheric perspective</strong> (haze, fading contrast) to build depth</li>
+                        <li>Add fog, light rays, and dust that sit <em>between</em> elements, not just on top</li>
+                        <li>Lay a single <strong>unifying grade</strong> over the whole stack with one adjustment</li>
+                        <li>Understand why one grade over everything beats grading each piece</li>
+                        <li>Deliver a finished, cohesive advertising-style key visual</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55 minutes</p>
+                    <p><strong>🎯 Project (Module 4 deliverable):</strong> A finished composite key visual — placed, lit, and now given depth and one grade so it reads as a single photograph.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: One Photograph</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Distance Has a Look</a></li>
+                        <li><a href="#panel" class="toc-link">The Unifying Grade</a></li>
+                        <li><a href="#atmos" class="toc-link">Adding Atmosphere</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Depth &amp; Grade</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Atmosphere &amp; Grade</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Module 4 Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: One Photograph</h2>
+                <p>On the right, a flat, neutral daytime scene — technically fine, emotionally nothing, and the kind of clinical light that makes composited elements stand apart. On the left, one unifying grade: cooler shadows, warmer highlights, richer contrast. Suddenly it is a <em>frame</em>, and anything dropped into it inherits the same mood. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after: a flat neutral cityscape given a single cohesive cinematic grade.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <img src="images/l12_after.jpg" alt="The cityscape after a unifying cinematic grade: teal shadows, warm highlights, deeper contrast, cohesive mood.">
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <img src="images/l12_before.jpg" alt="A flat, neutral, bright daytime cityscape before grading.">
+                        </div>
+                        <span class="ba-label after">Graded</span>
+                        <span class="ba-label before">Flat</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the graded version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A real unifying grade through the Adobe tools ("Cool Shadows &amp; Warm Highlights"). One adjustment over the entire frame — the same grade every composited element would sit under, which is exactly why they end up looking related.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Distance Has a Look</h2>
+                <p><strong>Atmospheric perspective</strong> is the everyday fact that the farther something is, the more the air between you and it washes it out: contrast drops, colors desaturate and shift toward the sky's color (usually cooler and lighter), and edges soften. Mountains on the horizon are pale blue for this reason. Our brains read that fade as distance automatically.</p>
+                <p>So depth in a composite is not only about size and placement — it is about <em>reducing contrast and adding haze on the far elements</em>. A background element that is as crisp and saturated as the foreground will always feel pasted forward. Push it back with a little atmosphere.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 180" role="img" aria-label="Three depth bands from foreground to distance: crisp and saturated in front, hazy and desaturated toward the back." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <defs><linearGradient id="haze" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b5a3a"/><stop offset="0.5" stop-color="#6f93a6"/><stop offset="1" stop-color="#c3d4dd"/></linearGradient></defs>
+                        <rect x="20" y="30" width="480" height="60" fill="url(#haze)" stroke="#94a3b8"/>
+                        <text x="70" y="66" style="fill:#eafff2" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">foreground</text>
+                        <text x="255" y="66" text-anchor="middle" style="fill:#183040" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">midground</text>
+                        <text x="450" y="66" text-anchor="end" style="fill:#3a4a52" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">distance</text>
+                        <text x="70" y="118" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">crisp · saturated · dark</text>
+                        <text x="450" y="118" text-anchor="end" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">hazy · pale · low-contrast</text>
+                        <text x="260" y="150" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="12">more air between you and it → less contrast, cooler, lighter</text>
+                    </svg>
+                    <figcaption>Figure 1: The atmospheric gradient. Match each element's contrast and haze to its depth in the scene and the frame gains real three-dimensional space.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel: unifying grade -->
+            <section id="panel" class="lesson-section">
+                <h2>🎨 The Unifying Grade</h2>
+                <p>The magic move is simple: put <strong>one</strong> grade at the very top of the layer stack so it affects every element at once. A Color Lookup (LUT), a Gradient Map on low opacity, or a Curves + Color Balance group — it does not matter which, as long as a single set of adjustments touches the whole frame. Shared color is shared identity; the eye reads elements under one grade as belonging to one photo.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Layers — grade on top</span>
+                        </div>
+                        <svg viewBox="0 0 460 186" role="img" aria-label="Layers panel with a unifying grade group at the top over a haze layer, subject, shadows, and background.">
+                            <rect width="460" height="186" fill="#2f2f2f"/>
+                            <rect x="12" y="10" width="436" height="34" fill="#173a5e" stroke="#1473E6"/>
+                            <text x="24" y="31" style="fill:#cfe3ff" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">★ Unifying Grade (Color Lookup / Curves)</text>
+                            <rect x="12" y="48" width="436" height="30" fill="#3a3a3a" stroke="#4a4a4a"/>
+                            <text x="24" y="68" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Atmosphere / haze — Screen, low opacity</text>
+                            <rect x="12" y="82" width="436" height="30" fill="#353535" stroke="#4a4a4a"/>
+                            <text x="24" y="102" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Subject + clipped light/color</text>
+                            <rect x="12" y="116" width="436" height="30" fill="#313131" stroke="#4a4a4a"/>
+                            <text x="24" y="136" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Contact + cast shadows — Multiply</text>
+                            <rect x="12" y="150" width="436" height="28" fill="#2b2b2b" stroke="#4a4a4a"/>
+                            <text x="24" y="169" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Background 🔒</text>
+                        </svg>
+                        <figcaption>Figure 2: The grade lives at the top so it rains down on everything below. Everything under it — background, subject, shadows, haze — is grabbed by the same color, and that is what unifies them.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Unify last, grade once</h4>
+                    <p>If you grade each element separately you will chase your tail forever. Get every piece to <em>neutral and correct</em> first, then apply one grade on top. One dial to turn beats twenty, and it is the only way to keep a large composite coherent.</p>
+                </div>
+            </section>
+
+            <!-- Atmosphere -->
+            <section id="atmos" class="lesson-section">
+                <h2>🌁 Adding Atmosphere</h2>
+                <p>Atmosphere is what fills the space <em>between</em> your elements, and it is the difference between "layers stacked" and "a world." A few reliable moves:</p>
+                <ul>
+                    <li><strong>Depth haze:</strong> a new layer, soft low-opacity brush in the sky/scene color, painted over the far elements to push them back.</li>
+                    <li><strong>Light rays / god rays:</strong> paint streaks from the light source on a Screen layer, blur, mask to the shafts. Ties the light into the air.</li>
+                    <li><strong>Floating particles:</strong> subtle dust or mist on a Screen layer gives the light something to travel through.</li>
+                    <li><strong>Glow / bloom:</strong> a merged copy, blurred, on Screen at low opacity makes highlights bleed like a real lens.</li>
+                </ul>
+                <div class="card card-success">
+                    <h4>✅ Atmosphere goes between, grade goes on top</h4>
+                    <p>Place haze and rays <em>above the elements they affect but below the final grade</em>. That way distant elements get their haze, and then the single grade still unifies the entire frame, atmosphere included.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Depth &amp; Grade</h2>
+                <p>Open your lit, shadowed composite from Lesson 4.2.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Set depth by contrast <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Identify your far, mid, and near elements. On the far ones, add a clipped Curves to lower contrast and lift the blacks slightly, and a touch of the sky color.</li>
+                        <li>Keep the nearest element the crispest and most saturated. The contrast falloff alone reads as distance.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Paint the atmosphere <small>· 12 min</small></h3>
+                    <ol>
+                        <li>New layer above the far elements: soft brush, scene/sky color, very low flow, glaze haze over the background so it recedes.</li>
+                        <li>Optional: a Screen layer for light rays from the source, blurred and masked to shafts; a whisper of particles for air.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: The unifying grade <small>· 10 min</small></h3>
+                    <ol>
+                        <li>At the top of the stack add your grade: a <strong>Color Lookup</strong> LUT, or a Curves + Color Balance group (cool the shadows, warm the highlights, add gentle contrast).</li>
+                        <li>Toggle it and watch every element lock together. Pull its opacity back until it is strong but not garish.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Finish and deliver <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Add a subtle vignette to hold the eye, a touch of glow on the highlights, and grain to bind everything to one film stock.</li>
+                        <li>Flatten a copy, Convert to sRGB, export. Module 4 deliverable: a cohesive key visual that reads as one photograph. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist (Module 4 deliverable)</h3>
+                    <ul>
+                        <li>☐ Element placed with correct perspective &amp; scale (4.1)</li>
+                        <li>☐ Element lit, with contact and cast shadows (4.2)</li>
+                        <li>☐ Depth set by lowering contrast / adding haze on far elements</li>
+                        <li>☐ Atmosphere (haze, optional rays/particles) between elements</li>
+                        <li>☐ One unifying grade over the whole stack</li>
+                        <li>☐ Vignette + grain; exported as a finished key visual</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Grade one composite three ways — warm blockbuster, cool thriller, faded indie — and notice the story each grade tells with the same pixels.</li>
+                        <li>Build a deep scene (foreground subject, midground, far skyline) and prove the depth using contrast and haze alone, before any grade.</li>
+                        <li>Save your unifying grade as a LUT (Lesson 2.2) and reuse it across three different composites to give a series one visual identity.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> composite a subject into a scene shot at a completely different time of day, and use only atmosphere + grade to make them agree. That is the exam every senior compositor passes.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Atmosphere &amp; Grade</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Depth, then one grade</h3>
+                    <ol>
+                        <li>Lower contrast + add sky color on <strong>far</strong> elements (atmospheric perspective)</li>
+                        <li>Glaze <strong>haze</strong> between elements; optional rays / particles on Screen</li>
+                        <li>Keep atmosphere <em>above elements, below the grade</em></li>
+                        <li>One <strong>unifying grade</strong> (Color Lookup / Curves) on top of everything</li>
+                        <li>Vignette + glow + grain, then flatten &amp; export to sRGB</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: correct every piece to neutral, then let one grade make them a family.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Pick a film still you love. Describe its grade in words (where are the shadows pushed, where the highlights?) and where atmosphere creates its depth. Then try to rebuild that grade on one of your own images.</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Module 4 Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li><strong>Perspective</strong> first: share one horizon, place by ground contact, match the lens.</li>
+                        <li><strong>Light &amp; shadow</strong> next: match direction/hardness/color, then anchor with contact and cast shadows.</li>
+                        <li><strong>Atmosphere</strong> builds depth: lower contrast and add haze on far elements.</li>
+                        <li>One <strong>unifying grade</strong> over the whole stack makes separate photos read as one frame.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished — Across All of Module 4</h3>
+                <p>You can now take elements shot at different times, in different light, on different lenses, and assemble them into a single believable image: matched in geometry (4.1), married in light and shadow (4.2), and unified by atmosphere and grade (4.3). Commercial compositing is one of the highest-paid Photoshop skills, and you now own its full pipeline.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Should I add atmosphere or grade first?</summary>
+                    <p>Atmosphere first, grade last. Atmosphere sets the depth relationships between elements; the grade then unifies the whole frame, atmosphere included. Reverse it and the grade can't fully tie in the haze you add afterward.</p>
+                </details>
+                <details>
+                    <summary>My composite still looks "off" after all this. What did I miss?</summary>
+                    <p>Run the checklist in order: horizon, scale, lens, light direction, shadow, contact shadow, depth/haze, grade. Ninety percent of "off" composites fail at scale or the missing contact shadow. Fix those two before blaming the grade.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You have finished making single images extraordinary. The Commercial Work tier now turns to producing at scale. <strong>Module 5 — Design Systems &amp; Type</strong> covers type systems, Smart-Object templates, and building a whole campaign from one master file.</p>
+
+                <h3>✅ Before the Next Module</h3>
+                <ul>
+                    <li>Complete one composite through the full 4.1 → 4.2 → 4.3 pipeline and keep the layered file.</li>
+                    <li>Save your unifying grade as a reusable LUT.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/perspective-warp.html" target="_blank" rel="noopener">Adobe: Perspective Warp</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/color-lookup-adjustment.html" target="_blank" rel="noopener">Adobe: Color Lookup (LUTs)</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Compositing is where technique becomes invisible and craft becomes storytelling. You just learned to build worlds that never stood in front of a lens — and to make people believe them. That is a genuinely rare skill. Take a breath, then let's turn it into repeatable, sellable systems.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_11.html" class="prev-lesson">← Previous: Light, Shadows &amp; Reflections</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_13.html" class="next-lesson">Next: Type Systems, Styles &amp; Grids →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

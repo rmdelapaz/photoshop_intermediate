@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 4, Lesson 2: match light direction, quality, and color, then build contact and cast shadows and reflections so a composited element is anchored in the scene.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 4.2: Light, Shadows &amp; Reflections | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 4 • Lesson 2</span><span class="lesson-title">💡 Light, Shadows &amp; Reflections</span></h1>
+                <p class="lead">Perspective puts an element in the right place; light makes it real. You match the scene's light direction, quality, and color on the element itself, then anchor it to the world with the shadows and reflections the eye demands before it will believe anything.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Read a scene's light: <strong>direction</strong>, <strong>quality</strong> (hard/soft), and <strong>color</strong></li>
+                        <li>Relight an element with dodge &amp; burn and masked color so it matches</li>
+                        <li>Build a believable <strong>cast shadow</strong> (transform, blur, gradient opacity)</li>
+                        <li>Add the tight <strong>contact shadow</strong> that actually glues feet to the floor</li>
+                        <li>Fake a convincing <strong>reflection</strong> on a glossy surface</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 60 minutes</p>
+                    <p><strong>🎯 Project:</strong> Take the placed element from Lesson 4.1 and light it, shadow it, and (if the ground is glossy) reflect it, so it is undeniably standing in the scene.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Anchored to the Ground</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Read the Light First</a></li>
+                        <li><a href="#panel" class="toc-link">Building a Cast Shadow</a></li>
+                        <li><a href="#contact" class="toc-link">Contact Shadows &amp; Reflections</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Light &amp; Anchor</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Light &amp; Shadow</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: Anchored to the Ground</h2>
+                <p>Same object, same spot. On the right it floats — no shadow, so the brain reads it as a sticker pasted on top. On the left, a soft contact shadow and a cast shadow running away from the light plant it firmly on the floor. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: an object floating with no shadow, versus the same object anchored by a contact shadow and a cast shadow.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A sphere resting on the ground with a dark contact shadow beneath it and a soft cast shadow stretching away from a light source." style="width:100%;height:100%;display:block;">
+                                <defs>
+                                    <radialGradient id="ballA" cx="0.38" cy="0.32" r="0.75"><stop offset="0" stop-color="#f0d9b8"/><stop offset="0.6" stop-color="#c88f5a"/><stop offset="1" stop-color="#7a4e2c"/></radialGradient>
+                                    <radialGradient id="contactA" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#000000aa"/><stop offset="1" stop-color="#00000000"/></radialGradient>
+                                    <linearGradient id="castA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00000066"/><stop offset="1" stop-color="#00000000"/></linearGradient>
+                                </defs>
+                                <rect width="600" height="400" fill="#e7ddd0"/><rect y="270" width="600" height="130" fill="#d8cbb8"/>
+                                <!-- sun -->
+                                <circle cx="120" cy="70" r="26" fill="#ffd66b"/><g stroke="#ffd66b" stroke-width="3"><line x1="120" y1="30" x2="120" y2="12"/><line x1="86" y1="70" x2="68" y2="70"/><line x1="96" y1="46" x2="83" y2="33"/><line x1="96" y1="94" x2="83" y2="107"/></g>
+                                <!-- cast shadow to the right, away from sun -->
+                                <ellipse cx="380" cy="300" rx="150" ry="26" fill="url(#castA)"/>
+                                <!-- contact shadow -->
+                                <ellipse cx="300" cy="296" rx="64" ry="15" fill="url(#contactA)"/>
+                                <!-- ball -->
+                                <circle cx="300" cy="240" r="60" fill="url(#ballA)"/>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A sphere with a flat even fill and no shadow, appearing to float." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#e7ddd0"/><rect y="270" width="600" height="130" fill="#d8cbb8"/>
+                                <circle cx="120" cy="70" r="26" fill="#ffd66b"/>
+                                <circle cx="300" cy="240" r="60" fill="#c69a6a"/>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Anchored</span>
+                        <span class="ba-label before">Floating</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the anchored version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. Shadow work is hand-painting the connector can't tool-generate, so we show the <em>logic</em>: the cast shadow points away from the light, the contact shadow sits tight under the object.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Read the Light First</h2>
+                <p>Before you touch the element, interrogate the background's light. Three questions: <strong>Where</strong> is it coming from (look at existing shadows — they point away from the source)? <strong>How hard</strong> is it (crisp shadow edges mean hard, direct sun; soft edges mean an overcast or diffused source)? <strong>What color</strong> is it (warm afternoon sun, cool shade, a green cast from foliage)?</p>
+                <p>Whatever you read, the element must obey. If the scene's shadows are soft and fall to the right, your element's own shading and its new shadow must be soft and fall to the right too. A mismatch here is the second most common composite tell after scale.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 200" role="img" aria-label="A light source at upper left casts shadows down and to the right; the element's highlight faces the light and its shadow side faces away." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <circle cx="70" cy="50" r="20" fill="#ffd66b"/><text x="70" y="90" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="10.5">light source</text>
+                        <!-- rays -->
+                        <g stroke="#f4c542" stroke-width="2" stroke-dasharray="4 3"><line x1="90" y1="62" x2="240" y2="150"/><line x1="90" y1="62" x2="330" y2="150"/></g>
+                        <!-- object -->
+                        <g transform="translate(250,120)">
+                            <circle cx="0" cy="0" r="30" fill="#c88f5a"/>
+                            <path d="M0 -30 A30 30 0 0 0 -21 21 A30 30 0 0 1 0 -30" fill="#7a4e2c" opacity="0.55"/>
+                            <ellipse cx="6" cy="-8" rx="9" ry="6" fill="#ffffff" opacity="0.4"/>
+                        </g>
+                        <!-- shadow -->
+                        <ellipse cx="330" cy="150" rx="60" ry="12" fill="#00000055"/>
+                        <text x="250" y="90" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700">highlight faces the light</text>
+                        <text x="360" y="178" text-anchor="middle" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="11">shadow falls away from it</text>
+                    </svg>
+                    <figcaption>Figure 1: Light direction sets three things at once — which side of the element is bright, which side is in shadow, and which way its cast shadow runs. All three must agree with the background.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel: cast shadow -->
+            <section id="panel" class="lesson-section">
+                <h2>🌑 Building a Cast Shadow</h2>
+                <p>A cast shadow is its own layer beneath the element. The reliable build: fill the element's silhouette with black on a new layer, flip/skew it away from the light with Free Transform so it lies on the ground, then <strong>blur it more the farther it gets from the object</strong> and fade its opacity with distance. Real shadows are crisp and dark where they touch the object and soft and pale where they end.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Shadow layers</span>
+                        </div>
+                        <svg viewBox="0 0 460 176" role="img" aria-label="Layers panel with a subject on top, a contact shadow layer, and a cast shadow layer set to Multiply above the background.">
+                            <rect width="460" height="176" fill="#2f2f2f"/>
+                            <rect x="12" y="12" width="436" height="38" fill="#3a3a3a" stroke="#4a4a4a"/>
+                            <rect x="22" y="18" width="40" height="26" fill="#c88f5a" stroke="#5a5a5a"/>
+                            <text x="74" y="35" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Subject (cut-out)</text>
+                            <rect x="12" y="54" width="436" height="38" fill="#353535" stroke="#4a4a4a"/>
+                            <ellipse cx="42" cy="73" rx="20" ry="7" fill="#111"/>
+                            <text x="74" y="70" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Contact shadow — Multiply</text>
+                            <text x="74" y="85" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">tiny, dark, ~2 px blur, right under the base</text>
+                            <rect x="12" y="96" width="436" height="38" fill="#313131" stroke="#4a4a4a"/>
+                            <polygon points="26,124 58,110 66,126 34,130" fill="#222"/>
+                            <text x="74" y="112" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Cast shadow — Multiply</text>
+                            <text x="74" y="127" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">skewed away from light, blur + fade with distance</text>
+                            <rect x="12" y="138" width="436" height="30" fill="#2b2b2b" stroke="#4a4a4a"/>
+                            <text x="74" y="157" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Background 🔒</text>
+                        </svg>
+                        <figcaption>Figure 2: Two shadow layers on <strong>Multiply</strong> under the subject. Multiply keeps the ground texture showing through, so the shadow darkens the floor instead of painting a flat grey blob on it.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Shadows are colored, not black</h4>
+                    <p>Pure black shadows look cut-out. Outdoor shadows lean cool/blue because they are lit by the sky, not the sun. Set the shadow layer slightly blue and pull its opacity back to match the depth of the real shadows already in the scene.</p>
+                </div>
+            </section>
+
+            <!-- Contact & reflections -->
+            <section id="contact" class="lesson-section">
+                <h2>🪞 Contact Shadows &amp; Reflections</h2>
+                <p>The <strong>contact shadow</strong> (or ambient occlusion) is the small, dark, barely-blurred smudge exactly where the object meets the ground. It is the single most convincing element in the whole composite — the eye reads it as physical contact. Even when a long cast shadow is subtle, a good contact shadow sells the grounding.</p>
+                <p>On a glossy floor, water, or a polished table you also owe a <strong>reflection</strong>: duplicate the element, flip it vertically, align its base to the object's base, drop the opacity, and add a slight vertical blur that increases with distance. Mask it to fade as it recedes.</p>
+                <div class="card card-success">
+                    <h4>✅ The two-shadow habit</h4>
+                    <p>Always build both a contact shadow and a cast shadow. They do different jobs: the cast shadow tells you where the light is; the contact shadow tells you the object is touching the world. Skip either and something feels subtly wrong even if you can't name it.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: Light &amp; Anchor</h2>
+                <p>Open your placed-element file from Lesson 4.1.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Read and match the light <small>· 12 min</small></h3>
+                    <ol>
+                        <li>Note the direction, hardness, and color of the scene's existing shadows.</li>
+                        <li>On the element, add a Dodge &amp; Burn grey layer (Lesson 3.2) clipped to it: brighten the side facing the light, deepen the side away from it, so its shading matches.</li>
+                        <li>Add a clipped Color Balance or Photo Filter to push the element's light color toward the scene's (warm sun, cool shade).</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Contact shadow <small>· 8 min</small></h3>
+                    <ol>
+                        <li>New layer under the element, Multiply. With a small soft black brush at low flow, darken exactly where the base meets the ground. Keep it tight and only lightly blurred.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Cast shadow <small>· 12 min</small></h3>
+                    <ol>
+                        <li>Duplicate the element, fill with black (lock transparency, fill), set Multiply, move below.</li>
+                        <li>Free Transform ▸ Distort/Skew it onto the ground, running away from the light. Increase Gaussian Blur toward the far end and mask a gradient so it fades out. Tint it slightly blue.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Reflection (if glossy) <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Duplicate the element, Flip Vertical, align bases, lower opacity to ~25–40%, add motion/gaussian blur increasing downward, mask a fade. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Element re-lit to match the scene's direction, hardness, and color</li>
+                        <li>☐ Tight contact shadow at the base (Multiply)</li>
+                        <li>☐ Cast shadow running away from the light, blurred + faded with distance</li>
+                        <li>☐ Shadows tinted (not pure black) to match the scene</li>
+                        <li>☐ Reflection added if the surface is glossy</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Composite the same object into a hard-sun scene and a soft-overcast scene. Feel how completely the shadow's edge and depth have to change.</li>
+                        <li>Put an object on a puddle or a marble floor and build the reflection. Get the base alignment perfect — a reflection that starts a few pixels off is instantly wrong.</li>
+                        <li>Light one element with a colored source (a neon sign, a sunset) and let that color spill onto its lit edge. Colored rim light is what makes advertising composites sing.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> add a subtle <strong>rim light</strong> — a thin bright edge where the light wraps the element — on a masked layer. It separates the subject from the background and reads as expensive.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Light &amp; Shadow</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Match the light, anchor the element</h3>
+                    <ol>
+                        <li>Read the scene: light <strong>direction · hardness · color</strong></li>
+                        <li>Relight the element (clipped D&amp;B + color) to agree</li>
+                        <li><strong>Contact shadow</strong>: tight, dark, low blur, Multiply</li>
+                        <li><strong>Cast shadow</strong>: skew away from light, blur + fade with distance, tint blue</li>
+                        <li><strong>Reflection</strong> on glossy floors: flip, align base, fade + blur</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: the contact shadow says "touching," the cast shadow says "where the light is."</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Look around the room and study one object's shadow. Where is the crisp contact shadow, where does the cast shadow soften, and what color is it? Retelling it in words trains your compositing eye.</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>Placed, lit, and grounded — your element now lives in the scene. The final step ties the whole frame into one photograph: <strong>Lesson 4.3 — Atmosphere &amp; the Unifying Grade</strong>, where haze, depth, and a single grade over everything become the Module 4 key visual.</p>
+                </div>
+                <details>
+                    <summary>Can't I just use the Drop Shadow layer style?</summary>
+                    <p>Layer-style drop shadows sit at a fixed offset and never lie on the ground in perspective, so they read as graphic design, not photography. Build shadows on real layers you can skew and blur. Save Drop Shadow for flat UI work.</p>
+                </details>
+                <details>
+                    <summary>How dark should my shadow be?</summary>
+                    <p>Match the scene. Sample the darkness of the shadows already in the background and aim for the same, then usually pull back 5–10%. Too dark is the giveaway; real shadows carry bounced light and are rarely pure black.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_10.html" class="prev-lesson">← Previous: Match Perspective, Scale &amp; Lens</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_12.html" class="next-lesson">Next: Atmosphere &amp; the Unifying Grade →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

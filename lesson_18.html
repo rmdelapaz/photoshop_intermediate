@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 6, Lesson 3: bind layers to a data set with Variables to mass-produce graphics, then meet scripting for the automation Actions and variables can't reach.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 6.3: Data-Driven Graphics &amp; Scripting | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 6 • Lesson 3</span><span class="lesson-title">🗃️ Data-Driven Graphics &amp; Scripting</span></h1>
+                <p class="lead">The Module 6 deliverable. When the brief is "500 name badges", "a personalized banner per city", or "every product in the catalog", you stop designing files and start designing a <em>template plus data</em>. Variables bind layers to a spreadsheet; a little scripting handles what variables can't.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Define <strong>Variables</strong> that bind layers to data: text, visibility, and pixel replacement</li>
+                        <li>Import a <strong>Data Set</strong> from a CSV and preview each row on the canvas</li>
+                        <li><strong>Export Data Sets as Files</strong> to render one graphic per row</li>
+                        <li>Understand where scripting begins and read a simple <strong>ExtendScript / JS</strong> example</li>
+                        <li>Choose between Actions, Variables, and scripts for a given job</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 60 minutes</p>
+                    <p><strong>🎯 Project (Module 6 deliverable):</strong> One template that outputs a whole batch of personalized graphics from a CSV — text, image, and visibility all driven by data.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: One Template, Hundreds of Outputs</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: Template + Data</a></li>
+                        <li><a href="#panel" class="toc-link">Variables &amp; Data Sets</a></li>
+                        <li><a href="#script" class="toc-link">Where Scripting Begins</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: A Data-Driven Batch</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Data-Driven</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#summary" class="toc-link">Module 6 Summary</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: One Template, Hundreds of Outputs</h2>
+                <p>A batch of personalized cards. On the right, the manual way: duplicate the file, retype the name, swap the photo, save — per person, forever. On the left, one template plus a CSV; Photoshop renders every row automatically. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: editing one file per person by hand versus one template plus a data set producing all outputs.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A template and a data table feeding a grid of finished personalized cards." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#eef7f0"/>
+                                <!-- template -->
+                                <rect x="30" y="70" width="120" height="150" rx="8" fill="#fff" stroke="#16a34a" stroke-width="2"/><rect x="46" y="86" width="88" height="50" fill="#bbf7d0"/><rect x="46" y="146" width="88" height="8" fill="#86efac"/><rect x="46" y="162" width="66" height="8" fill="#86efac"/><text x="90" y="210" text-anchor="middle" fill="#166534" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700">template</text>
+                                <!-- data table -->
+                                <rect x="30" y="240" width="120" height="90" rx="6" fill="#fff" stroke="#86c9a0"/><g stroke="#d1fae5"><line x1="30" y1="262" x2="150" y2="262"/><line x1="30" y1="284" x2="150" y2="284"/><line x1="30" y1="306" x2="150" y2="306"/></g><text x="38" y="256" fill="#166534" font-family="monospace" font-size="10">name,photo</text><text x="38" y="278" fill="#40566b" font-family="monospace" font-size="10">Ana,a.jpg</text><text x="38" y="300" fill="#40566b" font-family="monospace" font-size="10">Ben,b.jpg</text><text x="38" y="322" fill="#40566b" font-family="monospace" font-size="10">…</text>
+                                <!-- arrow -->
+                                <line x1="160" y1="200" x2="210" y2="200" stroke="#16a34a" stroke-width="3"/><polygon points="210,193 222,200 210,207" fill="#16a34a"/>
+                                <!-- output grid -->
+                                <g>
+                                    <g fill="#fff" stroke="#86c9a0"><rect x="240" y="60" width="100" height="90"/><rect x="360" y="60" width="100" height="90"/><rect x="480" y="60" width="100" height="90"/><rect x="240" y="170" width="100" height="90"/><rect x="360" y="170" width="100" height="90"/><rect x="480" y="170" width="100" height="90"/></g>
+                                    <g fill="#bbf7d0"><rect x="252" y="72" width="76" height="40"/><rect x="372" y="72" width="76" height="40"/><rect x="492" y="72" width="76" height="40"/><rect x="252" y="182" width="76" height="40"/><rect x="372" y="182" width="76" height="40"/><rect x="492" y="182" width="76" height="40"/></g>
+                                    <g fill="#166534" font-family="Segoe UI, sans-serif" font-size="10"><text x="256" y="130">Ana</text><text x="376" y="130">Ben</text><text x="496" y="130">Cy</text><text x="256" y="240">Dee</text><text x="376" y="240">Eli</text><text x="496" y="240">Fay</text></g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="One file duplicated and hand-edited per person." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#fdf6f0"/>
+                                <g fill="#fff" stroke="#c9a98a"><rect x="200" y="120" width="120" height="150" rx="8"/></g>
+                                <rect x="216" y="136" width="88" height="50" fill="#f1d9c4"/><rect x="216" y="196" width="88" height="8" fill="#e5c3a3"/>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Template + data</span>
+                        <span class="ba-label before">One at a time</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the data-driven version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. Design the card once, describe the differences as data, and let Photoshop render the rows. Ten or ten thousand costs the same effort.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: Template + Data</h2>
+                <p>A data-driven document has two halves. The <strong>template</strong> is your design with certain layers marked as variable. The <strong>data</strong> is a table where each column maps to a variable and each row is one output. Photoshop's <strong>Variables</strong> feature binds them: define which layers change and how, import the table as <strong>Data Sets</strong>, and each row becomes a finished graphic.</p>
+                <p>There are exactly three kinds of variable: <strong>Text Replacement</strong> (swap the words in a type layer), <strong>Pixel Replacement</strong> (swap the image in a layer, with fit rules), and <strong>Visibility</strong> (show or hide a layer). Almost any personalized-graphics job decomposes into those three.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 150" role="img" aria-label="A CSV table's columns map to text, pixel, and visibility variables on template layers, producing one output per row." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif">
+                            <rect x="14" y="30" width="150" height="92" rx="6" fill="#f8fafc" stroke="#94a3b8"/><text x="24" y="26" style="fill:var(--text-light)" font-size="10.5">data.csv</text>
+                            <text x="24" y="52" font-family="monospace" font-size="11" style="fill:var(--text-color)">name, photo, sale</text>
+                            <text x="24" y="74" font-family="monospace" font-size="11" style="fill:var(--text-light)">Ana, a.jpg, yes</text>
+                            <text x="24" y="96" font-family="monospace" font-size="11" style="fill:var(--text-light)">Ben, b.jpg, no</text>
+                            <!-- mappings -->
+                            <g stroke="#1473E6" stroke-width="2"><line x1="164" y1="52" x2="330" y2="46"/><line x1="164" y1="74" x2="330" y2="86"/><line x1="164" y1="96" x2="330" y2="122"/></g>
+                            <rect x="332" y="30" width="174" height="28" rx="6" fill="#eef5ff" stroke="#1473E6"/><text x="342" y="49" style="fill:#0b2540" font-size="11">Text → "name" layer</text>
+                            <rect x="332" y="70" width="174" height="28" rx="6" fill="#eef5ff" stroke="#1473E6"/><text x="342" y="89" style="fill:#0b2540" font-size="11">Pixel → "photo" layer</text>
+                            <rect x="332" y="110" width="174" height="28" rx="6" fill="#eef5ff" stroke="#1473E6"/><text x="342" y="129" style="fill:#0b2540" font-size="11">Visibility → "sale" badge</text>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 1: Each CSV column drives one variable type. Text, pixel, visibility — bind those three and most personalized-graphics briefs are solved.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🧮 Variables &amp; Data Sets</h2>
+                <p>Open <strong>Image ▸ Variables ▸ Define</strong>, pick a layer, tick the variable types it needs, and name each variable to match a CSV column. Then <strong>Image ▸ Variables ▸ Data Sets ▸ Import</strong> to load the CSV; a dropdown lets you step through rows and see each on the canvas. Finally <strong>File ▸ Export ▸ Data Sets as Files</strong> renders one PSD (or, via an Action, a JPG/PNG) per row.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Image ▸ Variables ▸ Define</span>
+                        </div>
+                        <svg viewBox="0 0 460 180" role="img" aria-label="Variables dialog binding a name layer to Text Replacement, a photo layer to Pixel Replacement, and a badge layer to Visibility, with a data-set row selector.">
+                            <rect width="460" height="180" fill="#3a3a3a"/>
+                            <text x="16" y="26" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Layer bindings</text>
+                            <g font-family="Segoe UI, sans-serif" font-size="11">
+                                <rect x="16" y="34" width="428" height="26" fill="#2f2f2f" stroke="#4a4a4a"/><text x="26" y="51" style="fill:#e2e8f0">name  →  ☑ Text Replacement  · var: name</text>
+                                <rect x="16" y="64" width="428" height="26" fill="#2f2f2f" stroke="#4a4a4a"/><text x="26" y="81" style="fill:#e2e8f0">photo →  ☑ Pixel Replacement · var: photo</text>
+                                <rect x="16" y="94" width="428" height="26" fill="#2f2f2f" stroke="#4a4a4a"/><text x="26" y="111" style="fill:#e2e8f0">sale  →  ☑ Visibility        · var: sale</text>
+                            </g>
+                            <text x="16" y="140" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Data Set</text>
+                            <rect x="16" y="148" width="200" height="22" fill="#1473E6"/><text x="116" y="163" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Row 3 of 500 ▾</text>
+                            <rect x="332" y="148" width="112" height="22" fill="#16a34a"/><text x="388" y="163" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Export as Files</text>
+                        </svg>
+                        <figcaption>Figure 2: Three bindings and an imported data set. Step through rows to proof, then Export Data Sets as Files to render the whole batch at once.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-warning">
+                    <h4>⚠️ Name layers and columns to match</h4>
+                    <p>Variables link by name, and a stray space or capital mismatch silently breaks a binding. Name the layer, the variable, and the CSV header identically, and keep the CSV UTF-8 with a header row. Proof a few rows on-canvas before exporting five hundred.</p>
+                </div>
+            </section>
+
+            <!-- Scripting -->
+            <section id="script" class="lesson-section">
+                <h2>💻 Where Scripting Begins</h2>
+                <p>Variables cover "same layout, different content." When you need real <em>logic</em> — loop over files, do math, rename by pattern, call an API, decide based on pixel values — you reach for <strong>scripting</strong>. Photoshop runs JavaScript (ExtendScript) via <strong>File ▸ Scripts ▸ Browse</strong>, and the modern UXP scripting platform for newer workflows. You do not need to be a programmer to adapt a snippet.</p>
+                <p>Here is a complete, readable example: open every JPG in a folder, resize to 2000px on the long edge, and save a web copy — the kind of loop an Action alone can't express cleanly:</p>
+                <pre><code>// resize-folder.jsx  —  File ▸ Scripts ▸ Browse to run
+var inputFolder  = Folder.selectDialog("Choose a folder of images");
+var files = inputFolder.getFiles(/\.(jpg|jpeg|png)$/i);
+
+for (var i = 0; i &lt; files.length; i++) {
+    var doc = app.open(files[i]);
+    var longEdge = 2000;
+    var scale = longEdge / Math.max(doc.width.value, doc.height.value);
+    doc.resizeImage(doc.width * scale, doc.height * scale);
+
+    var out = new File(inputFolder + "/web_" + doc.name.replace(/\.[^.]+$/, ".jpg"));
+    var opt = new JPEGSaveOptions();
+    opt.quality = 10;
+    doc.saveAs(out, opt, true);
+    doc.close(SaveOptions.DONOTSAVECHANGES);
+}
+alert("Done: " + files.length + " images resized.");</code></pre>
+                <div class="card card-success">
+                    <h4>✅ You can read code before you can write it</h4>
+                    <p>Notice you can already follow this: pick a folder, loop the files, compute a scale, resize, save, close. Start by tweaking values (the 2000, the quality) in snippets like this. Reading and adapting is a real, employable skill on its own.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🛠️ Guided Build: A Data-Driven Batch</h2>
+                <p>Design a simple card template with a name (type layer), a photo (image layer), and a "SALE" badge (a layer to show/hide). Prepare a small CSV with columns name, photo, sale.</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Name everything <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Rename the layers exactly: <code>name</code>, <code>photo</code>, <code>sale</code>. Match your CSV headers to those names.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Define variables <small>· 12 min</small></h3>
+                    <ol>
+                        <li><strong>Image ▸ Variables ▸ Define</strong>. On <code>name</code> tick Text Replacement; on <code>photo</code> tick Pixel Replacement (set the fit method); on <code>sale</code> tick Visibility.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Import and proof <small>· 10 min</small></h3>
+                    <ol>
+                        <li><strong>Data Sets ▸ Import</strong> your CSV. Step through a few rows and confirm the name, photo, and badge update correctly on canvas.</li>
+                        <li>Fix any binding that didn't take (usually a name mismatch).</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Export the batch <small>· 8 min</small></h3>
+                    <ol>
+                        <li><strong>File ▸ Export ▸ Data Sets as Files</strong>. Choose a naming pattern (e.g. <code>card_[name]</code>) and export.</li>
+                        <li>Optional: run them through your Lesson 6.2 delivery Action to flatten to JPG. Module 6 deliverable: a folder of finished, personalized graphics from one template. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist (Module 6 deliverable)</h3>
+                    <ul>
+                        <li>☐ Layers named to match CSV headers exactly</li>
+                        <li>☐ Text, Pixel, and Visibility variables defined</li>
+                        <li>☐ CSV imported as a data set, several rows proofed on canvas</li>
+                        <li>☐ Data Sets exported as files with a clear naming pattern</li>
+                        <li>☐ (Optional) finished via a delivery Action / droplet</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Add a second visibility variable (e.g. a "VIP" ribbon) and a color-swap via a visible/hidden tint layer, all from new CSV columns.</li>
+                        <li>Generate 20 social cards for a real list (a team roster, an event lineup) and time how long the manual version would have taken.</li>
+                        <li>Open the sample script, change the long edge and output format, and run it on a test folder. Then add a line that skips files already starting with <code>web_</code>.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> combine everything — a data set feeding a template whose art lives in linked Smart Objects (Module 5), exported by an Action (6.2). That stack is a genuine production pipeline.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Data-Driven</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Template + data → batch</h3>
+                    <ol>
+                        <li>Name layers to match CSV headers exactly</li>
+                        <li><strong>Image ▸ Variables ▸ Define</strong>: Text / Pixel / Visibility</li>
+                        <li><strong>Data Sets ▸ Import</strong> the CSV; proof rows on canvas</li>
+                        <li><strong>File ▸ Export ▸ Data Sets as Files</strong> with a naming pattern</li>
+                        <li>Reach for <strong>scripting</strong> when you need loops, math, or logic</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: design the difference as data, and the count stops mattering.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> What in your work is really "one design, many values"? Sketch the template and the columns its data set would need. Seeing jobs as template-plus-data is the mindset shift of this module.</p>
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Module 6 Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li><strong>Generative fill</strong> is a fast assistant for gaps, removals, and harmonizing — curated and hand-finished, never shipped raw.</li>
+                        <li><strong>Actions</strong> record steps; <strong>conditionals</strong> branch them; <strong>batches</strong> and <strong>droplets</strong> run them over folders.</li>
+                        <li><strong>Variables + Data Sets</strong> turn a template plus a CSV into hundreds of finished graphics.</li>
+                        <li><strong>Scripting</strong> takes over when you need loops, math, or logic Actions and variables can't express.</li>
+                    </ul>
+                </div>
+
+                <h3>🎉 What You've Accomplished — Across All of Module 6</h3>
+                <p>You have added speed and scale to your craft: AI assistance for the tedious parts (6.1), recorded and conditional automation (6.2), and data-driven production plus a first real taste of scripting (6.3). You can now output at volumes that were simply impossible by hand — the difference between an artist and a one-person studio.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>Variables or scripting for a big job?</summary>
+                    <p>If it is "same layout, changing content", Variables are faster to set up and need no code. The moment you need conditionals beyond show/hide, calculations, external lookups, or per-file logic, a script is the right tool. They also combine — export data sets, then script the post-processing.</p>
+                </details>
+                <details>
+                    <summary>Do I have to learn to code to be a pro?</summary>
+                    <p>No — but being able to <em>read and adapt</em> a snippet dramatically expands what you can automate. Treat scripting like OpenType or LUTs: one more tool you reach for when it fits, not a separate career.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You have finished the heart of the pro toolkit. The Going Further tier now widens the lens. <strong>Module 7 — Multi-Shot Techniques</strong> covers panoramas, HDR, focus stacking, and timeline animation — combining many frames into one impossible image or a moving one.</p>
+
+                <h3>✅ Before the Next Module</h3>
+                <ul>
+                    <li>Ship one data-driven batch (10+ outputs) from a single template.</li>
+                    <li>Adapt the sample script and run it on a test folder.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/creating-data-driven-graphics.html" target="_blank" rel="noopener">Adobe: Data-driven graphics (Variables)</a></li>
+                    <li><a href="https://developer.adobe.com/photoshop/uxp/2022/ps_reference/" target="_blank" rel="noopener">Adobe: Photoshop scripting reference</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Automation is the quiet multiplier on everything else you have learned — it lets your best work scale without your best hours. You now think in templates, data, and scripts, not just files. Two modules remain. Let's widen the lens and combine many frames into one.</p>
+                </div>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_17.html" class="prev-lesson">← Previous: Advanced Actions &amp; Conditionals</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="index.html#path" class="next-lesson">Next: Module 7 — Multi-Shot Techniques (coming soon) →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>

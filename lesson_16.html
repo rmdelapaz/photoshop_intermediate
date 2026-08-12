@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 6, Lesson 1: use generative fill and expand as a compositing assistant — extend backgrounds, remove distractions, and harmonize elements, then finish by hand.">
+    <meta name="author" content="Ray de la Paz">
+    <title>Module 6.1: Generative for Compositing | Photoshop Intermediate</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        window.__mermaid = mermaid;
+        const isDark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark
+                ? { primaryColor: '#1e293b', primaryTextColor: '#e2e8f0', primaryBorderColor: '#31A8FF', lineColor: '#94a3b8', secondaryColor: '#0b1220', tertiaryColor: '#0f172a' }
+                : { primaryColor: '#eef5ff', primaryTextColor: '#0b2540', primaryBorderColor: '#1473E6', lineColor: '#64748b', secondaryColor: '#f8fafc', tertiaryColor: '#f1f5f9' }
+        });
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="ps-chip">Ps</span>Photoshop Intermediate</a>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#path">All Modules</a>
+                <span class="nav-divider"></span>
+                <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+                <a href="https://rays-home.netlify.app/contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <header>
+                <h1><span class="lesson-eyebrow">Module 6 • Lesson 1</span><span class="lesson-title">🪄 Generative for Compositing</span></h1>
+                <p class="lead">Generative fill is not a "make art" button — for a compositor it is a fast assistant that extends backgrounds, erases distractions, and grows the connective tissue between elements. You direct it, judge its guesses, and finish by hand. Used that way, it removes hours of cloning.</p>
+
+                <div class="card card-info">
+                    <h2>📚 What You'll Learn</h2>
+                    <p>By the end of this lesson, you will be able to:</p>
+                    <ul>
+                        <li>Frame generative fill as a <strong>compositing tool</strong>, not a replacement for craft</li>
+                        <li>Extend a background with <strong>Generative Expand</strong> to fit a layout</li>
+                        <li>Remove distractions and fill gaps with <strong>Generative Fill</strong> + a prompt</li>
+                        <li>Generate connective elements (shadow ground, foliage, debris) to sell a composite</li>
+                        <li>Judge, mask, and hand-finish generative output — and respect its limits and licensing</li>
+                    </ul>
+                    <p><strong>⏱️ Estimated Time:</strong> 55 minutes</p>
+                    <p><strong>🎯 Project:</strong> Take a tight, awkward composite and use generative fill to give it room, clean it up, and blend its seams — then finish by hand.</p>
+                </div>
+            </header>
+
+            <details class="card toc-card" open>
+                <summary aria-label="Toggle table of contents">
+                    <span class="toc-icon" aria-hidden="true">📑</span>
+                    <span class="toc-label">In This Lesson</span>
+                    <span class="toc-chevron" aria-hidden="true">▾</span>
+                </summary>
+                <nav aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#hook" class="toc-link">The Goal: Fill the Gaps, Not the Vision</a></li>
+                        <li><a href="#model" class="toc-link">Mental Model: A Fast, Fallible Assistant</a></li>
+                        <li><a href="#panel" class="toc-link">The Generative Workflow</a></li>
+                        <li><a href="#limits" class="toc-link">Limits, Ethics &amp; Licensing</a></li>
+                        <li><a href="#build" class="toc-link">Guided Build: Harmonize a Composite</a></li>
+                        <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
+                        <li><a href="#recipe" class="toc-link">Recipe Card: Generative Assist</a></li>
+                        <li><a href="#journal" class="toc-link">Learning Journal</a></li>
+                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                    </ol>
+                </nav>
+            </details>
+
+            <!-- Hook -->
+            <section id="hook" class="lesson-section">
+                <h2>👤 The Goal: Fill the Gaps, Not the Vision</h2>
+                <p>A composite cropped too tight, twice. On the right, the subject is jammed against the frame with a distracting sign behind them and no room to breathe. On the left, the canvas is extended and the sign painted out, so there is space to compose and the eye rests on the subject. Drag the handle:</p>
+
+                <figure>
+                    <div class="ba-slider" aria-label="Before and after diagram: a cramped composite with a distraction, versus an extended, cleaned-up version with room to breathe.">
+                        <div class="ba-layer ba-after" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A subject with generous space around it after the canvas was extended and a background distraction removed." style="width:100%;height:100%;display:block;">
+                                <defs><linearGradient id="skyA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd3e8"/><stop offset="1" stop-color="#e7eef5"/></linearGradient></defs>
+                                <rect width="600" height="400" fill="url(#skyA)"/>
+                                <rect y="300" width="600" height="100" fill="#c9b79c"/>
+                                <!-- subject centered with room -->
+                                <g transform="translate(300,300)">
+                                    <ellipse cx="0" cy="4" rx="52" ry="12" fill="#00000033"/>
+                                    <circle cx="0" cy="-150" r="30" fill="#3f5b78"/>
+                                    <rect x="-30" y="-122" width="60" height="112" rx="16" fill="#3f5b78"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="ba-layer ba-before" aria-hidden="true">
+                            <svg viewBox="0 0 600 400" role="img" aria-label="A subject cramped against the frame edge with a distracting sign behind." style="width:100%;height:100%;display:block;">
+                                <rect width="600" height="400" fill="#d8c4a8"/>
+                                <rect y="300" width="600" height="100" fill="#b7a487"/>
+                                <!-- distracting sign -->
+                                <rect x="120" y="90" width="90" height="60" fill="#c0504d"/><text x="165" y="126" text-anchor="middle" fill="#fff" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700">SALE</text><rect x="160" y="150" width="10" height="150" fill="#8a6a4a"/>
+                                <!-- subject jammed to right edge -->
+                                <g transform="translate(520,300)">
+                                    <ellipse cx="0" cy="4" rx="52" ry="12" fill="#00000033"/>
+                                    <circle cx="0" cy="-150" r="30" fill="#6e3f3f"/>
+                                    <rect x="-30" y="-122" width="60" height="112" rx="16" fill="#6e3f3f"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="ba-label after">Extended &amp; clean</span>
+                        <span class="ba-label before">Cramped</span>
+                        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Reveal the extended version">
+                        <span class="ba-divider" aria-hidden="true"></span>
+                        <span class="ba-grabber" aria-hidden="true">⇄</span>
+                    </div>
+                    <figcaption>A diagram of the principle. Generative fill did the grunt work — new sky and ground, sign removed — and you spend your time on composition instead of cloning.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Model -->
+            <section id="model" class="lesson-section">
+                <h2>🧠 Mental Model: A Fast, Fallible Assistant</h2>
+                <p>Treat generative fill like a talented but literal intern. You make a <strong>selection</strong>, type a short <strong>prompt</strong> (or leave it empty to just match surroundings), and it returns a few <strong>variations</strong> on their own <em>generative layer</em> — always non-destructive. It is superb at plausible texture (sky, grass, pavement, walls) and removals, and unreliable at specifics (hands, text, exact brands, precise counts).</p>
+                <p>So the workflow is never "generate and ship." It is generate → pick the best of three → mask and blend → hand-fix the tells. The AI buys you a fast, decent starting point; your craft from Modules 1–4 turns it into something that holds up.</p>
+
+                <figure>
+                    <svg viewBox="0 0 520 150" role="img" aria-label="Flow: make a selection, add a prompt, get three variations, then mask and hand-finish the chosen one." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
+                        <g font-family="Segoe UI, sans-serif">
+                            <rect x="14" y="50" width="96" height="48" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="62" y="72" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">Select</text><text x="62" y="88" text-anchor="middle" style="fill:#40566b" font-size="10">the area</text>
+                            <rect x="140" y="50" width="96" height="48" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="188" y="72" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">Prompt</text><text x="188" y="88" text-anchor="middle" style="fill:#40566b" font-size="10">short / empty</text>
+                            <rect x="266" y="50" width="96" height="48" rx="8" fill="#eef5ff" stroke="#1473E6"/><text x="314" y="72" text-anchor="middle" style="fill:#0b2540" font-size="12" font-weight="700">3 variations</text><text x="314" y="88" text-anchor="middle" style="fill:#40566b" font-size="10">pick best</text>
+                            <rect x="392" y="50" width="114" height="48" rx="8" fill="#173a5e" stroke="#1473E6"/><text x="449" y="72" text-anchor="middle" fill="#cfe3ff" font-size="12" font-weight="700">Mask + finish</text><text x="449" y="88" text-anchor="middle" fill="#9bc0ea" font-size="10">by hand</text>
+                            <g stroke="#94a3b8" stroke-width="2"><line x1="110" y1="74" x2="138" y2="74"/><line x1="236" y1="74" x2="264" y2="74"/><line x1="362" y1="74" x2="390" y2="74"/></g>
+                        </g>
+                    </svg>
+                    <figcaption>Figure 1: The loop is always generate → choose → refine. The model gives you raw material on a non-destructive layer; you are still the one who finishes it.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Panel -->
+            <section id="panel" class="lesson-section">
+                <h2>🛠️ The Generative Workflow</h2>
+                <p>The contextual task bar surfaces <strong>Generative Fill</strong> whenever you have a selection, and <strong>Generative Expand</strong> appears when you enlarge the canvas with the Crop tool. Both write to a new generative layer and offer a <strong>Variations</strong> panel; regenerate as many times as you like, and each attempt is kept so you can compare.</p>
+                <figure>
+                    <div class="ps-mock" style="max-width:460px;">
+                        <div class="ps-titlebar">
+                            <span class="ps-dot" style="background:#ff5f57;"></span>
+                            <span class="ps-dot" style="background:#febc2e;"></span>
+                            <span class="ps-dot" style="background:#28c840;"></span>
+                            <span style="margin-left:6px;">Contextual Task Bar</span>
+                        </div>
+                        <svg viewBox="0 0 460 176" role="img" aria-label="A generative-fill prompt bar with a Generate button, and a variations strip showing three options.">
+                            <rect width="460" height="176" fill="#2f2f2f"/>
+                            <!-- prompt bar -->
+                            <rect x="20" y="20" width="420" height="34" rx="17" fill="#1f1f1f" stroke="#4a4a4a"/>
+                            <text x="36" y="42" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="12">extend the pavement and sky</text>
+                            <rect x="330" y="26" width="100" height="22" rx="11" fill="#1473E6"/><text x="380" y="41" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Generate</text>
+                            <!-- variations -->
+                            <text x="20" y="86" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Variations</text>
+                            <rect x="20" y="94" width="90" height="66" fill="#3a3a3a" stroke="#1473E6" stroke-width="2"/><text x="65" y="132" text-anchor="middle" style="fill:#cfe3ff" font-size="11">v1 ✓</text>
+                            <rect x="120" y="94" width="90" height="66" fill="#3a3a3a" stroke="#4a4a4a"/><text x="165" y="132" text-anchor="middle" style="fill:#e2e8f0" font-size="11">v2</text>
+                            <rect x="220" y="94" width="90" height="66" fill="#3a3a3a" stroke="#4a4a4a"/><text x="265" y="132" text-anchor="middle" style="fill:#e2e8f0" font-size="11">v3</text>
+                            <rect x="330" y="94" width="90" height="66" fill="#353535" stroke="#4a4a4a" stroke-dasharray="4 3"/><text x="375" y="132" text-anchor="middle" style="fill:#9aa4ad" font-size="11">+ regenerate</text>
+                        </svg>
+                        <figcaption>Figure 2: Type a short prompt, generate, and audition the variations. Keep the best on its generative layer and add a mask — never flatten until you have blended the seams.</figcaption>
+                    </div>
+                </figure>
+                <div class="card card-success">
+                    <h4>✅ Short prompts, small selections</h4>
+                    <p>Generative fill does its best work on modest areas with simple prompts ("grass", "clear blue sky", or empty to match). Ask it to invent a whole complex scene and it flails. Break big asks into small, well-selected passes and results jump in quality.</p>
+                </div>
+            </section>
+
+            <!-- Limits -->
+            <section id="limits" class="lesson-section">
+                <h2>⚖️ Limits, Ethics &amp; Licensing</h2>
+                <p>Generative output is probabilistic, so it drifts on anything that needs to be <em>exactly</em> right — faces, hands, readable text, logos, product details, repeat patterns. It can also introduce artifacts that only show at 100%. Always zoom in and audit.</p>
+                <ul>
+                    <li><strong>Treat it as raw material.</strong> Expect to mask, clone, and dodge &amp; burn the result into place. It starts the job; it does not finish it.</li>
+                    <li><strong>Match resolution.</strong> Generated regions may be softer or lower-detail than your source. Add matching grain/sharpening so they blend.</li>
+                    <li><strong>Know the licensing.</strong> Adobe's model is trained for commercial-safe use, but confirm the terms for your account and deliverable, especially for client work.</li>
+                    <li><strong>Be honest.</strong> For journalism or documentary work, generative changes may be off-limits; disclose edits when integrity matters.</li>
+                </ul>
+                <div class="card card-warning">
+                    <h4>⚠️ It won't fix a weak composite</h4>
+                    <p>Generative fill can't rescue mismatched perspective, light, or scale from Module 4 — it fills texture, it doesn't reason about your scene. Get the fundamentals right first; use generation to accelerate the tedious parts, not to paper over structural mistakes.</p>
+                </div>
+            </section>
+
+            <!-- Build -->
+            <section id="build" class="lesson-section">
+                <h2>🧪 Guided Build: Harmonize a Composite</h2>
+                <p>Open a cramped or messy composite (yours from Module 4, or any busy photo).</p>
+
+                <div class="card card-info">
+                    <h3>Step 1: Give it room <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Crop tool, drag the canvas edges outward, and choose <strong>Generative Expand</strong> (empty prompt to match). Generate, pick the cleanest variation.</li>
+                        <li>Check the new edges at 100% for repeats or seams.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 2: Remove distractions <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Lasso a distracting object with a little margin. Run <strong>Generative Fill</strong> with an empty prompt to have it vanish into the surroundings.</li>
+                        <li>If a variation leaves a smudge, regenerate or clean it with the Healing Brush.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 3: Grow connective tissue <small>· 10 min</small></h3>
+                    <ol>
+                        <li>Select ground beneath a pasted subject and prompt something like "gravel with small shadows" to help it sit; or generate foreground foliage to overlap and integrate an edge.</li>
+                        <li>Mask each generative layer so it only contributes where you want.</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 4: Finish by hand <small>· 8 min</small></h3>
+                    <ol>
+                        <li>Add matching grain and a touch of sharpening to the generated regions. Dodge &amp; burn to marry their light to the scene.</li>
+                        <li>Apply your Module 4 unifying grade over everything so the generated and real pixels share one color. 🏆</li>
+                    </ol>
+                </div>
+
+                <div class="card card-success">
+                    <h3>✅ Project Completion Checklist</h3>
+                    <ul>
+                        <li>☐ Canvas extended with Generative Expand, edges audited</li>
+                        <li>☐ A distraction removed cleanly with Generative Fill</li>
+                        <li>☐ Connective element generated and masked in</li>
+                        <li>☐ Generated regions grain/sharpen-matched and hand-blended</li>
+                        <li>☐ One unifying grade over the whole result</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Solo -->
+            <section id="solo" class="lesson-section">
+                <h2>🧗 Now You: Solo Variation</h2>
+                <div class="card card-warning">
+                    <h4>🌟 Your challenge</h4>
+                    <ol>
+                        <li>Take a phone snapshot and turn it into a wide banner purely with Generative Expand — then fix every seam by hand until it is undetectable.</li>
+                        <li>Remove three increasingly hard distractions (a sign, a person, a shadow across the subject) and note where the AI succeeds and where you have to take over.</li>
+                        <li>Generate the same fill five times and study how the variations differ. Learning to <em>curate</em> is the real skill here.</li>
+                    </ol>
+                    <p><strong>Going further:</strong> combine generation with your masking (Module 1): generate a busy background, then composite your cleanly-cut subject on top so the subject stays pixel-perfect and only the surroundings are AI.</p>
+                </div>
+            </section>
+
+            <!-- Recipe -->
+            <section id="recipe" class="lesson-section">
+                <h2>🍳 Recipe Card: Generative Assist</h2>
+                <div class="card" style="border-left:4px solid var(--primary-color);">
+                    <h3>Generate, curate, finish</h3>
+                    <ol>
+                        <li><strong>Generative Expand</strong> (Crop out + empty prompt) for room</li>
+                        <li><strong>Generative Fill</strong> + empty prompt to remove distractions</li>
+                        <li>Short prompts, small selections for connective texture</li>
+                        <li>Keep each result on its <strong>generative layer</strong>; mask, don't flatten</li>
+                        <li>Grain/sharpen-match, hand-blend, then one unifying grade</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><small>Mantra: the model gives you a head start, never the finish line.</small></p>
+                </div>
+            </section>
+
+            <!-- Journal -->
+            <section id="journal" class="lesson-section">
+                <h2>📓 Learning Journal</h2>
+                <div class="card card-info">
+                    <p>Add to your journal after this lesson:</p>
+                    <ul>
+                        <li><strong>Key concepts</strong> you learned</li>
+                        <li><strong>Techniques that clicked</strong> for you</li>
+                        <li><strong>Questions or confusion points</strong> to revisit</li>
+                        <li><strong>Ideas you want to try</strong></li>
+                        <li><strong>Your progress and feelings</strong> about learning this</li>
+                    </ul>
+                    <p><strong>✍️ This lesson's prompt:</strong> Where does generative fill genuinely save you time, and where does trusting it cost you more time cleaning up than doing it by hand? Draw your own line between the two.</p>
+                </div>
+            </section>
+
+            <!-- Next -->
+            <section id="next" class="lesson-section">
+                <h2>🔭 Where This Leads</h2>
+                <div class="card card-accent">
+                    <p>You have a smart assistant for one-off gaps. Next you teach Photoshop to repeat <em>your</em> steps flawlessly across many files: <strong>Lesson 6.2 — Advanced Actions &amp; Conditionals</strong> records, branches, and batches your workflow so volume work runs itself.</p>
+                </div>
+                <details>
+                    <summary>Is it "cheating" to use generative fill professionally?</summary>
+                    <p>No more than the Healing Brush was. It is a tool; the judgment of what to keep, blend, and reject is still yours. Clients pay for the finished result and your taste, not for which brush filled a patch of sky.</p>
+                </details>
+                <details>
+                    <summary>The generated area looks softer than the rest. Why?</summary>
+                    <p>Generated pixels often carry less fine detail than your capture. Match them with a little sharpening and the same grain as the source; that single step is what makes a generative fill invisible.</p>
+                </details>
+            </section>
+
+            <nav class="lesson-nav" aria-label="Lesson Navigation">
+                <a href="lesson_15.html" class="prev-lesson">← Previous: Campaign from One Master</a>
+                <a href="index.html" class="home-link">🏠 Course Home</a>
+                <a href="lesson_17.html" class="next-lesson">Next: Advanced Actions &amp; Conditionals →</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Ray de la Paz. Photoshop Intermediate: From Practitioner to Pro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+            <a href="https://rays-home.netlify.app/contact">Contact</a>
+            <a href="#" id="print-button">Print Page</a>
+        </div>
+        <p><small>Press <kbd>?</kbd> for keyboard shortcuts</small></p>
+    </footer>
+
+    <script src="js/clipboard.js"></script>
+    <script src="js/course-enhancements.js"></script>
+</body>
+</html>
