@@ -77,7 +77,7 @@
                         <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
                         <li><a href="#recipe" class="toc-link">Recipe Card: Smart-Object Template</a></li>
                         <li><a href="#journal" class="toc-link">Learning Journal</a></li>
-                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
                     </ol>
                 </nav>
             </details>
@@ -127,7 +127,7 @@
             <section id="model" class="lesson-section">
                 <h2>🧠 Mental Model: A Container You Can Refill</h2>
                 <p>A <strong>Smart Object</strong> wraps one or more layers in a protective container. Scale it down and back up and it stays sharp; apply a filter and it becomes an editable <em>Smart Filter</em> you can retune later; double-click it and you edit its contents in their own tab, then save and the parent updates. Nothing you do to the container destroys what is inside.</p>
-                <p>The container also has a superpower: <strong>Replace Contents</strong>. Any transforms, warps, filters, and layer styles you applied to the container stay put while the artwork inside is swapped. That is what makes templates possible — the wrapping is the template, the contents are the variable.</p>
+                <p>The container also has a superpower: <strong>Replace Contents</strong>. Any transforms, warps, filters, and layer styles you applied to the container stay put while the artwork inside is swapped. That is what makes templates possible — the wrapping is the template, the contents are the variable. One catch: the container's transform is applied to whatever you swap in, so replacement art with different pixel dimensions or a different aspect ratio comes in larger, smaller, or misaligned. Build placeholders at the exact size of the art they will hold, and keep replacement art to that size.</p>
 
                 <figure>
                     <svg viewBox="0 0 520 190" role="img" aria-label="A Smart Object container keeps its transform and effects while its inner artwork is replaced from art A to art B." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
@@ -202,7 +202,7 @@
                 <div class="card card-info">
                     <h3>Step 1: Place the placeholder <small>· 8 min</small></h3>
                     <ol>
-                        <li>Make a rectangle roughly the size of the art area. Right-click ▸ <strong>Convert to Smart Object</strong>.</li>
+                        <li>Make a rectangle at the exact pixel dimensions (or at least the exact aspect ratio) of the art that will go on the surface, for example 2000 × 1000 px for a 2:1 label. Right-click ▸ <strong>Convert to Smart Object</strong>. You size it to the surface in the next step.</li>
                         <li>Free Transform ▸ <strong>Warp</strong> (or Perspective Warp) to conform it to the surface's shape and angle.</li>
                     </ol>
                 </div>
@@ -226,7 +226,7 @@
                 <div class="card card-info">
                     <h3>Step 4: Prove reuse <small>· 6 min</small></h3>
                     <ol>
-                        <li>Replace Contents with a different design. The perspective, shadows, and highlights hold automatically.</li>
+                        <li><strong>Layer ▸ Smart Objects ▸ Replace Contents</strong> with a different design exported at the same pixel dimensions as the placeholder. The perspective, shadows, and highlights hold automatically. (If a design is a different size, double-click the placeholder and paste it into the existing canvas instead.)</li>
                         <li>Save this file as your reusable mockup template. 🏆</li>
                     </ol>
                 </div>
@@ -289,12 +289,28 @@
                 </div>
             </section>
 
-            <!-- Next -->
-            <section id="next" class="lesson-section">
-                <h2>🔭 Where This Leads</h2>
-                <div class="card card-accent">
-                    <p>You can now build a template that refills itself. Next you scale that idea to a whole campaign: <strong>Lesson 5.3 — Campaign from One Master</strong>, where artboards and linked Smart Objects spin one design into a full set of sized, export-ready deliverables — the Module 5 deliverable.</p>
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>A <strong>Smart Object</strong> is a container: transforms, warps, Smart Filters, and styles live on it and never damage what is inside.</li>
+                        <li><strong>Embedded</strong> Smart Objects travel inside the PSD; <strong>linked</strong> ones (File ▸ Place Linked) point to one file that many documents share.</li>
+                        <li>A mockup is a placeholder Smart Object warped to a surface, with shadows and highlights clipped above it; <strong>Replace Contents</strong> swaps the art.</li>
+                        <li>Build placeholders at the art's exact size, keep linked files where they are, and <strong>Package</strong> before handoff.</li>
+                    </ul>
                 </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You can now build a design once and refill it forever. A mockup template, a linked logo, a Smart Filter you can retune next week: each one turns a repeat task into a single edit, and that is the foundation of every production system that follows.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
+                <details>
+                    <summary>My new art came in too big (or squashed) after Replace Contents. Why?</summary>
+                    <p>The container keeps its transform and applies it to the new contents, so art with different pixel dimensions lands at a different size. Export replacement art at the placeholder's exact pixel size, or double-click the placeholder and paste the new design into its existing canvas.</p>
+                </details>
                 <details>
                     <summary>Why .psb for linked files, not .psd?</summary>
                     <p>Either works; large-format or high-bit files may exceed the 2GB PSD limit, and PSB (large document format) handles them. For most brand assets a PSD or even a PNG/SVG linked file is fine.</p>
@@ -303,6 +319,26 @@
                     <summary>Do Smart Objects make my file huge?</summary>
                     <p>Embedded ones add the contents' full weight to the PSD. Linked ones keep the data external, so the working file stays lighter. That is another reason linked assets scale better across a big project.</p>
                 </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Next you scale the idea to a whole campaign. <strong>Lesson 5.3 — Campaign from One Master</strong> uses artboards and linked Smart Objects to spin one design into a full set of sized, export-ready deliverables, the Module 5 deliverable.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Save your mockup template.</li>
+                    <li>Save your logo (and any key art you plan to reuse) as its own file in a stable project folder, ready to Place Linked in Lesson 5.3.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/create-smart-objects.html" target="_blank" rel="noopener">Adobe: Create Smart Objects</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Templates feel like extra work the first time and pure magic every time after. You have started thinking like a production designer, building things that make future work easier, and that mindset pays you back on every job.</p>
+                </div>
             </section>
 
             <nav class="lesson-nav" aria-label="Lesson Navigation">

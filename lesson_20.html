@@ -51,9 +51,9 @@
                     <p>By the end of this lesson, you will be able to:</p>
                     <ul>
                         <li>Choose between <strong>Frame Animation</strong> and the <strong>Video Timeline</strong></li>
-                        <li>Build a frame loop with <strong>tweening</strong> and onion-skin guidance</li>
-                        <li>Animate layer <strong>position, opacity, and style</strong> with keyframes</li>
-                        <li>Loop cleanly and control timing and easing</li>
+                        <li>Build a frame loop with <strong>tweening</strong></li>
+                        <li>Animate layer <strong>position, opacity, and style</strong> with keyframes (and scale, via Smart Objects)</li>
+                        <li>Loop cleanly and shape timing so motion feels natural</li>
                         <li>Export a <strong>GIF</strong> (Save for Web) or an <strong>MP4</strong> (Render Video)</li>
                     </ul>
                     <p><strong>⏱️ Estimated Time:</strong> 50 minutes</p>
@@ -133,7 +133,7 @@
             <!-- Model -->
             <section id="model" class="lesson-section">
                 <h2>🧠 Mental Model: Frames vs Keyframes</h2>
-                <p>The Timeline works two ways. <strong>Frame Animation</strong> is the flip-book: you make discrete frames, each a layer arrangement, and set how long each holds — perfect for simple GIF loops and pixel-precise timing. The <strong>Video Timeline</strong> is the smooth path: each layer gets a track, and you set <strong>keyframes</strong> for properties (Position, Opacity, Style) that Photoshop interpolates between — perfect for glides, fades, and easing.</p>
+                <p>The Timeline works two ways. <strong>Frame Animation</strong> is the flip-book: you make discrete frames, each a layer arrangement, and set how long each holds — perfect for simple GIF loops and pixel-precise timing. The <strong>Video Timeline</strong> is the smooth path: each layer gets a track, and you set <strong>keyframes</strong> for properties (Position, Opacity, Style, plus Transform on Smart Objects) that Photoshop interpolates between — perfect for glides and fades.</p>
                 <p>Rule of thumb: reach for <strong>Frame Animation</strong> when you want a short, loopy GIF with exact frames; reach for the <strong>Video Timeline</strong> when you want smooth movement or plan to export video. You can convert between them, but picking the right one first saves rework.</p>
 
                 <figure>
@@ -157,7 +157,7 @@
             <!-- Panel -->
             <section id="panel" class="lesson-section">
                 <h2>🎞️ The Timeline Panel</h2>
-                <p>Open <strong>Window ▸ Timeline</strong>. The middle button creates either a frame animation or a video timeline. In frame mode, add frames and use <strong>Tween</strong> to auto-generate the in-between frames for position or opacity. In video mode, twirl a layer open, click the stopwatch on a property to drop a keyframe, move the playhead, change the value, and Photoshop keyframes the rest. <strong>Onion skin</strong> ghosts adjacent frames so you can register motion.</p>
+                <p>Open <strong>Window ▸ Timeline</strong>. The panel's single button reads <strong>Create Video Timeline</strong>; its dropdown arrow switches it to <strong>Create Frame Animation</strong>. In frame mode, add frames and use <strong>Tween</strong> to auto-generate the in-between frames for position, opacity, or effects. In video mode, twirl a layer open, click the stopwatch on a property to drop a keyframe, move the playhead, change the value, and Photoshop adds the next keyframe. Normal layers offer Position, Opacity, and Style; Smart Objects get a <strong>Transform</strong> track instead of Position, which is how you animate scale and rotation. Keyframes interpolate linearly (or Hold, for a sudden jump); there is no built-in ease curve.</p>
                 <figure>
                     <div class="ps-mock" style="max-width:460px;">
                         <div class="ps-titlebar">
@@ -166,7 +166,7 @@
                             <span class="ps-dot" style="background:#28c840;"></span>
                             <span style="margin-left:6px;">Timeline (Video)</span>
                         </div>
-                        <svg viewBox="0 0 460 176" role="img" aria-label="Video timeline with two layer tracks, keyframe diamonds on position and opacity, and a playhead.">
+                        <svg viewBox="0 0 460 176" role="img" aria-label="Video timeline with two layer tracks, keyframe diamonds on the badge Smart Object's Transform and the headline's opacity, and a playhead.">
                             <rect width="460" height="176" fill="#2f2f2f"/>
                             <!-- ruler -->
                             <rect x="120" y="14" width="330" height="16" fill="#262626"/>
@@ -174,7 +174,7 @@
                             <!-- playhead -->
                             <line x1="196" y1="12" x2="196" y2="168" stroke="#31A8FF" stroke-width="1.5"/><polygon points="190,12 202,12 196,20" fill="#31A8FF"/>
                             <!-- track 1: badge / position -->
-                            <rect x="10" y="40" width="108" height="40" fill="#3a3a3a"/><text x="18" y="56" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Badge</text><text x="18" y="72" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">Position ⏱</text>
+                            <rect x="10" y="40" width="108" height="40" fill="#3a3a3a"/><text x="18" y="56" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Badge</text><text x="18" y="72" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">Transform ⏱</text>
                             <rect x="120" y="40" width="330" height="40" fill="#333"/>
                             <g fill="#31A8FF"><rect x="150" y="54" width="10" height="10" transform="rotate(45 155 59)"/><rect x="300" y="54" width="10" height="10" transform="rotate(45 305 59)"/></g>
                             <line x1="155" y1="59" x2="305" y2="59" stroke="#31A8FF" stroke-width="1.5"/>
@@ -187,12 +187,12 @@
                             <polygon points="20,150 20,164 32,157" fill="#e2e8f0"/><rect x="40" y="150" width="10" height="14" fill="#e2e8f0"/>
                             <text x="60" y="161" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10">loop · onion skin · 24 fps</text>
                         </svg>
-                        <figcaption>Figure 2: Two layer tracks with keyframe diamonds — Position on the badge, Opacity on the headline. The stopwatch (⏱) starts keyframing a property; the playhead scrubs the result.</figcaption>
+                        <figcaption>Figure 2: Two layer tracks with keyframe diamonds: Transform on the badge (a Smart Object), Opacity on the headline. The stopwatch (⏱) starts keyframing a property; the playhead scrubs the result.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
-                    <h4>⚠️ Convert layers you'll transform to Smart Objects</h4>
-                    <p>Animating scale or a warp on a raster layer degrades it frame by frame. Make anything you'll move or resize a Smart Object first (Module 5) so it stays crisp across the whole animation.</p>
+                    <h4>⚠️ Convert layers you'll scale to Smart Objects</h4>
+                    <p>A normal layer's track has no scale or rotation property at all; only a Smart Object gets the <strong>Transform</strong> track that keyframes size and rotation, and it re-renders crisply at every frame. Convert anything you'll resize or rotate to a Smart Object first (Module 5). Warps can't be keyframed in either case.</p>
                 </div>
             </section>
 
@@ -214,22 +214,25 @@
                 <div class="card card-info">
                     <h3>Step 1: Start the timeline <small>· 6 min</small></h3>
                     <ol>
-                        <li><strong>Window ▸ Timeline</strong> ▸ Create Video Timeline. Set a short duration (2–3 s) and a frame rate (24 fps).</li>
+                        <li><strong>Window ▸ Timeline</strong> ▸ Create Video Timeline.</li>
+                        <li>Timeline panel menu ▸ <strong>Set Timeline Frame Rate</strong> ▸ 24 fps.</li>
+                        <li>Set a short duration (2–3 s): drag the right end of each layer's bar to the 3-second mark, then drag the work-area end handle (above the ruler) to match.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 2: Keyframe the moves <small>· 14 min</small></h3>
                     <ol>
-                        <li>On the badge layer, twirl open, click the <strong>Transform</strong>/Position stopwatch at frame 0 (small/off-screen), move the playhead, set it to final size/spot — a keyframe drops automatically.</li>
+                        <li>On the badge (a Smart Object), twirl open and click the <strong>Transform</strong> stopwatch at frame 0 with the badge small. Move the playhead, scale it to its final size and spot, and a keyframe drops automatically. (A normal layer shows <strong>Position</strong> here instead, which can move it but not resize it.)</li>
                         <li>On the headline, keyframe <strong>Opacity</strong> 0 → 100 and a small upward <strong>Position</strong> move so it rises in.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
-                    <h3>Step 3: Loop and ease <small>· 8 min</small></h3>
+                    <h3>Step 3: Loop and shape the timing <small>· 8 min</small></h3>
                     <ol>
-                        <li>Match the first and last frames so the loop is seamless. Right-click keyframes for <strong>Ease In/Out</strong> to soften the motion.</li>
+                        <li>For a seamless loop, hold the finished pose for a beat, then add keyframes that return each layer to its frame-0 state by the last frame.</li>
+                        <li>Photoshop keyframes move at a constant speed. To fake an ease, add an extra keyframe close to the end of each move with only a small change left, so the final stretch slows down.</li>
                         <li>Play back; adjust timing until it feels natural, not robotic.</li>
                     </ol>
                 </div>
@@ -245,9 +248,9 @@
                 <div class="card card-success">
                     <h3>✅ Project Completion Checklist</h3>
                     <ul>
-                        <li>☐ A video timeline with keyframed Position and Opacity</li>
+                        <li>☐ A video timeline with keyframed Transform (or Position) and Opacity</li>
                         <li>☐ Transformed layers converted to Smart Objects (stay sharp)</li>
-                        <li>☐ A seamless loop with eased motion</li>
+                        <li>☐ A seamless loop with natural-feeling timing (extra keyframes for a slow finish)</li>
                         <li>☐ Exported a GIF (looping forever) and an MP4</li>
                         <li>☐ GIF kept short and reasonably small</li>
                     </ul>
@@ -275,8 +278,8 @@
                     <h3>Layers into motion</h3>
                     <ol>
                         <li>Smart-Object anything you'll transform; <strong>Window ▸ Timeline</strong></li>
-                        <li>Video timeline → keyframe <strong>Position / Opacity / Style</strong> (stopwatch)</li>
-                        <li>Match first/last frame for a seamless loop; add <strong>Ease</strong></li>
+                        <li>Video timeline → keyframe <strong>Position / Opacity / Style</strong>, or <strong>Transform</strong> on Smart Objects (stopwatch)</li>
+                        <li>Return to the frame-0 pose by the last frame; fake easing with extra keyframes</li>
                         <li><strong>Save for Web</strong> → GIF (loop Forever) — small &amp; short</li>
                         <li><strong>Render Video</strong> → H.264 MP4 for full-color playback</li>
                     </ol>
@@ -315,12 +318,12 @@
                 </div>
 
                 <h3>🎉 What You've Accomplished — Across All of Module 7</h3>
-                <p>This bonus tier stretched Photoshop past the single still: you combined many frames into one richer image (7.1) and turned layers into motion (7.2). These techniques open landscape, product, and social-motion work that a one-frame mindset simply can't reach — a versatile bonus to the core pro toolkit.</p>
+                <p>The Going Further tier stretched Photoshop past the single still: you combined many frames into one richer image (7.1) and turned layers into motion (7.2). These techniques open landscape, product, and social-motion work that a one-frame mindset simply can't reach — a versatile extension of the core pro toolkit.</p>
 
                 <h3>❓ Common Questions at This Stage</h3>
                 <details>
                     <summary>Should I animate in Photoshop or After Effects?</summary>
-                    <p>Photoshop is ideal for short loops, GIFs, cinemagraphs, and simple keyframed motion straight from your layered design. For complex motion graphics, precise timing, and effects, After Effects is the specialist. Use Photoshop for quick, self-contained animation; graduate to AE when the brief outgrows it.</p>
+                    <p>Photoshop is ideal for short loops, GIFs, cinemagraphs, and simple keyframed motion straight from your layered design. For complex motion graphics, true easing curves, precise timing, and effects, After Effects is the specialist. Use Photoshop for quick, self-contained animation; graduate to AE when the brief outgrows it.</p>
                 </details>
                 <details>
                     <summary>My GIF colors look banded and dirty.</summary>

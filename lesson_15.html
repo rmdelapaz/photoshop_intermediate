@@ -85,7 +85,7 @@
             <!-- Hook -->
             <section id="hook" class="lesson-section">
                 <h2>👤 The Goal: One Idea, Every Size</h2>
-                <p>One campaign idea, four deliverables. On the right, the slow way: four separate files, each edited by hand, drifting out of sync. On the left, one master with four artboards fed by shared linked art — change the key art or the tagline once and all four stay identical. Drag the handle:</p>
+                <p>One campaign idea, four deliverables. On the right, the slow way: four separate files, each edited by hand, drifting out of sync. On the left, one master with four artboards fed by shared linked art — change the key art or the logo once and all four stay in sync. Drag the handle:</p>
 
                 <figure>
                     <div class="ba-slider" aria-label="Before and after diagram: four disconnected files versus one master with four artboards sharing linked art.">
@@ -126,7 +126,7 @@
             <!-- Model -->
             <section id="model" class="lesson-section">
                 <h2>🧠 Mental Model: Master &amp; Instances</h2>
-                <p>Think of one <strong>master</strong> that owns the campaign's shared truth — the key art, the logo, the tagline, the grade — and several <strong>instances</strong> (the artboards) that each present that truth at a specific size and crop. The shared elements are <em>linked</em> Smart Objects, so they exist once and appear everywhere; only layout and framing differ per instance.</p>
+                <p>Think of one <strong>master</strong> that owns the campaign's shared truth — the key art, the logo, the tagline, the grade — and several <strong>instances</strong> (the artboards) that each present that truth at a specific size and crop. The shared art (key art, logo) is placed as <em>linked</em> Smart Objects, so it exists once and appears everywhere, and the shared type runs on the same named styles; only layout and framing differ per instance.</p>
                 <p>This is the same idea as 5.1's styles and 5.2's templates, scaled up to a whole deliverable set: decide the shared things once, place them by reference, and let each size be a view onto the same source rather than a fresh copy of it.</p>
 
                 <figure>
@@ -147,7 +147,7 @@
             <!-- Panel: artboards & export -->
             <section id="panel" class="lesson-section">
                 <h2>🗂️ Artboards &amp; Multi-Size Export</h2>
-                <p>Artboards are independent canvases inside one PSD, each with its own size (there are presets for common social and ad sizes). You lay out each artboard, then <strong>File ▸ Export ▸ Export As</strong> renders <em>every</em> artboard to its own file in one pass — pick format, scale, and even multiple scales (1×, 2×) at once. One command, the whole set out the door.</p>
+                <p>Artboards are independent canvases inside one PSD, each with its own size (the New Document dialog and the Artboard tool's options bar offer preset sizes). You lay out each artboard, then <strong>File ▸ Export ▸ Export As</strong> renders <em>every</em> artboard to its own file in one pass — pick format, scale, and even multiple scales (1×, 2×) at once. One command, the whole set out the door.</p>
                 <figure>
                     <div class="ps-mock" style="max-width:460px;">
                         <div class="ps-titlebar">
@@ -170,7 +170,7 @@
                             <text x="180" y="86" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Scale</text>
                             <rect x="180" y="94" width="56" height="22" fill="#555"/><text x="208" y="109" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">1×</text>
                             <rect x="242" y="94" width="56" height="22" fill="#555"/><text x="270" y="109" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">2×</text>
-                            <rect x="330" y="138" width="112" height="24" fill="#1473E6"/><text x="386" y="155" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Export All</text>
+                            <rect x="330" y="138" width="112" height="24" fill="#1473E6"/><text x="386" y="155" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Export</text>
                         </svg>
                         <figcaption>Figure 2: <strong>Export As</strong> renders every artboard to its own file at once. Set format and scale globally; the whole campaign exports in a single click.</figcaption>
                     </div>
@@ -178,6 +178,7 @@
                 <div class="card card-warning">
                     <h4>⚠️ Design at the biggest size, export down</h4>
                     <p>Build the key art at (or above) the largest deliverable's resolution — usually the print poster — and let smaller sizes scale down from it. Scaling a small master <em>up</em> for print softens everything. Biggest first, always.</p>
+                    <p>One more limit: every artboard in a document shares one color mode and one resolution (ppi) setting. Keep the master in RGB for the screen sizes, and make the print poster's CMYK conversion a separate, final step on an exported copy (or its own file) when the printer asks for CMYK.</p>
                 </div>
             </section>
 
@@ -199,12 +200,12 @@
             <!-- Build -->
             <section id="build" class="lesson-section">
                 <h2>🛠️ Guided Build: The Campaign</h2>
-                <p>Bring your key art (ideally a Module 4 composite), your 5.1 type styles, and your 5.2 linked logo.</p>
+                <p>Bring your key art (ideally a Module 4 composite), your 5.1 type styles (copy a styled text layer in and its styles come with it), and your logo saved as its own file at the end of 5.2.</p>
 
                 <div class="card card-info">
                     <h3>Step 1: Set up artboards <small>· 10 min</small></h3>
                     <ol>
-                        <li>New document, Artboard on. Add artboards from presets: a poster, IG square (1080²), story (1080×1920), banner (1500×500).</li>
+                        <li>New document (RGB), Artboard on. Add artboards for a poster, IG square (1080²), story (1080×1920), and banner (1500×500), using presets where they exist and custom sizes otherwise.</li>
                         <li>Design the poster (largest) at full resolution first.</li>
                     </ol>
                 </div>
@@ -221,15 +222,16 @@
                     <h3>Step 3: Recompose per size <small>· 14 min</small></h3>
                     <ol>
                         <li>On each artboard, anchor the focal point, then rearrange around the aspect ratio. Respect safe zones on the story and banner.</li>
-                        <li>Optional: put your unifying grade (Module 4) as a linked or duplicated top layer on each so color stays shared.</li>
+                        <li>Optional: keep color shared by putting the same grade at the top of each artboard: duplicate the adjustment layer into each one, or load the same LUT you saved in Module 4 into a <strong>Color Lookup</strong> layer on each. Adjustment layers can't be linked, so if the look changes, update each copy (or re-export the LUT and reload it).</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 4: Export the set <small>· 8 min</small></h3>
                     <ol>
-                        <li><strong>File ▸ Export ▸ Export As</strong>, select all artboards, choose format and scale, Export All.</li>
-                        <li>Change the tagline in the linked source and re-export to prove the whole set updates from one edit. Module 5 deliverable done. 🏆</li>
+                        <li><strong>File ▸ Export ▸ Export As</strong>, select all artboards, choose format and scale, and click Export. (<strong>File ▸ Export ▸ Artboards to Files</strong> is an alternative for batch output.)</li>
+                        <li>Open the linked logo or key art file, make a visible change, and save it. Back in the master, every artboard updates (if one doesn't, use <strong>Layer ▸ Smart Objects ▸ Update All Modified Content</strong>). Re-export to prove the whole set updates from one edit.</li>
+                        <li>Save the master PSD with its linked files in the same project folder. Module 5 deliverable done. 🏆</li>
                     </ol>
                 </div>
 
@@ -337,7 +339,7 @@
 
                 <div class="card card-accent" style="text-align: center; padding: 2rem;">
                     <h3>🌟 Encouragement for the Journey</h3>
-                    <p>You just learned to make consistency automatic — the quiet superpower that separates a hobbyist from a studio. With the Commercial Work tier complete, only the Going Further tier remains. Next we teach Photoshop to do the repetitive work for you. Onward.</p>
+                    <p>You just learned to make consistency automatic — the quiet superpower that separates a hobbyist from a studio. One module remains in the Commercial Work tier, and it teaches Photoshop to do the repetitive work for you. Onward.</p>
                 </div>
             </section>
 

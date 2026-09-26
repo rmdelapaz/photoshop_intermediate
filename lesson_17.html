@@ -77,7 +77,7 @@
                         <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
                         <li><a href="#recipe" class="toc-link">Recipe Card: Actions &amp; Batch</a></li>
                         <li><a href="#journal" class="toc-link">Learning Journal</a></li>
-                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
                     </ol>
                 </nav>
             </details>
@@ -148,14 +148,14 @@
                             <span class="ps-dot" style="background:#28c840;"></span>
                             <span style="margin-left:6px;">Actions</span>
                         </div>
-                        <svg viewBox="0 0 440 190" role="img" aria-label="Actions panel showing a Web Delivery action with recorded steps: resize, unsharp mask, place watermark, save as JPG.">
+                        <svg viewBox="0 0 440 190" role="img" aria-label="Actions panel showing a Web Delivery action with recorded steps: an orientation conditional, Fit Image, unsharp mask, place watermark, save as JPG.">
                             <rect width="440" height="190" fill="#2f2f2f"/>
                             <text x="16" y="26" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">📁 Delivery set</text>
                             <rect x="16" y="34" width="408" height="22" fill="#1473E6"/><text x="30" y="49" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">▾ Web Delivery</text>
                             <g font-family="Segoe UI, sans-serif" font-size="11" fill="#e2e8f0">
-                                <text x="40" y="74">✓ Image Size — 2000 px long edge</text>
-                                <text x="40" y="94">✓ Unsharp Mask — 80% / 1.0 / 0</text>
-                                <text x="40" y="114">▣ Conditional — if Landscape…</text>
+                                <text x="40" y="74">✓ If Document Is Landscape…</text>
+                                <text x="40" y="94">✓ Fit Image — 2000 × 2000 px</text>
+                                <text x="40" y="114">▣ Unsharp Mask — 80% / 1.0 / 0</text>
                                 <text x="40" y="134">✓ Place — watermark.png</text>
                                 <text x="40" y="154">✓ Save As — JPG (quality 10)</text>
                             </g>
@@ -163,23 +163,23 @@
                             <circle cx="30" cy="176" r="6" fill="#e11d48"/><polygon points="52,170 52,182 62,176" fill="#e2e8f0"/><rect x="74" y="170" width="10" height="12" fill="#e2e8f0"/>
                             <text x="96" y="180" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">record · play · stop</text>
                         </svg>
-                        <figcaption>Figure 2: A recorded delivery Action. Checkmarks mean the step runs; the dialog toggle (▣) makes a step pause for input. Re-record any step by double-clicking it.</figcaption>
+                        <figcaption>Figure 2: A recorded delivery Action. The conditional runs first, then Fit Image scales the long edge to 2000 px. Checkmarks mean the step runs; the dialog toggle (▣, shown on Unsharp Mask) makes a step pause for input. Re-record any step by double-clicking it.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
                     <h4>⚠️ Record relative, not absolute</h4>
-                    <p>An Action that crops to "1080×1080 from position 340,120" breaks on a differently sized image. Use Image Size by long-edge, percentage crops, and content-relative selections so the Action survives varied input. Test it on your weirdest file before trusting a batch.</p>
+                    <p>An Action that crops to "1080×1080 from position 340,120" breaks on a differently sized image. Image Size records fixed dimensions, so use <strong>File ▸ Automate ▸ Fit Image</strong> (e.g. 2000 × 2000) to scale by the long edge. Set <strong>Preferences ▸ Units &amp; Rulers</strong> to <em>Percent</em> before recording crops and selections so they play back relative to each image. Test it on your weirdest file before trusting a batch.</p>
                 </div>
             </section>
 
             <!-- Conditionals & batch -->
             <section id="cond" class="lesson-section">
                 <h2>🔀 Conditionals &amp; Batch</h2>
-                <p>From the Actions panel menu, <strong>Insert Conditional…</strong> lets a step ask a question — is the document landscape, square, portrait; is it a certain size; is a layer present — and play one Action if true and another if false. Chain a couple and one Action gracefully handles a mixed folder.</p>
+                <p>From the Actions panel menu, <strong>Insert Conditional…</strong> lets a step ask a question about the document or the active layer (Document Is Landscape, Portrait, or Square; Document Mode Is RGB or CMYK; Document Is 16 Bits Per Channel; Document Has Layers; Layer Is Type or Smart Object) and play one Action if true and another if false. There is no condition for pixel size or for a layer's name. Chain a couple and one Action gracefully handles a mixed folder.</p>
                 <p>To run it, <strong>File ▸ Automate ▸ Batch</strong>: choose the Action, a source folder (or "Import"), a destination, and file-naming rules. Tick <strong>Override Action "Save As"</strong> commands so files land where you say. For a reusable icon, <strong>File ▸ Automate ▸ Create Droplet</strong> writes a small app; drop any images or folders onto it and the batch runs.</p>
                 <div class="card card-success">
                     <h4>✅ Suppress dialogs for a hands-off run</h4>
-                    <p>In Batch, set errors to "Log errors to file" and leave dialog toggles off so nothing stops the run halfway. A true batch should complete 500 files without asking you a single question — that is the whole point.</p>
+                    <p>In Batch, tick <strong>Suppress File Open Options Dialogs</strong> and <strong>Suppress Color Profile Warnings</strong>, set Errors to <strong>Log Errors To File</strong>, and leave the Action's dialog toggles off so nothing stops the run halfway. A true batch should complete 500 files without asking you a single question — that is the whole point.</p>
                 </div>
             </section>
 
@@ -192,15 +192,16 @@
                     <h3>Step 1: Record the core <small>· 10 min</small></h3>
                     <ol>
                         <li>Window ▸ Actions ▸ new set "Delivery", new action "Web Delivery", Record.</li>
-                        <li>Image Size to 2000px long edge, Unsharp Mask, Place your watermark PNG, Save As JPG. Stop recording.</li>
+                        <li><strong>File ▸ Automate ▸ Fit Image</strong> at 2000 × 2000 px (it scales the long edge to 2000), Unsharp Mask, Place your watermark PNG, Save As JPG. Stop recording.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 2: Add the branch <small>· 10 min</small></h3>
                     <ol>
-                        <li>Record two tiny helper actions: "Crop Wide" and "Crop Tall".</li>
-                        <li>In Web Delivery, panel menu ▸ <strong>Insert Conditional</strong>: if <em>Document is Landscape</em> play Crop Wide, else Crop Tall.</li>
+                        <li>Set <strong>Preferences ▸ Units &amp; Rulers</strong> to Percent, then record two tiny helper actions in the same set: "Crop Wide" and "Crop Tall".</li>
+                        <li>In Web Delivery, select the first step, then panel menu ▸ <strong>Insert Conditional</strong>: If <em>Document Is Landscape</em> play Crop Wide, else Crop Tall.</li>
+                        <li>The conditional lands below the selected step, so drag it to the top of the list. Crop first, then Fit Image, so the final long edge is still 2000 px.</li>
                     </ol>
                 </div>
 
@@ -223,7 +224,7 @@
                 <div class="card card-success">
                     <h3>✅ Project Completion Checklist</h3>
                     <ul>
-                        <li>☐ A recorded, relative (long-edge/percentage) delivery Action</li>
+                        <li>☐ A recorded, relative delivery Action (Fit Image, percent-based crops)</li>
                         <li>☐ A conditional branching landscape vs portrait</li>
                         <li>☐ A batch that runs the folder hands-off with Override Save As</li>
                         <li>☐ Errors logged, no mid-run dialogs</li>
@@ -238,8 +239,8 @@
                 <div class="card card-warning">
                     <h4>🌟 Your challenge</h4>
                     <ol>
-                        <li>Record an Action that outputs three sizes of each image (thumb, web, print) into three subfolders in one run.</li>
-                        <li>Add a conditional that skips already-watermarked files (test for a layer) so re-running the batch is safe.</li>
+                        <li>Record an Action that outputs three sizes of each image (thumb, web, print) into three subfolders in one run. Batch it with Destination set to <strong>None</strong> (not Override Save As), because Override sends every save to the single Batch destination.</li>
+                        <li>Add a conditional that only processes layered masters: If <em>Document Has Layers</em>, play the full delivery; else play a lighter "already flat" version. (Conditionals can't look for a layer by name. For that kind of test you need a script.)</li>
                         <li>Build a droplet a non-Photoshop colleague could use, with a Stop step that explains what to do if something looks wrong.</li>
                     </ol>
                     <p><strong>Going further:</strong> Actions can't loop or read a spreadsheet — when you hit that wall, the next lesson's variables and scripting take over. Note down the tasks Actions couldn't handle.</p>
@@ -252,10 +253,10 @@
                 <div class="card" style="border-left:4px solid var(--primary-color);">
                     <h3>Record once, run forever</h3>
                     <ol>
-                        <li>Window ▸ Actions → new set + action → <strong>Record</strong> relative steps</li>
-                        <li><strong>Insert Conditional</strong> to branch (landscape / portrait / size)</li>
+                        <li>Window ▸ Actions → new set + action → <strong>Record</strong> relative steps (Fit Image; rulers in Percent)</li>
+                        <li><strong>Insert Conditional</strong> to branch (landscape / portrait / square / mode)</li>
                         <li>Insert stops / modals only where human input is truly needed</li>
-                        <li><strong>File ▸ Automate ▸ Batch</strong> over a folder, Override Save As, log errors</li>
+                        <li><strong>File ▸ Automate ▸ Batch</strong> over a folder, Override Save As, suppress dialogs, log errors</li>
                         <li><strong>Create Droplet</strong> for a drag-and-drop reusable</li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: if you'll do it twice, record it once.</small></p>
@@ -278,26 +279,63 @@
                 </div>
             </section>
 
-            <!-- Next -->
-            <section id="next" class="lesson-section">
-                <h2>🔭 Where This Leads</h2>
-                <div class="card card-accent">
-                    <p>Actions replay fixed steps; they can't read data or loop with logic. When the job is "make 300 badges from a spreadsheet," you need <strong>Lesson 6.3 — Data-Driven Graphics &amp; a Scripting Intro</strong>, the Module 6 deliverable, where variables and a little JavaScript take automation the last mile.</p>
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>An <strong>Action</strong> replays recorded steps; record them <strong>relative</strong> (Fit Image, rulers in Percent) so they survive varied input.</li>
+                        <li><strong>Insert Conditional</strong> branches on the document or active layer (orientation, mode, bit depth, layer type), not on pixel size or layer names.</li>
+                        <li><strong>File ▸ Automate ▸ Batch</strong> runs an Action over a folder; Override Save As, suppressed dialogs, and logged errors make it hands-off.</li>
+                        <li>A <strong>droplet</strong> packages that batch as an icon you drag files onto.</li>
+                    </ul>
                 </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You built a delivery Action that crops by orientation, resizes, sharpens, watermarks, and saves, then ran it over a whole folder and wrapped it in a droplet. Work that used to eat an afternoon now runs while you do something else.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
                 <details>
                     <summary>My Action works on one image but breaks in the batch. Why?</summary>
-                    <p>Almost always an absolute value — a fixed crop, a hard-coded size, a named layer that doesn't exist in every file. Re-record those steps as relative, and add conditionals to skip files that don't match the assumptions.</p>
+                    <p>Almost always an absolute value: a fixed crop, a hard-coded Image Size, or a named layer that doesn't exist in every file. Re-record those steps relative (Fit Image, rulers in Percent), and add conditionals to route files that don't match your assumptions.</p>
                 </details>
                 <details>
-                    <summary>Actions vs droplets vs scripts — when each?</summary>
-                    <p>Action for repeatable steps; droplet to hand that Action to someone or a folder-watch; script when you need loops, math, external data, or decisions Actions can't express. They stack: scripts can even call Actions.</p>
+                    <summary>Actions vs droplets vs scripts: when each?</summary>
+                    <p>Use an Action for repeatable steps, and a droplet to hand that Action to someone else as a drag-and-drop icon (it runs when files are dropped on it; it doesn't watch a folder). Reach for a script when you need loops, math, external data, or decisions Actions can't express. They stack: scripts can even call Actions.</p>
                 </details>
+                <details>
+                    <summary>Why did all my files land in one folder when I wanted subfolders?</summary>
+                    <p>Override Action "Save As" Commands redirects every save to the Batch destination. If your Action saves to its own folders, set Destination to None and let the Action's Save As steps decide.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Actions replay fixed steps; they can't read data or loop with logic. When the job is "make 300 badges from a spreadsheet," you need <strong>Lesson 6.3 — Data-Driven Graphics &amp; Scripting</strong>, the Module 6 deliverable, where variables and a little JavaScript take automation the last mile.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Batch your Web Delivery Action over a mixed folder with no mid-run dialogs.</li>
+                    <li>Save a droplet and test it on a fresh set of images.</li>
+                    <li>List the tasks Actions couldn't handle, and write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/creating-actions.html" target="_blank" rel="noopener">Adobe: Creating actions</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/processing-batch-files.html" target="_blank" rel="noopener">Adobe: Processing a batch of files</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Every minute you spent recording and testing this Action pays you back on every folder from now on. You have started thinking like a studio, not just an editor: do it well once, then let the machine repeat it.</p>
+                </div>
             </section>
 
             <nav class="lesson-nav" aria-label="Lesson Navigation">
                 <a href="lesson_16.html" class="prev-lesson">← Previous: Generative for Compositing</a>
                 <a href="index.html" class="home-link">🏠 Course Home</a>
-                <a href="lesson_18.html" class="next-lesson">Next: Data-Driven Graphics &amp; a Scripting Intro →</a>
+                <a href="lesson_18.html" class="next-lesson">Next: Data-Driven Graphics &amp; Scripting →</a>
             </nav>
         </div>
     </main>

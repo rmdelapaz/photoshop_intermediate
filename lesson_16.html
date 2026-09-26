@@ -54,6 +54,7 @@
                         <li>Extend a background with <strong>Generative Expand</strong> to fit a layout</li>
                         <li>Remove distractions and fill gaps with <strong>Generative Fill</strong> + a prompt</li>
                         <li>Generate connective elements (shadow ground, foliage, debris) to sell a composite</li>
+                        <li>Use <strong>Harmonize</strong> to match a placed element's light and color to its background</li>
                         <li>Judge, mask, and hand-finish generative output — and respect its limits and licensing</li>
                     </ul>
                     <p><strong>⏱️ Estimated Time:</strong> 55 minutes</p>
@@ -77,7 +78,7 @@
                         <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
                         <li><a href="#recipe" class="toc-link">Recipe Card: Generative Assist</a></li>
                         <li><a href="#journal" class="toc-link">Learning Journal</a></li>
-                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
                     </ol>
                 </nav>
             </details>
@@ -85,7 +86,7 @@
             <!-- Hook -->
             <section id="hook" class="lesson-section">
                 <h2>👤 The Goal: Fill the Gaps, Not the Vision</h2>
-                <p>A composite cropped too tight, twice. On the right, the subject is jammed against the frame with a distracting sign behind them and no room to breathe. On the left, the canvas is extended and the sign painted out, so there is space to compose and the eye rests on the subject. Drag the handle:</p>
+                <p>The same tight composite, shown two ways. On the right, the subject is jammed against the frame with a distracting sign behind them and no room to breathe. On the left, the canvas is extended and the sign painted out, so there is space to compose and the eye rests on the subject. Drag the handle:</p>
 
                 <figure>
                     <div class="ba-slider" aria-label="Before and after diagram: a cramped composite with a distraction, versus an extended, cleaned-up version with room to breathe.">
@@ -149,7 +150,7 @@
             <!-- Panel -->
             <section id="panel" class="lesson-section">
                 <h2>🛠️ The Generative Workflow</h2>
-                <p>The contextual task bar surfaces <strong>Generative Fill</strong> whenever you have a selection, and <strong>Generative Expand</strong> appears when you enlarge the canvas with the Crop tool. Both write to a new generative layer and offer a <strong>Variations</strong> panel; regenerate as many times as you like, and each attempt is kept so you can compare.</p>
+                <p>The contextual task bar surfaces <strong>Generative Fill</strong> whenever you have a selection. For <strong>Generative Expand</strong>, choose the Crop tool, set <strong>Fill</strong> to <strong>Generative Expand</strong> in the options bar, drag the canvas edges outward, commit, and click Generate in the task bar. Both write to a new generative layer, and the variations appear in the <strong>Properties</strong> panel; regenerate as many times as you like, and each set is kept so you can compare. Each generation uses generative credits and needs an internet connection.</p>
                 <figure>
                     <div class="ps-mock" style="max-width:460px;">
                         <div class="ps-titlebar">
@@ -171,9 +172,14 @@
                             <rect x="220" y="94" width="90" height="66" fill="#3a3a3a" stroke="#4a4a4a"/><text x="265" y="132" text-anchor="middle" style="fill:#e2e8f0" font-size="11">v3</text>
                             <rect x="330" y="94" width="90" height="66" fill="#353535" stroke="#4a4a4a" stroke-dasharray="4 3"/><text x="375" y="132" text-anchor="middle" style="fill:#9aa4ad" font-size="11">+ regenerate</text>
                         </svg>
-                        <figcaption>Figure 2: Type a short prompt, generate, and audition the variations. Keep the best on its generative layer and add a mask — never flatten until you have blended the seams.</figcaption>
+                        <figcaption>Figure 2: Type a short prompt, generate, and audition the variations. Pick from the variations in the Properties panel, keep the best on its generative layer, and add a mask. Never flatten until you have blended the seams.</figcaption>
                     </div>
                 </figure>
+                <div class="card card-info">
+                    <h4>🎚️ Harmonize: match a placed element to its scene</h4>
+                    <p>In current versions (Photoshop 2025 and later), <strong>Harmonize</strong> is built for exactly the Module 4 problem. Put a cut-out on its own layer above a background, select that layer, and choose <strong>Harmonize</strong> from the contextual task bar (it is also offered in the Properties panel for the layer). Photoshop generates versions of the element with its light, color, and shadows adjusted to the background, on a new layer with variations to pick from. Exact placement of the command can vary between releases, and it uses generative credits like the other generative features.</p>
+                    <p>Treat it the way you treat any generative result: compare it with the original, mask away anything it changed that you didn't want (edges, faces, product details), and finish by hand.</p>
+                </div>
                 <div class="card card-success">
                     <h4>✅ Short prompts, small selections</h4>
                     <p>Generative fill does its best work on modest areas with simple prompts ("grass", "clear blue sky", or empty to match). Ask it to invent a whole complex scene and it flails. Break big asks into small, well-selected passes and results jump in quality.</p>
@@ -187,7 +193,7 @@
                 <ul>
                     <li><strong>Treat it as raw material.</strong> Expect to mask, clone, and dodge &amp; burn the result into place. It starts the job; it does not finish it.</li>
                     <li><strong>Match resolution.</strong> Generated regions may be softer or lower-detail than your source. Add matching grain/sharpening so they blend.</li>
-                    <li><strong>Know the licensing.</strong> Adobe's model is trained for commercial-safe use, but confirm the terms for your account and deliverable, especially for client work.</li>
+                    <li><strong>Know the licensing.</strong> Adobe designs its Firefly models to be commercially safe, but current versions of Generative Fill can also offer third-party (partner) models, which may come with different terms. For client work, check which model you used and confirm the terms for your account and deliverable.</li>
                     <li><strong>Be honest.</strong> For journalism or documentary work, generative changes may be off-limits; disclose edits when integrity matters.</li>
                 </ul>
                 <div class="card card-warning">
@@ -204,7 +210,7 @@
                 <div class="card card-info">
                     <h3>Step 1: Give it room <small>· 8 min</small></h3>
                     <ol>
-                        <li>Crop tool, drag the canvas edges outward, and choose <strong>Generative Expand</strong> (empty prompt to match). Generate, pick the cleanest variation.</li>
+                        <li>Choose the Crop tool and set <strong>Fill: Generative Expand</strong> in the options bar. Drag the canvas edges outward, commit, leave the prompt empty to match, and click Generate. Pick the cleanest variation in the Properties panel.</li>
                         <li>Check the new edges at 100% for repeats or seams.</li>
                     </ol>
                 </div>
@@ -226,7 +232,15 @@
                 </div>
 
                 <div class="card card-info">
-                    <h3>Step 4: Finish by hand <small>· 8 min</small></h3>
+                    <h3>Step 4: Harmonize the subject <small>· 6 min</small></h3>
+                    <ol>
+                        <li>If your pasted subject still looks lit by a different photo, select its layer and run <strong>Harmonize</strong> (contextual task bar or Properties panel, in current versions). Compare the variations with the original.</li>
+                        <li>Keep the best one, and mask back to the original wherever Harmonize changed something it shouldn't (an edge, a face, a logo).</li>
+                    </ol>
+                </div>
+
+                <div class="card card-info">
+                    <h3>Step 5: Finish by hand <small>· 8 min</small></h3>
                     <ol>
                         <li>Add matching grain and a touch of sharpening to the generated regions. Dodge &amp; burn to marry their light to the scene.</li>
                         <li>Apply your Module 4 unifying grade over everything so the generated and real pixels share one color. 🏆</li>
@@ -239,6 +253,7 @@
                         <li>☐ Canvas extended with Generative Expand, edges audited</li>
                         <li>☐ A distraction removed cleanly with Generative Fill</li>
                         <li>☐ Connective element generated and masked in</li>
+                        <li>☐ Subject harmonized to the scene (or light matched by hand), with unwanted changes masked out</li>
                         <li>☐ Generated regions grain/sharpen-matched and hand-blended</li>
                         <li>☐ One unifying grade over the whole result</li>
                     </ul>
@@ -255,7 +270,7 @@
                         <li>Remove three increasingly hard distractions (a sign, a person, a shadow across the subject) and note where the AI succeeds and where you have to take over.</li>
                         <li>Generate the same fill five times and study how the variations differ. Learning to <em>curate</em> is the real skill here.</li>
                     </ol>
-                    <p><strong>Going further:</strong> combine generation with your masking (Module 1): generate a busy background, then composite your cleanly-cut subject on top so the subject stays pixel-perfect and only the surroundings are AI.</p>
+                    <p><strong>Going further:</strong> combine generation with your masking (Module 1): generate a busy background, then composite your cleanly cut subject on top so the subject stays pixel-perfect and only the surroundings are AI.</p>
                 </div>
             </section>
 
@@ -268,6 +283,7 @@
                         <li><strong>Generative Expand</strong> (Crop out + empty prompt) for room</li>
                         <li><strong>Generative Fill</strong> + empty prompt to remove distractions</li>
                         <li>Short prompts, small selections for connective texture</li>
+                        <li><strong>Harmonize</strong> a placed subject to the scene, then mask back what it shouldn't change</li>
                         <li>Keep each result on its <strong>generative layer</strong>; mask, don't flatten</li>
                         <li>Grain/sharpen-match, hand-blend, then one unifying grade</li>
                     </ol>
@@ -291,12 +307,24 @@
                 </div>
             </section>
 
-            <!-- Next -->
-            <section id="next" class="lesson-section">
-                <h2>🔭 Where This Leads</h2>
-                <div class="card card-accent">
-                    <p>You have a smart assistant for one-off gaps. Next you teach Photoshop to repeat <em>your</em> steps flawlessly across many files: <strong>Lesson 6.2 — Advanced Actions &amp; Conditionals</strong> records, branches, and batches your workflow so volume work runs itself.</p>
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>Generative tools are a fast, fallible assistant: select, prompt (or leave it empty), pick the best variation, then mask and finish by hand.</li>
+                        <li><strong>Generative Expand</strong> (Crop tool) gives a layout room; <strong>Generative Fill</strong> removes distractions and grows connective texture.</li>
+                        <li><strong>Harmonize</strong> can match a placed element's light and color to its scene, but it still needs checking and masking.</li>
+                        <li>Audit at 100%, match grain and sharpness, check the model and licensing terms, and finish with one unifying grade.</li>
+                    </ul>
                 </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You can now hand the tedious parts of compositing (extending a background, erasing a sign, growing a patch of ground) to a generative assistant and spend your time on judgment instead. Just as importantly, you know where it fails and how to finish its work so nobody can see the seams.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
                 <details>
                     <summary>Is it "cheating" to use generative fill professionally?</summary>
                     <p>No more than the Healing Brush was. It is a tool; the judgment of what to keep, blend, and reject is still yours. Clients pay for the finished result and your taste, not for which brush filled a patch of sky.</p>
@@ -305,6 +333,30 @@
                     <summary>The generated area looks softer than the rest. Why?</summary>
                     <p>Generated pixels often carry less fine detail than your capture. Match them with a little sharpening and the same grain as the source; that single step is what makes a generative fill invisible.</p>
                 </details>
+                <details>
+                    <summary>I can't find Harmonize. Where is it?</summary>
+                    <p>It is a recent addition, so update Photoshop first. Then select a single pixel or Smart Object layer that sits above a background; the command appears in the contextual task bar and the layer's Properties panel. Its location can shift between releases, so search for it in Help ▸ Photoshop Help or the Discover panel if the layout has changed.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You have a smart assistant for one-off gaps. Next you teach Photoshop to repeat <em>your</em> steps flawlessly across many files: <strong>Lesson 6.2 — Advanced Actions &amp; Conditionals</strong> records, branches, and batches your workflow so volume work runs itself.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Save your finished, layered composite (generative layers and masks intact).</li>
+                    <li>Note one task where generation saved you time and one where you had to take over.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/generative-fill.html" target="_blank" rel="noopener">Adobe: Generative Fill</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>New tools come and go, but the eye you have been training all course is what makes them useful. You just proved it: the AI supplied raw material, and your craft turned it into a finished image. Keep that order and every new feature becomes one more assistant working for you.</p>
+                </div>
             </section>
 
             <nav class="lesson-nav" aria-label="Lesson Navigation">

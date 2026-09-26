@@ -123,7 +123,7 @@
                 <figure>
                     <div class="mermaid">
                         flowchart LR
-                            A["Correct first&lt;br/&gt;(neutral, from Module 2.1)"] --> B["Contrast&lt;br/&gt;(S-curve)"]
+                            A["Correct first&lt;br/&gt;(neutral base, Lesson 2.1 pipeline)"] --> B["Contrast&lt;br/&gt;(S-curve)"]
                             B --> C["Color&lt;br/&gt;(per-channel Curves / Gradient Map)"]
                             C --> D["Refine locally&lt;br/&gt;(masks from Module 1)"]
                             D --> E["Bottle it&lt;br/&gt;(export a LUT)"]
@@ -178,7 +178,7 @@
                             <g font-family="Segoe UI, sans-serif" font-size="11" style="fill:#cbd5e1">
                                 <rect x="16" y="68" width="388" height="22" fill="#454545"/><text x="26" y="83">Faded Film.cube</text>
                                 <rect x="16" y="92" width="388" height="22" fill="#414141"/><text x="26" y="107">Bleach Bypass.cube</text>
-                                <rect x="16" y="116" width="388" height="22" fill="#454545"/><text x="26" y="131">Load 3D LUT…  /  Export Color Lookup Tables…</text>
+                                <rect x="16" y="116" width="388" height="22" fill="#454545"/><text x="26" y="131">Load 3D LUT…</text>
                             </g>
                             <text x="16" y="164" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">Photoshop ships dozens; File ▸ Export ▸ Color Lookup Tables saves your own.</text>
                         </svg>
@@ -190,13 +190,13 @@
             <!-- Build -->
             <section id="build" class="lesson-section">
                 <h2>🛠️ Guided Build: Grade &amp; Bottle It</h2>
-                <p>Open a corrected, neutral image (from Lesson 2.1), 16-bit. Grade in this order.</p>
+                <p>Open an image in your Lesson 2.1 pipeline (16-bit, deliberate working space) and correct it to a neutral base first: fix exposure and white balance with a Curves layer or Filter ▸ Camera Raw Filter. A portrait is ideal, because Lesson 2.3 split-tones this same file. Save as <code>grade-working.psd</code>, then grade in this order.</p>
 
                 <div class="card card-info">
                     <h3>Step 1: Contrast, then color <small>· 10 min</small></h3>
                     <ol>
                         <li>Add a <strong>Curves</strong> layer and set your contrast with a gentle RGB S-curve.</li>
-                        <li>New Curves layer. Switch to the <strong>Blue</strong> channel: lift the shadow end (teal shadows), drop the highlight end (warm highlights). Nudge <strong>Red</strong> and <strong>Green</strong> in tiny amounts to taste. This is the classic teal-and-gold in Curves.</li>
+                        <li>New Curves layer. Switch to the <strong>Blue</strong> channel: lift the shadow end (blue shadows), drop the highlight end (warm, yellow highlights). Blue alone gives blue/yellow; for a truer teal, also lift <strong>Green</strong> slightly or drop <strong>Red</strong> slightly in the shadows. This is the classic teal-and-gold in Curves.</li>
                     </ol>
                 </div>
 
@@ -219,7 +219,8 @@
                 <div class="card card-info">
                     <h3>Step 4: Bottle it as a LUT <small>· 6 min</small></h3>
                     <ol>
-                        <li>With your grading layers active (over a neutral base, no image-specific masks), choose <strong>File ▸ Export ▸ Color Lookup Tables</strong> and save a <code>.cube</code>.</li>
+                        <li>Save your graded master (<code>grade-working.psd</code>) first; Lesson 2.3 reopens it.</li>
+                        <li>The export bakes every <em>visible</em> adjustment layer, not just the selected ones, and a LUT cannot store a mask. So temporarily disable the Step 3 masks (<kbd>Shift</kbd>-click each mask thumbnail) and hide anything that is not part of the grade. Adobe's documentation describes the export for a document with a Background layer plus adjustment layers, so keep that structure. Then choose <strong>File ▸ Export ▸ Color Lookup Tables</strong>, save a <code>.cube</code>, and re-enable the masks afterward.</li>
                         <li>Open a <em>different</em> photo, add a <strong>Color Lookup</strong> layer, load your LUT, and watch the whole look transfer. That is your grade, now reusable forever. 🏆</li>
                     </ol>
                     <div class="card card-success">
@@ -236,6 +237,7 @@
                         <li>☐ A <strong>Gradient Map</strong> used at reduced opacity / a blend mode</li>
                         <li>☐ Grade refined with at least one mask</li>
                         <li>☐ Look <strong>exported as a LUT</strong> and re-applied to a second image</li>
+                        <li>☐ Graded master saved as <code>grade-working.psd</code> for Lesson 2.3</li>
                     </ul>
                 </div>
             </section>
@@ -264,7 +266,7 @@
                         <li><strong>Curves</strong> per channel: teal shadows, warm highlights (Blue channel split)</li>
                         <li><strong>Gradient Map</strong> (teal→gold) at ~20–30% / Color blend</li>
                         <li>Mask locally (luminosity or subject masks)</li>
-                        <li><strong>File ▸ Export ▸ Color Lookup Tables</strong> → reuse as a <code>.cube</code></li>
+                        <li>Save the master; disable masks, then <strong>File ▸ Export ▸ Color Lookup Tables</strong> → reuse as a <code>.cube</code></li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: correct, then grade, then bottle.</small></p>
                 </div>
@@ -310,7 +312,7 @@
                 </details>
                 <details>
                     <summary>My grade looks great on this photo but wrong on others.</summary>
-                    <p>A LUT assumes a similar starting point. Correct each image to a neutral base first (Module 2.1), then apply the LUT. Grading un-corrected images is why a look "breaks" from photo to photo.</p>
+                    <p>A LUT assumes a similar starting point. Correct each image to a neutral base first (in the Lesson 2.1 pipeline), then apply the LUT. Grading un-corrected images is why a look "breaks" from photo to photo.</p>
                 </details>
 
                 <h3>🔭 Looking Ahead</h3>

@@ -131,7 +131,7 @@
                 <p>A gallery, a product set, or a magazine spread has to feel like one shoot even when the frames were lit differently. To match a photo to a reference:</p>
                 <ol>
                     <li>Put both images side by side and pick the one whose look you want as the <strong>reference</strong>.</li>
-                    <li>Sample a known neutral (or a skin tone) in each with the <strong>Color Sampler</strong> and read the RGB values. The differences tell you which way each channel must move.</li>
+                    <li>Sample a known neutral (or a skin tone) in each with the <strong>Color Sampler Tool</strong> and read the RGB values in the <strong>Info</strong> panel (Window ▸ Info). The differences tell you which way each channel must move.</li>
                     <li>On the image you are matching, add <strong>Curves</strong> and nudge each channel until its sampled values meet the reference's. Match the black point, white point, and mid color in that order.</li>
                 </ol>
                 <div class="card card-success">
@@ -152,19 +152,22 @@
                             <span class="ps-dot" style="background:#28c840;"></span>
                             <span style="margin-left:6px;">Customize Proof Condition</span>
                         </div>
-                        <svg viewBox="0 0 440 190" role="img" aria-label="Proof Setup dialog: Device to Simulate set to a printer profile, with Simulate Paper Color and Gamut Warning options.">
-                            <rect width="440" height="190" fill="#3a3a3a"/>
+                        <svg viewBox="0 0 440 230" role="img" aria-label="Customize Proof Condition dialog: Device to Simulate set to a press profile, Rendering Intent with Black Point Compensation, Simulate Paper Color, and the Gamut Warning command.">
+                            <rect width="440" height="230" fill="#3a3a3a"/>
                             <text x="16" y="28" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Device to Simulate</text>
-                            <rect x="16" y="38" width="408" height="22" fill="#1473E6"/><text x="220" y="53" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">US Web Coated (SWOP) v2 ▾</text>
-                            <rect x="16" y="74" width="14" height="14" fill="#1473E6"/><text x="23" y="86" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10">✓</text>
-                            <text x="40" y="86" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Simulate Paper Color</text>
-                            <rect x="16" y="98" width="14" height="14" fill="#1473E6"/><text x="23" y="110" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10">✓</text>
-                            <text x="40" y="110" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Simulate Black Ink</text>
-                            <line x1="16" y1="128" x2="424" y2="128" stroke="#4a4a4a"/>
-                            <text x="16" y="150" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">View ▸ Gamut Warning (⇧⌘Y)</text>
-                            <text x="16" y="170" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">flags colors the printer can't reproduce (shown as grey)</text>
+                            <rect x="16" y="38" width="408" height="22" fill="#1473E6"/><text x="220" y="53" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">U.S. Web Coated (SWOP) v2 ▾</text>
+                            <text x="16" y="84" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Rendering Intent:</text><text x="118" y="84" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Relative Colorimetric ▾</text>
+                            <rect x="264" y="73" width="14" height="14" fill="#1473E6"/><text x="271" y="85" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10">✓</text>
+                            <text x="286" y="85" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Black Point Compensation</text>
+                            <rect x="16" y="104" width="14" height="14" fill="#1473E6"/><text x="23" y="116" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10">✓</text>
+                            <text x="40" y="116" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Simulate Paper Color</text>
+                            <rect x="16" y="128" width="14" height="14" fill="#1473E6"/><text x="23" y="140" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10">✓</text>
+                            <text x="40" y="140" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Simulate Black Ink</text>
+                            <line x1="16" y1="158" x2="424" y2="158" stroke="#4a4a4a"/>
+                            <text x="16" y="182" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold">View ▸ Gamut Warning (Ctrl/⌘ + Shift + Y)</text>
+                            <text x="16" y="204" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">flags colors the printer can't reproduce (shown as gray)</text>
                         </svg>
-                        <figcaption>Figure 2: Choose the printer's profile, tick <strong>Simulate Paper Color</strong>, and toggle <strong>Gamut Warning</strong> to grey out colors the press cannot hit. Toggle proof with <kbd>Ctrl/⌘ + Y</kbd>.</figcaption>
+                        <figcaption>Figure 2: Choose the printer's profile, a <strong>Rendering Intent</strong> (Relative Colorimetric or Perceptual) with <strong>Black Point Compensation</strong>, tick <strong>Simulate Paper Color</strong>, and toggle <strong>Gamut Warning</strong> to gray out colors the press cannot hit. Toggle proof with <kbd>Ctrl/⌘ + Y</kbd>.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
@@ -176,7 +179,7 @@
             <!-- Build -->
             <section id="build" class="lesson-section">
                 <h2>🛠️ Guided Build: Split-Tone &amp; Proof</h2>
-                <p>Open a corrected, graded image from Lesson 2.2 (16-bit, wide space).</p>
+                <p>Open <code>grade-working.psd</code> from Lesson 2.2 (16-bit, wide space). The skin checks below assume a portrait; if you graded a landscape there, drag your Lesson 2.2 grading layers onto a corrected portrait instead. Save as <code>finish-working.psd</code>.</p>
 
                 <div class="card card-info">
                     <h3>Step 1: Split-tone it <small>· 10 min</small></h3>
@@ -197,16 +200,17 @@
                 <div class="card card-info">
                     <h3>Step 3: Soft-proof <small>· 8 min</small></h3>
                     <ol>
-                        <li><strong>View ▸ Proof Setup ▸ Custom</strong>, choose your printer's profile (or US Web Coated SWOP as a stand-in), tick <strong>Simulate Paper Color</strong>, and turn on proof (<kbd>Ctrl/⌘ + Y</kbd>). The image dulls slightly — that is the paper.</li>
-                        <li>Turn on <strong>Gamut Warning</strong> (<kbd>Ctrl/⌘ + Shift + Y</kbd>). Anything greyed is out of gamut; lower its saturation (a masked Hue/Saturation) until it clears.</li>
+                        <li><strong>View ▸ Proof Setup ▸ Custom</strong>, choose your printer's profile (or U.S. Web Coated (SWOP) v2 as a stand-in), set <strong>Rendering Intent</strong> to Relative Colorimetric or Perceptual with <strong>Black Point Compensation</strong> on, tick <strong>Simulate Paper Color</strong>, and turn on proof (<kbd>Ctrl/⌘ + Y</kbd>). The image dulls slightly — that is the paper.</li>
+                        <li>Turn on <strong>Gamut Warning</strong> (<kbd>Ctrl/⌘ + Shift + Y</kbd>). Anything grayed is out of gamut; lower its saturation (a masked Hue/Saturation) until it clears.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 4: Deliver both files <small>· 6 min</small></h3>
                     <ol>
-                        <li><strong>Web:</strong> Convert to Profile ▸ sRGB, flatten a copy, export JPG.</li>
-                        <li><strong>Print:</strong> Convert to Profile ▸ your printer/CMYK profile, save a copy as PDF or TIFF. Module 2 deliverable: one look, delivered correctly for two destinations. 🏆</li>
+                        <li>Save the layered master first; it stays wide and 16-bit.</li>
+                        <li><strong>Web:</strong> <strong>Image ▸ Duplicate</strong> (Duplicate Merged Layers Only), then on the copy Convert to Profile ▸ sRGB, set 8 Bits/Channel, and export a JPG.</li>
+                        <li><strong>Print:</strong> make another merged duplicate, Convert to Profile ▸ your printer/CMYK profile (or keep tagged RGB if your printer asks for it), and save it as PDF or TIFF. Module 2 deliverable: one look, delivered correctly for two destinations. 🏆</li>
                     </ol>
                 </div>
 
@@ -215,7 +219,7 @@
                     <ul>
                         <li>☐ A believable split-tone (cool shadows, warm highlights, neutral-ish mids)</li>
                         <li>☐ A second image matched to read as the same set</li>
-                        <li>☐ Soft-proofed with paper simulation; gamut warnings resolved</li>
+                        <li>☐ Soft-proofed with a deliberate rendering intent and paper simulation; gamut warnings resolved</li>
                         <li>☐ Delivered a web (sRGB) and a print (CMYK/printer-profile) file</li>
                         <li>☐ Layered master kept wide + 16-bit</li>
                     </ul>
@@ -244,9 +248,9 @@
                     <ol>
                         <li><strong>Color Balance</strong>: cool shadows, warm highlights, neutral mids</li>
                         <li>Match a companion image with <strong>Color Sampler</strong> + Curves (tones before colors)</li>
-                        <li><strong>View ▸ Proof Setup ▸ Custom</strong> → printer profile + Simulate Paper Color</li>
-                        <li><strong>Gamut Warning</strong> (⇧⌘Y) → desaturate flagged areas</li>
-                        <li>Deliver: Convert to sRGB (web) and to the printer profile (print)</li>
+                        <li><strong>View ▸ Proof Setup ▸ Custom</strong> → printer profile, Rendering Intent + Black Point Compensation, Simulate Paper Color</li>
+                        <li><strong>Gamut Warning</strong> (<kbd>Ctrl/⌘ + Shift + Y</kbd>) → desaturate flagged areas</li>
+                        <li>Deliver from duplicates: Convert to sRGB (web) and to the printer profile (print)</li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: what you see is only trustworthy once you have proofed it.</small></p>
                 </div>

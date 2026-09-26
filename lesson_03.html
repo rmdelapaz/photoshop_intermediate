@@ -145,7 +145,7 @@
                             <span class="ps-dot" style="background:#28c840;"></span>
                             <span style="margin-left:6px;">Ps &nbsp; Select &amp; Mask (for hair)</span>
                         </div>
-                        <svg viewBox="0 0 720 360" role="img" aria-label="Select and Mask: tools at left including the Refine Edge Brush, a subject preview on an onion-skin overlay, and Global Refinements plus Output Settings at right.">
+                        <svg viewBox="0 0 720 360" role="img" aria-label="Select and Mask: tools at left including the Refine Edge Brush, a subject preview in the red Overlay view, and Global Refinements plus Output Settings at right.">
                             <rect width="720" height="360" fill="#2b2b2b"/>
                             <!-- left tools -->
                             <rect x="0" y="0" width="46" height="360" fill="#3a3a3a"/>
@@ -173,7 +173,7 @@
                             <text x="504" y="256" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">Shift Edge slightly negative</text>
                             <text x="504" y="272" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">bites off the last halo.</text>
                         </svg>
-                        <figcaption>Figure 2: Paint the hairline with the <strong>Refine Edge Brush</strong>, keep <strong>Smooth/Feather</strong> low, nudge <strong>Shift Edge</strong> negative, tick <strong>Decontaminate Colors</strong>, and output to a <strong>New Layer with Layer Mask</strong>.</figcaption>
+                        <figcaption>Figure 2: Paint the hairline with the <strong>Refine Edge Brush</strong>, keep <strong>Smooth/Feather</strong> low, nudge <strong>Shift Edge</strong> negative, and output to a <strong>New Layer with Layer Mask</strong>. <strong>Decontaminate Colors</strong> is ticked on the final pass, after the channel-mask rescue.</figcaption>
                     </div>
                 </figure>
             </section>
@@ -194,7 +194,8 @@
                 <div class="card card-info">
                     <h3>Step 2: Refine the hairline <small>· 10 min</small></h3>
                     <ol>
-                        <li>Click <strong>Select and Mask</strong>. Set View to <strong>On Layers</strong> or the red <strong>Overlay</strong>.</li>
+                        <li>Choose <strong>Select ▸ Select and Mask</strong> (<kbd>Ctrl/⌘ + Alt/⌥ + R</kbd>, or the options-bar button while a selection tool is active). Set View to <strong>On Layers</strong> or the red <strong>Overlay</strong>.</li>
+                        <li>Under <strong>Edge Detection</strong>, tick <strong>Smart Radius</strong> and raise <strong>Radius</strong> a few pixels so Photoshop searches a wider band for strands. Try the <strong>Refine Hair</strong> button in the options bar for a quick first pass.</li>
                         <li>Take the <strong>Refine Edge Brush</strong> and paint <em>along</em> the wispy hairline (not the solid interior). Photoshop rebuilds the fine strands and their partial transparency.</li>
                         <li>Keep <strong>Smooth</strong> and <strong>Feather</strong> low; nudge <strong>Shift Edge</strong> slightly negative.</li>
                     </ol>
@@ -207,15 +208,16 @@
                 <div class="card card-info">
                     <h3>Step 3: Rescue gaps with a channel mask <small>· 8 min</small></h3>
                     <ol>
-                        <li>Output the current result to a <strong>New Layer with Layer Mask</strong>. Inspect: some flyaways may still be missing.</li>
-                        <li>From Lesson 1.2, build a quick <strong>channel mask</strong> of the hair (pick the channel with the most hair-vs-background contrast, push with Levels), then paint that detail <em>into</em> your layer mask with a low-opacity brush to bring lost strands back.</li>
+                        <li>Output the current result to a <strong>New Layer with Layer Mask</strong> (leave Decontaminate off for now; it comes last). Inspect: some flyaways may still be missing.</li>
+                        <li>From Lesson 1.2, build a quick <strong>channel mask</strong> of the hair: pick the channel with the most hair-vs-background contrast, duplicate it, and push it with Image ▸ Adjustments ▸ Levels.</li>
+                        <li><kbd>Ctrl/⌘</kbd>-click that channel to load it, and invert if needed so the <em>hair</em> is selected. Click the layer mask thumbnail, then paint white with a soft, low-opacity brush along the hairline. The selection limits the paint to the strands, bringing lost detail back.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 4: Decontaminate &amp; pressure-test <small>· 8 min</small></h3>
                     <ol>
-                        <li>If you did not already, re-enter Select &amp; Mask and tick <strong>Decontaminate Colors</strong>, raising Amount until the old background's color leaves the edge.</li>
+                        <li>With the rescued layer mask selected, reopen <strong>Select and Mask</strong>, tick <strong>Decontaminate Colors</strong>, and raise Amount until the old background's color leaves the edge. Decontamination rewrites edge pixels, so it can only output to a new layer or document: choose <strong>New Layer with Layer Mask</strong>, which creates a fresh, decontaminated layer and hides the previous one.</li>
                         <li><strong>The test:</strong> drop a temporary <em>saturated</em> color layer behind the cutout. Any surviving fringe screams against it. Fix, then place your real new background. Module 1 deliverable: done. 🏆</li>
                     </ol>
                     <div class="card card-success">
@@ -246,7 +248,7 @@
                         <li>Cut out something non-human and tricky: a glass, a potted fern, a pet. Each stresses a different part of the pipeline.</li>
                         <li>Place one cutout on a dark background and one on a light background. Decontamination that looks fine on light often reveals a halo on dark.</li>
                     </ol>
-                    <p><strong>Going further:</strong> keep the whole thing non-destructive by outputting to a Smart Object, so you can re-open Select &amp; Mask and adjust the refinement later without starting over.</p>
+                    <p><strong>Going further:</strong> Select and Mask has no Smart Object output, but you can still keep refinement open-ended: output to a <strong>Layer Mask</strong>, and later select that mask and reopen Select and Mask on it to adjust the edge without starting over.</p>
                 </div>
             </section>
 
@@ -257,9 +259,9 @@
                     <h3>Extract flowing hair</h3>
                     <ol>
                         <li><strong>Select ▸ Subject</strong> for the solid mass</li>
-                        <li><strong>Select &amp; Mask</strong> → <strong>Refine Edge Brush</strong> along the hairline; low Smooth/Feather, Shift Edge slightly negative</li>
-                        <li>Rescue missed strands with a <strong>channel mask</strong> painted into the layer mask</li>
-                        <li>Tick <strong>Decontaminate Colors</strong>; output to <strong>New Layer with Layer Mask</strong></li>
+                        <li><strong>Select ▸ Select and Mask</strong> → Smart Radius on, <strong>Refine Edge Brush</strong> along the hairline; low Smooth/Feather, Shift Edge slightly negative; output New Layer with Layer Mask</li>
+                        <li>Rescue missed strands: load a <strong>channel mask</strong> as a selection, paint white into the layer mask</li>
+                        <li>Final pass: reopen Select and Mask on the rescued mask, tick <strong>Decontaminate Colors</strong>, output to <strong>New Layer with Layer Mask</strong></li>
                         <li>Test against a <strong>saturated</strong> background; fix any fringe</li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: rough in, refine, rescue, decontaminate — in that order.</small></p>

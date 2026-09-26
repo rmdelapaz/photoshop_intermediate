@@ -77,7 +77,7 @@
                         <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
                         <li><a href="#recipe" class="toc-link">Recipe Card: Multi-Shot Merge</a></li>
                         <li><a href="#journal" class="toc-link">Learning Journal</a></li>
-                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
                     </ol>
                 </nav>
             </details>
@@ -155,7 +155,7 @@
             <!-- Panel -->
             <section id="panel" class="lesson-section">
                 <h2>🧰 Photomerge, HDR Pro &amp; Auto-Blend</h2>
-                <p>Each technique has a front door. <strong>File ▸ Automate ▸ Photomerge</strong> stitches panoramas (with layout options and a "Content-Aware Fill Transparent Areas" tick for the ragged edges). <strong>File ▸ Automate ▸ Merge to HDR Pro</strong> fuses an exposure bracket into a 32-bit file you then tone-map. For focus stacking you load frames as a stack, <strong>Edit ▸ Auto-Align Layers</strong>, then <strong>Edit ▸ Auto-Blend Layers ▸ Stack Images</strong>.</p>
+                <p>Each technique has a front door. <strong>File ▸ Automate ▸ Photomerge</strong> stitches panoramas (with layout options and a "Content Aware Fill Transparent Areas" tick for the ragged edges). <strong>File ▸ Automate ▸ Merge to HDR Pro</strong> fuses an exposure bracket; choose 16- or 8-bit output to tone-map right in the dialog (Local Adaptation and other methods), or 32-bit to keep the full range and tone-map later. For focus stacking you load frames as a stack, <strong>Edit ▸ Auto-Align Layers</strong>, then <strong>Edit ▸ Auto-Blend Layers…</strong> and choose <strong>Stack Images</strong>.</p>
                 <figure>
                     <div class="ps-mock" style="max-width:460px;">
                         <div class="ps-titlebar">
@@ -172,11 +172,10 @@
                             <text x="160" y="48" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">frame_01.jpg</text>
                             <text x="160" y="68" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">frame_02.jpg</text>
                             <text x="160" y="88" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">frame_03.jpg</text>
-                            <text x="160" y="108" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">overlap ~30%</text>
                             <rect x="16" y="128" width="13" height="13" fill="#1473E6"/><text x="22" y="139" text-anchor="middle" style="fill:#fff" font-size="9">✓</text><text x="36" y="139" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Blend Images Together</text>
-                            <rect x="16" y="150" width="13" height="13" fill="#1473E6"/><text x="22" y="161" text-anchor="middle" style="fill:#fff" font-size="9">✓</text><text x="36" y="161" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Content-Aware Fill Transparent Areas</text>
+                            <rect x="16" y="150" width="13" height="13" fill="#1473E6"/><text x="22" y="161" text-anchor="middle" style="fill:#fff" font-size="9">✓</text><text x="36" y="161" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Content Aware Fill Transparent Areas</text>
                         </svg>
-                        <figcaption>Figure 2: Photomerge on Auto with blending and content-aware edge fill. HDR Pro and Auto-Blend share the same spirit — point them at your frames and let the align-and-blend engine do the heavy lifting.</figcaption>
+                        <figcaption>Figure 2: Photomerge on Auto with blending and content-aware edge fill. (Shoot with roughly 30% overlap between frames; the dialog doesn't measure it for you.) HDR Pro and Auto-Blend share the same spirit — point them at your frames and let the align-and-blend engine do the heavy lifting.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
@@ -227,7 +226,7 @@
                 <div class="card card-info">
                     <h3>Step 1: Panorama <small>· 10 min</small></h3>
                     <ol>
-                        <li><strong>File ▸ Automate ▸ Photomerge</strong>, add the pan frames, Layout Auto, tick Blend + Content-Aware Fill Transparent Areas.</li>
+                        <li><strong>File ▸ Automate ▸ Photomerge</strong>, add the pan frames, Layout Auto, tick Blend Images Together + Content Aware Fill Transparent Areas.</li>
                         <li>Crop or accept the filled edges; heal any obvious stitch artifact.</li>
                     </ol>
                 </div>
@@ -236,7 +235,7 @@
                     <h3>Step 2: HDR <small>· 12 min</small></h3>
                     <ol>
                         <li><strong>File ▸ Automate ▸ Merge to HDR Pro</strong>, add the bracket, tick Remove Ghosts if anything moved.</li>
-                        <li>Tone-map to taste (keep it believable), or output 32-bit and grade with Camera Raw.</li>
+                        <li>For a finished file now, set Mode to 16 Bit and tone-map in the dialog (keep it believable). To keep every stop, set 32 Bit instead and tone-map later with Camera Raw.</li>
                     </ol>
                 </div>
 
@@ -244,7 +243,7 @@
                     <h3>Step 3: Focus stack <small>· 10 min</small></h3>
                     <ol>
                         <li><strong>File ▸ Scripts ▸ Load Files into Stack</strong> (tick Attempt to Automatically Align).</li>
-                        <li>Select all layers, <strong>Edit ▸ Auto-Blend Layers ▸ Stack Images</strong> with seamless tones. Mask-fix any soft patch.</li>
+                        <li>Select all layers, <strong>Edit ▸ Auto-Blend Layers…</strong>, choose <strong>Stack Images</strong>, and tick <strong>Seamless Tones and Colors</strong>. Mask-fix any soft patch.</li>
                     </ol>
                 </div>
 
@@ -289,8 +288,8 @@
                     <h3>Shoot many, blend to one</h3>
                     <ol>
                         <li><strong>Panorama</strong>: Photomerge (Auto + Blend + Content-Aware edges)</li>
-                        <li><strong>HDR</strong>: Merge to HDR Pro (bracket, Remove Ghosts, tone-map)</li>
-                        <li><strong>Focus stack</strong>: Load into Stack → Auto-Align → Auto-Blend (Stack Images)</li>
+                        <li><strong>HDR</strong>: Merge to HDR Pro (bracket, Remove Ghosts, 16-bit tone-map or 32-bit to keep range)</li>
+                        <li><strong>Focus stack</strong>: Load Files into Stack → Auto-Align → Auto-Blend Layers… (Stack Images)</li>
                         <li>Overlap generously; change only the one intended variable</li>
                         <li>Heal seams/ghosts at 100%, then one shared grade</li>
                     </ol>
@@ -314,20 +313,57 @@
                 </div>
             </section>
 
-            <!-- Next -->
-            <section id="next" class="lesson-section">
-                <h2>🔭 Where This Leads</h2>
-                <div class="card card-accent">
-                    <p>You have combined many frames into one <em>still</em>. The last technique in this tier combines frames into <em>motion</em>: <strong>Lesson 7.2 — Timeline Animation &amp; Export</strong> uses Photoshop's Timeline to animate layers and export a GIF or video — and closes out Module 7.</p>
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>Panorama, HDR, and focus stacking all run one engine: <strong>auto-align</strong>, then <strong>blend</strong>.</li>
+                        <li>Change only one variable between frames: angle (pano), shutter (HDR), or focus distance (stack).</li>
+                        <li><strong>Photomerge</strong>, <strong>Merge to HDR Pro</strong>, and <strong>Load Files into Stack + Auto-Blend Layers</strong> are the three front doors.</li>
+                        <li>Clean seams, ghosts, and soft bands at 100%, then unify all results with one grade.</li>
+                    </ul>
                 </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You beat the three limits of a single frame: you stitched a panorama wider than your lens, merged a bracket with more range than your sensor, and stacked a focus series deeper than any aperture. Each result is cleaned so the joins disappear.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
                 <details>
                     <summary>Is HDR the same as the "HDR look" on phones?</summary>
-                    <p>Related but not identical. Phones auto-merge a bracket instantly; desktop Merge to HDR Pro gives you a true 32-bit file and full control over the tone-map, so you decide between natural range recovery and the stylized look.</p>
+                    <p>Related but not identical. Phones auto-merge a bracket instantly; desktop Merge to HDR Pro gives you a true 32-bit file (or an in-dialog tone-map) and full control, so you decide between natural range recovery and a stylized look.</p>
                 </details>
                 <details>
                     <summary>My panorama bows or bends. What happened?</summary>
                     <p>Wide pans on a flat projection curve straight lines. Try a different Photomerge layout (Cylindrical or Spherical), keep the horizon centered while shooting, and finish with Adaptive Wide Angle (Filter menu) to straighten.</p>
                 </details>
+                <details>
+                    <summary>My focus stack has a soft band across the middle.</summary>
+                    <p>A focus distance was skipped while shooting. Auto-Blend can only choose from the sharp regions you captured, so reshoot with smaller focus steps, or mask in a sharper frame by hand if one exists.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>You have combined many frames into one <em>still</em>. The last technique in this tier combines frames into <em>motion</em>: <strong>Lesson 7.2 — Timeline Animation &amp; Export</strong> uses Photoshop's Timeline to animate layers and export a GIF or video, and closes out Module 7.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Finish and clean one panorama, one HDR merge, and one focus stack.</li>
+                    <li>Plan one multi-shot image of your own (width, range, or depth) and shoot it.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/create-panoramic-images-photomerge.html" target="_blank" rel="noopener">Adobe: Photomerge panoramas</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/high-dynamic-range-images.html" target="_blank" rel="noopener">Adobe: High dynamic range images</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Multi-shot work rewards patience at the camera more than skill at the keyboard, and you have now practiced both. The next time a scene is too wide, too bright, or too deep for one frame, you know exactly how to capture it anyway.</p>
+                </div>
             </section>
 
             <nav class="lesson-nav" aria-label="Lesson Navigation">

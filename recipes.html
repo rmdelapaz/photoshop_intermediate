@@ -188,7 +188,7 @@
                         <ol>
                             <li><strong>View ▸ Proof Setup ▸ Custom</strong>: choose the printer profile, tick <strong>Simulate Paper Color</strong>.</li>
                             <li>Toggle proof with <kbd>Ctrl/⌘ + Y</kbd>; the image dulls — that's the paper.</li>
-                            <li>Turn on <strong>Gamut Warning</strong> (<kbd>⇧⌘Y</kbd>) and desaturate flagged areas.</li>
+                            <li>Turn on <strong>Gamut Warning</strong> (<kbd>Shift+Ctrl/⌘+Y</kbd>) and desaturate flagged areas.</li>
                         </ol>
                         <p class="recipe-deep">🔗 Deep dive: <a href="lesson_06.html">Module 2.3: Match, Split-Tone &amp; Soft-Proof</a></p>
                     </div>
@@ -204,17 +204,17 @@
                         <p class="recipe-when">When you must even skin tone without erasing pores.</p>
                         <ol>
                             <li>Duplicate twice → <strong>Low</strong> (Gaussian Blur until pores vanish) and <strong>High</strong>.</li>
-                            <li>On <strong>High</strong>: <strong>Apply Image</strong> (source Low, Subtract, Scale 2, Offset 128), blend <strong>Linear Light</strong>.</li>
+                            <li>On <strong>High</strong>: <strong>Apply Image</strong> with source Low. In 8-bit: Subtract, Scale 2, Offset 128. In 16-bit: Add, tick Invert, Scale 2, Offset 0. Then set the blend mode to <strong>Linear Light</strong>.</li>
                             <li>Even tone on <strong>Low</strong>; heal blemishes on <strong>High</strong> — never both at once.</li>
                         </ol>
                         <p class="recipe-deep">🔗 Deep dive: <a href="lesson_07.html">Module 3.1: Skin &amp; Frequency Separation</a></p>
                     </div>
 
                     <div class="card recipe" data-tags="dodge burn sculpt light shadow 50 gray soft light face dimension flow">
-                        <h3>Dodge &amp; burn on a grey layer</h3>
+                        <h3>Dodge &amp; burn on a gray layer</h3>
                         <p class="recipe-when">When a portrait is clean but flat and needs form.</p>
                         <ol>
-                            <li>New layer, mode <strong>Soft Light</strong>, tick <strong>Fill with 50% gray</strong>.</li>
+                            <li>New layer, mode <strong>Soft Light</strong>, tick <strong>Fill with Soft-Light-neutral color (50% gray)</strong>.</li>
                             <li>Soft brush, <strong>Flow 5–10%</strong>: white to dodge highlights, black to burn recesses.</li>
                             <li>Check in a temporary <strong>Black &amp; White</strong> view; lower opacity to taste.</li>
                         </ol>
@@ -322,12 +322,12 @@
                     </div>
 
                     <div class="card recipe" data-tags="baseline grid columns guide layout align rhythm new guide layout">
-                        <h3>Set a baseline grid &amp; columns</h3>
+                        <h3>Set columns &amp; a baseline guide</h3>
                         <p class="recipe-when">When elements don't line up across a layout.</p>
                         <ol>
-                            <li><strong>View ▸ New Guide Layout</strong>: set columns, gutters, and margins.</li>
-                            <li>Add a baseline at your body leading so text snaps to a shared rhythm.</li>
-                            <li>Align every block to the grid — invisible structure, visible polish.</li>
+                            <li><strong>View ▸ Guides ▸ New Guide Layout</strong> (older versions: View ▸ New Guide Layout): set columns, gutters, and margins.</li>
+                            <li>Photoshop has no true baseline grid. Approximate one in <strong>Preferences ▸ Guides, Grid &amp; Slices</strong> by setting "Gridline Every" to your body leading, then show it with View ▸ Show ▸ Grid.</li>
+                            <li>Text won't snap to it, so align each text block's baselines to the grid by eye.</li>
                         </ol>
                         <p class="recipe-deep">🔗 Deep dive: <a href="lesson_13.html">Module 5.1: Type Systems, Styles &amp; Grids</a></p>
                     </div>
@@ -360,13 +360,14 @@
             <section id="scale" class="lesson-section recipe-cat">
                 <h2>⚙️ Automation &amp; Multi-Shot</h2>
                 <div class="recipe-grid">
-                    <div class="card recipe" data-tags="generative fill expand harmonize composite remove distraction background extend seams ai">
+                    <div class="card recipe" data-tags="generative fill expand harmonize light match composite remove distraction background extend seams ai">
                         <h3>Harmonize a composite with generative fill</h3>
                         <p class="recipe-when">When a composite is cramped or has a distraction.</p>
                         <ol>
                             <li><strong>Generative Expand</strong> (Crop out, empty prompt) for room; audit the new edges.</li>
+                            <li>In current versions, try Photoshop's dedicated <strong>Harmonize</strong> command on a pasted-in element to match its light and color to the scene.</li>
                             <li><strong>Generative Fill</strong> with an empty prompt to erase a distraction.</li>
-                            <li>Grain/sharpen-match the generated area and hand-blend; keep it on its generative layer.</li>
+                            <li>Grain/sharpen-match generated areas and hand-blend; keep each result on its own generative layer.</li>
                         </ol>
                         <p class="recipe-deep">🔗 Deep dive: <a href="lesson_16.html">Module 6.1: Generative for Compositing</a></p>
                     </div>
@@ -375,9 +376,9 @@
                         <h3>Batch a folder with a conditional</h3>
                         <p class="recipe-when">When mixed landscape/portrait files all need the same prep.</p>
                         <ol>
-                            <li>Record an <strong>Action</strong> with relative steps (long-edge resize, sharpen, save).</li>
-                            <li>Panel menu ▸ <strong>Insert Conditional</strong>: if landscape play one crop, else another.</li>
-                            <li><strong>File ▸ Automate ▸ Batch</strong> over the folder (tick Override Save As).</li>
+                            <li>Record an <strong>Action</strong> with relative steps (File ▸ Automate ▸ <strong>Fit Image</strong> for the long edge, rulers in Percent, sharpen, save).</li>
+                            <li>Panel menu ▸ <strong>Insert Conditional</strong>: If Document Is Landscape play one crop action, else another; drag it to the top.</li>
+                            <li><strong>File ▸ Automate ▸ Batch</strong> over the folder (tick Override Save As, suppress dialogs, log errors).</li>
                         </ol>
                         <p class="recipe-deep">🔗 Deep dive: <a href="lesson_17.html">Module 6.2: Advanced Actions &amp; Conditionals</a></p>
                     </div>
@@ -386,9 +387,9 @@
                         <h3>Mass-produce from a spreadsheet</h3>
                         <p class="recipe-when">When you need hundreds of graphics that differ only by data.</p>
                         <ol>
-                            <li>Name layers to match CSV headers; <strong>Image ▸ Variables ▸ Define</strong> (Text / Pixel / Visibility).</li>
-                            <li><strong>Data Sets ▸ Import</strong> the CSV and step through rows to proof.</li>
-                            <li><strong>File ▸ Export ▸ Data Sets as Files</strong> to render every row.</li>
+                            <li><strong>Image ▸ Variables ▸ Define</strong> (Text / Pixel / Visibility); name each variable to match its CSV header.</li>
+                            <li><strong>Image ▸ Variables ▸ Data Sets…</strong> ▸ <strong>Import</strong> the CSV (Visibility = true/false; image paths beside the CSV) and step through rows to proof.</li>
+                            <li><strong>File ▸ Export ▸ Data Sets as Files</strong> to render every row as a PSD.</li>
                         </ol>
                         <p class="recipe-deep">🔗 Deep dive: <a href="lesson_18.html">Module 6.3: Data-Driven Graphics &amp; Scripting</a></p>
                     </div>
@@ -397,9 +398,9 @@
                         <h3>Merge many frames into one</h3>
                         <p class="recipe-when">When one frame can't hold the width, range, or depth you need.</p>
                         <ol>
-                            <li><strong>Panorama:</strong> File ▸ Automate ▸ <strong>Photomerge</strong> (Auto + Blend + Content-Aware edges).</li>
+                            <li><strong>Panorama:</strong> File ▸ Automate ▸ <strong>Photomerge</strong> (Auto + Blend Images Together + Content Aware Fill Transparent Areas).</li>
                             <li><strong>HDR:</strong> File ▸ Automate ▸ <strong>Merge to HDR Pro</strong> (bracket, Remove Ghosts).</li>
-                            <li><strong>Focus stack:</strong> Load into Stack → <strong>Auto-Align</strong> → <strong>Auto-Blend (Stack Images)</strong>.</li>
+                            <li><strong>Focus stack:</strong> File ▸ Scripts ▸ Load Files into Stack → <strong>Auto-Align</strong> → <strong>Edit ▸ Auto-Blend Layers…</strong> (Stack Images).</li>
                         </ol>
                         <p class="recipe-deep">🔗 Deep dive: <a href="lesson_19.html">Module 7.1: Panoramas, HDR &amp; Focus Stacking</a></p>
                     </div>
@@ -408,8 +409,8 @@
                         <h3>Export a looping GIF or MP4</h3>
                         <p class="recipe-when">When a design needs a few seconds of motion.</p>
                         <ol>
-                            <li><strong>Window ▸ Timeline</strong> ▸ Create Video Timeline; keyframe Position/Opacity (stopwatch).</li>
-                            <li>Match first and last frames for a seamless loop; add Ease.</li>
+                            <li><strong>Window ▸ Timeline</strong> ▸ Create Video Timeline; keyframe Position/Opacity, or Transform on Smart Objects (stopwatch).</li>
+                            <li>Return every layer to its frame-0 state by the last frame for a seamless loop; fake easing with an extra keyframe near the end of each move.</li>
                             <li><strong>GIF:</strong> Save for Web (loop Forever). <strong>MP4:</strong> File ▸ Export ▸ Render Video (H.264).</li>
                         </ol>
                         <p class="recipe-deep">🔗 Deep dive: <a href="lesson_20.html">Module 7.2: Timeline Animation &amp; Export</a></p>

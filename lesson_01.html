@@ -128,7 +128,7 @@
                 <p>Recall the intro's rule: on a mask, <strong>white reveals and black hides</strong>. A luminosity mask simply says: <em>let the picture's own brightness be that black-and-white stencil.</em> Load a <strong>Lights</strong> mask and the bright pixels become white (selected, editable) while the dark pixels become black (protected). The mask is literally a grayscale copy of the photo's luminance.</p>
                 <p>Two things make this powerful:</p>
                 <ul>
-                    <li><strong>The edges are perfect.</strong> Because the mask follows the actual tones, its transitions are exactly as soft as the light in the scene. No haloes, no hand-feathering.</li>
+                    <li><strong>The edges are perfect.</strong> Because the mask follows the actual tones, its transitions are exactly as soft as the light in the scene. No halos, no hand-feathering.</li>
                     <li><strong>It is self-targeting.</strong> You never have to paint around the sky to darken it; the sky <em>is</em> the bright part, so a Lights mask already contains it.</li>
                 </ul>
 
@@ -215,7 +215,7 @@
                             <rect x="12" y="14" width="396" height="34" fill="#1473E6"/>
                             <text x="26" y="35" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="12.5" font-weight="bold">RGB</text>
                             <rect x="60" y="19" width="34" height="24" fill="#cfcfcf"/><path d="M60 36 Q77 30 94 34 V43 H60 Z" fill="#444"/>
-                            <text x="150" y="30" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10.5">⌘/Ctrl-click the thumbnail →</text>
+                            <text x="150" y="30" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="10.5">Ctrl/⌘-click the thumbnail →</text>
                             <text x="150" y="43" style="fill:#dbeafe" font-family="Segoe UI, sans-serif" font-size="10.5">loads luminosity as a selection</text>
                             <!-- channels -->
                             <g font-family="Segoe UI, sans-serif" font-size="12">
@@ -235,7 +235,7 @@
             <!-- Build -->
             <section id="build" class="lesson-section">
                 <h2>🛠️ Guided Build: Rescue the Landscape</h2>
-                <p>Open a high-contrast photo (a bright sky over a darker foreground is ideal). Save as <code>luminosity-working.psd</code>, and work in <strong>16-bit</strong> if the file allows — smoother masks, no banding.</p>
+                <p>Open a high-contrast photo (a bright sky over a darker foreground is ideal). Convert it to <strong>16-bit</strong> first (Image ▸ Mode ▸ 16 Bits/Channel) for smoother masks, then save as <code>luminosity-working.psd</code>. Converting does not add detail to an 8-bit original, but it stops new banding as you edit.</p>
 
                 <div class="card card-info">
                     <h3>Step 1: Diagnose, then load Lights <small>· 6 min</small></h3>
@@ -296,7 +296,7 @@
                     <h4>🌟 Your challenge</h4>
                     <ol>
                         <li>On a portrait or still life, load a <strong>Lights</strong> mask and add a subtle glow by lifting only the brightest highlights. Notice how it never touches the shadows.</li>
-                        <li>Build a <strong>Midtones</strong> mask (load Lights, then subtract Darks) and add contrast to <em>only</em> the mids, a classic way to add depth without clipping.</li>
+                        <li>Build a <strong>Midtones</strong> mask (save Lights and Darks as channels with Select ▸ Save Selection, then Select All and <kbd>Alt/⌥</kbd>-click each saved channel to subtract it) and add contrast to <em>only</em> the mids, a classic way to add depth without clipping. (Lights minus Darks is <em>not</em> midtones: it narrows to the brightest tones, like a second intersect.)</li>
                         <li>Compare a luminosity-masked sky darken against a hand-painted mask on the same image. The self-feathered edge is the whole point.</li>
                     </ol>
                     <p><strong>Going further:</strong> the pros automate this. Record an Action that loads Lights, Darks, and Midtones as saved channel masks in one click, or try a free luminosity-mask panel. You will reuse these selections constantly.</p>
@@ -344,7 +344,7 @@
                     <ul>
                         <li>A <strong>luminosity mask</strong> is a selection built from the image's own brightness.</li>
                         <li><kbd>Ctrl/⌘</kbd>-click <strong>RGB</strong> loads Lights; <strong>invert</strong> for Darks; <strong>intersect</strong> to reach extreme bands.</li>
-                        <li>Its edges self-feather to the scene's light, so there are no haloes.</li>
+                        <li>Its edges self-feather to the scene's light, so there are no halos.</li>
                         <li>Two masked curves move highlights and shadows in opposite directions at once.</li>
                     </ul>
                 </div>
@@ -363,7 +363,7 @@
                 </details>
                 <details>
                     <summary>My masks look blocky or banded.</summary>
-                    <p>You are almost certainly in 8-bit. Convert to <strong>16-bit</strong> (Image ▸ Mode) before building luminosity masks; the extra tonal resolution keeps the gradients smooth.</p>
+                    <p>You are almost certainly in 8-bit. Convert to <strong>16-bit</strong> (Image ▸ Mode) before building luminosity masks. Converting cannot restore detail an 8-bit file never had, but the extra tonal resolution keeps new masks and adjustments smooth.</p>
                 </details>
 
                 <h3>🔭 Looking Ahead</h3>
@@ -372,7 +372,7 @@
                 <h3>✅ Before the Next Lesson</h3>
                 <ul>
                     <li>Rescue two more high-contrast scenes with Lights + Darks curves.</li>
-                    <li>Build and save a Midtones mask by subtracting Darks from Lights.</li>
+                    <li>Build and save a Midtones mask: Select All, then subtract your saved Lights and Darks channels.</li>
                     <li>Write your Learning Journal entry.</li>
                 </ul>
 

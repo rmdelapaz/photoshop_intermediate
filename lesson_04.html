@@ -117,7 +117,7 @@
                         <span class="ba-divider" aria-hidden="true"></span>
                         <span class="ba-grabber" aria-hidden="true">⇄</span>
                     </div>
-                    <figcaption>Banding is what happens when an edit demands more tonal steps than the file has. 16-bit has hundreds of times more steps, so gradients survive aggressive grading.</figcaption>
+                    <figcaption>Banding is what happens when an edit demands more tonal steps than the file has. 16-bit has about 128 times more steps, so gradients survive aggressive grading.</figcaption>
                 </figure>
             </section>
 
@@ -141,7 +141,7 @@
                         flowchart LR
                             A["📷 Capture&lt;br/&gt;RAW / wide gamut"] --> B["✏️ Edit&lt;br/&gt;16-bit, wide working space"]
                             B --> C1["🌐 Export web&lt;br/&gt;sRGB, 8-bit"]
-                            B --> C2["🖨️ Export print&lt;br/&gt;soft-proof → CMYK"]
+                            B --> C2["🖨️ Export print&lt;br/&gt;soft-proof → printer profile"]
                     </div>
                     <figcaption>Figure 1: Capture wide, edit wide and deep, then convert <em>down</em> to the destination at the very end. Never edit in the narrow export space.</figcaption>
                 </figure>
@@ -197,14 +197,14 @@
                             <text x="16" y="52" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">RGB:</text>
                             <rect x="60" y="40" width="260" height="20" fill="#1473E6"/><text x="190" y="54" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Adobe RGB (1998) ▾</text>
                             <text x="16" y="80" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">CMYK:</text>
-                            <rect x="60" y="68" width="260" height="20" fill="#2f2f2f" stroke="#555"/><text x="70" y="82" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">(your printer's profile) ▾</text>
+                            <rect x="60" y="68" width="260" height="20" fill="#2f2f2f" stroke="#555"/><text x="70" y="82" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">(your press profile, or the default) ▾</text>
                             <line x1="16" y1="104" x2="424" y2="104" stroke="#4a4a4a"/>
                             <text x="16" y="126" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">Color Management Policies</text>
                             <text x="16" y="150" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">RGB: Preserve Embedded Profiles</text>
                             <rect x="16" y="160" width="16" height="16" fill="#1473E6"/><text x="24" y="173" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">✓</text>
                             <text x="40" y="173" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Ask When Opening (profile mismatch)</text>
                         </svg>
-                        <figcaption>Figure 3: Set a working RGB space, your CMYK printer profile, and <strong>Preserve Embedded Profiles</strong> so a file's own tag is respected. Tick the mismatch warnings so you always know which container you are in.</figcaption>
+                        <figcaption>Figure 3: Set a working RGB space, a CMYK press profile (or leave the default), and <strong>Preserve Embedded Profiles</strong> so a file's own tag is respected. Tick the mismatch warnings so you always know which container you are in.</figcaption>
                     </div>
                 </figure>
             </section>
@@ -216,7 +216,7 @@
                 <div class="card card-info">
                     <h3>Step 1: Configure the pipeline <small>· 6 min</small></h3>
                     <ol>
-                        <li><strong>Edit ▸ Color Settings.</strong> Set RGB working space to <strong>Adobe RGB (1998)</strong> for print-capable work (or sRGB if you are strictly web), CMYK to your printer's profile, and policies to <strong>Preserve Embedded Profiles</strong> with mismatch warnings on.</li>
+                        <li><strong>Edit ▸ Color Settings.</strong> Set RGB working space to <strong>Adobe RGB (1998)</strong> for print-capable work (or sRGB if you are strictly web), CMYK to your print provider's press profile (for example Coated GRACoL 2006 or Coated FOGRA39) or leave the default, and policies to <strong>Preserve Embedded Profiles</strong> with mismatch warnings on.</li>
                         <li>Open your image and confirm its bit depth: <strong>Image ▸ Mode ▸ 16 Bits/Channel</strong> for anything you will grade hard.</li>
                     </ol>
                 </div>
@@ -245,7 +245,8 @@
                     <h3>Step 4: Export correctly <small>· 4 min</small></h3>
                     <ol>
                         <li>Keep your layered master in the wide space and 16-bit.</li>
-                        <li>For web: <strong>Convert to Profile ▸ sRGB</strong>, flatten a copy, and export. The color you graded is the color the world sees.</li>
+                        <li>Save the layered master (for example <code>color-master.psd</code>).</li>
+                        <li>For web: make a flattened copy with <strong>Image ▸ Duplicate</strong> (tick <em>Duplicate Merged Layers Only</em>), then on the copy <strong>Edit ▸ Convert to Profile ▸ sRGB</strong>, set <strong>Image ▸ Mode ▸ 8 Bits/Channel</strong>, and export. (File ▸ Export ▸ Export As can also convert to sRGB for you.) The master stays untouched, and the color you graded is the color the world sees.</li>
                     </ol>
                 </div>
 
@@ -267,7 +268,7 @@
                 <div class="card card-warning">
                     <h4>🌟 Your challenge</h4>
                     <ol>
-                        <li>Take one image and export it two ways: correctly Converted to sRGB, and deliberately with the profile stripped. View both in a browser and note the color shift. That shift is what viewers see when color management is ignored.</li>
+                        <li>Take one image and start from an Adobe RGB (or ProPhoto) version and export it two ways: correctly Converted to sRGB, and deliberately with the profile stripped. (Stripping an sRGB file shows no shift, because browsers assume sRGB.) View both in a browser and note the color shift. That shift is what viewers see when color management is ignored.</li>
                         <li>Practice reading five histograms cold: guess the problem, then open the image and check.</li>
                         <li>Set up a wide-gamut, 16-bit document template you can start pro work from.</li>
                     </ol>
@@ -285,7 +286,7 @@
                         <li>Work in <strong>16-bit</strong> for anything you will grade hard</li>
                         <li><strong>Read the histogram</strong> and name the problem before editing</li>
                         <li>Keep the master wide + 16-bit</li>
-                        <li>Export: <strong>Convert to Profile</strong> (sRGB for web) at the very end</li>
+                        <li>Export: on a duplicate, <strong>Convert to Profile</strong> (sRGB for web) at the very end</li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: capture wide, edit deep, convert down last.</small></p>
                 </div>

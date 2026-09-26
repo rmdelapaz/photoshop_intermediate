@@ -172,7 +172,7 @@
                         </g>
                         <text x="300" y="192" text-anchor="middle" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11.5">bright sky + dark tree = the cleanest separation to push into a mask</text>
                     </svg>
-                    <figcaption>Figure 2: Skies are blue, so the Blue channel keeps the sky bright while the tree stays dark — maximum contrast, the best mask candidate. (For skin, the Blue channel is where blemishes hide; different job, same habit of channel-shopping.)</figcaption>
+                    <figcaption>Figure 2: Skies are blue, so the Blue channel keeps the sky bright while the tree stays dark — maximum contrast, the best mask candidate. (For skin, the Blue channel is where blemishes stand out most; different job, same habit of channel-shopping.)</figcaption>
                 </figure>
             </section>
 
@@ -230,7 +230,7 @@
                     <h3>Step 2: Forge the mask <small>· 8 min</small></h3>
                     <ol>
                         <li><strong>Duplicate</strong> the winning channel (drag it to the New Channel icon) so you never damage the original.</li>
-                        <li>Run <strong>Levels</strong> (or Curves) on the duplicate: pull the black and white points inward until the sky is pure white and the tree pure black, with the fine twigs still intact.</li>
+                        <li>With only the duplicate channel selected, run <strong>Image ▸ Adjustments ▸ Levels</strong> (<kbd>Ctrl/⌘ + L</kbd>) or Curves. Adjustment layers cannot target a channel, so use the menu command. Pull the black and white points inward until the sky is pure white and the tree pure black, with the fine twigs still intact.</li>
                         <li>Paint any stray gaps with a hard black/white brush directly on the channel.</li>
                     </ol>
                     <div class="card card-warning">
@@ -242,8 +242,8 @@
                 <div class="card card-info">
                     <h3>Step 3: Load it and cut <small>· 6 min</small></h3>
                     <ol>
-                        <li><kbd>Ctrl/⌘</kbd>-click the duplicated channel to load it as a selection. If the sky is selected instead of the tree, <strong>invert</strong> (<kbd>Ctrl/⌘ + Shift + I</kbd>).</li>
-                        <li>Back on the RGB composite, add a <strong>layer mask</strong> from the selection. The tree, every twig, is now cut out.</li>
+                        <li><kbd>Ctrl/⌘</kbd>-click the duplicated channel to load it as a selection. The white sky loads as the selection, so <strong>invert</strong> (<kbd>Ctrl/⌘ + Shift + I</kbd>) to select the tree.</li>
+                        <li>Click the <strong>RGB</strong> channel to bring back full color, return to the Layers panel with the image layer active, and add a <strong>layer mask</strong> from the selection. The tree, every twig, is now cut out.</li>
                         <li>Drop a new sky behind it to check the edges.</li>
                     </ol>
                 </div>
@@ -290,9 +290,9 @@
                     <h3>Mask an intricate subject</h3>
                     <ol>
                         <li>Channels panel: click R / G / B, pick the highest-contrast one</li>
-                        <li><strong>Duplicate</strong> it → <strong>Levels</strong> to force near black &amp; white</li>
+                        <li><strong>Duplicate</strong> it → <strong>Image ▸ Adjustments ▸ Levels</strong> to force near black &amp; white</li>
                         <li>Clean gaps with a hard brush on the channel</li>
-                        <li><kbd>Ctrl/⌘</kbd>-click to load → invert if needed → add layer mask</li>
+                        <li><kbd>Ctrl/⌘</kbd>-click to load → invert (the white background loads first) → click RGB → add layer mask</li>
                         <li>Fast alternative: <strong>Blend-If</strong> to drop lights or darks by tone (Alt-split to feather)</li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: shop the channels before you paint.</small></p>
@@ -338,8 +338,8 @@
                     <p>Combine channels (Apply Image can add or subtract one channel from another), or use the best channel for most of it and finish with a hand-painted / luminosity mask. Hard cutouts are usually layered, not one perfect trick — which is exactly Lesson 1.3.</p>
                 </details>
                 <details>
-                    <summary>Blend-If looks great but disappears when I move the layer.</summary>
-                    <p>Blend-If on "Underlying Layer" depends on what is beneath, so it re-evaluates as you move things. To lock the look, right-click the layer and <strong>Convert to Smart Object</strong>, or create a clipped/merged copy.</p>
+                    <summary>My Blend-If result changes when I move the layers beneath it.</summary>
+                    <p>Blend-If on "Underlying Layer" depends on what is beneath, so it re-evaluates as you move things. To lock the look, select the layer <em>and</em> the layers under it and convert them together to one Smart Object, or stamp a merged copy (<kbd>Ctrl/⌘ + Alt/⌥ + Shift + E</kbd>). Converting the Blend-If layer on its own does not work: inside that Smart Object there is nothing underneath, so the Underlying Layer sliders have nothing to act on.</p>
                 </details>
 
                 <h3>🔭 Looking Ahead</h3>

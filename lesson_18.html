@@ -134,8 +134,8 @@
                         <g font-family="Segoe UI, sans-serif">
                             <rect x="14" y="30" width="150" height="92" rx="6" fill="#f8fafc" stroke="#94a3b8"/><text x="24" y="26" style="fill:var(--text-light)" font-size="10.5">data.csv</text>
                             <text x="24" y="52" font-family="monospace" font-size="11" style="fill:var(--text-color)">name, photo, sale</text>
-                            <text x="24" y="74" font-family="monospace" font-size="11" style="fill:var(--text-light)">Ana, a.jpg, yes</text>
-                            <text x="24" y="96" font-family="monospace" font-size="11" style="fill:var(--text-light)">Ben, b.jpg, no</text>
+                            <text x="24" y="74" font-family="monospace" font-size="11" style="fill:var(--text-light)">Ana, a.jpg, true</text>
+                            <text x="24" y="96" font-family="monospace" font-size="11" style="fill:var(--text-light)">Ben, b.jpg, false</text>
                             <!-- mappings -->
                             <g stroke="#1473E6" stroke-width="2"><line x1="164" y1="52" x2="330" y2="46"/><line x1="164" y1="74" x2="330" y2="86"/><line x1="164" y1="96" x2="330" y2="122"/></g>
                             <rect x="332" y="30" width="174" height="28" rx="6" fill="#eef5ff" stroke="#1473E6"/><text x="342" y="49" style="fill:#0b2540" font-size="11">Text → "name" layer</text>
@@ -143,23 +143,23 @@
                             <rect x="332" y="110" width="174" height="28" rx="6" fill="#eef5ff" stroke="#1473E6"/><text x="342" y="129" style="fill:#0b2540" font-size="11">Visibility → "sale" badge</text>
                         </g>
                     </svg>
-                    <figcaption>Figure 1: Each CSV column drives one variable type. Text, pixel, visibility — bind those three and most personalized-graphics briefs are solved.</figcaption>
+                    <figcaption>Figure 1: Each CSV column drives one variable type. Text, pixel, visibility — bind those three and most personalized-graphics briefs are solved. Visibility values must be <code>true</code> or <code>false</code>; Photoshop rejects yes/no.</figcaption>
                 </figure>
             </section>
 
             <!-- Panel -->
             <section id="panel" class="lesson-section">
                 <h2>🧮 Variables &amp; Data Sets</h2>
-                <p>Open <strong>Image ▸ Variables ▸ Define</strong>, pick a layer, tick the variable types it needs, and name each variable to match a CSV column. Then <strong>Image ▸ Variables ▸ Data Sets ▸ Import</strong> to load the CSV; a dropdown lets you step through rows and see each on the canvas. Finally <strong>File ▸ Export ▸ Data Sets as Files</strong> renders one PSD (or, via an Action, a JPG/PNG) per row.</p>
+                <p>Open <strong>Image ▸ Variables ▸ Define</strong>, pick a layer, tick the variable types it needs, and name each variable to match a CSV column. Then open <strong>Image ▸ Variables ▸ Data Sets…</strong> and click <strong>Import</strong> to load the CSV; with Preview on, the Data Set menu lets you step through rows and see each on the canvas. Finally <strong>File ▸ Export ▸ Data Sets as Files</strong> renders one PSD (or, via an Action, a JPG/PNG) per row.</p>
                 <figure>
                     <div class="ps-mock" style="max-width:460px;">
                         <div class="ps-titlebar">
                             <span class="ps-dot" style="background:#ff5f57;"></span>
                             <span class="ps-dot" style="background:#febc2e;"></span>
                             <span class="ps-dot" style="background:#28c840;"></span>
-                            <span style="margin-left:6px;">Image ▸ Variables ▸ Define</span>
+                            <span style="margin-left:6px;">Variables dialog (Define + Data Sets pages)</span>
                         </div>
-                        <svg viewBox="0 0 460 180" role="img" aria-label="Variables dialog binding a name layer to Text Replacement, a photo layer to Pixel Replacement, and a badge layer to Visibility, with a data-set row selector.">
+                        <svg viewBox="0 0 460 180" role="img" aria-label="Composite view of the Variables dialog: the Define page binding a name layer to Text Replacement, a photo layer to Pixel Replacement, and a badge layer to Visibility, plus the Data Sets page row selector.">
                             <rect width="460" height="180" fill="#3a3a3a"/>
                             <text x="16" y="26" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Layer bindings</text>
                             <g font-family="Segoe UI, sans-serif" font-size="11">
@@ -169,24 +169,25 @@
                             </g>
                             <text x="16" y="140" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Data Set</text>
                             <rect x="16" y="148" width="200" height="22" fill="#1473E6"/><text x="116" y="163" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Row 3 of 500 ▾</text>
-                            <rect x="332" y="148" width="112" height="22" fill="#16a34a"/><text x="388" y="163" text-anchor="middle" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">Export as Files</text>
+                            <text x="232" y="163" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">(Data Sets page, Preview on)</text>
                         </svg>
-                        <figcaption>Figure 2: Three bindings and an imported data set. Step through rows to proof, then Export Data Sets as Files to render the whole batch at once.</figcaption>
+                        <figcaption>Figure 2: The Define page's three bindings and the Data Sets page's row selector, shown together. Step through rows to proof, then use File ▸ Export ▸ Data Sets as Files to render the whole batch at once.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
                     <h4>⚠️ Name layers and columns to match</h4>
-                    <p>Variables link by name, and a stray space or capital mismatch silently breaks a binding. Name the layer, the variable, and the CSV header identically, and keep the CSV UTF-8 with a header row. Proof a few rows on-canvas before exporting five hundred.</p>
+                    <p>Each variable binds to the CSV column whose header matches its <em>variable name</em>, and a stray space or capital mismatch breaks the import. Variable names can't contain spaces and must start with a letter, underscore, or colon. Naming the layer the same is a helpful habit, not a requirement. Keep the CSV UTF-8 with a header row, write Visibility values as <code>true</code>/<code>false</code>, and give Pixel Replacement values as full file paths (or just file names, with the images in the same folder as the CSV). Proof a few rows on-canvas before exporting five hundred.</p>
                 </div>
             </section>
 
             <!-- Scripting -->
             <section id="script" class="lesson-section">
                 <h2>💻 Where Scripting Begins</h2>
-                <p>Variables cover "same layout, different content." When you need real <em>logic</em> — loop over files, do math, rename by pattern, call an API, decide based on pixel values — you reach for <strong>scripting</strong>. Photoshop runs JavaScript (ExtendScript) via <strong>File ▸ Scripts ▸ Browse</strong>, and the modern UXP scripting platform for newer workflows. You do not need to be a programmer to adapt a snippet.</p>
+                <p>Variables cover "same layout, different content." When you need real <em>logic</em> — loop over files, do math, rename by pattern, call an API, decide based on pixel values — you reach for <strong>scripting</strong>. Photoshop runs classic ExtendScript (<code>.jsx</code>) and newer UXP scripts (<code>.psjs</code>) via <strong>File ▸ Scripts ▸ Browse</strong>. The example below is ExtendScript, which is still the easiest to find snippets for. You do not need to be a programmer to adapt a snippet.</p>
                 <p>Here is a complete, readable example: open every JPG in a folder, resize to 2000px on the long edge, and save a web copy — the kind of loop an Action alone can't express cleanly:</p>
                 <pre><code>// resize-folder.jsx  —  File ▸ Scripts ▸ Browse to run
 var inputFolder  = Folder.selectDialog("Choose a folder of images");
+if (!inputFolder) { throw new Error("No folder chosen."); }
 var files = inputFolder.getFiles(/\.(jpg|jpeg|png)$/i);
 
 for (var i = 0; i &lt; files.length; i++) {
@@ -211,34 +212,34 @@ alert("Done: " + files.length + " images resized.");</code></pre>
             <!-- Build -->
             <section id="build" class="lesson-section">
                 <h2>🛠️ Guided Build: A Data-Driven Batch</h2>
-                <p>Design a simple card template with a name (type layer), a photo (image layer), and a "SALE" badge (a layer to show/hide). Prepare a small CSV with columns name, photo, sale.</p>
+                <p>Design a simple card template with a name (type layer), a photo (image layer), and a "SALE" badge (a layer to show/hide). Prepare a small CSV with columns name, photo, sale: put the photos in the same folder as the CSV, list their file names in the photo column, and write <code>true</code> or <code>false</code> in the sale column.</p>
 
                 <div class="card card-info">
                     <h3>Step 1: Name everything <small>· 8 min</small></h3>
                     <ol>
-                        <li>Rename the layers exactly: <code>name</code>, <code>photo</code>, <code>sale</code>. Match your CSV headers to those names.</li>
+                        <li>Rename the layers exactly: <code>name</code>, <code>photo</code>, <code>sale</code>. You'll give the variables the same names, and the CSV headers must match the variable names.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 2: Define variables <small>· 12 min</small></h3>
                     <ol>
-                        <li><strong>Image ▸ Variables ▸ Define</strong>. On <code>name</code> tick Text Replacement; on <code>photo</code> tick Pixel Replacement (set the fit method); on <code>sale</code> tick Visibility.</li>
+                        <li><strong>Image ▸ Variables ▸ Define</strong>. On <code>name</code> tick Text Replacement; on <code>photo</code> tick Pixel Replacement (set the method: Fit, Fill, As Is, or Conform); on <code>sale</code> tick Visibility. Name each variable to match its CSV header.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 3: Import and proof <small>· 10 min</small></h3>
                     <ol>
-                        <li><strong>Data Sets ▸ Import</strong> your CSV. Step through a few rows and confirm the name, photo, and badge update correctly on canvas.</li>
-                        <li>Fix any binding that didn't take (usually a name mismatch).</li>
+                        <li><strong>Image ▸ Variables ▸ Data Sets…</strong> ▸ <strong>Import</strong> your CSV. Tick <strong>Use First Column For Data Set Names</strong> (your first column is <code>name</code>). With Preview on, step through a few rows and confirm the name, photo, and badge update correctly on canvas.</li>
+                        <li>Fix any binding that didn't take (usually a header/variable-name mismatch, a yes/no instead of true/false, or a photo path Photoshop can't find).</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 4: Export the batch <small>· 8 min</small></h3>
                     <ol>
-                        <li><strong>File ▸ Export ▸ Data Sets as Files</strong>. Choose a naming pattern (e.g. <code>card_[name]</code>) and export.</li>
+                        <li><strong>File ▸ Export ▸ Data Sets as Files</strong>. In File Naming, choose <strong>Data Set Name</strong> (the <code>name</code> column, thanks to the import option), add any fixed text you like, and export. Photoshop writes one PSD per row.</li>
                         <li>Optional: run them through your Lesson 6.2 delivery Action to flatten to JPG. Module 6 deliverable: a folder of finished, personalized graphics from one template. 🏆</li>
                     </ol>
                 </div>
@@ -246,7 +247,7 @@ alert("Done: " + files.length + " images resized.");</code></pre>
                 <div class="card card-success">
                     <h3>✅ Project Completion Checklist (Module 6 deliverable)</h3>
                     <ul>
-                        <li>☐ Layers named to match CSV headers exactly</li>
+                        <li>☐ Variable names (and layers) matching the CSV headers exactly</li>
                         <li>☐ Text, Pixel, and Visibility variables defined</li>
                         <li>☐ CSV imported as a data set, several rows proofed on canvas</li>
                         <li>☐ Data Sets exported as files with a clear naming pattern</li>
@@ -277,8 +278,8 @@ alert("Done: " + files.length + " images resized.");</code></pre>
                     <ol>
                         <li>Name layers to match CSV headers exactly</li>
                         <li><strong>Image ▸ Variables ▸ Define</strong>: Text / Pixel / Visibility</li>
-                        <li><strong>Data Sets ▸ Import</strong> the CSV; proof rows on canvas</li>
-                        <li><strong>File ▸ Export ▸ Data Sets as Files</strong> with a naming pattern</li>
+                        <li><strong>Image ▸ Variables ▸ Data Sets…</strong> ▸ <strong>Import</strong> the CSV (first column as names; Visibility = true/false); proof rows on canvas</li>
+                        <li><strong>File ▸ Export ▸ Data Sets as Files</strong>, named by Data Set Name</li>
                         <li>Reach for <strong>scripting</strong> when you need loops, math, or logic</li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: design the difference as data, and the count stops mattering.</small></p>
@@ -341,7 +342,8 @@ alert("Done: " + files.length + " images resized.");</code></pre>
                 <h3>📚 Additional Resources</h3>
                 <ul>
                     <li><a href="https://helpx.adobe.com/photoshop/using/creating-data-driven-graphics.html" target="_blank" rel="noopener">Adobe: Data-driven graphics (Variables)</a></li>
-                    <li><a href="https://developer.adobe.com/photoshop/uxp/2022/ps_reference/" target="_blank" rel="noopener">Adobe: Photoshop scripting reference</a></li>
+                    <li><a href="https://developer.adobe.com/photoshop/uxp/2022/ps_reference/" target="_blank" rel="noopener">Adobe: Photoshop UXP API reference (modern scripting)</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/scripting.html" target="_blank" rel="noopener">Adobe: Scripting in Photoshop (ExtendScript and UXP)</a></li>
                 </ul>
 
                 <div class="card card-accent" style="text-align: center; padding: 2rem;">

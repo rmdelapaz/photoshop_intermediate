@@ -77,7 +77,7 @@
                         <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
                         <li><a href="#recipe" class="toc-link">Recipe Card: Light &amp; Shadow</a></li>
                         <li><a href="#journal" class="toc-link">Learning Journal</a></li>
-                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
                     </ol>
                 </nav>
             </details>
@@ -120,7 +120,7 @@
                         <span class="ba-divider" aria-hidden="true"></span>
                         <span class="ba-grabber" aria-hidden="true">⇄</span>
                     </div>
-                    <figcaption>A diagram of the principle. Shadow work is hand-painting the connector can't tool-generate, so we show the <em>logic</em>: the cast shadow points away from the light, the contact shadow sits tight under the object.</figcaption>
+                    <figcaption>A diagram of the principle. Shadows are built by hand, layer by layer, so this shows the <em>logic</em>: the cast shadow points away from the light, the contact shadow sits tight under the object.</figcaption>
                 </figure>
             </section>
 
@@ -138,8 +138,8 @@
                         <!-- object -->
                         <g transform="translate(250,120)">
                             <circle cx="0" cy="0" r="30" fill="#c88f5a"/>
-                            <path d="M0 -30 A30 30 0 0 0 -21 21 A30 30 0 0 1 0 -30" fill="#7a4e2c" opacity="0.55"/>
-                            <ellipse cx="6" cy="-8" rx="9" ry="6" fill="#ffffff" opacity="0.4"/>
+                            <path d="M21 -21 A30 30 0 0 1 -21 21 A40 40 0 0 0 21 -21 Z" fill="#7a4e2c" opacity="0.55"/>
+                            <ellipse cx="-10" cy="-10" rx="9" ry="6" fill="#ffffff" opacity="0.45"/>
                         </g>
                         <!-- shadow -->
                         <ellipse cx="330" cy="150" rx="60" ry="12" fill="#00000055"/>
@@ -178,12 +178,12 @@
                             <rect x="12" y="138" width="436" height="30" fill="#2b2b2b" stroke="#4a4a4a"/>
                             <text x="74" y="157" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Background 🔒</text>
                         </svg>
-                        <figcaption>Figure 2: Two shadow layers on <strong>Multiply</strong> under the subject. Multiply keeps the ground texture showing through, so the shadow darkens the floor instead of painting a flat grey blob on it.</figcaption>
+                        <figcaption>Figure 2: Two shadow layers on <strong>Multiply</strong> under the subject. Multiply keeps the ground texture showing through, so the shadow darkens the floor instead of painting a flat gray blob on it.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
                     <h4>⚠️ Shadows are colored, not black</h4>
-                    <p>Pure black shadows look cut-out. Outdoor shadows lean cool/blue because they are lit by the sky, not the sun. Set the shadow layer slightly blue and pull its opacity back to match the depth of the real shadows already in the scene.</p>
+                    <p>Pure black shadows look cut-out. Outdoor shadows lean cool/blue because they are lit by the sky, not the sun; indoors they pick up the color of the room's bounced light. Tint the shadow toward whatever color the scene's real shadows have and pull its opacity back to match the depth of the real shadows already in the scene.</p>
                 </div>
             </section>
 
@@ -207,7 +207,7 @@
                     <h3>Step 1: Read and match the light <small>· 12 min</small></h3>
                     <ol>
                         <li>Note the direction, hardness, and color of the scene's existing shadows.</li>
-                        <li>On the element, add a Dodge &amp; Burn grey layer (Lesson 3.2) clipped to it: brighten the side facing the light, deepen the side away from it, so its shading matches.</li>
+                        <li>On the element, add a 50% gray Dodge &amp; Burn layer (Lesson 3.2) clipped to it: brighten the side facing the light, deepen the side away from it, so its shading matches.</li>
                         <li>Add a clipped Color Balance or Photo Filter to push the element's light color toward the scene's (warm sun, cool shade).</li>
                     </ol>
                 </div>
@@ -222,15 +222,16 @@
                 <div class="card card-info">
                     <h3>Step 3: Cast shadow <small>· 12 min</small></h3>
                     <ol>
-                        <li>Duplicate the element, fill with black (lock transparency, fill), set Multiply, move below.</li>
-                        <li>Free Transform ▸ Distort/Skew it onto the ground, running away from the light. Increase Gaussian Blur toward the far end and mask a gradient so it fades out. Tint it slightly blue.</li>
+                        <li>Load the element's silhouette as a selection: Ctrl/⌘-click its layer mask thumbnail (or the layer thumbnail if it has no mask). Create a new layer below the element, fill the selection with a very dark color (Edit ▸ Fill), deselect, and set the layer to Multiply. Filling a new layer works even when the cut-out uses a layer mask or is a Smart Object, where Lock Transparent Pixels and a direct fill would not.</li>
+                        <li>Free Transform ▸ Distort/Skew it onto the ground, running away from the light. To make the blur grow with distance, use <strong>Filter ▸ Blur Gallery ▸ Tilt-Shift</strong> or <strong>Field Blur</strong> (sharp pins near the object, strong blur at the far end), or blur a duplicate heavily and blend the two with a gradient mask. Then mask a gradient so the shadow fades out, and tint it to match the scene's shadows (cool/blue outdoors).</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 4: Reflection (if glossy) <small>· 8 min</small></h3>
                     <ol>
-                        <li>Duplicate the element, Flip Vertical, align bases, lower opacity to ~25–40%, add motion/gaussian blur increasing downward, mask a fade. 🏆</li>
+                        <li>Duplicate the element, <strong>Edit ▸ Transform ▸ Flip Vertical</strong>, align bases, lower opacity to ~25–40%, add Motion Blur or Gaussian Blur that increases downward (Blur Gallery, or a blurred copy blended in with a gradient mask), and mask a fade.</li>
+                        <li>Save the layered file (PSD). You reopen it in Lesson 4.3. 🏆</li>
                     </ol>
                 </div>
 
@@ -269,7 +270,7 @@
                         <li>Read the scene: light <strong>direction · hardness · color</strong></li>
                         <li>Relight the element (clipped D&amp;B + color) to agree</li>
                         <li><strong>Contact shadow</strong>: tight, dark, low blur, Multiply</li>
-                        <li><strong>Cast shadow</strong>: skew away from light, blur + fade with distance, tint blue</li>
+                        <li><strong>Cast shadow</strong>: skew away from light, blur + fade with distance, tint to the scene (cool outdoors)</li>
                         <li><strong>Reflection</strong> on glossy floors: flip, align base, fade + blur</li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: the contact shadow says "touching," the cast shadow says "where the light is."</small></p>
@@ -292,20 +293,52 @@
                 </div>
             </section>
 
-            <!-- Next -->
-            <section id="next" class="lesson-section">
-                <h2>🔭 Where This Leads</h2>
-                <div class="card card-accent">
-                    <p>Placed, lit, and grounded — your element now lives in the scene. The final step ties the whole frame into one photograph: <strong>Lesson 4.3 — Atmosphere &amp; the Unifying Grade</strong>, where haze, depth, and a single grade over everything become the Module 4 key visual.</p>
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>Read the scene's light first: <strong>direction</strong>, <strong>hardness</strong>, and <strong>color</strong>. The element must obey all three.</li>
+                        <li>Relight the element with clipped dodge &amp; burn and a clipped color adjustment.</li>
+                        <li>Always build two shadows: a tight <strong>contact shadow</strong> for touch and a <strong>cast shadow</strong> that runs away from the light, blurring and fading with distance.</li>
+                        <li>Shadows take the scene's color, never pure black; glossy surfaces also owe a faded, blurred <strong>reflection</strong>.</li>
+                    </ul>
                 </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>Your element no longer just sits in the right place; it is lit by the same light as everything around it and touches the ground. Contact and cast shadows are the details viewers never consciously notice and always miss when they are gone, and you can now build both on purpose.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
                 <details>
                     <summary>Can't I just use the Drop Shadow layer style?</summary>
-                    <p>Layer-style drop shadows sit at a fixed offset and never lie on the ground in perspective, so they read as graphic design, not photography. Build shadows on real layers you can skew and blur. Save Drop Shadow for flat UI work.</p>
+                    <p>Not as it comes. A layer-style drop shadow sits at a fixed offset and never lies on the ground in perspective, so it reads as graphic design, not photography. You can use it as a starting point: <strong>Layer ▸ Layer Style ▸ Create Layer</strong> splits the shadow onto its own layer, which you can then distort onto the ground, blur, and mask like any hand-built shadow.</p>
                 </details>
                 <details>
                     <summary>How dark should my shadow be?</summary>
                     <p>Match the scene. Sample the darkness of the shadows already in the background and aim for the same, then usually pull back 5–10%. Too dark is the giveaway; real shadows carry bounced light and are rarely pure black.</p>
                 </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Placed, lit, and grounded, your element now lives in the scene. <strong>Lesson 4.3 — Atmosphere &amp; the Unifying Grade</strong> ties the whole frame into one photograph with haze, depth, and a single grade over everything, and it completes the Module 4 key visual.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Save your lit, shadowed composite as a layered PSD; you reopen it in Lesson 4.3.</li>
+                    <li>Study the contact and cast shadows of three real objects around you.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/blur-gallery.html" target="_blank" rel="noopener">Adobe: Blur Gallery</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Learning to see light is a lifelong skill, and you just took a big step in it. From now on you will notice shadows everywhere, and every one of them is a free lesson in how to make the next composite more believable.</p>
+                </div>
             </section>
 
             <nav class="lesson-nav" aria-label="Lesson Navigation">

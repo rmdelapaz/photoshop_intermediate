@@ -76,7 +76,7 @@
                         <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
                         <li><a href="#recipe" class="toc-link">Recipe Card: Frequency Separation</a></li>
                         <li><a href="#journal" class="toc-link">Learning Journal</a></li>
-                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
                     </ol>
                 </nav>
             </details>
@@ -110,6 +110,11 @@
                 <p>Any photo of skin is really two things layered together. The slow, gradual changes — the shift from cheek to shadow, a patch of redness, an uneven tan — are <strong>low frequency</strong>: tone and color. The fast, tiny changes — pores, fine hairs, the grain of the skin — are <strong>high frequency</strong>: texture.</p>
                 <p>The problem with old-school skin smoothing (a blur, a soft brush) is that it destroys <em>both</em> at once, which is why it looks like melted plastic. Frequency separation splits the photo onto two layers so you can fix each independently: calm the <strong>tone</strong> on the low layer, and only touch <strong>texture</strong> on the high layer. Neither edit spills into the other.</p>
 
+                <div class="card card-accent">
+                    <h3>🧠 The spiral from the intro course</h3>
+                    <p>You built a basic frequency separation in the intro course (Module 3.2). This lesson takes it to production depth: the correct Apply Image math for 16-bit files, choosing a radius from pore size, and knowing when to dial it back so the skin stays human.</p>
+                </div>
+
                 <figure>
                     <svg viewBox="0 0 520 250" role="img" aria-label="Diagram: an original portrait layer splits into a low-frequency tone-and-color layer plus a high-frequency texture layer." style="max-width:520px;width:100%;border-radius:10px;border:1px solid var(--border-color);background:var(--card-bg);padding:10px;">
                         <defs>
@@ -142,14 +147,14 @@
                         <text x="400" y="192" style="fill:var(--text-color)" font-family="Segoe UI, sans-serif" font-size="11">→ heal spots,</text>
                         <text x="400" y="208" style="fill:var(--text-light)" font-family="Segoe UI, sans-serif" font-size="11">keep pores</text>
                     </svg>
-                    <figcaption>Figure 1: One layer becomes two. The low layer holds color and tone (a blurred version); the high layer holds only texture (a grey detail map). Edit each without disturbing the other, then they recombine into a natural whole.</figcaption>
+                    <figcaption>Figure 1: One layer becomes two. The low layer holds color and tone (a blurred version); the high layer holds only texture (a gray detail map). Edit each without disturbing the other, then they recombine into a natural whole.</figcaption>
                 </figure>
             </section>
 
             <!-- Panel: building the separation -->
             <section id="panel" class="lesson-section">
                 <h2>🧩 Building the Separation</h2>
-                <p>You make the two layers with two duplicates of the photo. The <strong>low</strong> layer is simply blurred until the texture disappears. The <strong>high</strong> layer uses <strong>Apply Image</strong> to subtract the low layer back out, leaving pure texture on a neutral grey, set to <strong>Linear Light</strong> so the two halves add back to the original.</p>
+                <p>You make the two layers with two duplicates of the photo. The <strong>low</strong> layer is simply blurred until the texture disappears. The <strong>high</strong> layer uses <strong>Apply Image</strong> to subtract the low layer back out, leaving pure texture on a neutral gray, set to <strong>Linear Light</strong> so the two halves add back to the original.</p>
                 <figure>
                     <div class="ps-mock" style="max-width:440px;">
                         <div class="ps-titlebar">
@@ -175,12 +180,12 @@
                             <rect x="22" y="130" width="46" height="30" fill="#c99a80" stroke="#5a5a5a"/>
                             <text x="80" y="150" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Background (untouched safety copy) 🔒</text>
                         </svg>
-                        <figcaption>Figure 2: The finished stack. High Frequency (grey texture) on <strong>Linear Light</strong> sits over the blurred Low Frequency layer. Together they look identical to the original — until you edit one of them.</figcaption>
+                        <figcaption>Figure 2: The finished stack. High Frequency (gray texture) on <strong>Linear Light</strong> sits over the blurred Low Frequency layer. Together they look identical to the original — until you edit one of them.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
-                    <h4>⚠️ The blur radius must match the subtract</h4>
-                    <p>Whatever radius you Gaussian-blur the low layer by, use that exact same radius when building the high layer (in Apply Image, or via High Pass). Mismatch it and the two layers no longer sum to the original, so you get haloes. Same number, both times.</p>
+                    <h4>⚠️ Apply Image settings depend on bit depth</h4>
+                    <p>Apply Image subtracts the blurred Low layer itself, so the radius matches automatically; there is no second radius to enter. What must match is the <strong>bit depth</strong>. In <strong>8-bit</strong>: Blending Subtract, Scale 2, Offset 128. In <strong>16-bit</strong> (what this course recommends): Blending <strong>Add</strong>, <strong>Invert</strong> ticked, Scale 2, Offset 0. Use the 8-bit numbers on a 16-bit file and the stack will not add back to the original. (If you build the High layer with Filter ▸ Other ▸ High Pass instead, <em>then</em> use the same radius as the blur; this method is only approximate.)</p>
                 </div>
             </section>
 
@@ -194,14 +199,14 @@
                     <ol>
                         <li>Duplicate the layer twice. Name the lower copy <strong>Low</strong>, the upper <strong>High</strong>.</li>
                         <li>On <strong>Low</strong>: <strong>Filter ▸ Blur ▸ Gaussian Blur</strong>, raise the radius just until the pores vanish but the features stay (often 4–8 px). Remember that number.</li>
-                        <li>On <strong>High</strong>: <strong>Image ▸ Apply Image</strong>, source the Low layer, Subtract, Scale 2, Offset 128 (for 8-bit). Set the High layer's blend mode to <strong>Linear Light</strong>. The image looks normal again.</li>
+                        <li>On <strong>High</strong>: <strong>Image ▸ Apply Image</strong>, Layer: <strong>Low</strong>, Channel: RGB. For <strong>16-bit</strong>: Blending Add, Invert ticked, Scale 2, Offset 0. For <strong>8-bit</strong>: Blending Subtract, Scale 2, Offset 128. Set the High layer's blend mode to <strong>Linear Light</strong>. The image looks normal again.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 2: Even the tone on Low <small>· 12 min</small></h3>
                     <ol>
-                        <li>Select the <strong>Low</strong> layer. With a big, soft <strong>Healing Brush</strong> or a low-opacity <strong>Mixer Brush</strong>, gently push a blotchy patch's color toward its neighbors.</li>
+                        <li>Select the <strong>Low</strong> layer. With a big, soft <strong>Healing Brush</strong> (Sample: <strong>Current Layer</strong>) or a low-opacity <strong>Mixer Brush</strong> (Sample All Layers off), gently push a blotchy patch's color toward its neighbors.</li>
                         <li>Because you are only on the color layer, texture never moves. Even out redness around the nose, blend a harsh tan line, calm a shadow that reads muddy.</li>
                     </ol>
                 </div>
@@ -218,18 +223,20 @@
                     <h3>Step 4: Dial it back <small>· 5 min</small></h3>
                     <ol>
                         <li>Group both layers and lower the group's <strong>opacity</strong> to taste — often 70–85%. Letting a little of the original show through is what keeps it human.</li>
-                        <li>Zoom to 100% and confirm real pores survive across the face. If it looks poreless, you smoothed too hard. 🏆</li>
+                        <li>Zoom to 100% and confirm real pores survive across the face. If it looks poreless, you smoothed too hard.</li>
+                        <li>Save as <code>skin-retouched.psd</code>, keeping the layers. Lesson 3.2 opens this file. 🏆</li>
                     </ol>
                 </div>
 
                 <div class="card card-success">
                     <h3>✅ Project Completion Checklist</h3>
                     <ul>
-                        <li>☐ A correct Low (blurred) + High (Linear Light) separation, same radius both times</li>
+                        <li>☐ A correct Low (blurred) + High (Linear Light) separation, with Apply Image settings matched to the bit depth</li>
                         <li>☐ Tone evened on the Low layer only</li>
                         <li>☐ Blemishes removed on the High layer only</li>
                         <li>☐ Group opacity pulled back so the result is believable</li>
                         <li>☐ Real pores visible at 100% zoom</li>
+                        <li>☐ Layered file saved as <code>skin-retouched.psd</code> for Lesson 3.2</li>
                     </ul>
                 </div>
             </section>
@@ -240,7 +247,7 @@
                 <div class="card card-warning">
                     <h4>🌟 Your challenge</h4>
                     <ol>
-                        <li>Retouch two very different faces: a close beauty shot and a candid at arm's length. Notice how the beauty shot needs a smaller blur radius and far more restraint.</li>
+                        <li>Retouch two very different faces: a close beauty shot and a candid at arm's length. Notice that the radius follows pore size in pixels: the close beauty shot usually needs a larger radius (its pores are bigger in the frame) and far more restraint.</li>
                         <li>Deliberately over-smooth one, then rescue it by lowering group opacity and adding back texture. Feel the line where natural becomes plastic.</li>
                         <li>Try the same fix with a plain soft brush and no separation, and compare. That comparison is your argument for ever bothering with the technique.</li>
                     </ol>
@@ -256,10 +263,10 @@
                     <ol>
                         <li>Duplicate twice → <strong>Low</strong> (bottom) and <strong>High</strong> (top)</li>
                         <li><strong>Low</strong>: Gaussian Blur until pores vanish — note the radius</li>
-                        <li><strong>High</strong>: Apply Image (Subtract, Scale 2, Offset 128) → blend <strong>Linear Light</strong></li>
-                        <li>Even tone on <strong>Low</strong> with a soft heal / mixer brush</li>
+                        <li><strong>High</strong>: Apply Image from Low (16-bit: Add, Invert, Scale 2, Offset 0; 8-bit: Subtract, Scale 2, Offset 128) → blend <strong>Linear Light</strong></li>
+                        <li>Even tone on <strong>Low</strong> with a soft heal / mixer brush (Current Layer)</li>
                         <li>Heal blemishes on <strong>High</strong> (Current Layer)</li>
-                        <li>Group, lower opacity to ~80%, check pores at 100%</li>
+                        <li>Group, lower opacity to ~80%, check pores at 100%, save the layered file</li>
                     </ol>
                     <p style="margin-bottom:0;"><small>Mantra: fix the color and the texture separately, and neither one betrays the edit.</small></p>
                 </div>
@@ -281,20 +288,57 @@
                 </div>
             </section>
 
-            <!-- Next -->
-            <section id="next" class="lesson-section">
-                <h2>🔭 Where This Leads</h2>
-                <div class="card card-accent">
-                    <p>You can now clean skin without erasing it — the single most valuable retouching skill and the base every portrait edit is built on. But even, clean skin can still look <em>flat</em>. Next you will add back the dimension: <strong>Lesson 3.2 — Dodge &amp; Burn Sculpting</strong> paints with light and shadow to bring the face back into three dimensions.</p>
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>Frequency separation splits skin into <strong>low frequency</strong> (tone and color) and <strong>high frequency</strong> (texture).</li>
+                        <li>Blur the Low layer until pores vanish; build High with <strong>Apply Image</strong> using the settings for your bit depth, then set it to <strong>Linear Light</strong>.</li>
+                        <li>Even tone on Low and heal blemishes on High, each with Sample: Current Layer.</li>
+                        <li>Group, lower the opacity, and check for real pores at 100%.</li>
+                    </ul>
                 </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You can now clean skin without erasing it, the single most valuable retouching skill and the base every portrait edit is built on. Tone and texture are separate controls in your hands, and you know how to stop before the result turns plastic.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
                 <details>
                     <summary>Is frequency separation still what pros use, or is it dated?</summary>
                     <p>Both. Many retouchers now lean on dodge &amp; burn for the heavy lifting and use frequency separation for targeted tone/blemish work. Knowing it makes you fluent; over-relying on it is what dates a retouch. You will meet its partner in the next lesson.</p>
                 </details>
                 <details>
-                    <summary>My high layer looks like harsh grey noise, not skin.</summary>
-                    <p>Your blur radius was too small, so real features leaked into the texture layer. Rebuild with a larger radius on the Low layer (and the matching value on the subtract) until the High layer is mostly flat grey with only fine detail.</p>
+                    <summary>My High layer shows eyes, lips, and face shapes, not just texture.</summary>
+                    <p>Your blur radius was too large, so real features moved into the texture layer. Rebuild with a smaller radius on the Low layer until the High layer is mostly flat gray with only fine detail. (A High layer that is almost blank means the opposite: the radius is too small and the pores stayed on Low.)</p>
                 </details>
+                <details>
+                    <summary>The stack does not look like the original after Apply Image.</summary>
+                    <p>Check the bit depth in the title bar. The 8-bit recipe (Subtract, Offset 128) is wrong for a 16-bit file; use Add with Invert ticked, Scale 2, Offset 0 instead.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Even, clean skin can still look <em>flat</em>. <strong>Lesson 3.2 — Dodge &amp; Burn Sculpting</strong> paints with light and shadow to bring the face back into three dimensions, working on the file you just saved.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Save <code>skin-retouched.psd</code> with its layers intact.</li>
+                    <li>Retouch one more portrait at a different distance and note the radius you needed.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/retouching-repairing-images.html" target="_blank" rel="noopener">Adobe: Retouching and repairing images</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/blending-modes.html" target="_blank" rel="noopener">Adobe: Blending modes</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Restraint is the hardest retouching skill, and you just practiced it. Every portrait you touch from here on benefits from knowing that tone and texture can be fixed separately. Keep your eye on the pores and you will never go plastic.</p>
+                </div>
             </section>
 
             <nav class="lesson-nav" aria-label="Lesson Navigation">

@@ -77,7 +77,7 @@
                         <li><a href="#solo" class="toc-link">Now You: Solo Variation</a></li>
                         <li><a href="#recipe" class="toc-link">Recipe Card: Match Perspective</a></li>
                         <li><a href="#journal" class="toc-link">Learning Journal</a></li>
-                        <li><a href="#next" class="toc-link">Where This Leads</a></li>
+                        <li><a href="#summary" class="toc-link">Summary</a></li>
                     </ol>
                 </nav>
             </details>
@@ -100,8 +100,8 @@
                                     <line x1="300" y1="150" x2="-40" y2="400"/><line x1="300" y1="150" x2="120" y2="400"/><line x1="300" y1="150" x2="300" y2="400"/><line x1="300" y1="150" x2="480" y2="400"/><line x1="300" y1="150" x2="640" y2="400"/>
                                     <line x1="60" y1="210" x2="540" y2="210"/><line x1="10" y1="270" x2="590" y2="270"/><line x1="-40" y1="340" x2="640" y2="340"/>
                                 </g>
-                                <!-- figure grounded, sized to horizon -->
-                                <g transform="translate(210,196)">
+                                <!-- figure grounded; the horizon crosses it at eye level -->
+                                <g transform="translate(210,142)">
                                     <ellipse cx="0" cy="92" rx="26" ry="7" fill="#00000033"/>
                                     <circle cx="0" cy="8" r="13" fill="#37516b"/>
                                     <rect x="-13" y="22" width="26" height="50" rx="8" fill="#37516b"/>
@@ -211,7 +211,7 @@
                             <circle cx="270" cy="55" r="4" fill="#fff"/><circle cx="390" cy="40" r="4" fill="#fff"/><circle cx="380" cy="150" r="4" fill="#fff"/><circle cx="275" cy="135" r="4" fill="#fff"/>
                             <text x="330" y="168" text-anchor="middle" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="10.5">warped to vanishing lines</text>
                         </svg>
-                        <figcaption>Figure 3: <strong>Edit ▸ Perspective Warp</strong> drops a quad mesh you pin to the scene's planes, then bends the element onto them. For quick jobs, Free Transform's <strong>Distort</strong> and <strong>Perspective</strong> handles do the same by hand.</figcaption>
+                        <figcaption>Figure 3: <strong>Edit ▸ Perspective Warp</strong> works in two modes. In <strong>Layout</strong> you draw a quad over each plane of the element; in <strong>Warp</strong> you drag its corner pins until those planes follow the scene's vanishing lines. For quick jobs, Free Transform's <strong>Distort</strong> and <strong>Perspective</strong> handles do the same by hand.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
@@ -228,7 +228,7 @@
                 <div class="card card-info">
                     <h3>Step 1: Find the horizon <small>· 8 min</small></h3>
                     <ol>
-                        <li>Drag guides along two receding edges in the background and note where they converge. Draw a horizontal guide through that point — your horizon.</li>
+                        <li>On a new empty layer, draw lines along two receding edges in the background with the <strong>Line</strong> tool (or the Pen tool) and extend them until they meet. Photoshop guides can only be horizontal or vertical, so they cannot follow an angled edge. Then drag a horizontal guide from the ruler (Ctrl/⌘+R to show rulers) through that meeting point. That guide is your horizon.</li>
                         <li>If people are already in the scene, confirm the horizon crosses them at eye height. It should.</li>
                     </ol>
                 </div>
@@ -237,14 +237,14 @@
                     <h3>Step 2: Place and scale <small>· 10 min</small></h3>
                     <ol>
                         <li>Bring in the element, set where its feet/base touch the ground. That contact point is now fixed.</li>
-                        <li>Free Transform (hold Shift to keep proportion) until the horizon crosses it at the same body height as the scene's people. It now reads at the right distance and size.</li>
+                        <li>Free Transform (Ctrl/⌘+T) until the horizon crosses it at the same body height as the scene's people. Free Transform scales proportionally by default in current versions, so don't hold Shift (Shift now switches proportional scaling off). It now reads at the right distance and size.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 3: Match the perspective <small>· 10 min</small></h3>
                     <ol>
-                        <li>If the element has its own strong planes (a box, a sign, a building), use <strong>Edit ▸ Perspective Warp</strong>: lay a quad on its face, then bend it toward the scene's vanishing point.</li>
+                        <li>If the element has its own strong planes (a box, a sign, a building), convert it to a Smart Object so the warp stays editable, then use <strong>Edit ▸ Perspective Warp</strong>: in Layout mode lay a quad on its face, switch to Warp mode, and drag the pins toward the scene's vanishing point. (If the command is grayed out, turn on <strong>Use Graphics Processor</strong> in Preferences ▸ Performance.)</li>
                         <li>For a person or organic subject, a touch of Free Transform ▸ Distort to align the lean is usually enough.</li>
                     </ol>
                 </div>
@@ -315,12 +315,24 @@
                 </div>
             </section>
 
-            <!-- Next -->
-            <section id="next" class="lesson-section">
-                <h2>🔭 Where This Leads</h2>
-                <div class="card card-accent">
-                    <p>Your element now sits in the right place at the right size — but it is still lit like a different photo, and it casts no shadow, so the eye knows. Next: <strong>Lesson 4.2 — Light Direction, Shadows &amp; Reflections</strong>, where you match the light and anchor the element to the ground with a believable shadow.</p>
+            <!-- Summary -->
+            <section id="summary" class="lesson-section">
+                <h2>📝 Lesson Summary</h2>
+
+                <div class="card card-success">
+                    <h3>🎓 Key Takeaways</h3>
+                    <ul>
+                        <li>Every photo has one <strong>horizon</strong> at the camera's eye level; find it by extending receding lines to their <strong>vanishing point</strong>.</li>
+                        <li>Every added element must share that horizon, or it will never sit in the scene.</li>
+                        <li>Fix the <strong>ground-contact</strong> point first, then scale until the horizon crosses the element at the same body height as the people already there.</li>
+                        <li><strong>Perspective Warp</strong> (Layout, then Warp) bends strong planes into place; a touch of Distort handles organic subjects. Warp fixes geometry, not <strong>lens</strong> character.</li>
+                    </ul>
                 </div>
+
+                <h3>🎉 What You've Accomplished</h3>
+                <p>You can now place an element so its geometry agrees with the photo it lands in: same eye level, right size for its distance, planes running to the same vanishing point. That is the part of compositing the eye checks first, and it is now the part you get right first.</p>
+
+                <h3>❓ Common Questions at This Stage</h3>
                 <details>
                     <summary>Do I really need a visible horizon in every photo?</summary>
                     <p>The horizon is always there at eye level even when hidden behind buildings or a hill. You infer it from converging lines. Once you can place that invisible line, you can composite into almost any scene.</p>
@@ -329,12 +341,37 @@
                     <summary>My element has no straight edges to warp. How do I match perspective?</summary>
                     <p>Organic subjects (people, trees) mostly need correct <em>scale and eye level</em> rather than plane-warping. Get the ground contact and horizon crossing right and you are 90% there; a slight Distort handles any lean.</p>
                 </details>
+                <details>
+                    <summary>Why is Perspective Warp grayed out?</summary>
+                    <p>It needs the graphics processor. Turn on <strong>Use Graphics Processor</strong> in Preferences ▸ Performance and restart if asked. It also works on one layer at a time, so select a single layer (ideally a Smart Object) first.</p>
+                </details>
+
+                <h3>🔭 Looking Ahead</h3>
+                <p>Your element now sits in the right place at the right size, but it is still lit like a different photo and casts no shadow, so the eye knows. <strong>Lesson 4.2 — Light, Shadows &amp; Reflections</strong> matches the light and anchors the element to the ground with believable shadows.</p>
+
+                <h3>✅ Before the Next Lesson</h3>
+                <ul>
+                    <li>Save your placed-element file as a layered PSD; you reopen it in Lesson 4.2.</li>
+                    <li>Find the horizon in five photos by extending their receding lines.</li>
+                    <li>Write your Learning Journal entry.</li>
+                </ul>
+
+                <h3>📚 Additional Resources</h3>
+                <ul>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/perspective-warp.html" target="_blank" rel="noopener">Adobe: Perspective Warp</a></li>
+                    <li><a href="https://helpx.adobe.com/photoshop/using/vanishing-point.html" target="_blank" rel="noopener">Adobe: Vanishing Point</a></li>
+                </ul>
+
+                <div class="card card-accent" style="text-align: center; padding: 2rem;">
+                    <h3>🌟 Encouragement for the Journey</h3>
+                    <p>Perspective feels like geometry homework until the first time a pasted element suddenly looks like it was always there. Once you see horizons, you can't unsee them, and every composite you study from now on will teach you something.</p>
+                </div>
             </section>
 
             <nav class="lesson-nav" aria-label="Lesson Navigation">
                 <a href="lesson_09.html" class="prev-lesson">← Previous: Eyes, Teeth &amp; Hair — Natural Finish</a>
                 <a href="index.html" class="home-link">🏠 Course Home</a>
-                <a href="lesson_11.html" class="next-lesson">Next: Light Direction, Shadows &amp; Reflections →</a>
+                <a href="lesson_11.html" class="next-lesson">Next: Light, Shadows &amp; Reflections →</a>
             </nav>
         </div>
     </main>

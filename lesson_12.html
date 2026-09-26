@@ -101,7 +101,7 @@
                         <span class="ba-divider" aria-hidden="true"></span>
                         <span class="ba-grabber" aria-hidden="true">⇄</span>
                     </div>
-                    <figcaption>A real unifying grade through the Adobe tools ("Cool Shadows &amp; Warm Highlights"). One adjustment over the entire frame — the same grade every composited element would sit under, which is exactly why they end up looking related.</figcaption>
+                    <figcaption>A real unifying grade: cool shadows and warm highlights. One adjustment over the entire frame — the same grade every composited element would sit under, which is exactly why they end up looking related.</figcaption>
                 </figure>
             </section>
 
@@ -138,20 +138,20 @@
                             <span class="ps-dot" style="background:#28c840;"></span>
                             <span style="margin-left:6px;">Layers — grade on top</span>
                         </div>
-                        <svg viewBox="0 0 460 186" role="img" aria-label="Layers panel with a unifying grade group at the top over a haze layer, subject, shadows, and background.">
+                        <svg viewBox="0 0 460 186" role="img" aria-label="Layers panel with a unifying grade group at the top, over the subject, its shadows, a haze layer, and the background.">
                             <rect width="460" height="186" fill="#2f2f2f"/>
                             <rect x="12" y="10" width="436" height="34" fill="#173a5e" stroke="#1473E6"/>
                             <text x="24" y="31" style="fill:#cfe3ff" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">★ Unifying Grade (Color Lookup / Curves)</text>
                             <rect x="12" y="48" width="436" height="30" fill="#3a3a3a" stroke="#4a4a4a"/>
-                            <text x="24" y="68" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Atmosphere / haze — Screen, low opacity</text>
+                            <text x="24" y="68" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Subject + clipped light/color</text>
                             <rect x="12" y="82" width="436" height="30" fill="#353535" stroke="#4a4a4a"/>
-                            <text x="24" y="102" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Subject + clipped light/color</text>
+                            <text x="24" y="102" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Contact + cast shadows — Multiply</text>
                             <rect x="12" y="116" width="436" height="30" fill="#313131" stroke="#4a4a4a"/>
-                            <text x="24" y="136" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Contact + cast shadows — Multiply</text>
+                            <text x="24" y="136" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="11">Atmosphere / haze — low opacity, over the far elements only</text>
                             <rect x="12" y="150" width="436" height="28" fill="#2b2b2b" stroke="#4a4a4a"/>
                             <text x="24" y="169" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="11">Background 🔒</text>
                         </svg>
-                        <figcaption>Figure 2: The grade lives at the top so it rains down on everything below. Everything under it — background, subject, shadows, haze — is grabbed by the same color, and that is what unifies them.</figcaption>
+                        <figcaption>Figure 2: The haze sits just above the far background and below the subject, so only distant things recede. The grade lives at the top so it rains down on everything below: background, haze, shadows, and subject all get the same color, and that is what unifies them.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
@@ -192,7 +192,7 @@
                 <div class="card card-info">
                     <h3>Step 2: Paint the atmosphere <small>· 12 min</small></h3>
                     <ol>
-                        <li>New layer above the far elements: soft brush, scene/sky color, very low flow, glaze haze over the background so it recedes.</li>
+                        <li>New layer (Normal mode) above the far elements but below your subject and its shadows: soft brush, scene/sky color, very low flow, glaze haze over the background so it recedes.</li>
                         <li>Optional: a Screen layer for light rays from the source, blurred and masked to shafts; a whisper of particles for air.</li>
                     </ol>
                 </div>
@@ -248,7 +248,7 @@
                     <ol>
                         <li>Lower contrast + add sky color on <strong>far</strong> elements (atmospheric perspective)</li>
                         <li>Glaze <strong>haze</strong> between elements; optional rays / particles on Screen</li>
-                        <li>Keep atmosphere <em>above elements, below the grade</em></li>
+                        <li>Keep atmosphere <em>above the far elements, below the grade</em></li>
                         <li>One <strong>unifying grade</strong> (Color Lookup / Curves) on top of everything</li>
                         <li>Vignette + glow + grain, then flatten &amp; export to sRGB</li>
                     </ol>
@@ -292,7 +292,7 @@
                 <h3>❓ Common Questions at This Stage</h3>
                 <details>
                     <summary>Should I add atmosphere or grade first?</summary>
-                    <p>Atmosphere first, grade last. Atmosphere sets the depth relationships between elements; the grade then unifies the whole frame, atmosphere included. Reverse it and the grade can't fully tie in the haze you add afterward.</p>
+                    <p>Atmosphere first, grade last, and what really matters is where each sits in the layer stack, not when you made it. Atmosphere sets the depth relationships between elements, so it goes above the far elements; the grade goes at the very top so it unifies the whole frame, atmosphere included. A haze layer placed above the grade would escape it and look pasted on.</p>
                 </details>
                 <details>
                     <summary>My composite still looks "off" after all this. What did I miss?</summary>
