@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides: Module 8</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#0b1220; --ink:#eaf1fb; --ink2:#9fb2cd;
+    --accent:#31A8FF; --accent2:#1473E6; --lab:#34d3bd; --warn:#fbbf24;
+    --line:#22314c; --code:#0a1526; color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:30ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#a9c7ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#0f2440,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  .credit{position:fixed;left:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--ink2);opacity:.7;z-index:5}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <section class="slide on section">
+    <div class="eyebrow">Photoshop Intermediate · Instructor Kit · Session 8 of 8 · 3 hours</div>
+    <h1>Module 8<br>Capstone</h1>
+    <p class="lead">No new tools. A brief, a build, and the story of how you solved it.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Today, in three hours</div>
+    <h2>Finish, tell the story, present</h2>
+    <ul>
+      <li><b>0:00</b> Plan review in pairs (15 min)</li>
+      <li><b>0:15</b> Studio block: finish and get help (70 min)</li>
+      <li><b>1:25</b> Break · hero files to the shared folder</li>
+      <li><b>1:37</b> Case-study assembly (25 min)</li>
+      <li><b>2:02</b> Presentations + peer critique (50 min)</li>
+      <li><b>2:52</b> Course close</li>
+    </ul>
+  </section>
+
+  <section class="slide section"><div class="big">L21</div><h2>The Brief &amp; the Plan (8.1)</h2><p class="lead">If you can't check it, it isn't in the brief.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Session 7 kickoff · the goal</div>
+    <h2>A spec, not a wish</h2>
+    <div class="two">
+      <ul><li>"Make it pop"</li><li>"Modern vibe"</li><li>"You'll know it when you see it"</li></ul>
+      <ul class="lab"><li>A 3000×2000 hero, warm and editorial</li><li>Readable at a glance on mobile</li><li>Web + print by Friday</li></ul>
+    </div>
+    <div class="tag"><span class="pill">WARM-UP</span> Pin every sticky note in l21-vague-brief.txt to a spec, a constraint, or a reference</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Anatomy of a brief · one page</div>
+    <h2>Six parts</h2>
+    <div class="two">
+      <ul><li><b>Objective</b>: one sentence, what and why</li><li><b>Audience</b>: who, where, what makes them stop</li><li><b>Deliverables + specs</b>: sizes, formats, where they live</li></ul>
+      <ul><li><b>Constraints</b>: brand, colors, fonts, budget, deadline</li><li><b>Success criteria</b>: a checklist someone else could grade</li><li><b>References</b>: 6–12, each annotated</li></ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">The plan · map skills to stages</div>
+    <h2>Scope for finishing, not for showing off</h2>
+    <pre><span class="k">Assets &amp; cutouts</span> (M1) → <span class="k">Color base</span> (M2) → <span class="k">Retouch</span> (M3)
+→ <span class="k">Composite</span> (M4) → <span class="k">Type &amp; system</span> (M5)
+→ <span class="k">Automate &amp; export</span> (M6 · maybe 7) → <span class="k">Present</span> (8.3)
+<span class="c">// cross out the stages you don't need</span></pre>
+    <div class="tag"><span class="pill warn">RULE</span> Two or three milestones · a finish date · stretch goals you can cut</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Pick one · write the brief · 15 min</div>
+    <h2>Four projects</h2>
+    <ul>
+      <li><b>Key art poster</b>: a composited hero with title treatment (M1, 3, 4, 5)</li>
+      <li><b>Product campaign</b>: a hero plus a sized social set from one master (M2, 4, 5, 6)</li>
+      <li><b>Editorial portrait</b>: retouched, graded, with layout and type (M2, 3, 5)</li>
+      <li><b>Your own</b>: the skills you most want on your portfolio</li>
+    </ul>
+    <div class="tag"><span class="pill lab">HOMEWORK</span> Brief + moodboard + plan, then build: Pass 1 and Pass 2 done by Session 8</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Session 8 · plan review · 4 min each</div>
+    <h2>Can your partner grade it?</h2>
+    <ul>
+      <li>Swap briefs; read the success criteria</li>
+      <li>Grade the current file: <b>met · not yet · can't check</b></li>
+      <li>Rewrite any criterion nobody else can check</li>
+    </ul>
+    <div class="tag"><span class="pill">THEN</span> Write your studio goal: the one or two things you will finish today</div>
+  </section>
+
+  <section class="slide section"><div class="big">L22</div><h2>Studio Session: Build It (8.2)</h2><p class="lead">Raise the whole image a level at a time.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Work in passes</div>
+    <h2>Block-in · refine · polish</h2>
+    <div class="two">
+      <ul><li><b>1 Block-in</b>: every element placed, scaled to the horizon; groups named now</li><li><b>2 Refine</b>: color, retouch, light and shadow, masks, type</li><li><b>3 Polish</b>: atmosphere, one unifying grade, details</li></ul>
+      <ul class="lab"><li>Groups by role, in render order, color-labeled</li><li>Live adjustments · Smart Objects · Smart Filters</li><li>Save <code class="k">capstone_v01</code>, <code class="k">v02</code> each pass + a screenshot</li></ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Getting help today</div>
+    <h2>Help flags on your monitor</h2>
+    <ul>
+      <li><b style="color:#34d3bd">Green</b>: working, all good</li>
+      <li><b style="color:#fbbf24">Yellow</b>: a question when you are free</li>
+      <li><b style="color:#f87171">Red</b>: blocked for 5 minutes. Do not sit on it.</li>
+    </ul>
+    <div class="tag"><span class="pill">CHECK-IN</span> Your success criteria · which pass? · your next move · file health</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">0:45 · judging your own work</div>
+    <h2>Fresh eyes</h2>
+    <div class="two">
+      <ul><li><b>Flip</b>: View ▸ Flip Horizontal (view only)</li><li><b>Squint</b>: zoom to fit; does the focal point survive?</li></ul>
+      <ul><li><b>Desaturate</b>: a Black &amp; White layer on top, then off</li><li><b>Walk away</b>: ten minutes; a night is better</li></ul>
+    </div>
+    <div class="tag"><span class="pill warn">GATE</span> Grade against the brief, not your mood</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Timed cues</div>
+    <h2>The clock is part of the brief</h2>
+    <ul class="lab">
+      <li><b>1:05</b> Polish only: no new elements; unifying grade; masks at 100%</li>
+      <li><b>1:15</b> The gate: tick every success criterion on the artwork</li>
+      <li><b>1:18</b> Save the layered master; export deliverables at spec</li>
+      <li><b>1:22</b> <code class="k">firstname-hero.jpg</code> (sRGB) → shared folder</li>
+    </ul>
+    <div class="tag"><span class="pill warn">RULE</span> Black &amp; White check layer OFF before you export</div>
+  </section>
+
+  <section class="slide section"><div class="big">L23</div><h2>Present &amp; Case Study (8.3)</h2><p class="lead">Show the thinking, not just the pixels.</p></section>
+  <section class="slide">
+    <div class="eyebrow">The case-study arc</div>
+    <h2>Challenge → approach → process → result → reflection</h2>
+    <ul>
+      <li><b>Hero</b> first, big: earn the scroll</li>
+      <li><b>Outcome-first</b>: "A warm, editorial key art that reads on mobile"</li>
+      <li><b>Decisions</b>, not every step: three or four moments of judgment</li>
+      <li><b>Honest</b> before/after; generative assistance named</li>
+    </ul>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Assemble · 18 min</div>
+    <h2>In context, then in words</h2>
+    <ul class="lab">
+      <li>Rectangle over the gray area → Convert to Smart Object → place your hero inside</li>
+      <li>Mockups: <code class="k">l23-mockup-wall</code> · <code class="k">-phone</code> · <code class="k">-sleeve</code></li>
+      <li><code class="k">firstname-context.jpg</code> + <code class="k">firstname-before-after.jpg</code> → shared folder</li>
+      <li>Write the five beats + your 30-second spoken version</li>
+    </ul>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">About 4 minutes each</div>
+    <h2>The protocol</h2>
+    <ul class="lab">
+      <li><b>Present · 90 s</b>: hero in context + the brief in a line + before/after + your 30-second story</li>
+      <li><b>Squint test · 15 s</b>: everyone squints; what do you see first?</li>
+      <li><b>Two reviewers · 90 s</b>: read the brief + one rubric row + one glow + one grow</li>
+      <li><b>Notes · 15 s</b>: presenter writes the grow down</li>
+    </ul>
+    <div class="tag"><span class="pill">NORMS</span> The work, not the person · point at the pixels · their brief, not your taste</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Rubric cards</div>
+    <h2>What reviewers look for</h2>
+    <div class="two">
+      <ul><li><b>2</b> Meets the brief</li><li><b>3</b> Composition &amp; balance</li><li><b>4</b> Focal point &amp; read</li><li><b>5</b> Tonal structure</li></ul>
+      <ul><li><b>8</b> Hero &amp; context</li><li><b>9</b> The story</li><li><b>10</b> Honest process</li></ul>
+    </div>
+    <div class="tag"><span class="pill">GLOW</span> what works, specifically <span class="pill warn">GROW</span> "I wonder if…"</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Homework · within one week</div>
+    <h2>Lay it out, export, publish</h2>
+    <ul>
+      <li>Hero → brief → approach → process → details → result → reflection</li>
+      <li>Your Module 5 type system</li>
+      <li>Web images: File ▸ Export ▸ Export As</li>
+      <li>PDF: File ▸ Save a Copy ▸ Photoshop PDF (or Export ▸ Artboards to PDF)</li>
+    </ul>
+    <div class="tag"><span class="pill lab">SHIP</span> Publish it and share the link with at least one person</div>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">You arrived able to operate Photoshop</div>
+    <h2>You leave able to work like a professional.</h2>
+    <p class="lead" style="margin-top:10px">Final journal: read your whole journal, Module 1 to here. What can you do now that you couldn't when you started? Congratulations. 🎉</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 20</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<div class="credit">© 2026 Ray de la Paz</div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

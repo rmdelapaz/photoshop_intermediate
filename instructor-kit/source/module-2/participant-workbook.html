@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook: Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Student workbook —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">write in it · bring it to every session</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Photoshop Intermediate Workbook · Module 2</div>
+    <h1>Color &amp; Tone, Deep</h1>
+    <p class="sub">Build a color pipeline you can trust, author a cinematic grade and bottle it as a LUT, then split-tone, match, soft-proof and ship. Deliverable: a cinematic grade plus a print-ready, soft-proofed export: one look, delivered correctly to screen and to paper.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>2.1–2.3</b> (L04–L06)</span>
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip">Session <b>2</b> · 3 hours</span>
+      <span class="chip">Name: ____________________</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to use this workbook</div>
+    <p>Each lesson has <b>Key Ideas</b>, a <b>Worked Example</b> (the steps you'll follow in class), the lesson's <b>Recipe Card</b>, <b>Your Turn</b> exercises, a <b>Self-Check</b>, a <b>Journal</b> prompt, and space for <b>Notes</b>. Shortcuts are written Windows first, Mac second: <kbd>Ctrl</kbd>/<kbd>⌘</kbd> means Ctrl on Windows, Command on a Mac.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Two rules for this whole module</div>
+    <p>1. <b>Judge color on your own screen</b>, not the projector. Turn off Night Light / True Tone / Night Shift and set brightness to about the middle. 2. <b>When Photoshop asks about a profile, read the dialog before you click.</b> On open: use the embedded profile. At the end: <b>Convert</b> (never Assign), on a duplicate.</p>
+  </div>
+
+  <div class="sec"><h2>Module Progress Tracker</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ <b>L04</b> I set up Color Settings, saw 8-bit banding vs 16-bit smoothness, and exported a web copy Converted to sRGB</li>
+    <li>☐ <b>L05</b> I built a grade on a neutral base, saved <code class="inline">grade-working.psd</code>, and exported a LUT that worked on a second photo</li>
+    <li>☐ <b>L06</b> I split-toned, matched a companion image, soft-proofed, and delivered a web file and a print file (the Module 2 deliverable)</li>
+    <li>☐ I wrote a journal entry after each lesson</li>
+  </ul>
+
+  <!-- L04 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L04</span><h3>Color Management &amp; Working Spaces (2.1)</h3><span class="dur">50 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Explain working spaces (sRGB, Adobe RGB, ProPhoto) and pick the right one</li>
+          <li>Say why you edit in <b>16-bit</b> and what <b>banding</b> actually is</li>
+          <li>Read the histogram and <b>diagnose an image before touching a slider</b></li>
+          <li>Set up Photoshop's <b>Color Settings</b> once, correctly, for the rest of the course</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>An image is color in a container</b> with two properties: how <b>wide</b> it is (the working space, or gamut) and how <b>finely divided</b> (the bit depth). 8-bit = 256 steps per channel; 16-bit = over 32,000.</li>
+          <li><b>Banding</b> is what happens when an edit demands more tonal steps than the file has. 16-bit has about 128 times more steps, so gradients survive hard grading.</li>
+          <li>A number like "R 220" is meaningless without its container. Color management keeps track of the container so a color means the same thing from capture to screen to print.</li>
+          <li><b>Capture wide, edit wide and deep, convert down last.</b> Never edit in the narrow export space.</li>
+          <li><b>Convert to Profile</b> remaps the colors to fit the new space and keeps them looking right. <b>Assign Profile</b> just relabels the container and shifts your colors.</li>
+        </ul>
+        <table class="timing">
+          <thead><tr><th>Space</th><th>Use for</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><b>sRGB</b></td><td>Web, social, most screens, email</td><td>The safe default for anything online. Assume the internet is sRGB.</td></tr>
+            <tr><td><b>Adobe RGB</b></td><td>Print work, especially CMYK</td><td>Holds the cyans and greens many printers can reproduce but sRGB clips.</td></tr>
+            <tr><td><b>ProPhoto RGB</b></td><td>Heavy RAW grading, archival masters</td><td>Enormous gamut. Always pair with 16-bit or you will band.</td></tr>
+          </tbody>
+        </table>
+        <figure class="fig">
+          <svg viewBox="0 0 500 170" role="img" aria-label="Three nested boxes: sRGB inside Adobe RGB inside ProPhoto RGB. Next to them, a gradient drawn in 16 fine steps and the same gradient in 5 coarse steps.">
+            <rect x="10" y="10" width="220" height="150" rx="8" fill="#e3efff" stroke="#1473E6" stroke-width="1.8"/>
+            <text x="20" y="30" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">ProPhoto RGB</text>
+            <rect x="35" y="42" width="170" height="108" rx="6" fill="#cfe3ff" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="45" y="60" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">Adobe RGB</text>
+            <rect x="62" y="74" width="116" height="66" rx="5" fill="#16202e"/>
+            <text x="120" y="112" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#ffffff">sRGB</text>
+            <text x="120" y="168" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6f7c8e">width = working space</text>
+            <g>
+              <rect x="270" y="30" width="15" height="40" fill="#1e3550"/><rect x="285" y="30" width="15" height="40" fill="#233b58"/><rect x="300" y="30" width="15" height="40" fill="#28425f"/><rect x="315" y="30" width="15" height="40" fill="#2e4867"/><rect x="330" y="30" width="15" height="40" fill="#344f6f"/><rect x="345" y="30" width="15" height="40" fill="#3a5676"/><rect x="360" y="30" width="15" height="40" fill="#405d7e"/><rect x="375" y="30" width="15" height="40" fill="#466486"/><rect x="390" y="30" width="15" height="40" fill="#4d6b8d"/><rect x="405" y="30" width="15" height="40" fill="#537295"/><rect x="420" y="30" width="15" height="40" fill="#5a799c"/><rect x="435" y="30" width="15" height="40" fill="#6081a4"/><rect x="450" y="30" width="15" height="40" fill="#6788ab"/><rect x="465" y="30" width="15" height="40" fill="#6e90b3"/>
+              <text x="270" y="86" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#0f766e">16-bit: smooth after a hard edit</text>
+              <rect x="270" y="100" width="42" height="40" fill="#1e3550"/><rect x="312" y="100" width="42" height="40" fill="#344f6f"/><rect x="354" y="100" width="42" height="40" fill="#4d6b8d"/><rect x="396" y="100" width="42" height="40" fill="#6081a4"/><rect x="438" y="100" width="42" height="40" fill="#6e90b3"/>
+              <text x="270" y="156" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#b45309">8-bit: the same edit bands</text>
+            </g>
+          </svg>
+          <figcaption>Width is the working space; the fineness of the steps is the bit depth.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: set up &amp; diagnose</div>
+        <ol class="steps">
+          <li><b>Edit ▸ Color Settings.</b> RGB working space: <b>Adobe RGB (1998)</b> for print-capable work (or sRGB if you are strictly web). CMYK: your print provider's press profile (for example Coated GRACoL 2006 or Coated FOGRA39) or the default. Policies: <b>Preserve Embedded Profiles</b>, mismatch warnings on (<b>Ask When Opening</b>).</li>
+          <li>Open your image (or <code class="inline">l04-smooth-sky-16bit.tif</code>). Confirm the bit depth: <b>Image ▸ Mode ▸ 16 Bits/Channel</b> for anything you will grade hard.</li>
+          <li><b>Window ▸ Histogram.</b> Before any edit: crammed left (underexposed) or right (overexposed)? A spike against either wall (clipped, lost detail)? Narrow (flat, low contrast)? Write one sentence: what does the image need?</li>
+          <li><b>Prove the container matters.</b> Duplicate a smooth-gradient image; set one copy to 8-bit, keep the other 16-bit. Apply the same aggressive Curves to both, then a strong brighten. Zoom in: the 8-bit copy bands.</li>
+          <li><b>Export correctly.</b> Save the layered master (for example <code class="inline">color-master.psd</code>). For web: <b>Image ▸ Duplicate</b> (tick <b>Duplicate Merged Layers Only</b>), then on the copy <b>Edit ▸ Convert to Profile ▸ sRGB</b>, <b>Image ▸ Mode ▸ 8 Bits/Channel</b>, export. (<b>File ▸ Export ▸ Export As</b> can also convert to sRGB for you.)</li>
+        </ol>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Trustworthy color, start to finish</div>
+        <ol class="steps">
+          <li>Edit ▸ Color Settings: deliberate working space, Preserve Embedded Profiles</li>
+          <li>Work in 16-bit for anything you will grade hard</li>
+          <li>Read the histogram and name the problem before editing</li>
+          <li>Keep the master wide + 16-bit</li>
+          <li>Export: on a duplicate, Convert to Profile (sRGB for web) at the very end</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> capture wide, edit deep, convert down last.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 1: My Color Settings</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Write down what you chose, and why, so you can set up any machine the same way.</p>
+        <table class="timing">
+          <tbody>
+            <tr><td style="width:38%"><b>RGB working space</b></td><td>&nbsp;</td></tr>
+            <tr><td><b>CMYK</b></td><td>&nbsp;</td></tr>
+            <tr><td><b>RGB policy</b></td><td>&nbsp;</td></tr>
+            <tr><td><b>Mismatch / missing boxes ticked</b></td><td>&nbsp;</td></tr>
+            <tr><td><b>Why this working space for my work</b></td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 2: Diagnose before you edit</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Read each histogram <b>cold</b> (<code class="inline">l04-histogram-a</code> to <code class="inline">e</code>, or five of your own images). Guess from the histogram alone, then look at the image and check. Careful: one of them is fine as it is.</p>
+        <table class="timing">
+          <thead><tr><th>File</th><th>What the histogram shows</th><th>My one-sentence edit plan</th></tr></thead>
+          <tbody>
+            <tr><td class="t">a</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td class="t">b</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td class="t">c</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td class="t">d</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td class="t">e</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.2rem 0">My own image's diagnosis, in one sentence:</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 3: See the shift (Now You, finish at home)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Start from an Adobe RGB (or ProPhoto) version, such as <code class="inline">l04-lagoon-adobergb.jpg</code>, and export it two ways: correctly Converted to sRGB, and deliberately with the profile stripped. View both in a browser. (Stripping an sRGB file shows no shift, because browsers assume sRGB.) Describe the shift, and where you saw it most:</p>
+        <div class="write"></div>
+        <p style="font-size:.92rem;margin:.2rem 0">Then set up a wide-gamut, 16-bit document template you can start pro work from. Its settings:</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Assign</b> just relabels and will shift your colors; <b>Convert</b> keeps the appearance. Do the conversion on a <b>duplicate</b>, so your master stays wide and 16-bit. ProPhoto in 8-bit bands badly.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">An image is "color poured into a container." Which two properties define that container?</div>
+          <div class="opts"><div class="opt">A) File format and pixel dimensions</div><div class="opt">B) Working space (how wide the gamut is) and bit depth (how finely each channel is divided)</div><div class="opt">C) Color mode and the number of layers</div><div class="opt">D) Monitor brightness and contrast</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">You apply the same aggressive Curves to an 8-bit and a 16-bit copy of a smooth sky. Only the 8-bit copy breaks into bands. Why?</div>
+          <div class="opts"><div class="opt">A) The 16-bit copy has more pixels</div><div class="opt">B) 8-bit files always use a smaller working space</div><div class="opt">C) Photoshop turns off Curves smoothing in 8-bit</div><div class="opt">D) The edit demands more tonal steps than 8-bit's 256 per channel; 16-bit has about 128 times more</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">A learner's graded photo looks duller on Instagram than in Photoshop. What is the most likely cause?</div>
+          <div class="opts"><div class="opt">A) The file was left in Adobe RGB or ProPhoto and never Converted to sRGB</div><div class="opt">B) The JPEG quality was set too low</div><div class="opt">C) The master was saved in 16-bit</div><div class="opt">D) Preserve Embedded Profiles was turned on</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">It is time to deliver a web JPEG from your layered, 16-bit Adobe RGB master. Which is the correct move?</div>
+          <div class="opts"><div class="opt">A) Edit ▸ Assign Profile ▸ sRGB on the master, then save</div><div class="opt">B) Image ▸ Mode ▸ 8 Bits/Channel on the master, then export</div><div class="opt">C) On a merged duplicate: Edit ▸ Convert to Profile ▸ sRGB, 8 Bits/Channel, then export</div><div class="opt">D) Save the layered master directly as a JPEG</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Before any edit, the Histogram shows a tall spike slammed against the right wall. What does it tell you?</div>
+          <div class="opts"><div class="opt">A) The image is underexposed</div><div class="opt">B) Highlights are clipped: detail at the bright end is lost</div><div class="opt">C) The image is flat and low in contrast</div><div class="opt">D) It is a correctly exposed high-key image with nothing to fix</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Which pairing of working space and job matches the lesson's table?</div>
+          <div class="opts"><div class="opt">A) ProPhoto RGB for web graphics, in 8-bit</div><div class="opt">B) sRGB for CMYK print work</div><div class="opt">C) Adobe RGB for email newsletters</div><div class="opt">D) ProPhoto RGB for heavy RAW grading and archival masters, always paired with 16-bit</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Have you ever had colors "change" on export or a print come back wrong? Now that you understand containers, what was probably going on?</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="note"><div class="t">If this lesson felt dry</div><p>That's normal: most people glaze over at color management. Pushing through it is exactly what separates hobby edits from professional ones. Everything downstream in this module now lands the way you intend.</p></div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L05 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L05</span><h3>Grading with Curves, Gradient Maps &amp; LUTs (2.2)</h3><span class="dur">60 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Grade with <b>per-channel Curves</b> for precise color in shadows, mids and highlights</li>
+          <li>Use a <b>Gradient Map</b> to remap tones to a color ramp</li>
+          <li>Apply and save a <b>LUT</b> (Color Lookup) to reuse a grade consistently</li>
+          <li>Keep the whole grade non-destructive and dialable</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li>Correcting asks "what is wrong?" <b>Grading asks "what should it feel like?"</b> Every grade is a remap: you decide what color each tone becomes.</li>
+          <li>Three remapping tools, from surgical to sweeping: <b>per-channel Curves</b> (the precision instrument), <b>Gradient Map</b> (map the whole tonal range to a ramp), <b>LUT</b> (a saved recipe of a finished grade).</li>
+          <li><b>Gradient Map:</b> darkest pixels get the gradient's left color, brightest get its right color. <b>Blend it, don't bake it:</b> Color or Soft Light, opacity around 15–40%.</li>
+          <li><b>LUT</b> (Look-Up Table, a <code class="inline">.cube</code> or <code class="inline">.3dl</code> file): "turn this input color into that output color," for every color. Apply one with a <b>Color Lookup</b> adjustment layer.</li>
+          <li><b>Correct, then grade, then bottle.</b> Grading on top of a neutral base is what makes a look portable.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 500 110" role="img" aria-label="The grading order: correct, contrast, color, refine locally, bottle it as a LUT.">
+            <rect x="4" y="30" width="86" height="50" rx="6" fill="#f4f6fa" stroke="#45536a" stroke-width="1.6"/>
+            <text x="47" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#45536a">Correct</text>
+            <text x="47" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6f7c8e">neutral base</text>
+            <polygon points="98,55 90,51 90,59" fill="#45536a"/>
+            <rect x="102" y="30" width="86" height="50" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="145" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">Contrast</text>
+            <text x="145" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6f7c8e">S-curve</text>
+            <polygon points="196,55 188,51 188,59" fill="#45536a"/>
+            <rect x="200" y="30" width="86" height="50" rx="6" fill="#d9f2f0" stroke="#0f766e" stroke-width="1.6"/>
+            <text x="243" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#0f766e">Color</text>
+            <text x="243" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6f7c8e">channels / map</text>
+            <polygon points="294,55 286,51 286,59" fill="#45536a"/>
+            <rect x="298" y="30" width="86" height="50" rx="6" fill="#fdf1dc" stroke="#b45309" stroke-width="1.6"/>
+            <text x="341" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#b45309">Refine</text>
+            <text x="341" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6f7c8e">masks</text>
+            <polygon points="392,55 384,51 384,59" fill="#45536a"/>
+            <rect x="396" y="30" width="100" height="50" rx="6" fill="#16202e"/>
+            <text x="446" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#ffffff">Bottle it</text>
+            <text x="446" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#bcc7d6">export .cube</text>
+          </svg>
+          <figcaption>Correct, then grade, then bottle.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: grade &amp; bottle it</div>
+        <ol class="steps">
+          <li>Open a portrait (or <code class="inline">l05-portrait-studio.jpg</code>) in your 2.1 pipeline: 16-bit, deliberate working space. Correct to a <b>neutral base</b> first (exposure and white balance) with a Curves layer or <b>Filter ▸ Camera Raw Filter</b>. <b>Save As</b> <code class="inline">grade-working.psd</code>.</li>
+          <li><b>Contrast, then color.</b> Curves layer: a gentle RGB S-curve. New Curves layer, <b>Blue</b> channel: lift the shadow end (blue shadows), drop the highlight end (warm, yellow highlights). For a truer teal, also lift Green slightly or drop Red slightly in the shadows.</li>
+          <li><b>Gradient Map accent.</b> Teal-to-gold ramp, layer set to <b>Color</b> or <b>Soft Light</b>, opacity about <b>20–30%</b>.</li>
+          <li><b>Refine locally.</b> Mask a Curves or the Gradient Map layer so skin stays natural while the background goes moody. A luminosity mask (Lesson 1.1) keeps the grade out of the brightest highlights.</li>
+          <li><b>Bottle it.</b> Save <code class="inline">grade-working.psd</code> first. Disable the masks (<kbd>Shift</kbd>-click each mask thumbnail), hide anything that is not part of the grade, keep a Background layer plus adjustment layers, then <b>File ▸ Export ▸ Color Lookup Tables</b> → save a <code class="inline">.cube</code>. Re-enable the masks.</li>
+          <li>Open a different photo (or <code class="inline">l05-pier-dusk.jpg</code>), add a <b>Color Lookup</b> layer, <b>Load 3D LUT…</b>, choose your .cube. Watch the whole look transfer.</li>
+        </ol>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Build a look and save it</div>
+        <ol class="steps">
+          <li>Curves: contrast (RGB S-curve) first</li>
+          <li>Curves per channel: teal shadows, warm highlights (Blue channel split)</li>
+          <li>Gradient Map (teal→gold) at ~20–30% / Color blend</li>
+          <li>Mask locally (luminosity or subject masks)</li>
+          <li>Save the master; disable masks, then File ▸ Export ▸ Color Lookup Tables → reuse as a .cube</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> correct, then grade, then bottle.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 1: Sketch your Blue curve</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Draw the Blue-channel curve you ended up with (mark the shadow end and highlight end), and note any Green or Red moves you added for a truer teal:</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 2: Three LUTs (Now You, start now, finish at home)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Build three distinct LUTs and apply each to the same photo. Fill in the recipe for each:</p>
+        <table class="timing">
+          <thead><tr><th>Look</th><th>Shadow color</th><th>Highlight color</th><th>Contrast</th><th>.cube file name</th></tr></thead>
+          <tbody>
+            <tr><td><b>Warm summer</b></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td><b>Cold thriller</b></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td><b>Faded matte</b></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.2rem 0">Apply one LUT across five different photos. Where did it need per-image tweaking, and why?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 3: Reverse-engineer a look</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Pick a film still or a favorite photo. Name its shadow color and highlight color, then recreate it with per-channel Curves. Which channels did you bend, and which way?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">A Gradient Map at 100% Normal looks garish and kills detail. The LUT export bakes <b>every visible</b> adjustment layer and cannot store a mask, so disable masks and hide non-grade layers first, and remember to re-enable the masks and save afterward.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">What separates grading from correcting, in the lesson's words?</div>
+          <div class="opts"><div class="opt">A) Grading only happens in Camera Raw</div><div class="opt">B) Grading changes exposure; correcting changes color</div><div class="opt">C) Correcting asks "what is wrong?"; grading asks "what should it feel like?" and deliberately remaps tones to chosen colors</div><div class="opt">D) There is no difference; they are two names for one step</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">You want the classic teal-and-gold in Curves. In the <b>Blue</b> channel, what do you do?</div>
+          <div class="opts"><div class="opt">A) Lift the shadow end and drop the highlight end</div><div class="opt">B) Drop the shadow end and lift the highlight end</div><div class="opt">C) Raise only the midpoint</div><div class="opt">D) Flatten the curve to a horizontal line</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Your teal-to-gold Gradient Map looks garish and has flattened all the detail. What does the lesson tell you to do?</div>
+          <div class="opts"><div class="opt">A) Delete it; Gradient Maps are only for black-and-white work</div><div class="opt">B) Rasterize it so it merges with the photo</div><div class="opt">C) Swap the gradient's end colors</div><div class="opt">D) Set the layer to Color or Soft Light and/or drop its opacity to about 15–40%</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">Before File ▸ Export ▸ Color Lookup Tables, why do you Shift-click each mask thumbnail and hide non-grade layers?</div>
+          <div class="opts"><div class="opt">A) The export only works on flattened images</div><div class="opt">B) The export bakes every visible adjustment layer, and a LUT cannot store a mask</div><div class="opt">C) Masks make the .cube file too large to load</div><div class="opt">D) Color Lookup Tables only export the selected layer</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Your LUT looks perfect on the shot you built it on but wrong on another photo. What is the most likely reason?</div>
+          <div class="opts"><div class="opt">A) The second photo wasn't corrected to a neutral base first, and a LUT assumes a similar starting point</div><div class="opt">B) LUTs only work on the image they were built on</div><div class="opt">C) The .cube file was saved in the wrong folder</div><div class="opt">D) The Color Lookup layer needs to be at 100% opacity</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Which order does the lesson's flowchart and build follow?</div>
+          <div class="opts"><div class="opt">A) Bottle the LUT → correct → grade</div><div class="opt">B) Color → contrast → correct → mask</div><div class="opt">C) Correct to neutral → contrast (S-curve) → color → refine locally with masks → bottle as a LUT</div><div class="opt">D) Mask → Gradient Map → correct → contrast</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Describe the "look" you are drawn to as an editor in terms of shadow color, highlight color, and contrast. Naming your taste is the first step to building it into a LUT.</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L06 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L06</span><h3>Match, Split-Tone &amp; Soft-Proof (2.3)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li><b>Match color</b> across two images so a set feels like one shoot</li>
+          <li>Refine a <b>split-tone</b> (warm highlights, cool shadows) with Color Balance / Curves</li>
+          <li><b>Soft-proof</b> for a printer and read the gamut warning</li>
+          <li>Deliver a graded image as both a <b>web file</b> and a <b>print-ready file</b></li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li>A <b>split-tone</b> puts one color into the shadows and a different (usually complementary) color into the highlights. The classic: <b>cool shadows, warm highlights</b>, mids roughly neutral so skin stays believable.</li>
+          <li><b>Color Balance</b> has explicit Shadows / Midtones / Highlights buttons; per-channel Curves do the same by which end of the curve you bend.</li>
+          <li><b>Matching:</b> sample a known neutral (or skin) in each image with the <b>Color Sampler Tool</b>, read the <b>Info panel</b> (Window ▸ Info), and move each Curves channel until the values meet. <b>Match tones before colors:</b> black point, white point, then mid color.</li>
+          <li><b>Soft-proofing</b> simulates the print on screen: <b>View ▸ Proof Setup ▸ Custom</b>. Toggle proof with <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Y</kbd>; <b>Gamut Warning</b> (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Y</kbd>) grays out colors the printer can't reproduce.</li>
+          <li><b>Neon dies on paper.</b> Pull saturation down where the warning lights up, and the print matches the proof.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 500 120" role="img" aria-label="A tonal ramp from dark to light: cool blue-teal tint on the shadow end, neutral in the middle, warm gold tint on the highlight end.">
+            <defs><linearGradient id="m2st" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0f2e3a"/><stop offset=".3" stop-color="#4f6a73"/><stop offset=".5" stop-color="#8a8a88"/><stop offset=".72" stop-color="#c7b394"/><stop offset="1" stop-color="#fbe6bf"/></linearGradient></defs>
+            <rect x="20" y="20" width="460" height="50" rx="6" fill="url(#m2st)" stroke="#45536a" stroke-width="1"/>
+            <text x="30" y="92" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#0f766e">cool shadows</text>
+            <text x="250" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#45536a">neutral mids (skin)</text>
+            <text x="470" y="92" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#b45309">warm highlights</text>
+            <text x="250" y="112" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6f7c8e">one color into the dark end, its complement into the bright end</text>
+          </svg>
+          <figcaption>Split-tone by zone: let the extremes carry the color story.</figcaption>
+        </figure>
+        <table class="timing">
+          <thead><tr><th>Customize Proof Condition</th><th>Setting</th></tr></thead>
+          <tbody>
+            <tr><td><b>Device to Simulate</b></td><td>Your printer's profile (stand-in: U.S. Web Coated (SWOP) v2)</td></tr>
+            <tr><td><b>Rendering Intent</b></td><td>Relative Colorimetric or Perceptual</td></tr>
+            <tr><td><b>Black Point Compensation</b></td><td>On</td></tr>
+            <tr><td><b>Simulate Paper Color</b></td><td>On (the image dulls: that's the paper)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk"><div class="h">Worked example: split-tone &amp; proof</div>
+        <ol class="steps">
+          <li>Open <code class="inline">grade-working.psd</code> from Lesson 2.2 (16-bit, wide space). If you graded a landscape there, drag your Lesson 2.2 grading layers onto a corrected portrait instead. <b>Save As</b> <code class="inline">finish-working.psd</code>.</li>
+          <li><b>Split-tone.</b> Add a <b>Color Balance</b> layer. <b>Shadows:</b> push toward cyan/blue a little. <b>Highlights:</b> toward red/yellow. <b>Midtones:</b> near neutral. Judge on skin: warmly lit, not sunburnt.</li>
+          <li><b>Match a companion.</b> Open a second photo of the same set (or <code class="inline">l06-companion-portrait.jpg</code>). Drop a Color Sampler on a comparable point in each. Add Curves to the second image and move each channel until its sampled values approach the first image's.</li>
+          <li><b>Soft-proof.</b> <b>View ▸ Proof Setup ▸ Custom</b>: printer profile (or SWOP v2), Relative Colorimetric or Perceptual, Black Point Compensation, Simulate Paper Color. Proof on (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Y</kbd>). Gamut Warning on (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Y</kbd>); lower the saturation of anything gray with a masked Hue/Saturation until it clears.</li>
+          <li><b>Deliver both files.</b> Save the layered master first. <b>Web:</b> Image ▸ Duplicate (Duplicate Merged Layers Only), Convert to Profile ▸ sRGB, 8 Bits/Channel, export a JPG. <b>Print:</b> another merged duplicate, Convert to Profile ▸ your printer/CMYK profile (or keep tagged RGB if your printer asks for it), save as PDF or TIFF.</li>
+        </ol>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Split-tone, match, and print-check</div>
+        <ol class="steps">
+          <li>Color Balance: cool shadows, warm highlights, neutral mids</li>
+          <li>Match a companion image with Color Sampler + Curves (tones before colors)</li>
+          <li>View ▸ Proof Setup ▸ Custom → printer profile, Rendering Intent + Black Point Compensation, Simulate Paper Color</li>
+          <li>Gamut Warning (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Y</kbd>) → desaturate flagged areas</li>
+          <li>Deliver from duplicates: Convert to sRGB (web) and to the printer profile (print)</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> what you see is only trustworthy once you have proofed it.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 1: Read the samplers</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Record the Info panel readouts for the same point (gray card middle patch or cheek) before and after your Curves match.</p>
+        <table class="timing">
+          <thead><tr><th>Point</th><th>Reference R / G / B</th><th>Companion before</th><th>Companion after</th></tr></thead>
+          <tbody>
+            <tr><td><b>#1</b> ____________</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td><b>#2</b> ____________</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.2rem 0">Which channel had to move the most, and which way?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 2: Deliverable log</div>
+        <table class="timing">
+          <tbody>
+            <tr><td style="width:38%"><b>Master file / mode</b></td><td><code class="inline">finish-working.psd</code> · RGB/16 · ______________</td></tr>
+            <tr><td><b>Proof profile + intent</b></td><td>&nbsp;</td></tr>
+            <tr><td><b>What the gamut warning flagged</b></td><td>&nbsp;</td></tr>
+            <tr><td><b>Web file</b></td><td>&nbsp;</td></tr>
+            <tr><td><b>Print file (profile, format)</b></td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 3: Now You (homework)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Match a set of three photos shot in different light (<code class="inline">l06-set-a-daylight</code>, <code class="inline">-b-tungsten</code>, <code class="inline">-c-shade</code>, or your own) so they could sit together on a page. Then split-tone one image two ways: cinematic cool/warm, and an unusual pairing (green shadows, magenta highlights). How did the pairing change the emotion?</p>
+        <div class="write"></div>
+        <p style="font-size:.92rem;margin:.2rem 0">Soft-proof a deliberately vivid image (or <code class="inline">l06-neon-proof.jpg</code>). How much saturation did you have to surrender for print?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Color Balance opens on <b>Midtones</b>: switch to Shadows and Highlights before you push. If skin looks ill, the color is reaching the mids: ease off, and mask the grade off the face. Never convert the master to CMYK; always a merged duplicate.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">What is the most flattering, cinematic split-tone according to the lesson?</div>
+          <div class="opts"><div class="opt">A) Warm shadows, cool highlights, saturated mids</div><div class="opt">B) Cool shadows, warm highlights, with the mids kept roughly neutral</div><div class="opt">C) The same color in shadows and highlights</div><div class="opt">D) Green shadows and magenta highlights</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">After split-toning, the skin looks ill. What is going on and what is the fix?</div>
+          <div class="opts"><div class="opt">A) The image needs converting to CMYK</div><div class="opt">B) The Gradient Map from Lesson 2.2 must be deleted</div><div class="opt">C) Preserve Luminosity is ticked; untick it</div><div class="opt">D) The color is reaching the midtones where skin lives: keep the split in the extremes, ease the amount, and mask the grade off the face if needed</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">You are matching a companion photo to a reference with Curves. What order does the lesson give?</div>
+          <div class="opts"><div class="opt">A) Tones first (brightness and contrast), then black point, white point and mid color from the sampled values</div><div class="opt">B) Mid color first, then tones</div><div class="opt">C) Saturation first, then white balance</div><div class="opt">D) Run Match Color, then stop</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">Where do you read the RGB values of the points you dropped with the Color Sampler Tool?</div>
+          <div class="opts"><div class="opt">A) The Histogram panel</div><div class="opt">B) The Properties panel of the Curves layer</div><div class="opt">C) The Info panel (Window ▸ Info)</div><div class="opt">D) The Layers panel</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">With soft-proofing on, Gamut Warning (Ctrl/⌘ + Shift + Y) grays out a neon sign. What do you do?</div>
+          <div class="opts"><div class="opt">A) Nothing; the printer will fix it</div><div class="opt">B) Lower the saturation there with a masked Hue/Saturation layer until the warning clears</div><div class="opt">C) Assign the printer profile to the master</div><div class="opt">D) Turn off Simulate Paper Color</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Which delivery matches the Module 2 deliverable?</div>
+          <div class="opts"><div class="opt">A) One sRGB JPEG, with the master flattened to save space</div><div class="opt">B) Assign CMYK to the master and export a JPEG</div><div class="opt">C) Convert the layered master to 8-bit sRGB and save over it</div><div class="opt">D) Keep the layered master wide + 16-bit; from merged duplicates, Convert to sRGB (8-bit JPG) for web and to the printer's profile (PDF or TIFF, or tagged RGB if the printer asks) for print</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>If you have ever printed a photo that disappointed you, what do you now suspect went out of gamut? How would soft-proofing have caught it?</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Before the next module</div>
+        <ul class="tick">
+          <li>Deliver one image as both a web and a print-ready file.</li>
+          <li>Match a small set of photos into one consistent look.</li>
+          <li>Write your Learning Journal entry.</li>
+          <li>Bring a high-resolution portrait you have permission to retouch (Module 3).</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <div class="note">
+    <div class="t">You finished Module 2</div>
+    <p>You built a trustworthy color pipeline, authored and bottled a cinematic grade, and finished with split-toning, matching and print-safe soft-proofing. You can now take color from a raw capture to a graded look that holds up on any screen and on paper. That end-to-end command of color is rare, and highly employable. In Module 3 (High-End Retouching) we turn to people: frequency separation, dodge and burn, and a natural finish.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <span class="bio">© 2026 Ray de la Paz · Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Workbook · Module 2 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

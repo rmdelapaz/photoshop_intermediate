@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides: Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#0b1220; --ink:#eaf1fb; --ink2:#9fb2cd;
+    --accent:#31A8FF; --accent2:#1473E6; --lab:#34d3bd; --warn:#fbbf24;
+    --line:#1d3350; --code:#0a1a2e; color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:30ch}
+  ul,ol.num{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  ol.num{counter-reset:n}
+  ol.num li{position:relative;padding-left:46px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ol.num li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:.05em;width:32px;height:32px;border-radius:50%;background:var(--accent2);color:#fff;font-family:"JetBrains Mono",monospace;font-size:1rem;font-weight:600;display:flex;align-items:center;justify-content:center}
+  code.k{font-family:"JetBrains Mono",monospace;color:#a9d4ff;font-size:.92em}
+  kbd{font-family:"JetBrains Mono",monospace;font-size:.8em;background:#10243d;border:1px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:1px 7px;color:#dbeaff}
+  .panel{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:18px 22px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.8vw,1.2rem);line-height:1.7}
+  .panel .row{display:flex;gap:10px;align-items:center;padding:3px 10px;border-radius:6px}
+  .panel .row.hi{background:#12325a;color:#fff}
+  .panel .row.lab{background:#0d3a36;color:#b8f5ea}
+  .panel .row.dim{color:var(--ink2)}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#0d2644,#071321)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  .foot{position:fixed;left:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:#5d7391;z-index:5}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <section class="slide on section">
+    <div class="eyebrow">Photoshop Intermediate · Instructor Kit · Session 5 of 8 · 3 hours</div>
+    <h1>Module 5<br>Design Systems &amp; Type</h1>
+    <p class="lead">Decide once, name it, reuse it everywhere.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">The plan for today</div>
+    <h2>One brand, three systems</h2>
+    <ul>
+      <li><b>L13</b> Type Systems, Styles &amp; Grids: one voice, not twenty</li>
+      <li><b>L14</b> Smart-Object Templates &amp; Linked Assets: change once, update everywhere</li>
+      <li><b>L15</b> Campaign from One Master: one idea, every size</li>
+    </ul>
+    <div class="tag"><span class="pill lab">DELIVERABLE</span> a master PSD with poster, square, story &amp; banner, exported in one pass</div>
+    <div class="tag"><span class="pill warn">FIRST</span> make <code class="k">northwind-campaign/</code> and never move anything in it</div>
+  </section>
+
+  <section class="slide section"><div class="big">L13</div><h2>Type Systems, Styles &amp; Grids</h2><p class="lead">Lesson 5.1 · restraint reads as quality.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Mental model · the modular scale</div>
+    <h2>One base × one ratio</h2>
+    <div class="two">
+      <div class="panel">
+        <div class="row hi">Display 39</div>
+        <div class="row">H1 31</div>
+        <div class="row">H2 25</div>
+        <div class="row">Subhead 20</div>
+        <div class="row lab">Body 16 (the base)</div>
+        <div class="row dim">Caption 13</div>
+      </div>
+      <ul>
+        <li>16 × 1.25, up and down</li>
+        <li>Roles on steps; never freehand a size</li>
+        <li>Four levers: <b>size, weight, color, space</b></li>
+        <li>Two faces: one display, one text</li>
+      </ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Styles &amp; OpenType</div>
+    <h2>Decide once, apply everywhere</h2>
+    <ul>
+      <li>Window ▸ <b>Paragraph Styles</b> and ▸ <b>Character Styles</b> (two panels)</li>
+      <li>A style = font, size, leading, tracking, color, OpenType</li>
+      <li>OpenType buttons along the bottom of the Character panel: ligatures, small caps, oldstyle figures</li>
+      <li>Edit the style once → every instance updates</li>
+    </ul>
+    <div class="tag"><span class="pill warn">NEVER</span> Faux Bold / Faux Italic: real weight, or a different face</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Columns × baselines</div>
+    <h2>Photoshop has no baseline grid. Build one.</h2>
+    <ol class="num">
+      <li>View ▸ Guides ▸ <b>New Guide Layout</b>: columns, gutter, margins</li>
+      <li>Preferences ▸ Guides, Grid &amp; Slices: <b>Gridline Every = body leading</b> (24 px), Subdivisions 1</li>
+      <li>Leading = grid increment (or a multiple)</li>
+      <li>Show grid <kbd>Ctrl</kbd>/<kbd>⌘</kbd><kbd>'</kbd>; nudge the first baseline onto a line</li>
+    </ol>
+    <div class="tag"><span class="pill warn">WATCH</span> Snap To ▸ Grid snaps layer edges, not baselines: check by eye</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Guided build · l13-layout-copy.txt</div>
+    <h2>A type system</h2>
+    <ul class="lab">
+      <li>A written scale with roles</li>
+      <li>Columns + document grid at the body leading</li>
+      <li>Named Paragraph &amp; Character Styles</li>
+      <li>Real OpenType; no faux styling</li>
+      <li>Edit one style → the page updates</li>
+    </ul>
+    <div class="tag"><span class="pill">SAVE</span> type-system.psd · its styles feed L15</div>
+  </section>
+
+  <section class="slide section"><div class="big">L14</div><h2>Smart-Object Templates &amp; Linked Assets</h2><p class="lead">Lesson 5.2 · a container you can refill.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Mental model</div>
+    <h2>The wrapping is the template</h2>
+    <div class="two">
+      <ul><li>Warp, filters, styles live on the <b>container</b></li><li><b>Replace Contents</b> swaps the art, keeps the treatment</li><li>Transform applies to new art: <b>build at the art's exact size</b></li></ul>
+      <ul class="lab"><li><b>Embedded</b>: inside the PSD, independent</li><li><b>Linked</b> (Place Linked): one file, many documents</li><li><b>Package</b> before handoff</li></ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Build a mockup · l14-mockup-poster-wall.jpg</div>
+    <h2>Wrap it, treat it, refill it</h2>
+    <ol class="num">
+      <li>Rectangle <b>1200 × 1800</b> → Convert to Smart Object</li>
+      <li><kbd>Ctrl</kbd>/<kbd>⌘</kbd><kbd>T</kbd> ▸ Warp to the surface</li>
+      <li><b>Multiply</b> shadows + <b>Screen</b> highlights, clipped</li>
+      <li>Double-click to edit, or Layer ▸ Smart Objects ▸ Replace Contents</li>
+    </ol>
+    <div class="tag"><span class="pill warn">TRAP</span> the 1800 × 1200 design comes in wrong: size matters</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Linked assets</div>
+    <h2>Change the file, not the documents</h2>
+    <ul>
+      <li>File ▸ <b>Place Linked</b> <code class="k">logo.png</code> (link badge on the layer)</li>
+      <li>Edit and save the source → every placement refreshes</li>
+      <li>Not updating? Layer ▸ Smart Objects ▸ <b>Update All Modified Content</b></li>
+      <li>Moved or renamed? Warning → <b>Relink to File</b></li>
+    </ul>
+    <div class="tag"><span class="pill lab">CHECK</span> placeholder SO · warped · clipped Multiply/Screen · swaps · linked shared art · saved template</div>
+  </section>
+
+  <section class="slide section"><div class="eyebrow">Break · 13 minutes</div><h2>Keep your folder where it is</h2><p class="lead">Back at 1:55 for the campaign.</p></section>
+
+  <section class="slide section"><div class="big">L15</div><h2>Campaign from One Master</h2><p class="lead">Lesson 5.3 · the Module 5 deliverable.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Master &amp; instances</div>
+    <h2>One source, four views</h2>
+    <div class="two">
+      <div class="panel">
+        <div class="row hi">Poster 3300 × 5100</div>
+        <div class="row">IG square 1080 × 1080</div>
+        <div class="row">Story 1080 × 1920</div>
+        <div class="row">Banner 1500 × 500</div>
+      </div>
+      <ul>
+        <li><b>Biggest first</b>, export down</li>
+        <li>One color mode &amp; ppi for all artboards: RGB master</li>
+        <li>CMYK = a final step on an exported copy</li>
+      </ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Guided build · l15-campaign-copy.txt</div>
+    <h2>Share, recompose, export</h2>
+    <ol class="num">
+      <li>New doc (RGB), Artboards on; add the four sizes</li>
+      <li><b>Place Linked</b> logo + key art into each; apply the L13 styles</li>
+      <li>Recompose: anchor the focal point; stack · center · spread</li>
+      <li>File ▸ Export ▸ <b>Export As</b>: all artboards, one pass</li>
+    </ol>
+    <div class="tag"><span class="pill warn">WATCH</span> safe zones: story top &amp; bottom, banner edges · adjustment layers can't be linked</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Prove it</div>
+    <h2>One edit, every size</h2>
+    <ul class="lab">
+      <li>Open the linked logo or key art, change it, save</li>
+      <li>Every artboard updates (else Update All Modified Content)</li>
+      <li>Re-export the whole set</li>
+      <li>What stayed identical? What was recomposed?</li>
+    </ul>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Module 5 complete · homework</div>
+    <h2>You run a small production system</h2>
+    <ul class="lab">
+      <li>Ship one campaign set (4+ sizes) from a single master</li>
+      <li>Prove a one-edit update across every artboard</li>
+      <li>Finish a solo variation · three journal entries</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Next: Module 6, Generative + Automation, Advanced.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 17</div>
+<div class="foot">© 2026 Ray de la Paz</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

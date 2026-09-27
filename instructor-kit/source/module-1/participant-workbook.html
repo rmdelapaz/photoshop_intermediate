@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook: Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Student workbook —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">write in it · bring it to every session</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Photoshop Intermediate Workbook · Module 1</div>
+    <h1>Advanced Selection &amp; Masking</h1>
+    <p class="sub">In the intro you painted masks by hand and let Select Subject find edges. Now the image does more of the work: luminosity masks built from its own brightness, channel masks built from one color's brightness, Blend-If that hides by tone, and a four-step pipeline for the hardest common cutout. Deliverable: a flawless cutout of flowing hair on a new background.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>1.1–1.3</b> (L01–L03)</span>
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip">Session <b>1</b> · 3 hours</span>
+      <span class="chip">Name: ____________________</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to use this workbook</div>
+    <p>Each lesson has <b>Key Ideas</b>, a <b>Worked Example</b> (the steps you'll follow in class), the lesson's <b>Recipe Card</b>, <b>Your Turn</b> exercises, a <b>Self-Check</b>, a <b>Journal</b> prompt, and space for <b>Notes</b>. Shortcuts are written Windows first, Mac second: <kbd>Alt</kbd>/<kbd>⌥</kbd> means Alt on Windows, Option on a Mac. Practice files are in <code class="inline">labs/module-1/practice/</code>; your own photos work even better.</p>
+  </div>
+
+  <div class="sec"><h2>Before You Start: Your Professional Baseline</h2><span class="rule"></span></div>
+  <p style="font-size:.95rem">Not a lesson, nothing to deliver: the setup habits the whole course assumes. Tick them off in the Session 1 setup check.</p>
+  <ul class="tick lab">
+    <li>☐ <b>Know your working space.</b> <b>Edit ▸ Color Settings</b>: my RGB working space says ____________________. (Don't change it yet: Module 2 goes deep on this.)</li>
+    <li>☐ <b>Work in 16-bit when you can.</b> <b>Image ▸ Mode ▸ 16 Bits/Channel</b> before building masks. It can't add detail an 8-bit file never had, but it stops new banding as you edit.</li>
+    <li>☐ <b>Diagnose before you edit.</b> <b>Window ▸ Histogram</b>: look where the tones sit before you touch a slider.</li>
+    <li>☐ <b>Calibrate your monitor</b> if you do color-critical work, and set up shortcuts for the tools you reach for most.</li>
+    <li>☐ I can open the <b>Channels</b> panel (<b>Window ▸ Channels</b>). It's today's main stage.</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="t">When "it's not doing anything," run the four-point check</div>
+    <p>1. <b>Which panel am I in</b> (Layers or Channels)? 2. <b>Which channel or layer is highlighted?</b> 3. <b>Which thumbnail has the border</b> (image or mask)? 4. <b>Is a selection active</b> (marching ants, or the "not visible" warning)? Nearly every stuck moment in this module is one of these four.</p>
+  </div>
+
+  <div class="sec"><h2>Module Progress Tracker</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ <b>L01</b> I recovered a sky and lifted a foreground with two luminosity-masked Curves, no visible seam (<code class="inline">luminosity-working.psd</code>)</li>
+    <li>☐ <b>L02</b> I cut out an intricate subject with a channel mask and blended a texture with Blend-If (<code class="inline">channel-working.psd</code>)</li>
+    <li>☐ <b>L03</b> I cut out flowing hair with the four-step pipeline and passed the saturated-background test (<code class="inline">cutout-working.psd</code>, the Module 1 deliverable)</li>
+    <li>☐ I wrote a journal entry after each lesson</li>
+  </ul>
+
+  <!-- L01 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L01</span><h3>Luminosity Masks: Select by Tone (1.1)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Explain a luminosity mask: a selection built from the image's own luminance</li>
+          <li>Load a <b>Lights</b> or <b>Darks</b> selection from the channels</li>
+          <li>Adjust highlights and shadows independently, edges self-feathered and invisible</li>
+          <li>Narrow a mask to a tonal band (just the brightest highlights) by <b>intersecting</b></li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>The image paints the mask.</b> Load a Lights mask and the bright pixels become white (selected, editable) while the dark pixels become black (protected). The mask is a grayscale copy of the photo's luminance.</li>
+          <li><b>The edges are perfect.</b> The mask follows the actual tones, so its transitions are exactly as soft as the light in the scene: no halos, no hand-feathering.</li>
+          <li><b>It's self-targeting.</b> The sky is the bright part, so a Lights mask already contains it. No painting around the horizon.</li>
+          <li><b>Invert Lights and you have Darks.</b> Intersect Lights with itself and the selection slides into the brightest tones only.</li>
+          <li><b>Why two curves beat one:</b> a single S-curve brightens the sky while it lifts the land. Two masked curves move highlights and shadows in <em>opposite</em> directions at once.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 500 150" role="img" aria-label="A tonal bar from black to white. Darks covers the left and fades toward the middle, Midtones peaks in the middle, Lights covers the right. Intersected Lights covers only the far right.">
+            <defs><linearGradient id="w1t" x1="0" x2="1"><stop offset="0" stop-color="#0b0f16"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
+            <rect x="20" y="104" width="460" height="22" rx="4" fill="url(#w1t)" stroke="#45536a" stroke-width="1"/>
+            <text x="20" y="143" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6f7c8e">black</text>
+            <text x="480" y="143" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6f7c8e">white</text>
+            <path d="M20 96 L20 30 C160 30 220 96 250 96 Z" fill="#0f766e" opacity=".22" stroke="#0f766e" stroke-width="1.5"/>
+            <path d="M480 96 L480 30 C340 30 280 96 250 96 Z" fill="#1473E6" opacity=".2" stroke="#1473E6" stroke-width="1.5"/>
+            <path d="M40 96 C150 96 200 50 250 50 C300 50 350 96 460 96 Z" fill="none" stroke="#b45309" stroke-width="1.8" stroke-dasharray="5 4"/>
+            <path d="M480 96 L480 34 C430 34 400 96 370 96 Z" fill="#1473E6" opacity=".45"/>
+            <text x="60" y="24" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#0f766e">Darks</text>
+            <text x="250" y="44" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#b45309">Midtones</text>
+            <text x="440" y="24" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">Lights</text>
+          </svg>
+          <figcaption>Overlapping tonal selections. The darker blue wedge is Lights intersected with Lights: only the brightest band.</figcaption>
+        </figure>
+        <table class="timing">
+          <thead><tr><th>In the Channels panel, on the RGB thumbnail</th><th>Does</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click</td><td>Load Lights (a new selection)</td></tr>
+            <tr><td><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd>-click</td><td>Add to the current selection</td></tr>
+            <tr><td><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd>-click</td><td>Subtract from the current selection</td></tr>
+            <tr><td><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd>-click</td><td>Intersect: keep only what both share</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk"><div class="h">Worked example: rescue the landscape</div>
+        <ol class="steps">
+          <li>Open a high-contrast photo (or <code class="inline">l01-high-contrast-landscape.jpg</code>). <b>Image ▸ Mode ▸ 16 Bits/Channel</b>, then <b>Save As</b> <code class="inline">luminosity-working.psd</code>.</li>
+          <li><b>Diagnose, then load Lights.</b> Read the histogram: highlights piling near the right, shadows near the left. In <b>Channels</b>, <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click the <b>RGB</b> thumbnail.</li>
+          <li><b>Tame the highlights.</b> With the selection active, add a <b>Curves</b> adjustment layer (the selection becomes its mask) and pull the curve down to bring the sky back. Spilling onto the land? Undo the layer, reload Lights, intersect once or twice, then add Curves again.</li>
+          <li><b>Lift the shadows.</b> Reload the RGB luminosity selection, invert it (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>), add another <b>Curves</b> layer, and lift the shadows.</li>
+          <li><b>Check and finish.</b> Zoom to 100% along the horizon: no seam, no glow. A glow means the masks overlap: reduce one layer's opacity or re-intersect. Optional gentle global Curves on top. Save the layered master.</li>
+        </ol>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Luminosity Mask</div>
+        <ol class="steps">
+          <li>Channels panel: <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click RGB = Lights selection</li>
+          <li>Add a Curves layer → the selection becomes its mask</li>
+          <li>Too broad? Intersect (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd>-click RGB) to reach extreme tones</li>
+          <li>Shadows: reload, invert (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>), add another Curves</li>
+          <li>Check the horizon at 100% for seams; work in 16-bit</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> let the image paint the mask.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 1: See the mask the image painted</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><kbd>Alt</kbd>/<kbd>⌥</kbd>-click your sky Curves layer's mask thumbnail to view the mask itself (click again to return). Sketch it, and describe what happens along the pine trees and the horizon. How long would that edge take to paint by hand?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 2: Glow, midtones, and a head-to-head</div>
+        <p style="font-size:.92rem;margin:.2rem 0">On a portrait or still life (or <code class="inline">l01-still-life-window-light.jpg</code>): (a) load Lights and add a subtle glow by lifting only the brightest highlights. Do the shadows change? (b) Build a <b>Midtones</b> mask: save Lights and Darks as channels (<b>Select ▸ Save Selection</b>), then <b>Select ▸ All</b> and <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd>-click each saved channel to subtract it; add contrast to only the mids. (c) On your landscape, compare a luminosity-masked sky darken with a hand-painted one.</p>
+        <div class="write"></div>
+        <p style="font-size:.92rem;margin:.2rem 0"><b>Think:</b> why is Lights <em>minus</em> Darks not a midtones mask? What does it select instead?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Ctrl/⌘-click the <b>RGB channel</b> in Channels, not the layer thumbnail in Layers (that loads the whole image). Add Curves <b>while</b> the selection is active, or the mask comes out white. "No pixels are more than 50% selected" just means the ants can't show; the selection is still there.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">What <strong>is</strong> a luminosity mask?</div>
+          <div class="opts"><div class="opt">A) A mask you paint by hand with a big soft brush along the horizon</div><div class="opt">B) A selection built from the image's own brightness, saved as a mask</div><div class="opt">C) The mask Select Subject makes when it finds the sky</div><div class="opt">D) A Levels adjustment applied to the whole image at once</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">How do you load a <strong>Lights</strong> selection?</div>
+          <div class="opts"><div class="opt">A) Select ▸ Subject, then Select ▸ Inverse</div><div class="opt">B) Alt/⌥-click the photo's thumbnail in the Layers panel</div><div class="opt">C) Double-click the Blue channel</div><div class="opt">D) Ctrl/⌘-click the RGB thumbnail in the Channels panel</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Your luminosity-masked sky darken is spilling onto the land. What's the lesson's fix?</div>
+          <div class="opts"><div class="opt">A) Undo the layer, reload Lights, and intersect once or twice (Ctrl/⌘ + Shift + Alt/⌥-click RGB) before adding the adjustment</div><div class="opt">B) Paint a hard black line along the horizon on the mask</div><div class="opt">C) Drop the Curves layer's opacity to 10%</div><div class="opt">D) Convert the file to 8-bit so the mask is simpler</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">After taming the sky, how do you select the <strong>dark land</strong> for the second Curves layer?</div>
+          <div class="opts"><div class="opt">A) Ctrl/⌘-click the Blue channel</div><div class="opt">B) Intersect Lights with RGB twice more</div><div class="opt">C) Reload the RGB luminosity selection, then invert it (Ctrl/⌘ + Shift + I)</div><div class="opt">D) Select ▸ Deselect, then add Curves with no selection</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Why use two luminosity-masked Curves instead of one global S-curve?</div>
+          <div class="opts"><div class="opt">A) Photoshop allows only one unmasked Curves layer per document</div><div class="opt">B) A single curve would brighten the sky while it lifts the land; two masked curves move highlights and shadows in opposite directions at once</div><div class="opt">C) Masked Curves layers render faster than global ones</div><div class="opt">D) An S-curve always clips the highlights</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Your luminosity masks look blocky and banded. What's the most likely cause and fix?</div>
+          <div class="opts"><div class="opt">A) The selection wasn't intersected enough; intersect again</div><div class="opt">B) The mask needs a 50 px Gaussian Blur</div><div class="opt">C) The Curves layer should be set to the Luminosity blend mode</div><div class="opt">D) You're working in 8-bit; convert to 16-bit (Image ▸ Mode ▸ 16 Bits/Channel) before building the masks</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Where have you fought a hand-painted mask that a luminosity mask would have solved instantly? Name one past edit you would redo with this technique.</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Before the next lesson</div>
+        <ul class="tick">
+          <li>Rescue two more high-contrast scenes with Lights + Darks curves.</li>
+          <li>Build and save a Midtones mask: Select All, then subtract your saved Lights and Darks channels.</li>
+        </ul>
+      </div>
+      <div class="note"><div class="t">If the modifiers feel like finger gymnastics</div><p>Everyone fumbles the three-key intersect for a day. Put the four-row table above on a sticky note next to your keyboard. By the second landscape, your fingers will know it; by the third, you'll stop seeing skies you can't save.</p></div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L02 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L02</span><h3>Channel Masking &amp; Blend-If (1.2)</h3><span class="dur">60 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Read the Red, Green &amp; Blue channels as ready-made grayscale masks</li>
+          <li>Turn the highest-contrast channel into a selection (duplicate, push with Levels)</li>
+          <li>Use <b>Blend-If</b> to drop out a layer's lights or darks instantly</li>
+          <li>Pick the right technique for the subject: luminosity, channel, Blend-If, or a blend of all three</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Three masks you already have.</b> Every RGB image is three grayscale images stacked: Red, Green, Blue. Each is a potential mask. You shop for the one with the most subject/background separation.</li>
+          <li><b>Skies are blue,</b> so the Blue channel keeps a sky bright while dark branches stay dark. (For skin, Blue is where blemishes stand out most: same habit, different job.)</li>
+          <li><b>Forge, don't paint:</b> duplicate the winning channel, then push the copy toward black and white with <b>Image ▸ Adjustments ▸ Levels</b>. Adjustment layers can't target a channel.</li>
+          <li><b>White loads as the selection.</b> Against a bright sky, the sky loads first, so invert to get the subject.</li>
+          <li><b>Blend-If</b> (Layer Style ▸ Blending Options) hides a layer's pixels by tone in real time. <b>This Layer</b> white slider inward drops the layer's lights; black slider inward drops its darks. <kbd>Alt</kbd>/<kbd>⌥</kbd>-drag to split a slider for a soft blend.</li>
+          <li><b>When to use which:</b> Blend-If is instant and non-destructive but tone-global. A channel mask is editable and spatial: you can paint on it afterward.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 520 92" role="img" aria-label="The channel-mask pipeline: shop R, G, B; duplicate the best channel; Levels to near black and white; Ctrl or Command click to load; add a layer mask.">
+            <rect x="4" y="20" width="92" height="52" rx="6" fill="#f4f6fa" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="50" y="42" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#1473E6">Shop R·G·B</text>
+            <text x="50" y="58" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#6f7c8e">most contrast</text>
+            <polygon points="104,46 98,42 98,50" fill="#45536a"/>
+            <rect x="108" y="20" width="92" height="52" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="154" y="42" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#1473E6">Duplicate</text>
+            <text x="154" y="58" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#6f7c8e">not the original</text>
+            <polygon points="208,46 202,42 202,50" fill="#45536a"/>
+            <rect x="212" y="20" width="92" height="52" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="258" y="42" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#1473E6">Levels</text>
+            <text x="258" y="58" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#6f7c8e">black &amp; white</text>
+            <polygon points="312,46 306,42 306,50" fill="#45536a"/>
+            <rect x="316" y="20" width="92" height="52" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="362" y="42" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#1473E6">Load</text>
+            <text x="362" y="58" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#6f7c8e">Ctrl/⌘-click</text>
+            <polygon points="416,46 410,42 410,50" fill="#45536a"/>
+            <rect x="420" y="20" width="96" height="52" rx="6" fill="#d7efe9" stroke="#0f766e" stroke-width="1.6"/>
+            <text x="468" y="42" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#0f766e">Layer mask</text>
+            <text x="468" y="58" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#0f766e">click RGB first</text>
+          </svg>
+          <figcaption>The whole skill is choosing the right channel; the rest is two clicks and a Levels push.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: extract a tree</div>
+        <ol class="steps">
+          <li>Open a bare tree, power lines, or other intricate subject against plain bright sky (or <code class="inline">l02-bare-tree-sky.jpg</code>). 16-bit, <b>Save As</b> <code class="inline">channel-working.psd</code>.</li>
+          <li><b>Channel-shop.</b> In Channels, click Red, then Green, then Blue. Pick the one where the subject is darkest and the background brightest.</li>
+          <li><b>Forge the mask.</b> Drag the winner onto the New Channel icon. With only the copy selected, <b>Image ▸ Adjustments ▸ Levels</b> (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>L</kbd>): pull the black and white points inward until the sky is white and the tree black, fine twigs still intact. Paint stray gaps with a hard black or white brush on the channel.</li>
+          <li><b>Load it and cut.</b> <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click the copy, invert (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>), click <b>RGB</b>, go to Layers with the image layer active, and add a layer mask. Drop a new sky behind it (<code class="inline">l02-new-sky.jpg</code>) to check the edges.</li>
+          <li><b>A Blend-If finish.</b> Place a texture (<code class="inline">l02-grunge-texture.jpg</code>) as a new layer on top. Blending Options: pull the <b>This Layer</b> white slider left until only the darker parts remain; <kbd>Alt</kbd>/<kbd>⌥</kbd>-split for a soft blend. No mask at all.</li>
+        </ol>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Channel Mask</div>
+        <ol class="steps">
+          <li>Channels panel: click R / G / B, pick the highest-contrast one</li>
+          <li>Duplicate it → Image ▸ Adjustments ▸ Levels to force near black &amp; white</li>
+          <li>Clean gaps with a hard brush on the channel</li>
+          <li><kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click to load → invert (the white background loads first) → click RGB → add layer mask</li>
+          <li>Fast alternative: Blend-If to drop lights or darks by tone (<kbd>Alt</kbd>/<kbd>⌥</kbd>-split to feather)</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> shop the channels before you paint.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 1: Channel-shop out loud</div>
+        <p style="font-size:.92rem;margin:.2rem 0">For the tree file, rate each channel's separation from 1 (useless) to 5 (nearly a mask already), and say why.</p>
+        <table class="timing">
+          <thead><tr><th>Channel</th><th>Score (1–5)</th><th>What I see</th></tr></thead>
+          <tbody>
+            <tr><td>Red</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Green</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Blue</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 2: Blend-If the other way, and a busy background</div>
+        <p style="font-size:.92rem;margin:.2rem 0">(a) Place <code class="inline">l02-fireworks-on-black.jpg</code> (or your own flames, smoke, or fireworks) over <code class="inline">l02-new-sky.jpg</code> or a night scene, and drop the layer's <b>shadows</b> with the This Layer black slider. What happens when you <kbd>Alt</kbd>/<kbd>⌥</kbd>-split it? (b) Extract something intricate against a <em>busy</em> background: channel mask for the easy 90%, then paint and luminosity-mask the rest. (c) Open a portrait's Blue channel: what does it do to skin texture?</p>
+        <div class="write"></div>
+        <p style="font-size:.92rem;margin:.2rem 0"><b>Choose the tool:</b> for each subject, write luminosity, channel, Blend-If, or a combination. A blown sky above a bright shirt: ______ · A leafless tree on blue sky: ______ · Smoke on a black background: ______ · Hair on a busy street: ______</p>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Run Levels only with the <b>copy</b> highlighted, or you'll change the photo's colors. Photo looks gray back in Layers? Click <b>RGB</b>. Don't over-push: the finest twigs go white and vanish. For Blending Options, double-click the layer <b>thumbnail</b> or empty area, not the name.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">Why can a single color channel work as a mask?</div>
+          <div class="opts"><div class="opt">A) Each of Red, Green and Blue is a full-resolution grayscale image, and a mask is just a grayscale image</div><div class="opt">B) Channels are automatically saved as layer masks when you open a file</div><div class="opt">C) Only the Blue channel stores brightness information</div><div class="opt">D) Channels hold the image's transparency, like a layer mask</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">A bare tree against a blue sky: which channel usually gives the best separation?</div>
+          <div class="opts"><div class="opt">A) Red</div><div class="opt">B) Green</div><div class="opt">C) Blue</div><div class="opt">D) The RGB composite, always</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Why duplicate the winning channel before you run Levels on it?</div>
+          <div class="opts"><div class="opt">A) Levels is grayed out on the original channels</div><div class="opt">B) A duplicate channel loads as a selection faster</div><div class="opt">C) Adjustment layers can target a duplicate channel but not the original</div><div class="opt">D) The original channel is part of the photo's color; pushing it would damage the image, while the copy is a safe scratch mask</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">You pushed Levels hard and the finest twigs disappeared from the mask. What happened?</div>
+          <div class="opts"><div class="opt">A) The channel was in 16-bit</div><div class="opt">B) You over-pushed: the delicate twigs went white; back off until the big areas are solid and the twigs survive</div><div class="opt">C) You forgot to invert the selection</div><div class="opt">D) Levels always removes detail; use Curves instead</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">You Ctrl/⌘-click your channel copy and the <strong>sky</strong> is selected, not the tree. Why, and what next?</div>
+          <div class="opts"><div class="opt">A) White loads as the selection; invert (Ctrl/⌘ + Shift + I), click RGB, then add the layer mask on the image layer</div><div class="opt">B) The channel is broken; start again from the Red channel</div><div class="opt">C) Blend-If is on; turn it off in Blending Options</div><div class="opt">D) You loaded the wrong document; reopen the file</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">You placed a dark texture on a white background over your scene. Which Blend-If move drops the white?</div>
+          <div class="opts"><div class="opt">A) Drag the Underlying Layer black slider right</div><div class="opt">B) Drag the This Layer black slider right</div><div class="opt">C) Lower the layer's Fill to 0%</div><div class="opt">D) Drag the This Layer white slider left (Alt/⌥-drag to split it for a soft blend)</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Channel masking feels like a cheat code the first time it works. What subject have you given up on cutting out before that you would now attempt?</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Before the next lesson</div>
+        <ul class="tick">
+          <li>Channel-mask two intricate subjects against sky.</li>
+          <li>Knock a white-background texture into a scene with Blend-If alone.</li>
+        </ul>
+      </div>
+      <div class="note"><div class="t">Channels look intimidating, then become a favorite</div><p>The panel full of gray thumbnails is the least friendly-looking place in Photoshop, and within a week it's one of the most useful. You've just added the technique that separates people who "try to select the tree" from people who simply extract it.</p></div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L03 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L03</span><h3>Select &amp; Mask Mastery: The Hard Cutout (1.3)</h3><span class="dur">60 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Run the full <b>Select &amp; Mask</b> workflow, tuned for hair</li>
+          <li>Rebuild wispy strands with the <b>Refine Edge Brush</b></li>
+          <li>Rescue what refinement misses with a <b>channel mask</b> (Lesson 1.2)</li>
+          <li>Kill the fringe with <b>Decontaminate Colors</b> and pressure-test the edge</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>A pipeline, not a tool.</b> There is no one button for hair. Each step cleans up what the previous one couldn't.</li>
+          <li><b>Rough in</b> the solid mass (Select Subject, Quick Selection) → <b>refine</b> the hairline (Refine Edge Brush) → <b>rescue</b> missing strands (channel mask painted into the layer mask) → <b>decontaminate</b> the edge (the old background's color lets go).</li>
+          <li><b>Refine the edge, not the middle.</b> The Refine Edge Brush across solid hair turns it translucent and mushy.</li>
+          <li><b>Decontaminate last.</b> It rewrites edge pixels, so it can only output to a new layer or document.</li>
+          <li><b>The standard:</b> fine strands kept, no colored halo against a garish test background, a soft (not razor) edge.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 520 96" role="img" aria-label="The hard-cutout pipeline: 1 rough in with Select Subject, 2 refine with the Refine Edge Brush, 3 rescue with a channel mask, 4 decontaminate colors, then test on a saturated background.">
+            <rect x="4" y="22" width="92" height="52" rx="6" fill="#f4f6fa" stroke="#1473E6" stroke-width="1.6" stroke-dasharray="5 4"/>
+            <text x="50" y="44" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#1473E6">1 Rough in</text>
+            <text x="50" y="60" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#6f7c8e">Select Subject</text>
+            <polygon points="104,48 98,44 98,52" fill="#45536a"/>
+            <rect x="108" y="22" width="92" height="52" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="154" y="44" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#1473E6">2 Refine</text>
+            <text x="154" y="60" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#6f7c8e">Refine Edge Brush</text>
+            <polygon points="208,48 202,44 202,52" fill="#45536a"/>
+            <rect x="212" y="22" width="92" height="52" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="258" y="44" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#1473E6">3 Rescue</text>
+            <text x="258" y="60" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#6f7c8e">channel mask</text>
+            <polygon points="312,48 306,44 306,52" fill="#45536a"/>
+            <rect x="316" y="22" width="92" height="52" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/>
+            <text x="362" y="44" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#1473E6">4 Decontam.</text>
+            <text x="362" y="60" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#6f7c8e">kill the fringe</text>
+            <polygon points="416,48 410,44 410,52" fill="#45536a"/>
+            <rect x="420" y="22" width="96" height="52" rx="6" fill="#16202e"/>
+            <text x="468" y="44" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" fill="#ffffff">Test</text>
+            <text x="468" y="60" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#bcc7d6">saturated bg</text>
+          </svg>
+          <figcaption>Rough in, refine, rescue, decontaminate, in that order. The garish test background exposes any surviving fringe.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: the hard cutout</div>
+        <ol class="steps">
+          <li>Open a portrait with loose or curly hair against a reasonably plain background (or <code class="inline">l03-curly-hair-portrait.jpg</code>). 16-bit, <b>Save As</b> <code class="inline">cutout-working.psd</code>. Duplicate the layer so the original stays intact beneath, and hide the original.</li>
+          <li><b>Rough in the mass.</b> <b>Select ▸ Subject</b>. Tidy obvious misses with Quick Selection (paint to add, <kbd>Alt</kbd>/<kbd>⌥</kbd> to subtract). Don't chase strands yet.</li>
+          <li><b>Refine the hairline.</b> <b>Select ▸ Select and Mask</b> (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd> + <kbd>R</kbd>). View: On Layers or Overlay. Edge Detection: tick <b>Smart Radius</b>, raise <b>Radius</b> a few pixels; try <b>Refine Hair</b>. Refine Edge Brush <em>along</em> the hairline. Smooth and Feather low; Shift Edge slightly negative.</li>
+          <li><b>Rescue gaps.</b> Output To: <b>New Layer with Layer Mask</b> (Decontaminate off). Build a channel mask of the hair (best channel → duplicate → Levels), <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click it, invert if needed. Click the layer mask thumbnail; paint <b>white</b> with a soft, low-opacity brush along the hairline.</li>
+          <li><b>Decontaminate &amp; pressure-test.</b> With the rescued mask selected, reopen Select and Mask, tick <b>Decontaminate Colors</b>, raise Amount, output to <b>New Layer with Layer Mask</b>. Put a saturated color layer <em>behind</em> the cutout; fix any fringe; place your real background (<code class="inline">l03-new-background.jpg</code>). Save.</li>
+        </ol>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Hard Cutout</div>
+        <ol class="steps">
+          <li>Select ▸ Subject for the solid mass</li>
+          <li>Select ▸ Select and Mask → Smart Radius on, Refine Edge Brush along the hairline; low Smooth/Feather, Shift Edge slightly negative; output New Layer with Layer Mask</li>
+          <li>Rescue missed strands: load a channel mask as a selection, paint white into the layer mask</li>
+          <li>Final pass: reopen Select and Mask on the rescued mask, tick Decontaminate Colors, output to New Layer with Layer Mask</li>
+          <li>Test against a saturated background; fix any fringe</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> rough in, refine, rescue, decontaminate, in that order.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 1: Score your edge against the standard</div>
+        <table class="timing">
+          <thead><tr><th>The standard</th><th>On the saturated test color</th><th>On the new background</th></tr></thead>
+          <tbody>
+            <tr><td>Fine strands kept</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>No colored halo</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Soft (not razor) edge</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.2rem 0">Which pipeline step fixed the most? Which strands did only the channel rescue bring back?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Your turn 2: Harder cutouts (homework)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">(a) A subject against a busy background (or <code class="inline">l03-hair-busy-background.jpg</code>): where did the channel rescue earn its place, and where did you have to paint by hand? (b) Something non-human and tricky: a glass, a potted fern, a pet. Which part of the pipeline did it stress? (c) Put one cutout on a dark background and one on a light one. Where did a halo appear?</p>
+        <div class="write"></div>
+        <p style="font-size:.92rem;margin:.2rem 0"><b>Going further:</b> output to a Layer Mask, then later select that mask and reopen Select and Mask on it. What does that let you do?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Hide the original layer before judging the edge: if it's visible underneath, every cutout looks perfect. Refine Edge Brush on the <b>boundary</b> only. Leave Decontaminate off until the final pass. The test color layer goes <b>below</b> the cutout. A layer "vanished"? Decontaminate hid it; check its eyeball.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">What's the order of the hard-cutout pipeline?</div>
+          <div class="opts"><div class="opt">A) Decontaminate, refine, rough in, rescue</div><div class="opt">B) Rescue, rough in, decontaminate, refine</div><div class="opt">C) Rough in, refine, rescue, decontaminate</div><div class="opt">D) Refine, decontaminate, rough in, rescue</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">Where does the Refine Edge Brush belong?</div>
+          <div class="opts"><div class="opt">A) Along the boundary between hair and background, never across the solid hair</div><div class="opt">B) Over the whole subject, to smooth it</div><div class="opt">C) Only on the face, to soften skin</div><div class="opt">D) Across the solid interior of the hair, to add volume</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">In Select &amp; Mask, what do <b>Smart Radius</b> and a slightly higher <b>Radius</b> do for hair?</div>
+          <div class="opts"><div class="opt">A) They sharpen the edge to a hard line</div><div class="opt">B) They make Photoshop search a wider band around the edge for strands</div><div class="opt">C) They remove the old background's color from the edge</div><div class="opt">D) They feather the whole selection by that many pixels</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">Why is Decontaminate Colors left <strong>off</strong> for the first output?</div>
+          <div class="opts"><div class="opt">A) It only works on 8-bit files</div><div class="opt">B) It deletes the flyaway strands</div><div class="opt">C) It can only be used once per document</div><div class="opt">D) It comes last: it rewrites edge pixels and forces a new layer, so you run it on the final, rescued mask</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">During the rescue, you've loaded the hair channel as a selection. What do you do next?</div>
+          <div class="opts"><div class="opt">A) Press Delete to remove the background inside the selection</div><div class="opt">B) Click the layer mask thumbnail and paint white with a soft, low-opacity brush along the hairline</div><div class="opt">C) Run Image ▸ Adjustments ▸ Levels on the RGB composite</div><div class="opt">D) Click the image thumbnail and paint black over the missing strands</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Your cutout looks fine on white but shows a halo on a dark background. What's the fix?</div>
+          <div class="opts"><div class="opt">A) Raise the Decontaminate Colors Amount, consider a tiny inward Shift Edge, and test on the darkest background it will sit on</div><div class="opt">B) Raise Smooth to 100</div><div class="opt">C) Flatten the image and export it on white</div><div class="opt">D) Use Select Subject again and accept the result</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Which pipeline step did the heavy lifting on your image, and which did you almost skip but shouldn't have? Noticing that tells you where your cutouts usually go wrong.</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Before the next module</div>
+        <ul class="tick">
+          <li>Do three hard cutouts of increasing difficulty (studio hair, busy-background hair, a glass).</li>
+          <li>Save a reusable Action for your Select and Mask output settings.</li>
+          <li>Write your Learning Journal entry.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <div class="note">
+    <div class="t">You finished Module 1</div>
+    <p>Look at the arc: luminosity masks that let the image paint its own stencil, channel masks and Blend-If for subjects that tone or color makes distinct, and a full hard-cutout pipeline for flowing hair. Between them, almost nothing is truly unmaskable anymore. Cutting out hair used to be a rite of passage that took hours; you now have a repeatable four-step pipeline, and it carries into every composite you'll build. Next, Module 2 (Color &amp; Tone, Deep): color management, grading with Curves, gradient maps and LUTs, and soft proofing for print.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <span class="bio">© 2026 Ray de la Paz · Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Workbook · Module 1 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

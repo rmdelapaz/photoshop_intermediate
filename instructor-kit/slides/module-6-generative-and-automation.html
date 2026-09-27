@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides: Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#0b1220; --ink:#eaf1fb; --ink2:#9fb2cd;
+    --accent:#31A8FF; --accent2:#1473E6; --lab:#34d3bd; --warn:#fbbf24;
+    --line:#22314c; --code:#0a1526; color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:30ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  code.k{font-family:"JetBrains Mono",monospace;color:#a9c7ff;font-size:.92em}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.9vw,1.3rem);line-height:1.55;overflow:auto;max-width:100%}
+  pre .k{color:#7dd3fc} pre .s{color:#86efac} pre .c{color:#7183a3;font-style:italic}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#0f2440,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  .credit{position:fixed;left:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--ink2);opacity:.7;z-index:5}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <section class="slide on section">
+    <div class="eyebrow">Photoshop Intermediate · Instructor Kit · Session 6 of 8 · 3 hours</div>
+    <h1>Module 6<br>Generative + Automation</h1>
+    <p class="lead">Let a model take the tedious pixels, an Action the repeated steps, and data the repeated designs.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Today, in three hours</div>
+    <h2>Assist · repeat · scale</h2>
+    <ul>
+      <li><b>L16</b> Generative for Compositing (incl. Harmonize)</li>
+      <li><b>L17</b> Advanced Actions &amp; Conditionals</li>
+      <li><b>L18</b> Data-Driven Graphics &amp; Scripting: <b>the deliverable</b></li>
+    </ul>
+    <div class="tag"><span class="pill warn">CHECK</span> Photoshop 2025+ · signed in · internet on · credits available</div>
+  </section>
+
+  <section class="slide section"><div class="big">L16</div><h2>Generative for Compositing</h2><p class="lead">Fill the gaps, not the vision.</p></section>
+  <section class="slide">
+    <div class="eyebrow">The mental model</div>
+    <h2>A fast, fallible assistant</h2>
+    <ul>
+      <li>Select → prompt <b>short or empty</b> → pick the best of <b>3 variations</b> → mask + finish by hand</li>
+      <li>Superb at texture: sky, grass, pavement, walls; and at removals</li>
+      <li>Unreliable at specifics: hands, text, brands, exact counts</li>
+      <li>Every result on its own <b>generative layer</b>: never "generate and ship"</li>
+    </ul>
+    <div class="tag"><span class="pill warn">LIMIT</span> It fills texture. It won't fix wrong perspective, light, or scale.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Where each tool lives</div>
+    <h2>Expand · Fill · Harmonize</h2>
+    <div class="two">
+      <ul><li><b>Room</b>: Crop tool, <b>Fill: Generative Expand</b>, drag out, Generate</li><li><b>Remove</b>: lasso with margin (and its shadow), empty prompt</li><li><b>Connect</b>: small selection, <code class="k">gravel with small shadows</code></li></ul>
+      <ul><li><b>Harmonize</b>: select the placed layer → task bar or Properties</li><li>Matches light, color, shadows to the background</li><li>Compare, keep the best, <b>mask back</b> what it changed</li></ul>
+    </div>
+    <div class="tag"><span class="pill">TIP</span> Hide the pasted subject while you expand, so the model continues the scene.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Guided build: Harmonize a Composite</div>
+    <h2>Five steps, then finish by hand</h2>
+    <ul class="lab">
+      <li><b>1</b> Give it room (Generative Expand) · audit edges at 100%</li>
+      <li><b>2</b> Remove the SALE sign, post, and shadow</li>
+      <li><b>3</b> Grow connective tissue under the feet · mask it</li>
+      <li><b>4</b> Harmonize the subject · mask back edges and face</li>
+      <li><b>5</b> Grain + sharpen match · dodge &amp; burn · one unifying grade</li>
+    </ul>
+    <div class="tag"><span class="pill lab">LAB</span> l16-cramped-scene.jpg + l16-pasted-subject.png · or your Module 4 composite</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Limits, ethics &amp; licensing</div>
+    <h2>Audit, match, disclose</h2>
+    <ul>
+      <li>Zoom to <b>100%</b>: artifacts, repeats, soft patches</li>
+      <li>Generated areas are often softer: <b>match grain and sharpening</b></li>
+      <li>Firefly is designed to be commercially safe; <b>partner models</b> may have other terms</li>
+      <li>Journalism and documentary: generative changes may be off-limits</li>
+    </ul>
+    <div class="tag"><span class="pill">MANTRA</span> The model gives you a head start, never the finish line.</div>
+  </section>
+
+  <section class="slide section"><div class="big">L17</div><h2>Advanced Actions &amp; Conditionals</h2><p class="lead">Do it once, run it forever.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Record · branch · batch</div>
+    <h2>Record relative, not absolute</h2>
+    <ul>
+      <li><b>Fit Image</b> 2000 × 2000 px, not Image Size</li>
+      <li>Units &amp; Rulers → <b>Percent</b> before recording crops</li>
+      <li>Record on a typical file; <b>test on your weirdest</b></li>
+      <li>Conditionals test orientation, mode, 16-bit, has layers, layer type</li>
+    </ul>
+    <div class="tag"><span class="pill warn">NO</span> condition for pixel size or a layer's name: that's a script.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Set "Delivery" ▸ Web Delivery</div>
+    <h2>Crop first, then fit</h2>
+    <div class="two">
+      <pre><span class="c">Web Delivery</span>
+<span class="k">▸</span> If Document Is Landscape
+    Crop Wide <span class="c">else</span> Crop Tall
+<span class="k">▸</span> Fit Image 2000 × 2000
+<span class="k">▸</span> Unsharp Mask 80% / 1.0 / 0
+<span class="k">▸</span> Place l17-watermark.png
+<span class="k">▸</span> Flatten Image
+<span class="k">▸</span> Save As JPG (quality 10)</pre>
+      <ul><li>Select step 1 → <b>Insert Conditional…</b></li><li>It lands <b>below</b>: drag it to the top</li><li>Flatten, or Save As won't offer JPG</li><li>The square file takes the <b>Else</b> branch</li></ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">File ▸ Automate ▸ Batch</div>
+    <h2>500 files, zero questions</h2>
+    <ul class="lab">
+      <li>Tick <b>Override Action "Save As" Commands</b></li>
+      <li>Suppress File Open Options Dialogs · Suppress Color Profile Warnings</li>
+      <li>Errors: <b>Log Errors To File</b> · dialog toggles off</li>
+      <li><b>Create Droplet</b>: the batch as a drag-and-drop icon</li>
+    </ul>
+    <div class="tag"><span class="pill lab">LAB</span> Batch l17-input/ → l17-output/ · then a droplet · reset rulers to Pixels</div>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Break · 13 minutes</div>
+    <h2>Stretch, refill, reset</h2>
+    <p class="lead">Early finishers: open l18-data/l18-cards.csv in a text editor and read the headers.</p>
+  </section>
+
+  <section class="slide section"><div class="big">L18</div><h2>Data-Driven Graphics &amp; Scripting</h2><p class="lead">One template, hundreds of outputs.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Template + data</div>
+    <h2>Exactly three kinds of variable</h2>
+    <div class="two">
+      <pre><span class="c">l18-cards.csv</span>
+name,photo,sale
+Ana,l18-ana.jpg,<span class="s">true</span>
+Ben,l18-ben.jpg,<span class="s">false</span>
+Cy,l18-cy.jpg,<span class="s">true</span></pre>
+      <ul><li><b>Text</b> → "name" layer</li><li><b>Pixel</b> → "photo" (a pixel layer)</li><li><b>Visibility</b> → "sale" badge</li></ul>
+    </div>
+    <div class="tag"><span class="pill warn">RULES</span> variable name = header, exactly · true/false, never yes/no · photos beside the CSV</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Guided build: the Module 6 deliverable</div>
+    <h2>Name · define · import · export</h2>
+    <ul class="lab">
+      <li><b>1</b> Layers <code class="k">name</code>, <code class="k">photo</code>, <code class="k">sale</code></li>
+      <li><b>2</b> Image ▸ Variables ▸ Define: Text / Pixel (Fit) / Visibility</li>
+      <li><b>3</b> Data Sets… ▸ Import · Use First Column For Data Set Names · proof rows</li>
+      <li><b>4</b> File ▸ Export ▸ <b>Data Sets as Files</b> · named by Data Set Name</li>
+    </ul>
+    <div class="tag"><span class="pill lab">LAB</span> Six cards, one per row · badge on Ana, Cy, Fay</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Where scripting begins</div>
+    <h2>Read it before you write it</h2>
+    <pre><span class="c">// resize-folder.jsx — File ▸ Scripts ▸ Browse</span>
+<span class="k">for</span> (var i = 0; i &lt; files.length; i++) {
+    var doc = app.open(files[i]);
+    var scale = <span class="s">2000</span> / Math.max(doc.width.value, doc.height.value);
+    doc.resizeImage(doc.width * scale, doc.height * scale);
+    <span class="c">// save web_ copy at quality 10, close</span>
+}</pre>
+    <div class="tag"><span class="pill warn">RUN</span> on a copy of a folder · rulers in Pixels · loops, math, logic = script</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Which tool when?</div>
+    <h2>Action · Variables · Script</h2>
+    <ul>
+      <li><b>Action</b>: same steps on every file (with a conditional for mixed input)</li>
+      <li><b>Variables</b>: same layout, changing content</li>
+      <li><b>Script</b>: loops, math, renaming, lookups, per-file decisions</li>
+    </ul>
+    <div class="tag"><span class="pill">MANTRA</span> Design the difference as data, and the count stops mattering.</div>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Before Session 7</div>
+    <h2>Ship it, then widen the lens</h2>
+    <ul class="lab">
+      <li>One data-driven batch of <b>10+ outputs</b> from a single template</li>
+      <li>Adapt the sample script and run it on a test folder</li>
+      <li>Save the layered L16 composite · test your droplet · journal</li>
+      <li>Next: Multi-Shot (pano, HDR, focus stack, animation) + <b>capstone kickoff</b></li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Exit ticket: one "one design, many values" job and its CSV headers.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 19</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<div class="credit">© 2026 Ray de la Paz</div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+CASE-STUDY OUTLINE · Lesson 8.3
+Lay it out top to bottom like a story. Lead with the outcome or the idea, not the tools.
+Mantra: show that you think like a professional, not just that you can push pixels.
+
+PAGE ORDER (top to bottom)
+  1. HERO SHOT ...... the finished piece, big, first. Earn the scroll.
+  2. THE BRIEF ...... the challenge and who it was for, in a line (from your 8.1 brief).
+  3. APPROACH ....... your strategy in a sentence or two: the key idea that solved it.
+  4. PROCESS ........ 3-5 progress shots or a before/after that reveal how it was built.
+  5. DETAILS ........ a few close crops of craft you're proud of
+                      (a clean cutout, the grade, the type).
+  6. RESULT ......... deliverables in context/mockups, plus any outcome you can claim.
+  7. REFLECTION ..... one honest paragraph on what you learned.
+
+THE FIVE BEATS (keep each tight: a few sentences)
+  Challenge  : what needed solving? ___________________________________________
+  Approach   : your strategy, and why? ________________________________________
+  Process    : how you built it (the 3 or 4 moments that show judgment) _______
+  Result     : the finished work in context ___________________________________
+  Reflection : what worked, what you would change ____________________________
+
+  Outcome-first:  "A warm, editorial key art that reads on mobile"
+  beats           "I used Curves and Generative Fill."
+
+HONESTY
+  - Real "before", real steps. A fabricated before costs all your credibility.
+  - Used Generative Fill or Expand? Say so in the process section. Content Credentials
+    can be attached on export as well.
+
+EXPORT
+  - Web-sized images: File > Export > Export As
+  - PDF: File > Save a Copy > Photoshop PDF
+    (or File > Export > Artboards to PDF if you laid it out on several artboards)
+
+30-SECOND SPOKEN VERSION ("Tell me about this piece.")
+  ______________________________________________________________________________

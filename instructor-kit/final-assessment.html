@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Assessment &amp; Rubric</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  table.rubric { width:100%; border-collapse:collapse; margin:12px 0; font-size:.85rem; }
+  table.rubric th, table.rubric td { border:1px solid var(--line); padding:9px 11px; vertical-align:top; text-align:left; }
+  table.rubric thead th { background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  table.rubric td.crit { font-weight:600; color:var(--ink); width:24%; }
+  table.rubric td .pts { display:block; font-family:"JetBrains Mono",monospace; font-size:.66rem; color:var(--accent); margin-top:3px; }
+  table.rubric td .src { display:block; font-family:"JetBrains Mono",monospace; font-size:.62rem; color:var(--ink-3); font-weight:500; margin-top:2px; }
+  table.rubric tbody tr:nth-child(even) td { background:var(--surface); }
+  table.rubric.sheet-tbl td { height:34px; }
+  table.rubric tr.band td { background:var(--surface-2); font-family:"JetBrains Mono",monospace; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  @media print { table.rubric { break-inside:auto; } table.rubric tr { break-inside:avoid; } }
+  @media screen and (max-width:600px){ table.rubric{display:block;overflow-x:auto;max-width:100%} }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy:</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">capstone briefs + grading rubric + scoring sheet</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Photoshop Intermediate · Final Assessment</div>
+    <h1>Capstone: Brief, Build &amp; Case Study</h1>
+    <p class="sub">The single end-of-course assessment (Module 8). Each learner writes a one-page brief for a self-directed professional project, builds it in passes in a clean, non-destructive file, and presents it as a case study: the work plus its story. Score it with the rubric below; completion requires the deliverables exported at spec and a saved layered master.</p>
+    <div class="meta-row">
+      <span class="chip">Covers <b>Modules 1–8</b></span>
+      <span class="chip">Brief written in <b>Session 7</b> · presented in <b>Session 8</b></span>
+      <span class="chip">Case study published within <b>1 week</b></span>
+      <span class="chip">Pass: <b>2+</b> on every row</span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>The Brief</h2><span class="rule"></span></div>
+  <p>Choose <b>one</b> project from the list below (the same four options as <a href="https://rays-photoshop-intermediate.netlify.app/lesson_21.html">Lesson 8.1: The Brief &amp; the Plan</a>) and take it from a one-page brief to a published case study. A strong capstone is a single, real-feeling deliverable. <b>Scope for finishing, not for showing off</b>: a tightly executed simple idea beats an ambitious half-finished one every time, and stretch goals must be cuttable without breaking the deliverable.</p>
+
+  <table class="rubric">
+    <thead><tr><th>Project</th><th>Touches</th><th>Brief-specific checks</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">Key art poster</td><td>A composited hero with title treatment (M1, M3, M4, M5)</td><td>The hero sits at the right scale for the horizon, with matching light direction, contact and cast shadows, and atmosphere; one unifying grade; the title set from a type system and readable at thumbnail size; print and screen deliverables at spec</td></tr>
+      <tr><td class="crit">Product campaign</td><td>A hero plus a sized social set from one master (M2, M4, M5, M6)</td><td>A clean cutout at 100%; light and shadow matched to the scene; the set built from one master (artboards, linked Smart Objects) with key content inside each safe zone; the export repeatable (an Action or data set is a bonus)</td></tr>
+      <tr><td class="crit">Editorial portrait</td><td>A retouched, graded portrait with layout and type (M2, M3, M5)</td><td>Skin texture kept, dodge &amp; burn subtle, a natural finish on eyes, teeth, and hair; a deliberate grade; layout and type from a type system; the subject's consent to retouch and show the portrait</td></tr>
+      <tr><td class="crit">Your own</td><td>Anything that shows the skills the learner most wants on their portfolio</td><td>The learner's own success criteria govern; check that they are specific and checkable before the build starts (Session 7 kickoff or the Session 8 plan review)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.85rem;color:var(--ink-3)">Brief-specific checks are quoted from the Module 8 answer key. Learners with no project of their own, or who arrive behind, can use the ready-made backup briefs in <code class="inline">labs/module-8/practice/l21-backup-briefs.txt</code> (a key art poster and a product campaign, each with synthetic assets) and the presentation mockups <code class="inline">l23-mockup-wall.jpg</code>, <code class="inline">l23-mockup-phone.jpg</code>, and <code class="inline">l23-mockup-sleeve.jpg</code>.</p>
+
+  <div class="note warn">
+    <div class="t">Images, consent, and disclosure</div>
+    <p>Learners use their own photos, the kit's practice files, or stock whose license and credit terms they have checked. The course website's example images are licensed to the author and <b>must not</b> be used. Portraits need the subject's consent to be retouched and shown. Any Generative Fill or Expand is disclosed in the case study's process section; Content Credentials may be attached on export as well.</p>
+  </div>
+
+  <div class="blk"><div class="h">Required deliverables</div>
+    <ul class="tick">
+      <li><b>The brief and plan</b> (Lesson 8.1): a one-page brief with all six parts (objective, audience, deliverables + specs, constraints, success criteria, references/moodboard), an annotated moodboard of 6–12 references, and a staged plan mapping skills, assets, and milestones.</li>
+      <li><b>The layered master</b> (Lesson 8.2): a grouped, named, color-labeled, non-destructive file, plus incremental versions (<code class="inline">capstone_v01.psd</code>, <code class="inline">v02</code>…) saved along the way.</li>
+      <li><b>The deliverables</b> (Lesson 8.2): every output named in the brief, exported at spec.</li>
+      <li><b>The case study</b> (Lesson 8.3): hero first, the five beats (challenge, approach, process, result, reflection), an honest before/after and 3–5 progress shots, deliverables in context via mockups; laid out with the learner's type system, exported (web images and a PDF), and published. Presented in Session 8; the finished layout is published within one week.</li>
+    </ul>
+  </div>
+
+  <div class="sec"><h2>Requirements Checklist</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Each item below is a lesson's own Project Completion Checklist, word for word.</p>
+  <div class="grid2">
+    <div class="blk"><div class="h">Brief &amp; plan (Lesson 8.1)</div>
+      <ul class="tick">
+        <li>A one-page brief with all six parts</li>
+        <li>Every vague term pinned to a spec or reference</li>
+        <li>Success criteria written as a checkable list</li>
+        <li>An annotated moodboard of 6–12 references</li>
+        <li>A staged plan mapping skills, assets, and milestones</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Build (Lesson 8.2)</div>
+      <ul class="tick">
+        <li>Built in passes, whole-image at each level</li>
+        <li>Grouped, named, color-labeled, non-destructive layer stack</li>
+        <li>Incremental versions saved along the way</li>
+        <li>Fresh-eyes checks (flip, squint, desaturate, walk away) done</li>
+        <li>Every brief success criterion met and ticked</li>
+        <li>Layered master saved; deliverables exported at spec</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Case study (Lesson 8.3)</div>
+      <ul class="tick">
+        <li>A big, clean hero shot leading the piece</li>
+        <li>The five story beats written tight and outcome-first</li>
+        <li>Honest before/after and 3–5 progress shots</li>
+        <li>Deliverables shown in context via mockups</li>
+        <li>Laid out with your type system, exported, and published</li>
+        <li>Any generative-AI assistance disclosed honestly</li>
+      </ul>
+    </div>
+    <div class="blk"><div class="h">Present (Session 8)</div>
+      <ul class="tick">
+        <li>The hero shown in context, with the brief in a line</li>
+        <li>The 30-second spoken version of the story</li>
+        <li>An honest before/after on screen</li>
+        <li>One glow and one grow given to a classmate</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Grading Rubric</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Every row quotes the lessons word for word. Row 1 is the Lesson 8.1 checklist. Rows 2–5 are <b>Judging Your Own Work</b> from <a href="https://rays-photoshop-intermediate.netlify.app/lesson_22.html">Lesson 8.2</a>: the four fresh-eyes checks and "grade against the brief," the same rows learners self-score in the participant workbook. Rows 6–7 are the Lesson 8.2 checklist (process and file hygiene). Rows 8–11 are the <a href="https://rays-photoshop-intermediate.netlify.app/lesson_23.html">Lesson 8.3</a> case-study checklist. Row 12 scores the Session 8 presentation. Score each row 1–3; the maximum is <b>36</b>. A workbook "strong" corresponds to 2 or 3, "not yet" to 1.</p>
+  <p style="font-size:.9rem;color:var(--ink-2)"><b>Pass = no row below 2, plus the deliverables exported at spec and a saved layered master.</b></p>
+  <table class="rubric">
+    <thead>
+      <tr><th>Row &amp; criterion</th><th>Not yet (1)</th><th>Strong (2)</th><th>Exemplary (3)</th></tr>
+    </thead>
+    <tbody>
+      <tr class="band"><td colspan="4">Plan · Lesson 8.1</td></tr>
+      <tr>
+        <td class="crit">1 · Brief &amp; plan <span class="pts">/3</span><span class="src">"A one-page brief with all six parts" · "Every vague term pinned to a spec or reference" · "Success criteria written as a checkable list" · "An annotated moodboard of 6–12 references" · "A staged plan mapping skills, assets, and milestones"</span></td>
+        <td>A part missing, or adjectives left vague ("make it pop"); success criteria nobody else could check; no staged plan.</td>
+        <td>All six parts on one page; every vague term pinned; a checkable success list; 6–12 annotated references; stages mapped to module skills, assets, and milestones.</td>
+        <td>Scoped to finish with cuttable stretch goals; a stranger could grade the piece against it; the moodboard is visible in the result.</td>
+      </tr>
+      <tr class="band"><td colspan="4">Craft · Lesson 8.2, Judging Your Own Work</td></tr>
+      <tr>
+        <td class="crit">2 · Meets the brief <span class="pts">/3</span><span class="src">"Every brief success criterion met and ticked" · "Grade against the brief, not your mood"</span></td>
+        <td>One or more success criteria not met, or never checked; "done" was exhaustion or a deadline.</td>
+        <td>Every success criterion met and ticked on the artwork.</td>
+        <td>Met at a high polish: a fresh-eyes pass would change almost nothing.</td>
+      </tr>
+      <tr>
+        <td class="crit">3 · Composition &amp; balance <span class="pts">/3</span><span class="src">"Flip horizontal (View ▸ Flip Horizontal…) — composition and balance errors leap out in the mirror."</span></td>
+        <td>Flipped, the piece tips to one side or a leftover element grabs attention.</td>
+        <td>Balanced in both orientations; nothing stray.</td>
+        <td>Every element earns its place; the layout reads with intent either way round.</td>
+      </tr>
+      <tr>
+        <td class="crit">4 · Focal point &amp; read <span class="pts">/3</span><span class="src">"Zoom to fit and squint — if the focal point and read survive at thumbnail size and blurred, the structure is sound."</span></td>
+        <td>At thumbnail size or squinted, nothing wins, or the room names the wrong focal point.</td>
+        <td>The focal point and the read survive at thumbnail size and blurred.</td>
+        <td>Instant at any size: strong, simple shapes, and type (if any) that still reads as a thumbnail.</td>
+      </tr>
+      <tr>
+        <td class="crit">5 · Tonal structure <span class="pts">/3</span><span class="src">"Desaturate to check — a temporary Black &amp; White adjustment layer at the very top of the stack… exposes tonal problems that color hides."</span></td>
+        <td>In black and white the subject merges with the background, or pasted-in elements have the wrong values.</td>
+        <td>Clear tonal separation in black and white; element values agree with the scene.</td>
+        <td>Values deliberately lead the eye, with depth from light to dark.</td>
+      </tr>
+      <tr class="band"><td colspan="4">Process &amp; file · Lesson 8.2 checklist</td></tr>
+      <tr>
+        <td class="crit">6 · Built in passes <span class="pts">/3</span><span class="src">"Built in passes, whole-image at each level"</span></td>
+        <td>One corner polished while others are still rough; no end-of-pass screenshots.</td>
+        <td>Block-in, refine, and polish each done across the frame; end-of-pass screenshots saved.</td>
+        <td>The progress shots show each pass raising the whole image a level at a time.</td>
+      </tr>
+      <tr>
+        <td class="crit">7 · File hygiene <span class="pts">/3</span><span class="src">"Grouped, named, color-labeled, non-destructive layer stack" · "Incremental versions saved along the way" · "Layered master saved; deliverables exported at spec"</span></td>
+        <td>"Layer 12 copy 3"; effects baked in; one file, no versions; deliverables at the wrong size or color space.</td>
+        <td>Groups by role, named and color-labeled; adjustments, Smart Objects, and Smart Filters live; <code class="inline">capstone_v01</code>, <code class="inline">v02</code>… on disk; every deliverable at spec.</td>
+        <td>A file a stranger could navigate in seconds: groups in render order, nothing dead, export automated where it repeats.</td>
+      </tr>
+      <tr class="band"><td colspan="4">Case study · Lesson 8.3 checklist</td></tr>
+      <tr>
+        <td class="crit">8 · Hero &amp; context <span class="pts">/3</span><span class="src">"A big, clean hero shot leading the piece" · "Deliverables shown in context via mockups"</span></td>
+        <td>The piece opens with text or a small image; deliverables float on white.</td>
+        <td>A big hero first; at least one deliverable shown in a Smart-Object mockup.</td>
+        <td>Every deliverable in a context that tells the reviewer what it is for (wall, feed, sleeve…).</td>
+      </tr>
+      <tr>
+        <td class="crit">9 · The story <span class="pts">/3</span><span class="src">"The five story beats written tight and outcome-first"</span></td>
+        <td>Beats missing, or a list of tools ("I used Curves and Generative Fill").</td>
+        <td>Challenge, approach, process, result, reflection, each a few sentences, leading with the outcome or the idea.</td>
+        <td>Shows the decisions, not every step: the three or four moments that show judgment, and an honest reflection.</td>
+      </tr>
+      <tr>
+        <td class="crit">10 · Honest process <span class="pts">/3</span><span class="src">"Honest before/after and 3–5 progress shots" · "Any generative-AI assistance disclosed honestly"</span></td>
+        <td>No real "before," a fabricated one, or undisclosed generative content.</td>
+        <td>A true before/after and 3–5 progress shots; generative assistance (if any) named in the process section.</td>
+        <td>Progress shots and detail crops make the craft visible (a clean cutout, the grade, the type).</td>
+      </tr>
+      <tr>
+        <td class="crit">11 · Layout &amp; publish <span class="pts">/3</span><span class="src">"Laid out with your type system, exported, and published"</span></td>
+        <td>Default type, an inconsistent read, or not exported or published.</td>
+        <td>Top-to-bottom order (hero → brief → approach → process → details → result → reflection) in the learner's type system; web images and a PDF exported; published where people will see it.</td>
+        <td>A portfolio-ready page the learner would send to a client today.</td>
+      </tr>
+      <tr class="band"><td colspan="4">Presentation · Session 8</td></tr>
+      <tr>
+        <td class="crit">12 · Present &amp; critique <span class="pts">/3</span><span class="src">L23 Now You: "Write a 30-second spoken version of the story — the answer to 'tell me about this piece' in an interview." · peer critique</span></td>
+        <td>Apologizes or lists tools; runs well over time; gives classmates only "I love it."</td>
+        <td>A 30-second story (challenge, approach, result) with the hero in context and a before/after; one specific glow and one grow for a classmate, tied to a rubric row.</td>
+        <td>Names the grow they will act on; feedback to others points at the pixels and at the presenter's brief.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <div class="t">Completion policy</div>
+    <p>A learner <b>completes the course</b> when every session deliverable has been submitted and the capstone meets the pass rule: <b>no row below 2, plus the deliverables exported at spec and a saved layered master</b>. A high total with one row at 1 does <em>not</em> pass. Score rows 1–7 and 12 in Session 8 (from the brief, the file, and the presentation) and rows 8–11 when the published case study arrives, within one week. Below the bar, give targeted feedback tied to the rows above and allow one resubmission within two weeks.</p>
+  </div>
+
+  <div class="sec"><h2>Presentations &amp; Peer Critique</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">The Session 8 protocol from the Module 8 facilitator guide: <b>about 4 minutes per learner</b>, 50 minutes for a class of about 12. Hand out printed rubric cards (rows 2–5 and 8–10) to reviewers, and ask each presenter to put their one-line brief on screen.</p>
+  <div class="grid2">
+    <div class="blk lab"><div class="h">Each presenter</div>
+      <ol class="steps lab">
+        <li><b>Present (90 s):</b> the hero in context (a mockup), the brief in a line, the before/after, and the 30-second spoken story: challenge, approach, result.</li>
+        <li><b>Squint test (15 s):</b> the whole room squints; two or three people call out what they see first. Does it match the brief's focal point?</li>
+        <li><b>Presenter notes (15 s):</b> write the grow in the workbook's critique box and say thank you.</li>
+      </ol>
+    </div>
+    <div class="blk lab"><div class="h">Two reviewers (90 s), assigned in advance</div>
+      <ol class="steps lab">
+        <li>Read the presenter's brief first: "Which success criterion does it meet most clearly?"</li>
+        <li>Pick one rubric row: one <b>glow</b> (what works, specifically, pointing at the pixels).</li>
+        <li>One <b>grow</b>, phrased "I wonder if…" or "What if you tried…"</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note warn"><div class="t">Keep critique kind and specific</div><p>Critique the work, not the person; point at the pixels; judge against the presenter's brief, not your taste; the presenter listens and says thank you, no defending; kind is not the same as vague. For 13 or more learners, run the same protocol in pods of 4 to 5 for 35 minutes, then a 15-minute whole-room showcase of one piece per pod. For groups under 7, give each presenter 6 to 7 minutes and let everyone review.</p></div>
+
+  <div class="sec"><h2>Scoring Sheet</h2><span class="rule"></span></div>
+  <p style="font-size:.9rem;color:var(--ink-2)">Learner: ______________________ &nbsp; Project: ______________________ &nbsp; Date: __________</p>
+  <table class="rubric sheet-tbl">
+    <thead><tr><th>Row</th><th>Score (1–3)</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="crit">1 · Brief &amp; plan</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">2 · Meets the brief</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">3 · Composition &amp; balance</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">4 · Focal point &amp; read</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">5 · Tonal structure</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">6 · Built in passes</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">7 · File hygiene</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">8 · Hero &amp; context</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">9 · The story</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">10 · Honest process</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">11 · Layout &amp; publish</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">12 · Present &amp; critique</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td class="crit">Total &nbsp;/36 · Deliverables at spec ☐ · Layered master ☐</td><td>&nbsp;</td><td>Pass ☐ &nbsp; Resubmit ☐</td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Instructor Kit · final assessment &amp; rubric · Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Final Assessment · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

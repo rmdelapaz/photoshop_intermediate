@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides: Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#0b1220; --ink:#eaf1fb; --ink2:#9fb2cd;
+    --accent:#31A8FF; --accent2:#1473E6; --lab:#34d3bd; --warn:#fbbf24;
+    --line:#1d3350; --code:#0a1a2e; color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:30ch}
+  ul,ol.num{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  ol.num{counter-reset:n}
+  ol.num li{position:relative;padding-left:46px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ol.num li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:.05em;width:32px;height:32px;border-radius:50%;background:var(--accent2);color:#fff;font-family:"JetBrains Mono",monospace;font-size:1rem;font-weight:600;display:flex;align-items:center;justify-content:center}
+  code.k{font-family:"JetBrains Mono",monospace;color:#a9d4ff;font-size:.92em}
+  kbd{font-family:"JetBrains Mono",monospace;font-size:.8em;background:#10243d;border:1px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:1px 7px;color:#dbeaff}
+  .panel{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:18px 22px;font-family:"JetBrains Mono",monospace;font-size:clamp(.85rem,1.8vw,1.2rem);line-height:1.7}
+  .panel .row{display:flex;gap:10px;align-items:center;padding:3px 10px;border-radius:6px}
+  .panel .row.hi{background:#12325a;color:#fff}
+  .panel .row.lab{background:#0d3a36;color:#b8f5ea}
+  .panel .row.dim{color:var(--ink2)}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#0d2644,#071321)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent2);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent2);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  .foot{position:fixed;left:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:#5d7391;z-index:5}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <section class="slide on section">
+    <div class="eyebrow">Photoshop Intermediate · Instructor Kit · Session 4 of 8 · 3 hours</div>
+    <h1>Module 4<br>Commercial Compositing</h1>
+    <p class="lead">Make it belong there. Make it lit. Make it one photograph.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">The plan for today</div>
+    <h2>One key visual, three passes</h2>
+    <ul>
+      <li><b>L10 · 4.1</b> Match Perspective, Scale &amp; Lens: geometry</li>
+      <li><b>L11 · 4.2</b> Light, Shadows &amp; Reflections: light &amp; contact</li>
+      <li><b>L12 · 4.3</b> Atmosphere &amp; the Unifying Grade: the whole frame</li>
+    </ul>
+    <div class="tag"><span class="pill lab">DELIVERABLE</span> an advertising-style key visual + your layered m4-key-visual.psd</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Warm-up</div>
+    <h2>What gives a composite away?</h2>
+    <ul>
+      <li>Name every tell you can see</li>
+      <li>Sort them: <b>geometry</b> · <b>light</b> · <b>whole frame</b></li>
+      <li>Today fixes them in that order</li>
+    </ul>
+  </section>
+
+  <section class="slide section"><div class="big">L10</div><h2>Match Perspective, Scale &amp; Lens</h2><p class="lead">A composite dies on geometry first.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Mental model</div>
+    <h2>Everyone shares a horizon</h2>
+    <ul>
+      <li>Horizon = the camera's <b>eye level</b>, visible or not</li>
+      <li>Receding parallel edges meet at a <b>vanishing point</b> on it</li>
+      <li>Every added element must share that one line</li>
+    </ul>
+    <div class="tag"><span class="pill">PLAZA</span> horizon y = 700 · vanishing point (1260, 700)</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Scale by the ground, not the eye</div>
+    <h2>Feet first, then the horizon</h2>
+    <ol class="num">
+      <li>Set the element's <b>ground-contact point</b></li>
+      <li><kbd>Ctrl</kbd><kbd>T</kbd> / <kbd>⌘</kbd><kbd>T</kbd>, scale from the feet</li>
+      <li>Stop when the horizon crosses it at the same body height as the people already there</li>
+    </ol>
+    <div class="tag"><span class="pill warn">WATCH</span> proportional by default now: <kbd>Shift</kbd> switches it OFF</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Planes and lenses</div>
+    <h2>Perspective Warp: Layout, then Warp</h2>
+    <ul>
+      <li>Convert to Smart Object first, so the warp stays editable</li>
+      <li><b>Layout:</b> a quad on each plane · <b>Warp:</b> drag pins to the vanishing lines</li>
+      <li>People: a touch of Free Transform ▸ Distort is enough</li>
+      <li>Wide lens exaggerates depth; long lens flattens it</li>
+    </ul>
+    <div class="tag"><span class="pill warn">WATCH</span> warp fixes geometry, not optics · grayed out? Use Graphics Processor</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Guided build</div>
+    <h2>Place one element</h2>
+    <ol class="num">
+      <li>Line tool along two receding edges → vanishing point → horizontal guide (<kbd>Ctrl</kbd>/<kbd>⌘</kbd><kbd>R</kbd> rulers)</li>
+      <li>Place; set the feet; scale to the horizon</li>
+      <li>Perspective Warp strong planes toward the vanishing point</li>
+      <li>Step back: flatter or rounder than the scene? Save the layered PSD</li>
+    </ol>
+    <div class="tag"><span class="pill lab">DONE WHEN</span> one horizon · feet on the ground · right size for the distance · planes agree</div>
+  </section>
+
+  <section class="slide section"><div class="big">L11</div><h2>Light, Shadows &amp; Reflections</h2><p class="lead">Nothing real floats.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Read the light first</div>
+    <h2>Direction · Hardness · Color</h2>
+    <ol class="num">
+      <li><b>Where?</b> Existing shadows point away from the source</li>
+      <li><b>How hard?</b> Crisp edges = direct sun · soft = overcast</li>
+      <li><b>What color?</b> Warm sun, cool shade, green bounce</li>
+    </ol>
+    <div class="tag"><span class="pill">RELIGHT</span> clipped 50% gray Soft Light D&amp;B + clipped Color Balance / Photo Filter</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">The two-shadow habit</div>
+    <h2>Touching, and where the light is</h2>
+    <div class="two">
+      <div class="panel">
+        <div class="row hi">Subject + clipped light/color</div>
+        <div class="row lab">Contact shadow · Multiply</div>
+        <div class="row lab">Cast shadow · Multiply</div>
+        <div class="row dim">Background 🔒</div>
+      </div>
+      <ul>
+        <li>Contact: tiny, dark, barely blurred</li>
+        <li>Cast: skewed away from the light</li>
+        <li>Crisp near, soft and pale far</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> shadows are colored, not black: cool/blue outdoors</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Build the cast shadow</div>
+    <h2>Silhouette → fill → skew → blur → fade</h2>
+    <ol class="num">
+      <li><kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click the mask thumbnail (or layer thumbnail)</li>
+      <li>New layer below · Edit ▸ Fill very dark · deselect · Multiply</li>
+      <li>Free Transform ▸ Distort/Skew onto the ground</li>
+      <li>Blur Gallery ▸ Tilt-Shift or Field Blur: sharp near, soft far</li>
+      <li>Gradient mask to fade; tint to the scene's shadows</li>
+    </ol>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">If the floor is glossy</div>
+    <h2>Reflections</h2>
+    <ul class="lab">
+      <li>Duplicate → Edit ▸ Transform ▸ <b>Flip Vertical</b></li>
+      <li>Align the bases perfectly</li>
+      <li>Opacity ~25–40% · blur that increases downward · mask a fade</li>
+    </ul>
+    <div class="tag"><span class="pill lab">DONE WHEN</span> relit to match · contact + cast shadow · tinted · reflection if glossy · PSD saved</div>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Break · 13 minutes</div>
+    <h2>Check your horizon on the way out</h2>
+    <p class="lead">Eyes on the line, feet on the tiles, shadows falling left.</p>
+  </section>
+
+  <section class="slide section"><div class="big">L12</div><h2>Atmosphere &amp; the Unifying Grade</h2><p class="lead">The final handshake.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Mental model</div>
+    <h2>Distance has a look</h2>
+    <ul>
+      <li>More air = <b>less contrast</b>, less saturation, shifted toward the sky color</li>
+      <li>Far elements as crisp as the foreground feel pasted forward</li>
+      <li>Lower contrast + a little haze on far elements = depth</li>
+    </ul>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Atmosphere between, grade on top</div>
+    <h2>The finished stack</h2>
+    <div class="two">
+      <div class="panel">
+        <div class="row hi">★ Unifying Grade (LUT / Curves)</div>
+        <div class="row dim">Subject + clipped light/color</div>
+        <div class="row lab">Contact + cast shadows</div>
+        <div class="row dim">Atmosphere · far elements only</div>
+        <div class="row dim">Background 🔒</div>
+      </div>
+      <ul>
+        <li>Unify last, grade once</li>
+        <li>Neutral and correct first</li>
+        <li>One dial beats twenty</li>
+      </ul>
+    </div>
+    <div class="tag"><span class="pill warn">WATCH</span> haze above the grade escapes it and looks pasted on</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Guided build</div>
+    <h2>Depth, then one grade</h2>
+    <ol class="num">
+      <li>Clipped Curves on far elements: less contrast, lifted blacks</li>
+      <li>Haze layer (Normal), sky color, very low flow</li>
+      <li>Color Lookup or Curves + Color Balance group on top</li>
+      <li>Vignette + glow + grain · flatten a copy · sRGB · export</li>
+    </ol>
+    <div class="tag"><span class="pill lab">DONE WHEN</span> far recedes · one grade over all · key visual exported 🏆</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Mini-gallery</div>
+    <h2>Run the checklist in order</h2>
+    <p class="lead" style="max-width:none">horizon · scale · lens · light direction · shadow · contact shadow · depth/haze · grade</p>
+    <div class="tag"><span class="pill">TIP</span> stop at the first failure: that's the fix</div>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Module 4 complete</div>
+    <h2>One believable key visual</h2>
+    <ul class="lab">
+      <li>Homework: five horizons · three real shadows · finish the solo variations</li>
+      <li>Full 4.1 → 4.2 → 4.3 on one composite · save your grade as a LUT</li>
+      <li>Three journal entries</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Next: Module 5, Design Systems &amp; Type.</p>
+  </section>
+
+</div>
+
+<div class="count" id="count">1 / 20</div>
+<div class="foot">© 2026 Ray de la Paz</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

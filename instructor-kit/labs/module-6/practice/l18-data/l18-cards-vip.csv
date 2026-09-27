@@ -1,0 +1,7 @@
+name,photo,sale,vip,tint
+Ana,l18-ana.jpg,true,false,false
+Ben,l18-ben.jpg,false,true,false
+Cy,l18-cy.jpg,true,false,true
+Dee,l18-dee.jpg,false,false,false
+Eli,l18-eli.jpg,false,true,true
+Fay,l18-fay.jpg,true,true,false

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide: Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">contains answers &amp; timing · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Facilitator Guide</div>
+    <h1>Module 1: Advanced Selection &amp; Masking</h1>
+    <p class="sub">How to open the intermediate course and teach the three lessons that rebuild selection and masking at a professional level: luminosity masks that let the image paint its own stencil, channel masks and Blend-If for subjects that tone or color makes distinct, and a four-step pipeline for the hardest common cutout, flowing hair. Everything later in the course (grading, retouching, compositing) leans on this control.</p>
+    <div class="meta-row">
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip"><b>3 hrs</b> session</span>
+      <span class="chip">Lessons <b>L01–L03</b></span>
+      <span class="chip">Level <b>Intermediate</b></span>
+      <span class="chip">Maps to <b>Session 1</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>How to Use This Guide</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li>Same rhythm as the intro kit: <b>Frame</b> → <b>Demo</b> → <b>Guided build</b> → <b>Solo variation</b> → <b>Check</b>. Every lesson ends with a recipe card, a checklist, and a journal prompt; use them as your closers.</li>
+    <li><b>This room already knows Photoshop.</b> Everyone finished the intro course (or its equivalent): layers, masks, selections, Camera Raw, Curves, Smart Objects, a basic composite. Don't re-teach "black hides, white reveals." Name it, then build on it. The lessons call this "the spiral, one turn deeper."</li>
+    <li><b>Demo live, step by step,</b> but faster than in the intro: demo a whole step, then let the room do it. Say both shortcut forms (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>, <kbd>Alt</kbd>/<kbd>⌥</kbd>): the Channels-panel modifiers are the whole game in L01.</li>
+    <li><span style="color:var(--lab);font-weight:600">Teal</span> = hands-on, <span style="color:var(--warn);font-weight:600">amber</span> = watch-outs. Lesson codes are the file numbers (L01–L03); the site's own numbering (Lesson 1.1–1.3) is shown alongside.</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="t">The #1 risk of Module 1: "which panel am I in?"</div>
+    <p>This is the first time most learners live in the <b>Channels</b> panel. Nearly every stuck moment is a panel-state problem: Ctrl/⌘-clicking a <em>layer</em> thumbnail instead of the RGB <em>channel</em>; running Levels while the RGB composite (not the channel copy) is highlighted; returning to Layers with a single channel still active so the photo looks gray; painting with the image thumbnail selected instead of the mask. Teach the room a four-point check before any click: <b>"Which panel? Which channel or layer is highlighted? Which thumbnail has the border? Is a selection active?"</b> Write it on the board.</p>
+  </div>
+
+  <div class="sec"><h2>Before Session 1</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ Copy <code class="inline">labs/module-1/practice/</code> to each machine (or a shared drive). Keep <code class="inline">labs/module-1/instructor/l03-hair-cutout-reference.png</code> on your machine only: it's a catch-up file for L03. Never hand out the course site's licensed <code class="inline">images/</code> folder.</li>
+    <li>☐ Email learners a week ahead. Ask them to bring, on the laptop (not only the phone): a <b>high-contrast landscape</b> (bright sky, darker foreground); a <b>bare tree, power lines, or other intricate subject against sky</b>; a <b>portrait with loose or curly hair</b> against a fairly plain background; optionally a hair or pet shot against a busy background. Details and consent notes in <code class="inline">labs/module-1/README.md</code>.</li>
+    <li>☐ Every machine is on a <b>current release</b> of Photoshop (the course home page recommends it), signed in and launched once. Check with Help ▸ About Photoshop (Windows) or Photoshop ▸ About Photoshop (Mac).</li>
+    <li>☐ On the projector machine: <b>Window ▸ Workspace ▸ Reset Essentials</b>, make sure the <b>Channels</b> panel is one click away (<b>Window ▸ Channels</b>), and raise the interface size if the room is large.</li>
+    <li>☐ Open the course home page (for orientation and "Before You Start"), <b>recipes.html</b>, and <b>lesson_01.html</b>, <b>lesson_02.html</b>, <b>lesson_03.html</b> in browser tabs for the before/after sliders and diagrams.</li>
+    <li>☐ A way to share results for the wrap-up: a shared folder, or learners turn their laptops toward the room.</li>
+  </ul>
+
+  <div class="sec"><h2>Session 1 Agenda (3 hours)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Clock</th><th>Segment</th><th>Min</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="t">0:00–0:20</td><td>Welcome, orientation &amp; setup check</td><td class="t">20</td><td>Introductions, the course path, then the "Before You Start" baseline: color settings sanity, the 16-bit habit, "diagnose before you edit."</td></tr>
+      <tr><td class="t">0:20–1:05</td><td><b>L01</b> (Lesson 1.1) Luminosity Masks: Select by Tone</td><td class="t">45</td><td>Build: rescue the landscape with Lights and Darks curves.</td></tr>
+      <tr><td class="t">1:05–1:53</td><td><b>L02</b> (Lesson 1.2) Channel Masking &amp; Blend-If</td><td class="t">48</td><td>Build: extract a bare tree with the Blue channel, then a Blend-If texture.</td></tr>
+      <tr><td class="t">1:53–2:06</td><td>Break</td><td class="t">13</td><td>Leave the L02 recipe card on the projector for stragglers.</td></tr>
+      <tr><td class="t">2:06–2:55</td><td><b>L03</b> (Lesson 1.3) Select &amp; Mask Mastery: The Hard Cutout</td><td class="t">49</td><td>Build: the curly-hair cutout (the Module 1 deliverable). Solo variation is homework.</td></tr>
+      <tr><td class="t">2:55–3:00</td><td>Wrap-up &amp; exit ticket</td><td class="t">5</td><td>Two-minute pressure-test gallery, recap the arc, assign homework, preview Session 2.</td></tr>
+      <tr><td class="t"><b>Total</b></td><td></td><td class="t"><b>180</b></td><td>Stand-and-stretch for one minute midway through L01; it comes out of demo time.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The lesson pages estimate 55 + 60 + 60 = 175 minutes for a solo learner, but after the orientation, break and wrap the room has 142. The room runs each lesson's frame, demo and full Guided Build; the "Now You" solo variations start in class and finish at home (L03's moves entirely to homework). If you run long, protect the <b>L03 guided build</b>: it's the Module 1 deliverable. Trim L01's and L02's solo starts first, then the L02 Blend-If step (Step 4 can be demoed in two minutes and practiced at home).</p>
+
+  <div class="sec"><h2>Opening Segment</h2><span class="rule"></span></div>
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">0:00</span><h3>Welcome, Orientation &amp; Setup Check</h3><span class="dur">20 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">6m</td><td>Welcome &amp; introductions</td></tr>
+          <tr><td class="t">6m</td><td>Course orientation: the path, Recipes II, journaling</td></tr>
+          <tr><td class="t">8m</td><td>Setup check: "Before You Start"</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Sequence &amp; talking points</div>
+        <ol class="steps">
+          <li><b>Welcome (6m).</b> Introduce yourself briefly. Round of names, quick: name, what you shoot or make, and <em>one edit you gave up on</em> (a cutout that never looked right, a sky you couldn't save). Jot these down: they are ready-made examples for today and for the Capstone in Session 8. Housekeeping in one breath: break time, Wi-Fi, where files live, how to ask for help.</li>
+          <li><b>Orientation (6m).</b> Show the course home page. <b>Say:</b> "You can already drive Photoshop. This course is about working like a professional: fewer first steps, much deeper craft." Walk the path in three tiers: <b>Core Craft</b> (1 Selection &amp; Masking, 2 Color &amp; Tone, 3 Retouching), <b>Commercial Work</b> (4 Compositing, 5 Design Systems, 6 Generative + Automation), <b>Going Further</b> (7 Multi-Shot, 8 Capstone). One module per session; every module ships a portfolio-worthy deliverable. Open <b>recipes.html</b> and filter for "luminosity" to show the <b>Build a luminosity mask</b> card: "Recipes II are the harder how-tos you'll look up out of order." Remind them the journal continues: five things after every lesson, plus each lesson's own prompt.</li>
+          <li><b>Setup check (8m).</b> Scroll to <b>Before You Start</b> on the home page. <b>Say:</b> "Two minutes of setup keeps the whole course honest." Run three quick checks with the room:
+            <ul class="tick">
+              <li><b>Color settings sanity.</b> Everyone opens <b>Edit ▸ Color Settings</b> and reads out their RGB working space. <b>Say:</b> "Just know what it says today. Don't change it: Module 2 goes deep on this." Cancel out of the dialog.</li>
+              <li><b>The 16-bit habit.</b> Open <code class="inline">l01-high-contrast-landscape.jpg</code> and show <b>Image ▸ Mode ▸ 16 Bits/Channel</b>. <b>Say:</b> "Converting doesn't add detail to an 8-bit original, but it stops new banding as you build masks and push curves. Every build today starts here."</li>
+              <li><b>Diagnose before you edit.</b> <b>Window ▸ Histogram</b>. Ask: "Where do the tones sit?" (A pile on the right, the bright sky; a pile on the left, the dark valley.) <b>Say:</b> "Before you touch a slider, look. That's a habit for every module." Also confirm <b>Window ▸ Channels</b> opens the Channels panel: it's today's main stage.</li>
+            </ul>
+            Leave the file open: it's the L01 guided-build file.</li>
+        </ol>
+      </div>
+      <div class="blk warn"><div class="h">Watch-outs</div>
+        <ul class="tick">
+          <li><b>Someone changes their Color Settings "to be safe."</b> Ask them to Cancel. Changing policies mid-course causes confusing profile warnings; Module 2 sets this up properly.</li>
+          <li><b>Photos only on the phone.</b> They use the practice files today and sync their own photos during the break, ready for homework.</li>
+          <li><b>Missing prerequisite.</b> If someone has never made a layer mask or used Select and Mask, pair them with a confident neighbor and point them at the intro course's Modules 1 and 4 for homework. Don't slow the room.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Module at a Glance</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Lesson</th><th>Topic</th><th>Room</th><th>Learners leave able to…</th></tr></thead>
+    <tbody>
+      <tr><td class="t">L01 (1.1)</td><td>Luminosity Masks: Select by Tone</td><td class="t">45m</td><td>Load Lights from RGB, invert for Darks, intersect to a band, and move highlights and shadows in opposite directions without a visible seam</td></tr>
+      <tr><td class="t">L02 (1.2)</td><td>Channel Masking &amp; Blend-If</td><td class="t">48m</td><td>Shop the channels, forge a mask from a duplicate with Levels, cut out an intricate subject, and drop a texture's lights with Blend-If</td></tr>
+      <tr><td class="t">L03 (1.3)</td><td>Select &amp; Mask Mastery: The Hard Cutout</td><td class="t">49m</td><td>Run rough in → refine → rescue → decontaminate on flowing hair and pressure-test the edge on a saturated background</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The module is one story: <b>let the image's brightness draw the stencil → let one color's brightness draw it → combine every tool into a pipeline for the hardest edge.</b> The through-line is the lesson mantra "let the image paint the mask": the less you paint by hand, the better the edge.</p>
+
+  <div class="sec"><h2>Lesson Plans</h2><span class="rule"></span></div>
+
+  <!-- L01 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L01</span><h3>Luminosity Masks: Select by Tone (Lesson 1.1)</h3><span class="dur">45 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Explain a luminosity mask: a selection built from the image's own luminance</li>
+          <li>Load a Lights or Darks selection from the channels</li>
+          <li>Adjust highlights and shadows independently, edges self-feathered and invisible</li>
+          <li>Narrow a mask to a tonal band (just the brightest highlights) by intersecting</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal: two exposures, one frame (lesson slider)</td></tr>
+          <tr><td class="t">5m</td><td>Mental model: the image paints the mask</td></tr>
+          <tr><td class="t">4m</td><td>Lights, Midtones &amp; Darks; narrowing to a band</td></tr>
+          <tr><td class="t">3m</td><td>Loading luminosity from Channels: the four modifiers</td></tr>
+          <tr><td class="t">22m</td><td>Guided build: rescue the landscape (Steps 1–4: 4 + 7 + 6 + 5)</td></tr>
+          <tr><td class="t">4m</td><td>Now You: start the highlight glow (finish at home)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (3m).</b> Show the L01 slider. <b>Say:</b> "Expose for the sky and the land goes black; expose for the land and the sky blows out. On the left, both rescued, and no brush ever touched the mask."</li>
+          <li><b>The image paints the mask (5m).</b> <b>Say:</b> "You know the rule: white reveals, black hides. A luminosity mask says: let the picture's own brightness be that stencil. Bright pixels become white, dark pixels black. The mask is literally a grayscale copy of the photo's luminance." Two payoffs: <b>the edges are perfect</b> (as soft as the light in the scene, no halos, no hand-feathering) and it's <b>self-targeting</b> (the sky is the bright part, so a Lights mask already contains it). Show Figure 1 on the lesson page: invert Lights and you have Darks. <b>Say:</b> "Nothing new to believe. It's two intro ideas fused: selections become masks, and masks are grayscale."</li>
+          <li><b>A family of masks (4m).</b> Show Figure 2: the tonal bar with overlapping Darks, Midtones, Lights, and narrower variants. Then the key move: <b>intersecting</b>. <b>Say:</b> "Load Lights, then intersect it with Lights again. Only what both share survives, so the selection slides further into the extreme tones. That's how you target a blown sky without touching a bright shirt below it." In today's file, the pale cabin plays the bright shirt.</li>
+          <li><b>The four modifiers (3m).</b> Show Figure 3 and write on the board: <b>Ctrl/⌘-click RGB = load</b> · <b>+ Shift = add</b> · <b>+ Alt/⌥ = subtract</b> · <b>+ Shift + Alt/⌥ = intersect</b>. <b>Say:</b> "Click the <em>channel</em> thumbnail in the Channels panel, not the layer thumbnail in Layers. Ctrl/⌘-clicking a layer loads its transparency, which on a photo is everything."</li>
+          <li><b>Step 1 (4m).</b> The landscape is already open from the setup check. <b>Image ▸ Mode ▸ 16 Bits/Channel</b>, then <b>File ▸ Save As</b> <code class="inline">luminosity-working.psd</code>. Read the histogram out loud: highlights piling near the right, shadows near the left. In <b>Channels</b>, <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click the <b>RGB</b> thumbnail. <b>Say:</b> "Marching ants appear around the brighter half. The ants only outline pixels more than half selected; the real selection fades smoothly into the darks."</li>
+          <li><b>Step 2 (7m).</b> With the selection active, add a <b>Curves</b> adjustment layer. Point at the mask: "The selection wrote the mask for us." Pull the curve down to bring the sky back. <b>Say:</b> "Watch the land: the darkening fades out on its own." Then the spill check: if the pale cabin or the far hills darken too, undo the layer, reload Lights, and intersect once or twice (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd>-click RGB) before adding the Curves layer again. Demo one intersect so the room sees the ants shrink toward the sky.</li>
+          <li><b>Step 3 (6m).</b> Reload the RGB luminosity selection, then invert it (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>): the dark valley is selected. Add another <b>Curves</b> layer and lift the shadows. The path, rocks and grass appear out of the black. <b>Say:</b> "One S-curve would brighten the sky while it lifts the land and undo our recovery. Two masked curves move highlights and shadows in opposite directions at once. That's a range only masks can reach."</li>
+          <li><b>Step 4 (5m).</b> Zoom to 100% (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>1</kbd>) along the horizon and the pine edges. <b>Say:</b> "Try painting a mask around those pine needles by hand. Now look: no seam, no halo." If anyone sees a glow, their masks overlap: lower one layer's opacity or re-intersect. Optional: a gentle global Curves on top for overall contrast. <b>File ▸ Save</b>. Toggle both Curves eyeballs for the before/after.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Rescue the Landscape, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on <code class="inline">l01-high-contrast-landscape.jpg</code> (or a learner's high-contrast landscape). Solo variation on <code class="inline">l01-still-life-window-light.jpg</code> or a learner's portrait or still life: load Lights and add a subtle glow by lifting only the brightest highlights; build a Midtones mask from saved Lights and Darks channels and add contrast to only the mids; compare a luminosity-masked sky darken with a hand-painted mask. Start the glow in class; the Midtones mask and the comparison are homework. Details in <code class="inline">labs/module-1/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> 16-bit in the title bar; two Curves layers whose masks look like a grayscale photo (Lights) and its negative (Darks), not solid white; no glow along the horizon or around the pines at 100%.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's five-item checklist: highlights recovered through a Lights (RGB) mask, shadows lifted through an inverted Darks mask, no seam or halo at the horizon at 100%, every edit a non-destructive adjustment layer with a luminosity mask, 16-bit where possible. <code class="inline">luminosity-working.psd</code> saved.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Ctrl/⌘-clicking the layer thumbnail in Layers.</b> That loads the layer's transparency: the whole image, so the mask is solid white. Go to the Channels panel and click the RGB thumbnail.</li>
+          <li><b>Curves added with no active selection.</b> The mask comes out all white. Undo, reload Lights, then add the layer.</li>
+          <li><b>Wrong modifier combination.</b> <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> alone <em>adds</em> (the selection grows); <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd> alone subtracts. Intersect needs all three keys.</li>
+          <li><b>"No pixels are more than 50% selected."</b> After heavy intersecting, Photoshop warns that the selection edges won't be visible. The selection is still there, just faint. Click OK and add the adjustment; <kbd>Alt</kbd>/<kbd>⌥</kbd>-click the mask thumbnail to see it.</li>
+          <li><b>"The ants look hard-edged, so the mask must be."</b> Ants only outline the 50% boundary. <kbd>Alt</kbd>/<kbd>⌥</kbd>-click the mask thumbnail to show the real, soft mask (click again to return).</li>
+          <li><b>Darks reloaded from an already-darkened image.</b> The Channels panel reads what's visible, so after the sky Curves the RGB luminosity has changed a little. For the cleanest Darks, hide the first Curves layer before you reload, then turn it back on. (Saving selections with Select ▸ Save Selection before adjusting avoids this entirely.)</li>
+          <li><b>Banding in the sky.</b> They skipped the 16-bit step. Convert and rebuild the masks.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) A selection built from the image's own brightness, saved as a mask; <b>Q2</b> D) Ctrl/⌘-click the RGB thumbnail in the Channels panel; <b>Q3</b> A) Undo the layer, reload Lights, and intersect once or twice (Ctrl/⌘ + Shift + Alt/⌥-click RGB) before adding the adjustment; <b>Q4</b> C) Reload the RGB luminosity selection, then invert it (Ctrl/⌘ + Shift + I); <b>Q5</b> B) A single curve would brighten the sky while it lifts the land; two masked curves move highlights and shadows in opposite directions at once; <b>Q6</b> D) You're working in 8-bit; convert to 16-bit (Image ▸ Mode ▸ 16 Bits/Channel) before building the masks. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min, finish at home if needed): <em>Where have you fought a hand-painted mask that a luminosity mask would have solved instantly? Name one past edit you would redo with this technique.</em> Many will name their intro sky rescue: that's a perfect answer.</p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> build the Midtones mask now: save Lights and Darks as channels with <b>Select ▸ Save Selection</b>, then <b>Select ▸ All</b> and <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd>-click each saved channel to subtract it. Ask why Lights minus Darks is <em>not</em> midtones (it narrows to the brightest tones, like a second intersect). Then the lesson's "Going further": record an Action that loads Lights, Darks and Midtones as saved channels in one click.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> Steps 1–3 only, no intersecting. One Lights curve down, one Darks curve up is the whole idea. Put the four-modifier line from the board on a sticky note next to their keyboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L02 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L02</span><h3>Channel Masking &amp; Blend-If (Lesson 1.2)</h3><span class="dur">48 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Read the Red, Green &amp; Blue channels as ready-made grayscale masks</li>
+          <li>Turn the highest-contrast channel into a selection (duplicate, push with Levels)</li>
+          <li>Use Blend-If to drop out a layer's lights or darks instantly</li>
+          <li>Pick the right technique for the subject: luminosity, channel, Blend-If, or a blend of all three</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal: mask the unmaskable (lesson slider)</td></tr>
+          <tr><td class="t">4m</td><td>Mental model: three masks you already have</td></tr>
+          <tr><td class="t">4m</td><td>Reading the channels (Figure 2)</td></tr>
+          <tr><td class="t">5m</td><td>Blend-If: masking without a mask; when to use which</td></tr>
+          <tr><td class="t">22m</td><td>Guided build: extract a tree (Steps 1–4: 4 + 8 + 5 + 5)</td></tr>
+          <tr><td class="t">4m</td><td>Now You: start the Blend-If darks drop (finish at home)</td></tr>
+          <tr><td class="t">6m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (3m).</b> Show the L02 slider. <b>Say:</b> "Thousands of twigs. Nobody paints that, and Select Subject chokes on it. But against a bright sky, one channel already separates them almost perfectly. Every twig came along because the mask <em>was</em> the Blue channel."</li>
+          <li><b>Three masks you already have (4m).</b> <b>Say:</b> "Every RGB image is secretly three grayscale images stacked together. Each one is a potential mask. You're not making a mask from scratch; you're shopping among three for the one with the most separation." Walk the lesson's pipeline (Figure 1): find the highest-contrast channel → duplicate it → Levels to near black and white → Ctrl/⌘-click to load → apply as a layer mask. <b>Say:</b> "The whole skill is choosing the channel. The rest is two clicks and a Levels push."</li>
+          <li><b>Reading the channels (4m).</b> Open <code class="inline">l02-bare-tree-sky.jpg</code> and click Red, Green, Blue in the Channels panel while the room watches. <b>Say:</b> "Skies are blue, so in the Blue channel the sky is bright and the tree is dark. In Red, the top of the sky goes nearly as dark as the branches." Mention the lesson's aside: for skin, Blue is where blemishes stand out most. Same habit, different job (Module 3 uses it).</li>
+          <li><b>Blend-If (5m).</b> Double-click a layer's thumbnail or the empty area beside its name (not the name itself, which renames it) to open <b>Layer Style ▸ Blending Options</b>. Point at <b>Blend If</b>: <b>This Layer</b> and <b>Underlying Layer</b>. <b>Say:</b> "Drag This Layer's white slider inward and the layer's brightest pixels vanish; drag the black slider and its darkest pixels drop out. <kbd>Alt</kbd>/<kbd>⌥</kbd>-drag splits a slider for a soft, feathered transition." Then the rule of thumb from "When to use which": <b>Blend-If is instant and non-destructive but tone-global; a channel mask is editable and spatial.</b></li>
+          <li><b>Step 1 (4m).</b> <b>Image ▸ Mode ▸ 16 Bits/Channel</b>, <b>Save As</b> <code class="inline">channel-working.psd</code>. Everyone clicks Red, Green, Blue and picks the channel where the tree is darkest and the sky brightest. Hands up: which one? (Blue.)</li>
+          <li><b>Step 2 (8m).</b> Drag <b>Blue</b> onto the New Channel icon: <b>Blue copy</b> appears. With only the copy highlighted, <b>Image ▸ Adjustments ▸ Levels</b> (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>L</kbd>). <b>Say:</b> "Adjustment layers can't target a channel, so this is the menu command, on a copy we're allowed to wreck." Pull the black and white points inward until the sky is white and the tree black. Zoom into the fine twigs and back off if they start to vanish. <b>Say:</b> "Push until the big areas are solid. The mask only has to be perfect at the edges." Paint any stray gaps with a hard black or white brush directly on the channel (on this file, the dark hedge and field are already black).</li>
+          <li><b>Step 3 (5m).</b> <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click <b>Blue copy</b>. <b>Say:</b> "White loads as the selection, so right now the sky is selected." Invert (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>). Click the <b>RGB</b> channel to bring back full color, go to Layers with the image layer active (click the lock first if it's still the Background), and click <b>Add layer mask</b>. Place <code class="inline">l02-new-sky.jpg</code> (<b>File ▸ Place Embedded</b>) and drag it below the tree layer. Zoom to 100%: every twig is there.</li>
+          <li><b>Step 4 (5m).</b> <b>File ▸ Place Embedded</b> <code class="inline">l02-grunge-texture.jpg</code> on top. Open Blending Options and pull the <b>This Layer</b> white slider left until only the texture's darker parts remain. <kbd>Alt</kbd>/<kbd>⌥</kbd>-drag to split it for a soft blend. <b>Say:</b> "No mask at all, purely by tone." <b>File ▸ Save</b>.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Extract a Tree, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on <code class="inline">l02-bare-tree-sky.jpg</code> (or a learner's tree, power lines, or other intricate subject against plain bright sky), with <code class="inline">l02-new-sky.jpg</code> behind and <code class="inline">l02-grunge-texture.jpg</code> blended in with Blend-If. Solo variation: Blend-If the other direction, dropping a layer's shadows (<code class="inline">l02-fireworks-on-black.jpg</code> over <code class="inline">l02-new-sky.jpg</code> or a learner's night scene); extracting an intricate subject against a <em>busy</em> background; inspecting a portrait's Blue channel (<code class="inline">l03-curly-hair-portrait.jpg</code> works). Start the fireworks in class; the rest is homework. Details in <code class="inline">labs/module-1/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> Levels run on <b>Blue copy</b>, not on Blue or RGB (the photo's color should be untouched); the RGB channel clicked before the mask is added; fine twigs intact over the new sky at 100%.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson checklist: chose the highest-contrast channel by eye, built a black-and-white mask on a duplicate channel with Levels, fine detail survived against a new background, blended a texture with Blend-If and no mask, worked non-destructively in 16-bit. <code class="inline">channel-working.psd</code> saved.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Levels on the real channel or the composite.</b> If the photo suddenly turns yellow or the whole image goes contrasty, the original Blue (or RGB) was highlighted. Undo; click only <b>Blue copy</b>.</li>
+          <li><b>Looking for an adjustment layer.</b> They can't target a channel. Image ▸ Adjustments ▸ Levels on the copy.</li>
+          <li><b>The photo looks gray back in Layers.</b> A single channel is still active. Click <b>RGB</b> in the Channels panel.</li>
+          <li><b>The sky got cut out, not the tree.</b> They forgot to invert after loading. Undo the mask, or select the mask and press <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>I</kbd> to invert it.</li>
+          <li><b>Over-pushed Levels.</b> The finest twigs snapped off (went white). Undo and push less; fix gaps by brush instead.</li>
+          <li><b>Double-clicking the layer name.</b> That renames the layer. Double-click the thumbnail or the empty area beside the name for Blending Options.</li>
+          <li><b>This Layer vs Underlying Layer.</b> Dragging the Underlying Layer slider forces the <em>scene's</em> tones through instead. For today's texture, it's This Layer, white slider.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> A) Each of Red, Green and Blue is a full-resolution grayscale image, and a mask is just a grayscale image; <b>Q2</b> C) Blue; <b>Q3</b> D) The original channel is part of the photo's color; pushing it would damage the image, while the copy is a safe scratch mask; <b>Q4</b> B) You over-pushed: the delicate twigs went white; back off until the big areas are solid and the twigs survive; <b>Q5</b> A) White loads as the selection; invert (Ctrl/⌘ + Shift + I), click RGB, then add the layer mask on the image layer; <b>Q6</b> D) Drag the This Layer white slider left (Alt/⌥-drag to split it for a soft blend). Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min): <em>Channel masking feels like a cheat code the first time it works. What subject have you given up on cutting out before that you would now attempt?</em> Link it to the "one edit you gave up on" from the introductions.</p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the lesson's "Going further": Blend-If lives inside Layer Style, so it travels with copied layer styles and can be combined with a real mask on the same layer. Try a fast sky swap with no channel mask at all: duplicate the original tree layer above the new sky, open Blending Options, set <b>Blend If</b> to <b>Blue</b>, and drag This Layer's white slider left. Compare the twigs with the channel-mask version. Then read the FAQ on why Underlying Layer results change when layers move, and how stamping (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd>) locks the look.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> Steps 1–3 on the practice file only. The practice tree separates cleanly in Blue, so Levels needs only a modest push. Skip Step 4 in class; the recipe card covers it for homework.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L03 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L03</span><h3>Select &amp; Mask Mastery: The Hard Cutout (Lesson 1.3)</h3><span class="dur">49 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Run the full Select &amp; Mask workflow, tuned for hair</li>
+          <li>Rebuild wispy strands with the Refine Edge Brush</li>
+          <li>Rescue what refinement misses with a channel mask (Lesson 1.2)</li>
+          <li>Kill the fringe with Decontaminate Colors and pressure-test the edge</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal: every strand survives (lesson slider)</td></tr>
+          <tr><td class="t">4m</td><td>Mental model: a pipeline, not a tool</td></tr>
+          <tr><td class="t">3m</td><td>The Select &amp; Mask workspace, tuned for hair (Figure 2)</td></tr>
+          <tr><td class="t">32m</td><td>Guided build: the hard cutout (Steps 1–4: 5 + 10 + 8 + 9)</td></tr>
+          <tr><td class="t">2m</td><td>Now You: brief the solo variation (homework)</td></tr>
+          <tr><td class="t">5m</td><td>Self-check, recipe card, journal, Module 1 recap</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (3m).</b> Show the L03 slider and zoom into the curls. <b>Say:</b> "This is the Module 1 deliverable and the true test of everything so far. Flowing, curly hair is the hardest common cutout there is."</li>
+          <li><b>A pipeline, not a tool (4m).</b> <b>Say:</b> "Beginners look for the one button that cuts out hair. There isn't one." Write the four steps on the board and leave them up: <b>1 Rough in</b> (Select Subject: the solid mass, ignore the wisps) → <b>2 Refine</b> (Refine Edge Brush on the hairline) → <b>3 Rescue</b> (a channel mask painted into the layer mask) → <b>4 Decontaminate</b> (the old background's color lets go). <b>Say:</b> "No single step is hard. The skill is the order, and not expecting step one to do step three's job."</li>
+          <li><b>The workspace (3m).</b> Show Figure 2. For hair, three things matter: the <b>Refine Edge Brush</b> on the hairline; <b>Smooth</b> and <b>Feather</b> kept low with <b>Shift Edge</b> nudged slightly negative; <b>Output To: New Layer with Layer Mask</b>. Decontaminate Colors is ticked only on the final pass.</li>
+          <li><b>Step 1 (5m).</b> Open <code class="inline">l03-curly-hair-portrait.jpg</code>, <b>Image ▸ Mode ▸ 16 Bits/Channel</b>, <b>Save As</b> <code class="inline">cutout-working.psd</code>. Duplicate the layer (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>J</kbd>) so the original stays intact beneath, and hide the original now. <b>Select ▸ Subject</b>. Tidy obvious misses with Quick Selection (paint to add, <kbd>Alt</kbd>/<kbd>⌥</kbd> to subtract). <b>Say:</b> "It nails the face and the solid hair and gives up on the wisps. Expected. Don't chase strands yet." (On this illustrated file Select Subject may wobble; the Object Selection tool with a box around the head and shoulders is the fallback.)</li>
+          <li><b>Step 2 (10m).</b> <b>Select ▸ Select and Mask</b> (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Alt</kbd>/<kbd>⌥</kbd> + <kbd>R</kbd>). View: <b>On Layers</b> or the red <b>Overlay</b>. Under <b>Edge Detection</b>, tick <b>Smart Radius</b> and raise <b>Radius</b> a few pixels. <b>Say:</b> "That makes Photoshop search a wider band for strands." Try <b>Refine Hair</b> in the options bar for a first pass. Then the Refine Edge Brush <em>along</em> the curly outline, never across the solid hair. Deliberately drag it across the middle of the hair once so the room sees it go translucent and mushy, then undo. Keep Smooth and Feather low, Shift Edge slightly negative.</li>
+          <li><b>Step 3 (8m).</b> <b>Output To: New Layer with Layer Mask</b>, Decontaminate <b>off</b>, OK. Inspect at 100%: some fine flyaways are still missing. Now Lesson 1.2 returns: in Channels, find the channel with the most hair-vs-background contrast (on this teal backdrop, Blue or Green; Red is the weakest), duplicate it, push it with <b>Image ▸ Adjustments ▸ Levels</b>. <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click it and invert so the hair is selected (the backdrop loads first). Click RGB, then click the new layer's <b>mask thumbnail</b> and paint <b>white</b> with a soft, low-opacity brush along the hairline. <b>Say:</b> "The selection limits the paint to the strands. We're painting lost detail back." <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>D</kbd> to deselect when done.</li>
+          <li><b>Step 4 (9m).</b> With the rescued layer mask selected, reopen <b>Select and Mask</b>, tick <b>Decontaminate Colors</b>, raise <b>Amount</b> until the teal leaves the edge. <b>Say:</b> "Decontamination rewrites edge pixels, so it can only output to a new layer or document." Choose <b>New Layer with Layer Mask</b>: a fresh, decontaminated layer appears and the previous one is hidden. Pressure test: add a saturated <b>Solid Color</b> fill layer (hot magenta or lime) <em>below</em> the cutout. <b>Say:</b> "Any surviving fringe screams against this." Fix, then place <code class="inline">l03-new-background.jpg</code> above the test color (or hide the test layer), and <b>File ▸ Save</b>. <b>Say:</b> "Module 1 deliverable: done."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: The Hard Cutout (Module 1 deliverable)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on <code class="inline">l03-curly-hair-portrait.jpg</code> (or a learner's portrait with loose or curly hair against a reasonably plain background), placed on <code class="inline">l03-new-background.jpg</code> or a learner background. Solo variation (homework): a subject against a busy background (<code class="inline">l03-hair-busy-background.jpg</code>: same sitter, auburn hair, out-of-focus foliage); something non-human and tricky (a glass, a potted fern, a pet); one cutout on a dark and one on a light background. Details in <code class="inline">labs/module-1/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> the original layer hidden (a visible original underneath makes every cutout look perfect); the channel copy loaded and inverted before painting; white painted on the <em>mask</em> thumbnail; the saturated test layer <em>below</em> the cutout.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson checklist: solid mass selected then the hairline refined with the Refine Edge Brush; missing strands rescued via a channel mask painted into the layer mask; edge decontaminated, no fringe against a saturated test background; output as a layer + mask with the original kept as a hidden backup; subject placed convincingly on a new background. <code class="inline">cutout-working.psd</code> saved.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Catch-up:</b> anyone whose cutout collapses with 10 minutes left can place <code class="inline">labs/module-1/instructor/l03-hair-cutout-reference.png</code> to see the target edge and still practice Step 4's pressure test. Hand it out only then.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Original still visible underneath.</b> The cutout looks flawless because the old background shows through the transparent edges. Hide the bottom layer before judging anything.</li>
+          <li><b>Refine Edge Brush across solid hair.</b> Translucent, mushy patches. Undo or paint with the Brush tool in Select and Mask to restore, and stay on the boundary.</li>
+          <li><b>Smooth or Feather cranked up.</b> Smooth erases curls into a helmet; Feather blurs the whole edge. Keep both low.</li>
+          <li><b>Decontaminate ticked on the first pass.</b> It forces a new layer and hides the previous one, and the rescue then works on the wrong layer. Leave it for the final pass.</li>
+          <li><b>Painting with no selection, or on the image thumbnail.</b> White everywhere on the mask brings the teal back; white on the image paints the photo. Check the thumbnail border and the ants.</li>
+          <li><b>Rescue channel not inverted.</b> The backdrop is selected, so painting white brings back background, not strands. Invert before painting.</li>
+          <li><b>Test color layer on top.</b> It covers the subject. The test layer goes <em>below</em> the cutout.</li>
+          <li><b>"Where did my layer go?"</b> Decontaminate's output hid the previous layer. Nothing is lost: show its eyeball.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> C) Rough in, refine, rescue, decontaminate; <b>Q2</b> A) Along the boundary between hair and background, never across the solid hair; <b>Q3</b> B) They make Photoshop search a wider band around the edge for strands; <b>Q4</b> D) It comes last: it rewrites edge pixels and forces a new layer, so you run it on the final, rescued mask; <b>Q5</b> B) Click the layer mask thumbnail and paint white with a soft, low-opacity brush along the hairline; <b>Q6</b> A) Raise the Decontaminate Colors Amount, consider a tiny inward Shift Edge, and test on the darkest background it will sit on. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min, finish at home): <em>Which pipeline step did the heavy lifting on your image, and which did you almost skip but shouldn't have? Noticing that tells you where your cutouts usually go wrong.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> start the busy-background version on <code class="inline">l03-hair-busy-background.jpg</code>: no channel is clean against mixed foliage, so the rescue step has to be combined with hand painting, exactly as the lesson's solo variation predicts. Or the "Going further": Select and Mask has no Smart Object output, but you can output to a Layer Mask and later select that mask and reopen Select and Mask on it to adjust the edge without starting over.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> Steps 1, 2 and 4 on the practice file are enough to hit the three-part standard (fine strands kept, no colored halo on a garish background, a soft edge). Do the channel rescue at home with the recipe card. Pair them with a neighbor for the Select and Mask settings.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Closing the Session</h2><span class="rule"></span></div>
+  <div class="note lab">
+    <div class="t">Module 1 wrap-up (5 min, 2:55–3:00)</div>
+    <p>Two-minute pressure-test gallery: three volunteers toggle their saturated test layer on and off while the room hunts for fringe. Recap the arc: <b>let the image's brightness draw the stencil → let one channel draw it → combine everything into rough in, refine, rescue, decontaminate.</b> Exit ticket (sticky note): "My subject is dark against a bright blue sky. I'd reach first for ___ because ___." Homework from the lessons' "Before the next lesson/module": rescue two more high-contrast scenes with Lights + Darks curves and build a saved Midtones mask; channel-mask two intricate subjects against sky and knock a white-background texture into a scene with Blend-If; do three hard cutouts of increasing difficulty (studio hair, busy-background hair, a glass); save a reusable Action for your Select and Mask output settings; finish all three journal entries. Preview Session 2 (Module 2, Color &amp; Tone, Deep): "You can now select almost anything. Next we make sure the colors you see are the colors everyone else sees: color management, grading with Curves, gradient maps and LUTs, and soft proofing for print." Remind learners the Color Settings dialog they peeked at today is where Session 2 begins.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <span class="bio">© 2026 Ray de la Paz · Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Instructor Kit · Module 1 · Facilitator Guide · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

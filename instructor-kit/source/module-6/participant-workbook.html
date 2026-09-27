@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook · Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Student workbook —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">write in it · bring it to every session</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Photoshop Intermediate Workbook · Module 6</div>
+    <h1>Generative + Automation, Advanced</h1>
+    <p class="sub">Today you add speed and scale to your craft. Generative tools take the tedious pixels of a composite; conditional Actions take the repeated steps; Variables and a CSV take the repeated designs; and a short script shows you where automation goes next. The module deliverable is a folder of personalized graphics rendered from one template.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>16–18</b> (6.1–6.3)</span>
+      <span class="chip"><b>3</b> lessons · Session 6</span>
+      <span class="chip">Name: ____________________</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to use this workbook</div>
+    <p>Each lesson has <b>By the end you can</b>, <b>Key ideas</b>, a <b>Worked example</b> (the lesson's Guided Build), a <b>Your turn</b> checklist with space to write, a <b>Recipe card</b> to keep, a <b>Self-check</b> quiz, and a <b>Journal</b> prompt. Journal after every lesson: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Generative features need four things</div>
+    <p>Generative Expand, Generative Fill, and Harmonize (L16) run in Adobe's cloud. You need <b>Photoshop 2025 or later</b>, <b>an internet connection</b>, to be <b>signed in to your Adobe account</b>, and <b>generative credits</b> (every Generate spends some). If they are not available today, your instructor will show the same workflow with offline tools (Crop with Fill: Content-Aware Fill, the Remove tool, and matching light by hand as in Lesson 4.2). L17 and L18 work completely offline.</p>
+  </div>
+
+  <div class="sec"><h2>Module Progress Tracker</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ <b>L16</b>: I gave a cramped composite room, removed a distraction, grew connective tissue, harmonized the subject, and finished by hand</li>
+    <li>☐ <b>L17</b>: I built a delivery Action with a landscape/portrait conditional, batched a folder hands-off, and made a droplet</li>
+    <li>☐ <b>L18</b>: I bound a template to a CSV and exported one graphic per row (<b>Module 6 deliverable</b>)</li>
+    <li>☐ <b>L18</b>: I read the sample script, changed a value, and ran it on a test folder</li>
+  </ul>
+
+  <!-- L16 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L16</span><h3>Generative for Compositing (6.1)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Frame generative fill as a <b>compositing tool</b>, not a replacement for craft</li>
+          <li>Extend a background with <b>Generative Expand</b> to fit a layout</li>
+          <li>Remove distractions and fill gaps with <b>Generative Fill</b> + a prompt</li>
+          <li>Generate <b>connective elements</b> (shadow ground, foliage, debris) to sell a composite</li>
+          <li>Use <b>Harmonize</b> to match a placed element's light and color to its background</li>
+          <li>Judge, mask, and hand-finish generative output, and respect its <b>limits and licensing</b></li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>A fast, fallible assistant.</b> Like a talented but literal intern: superb at plausible texture (sky, grass, pavement, walls) and removals, unreliable at specifics (hands, text, exact brands, precise counts).</li>
+          <li><b>The loop is never "generate and ship."</b> It is generate → pick the best of three → mask and blend → hand-fix the tells.</li>
+          <li><b>Every result lands on a new generative layer</b>, with variations in the Properties panel. Regenerate as often as you like; each set is kept. Never flatten until the seams are blended.</li>
+          <li><b>Short prompts, small selections.</b> "grass", "clear blue sky", or empty to match. A whole complex scene in one go makes it flail.</li>
+          <li><b>Harmonize</b> (Photoshop 2025 and later) generates versions of a placed element with its light, color, and shadows adjusted to the background. Compare, keep the best, mask back what it shouldn't change.</li>
+          <li><b>It won't fix a weak composite.</b> Mismatched perspective, light, or scale (Module 4) are still yours to fix. Generation fills texture; it doesn't reason about your scene.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 520 110" role="img" aria-label="The generative loop: select the area, type a short or empty prompt, choose from three variations, then mask and finish by hand.">
+            <rect x="8" y="30" width="110" height="50" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="2"/>
+            <text x="63" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">Select</text>
+            <text x="63" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">the area</text>
+            <line x1="120" y1="55" x2="134" y2="55" stroke="#45536a" stroke-width="1.6"/><polygon points="136,55 128,51 128,59" fill="#45536a"/>
+            <rect x="138" y="30" width="110" height="50" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="2"/>
+            <text x="193" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">Prompt</text>
+            <text x="193" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">short / empty</text>
+            <line x1="250" y1="55" x2="264" y2="55" stroke="#45536a" stroke-width="1.6"/><polygon points="266,55 258,51 258,59" fill="#45536a"/>
+            <rect x="268" y="30" width="110" height="50" rx="6" fill="#1473E6"/>
+            <text x="323" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#ffffff">3 variations</text>
+            <text x="323" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#e3efff">pick best</text>
+            <line x1="380" y1="55" x2="394" y2="55" stroke="#45536a" stroke-width="1.6"/><polygon points="396,55 388,51 388,59" fill="#45536a"/>
+            <rect x="398" y="30" width="114" height="50" rx="6" fill="#d7efe9" stroke="#0f766e" stroke-width="1.5"/>
+            <text x="455" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#0f766e">Mask + finish</text>
+            <text x="455" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#0f766e">by hand</text>
+            <text x="260" y="18" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#0f766e">raw material on a non-destructive layer · you finish it</text>
+          </svg>
+          <figcaption>The loop is always generate → choose → refine.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: Harmonize a composite</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Open a cramped or messy composite: yours from Module 4, or the practice parts (<code class="inline">l16-cramped-scene.jpg</code> with <code class="inline">l16-pasted-subject.png</code> placed hard against the right edge, as in <code class="inline">l16-cramped-composite-preview.jpg</code>). Save as <code class="inline">l16-composite-working.psd</code>.</p>
+        <ol class="steps">
+          <li><b>Give it room.</b> Crop tool (<kbd>C</kbd>), options bar <b>Fill: Generative Expand</b>. Drag the canvas edges outward, commit, leave the prompt empty, click <b>Generate</b>. Pick the cleanest variation in the Properties panel. Check the new edges at 100% (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>1</kbd>) for repeats or seams. Tip: hide the pasted subject while you expand, so the model continues the scene, not the person.</li>
+          <li><b>Remove distractions.</b> Lasso a distracting object with a little margin (include its shadow). <b>Generative Fill</b> with an empty prompt. If a variation leaves a smudge, regenerate or clean it with the Healing Brush.</li>
+          <li><b>Grow connective tissue.</b> Select ground beneath the pasted subject and prompt something like <code class="inline">gravel with small shadows</code>, or generate foreground foliage to overlap an edge. Mask each generative layer so it only contributes where you want.</li>
+          <li><b>Harmonize the subject.</b> If it still looks lit by a different photo, select its layer and run <b>Harmonize</b> (contextual task bar or Properties panel). Compare the variations with the original; keep the best; mask back wherever it changed something it shouldn't (an edge, a face, a logo).</li>
+          <li><b>Finish by hand.</b> Matching grain and a touch of sharpening on the generated regions; dodge &amp; burn to marry their light to the scene; one unifying grade over everything (Lesson 4.3).</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: the project checklist</div>
+        <ul class="tick lab">
+          <li>☐ Canvas extended with Generative Expand, edges audited</li>
+          <li>☐ A distraction removed cleanly with Generative Fill</li>
+          <li>☐ Connective element generated and masked in</li>
+          <li>☐ Subject harmonized to the scene (or light matched by hand), with unwanted changes masked out</li>
+          <li>☐ Generated regions grain/sharpen-matched and hand-blended</li>
+          <li>☐ One unifying grade over the whole result</li>
+        </ul>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">My prompt log. Each prompt, the selection it went into, and what happened (keep the ones that worked):</p>
+        <div class="write tall"></div>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">Harmonize: what did it get right, and what did I mask back to the original?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Now You: solo variation (start in class, finish at home)</div>
+        <ul class="tick lab">
+          <li>☐ A phone snapshot turned into a wide banner purely with Generative Expand, every seam fixed by hand until it is undetectable</li>
+          <li>☐ Three increasingly hard distractions removed (a sign, a person, a shadow across the subject; practice file <code class="inline">l16-three-distractions.jpg</code>)</li>
+          <li>☐ The same fill generated five times, and the differences studied</li>
+        </ul>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">Where did the AI succeed, and where did I have to take over?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <ul class="tick">
+          <li><b>Grayed out or missing?</b> Update Photoshop, sign in, check the network and your credits. Harmonize needs a single pixel or Smart Object layer above a background; its location can shift between releases (search Help ▸ Photoshop Help or the Discover panel).</li>
+          <li><b>Softer than the rest?</b> Generated pixels often carry less fine detail than your capture. Match the grain and add a little sharpening.</li>
+          <li><b>Faces, hands, text, logos, product details, repeat patterns</b> drift. Artifacts may show only at 100%: zoom in and audit.</li>
+          <li><b>Licensing.</b> Firefly models are designed to be commercially safe, but current versions can also offer third-party partner models with different terms. For client work, check which model you used and confirm the terms.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Generative Assist</div>
+        <ol class="steps">
+          <li>Generative Expand (Crop out + empty prompt) for room</li>
+          <li>Generative Fill + empty prompt to remove distractions</li>
+          <li>Short prompts, small selections for connective texture</li>
+          <li>Harmonize a placed subject to the scene, then mask back what it shouldn't change</li>
+          <li>Keep each result on its generative layer; mask, don't flatten</li>
+          <li>Grain/sharpen-match, hand-blend, then one unifying grade</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> the model gives you a head start, never the finish line.</p>
+      </div>
+      <div class="note">
+        <div class="t">A note on honesty</div>
+        <p>For journalism or documentary work, generative changes may be off-limits. Disclose edits when integrity matters. It is a tool, like the Healing Brush; the judgment of what to keep, blend, and reject is still yours.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">Which describes the right way to work with generative tools in a composite?</div>
+          <div class="opts"><div class="opt">A) Generate once, flatten, and export while the result is fresh</div><div class="opt">B) Describe the whole finished scene in one detailed prompt</div><div class="opt">C) Select, prompt short or empty, pick the best variation, then mask and finish by hand</div><div class="opt">D) Generate on the Background layer so the new pixels match the original exactly</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">Your composite is framed too tight and needs more room on both sides. What do you do?</div>
+          <div class="opts"><div class="opt">A) Crop tool with Fill: Generative Expand, drag the edges outward, commit, Generate</div><div class="opt">B) Free Transform the background layer wider</div><div class="opt">C) Image ▸ Image Size with a larger width</div><div class="opt">D) Select the whole canvas and prompt "make it wider"</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">A SALE sign on a post casts a shadow across the ground behind your subject. What is the best way to remove it?</div>
+          <div class="opts"><div class="opt">A) Type "remove the sign" as the prompt</div><div class="opt">B) Select the sign tightly along its edges and Generate with an empty prompt</div><div class="opt">C) Paint over it on the Background layer with the Eraser</div><div class="opt">D) Lasso the sign, its post, and its shadow with a little margin, empty prompt, Generate</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">What is Harmonize for?</div>
+          <div class="opts"><div class="opt">A) Removing distractions without a prompt</div><div class="opt">B) Matching a placed element's light, color, and shadows to its background</div><div class="opt">C) Extending the canvas to a new aspect ratio</div><div class="opt">D) Upscaling a low-resolution element to match the background's size</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">A generated patch of sky looks slightly softer and smoother than the rest of the photo. What fixes it?</div>
+          <div class="opts"><div class="opt">A) Regenerate until the sky comes out sharp</div><div class="opt">B) Lower the generative layer's opacity</div><div class="opt">C) Flatten the image so the patch merges</div><div class="opt">D) Add matching grain and a touch of sharpening</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">A client composite used Generative Fill. What should you check before delivering?</div>
+          <div class="opts"><div class="opt">A) Which model produced it (Firefly or a partner model) and its terms for your account and deliverable</div><div class="opt">B) Nothing: anything made in Photoshop is automatically licensed for any use</div><div class="opt">C) Only that the file is under the client's size limit</div><div class="opt">D) That the generative layers have been renamed</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Where does generative fill genuinely save you time, and where does trusting it cost you more time cleaning up than doing it by hand? Draw your own line between the two.</em> Also note: key concepts · what clicked · questions · ideas to try · how you feel.</p>
+        <div class="write"></div>
+      </div>
+      <div class="note lab">
+        <div class="t">Mindset</div>
+        <p>New tools come and go, but the eye you have trained all course is what makes them useful. A weak variation is not a failure; it is one of three drafts. Curating is the real skill.</p>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L17 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L17</span><h3>Advanced Actions &amp; Conditionals (6.2)</h3><span class="dur">50 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Record a clean, reusable <b>Action</b> and re-order or re-record steps</li>
+          <li>Insert <b>stops, menu items, and modal pauses</b> for input</li>
+          <li>Add a <b>Conditional</b> so one Action handles landscape and portrait differently</li>
+          <li><b>Batch</b> an Action across a folder and save out automatically</li>
+          <li>Build a <b>droplet</b>, a drag-and-drop executable for your workflow</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Action</b> = a recorded macro. <b>Conditional</b> = an <em>if</em> inside it. <b>Batch</b> = the Action pointed at a folder. <b>Droplet</b> = that batch saved as an icon you drop files onto.</li>
+          <li><b>Record relative, not absolute.</b> Image Size records fixed dimensions; File ▸ Automate ▸ <b>Fit Image</b> scales the long edge. Set Preferences ▸ Units &amp; Rulers to <b>Percent</b> before recording crops and selections.</li>
+          <li><b>Actions capture what you did, not what you meant.</b> Record on a representative file; test on your weirdest one.</li>
+          <li><b>Insert Conditional</b> tests the document or active layer: Document Is Landscape, Portrait, or Square; Document Mode Is RGB or CMYK; Document Is 16 Bits Per Channel; Document Has Layers; Layer Is Type or Smart Object. <b>No</b> condition for pixel size or a layer's name.</li>
+          <li><b>A true batch asks no questions.</b> Override Action "Save As" Commands, Suppress File Open Options Dialogs, Suppress Color Profile Warnings, Log Errors To File, and dialog toggles off.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 520 150" role="img" aria-label="The Web Delivery Action: a conditional asks if the document is landscape; yes plays Crop Wide, no plays Crop Tall; then Fit Image, Unsharp Mask, place watermark, and Save As run for every file.">
+            <rect x="8" y="50" width="96" height="50" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="2"/>
+            <text x="56" y="72" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">Open file</text>
+            <text x="56" y="88" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">from folder</text>
+            <line x1="106" y1="75" x2="120" y2="75" stroke="#45536a" stroke-width="1.6"/><polygon points="122,75 114,71 114,79" fill="#45536a"/>
+            <rect x="124" y="50" width="104" height="50" rx="6" fill="#1473E6"/>
+            <text x="176" y="72" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#ffffff">If landscape?</text>
+            <text x="176" y="88" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#e3efff">conditional</text>
+            <line x1="230" y1="68" x2="262" y2="30" stroke="#45536a" stroke-width="1.4"/>
+            <line x1="230" y1="82" x2="262" y2="120" stroke="#45536a" stroke-width="1.4"/>
+            <text x="236" y="42" font-family="'JetBrains Mono',monospace" font-size="9" fill="#0f766e">yes</text>
+            <text x="236" y="118" font-family="'JetBrains Mono',monospace" font-size="9" fill="#b45309">else</text>
+            <rect x="264" y="12" width="100" height="36" rx="6" fill="#d7efe9" stroke="#0f766e" stroke-width="1.5"/>
+            <text x="314" y="34" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="600" fill="#0f766e">Crop Wide</text>
+            <rect x="264" y="102" width="100" height="36" rx="6" fill="#d7efe9" stroke="#0f766e" stroke-width="1.5"/>
+            <text x="314" y="124" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="600" fill="#0f766e">Crop Tall</text>
+            <line x1="366" y1="30" x2="398" y2="68" stroke="#45536a" stroke-width="1.4"/>
+            <line x1="366" y1="120" x2="398" y2="82" stroke="#45536a" stroke-width="1.4"/>
+            <rect x="400" y="34" width="112" height="82" rx="6" fill="#f4f6fa" stroke="#d6dee9" stroke-width="1.5"/>
+            <text x="456" y="52" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">Fit Image 2000</text>
+            <text x="456" y="66" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">Unsharp Mask</text>
+            <text x="456" y="80" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">Place watermark</text>
+            <text x="456" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">Flatten Image</text>
+            <text x="456" y="108" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">Save As JPG</text>
+          </svg>
+          <figcaption>Crop first (branching by orientation), then Fit Image, so every output's long edge is 2000 px.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: a Delivery Action</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Use a folder of mixed landscape and portrait <b>copies</b> (practice: <code class="inline">l17-input/</code>), keep the watermark (<code class="inline">l17-watermark.png</code>) outside that folder, and make an empty output folder beside it.</p>
+        <ol class="steps">
+          <li><b>Record the core.</b> Window ▸ Actions ▸ new set <code class="inline">Delivery</code>, new action <code class="inline">Web Delivery</code>, <b>Record</b>. File ▸ Automate ▸ <b>Fit Image</b> at 2000 × 2000 px (it scales the long edge to 2000), <b>Unsharp Mask</b>, <b>Place</b> your watermark PNG, <b>Layer ▸ Flatten Image</b>, <b>Save As</b> JPG. Stop recording.</li>
+          <li><b>Add the branch.</b> Set Preferences ▸ Units &amp; Rulers to <b>Percent</b>, then record two tiny helper actions in the same set: <code class="inline">Crop Wide</code> and <code class="inline">Crop Tall</code>. In Web Delivery, select the first step, then panel menu ▸ <b>Insert Conditional</b>: If Document Is Landscape play Crop Wide, else Crop Tall. The conditional lands <b>below</b> the selected step, so drag it to the top: crop first, then Fit Image, so the final long edge is still 2000 px.</li>
+          <li><b>Batch it.</b> File ▸ Automate ▸ <b>Batch</b>: Action = Web Delivery, Source = your folder, Destination = an output folder, tick <b>Override Action "Save As" Commands</b>, set naming. Run, and watch landscape and portrait each crop correctly.</li>
+          <li><b>Make a droplet.</b> File ▸ Automate ▸ <b>Create Droplet</b>, point it at Web Delivery, save it to your desktop. Drag a folder of new images onto it.</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)">Record Layer ▸ Flatten Image before Save As: while the watermark is its own layer, Save As won't offer JPEG.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: the project checklist</div>
+        <ul class="tick lab">
+          <li>☐ A recorded, relative delivery Action (Fit Image, percent-based crops)</li>
+          <li>☐ A conditional branching landscape vs portrait</li>
+          <li>☐ A batch that runs the folder hands-off with Override Save As</li>
+          <li>☐ Errors logged, no mid-run dialogs</li>
+          <li>☐ A working droplet on the desktop</li>
+        </ul>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">Write the steps your Actions panel shows for Web Delivery, in order:</p>
+        <div class="write tall"></div>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">The practice square file (03) is neither landscape nor portrait. Which branch did it take, and why?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Now You: solo variation (start in class, finish at home)</div>
+        <ul class="tick lab">
+          <li>☐ An Action that outputs three sizes (thumb, web, print) into three subfolders in one run, batched with Destination set to <b>None</b></li>
+          <li>☐ A conditional that only processes layered masters: If Document Has Layers, play the full delivery; else a lighter "already flat" version</li>
+          <li>☐ A droplet a non-Photoshop colleague could use, with a Stop step that explains what to do if something looks wrong</li>
+        </ul>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">Tasks Actions couldn't handle (bring these to L18):</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <ul class="tick">
+          <li><b>Works on one image, breaks in the batch?</b> Almost always an absolute value: a fixed crop, a hard-coded Image Size, or a named layer that doesn't exist in every file. Re-record relative and route odd files with conditionals.</li>
+          <li><b>All files in one folder when you wanted subfolders?</b> Override Action "Save As" Commands sends every save to the Batch destination. Set Destination to <b>None</b> and let the Action's own Save As steps decide.</li>
+          <li><b>Rulers still in Percent?</b> Set them back to Pixels when you finish recording.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Actions vs droplets vs scripts: which one when?</div>
+        <table class="timing">
+          <thead><tr><th>Tool</th><th>Best for</th></tr></thead>
+          <tbody>
+            <tr><td><b>Action</b></td><td>Repeatable steps; with conditionals, repeatable steps on mixed input</td></tr>
+            <tr><td><b>Droplet</b></td><td>Handing that Action to someone else as a drag-and-drop icon (it runs when files are dropped on it; it doesn't watch a folder)</td></tr>
+            <tr><td><b>Script</b></td><td>Loops, math, external data, or decisions Actions can't express (scripts can even call Actions)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Actions &amp; Batch</div>
+        <ol class="steps">
+          <li>Window ▸ Actions → new set + action → Record relative steps (Fit Image; rulers in Percent)</li>
+          <li>Insert Conditional to branch (landscape / portrait / square / mode)</li>
+          <li>Insert stops / modals only where human input is truly needed</li>
+          <li>File ▸ Automate ▸ Batch over a folder, Override Save As, suppress dialogs, log errors</li>
+          <li>Create Droplet for a drag-and-drop reusable</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> if you'll do it twice, record it once.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">Why record File ▸ Automate ▸ Fit Image rather than Image ▸ Image Size in a delivery Action?</div>
+          <div class="opts"><div class="opt">A) Fit Image resamples with better quality</div><div class="opt">B) Fit Image scales the long edge, so it works on landscape and portrait files alike</div><div class="opt">C) Image Size can't be recorded in an Action</div><div class="opt">D) Fit Image also sharpens the result</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">Before recording the "Crop Wide" and "Crop Tall" helper actions, what should you change so the crops replay relative to each image?</div>
+          <div class="opts"><div class="opt">A) Turn on the dialog toggle for the Crop step</div><div class="opt">B) Record the crops on the largest file in the folder</div><div class="opt">C) Set Preferences ▸ Units &amp; Rulers to Percent</div><div class="opt">D) Convert every file to 16 bits per channel</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Which of these can Insert Conditional actually test?</div>
+          <div class="opts"><div class="opt">A) Whether the image is wider than 2000 pixels</div><div class="opt">B) Whether a layer named "logo" exists</div><div class="opt">C) Whether the file name contains "_raw"</div><div class="opt">D) Document Is Portrait</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">You selected the first step of Web Delivery and inserted the conditional. What do you do next?</div>
+          <div class="opts"><div class="opt">A) Drag it to the top of the list so the crop runs before Fit Image</div><div class="opt">B) Nothing; conditionals always run first</div><div class="opt">C) Delete the Fit Image step, which the conditional replaces</div><div class="opt">D) Move it to the end, after Save As</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Which Batch settings make a run of 500 files hands-off?</div>
+          <div class="opts"><div class="opt">A) Destination: None and every dialog toggle turned on</div><div class="opt">B) Errors: Stop For Errors, so you can fix each one</div><div class="opt">C) Override Action "Save As" Commands, both Suppress options, and Log Errors To File</div><div class="opt">D) Source: Opened Files, with all 500 files open</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Your Action saves three sizes into three different subfolders. What should the Batch Destination be?</div>
+          <div class="opts"><div class="opt">A) Folder, with Override Action "Save As" Commands ticked</div><div class="opt">B) None, and let the Action's own Save As steps decide</div><div class="opt">C) Save and Close</div><div class="opt">D) The same folder as the Source</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>List three repetitive tasks in your own workflow. For each, could an Action do it, or do you need a conditional or a script? Sorting them is the start of automating your practice.</em> Also note: key concepts · what clicked · questions · ideas to try · how you feel.</p>
+        <div class="write"></div>
+      </div>
+      <div class="note lab">
+        <div class="t">Mindset</div>
+        <p>An Action that breaks on its first batch is doing you a favor: it points at the one step that was too specific. Re-record that step, test on your weirdest file, and you have started thinking like a studio, not just an editor.</p>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L18 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L18</span><h3>Data-Driven Graphics &amp; Scripting (6.3)</h3><span class="dur">60 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Define <b>Variables</b> that bind layers to data: text, visibility, and pixel replacement</li>
+          <li>Import a <b>Data Set</b> from a CSV and preview each row on the canvas</li>
+          <li><b>Export Data Sets as Files</b> to render one graphic per row</li>
+          <li>Understand where scripting begins and read a simple <b>ExtendScript</b> / JS example</li>
+          <li>Choose between <b>Actions, Variables, and scripts</b> for a given job</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Template + data.</b> The template is your design with certain layers marked as variable; the data is a table where each column maps to a variable and each row is one output.</li>
+          <li><b>Exactly three kinds of variable:</b> Text Replacement (swap the words in a type layer), Pixel Replacement (swap the image in a layer, with fit rules), Visibility (show or hide a layer).</li>
+          <li><b>The variable name binds.</b> Each variable binds to the CSV column whose header matches its name. Names can't contain spaces and must start with a letter, underscore, or colon. Naming the layer the same is a helpful habit, not a requirement.</li>
+          <li><b>The CSV rules:</b> UTF-8 with a header row; Visibility values <code class="inline">true</code>/<code class="inline">false</code> (Photoshop rejects yes/no); Pixel Replacement values as full file paths, or just file names with the images in the same folder as the CSV.</li>
+          <li><b>Export Data Sets as Files</b> renders one PSD per row (for JPG or PNG, run the PSDs through an Action).</li>
+          <li><b>Scripting begins</b> when you need loops, math, renaming by pattern, an API, or decisions based on pixel values. Photoshop runs ExtendScript (<code class="inline">.jsx</code>) and newer UXP scripts (<code class="inline">.psjs</code>) via File ▸ Scripts ▸ Browse.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 520 130" role="img" aria-label="A CSV with the columns name, photo, and sale. Each column drives one variable: name drives Text Replacement on the name layer, photo drives Pixel Replacement on the photo layer, sale drives Visibility on the sale badge layer.">
+            <rect x="8" y="12" width="200" height="106" rx="6" fill="#f4f6fa" stroke="#d6dee9" stroke-width="1.5"/>
+            <text x="20" y="32" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">l18-cards.csv</text>
+            <text x="20" y="54" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="600" fill="#45536a">name,photo,sale</text>
+            <text x="20" y="72" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">Ana,l18-ana.jpg,true</text>
+            <text x="20" y="90" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">Ben,l18-ben.jpg,false</text>
+            <text x="20" y="108" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">…</text>
+            <line x1="212" y1="40" x2="286" y2="28" stroke="#45536a" stroke-width="1.4"/><polygon points="288,28 280,25 281,33" fill="#45536a"/>
+            <line x1="212" y1="64" x2="286" y2="65" stroke="#45536a" stroke-width="1.4"/><polygon points="288,65 280,61 280,69" fill="#45536a"/>
+            <line x1="212" y1="88" x2="286" y2="102" stroke="#45536a" stroke-width="1.4"/><polygon points="288,102 280,97 279,105" fill="#45536a"/>
+            <rect x="290" y="12" width="222" height="32" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.5"/>
+            <text x="401" y="32" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="600" fill="#1473E6">Text → "name" layer</text>
+            <rect x="290" y="49" width="222" height="32" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="1.5"/>
+            <text x="401" y="69" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="600" fill="#1473E6">Pixel → "photo" layer</text>
+            <rect x="290" y="86" width="222" height="32" rx="6" fill="#d7efe9" stroke="#0f766e" stroke-width="1.5"/>
+            <text x="401" y="106" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="600" fill="#0f766e">Visibility → "sale" badge</text>
+          </svg>
+          <figcaption>Each CSV column drives one variable. Bind those three and most personalized-graphics briefs are solved.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: a data-driven batch</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Design a simple card with a name (type layer), a photo (image layer), and a "SALE" badge (a layer to show/hide). Practice parts are in <code class="inline">l18-data/</code>: <code class="inline">l18-card-background.jpg</code>, six photos <code class="inline">l18-ana.jpg</code> … <code class="inline">l18-fay.jpg</code>, <code class="inline">l18-sale-badge.png</code>, and <code class="inline">l18-cards.csv</code>. Save your template in that same folder. The photo layer must be a <b>pixel</b> layer (if you placed it as a Smart Object, Layer ▸ Rasterize ▸ Smart Object).</p>
+        <ol class="steps">
+          <li><b>Name everything.</b> Rename the layers exactly <code class="inline">name</code>, <code class="inline">photo</code>, <code class="inline">sale</code>. You'll give the variables the same names, and the CSV headers must match the variable names.</li>
+          <li><b>Define variables.</b> Image ▸ Variables ▸ Define. On <code class="inline">name</code> tick <b>Text Replacement</b>; on <code class="inline">photo</code> tick <b>Pixel Replacement</b> (set the method: Fit, Fill, As Is, or Conform); on <code class="inline">sale</code> tick <b>Visibility</b>. Name each variable to match its CSV header.</li>
+          <li><b>Import and proof.</b> Image ▸ Variables ▸ Data Sets… ▸ <b>Import</b> your CSV. Tick <b>Use First Column For Data Set Names</b>. With Preview on, step through a few rows and confirm the name, photo, and badge update on canvas. Fix any binding that didn't take (usually a header/variable-name mismatch, yes/no instead of true/false, or a photo path Photoshop can't find).</li>
+          <li><b>Export the batch.</b> File ▸ Export ▸ <b>Data Sets as Files</b>. In File Naming, choose <b>Data Set Name</b>, add any fixed text you like, and export. Photoshop writes one PSD per row. Optional: run them through your L17 delivery Action to flatten to JPG.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: the Module 6 deliverable checklist</div>
+        <ul class="tick lab">
+          <li>☐ Variable names (and layers) matching the CSV headers exactly</li>
+          <li>☐ Text, Pixel, and Visibility variables defined</li>
+          <li>☐ CSV imported as a data set, several rows proofed on canvas</li>
+          <li>☐ Data Sets exported as files with a clear naming pattern</li>
+          <li>☐ (Optional) finished via a delivery Action / droplet</li>
+        </ul>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">My three variables (layer · type · variable name · CSV header):</p>
+        <div class="write"></div>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">Anything that didn't bind the first time, and what fixed it:</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk"><div class="h">Where scripting begins: read it before you write it</div>
+        <p style="font-size:.9rem;margin:.2rem 0">The lesson's example (practice copy: <code class="inline">l18-resize-folder.jsx</code>). Run it with File ▸ Scripts ▸ Browse, on a <b>copy</b> of a test folder: it writes its <code class="inline">web_</code> files into the folder it reads from.</p>
+<pre class="code"><span class="k">// resize-folder.jsx  —  File ▸ Scripts ▸ Browse to run</span>
+var inputFolder  = Folder.selectDialog("Choose a folder of images");
+if (!inputFolder) { throw new Error("No folder chosen."); }
+var files = inputFolder.getFiles(/\.(jpg|jpeg|png)$/i);
+
+for (var i = 0; i &lt; files.length; i++) {
+    var doc = app.open(files[i]);
+    var longEdge = 2000;
+    var scale = longEdge / Math.max(doc.width.value, doc.height.value);
+    doc.resizeImage(doc.width * scale, doc.height * scale);
+
+    var out = new File(inputFolder + "/web_" + doc.name.replace(/\.[^.]+$/, ".jpg"));
+    var opt = new JPEGSaveOptions();
+    opt.quality = 10;
+    doc.saveAs(out, opt, true);
+    doc.close(SaveOptions.DONOTSAVECHANGES);
+}
+alert("Done: " + files.length + " images resized.");</pre>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">In plain English, what does the loop do to each file? Which two numbers would you change first?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk lab"><div class="h">Now You: solo variation (start in class, finish at home)</div>
+        <ul class="tick lab">
+          <li>☐ A second visibility variable (a "VIP" ribbon) and a color swap via a visible/hidden tint layer, from new CSV columns (practice: <code class="inline">l18-cards-vip.csv</code> and <code class="inline">l18-vip-ribbon.png</code>)</li>
+          <li>☐ 20 social cards for a real list (a team roster, an event lineup), and a note of how long the manual version would have taken</li>
+          <li>☐ The sample script with a new long edge and output format, run on a test folder, plus a line that skips files already starting with <code class="inline">web_</code></li>
+        </ul>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">Manual time vs data-driven time for my 20 cards:</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk"><div class="h">Actions, Variables, or a script?</div>
+        <table class="timing">
+          <thead><tr><th>The job</th><th>Reach for</th></tr></thead>
+          <tbody>
+            <tr><td>Same steps on every file (resize, sharpen, watermark, save)</td><td><b>Action</b> + Batch</td></tr>
+            <tr><td>Same steps, but landscape and portrait need different handling</td><td>Action with a <b>Conditional</b></td></tr>
+            <tr><td>Same layout, changing content (names, photos, show/hide)</td><td><b>Variables</b> + Data Sets</td></tr>
+            <tr><td>Loops, math, renaming by pattern, external lookups, per-file logic</td><td><b>Script</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <ul class="tick">
+          <li><b>A stray space or capital letter</b> in a CSV header breaks the binding. Check the CSV in a text editor.</li>
+          <li><b>Pixel Replacement missing?</b> The photo layer is a Smart Object, type, or shape layer. It must be a pixel layer.</li>
+          <li><b>Proof before you export.</b> Step through a few rows on canvas before exporting five hundred.</li>
+          <li><b>Running the script?</b> Use a copy of the folder, and set Units &amp; Rulers back to Pixels if you left them in Percent after L17.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Recipe card: Data-Driven</div>
+        <ol class="steps">
+          <li>Name each variable to match its CSV header exactly (matching layer names is a helpful habit, not a requirement)</li>
+          <li>Image ▸ Variables ▸ Define: Text / Pixel / Visibility</li>
+          <li>Image ▸ Variables ▸ Data Sets… ▸ Import the CSV (first column as names; Visibility = true/false); proof rows on canvas</li>
+          <li>File ▸ Export ▸ Data Sets as Files, named by Data Set Name</li>
+          <li>Reach for scripting when you need loops, math, or logic</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> design the difference as data, and the count stops mattering.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">What are the three kinds of variable in Photoshop's Variables feature?</div>
+          <div class="opts"><div class="opt">A) Text, Color, and Size</div><div class="opt">B) Layer Name, Layer Style, and Opacity</div><div class="opt">C) Text, Smart Object, and Artboard</div><div class="opt">D) Text Replacement, Pixel Replacement, and Visibility</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">What actually binds a variable to a column in the CSV?</div>
+          <div class="opts"><div class="opt">A) The layer's position in the Layers panel</div><div class="opt">B) The variable name matching the CSV column header exactly</div><div class="opt">C) The column's position, left to right</div><div class="opt">D) The layer name, even if the variable is named differently</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">What values should the <code class="inline">sale</code> column use to show or hide the badge?</div>
+          <div class="opts"><div class="opt">A) <code class="inline">true</code> or <code class="inline">false</code></div><div class="opt">B) <code class="inline">yes</code> or <code class="inline">no</code></div><div class="opt">C) <code class="inline">show</code> or <code class="inline">hide</code></div><div class="opt">D) <code class="inline">1</code> or <code class="inline">0</code></div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">You want the <code class="inline">photo</code> column to list just file names like <code class="inline">l18-ana.jpg</code>. What must be true?</div>
+          <div class="opts"><div class="opt">A) The images must be open in Photoshop during the import</div><div class="opt">B) The images must be PSD files</div><div class="opt">C) The images sit in the CSV's folder and the names match exactly (otherwise use full paths)</div><div class="opt">D) The photo layer must be a Smart Object</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">You've proofed the rows. How do you render one file per row, named after each person?</div>
+          <div class="opts"><div class="opt">A) File ▸ Export ▸ Export As, with all layers selected</div><div class="opt">B) File ▸ Automate ▸ Batch with the CSV as the Source</div><div class="opt">C) Step through each row and use File ▸ Save As by hand</div><div class="opt">D) File ▸ Export ▸ Data Sets as Files, naming by Data Set Name</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Which job genuinely needs a script rather than Variables or an Action?</div>
+          <div class="opts"><div class="opt">A) 300 badges with the same layout and different names</div><div class="opt">B) Resize every file in a folder, skipping any whose name already starts with <code class="inline">web_</code></div><div class="opt">C) Showing a SALE badge on some cards and not others</div><div class="opt">D) Cropping landscape and portrait files differently</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>What in your work is really "one design, many values"? Sketch the template and the columns its data set would need. Seeing jobs as template-plus-data is the mindset shift of this module.</em> Also note: key concepts · what clicked · questions · ideas to try · how you feel.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="note lab">
+        <div class="t">Mindset</div>
+        <p>You don't need to be a programmer to adapt a snippet. You just read one and followed it. Start by tweaking values (the 2000, the quality); reading and adapting code is a real, employable skill on its own.</p>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Before Session 7</h2><span class="rule"></span></div>
+  <div class="blk lab"><div class="h">Finish Module 6</div>
+    <ul class="tick lab">
+      <li>☐ My finished, layered L16 composite is saved (generative layers and masks intact)</li>
+      <li>☐ I noted one task where generation saved me time and one where I had to take over</li>
+      <li>☐ Web Delivery batched over a mixed folder with no mid-run dialogs; droplet tested on a fresh set</li>
+      <li>☐ <b>One data-driven batch shipped (10+ outputs) from a single template</b></li>
+      <li>☐ The sample script adapted and run on a test folder</li>
+      <li>☐ Learning Journal entries written for L16, L17, and L18</li>
+    </ul>
+  </div>
+  <div class="note">
+    <div class="t">Coming up: Session 7</div>
+    <p>Module 7, Multi-Shot Techniques: panoramas, HDR, focus stacking, and timeline animation. Bring any overlapping, bracketed, or focus-stack frames you have (practice sets are provided). Session 7 also kicks off your capstone with Lesson 8.1, the brief and the plan, so start thinking about what you want to make.</p>
+  </div>
+
+  <div class="note">
+    <div class="t">You finished Module 6 🎉</div>
+    <p>You added speed and scale to your craft: AI assistance for the tedious parts, recorded and conditional automation, and data-driven production plus a first real taste of scripting. That is the difference between an artist and a one-person studio.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Workbook · Module 6 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

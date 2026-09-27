@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide · Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">contains answers &amp; timing · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Facilitator Guide</div>
+    <h1>Module 7: Multi-Shot Techniques</h1>
+    <p class="sub">How to teach the two lessons of the Going Further tier (panoramas, HDR and focus stacking, then Timeline animation and export) and how to run the capstone kickoff that closes Session 7. The theme of the day is "many frames, one result": three merges that beat the limits of a single frame, then layers turned into motion, then a brief that turns "make something cool" into a project learners can finish.</p>
+    <div class="meta-row">
+      <span class="chip"><b>2</b> lessons + capstone kickoff</span>
+      <span class="chip"><b>Session 7</b> · 3 hrs incl. break</span>
+      <span class="chip">Lessons <b>L19–L20</b> (+ L21 kickoff)</span>
+      <span class="chip">Level <b>Intermediate</b></span>
+      <span class="chip">Tier <b>Going Further</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>How to Use This Guide</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li>Same rhythm as every module: <b>Frame</b> → <b>Demo</b> → <b>Guided build</b> → <b>Solo variation</b> → <b>Check</b>. Demo one step, let the room do it on the practice files, then move on. Each lesson plan gives a timing table, a demo script with <b>Say:</b> lines, the lab, the mistakes to pre-empt, a check for understanding, and differentiation notes.</li>
+    <li>Name every menu path out loud and give both shortcut forms: <kbd>Ctrl</kbd> on Windows is <kbd>⌘</kbd> on Mac, <kbd>Alt</kbd> is <kbd>⌥</kbd>.</li>
+    <li><span style="color:var(--lab);font-weight:600">Teal</span> = hands-on, <span style="color:var(--warn);font-weight:600">amber</span> = watch-outs. In L19 the watch-outs are about <b>source frames</b> (overlap, a moved subject, a skipped focus distance); in L20 they are about <b>which track a layer has</b> and <b>GIF weight</b>.</li>
+    <li>The last 42 minutes run <b>Lesson 8.1 (L21, The Brief &amp; the Plan)</b> as the capstone kickoff. Its full lesson plan (objectives, demo script, mistakes, self-check answers) lives in the <b>Module 8 facilitator guide</b> (<code class="inline">source/module-8/facilitator-guide.html</code>); this guide gives only the kickoff segment and how it hands off to Session 8.</li>
+    <li>Quiz answers below match the workbook's Self-checks; the Answer Key explains each one.</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="t">The #1 risk of Module 7: the merges eat the clock</div>
+    <p>Photomerge, Merge to HDR Pro and Auto-Blend Layers are processor-heavy, and a learner who feeds them a folder of 45-megapixel raw files can lose ten minutes to one progress bar. <b>In class, everyone merges the practice sets</b> (1800 × 1200 px JPEGs, a few seconds each on a normal laptop); their own full-resolution sets are the take-home "Now You." The second risk is the session's shape: two lessons plus the kickoff leave no slack, so run the demos crisply and <b>protect the kickoff</b>. Session 8 is built on learners arriving with a written brief and a plan.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Merge to HDR Pro and the practice bracket</div>
+    <p>HDR Pro reads each frame's exposure from its metadata. The three practice frames carry generated exposure data (f/8, ISO 100, 1/250 s, 1/60 s, 1/15 s, a 2-stop bracket), so the merge normally runs without questions. If a learner's copy has lost its metadata (some cloud-sync tools and messaging apps strip it), Photoshop opens a <b>Manually Set EV</b> dialog. The answer is in <code class="inline">labs/module-7/README.md</code>: choose the shutter-speed option and enter f/8, ISO 100 and the three shutter speeds, darkest frame fastest. Rehearse this once on your own machine so you can talk a learner through it in thirty seconds.</p>
+  </div>
+
+  <div class="sec"><h2>Before Session 7</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ Copy <code class="inline">labs/module-7/practice/</code> to each machine (or a shared drive), keeping its five subfolders (<code class="inline">l19-pano/</code>, <code class="inline">l19-hdr/</code>, <code class="inline">l19-stack/</code>, <code class="inline">l20-anim/</code>, <code class="inline">l20-steam/</code>). Keep <code class="inline">labs/module-7/instructor/</code> for yourself: the pano and focus-stack references and a reference GIF of the target loop. As always, never hand out the course site's licensed <code class="inline">images/</code> folder.</li>
+    <li>☐ Remind learners (in the Session 6 wrap-up or by email) to bring: <b>optionally</b>, one multi-shot set of their own (3 or more overlapping frames of a wide view; a phone bracket of a bright window; or a close object shot 3 or 4 times with focus tapped near, middle and far); a <b>layered design</b> of their own worth animating (the Module 5 campaign master is ideal); and for the kickoff, <b>one or two capstone ideas</b> plus a handful of reference images. Details in <code class="inline">labs/module-7/README.md</code>.</li>
+    <li>☐ Print (or share as a PDF) the <b>L21 pages of the Module 8 participant workbook</b> for the kickoff: learners write their brief and plan on them tonight and bring them back to Session 8.</li>
+    <li>☐ On one room machine, rehearse the three merges on the practice sets and run a <b>Render Video</b> once (File ▸ Export ▸ Render Video). The first render on a machine can be slow to start; better you find that out than the room.</li>
+    <li>☐ Check free disk space: 16-bit HDR results and focus-stack files with four full layers add up quickly. A few gigabytes per learner is plenty.</li>
+    <li>☐ Open <b>lesson_19.html</b>, <b>lesson_20.html</b> and <b>lesson_21.html</b> in browser tabs for the before/after sliders and figures.</li>
+  </ul>
+
+  <div class="sec"><h2>Session 7 Agenda (3 hours)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Clock</th><th>Segment</th><th>Min</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="t">0:00–0:10</td><td>Warm-up: recap Module 6</td><td class="t">10</td><td>Two volunteers show their data-driven output folder from L18. Ask: "Actions, Variables, or a script: which would you reach for to make 50 badges, and why?" Confirm everyone has the practice folders.</td></tr>
+      <tr><td class="t">0:10–1:05</td><td><b>L19 (Lesson 7.1)</b> Panoramas, HDR &amp; Focus Stacking</td><td class="t">55</td><td>Build: merge three ways on the practice sets, then clean the joins. Solo variation starts here, finishes at home.</td></tr>
+      <tr><td class="t">1:05–1:18</td><td>Break</td><td class="t">13</td><td>Leave the L19 checklist on the projector. Early finishers open <code class="inline">l20-anim/</code> and read the L20 "Mental Model" section.</td></tr>
+      <tr><td class="t">1:18–2:08</td><td><b>L20 (Lesson 7.2)</b> Timeline Animation &amp; Export</td><td class="t">50</td><td>Build: a keyframed, seamless 3-second loop exported as a GIF and an MP4 (completes the Module 7 deliverable).</td></tr>
+      <tr><td class="t">2:08–2:50</td><td><b>Capstone kickoff: L21 (Lesson 8.1)</b> The Brief &amp; the Plan</td><td class="t">42</td><td>Brief written, moodboard started, plan drafted. Full lesson plan in the Module 8 guide.</td></tr>
+      <tr><td class="t">2:50–3:00</td><td>Wrap-up &amp; exit ticket</td><td class="t">10</td><td>Recap the module, exit ticket, homework (finish the plan, build the capstone), preview Session 8.</td></tr>
+      <tr><td class="t"><b>Total</b></td><td></td><td class="t"><b>180</b></td><td>Journals for L19 and L20 are three minutes each inside the lessons; the L21 journal prompt goes home.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The lesson pages estimate 55 + 50 minutes for a solo learner, which the room matches once the demos run alongside the builds on small practice files. The pressure comes from the kickoff: L21 is a 45-minute lesson on the site, run here in 42 by starting the moodboard in class and finishing it at home. If you run long, protect two things: the <b>Module 7 deliverable</b> (one clean merge of each kind and a looping GIF and MP4) and the <b>kickoff's written brief</b>. Move to homework, in this order: the "Now You" variations, the MP4 render (it can run at home from the saved .psd), the L19 unifying grade, and the second half of the moodboard.</p>
+
+  <div class="sec"><h2>Module at a Glance</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Lesson</th><th>Topic</th><th>Time</th><th>Learners leave able to…</th></tr></thead>
+    <tbody>
+      <tr><td class="t">L19 (7.1)</td><td>Panoramas, HDR &amp; Focus Stacking</td><td class="t">55m</td><td>Stitch a panorama, merge an exposure bracket, focus-stack a series, and clean every join at 100%</td></tr>
+      <tr><td class="t">L20 (7.2)</td><td>Timeline Animation &amp; Export</td><td class="t">50m</td><td>Keyframe a seamless loop on the Video Timeline and deliver it as a GIF and an MP4</td></tr>
+      <tr><td class="t">L21 (8.1)</td><td>Capstone kickoff: The Brief &amp; the Plan</td><td class="t">42m</td><td>Leave with a one-page brief, a started moodboard, and a staged plan (taught from the Module 8 guide)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The module is one story: <b>many frames into one still → layers into motion → everything you know into a plan.</b> The through-line of L19 is one sentence you will say many times: <b>align first, blend second.</b></p>
+
+  <div class="sec"><h2>Lesson Plans</h2><span class="rule"></span></div>
+
+  <!-- L19 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L19</span><h3>Panoramas, HDR &amp; Focus Stacking (Lesson 7.1)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Shoot overlapping frames and stitch a panorama with <b>Photomerge</b></li>
+          <li>Bracket exposures and combine them with <b>Merge to HDR Pro</b> for wider range</li>
+          <li>Shoot a focus series and focus-stack it with <b>Auto-Align + Auto-Blend</b></li>
+          <li>See the shared engine (auto-align, then blend) behind all three</li>
+          <li>Clean the seams, ghosts, and edges these merges leave behind</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal: beat a single frame (lesson slider)</td></tr>
+          <tr><td class="t">5m</td><td>Mental model: align, then blend · three jobs, one engine</td></tr>
+          <tr><td class="t">4m</td><td>The three front doors: Photomerge, HDR Pro, Load Files into Stack + Auto-Blend</td></tr>
+          <tr><td class="t">10m</td><td>Guided build Step 1: panorama</td></tr>
+          <tr><td class="t">12m</td><td>Guided build Step 2: HDR</td></tr>
+          <tr><td class="t">10m</td><td>Guided build Step 3: focus stack</td></tr>
+          <tr><td class="t">5m</td><td>Step 4: clean the joins (the unifying grade can finish at home)</td></tr>
+          <tr><td class="t">6m</td><td>Self-check, recipe card, journal (Now You goes home)</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (3m).</b> Show the L19 slider: one frame catches a slice, three stitched frames hold the whole vista. <b>Say:</b> "A single frame has three limits: it is only so wide, it only holds so much range from shadow to highlight, and only so much of it is in focus. Today we beat all three with the same trick: shoot several frames and let Photoshop combine them."</li>
+          <li><b>Align, then blend (5m).</b> Draw the pipeline on the board: <b>source frames → Auto-Align → Blend → one image.</b> <b>Say:</b> "Auto-Align finds common detail and warps the frames into registration. Blend then picks, pixel by pixel, the best contribution: the overlap for a pano, the well-exposed tone for HDR, the sharpest region for a stack." Then the three-column table: <b>vary angle → wider field; vary exposure → wider range; vary focus → deeper focus.</b> <b>Say:</b> "Change only the one variable the technique needs. Hold everything else still. That is why a tripod and a 2-second timer pay off, especially for HDR and stacking, where frames must register to the pixel."</li>
+          <li><b>Three front doors (4m).</b> Point at each menu without running it yet: <b>File ▸ Automate ▸ Photomerge</b>; <b>File ▸ Automate ▸ Merge to HDR Pro</b>; <b>File ▸ Scripts ▸ Load Files into Stack</b> followed by <b>Edit ▸ Auto-Align Layers</b> and <b>Edit ▸ Auto-Blend Layers…</b>. Then the warning from the lesson: <b>Say:</b> "Garbage frames in, garbage merge out. Too little overlap and the pano won't stitch; something moves mid-bracket and HDR shows ghosts; skip a focus distance and the stack has a soft band."</li>
+          <li><b>Step 1: panorama (10m).</b> <b>File ▸ Automate ▸ Photomerge</b> → <b>Browse</b> → select the four files in <code class="inline">l19-pano/</code>. Layout <b>Auto</b>; tick <b>Blend Images Together</b> and <b>Content Aware Fill Transparent Areas</b>; OK. While it runs: <b>Say:</b> "These frames overlap by about 35%. The dialog doesn't measure overlap for you; aim for roughly 30% when you shoot." Show the result's layer masks (one per frame): the stitch is just masks, the Module 1 idea again. Crop or accept the filled edges, then zoom to 100% on a seam and heal anything that doubled. Save as <code class="inline">pano-working.psd</code> (suggested name). <b>Say:</b> "The frames were deliberately shot with slightly different brightness and some vignetting. Blend Images Together is what hides that."</li>
+          <li><b>Step 2: HDR (12m).</b> <b>File ▸ Automate ▸ Merge to HDR Pro</b> → <b>Browse</b> → the three files in <code class="inline">l19-hdr/</code>; leave <b>Attempt to Automatically Align Source Images</b> on; OK. In the merge dialog, tick <b>Remove Ghosts</b>. <b>Say:</b> "A bird flew across the window between shots. Toggle Remove Ghosts and watch the three faint birds become one." Set <b>Mode: 16 Bit</b> and choose <b>Local Adaptation</b>; nudge the sliders toward believable: window detail back, room detail visible, no halos around the window frame. <b>Say:</b> "Keep it believable. Want every stop kept for later? Set 32 Bit instead and tone-map afterwards with Camera Raw." OK; save as <code class="inline">hdr-working.psd</code>. If a learner gets the <b>Manually Set EV</b> dialog, walk them through the README values.</li>
+          <li><b>Step 3: focus stack (10m).</b> <b>File ▸ Scripts ▸ Load Files into Stack</b> → Browse → the four files in <code class="inline">l19-stack/</code>; tick <b>Attempt to Automatically Align Source Images</b>; OK. <b>Say:</b> "The frames breathe: the image grows a hair as focus moves, which is what the auto-align fixes." Select all four layers, <b>Edit ▸ Auto-Blend Layers…</b> → <b>Stack Images</b>, tick <b>Seamless Tones and Colors</b> → OK. Show the masks Photoshop painted: white where each frame was sharpest. Zoom to 100% on the ruler and the wall chart's fine print. <b>Say:</b> "If a patch is soft, paint the mask of the frame that had it sharp. Auto-Blend can only choose from the sharp regions you captured." Save as <code class="inline">stack-working.psd</code>.</li>
+          <li><b>Step 4: clean the joins (5m).</b> On each result, 100% zoom: heal a stitch artifact, a ghost remnant, or a soft band on a separate layer. Then the lesson's finish: a <b>Module 4 unifying grade</b> so all three feel like your work. <b>Say:</b> "One careful shoot beats any repair, but every merge still gets a 100% inspection." If time is short, the grade moves to homework; the inspection does not.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Merge Three Ways, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on the three practice sets in <code class="inline">labs/module-7/practice/</code>: <code class="inline">l19-pano/</code> (4 overlapping frames), <code class="inline">l19-hdr/</code> (−2 / 0 / +2 bracket), <code class="inline">l19-stack/</code> (4 frames, near to far). Learners with their own small sets may use them for any one step. Solo variation (at home): a vertical panorama; a subtle HDR and a deliberately overcooked one; a focus stack of a small object compared with a single f/8 frame. Going further: a bracketed panorama (HDR each position, then stitch). Details in <code class="inline">labs/module-7/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> Photomerge ticks set before OK (Blend Images Together, Content Aware Fill Transparent Areas); Remove Ghosts on for the bracket; Mode deliberately chosen (16 Bit to tone-map now, 32 Bit to keep range); all four stack layers selected before Auto-Blend, with Stack Images (not Panorama); learners actually zooming to 100%.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's five-item checklist: a stitched panorama with invisible seams; an HDR merge with recovered highlights and shadows and no ghosts; a focus stack sharp front to back; edges cropped or filled and joins healed at 100%; a consistent grade across all three.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Transparent, ragged edges on the panorama.</b> Content Aware Fill Transparent Areas was unticked. Crop them off, or rerun with the tick. Either is fine; checking the filled edges at 100% is not optional.</li>
+          <li><b>The pano bows or bends.</b> Wide pans on a flat projection curve straight lines. Try <b>Cylindrical</b> or <b>Spherical</b> in Photomerge's Layout list; for their own shoots, keep the horizon centered; <b>Filter ▸ Adaptive Wide Angle</b> straightens afterwards.</li>
+          <li><b>Three ghost birds in the window.</b> Remove Ghosts was off. Re-open the merge and tick it; for their own brackets, the lesson's fix is prevention (shoot when nothing moves).</li>
+          <li><b>HDR result looks radioactive.</b> Every slider pushed to the right. Ask: "Would a viewer believe this room?" Pull Detail and Vibrance back; the overcooked version is a Now You exercise, not the deliverable.</li>
+          <li><b>Auto-Blend grayed out or odd.</b> Only one layer selected, or the layers are still the locked Background. Select all four (click the top one, <kbd>Shift</kbd>-click the bottom) and run it again.</li>
+          <li><b>"Panorama" chosen in Auto-Blend.</b> That is the other Blend Method. Stack Images is the focus-stacking option.</li>
+          <li><b>A soft band across the table.</b> On the practice set this only happens if a frame was left out (try it deliberately: drop frame 2 and watch the band appear). On real shoots: reshoot with smaller focus steps, or mask in a sharper frame by hand.</li>
+          <li><b>Feeding full-resolution raw sets in class.</b> Long progress bars stall the room. Practice files now, own sets at home.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) Photoshop auto-aligns the frames, then blends the best of each; <b>Q2</b> C) The focus distance; <b>Q3</b> D) Content Aware Fill Transparent Areas; <b>Q4</b> A) Tick Remove Ghosts in Merge to HDR Pro; <b>Q5</b> B) 32 Bit, then tone-map later in Camera Raw; <b>Q6</b> D) A focus distance was skipped, so reshoot with smaller steps or mask in a sharper frame. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min, finish at home if needed): <em>Which single-frame limit frustrates you most: width, range, or depth? Plan the shoot that would beat it with a multi-shot merge.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> rerun Photomerge with <b>Cylindrical</b> and <b>Reposition</b> layouts and compare the horizon; rerun HDR at 32 Bit and tone-map in Camera Raw; drop frame 2 from the stack to see the soft band the lesson's FAQ describes. Or start the Going Further: HDR-then-stitch on their own bracketed pan.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> one merge done well beats three done badly. Prioritize Photomerge (the most forgiving), then the focus stack; let them watch the HDR demo and do it at home. Give them the recipe card, and the mantra: align first, blend second.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L20 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L20</span><h3>Timeline Animation &amp; Export (Lesson 7.2)</h3><span class="dur">50 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Choose between <b>Frame Animation</b> and the <b>Video Timeline</b></li>
+          <li>Build a frame loop with tweening</li>
+          <li>Animate layer position, opacity, and style with keyframes (and scale, via Smart Objects)</li>
+          <li>Loop cleanly and shape timing so motion feels natural</li>
+          <li>Export a GIF (Save for Web) or an MP4 (Render Video)</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal: make it move (lesson slider)</td></tr>
+          <tr><td class="t">5m</td><td>Mental model: frames vs keyframes (flip-book vs smooth path)</td></tr>
+          <tr><td class="t">4m</td><td>The Timeline panel tour + the two export doors</td></tr>
+          <tr><td class="t">6m</td><td>Guided build Step 1: start the timeline</td></tr>
+          <tr><td class="t">14m</td><td>Step 2: keyframe the moves</td></tr>
+          <tr><td class="t">8m</td><td>Step 3: loop and shape the timing</td></tr>
+          <tr><td class="t">6m</td><td>Step 4: export both (the MP4 render may finish at home)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal (Now You goes home)</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (3m).</b> Show the L20 slider and, if you like, the reference loop in <code class="inline">labs/module-7/instructor/l20-reference-loop.gif</code>. <b>Say:</b> "Photoshop is an animator hiding in plain sight. Everything that moves in this loop is a layer you already know how to make."</li>
+          <li><b>Frames vs keyframes (5m).</b> Two columns on the board. <b>Frame Animation</b> = the flip-book: discrete frames, each a layer arrangement, each with its own hold time, Tween to fill in-betweens. <b>Video Timeline</b> = the smooth path: each layer gets a track, you set keyframes and Photoshop interpolates. <b>Say:</b> "Short, loopy GIF with exact frames: Frame Animation. Smooth glides and fades, or you plan to export video: the Video Timeline. You can convert between them, but picking the right one first saves rework."</li>
+          <li><b>Panel tour + export doors (4m).</b> <b>Window ▸ Timeline</b>. Point at the single button (<b>Create Video Timeline</b>) and its dropdown arrow (<b>Create Frame Animation</b>). Twirl a layer open: normal layers show <b>Position</b>, <b>Opacity</b>, <b>Style</b>; a Smart Object shows <b>Transform</b> instead of Position. <b>Say:</b> "No scale track on a normal layer, at all. If it's going to grow or rotate, make it a Smart Object first. And there is no ease curve: keyframes are linear, or Hold for a jump." Then the two doors out: <b>File ▸ Export ▸ Save for Web (Legacy)</b> (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> / <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>) for GIF; <b>File ▸ Export ▸ Render Video</b> for MP4.</li>
+          <li><b>Step 1 (6m).</b> <b>File ▸ Scripts ▸ Load Files into Stack</b> → the three files in <code class="inline">l20-anim/</code> (the L19 command, reused). Put the background at the bottom, badge and headline above; save as <code class="inline">loop-working.psd</code> (suggested name). Right-click the badge layer ▸ <b>Convert to Smart Object</b>. <b>Say:</b> "The badge will scale, so it becomes a Smart Object now, not after I find the missing track." Then <b>Create Video Timeline</b>; panel menu ▸ <b>Set Timeline Frame Rate</b> ▸ <b>24 fps</b>; drag the right end of each layer's bar to the 3-second mark, then drag the work-area end handle above the ruler to match.</li>
+          <li><b>Step 2 (14m).</b> Twirl open the badge. Playhead at frame 0; press <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>T</kbd> and scale the badge small, commit, then click the <b>Transform</b> stopwatch. Move the playhead to about 0.6 seconds, scale it back to full size in its spot; <b>Say:</b> "Watch the diamond appear. After the stopwatch is on, any change at a new time drops a keyframe for you." Headline: at about 0.4 seconds click the <b>Opacity</b> stopwatch with Opacity 0% and the <b>Position</b> stopwatch with the headline nudged about 40 px down; at the 1-second mark set 100% and move it up into place. Scrub to show both moves.</li>
+          <li><b>Step 3 (8m).</b> <b>Say:</b> "A loop is seamless when the last frame matches the first." Hold the finished pose until about the 2-second mark, then add keyframes that return each layer to its frame-0 state by the last frame (small badge, headline invisible and low). Then the fake ease: add one extra keyframe just before the end of each move with only a small change left. <b>Say:</b> "Photoshop moves at constant speed. Put most of the move early and a little at the end, and the finish slows down." Press the play button (or <kbd>Space</kbd>) and adjust until it feels natural, not robotic.</li>
+          <li><b>Step 4 (6m).</b> <b>File ▸ Export ▸ Save for Web (Legacy)</b> → <b>GIF</b>, a modest color count, a little dither, <b>Looping Options: Forever</b>; show the file size readout in the preview's corner. <b>Say:</b> "Watch the size. If it balloons past a couple of megabytes, shrink the Image Size in this same dialog, or deliver an MP4." Save as <code class="inline">loop.gif</code>. Then <b>File ▸ Export ▸ Render Video</b> → <b>H.264</b>, a high-quality preset, the frame rate → <b>Render</b> → <code class="inline">loop.mp4</code>. <b>Say:</b> "The lesson says 1080p, which is the 16:9 case. Our practice design is square, so keep the Size at Document Size and the loop stays 1080 × 1080. One animation, two delivery formats."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: A Looping Animation, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on the three pieces in <code class="inline">l20-anim/</code> (or a learner's own simple layered design: a logo, a badge, a headline). Solo variation (start in class if time allows, finish at home): a <b>cinemagraph</b> from the six frames in <code class="inline">l20-steam/</code>: steam loops while the cup stays still, masked so only the steam animates; a pulsing layer-style glow; or the same 3-second loop rebuilt once in Frame Animation and once on the Video Timeline. Details in <code class="inline">labs/module-7/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> the badge converted to a Smart Object <em>before</em> keyframing; stopwatches clicked on the right property (Transform on the badge, Opacity and Position on the headline); the work area trimmed to 3 s so the GIF doesn't carry dead seconds; the last frame matching the first.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's checklist: a video timeline with keyframed Transform (or Position) and Opacity; transformed layers converted to Smart Objects (stay sharp); a seamless loop with natural-feeling timing; a GIF looping Forever and an MP4 exported; the GIF short and reasonably small. With L19, this completes the Module 7 deliverable.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>"There's no scale property."</b> The layer is a normal layer, which only has Position, Opacity and Style. Convert to Smart Object; the Transform track appears.</li>
+          <li><b>Scaled a normal layer anyway, now it's soft.</b> Pixels were resampled. Undo, convert to a Smart Object, redo: it re-renders crisply at every frame.</li>
+          <li><b>Changed a value but no keyframe appeared.</b> The stopwatch was never clicked, so the change applied to the whole clip. Click the stopwatch first, then change values at new times.</li>
+          <li><b>The loop jumps at the wrap-around.</b> The last frame doesn't match frame 0, or the work area runs past the last keyframes. Copy the frame-0 values to the end and trim the work-area handle.</li>
+          <li><b>Robotic, constant-speed motion.</b> Expected: Photoshop keyframes are linear. Add the extra near-the-end keyframe to fake the ease.</li>
+          <li><b>A 15 MB GIF.</b> Too many pixels, colors, or seconds. Shrink Image Size in Save for Web, lower the color count, shorten the loop, or ship the MP4.</li>
+          <li><b>Banded gradients in the GIF.</b> GIF is limited to 256 colors. More colors and a little dither help; for gradient-heavy work, the MP4 is the better deliverable.</li>
+          <li><b>Hunting for Save for Web in Export As.</b> It is File ▸ Export ▸ Save for Web (Legacy), a separate command.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) The Video Timeline; <b>Q2</b> C) Convert the badge to a Smart Object so it gets a Transform track; <b>Q3</b> A) Returning each layer to its frame-0 state by the last frame; <b>Q4</b> D) Add an extra keyframe near the end of each move with only a small change left; <b>Q5</b> B) File ▸ Export ▸ Save for Web (Legacy), GIF, Looping Options: Forever; <b>Q6</b> C) An MP4 made with Render Video (H.264). Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min, finish at home if needed): <em>What is one still design of yours that a few seconds of motion would improve, and which single element should move? Restraint matters in animation too.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the cinemagraph from <code class="inline">l20-steam/</code>: Load Files into Stack, <b>Create Frame Animation</b>, panel menu ▸ <b>Make Frames From Layers</b>, set each frame's delay, and mask the top frames so only the steam area changes. Or animate a <b>Style</b> track (an Outer Glow pulsing on the badge). Going further (from the lesson): assemble a data-driven sequence from Module 6 on the Timeline.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> animate one property on one layer (headline Opacity 0 → 100 → 0) until the stopwatch-then-move rhythm clicks, then add the badge scale. Export only the GIF in class; the MP4 is one menu command at home.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Capstone Kickoff (2:08–2:50)</h2><span class="rule"></span></div>
+  <div class="note">
+    <div class="t">What this segment is, and where its lesson plan lives</div>
+    <p>This 42-minute block runs <b>Lesson 8.1 (L21), The Brief &amp; the Plan</b>, in class, so learners go home with the thinking done and a clear finish line. The <b>full L21 lesson plan</b> (objectives, demo script, mistakes to pre-empt, self-check answers, differentiation) is in the <b>Module 8 facilitator guide</b>, labelled "taught in the Session 7 kickoff, reviewed in Session 8." Teach from that plan; the table below is how it fits into tonight's clock.</p>
+  </div>
+  <table class="timing">
+    <thead><tr><th>Clock</th><th>Kickoff block</th><th>Min</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td class="t">2:08–2:12</td><td>A spec, not a wish</td><td class="t">4</td><td>The L21 slider (vague sticky notes vs a structured brief). <b>Say:</b> "The capstone begins on paper. A brief is the contract with your future self at 2 a.m., wondering if you're done."</td></tr>
+      <tr><td class="t">2:12–2:16</td><td>Anatomy of a brief</td><td class="t">4</td><td>The six parts: objective · audience · deliverables + specs · constraints · success criteria · references. The four project types from "Now You": key art poster, product campaign, editorial portrait, your own.</td></tr>
+      <tr><td class="t">2:16–2:30</td><td>Step 1: write the brief</td><td class="t">14</td><td>Learners fill the six parts on the Module 8 workbook's L21 page. Circulate and pin adjectives: "What would 'bold' look like? Which reference shows it?"</td></tr>
+      <tr><td class="t">2:30–2:40</td><td>Step 2: start the moodboard</td><td class="t">10</td><td>Collect the first 3 or 4 of the 6–12 references and annotate each with the one thing it contributes. The rest is homework.</td></tr>
+      <tr><td class="t">2:40–2:48</td><td>Step 3: draft the plan</td><td class="t">8</td><td>Stages mapped to module skills, assets to source or shoot, two or three milestones, stretch goals marked optional.</td></tr>
+      <tr><td class="t">2:48–2:50</td><td>Pair swap</td><td class="t">2</td><td>Partners read each other's success criteria aloud. "Could you grade my project with this list?"</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The site estimates 45 minutes for L21 (15 + 15 + 10 for the three steps). Tonight's 42 minutes trims the moodboard to a start; finishing it is the first homework item. <b>Circulate for</b> the commonest failure the lesson names: <b>over-scoping</b>. A campaign of twelve deliverables built in a week of evenings is a warning sign; ask "Which one piece would you still be proud of if everything else got cut?" and make the rest stretch goals. Learners who want to fold tonight's techniques into the capstone (a stitched backdrop, an HDR interior, a short motion version) should plan them as stretch goals, not requirements.</p>
+
+  <div class="sec"><h2>Closing the Session</h2><span class="rule"></span></div>
+  <div class="note lab">
+    <div class="t">Module 7 wrap-up + capstone homework (10 min, 2:50–3:00)</div>
+    <p>Recap the arc: <b>many frames into one still (align first, blend second) → layers into motion (keyframe the start and end, let Photoshop travel the middle) → everything you know into a brief and a plan.</b> Exit ticket (on a sticky note): "Panorama, HDR, focus stack: which variable changes in each?" (Angle, exposure, focus distance.)</p>
+    <p><b>Homework, in two parts.</b> <b>1. Finish the plan</b> (first evening): complete the one-page brief and have someone else read the success criteria; finish the annotated moodboard (6–12 references); finalize the staged plan with milestones; gather source assets and confirm the license on anything they didn't shoot; write the L21 journal entry (the one-sentence objective). <b>2. Build it</b> (before Session 8): work through Lesson 8.2, <b>Studio Session: Build It</b>, in passes (block-in, refine, polish) with named groups and versioned saves. Say it plainly: <b>"Session 8 opens with a plan review in pairs and then a studio block for finishing, so arrive with the piece well underway, and with your brief, moodboard, and plan in hand."</b></p>
+    <p>Also from the lessons' "Before the Next Module": produce one multi-shot still of their own (pano, HDR, or stack) and one short animation exported as a GIF and an MP4, and write the L19 and L20 journal entries. Preview Session 8 (Module 8): "No new tools. You review plans in pairs, build in the studio, then present your capstone with a case study and give each other real critique."</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Instructor Kit · Module 7 · Facilitator Guide · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

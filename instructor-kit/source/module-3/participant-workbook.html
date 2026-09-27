@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook: Module 3</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Student workbook —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">write in it · bring it to every session</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Photoshop Intermediate Workbook · Module 3</div>
+    <h1>High-End Retouching</h1>
+    <p class="sub">The professional portrait pipeline, on one face: even the skin with frequency separation while keeping every pore, sculpt the face back into three dimensions with dodge and burn, and finish the eyes, teeth, and hair so gently that a stranger calls it "a great photo," not "a great retouch." The deliverable is a magazine-quality portrait that still looks exactly like the person.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>L07–L09</b> (3.1–3.3)</span>
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip">Session <b>3</b> · 3 hrs</span>
+      <span class="chip">Name: ____________________</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to use this workbook</div>
+    <p>Each lesson has goals, <b>Key Ideas</b>, the <b>Guided Build</b> steps, <b>Your Turn</b> exercises, a six-question <b>Self-Check</b>, the lesson's <b>Journal</b> prompt, and <b>Notes</b>. Work on a self-portrait, a portrait of someone who agreed to be edited <em>and</em> shown in class, or the practice portraits (<code class="inline">labs/module-3/practice/</code>). When we critique, we talk about the <em>edit</em>, never about anyone's looks.</p>
+  </div>
+
+  <div class="sec"><h2>Module Progress Tracker</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ <b>L07 (3.1)</b>: I built a correct Low/High separation for my file's bit depth, evened the tone, healed the blemishes, and saved <code class="inline">skin-retouched.psd</code> with real pores at 100%</li>
+    <li>☐ <b>L08 (3.2)</b>: I sculpted the face on a 50% gray Soft Light layer, checked it in black and white, and saved <code class="inline">portrait-sculpted.psd</code></li>
+    <li>☐ <b>L09 (3.3)</b>: I finished the eyes, teeth, and hair through masks and passed the flip-and-mirror test (Module 3 deliverable)</li>
+  </ul>
+
+  <!-- L07 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L07</span><h3>Skin &amp; Frequency Separation (3.1)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Explain what frequency separation splits an image into and why it matters</li>
+          <li>Build a correct low-frequency (tone/color) and high-frequency (texture) pair</li>
+          <li>Even out blotchy skin on the low layer without smearing pores</li>
+          <li>Remove a blemish on the high layer without leaving a soft patch</li>
+          <li>Know when frequency separation is the wrong tool</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li>Skin is two things layered together. <b>Low frequency</b>: slow, gradual changes (cheek to shadow, redness, an uneven tan): <b>tone and color</b>. <b>High frequency</b>: fast, tiny changes (pores, fine hairs, grain): <b>texture</b>.</li>
+          <li>A blur or a soft brush destroys both at once: melted plastic. Frequency separation puts them on two layers so each edit never spills into the other.</li>
+          <li><b>Low</b> = a copy blurred until the pores vanish but the features stay (often 4–8 px). <b>High</b> = Apply Image from Low, set to <b>Linear Light</b>. Together they look identical to the original.</li>
+          <li><b>Apply Image depends on bit depth.</b> 8-bit: Blending <b>Subtract</b>, Scale <b>2</b>, Offset <b>128</b>. 16-bit (the course's recommendation): Blending <b>Add</b>, <b>Invert</b> ticked, Scale <b>2</b>, Offset <b>0</b>. There is no second radius to enter; Apply Image subtracts Low itself.</li>
+          <li><b>The radius follows pore size in pixels.</b> A close beauty shot has bigger pores in the frame, so it needs a larger radius (and more restraint) than a candid at arm's length.</li>
+          <li>Group the pair and lower the group to about <b>70–85%</b>. A little of the original showing through keeps it human.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 480 210" role="img" aria-label="Frequency separation stack: High Frequency in Linear Light on top holds texture only; Low Frequency in Normal holds blurred tone and color; the Background is an untouched safety copy.">
+            <rect x="30" y="12" width="420" height="56" rx="7" fill="#f4f6fa" stroke="#1473E6" stroke-width="2"/>
+            <rect x="42" y="22" width="48" height="36" rx="3" fill="#8a8a8a"/>
+            <circle cx="54" cy="32" r="1.6" fill="#b0b0b0"/><circle cx="70" cy="44" r="1.6" fill="#6a6a6a"/><circle cx="80" cy="30" r="1.6" fill="#a8a8a8"/><circle cx="62" cy="50" r="1.6" fill="#707070"/><circle cx="84" cy="50" r="1.4" fill="#6a6a6a"/>
+            <text x="104" y="37" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#16202e">High · texture only</text>
+            <text x="104" y="55" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#1473E6">Linear Light · heal blemishes here</text>
+            <rect x="30" y="80" width="420" height="56" rx="7" fill="#ffffff" stroke="#bcc7d6" stroke-width="1.5"/>
+            <rect x="42" y="90" width="48" height="36" rx="3" fill="#e2b59a"/>
+            <ellipse cx="58" cy="104" rx="10" ry="7" fill="#dc9a86"/>
+            <text x="104" y="105" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#16202e">Low · tone &amp; color</text>
+            <text x="104" y="123" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#45536a">Normal · Gaussian Blur · even tone here</text>
+            <rect x="30" y="148" width="420" height="46" rx="7" fill="#ffffff" stroke="#d6dee9" stroke-width="1.5"/>
+            <text x="50" y="176" font-family="'JetBrains Mono',monospace" font-size="11" fill="#6f7c8e">Background · untouched safety copy 🔒</text>
+          </svg>
+          <figcaption>Group Low + High and lower the group's opacity to taste. Each edit uses Sample: Current Layer.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Guided build: retouch the skin</div>
+        <ol class="steps">
+          <li>Open your portrait and do your global corrections first (Module 2). Check the bit depth in the title bar or <b>Image ▸ Mode</b>.</li>
+          <li><b>Make the layers (10 min).</b> Duplicate the layer twice (<kbd>Ctrl/⌘ + J</kbd>). Lower copy = <code class="inline">Low</code>, upper = <code class="inline">High</code>. Hide High. On Low: <b>Filter ▸ Blur ▸ Gaussian Blur</b> until the pores vanish but the features stay. Note the radius.</li>
+          <li>Show and select High: <b>Image ▸ Apply Image</b>, Layer <b>Low</b>, Channel <b>RGB</b>. 16-bit: <b>Add</b>, <b>Invert</b> ✓, Scale <b>2</b>, Offset <b>0</b>. 8-bit: <b>Subtract</b>, Scale <b>2</b>, Offset <b>128</b>. Blend mode → <b>Linear Light</b>. ✅ Checkpoint: it looks normal again.</li>
+          <li><b>Even the tone on Low (12 min).</b> Big, soft Healing Brush (<b>Sample: Current Layer</b>) or a low-opacity Mixer Brush (Sample All Layers off). Push blotchy color toward its neighbors: redness by the nose, a harsh tan line, a muddy shadow.</li>
+          <li><b>Remove blemishes on High (10 min).</b> Healing Brush or Clone Stamp, <b>Sample: Current Layer</b>. Sample clean texture near a blemish and heal over it.</li>
+          <li><b>Dial it back (5 min).</b> Group both layers (<kbd>Ctrl/⌘ + G</kbd>), lower the group to 70–85%. Zoom to 100%: real pores everywhere? Save as <code class="inline">skin-retouched.psd</code> with layers. Lesson 3.2 opens this file.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: Which layer fixes it?</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Survey your portrait (or <code class="inline">l07-portrait-retouch.jpg</code>) at 100% <em>before</em> touching a tool. Sort every problem you see into the layer that fixes it. Anything that is part of the person (freckles, a mole, laugh lines) goes in neither column: it stays.</p>
+        <div class="grid2">
+          <div><p style="font-size:.85rem;font-weight:600;color:var(--lab);margin:.2rem 0">Low: tone &amp; color problems</p><div class="write tall"></div></div>
+          <div><p style="font-size:.85rem;font-weight:600;color:var(--accent);margin:.2rem 0">High: texture problems</p><div class="write tall"></div></div>
+        </div>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: The radius follows the pores (Now You)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">On each file, raise the Gaussian Blur on Low until the pores just vanish. Record the radius and one sentence on how much restraint that face needs.</p>
+        <table class="timing">
+          <tbody>
+            <tr><td>Main portrait (<code class="inline">l07-portrait-retouch.jpg</code> or mine)</td><td>______ px</td><td>______________________________</td></tr>
+            <tr><td>Close beauty shot (<code class="inline">l07-beauty-closeup.jpg</code> or mine)</td><td>______ px</td><td>______________________________</td></tr>
+            <tr><td>Candid at arm's length (<code class="inline">l07-candid-distance.jpg</code> or mine)</td><td>______ px</td><td>______________________________</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">At home: over-smooth one face on purpose, then rescue it with group opacity. Then try the same fix with a plain soft brush and no separation. What does the comparison tell you?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Stack doesn't match the original?</b> Check the bit depth: the 8-bit recipe on a 16-bit file fails. <b>High shows eyes and lips?</b> The radius was too large; rebuild smaller. <b>High almost blank?</b> Too small; the pores stayed on Low. <b>Color smear after a heal on High?</b> The Sample setting wasn't Current Layer.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">In frequency separation, what does the <b>low</b>-frequency layer hold?</div>
+          <div class="opts"><div class="opt">A) Pores, fine hairs, and the grain of the skin</div><div class="opt">B) Tone and color: the gradual shifts, patches of redness, and shading</div><div class="opt">C) Only the edges of the eyes, nose, and lips</div><div class="opt">D) A neutral gray map of the texture</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">How far should you raise the Gaussian Blur on the Low layer?</div>
+          <div class="opts"><div class="opt">A) Until the eyes and lips are soft too, so nothing sharp is left</div><div class="opt">B) Always 20 px, whatever the photo</div><div class="opt">C) Until the whole layer turns flat gray</div><div class="opt">D) Just until the pores vanish but the features stay, and note the radius</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Your file is <b>16 Bits/Channel</b>. Which Apply Image settings build the High layer from Low?</div>
+          <div class="opts"><div class="opt">A) Blending Add, Invert ticked, Scale 2, Offset 0</div><div class="opt">B) Blending Subtract, Scale 2, Offset 128</div><div class="opt">C) Blending Add, Scale 1, Offset 128</div><div class="opt">D) Blending Subtract, Invert ticked, Scale 1, Offset 0</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">You want to calm the redness around the nose without moving any pores. Where and how?</div>
+          <div class="opts"><div class="opt">A) On High, with the Healing Brush set to Sample: All Layers</div><div class="opt">B) On the Background, with a soft Brush at 100% opacity</div><div class="opt">C) On Low, with a big soft Healing Brush (Sample: Current Layer) or a low-opacity Mixer Brush</div><div class="opt">D) On High, with a small Gaussian Blur over the nose</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Your High layer shows the eyes, lips, and the shape of the face, not just fine texture. What happened?</div>
+          <div class="opts"><div class="opt">A) The blur radius on Low was too large, so real features moved into the texture layer</div><div class="opt">B) The blur radius on Low was too small</div><div class="opt">C) High's blend mode is Linear Light</div><div class="opt">D) The file is 8-bit</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">You retouch a close beauty shot and a candid taken at arm's length. Which usually needs the larger blur radius?</div>
+          <div class="opts"><div class="opt">A) The candid, because the face is smaller</div><div class="opt">B) Neither: the radius is always the same for skin</div><div class="opt">C) Whichever file has the higher bit depth</div><div class="opt">D) The close beauty shot, because its pores are bigger in pixels</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Look at a magazine cover and a phone-beauty-filter selfie. Both smooth skin; describe, in frequency terms, why one reads as expensive and the other as fake.</em> Also note: key concepts · what clicked · questions · ideas to try · how you feel about your progress.</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L08 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L08</span><h3>Dodge &amp; Burn Sculpting (3.2)</h3><span class="dur">50 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Explain why dodge and burn adds form that smoothing can't</li>
+          <li>Build a non-destructive 50% gray Soft Light dodge and burn layer</li>
+          <li>Work at low flow to build light gradually instead of streaking it on</li>
+          <li>Sculpt the planes of a face: cheekbones, jaw, nose bridge, brow</li>
+          <li>Check your work in black and white to judge form without color</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li>A camera flattens a face; our brains read depth from where light falls. <b>Dodging</b> lightens and pulls a plane toward the viewer. <b>Burning</b> darkens and pushes it back.</li>
+          <li><b>Low and slow.</b> Brush over a plane many times at Flow 5–10%. Streaky dodge and burn is just impatient dodge and burn.</li>
+          <li>Paint on a <b>50% gray layer in Soft Light</b>: gray is invisible, lighter than gray dodges, darker burns. Every stroke stays adjustable, reversible, and maskable. The Dodge and Burn tools edit pixels directly and are hard to undo.</li>
+          <li><b>Follow the light that's already there.</b> You amplify it; you don't invent a new light source.</li>
+          <li>Color hides uneven sculpting: check form under a temporary <b>Black &amp; White</b> adjustment layer. Finish by lowering the gray layer's opacity until the effect is <b>felt, not seen</b>.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 360 250" role="img" aria-label="The face map: dodge the forehead center, brow bone, nose bridge and tip, and cheekbone tops; burn the eye sockets, sides of the nose, under the cheekbones, and under the jaw.">
+            <defs><clipPath id="faceclip3"><ellipse cx="170" cy="120" rx="92" ry="115"/></clipPath></defs>
+            <ellipse cx="170" cy="120" rx="92" ry="115" fill="#f1d6c4" stroke="#bcc7d6" stroke-width="1.5"/>
+            <g fill="#0f766e" opacity=".25" clip-path="url(#faceclip3)">
+              <ellipse cx="142" cy="96" rx="14" ry="12"/><ellipse cx="198" cy="96" rx="14" ry="12"/>
+              <ellipse cx="160" cy="130" rx="5" ry="22"/><ellipse cx="180" cy="130" rx="5" ry="22"/>
+              <ellipse cx="112" cy="162" rx="22" ry="10"/><ellipse cx="228" cy="162" rx="22" ry="10"/>
+              <ellipse cx="170" cy="234" rx="72" ry="16"/>
+            </g>
+            <g fill="#ffffff" stroke="#1473E6" stroke-width="1.5" stroke-dasharray="3 3">
+              <ellipse cx="170" cy="42" rx="32" ry="15"/>
+              <ellipse cx="140" cy="78" rx="18" ry="5"/><ellipse cx="200" cy="78" rx="18" ry="5"/>
+              <rect x="164" y="98" width="12" height="58" rx="6"/>
+              <ellipse cx="118" cy="138" rx="20" ry="8"/><ellipse cx="222" cy="138" rx="20" ry="8"/>
+            </g>
+            <text x="276" y="46" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#1473E6">dodge</text>
+            <text x="276" y="60" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#1473E6">(white)</text>
+            <text x="276" y="186" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#0f766e">burn</text>
+            <text x="276" y="200" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#0f766e">(black)</text>
+          </svg>
+          <figcaption>Dashed white = lift what should catch light. Shaded = deepen what should recede. Follow the bones.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Guided build: sculpt the face</div>
+        <ol class="steps">
+          <li>Open <code class="inline">skin-retouched.psd</code> from L07 and select the top of the stack so the new layer lands above the retouch (above the L07 group, not inside it).</li>
+          <li><b>Add the gray layer (3 min).</b> <b>Layer ▸ New ▸ Layer</b>, Mode <b>Soft Light</b>, tick <b>Fill with Soft-Light-neutral color (50% gray)</b>. Soft round brush, <b>Hardness 0</b>, <b>Flow 5–10%</b>, <b>Opacity 100%</b>. White = dodge, black = burn (<kbd>X</kbd> swaps).</li>
+          <li><b>Burn the recesses (12 min).</b> Black: eye sockets, sides of the nose, under the cheekbones, under the jaw. Many light passes.</li>
+          <li><b>Dodge the highlights (12 min).</b> White: tops of the cheekbones, bridge and tip of the nose, center of the forehead, brow bone. Amplify the existing light.</li>
+          <li><b>Judge and temper (6 min).</b> Toggle a temporary Black &amp; White adjustment layer on top, fix lumps and streaks, turn it off. Lower the gray layer's opacity until the sculpting is felt, not seen. Delete the B&amp;W layer and save as <code class="inline">portrait-sculpted.psd</code>. Lesson 3.3 finishes this file.</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)">Want to see only your light? <kbd>Alt</kbd>/<kbd>⌥</kbd>-click the gray layer's eye to show it alone, then again to return.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: Read the light first</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Before you paint: where does the light in your portrait come from? Which side of the face is brighter? Then plan your map.</p>
+        <table class="timing">
+          <tbody>
+            <tr><td>Light comes from…</td><td>______________________________</td></tr>
+            <tr><td>Three planes I will dodge (most important first)</td><td>______________________________</td></tr>
+            <tr><td>Three planes I will burn</td><td>______________________________</td></tr>
+            <tr><td>What the Black &amp; White check showed me</td><td>______________________________</td></tr>
+            <tr><td>Final gray-layer opacity</td><td>______ %</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: Same face, three moods (Now You)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Sculpt one flatly lit portrait three ways, light only. Note where the dodge and burn moved for each mood. (Or sculpt <code class="inline">l08-apple-flat.jpg</code>, a bag, or a car panel instead: same principle.)</p>
+        <div class="grid2">
+          <div><p style="font-size:.85rem;font-weight:600;color:var(--lab);margin:.2rem 0">Soft beauty / gentle top light</p><div class="write"></div></div>
+          <div><p style="font-size:.85rem;font-weight:600;color:var(--accent);margin:.2rem 0">Dramatic side light</p><div class="write"></div></div>
+        </div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Solid gray over the photo?</b> The mode is Normal; set Soft Light. <b>Streaks?</b> Flow too high or the brush is hard. <b>Paint on the face?</b> The photo layer was selected. <b>Everyone can see where you dodged?</b> It's too strong: lower the layer's opacity.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">On a 50% gray layer set to Soft Light, what does painting with <b>black</b> do?</div>
+          <div class="opts"><div class="opt">A) Lightens that area and pulls it toward the viewer</div><div class="opt">B) Nothing, because black is invisible in Soft Light</div><div class="opt">C) Darkens (burns) that area and pushes that plane back</div><div class="opt">D) Paints solid black over the face</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">Which brush setup matches the lesson?</div>
+          <div class="opts"><div class="opt">A) Soft round, Hardness 0, Flow 5–10%, Opacity 100%</div><div class="opt">B) Hard round, Hardness 100, Flow 100%, Opacity 100%</div><div class="opt">C) Hard round, Flow 100%, Opacity 10%</div><div class="opt">D) The Dodge tool at Exposure 100%</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">According to the lesson's face map, which planes do you <b>burn</b>?</div>
+          <div class="opts"><div class="opt">A) The tops of the cheekbones and the bridge of the nose</div><div class="opt">B) The center of the forehead and the brow bone</div><div class="opt">C) The tip of the nose and the catch-lights</div><div class="opt">D) The eye sockets, the sides of the nose, under the cheekbones, and under the jaw</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">Why add a temporary Black &amp; White adjustment layer while you work?</div>
+          <div class="opts"><div class="opt">A) The final portrait must be delivered in black and white</div><div class="opt">B) Color hides uneven sculpting; without it, lumps and streaks in the light become obvious</div><div class="opt">C) Soft Light only works on grayscale images</div><div class="opt">D) It makes the 50% gray layer visible so you can paint on it</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">You finish sculpting and a friend can point to exactly where you dodged. What's the lesson's fix?</div>
+          <div class="opts"><div class="opt">A) Duplicate the gray layer to even it out</div><div class="opt">B) Switch the gray layer to Normal mode</div><div class="opt">C) Lower the gray layer's opacity until the sculpting is felt but not seen</div><div class="opt">D) Paint more white on the opposite side to balance it</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">For client work you might revise, why does the gray layer beat the Dodge and Burn tools?</div>
+          <div class="opts"><div class="opt">A) It's non-destructive and maskable, and you can dial the whole effect up or down afterward</div><div class="opt">B) The Dodge and Burn tools only work on 16-bit files</div><div class="opt">C) The gray layer is faster because it needs only one stroke</div><div class="opt">D) The tools can't lighten, only darken</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Study a portrait you admire and, without touching the file, describe where its retoucher likely dodged and where they burned. Training your eye to see the light is half the skill.</em> Also note: key concepts · what clicked · questions · ideas to try · how you feel about your progress.</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L09 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L09</span><h3>Eyes, Teeth &amp; Hair: Natural Finish (3.3)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Brighten and sharpen eyes with a masked local edit</li>
+          <li>Whiten teeth by removing yellow first, then brightening, not the reverse</li>
+          <li>Tame flyaway hair and fill gaps without a helmet-hair look</li>
+          <li>Apply every finish through a mask so nothing bleeds where it shouldn't</li>
+          <li>Judge the "natural line": the point where more becomes worse</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>The last five percent</b> (brighter eyes, cleaner teeth, tamed hair) is what people actually notice. Restrained, it lifts a portrait; overdone, it screams "edited."</li>
+          <li>Every finish has one shape: <b>make an adjustment, hide it behind a black mask, paint it back only where it belongs.</b> Nothing global, everything local.</li>
+          <li><b>Teeth: yellow out first, brightness second.</b> Brightening a yellow tooth gives you a bright yellow tooth.</li>
+          <li>Real eye whites are faintly gray or pink; real teeth are faintly warm. Aim for <b>clean, never glowing</b>. The catchlight is sacred.</li>
+          <li><b>Hair:</b> clone flyaways out and fill gaps on their own layer, following the hair's flow, and leave a few strays. Perfectly smooth hair looks like a wig.</li>
+          <li>The pipeline order is the workflow: <b>global corrections → frequency separation → dodge &amp; burn → eyes/teeth/hair.</b></li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 480 190" role="img" aria-label="Three finishing layers: Eyes as Curves with a black mask painted onto iris and whites; Teeth as Hue/Saturation with a black mask painted onto the teeth; Hair as an empty layer for Clone and Heal with Sample All Layers.">
+            <rect x="30" y="12" width="420" height="50" rx="7" fill="#f4f6fa" stroke="#1473E6" stroke-width="2"/>
+            <rect x="42" y="21" width="32" height="32" rx="3" fill="#16202e"/><circle cx="58" cy="37" r="6" fill="#ffffff"/>
+            <text x="88" y="34" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#16202e">Eyes · Curves (lift) + High Pass</text>
+            <text x="88" y="51" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#1473E6">black mask · paint iris &amp; whites</text>
+            <rect x="30" y="72" width="420" height="50" rx="7" fill="#ffffff" stroke="#bcc7d6" stroke-width="1.5"/>
+            <rect x="42" y="81" width="32" height="32" rx="3" fill="#16202e"/><rect x="48" y="94" width="20" height="6" rx="2" fill="#ffffff"/>
+            <text x="88" y="94" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#16202e">Teeth · Hue/Sat (−yellow, +light)</text>
+            <text x="88" y="111" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#45536a">black mask · paint teeth only</text>
+            <rect x="30" y="132" width="420" height="50" rx="7" fill="#ffffff" stroke="#bcc7d6" stroke-width="1.5"/>
+            <rect x="42" y="141" width="32" height="32" rx="3" fill="#ffffff" stroke="#bcc7d6"/>
+            <text x="88" y="154" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#16202e">Hair · empty layer (Clone / Heal)</text>
+            <text x="88" y="171" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#0f766e">Sample: All Layers · flyaways out, gaps in</text>
+          </svg>
+          <figcaption>Three small, separate edits. Any one can be dialed back or deleted without disturbing the others.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Guided build: finish the portrait</div>
+        <ol class="steps">
+          <li>Open <code class="inline">portrait-sculpted.psd</code> from L08.</li>
+          <li><b>Eyes (12 min).</b> Curves layer, lift the midtones a little. Invert the mask (<kbd>Ctrl/⌘ + I</kbd>), paint white over the iris and whites with a small soft brush. Optional sharpen: merged copy (<kbd>Ctrl + Alt + Shift + E</kbd> / <kbd>⌘ + ⌥ + ⇧ + E</kbd>), <b>Filter ▸ Other ▸ High Pass</b> about 1–3 px, blend <b>Overlay</b> or <b>Soft Light</b>; <kbd>Alt</kbd>/<kbd>⌥</kbd>-click Add Layer Mask for a black mask, paint white over the iris only. Never paint out the catchlight.</li>
+          <li><b>Teeth (10 min).</b> Hue/Saturation layer: <b>Yellows</b>, drop the saturation; then <b>Master</b>, raise the lightness slightly. Invert the mask, paint the teeth only, feather the gum line.</li>
+          <li><b>Hair (10 min).</b> Empty layer, Clone/Heal with <b>Sample: All Layers</b>. Short strokes that follow the hair remove flyaways against the background; clone nearby strands along their flow to fill a thin gap. Leave a few strays.</li>
+          <li><b>Final review (8 min).</b> Fit to screen, <b>View ▸ Flip Horizontal</b> (it flips only the view; choose it again to return). Toggle all your Module 3 work off and on. If the before looks untouched and the after just looks like a good day, you've nailed the natural line. Save the finished layered file under a new name (for example <code class="inline">portrait-finished.psd</code>). Deliver. 🏆</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: My finishing settings</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Record what you actually used, so the numbers become your starting routine.</p>
+        <table class="timing">
+          <tbody>
+            <tr><td>Eyes: how far I lifted the Curves midtones (describe)</td><td>______________________________</td></tr>
+            <tr><td>Eyes: High Pass radius / blend mode</td><td>______ px / ______________</td></tr>
+            <tr><td>Teeth: Yellows saturation / Master lightness</td><td>______ / ______</td></tr>
+            <tr><td>Hair: flyaways removed / strays I deliberately kept</td><td>______ / ______</td></tr>
+            <tr><td>What the flipped view exposed</td><td>______________________________</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: Context sets the amount (Now You)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">At home: finish the same portrait for a magazine (push a little) and for a LinkedIn headshot (push almost nothing). Note what you changed between the two, and your time for three portraits back to back.</p>
+        <div class="grid2">
+          <div><p style="font-size:.85rem;font-weight:600;color:var(--lab);margin:.2rem 0">Magazine version</p><div class="write"></div></div>
+          <div><p style="font-size:.85rem;font-weight:600;color:var(--accent);margin:.2rem 0">LinkedIn version</p><div class="write"></div></div>
+        </div>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">Three portraits, timed: ______ min · ______ min · ______ min</p>
+      </div>
+      <div class="blk lab"><div class="h">Module 3 deliverable checklist</div>
+        <ul class="tick lab">
+          <li>☐ Even skin from frequency separation (3.1)</li>
+          <li>☐ Form restored with dodge &amp; burn (3.2)</li>
+          <li>☐ Eyes brightened and sharpened through a mask</li>
+          <li>☐ Teeth de-yellowed then gently lifted, masked</li>
+          <li>☐ Flyaways tamed, a few strays left, on their own layer</li>
+          <li>☐ Passes the flip-and-mirror test: reads natural, not retouched</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">What shape does every finishing move in this lesson share?</div>
+          <div class="opts"><div class="opt">A) Make an adjustment, hide it behind a black mask, and paint it back only where it belongs</div><div class="opt">B) Apply one adjustment to the whole image, then lower its opacity</div><div class="opt">C) Build a Low and High pair and edit the High layer</div><div class="opt">D) Duplicate the photo and edit the pixels directly</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">What's the correct order for whitening teeth with a Hue/Saturation layer?</div>
+          <div class="opts"><div class="opt">A) Raise Master lightness first, then reduce Yellows saturation</div><div class="opt">B) Raise Master saturation, then lower Master lightness</div><div class="opt">C) Push Yellows lightness to maximum</div><div class="opt">D) Drop Yellows saturation first, then raise Master lightness slightly</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Which is the lesson's method for sharpening the iris?</div>
+          <div class="opts"><div class="opt">A) Unsharp Mask on the Background layer, unmasked</div><div class="opt">B) Merged copy, High Pass at about 1–3 px, blend Overlay or Soft Light, black mask painted white over the iris only</div><div class="opt">C) High Pass at about 20 px on a Normal layer over the whole face</div><div class="opt">D) The Sharpen tool over the whole eye, catchlight included</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">How do you tame flyaway hair the lesson's way?</div>
+          <div class="opts"><div class="opt">A) Remove every stray hair so the outline is perfectly smooth</div><div class="opt">B) Clone directly on the photo layer with Sample: Current Layer</div><div class="opt">C) On an empty layer, Clone/Heal with Sample: All Layers, short strokes along the hair's direction, leaving a few strays</div><div class="opt">D) Blur the edge of the hair until the flyaways disappear</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">What's the difference between <b>View ▸ Flip Horizontal</b> and <b>Image ▸ Image Rotation ▸ Flip Canvas Horizontal</b>?</div>
+          <div class="opts"><div class="opt">A) None; both flip the actual pixels</div><div class="opt">B) View ▸ Flip Horizontal flips the pixels; Flip Canvas only flips the view</div><div class="opt">C) Only Flip Canvas can be undone</div><div class="opt">D) View ▸ Flip Horizontal flips only the view; Flip Canvas flips the pixels, so you must flip back before saving</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">On a real job, in what order do the Module 3 steps go?</div>
+          <div class="opts"><div class="opt">A) Eyes/teeth/hair → frequency separation → dodge &amp; burn → global corrections</div><div class="opt">B) Global corrections → frequency separation → dodge &amp; burn → eyes/teeth/hair</div><div class="opt">C) Dodge &amp; burn → frequency separation → eyes/teeth/hair → global corrections</div><div class="opt">D) Frequency separation → global corrections → eyes/teeth/hair → dodge &amp; burn</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Where is your natural line? Describe a finish you have seen (an ad, a friend's photo) that crossed it, and name exactly which move gave it away.</em> Also note: key concepts · what clicked · questions · ideas to try · how you feel about your progress.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <div class="note">
+    <div class="t">You finished Module 3 🎉</div>
+    <p>You now command the full high-end portrait pipeline: even, textured skin; sculpted light and dimension; and the natural finishing touches that sell it. Just as important, you practiced restraint, the judgment to stop before an edit betrays itself. That taste, more than any single technique, is what clients pay retouchers for. Before Session 4: take one portrait through the complete 3.1 → 3.2 → 3.3 pipeline and keep the layered file, save your finishing layers as a reusable group, and write your journal entries.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <span class="bio">© 2026 Ray de la Paz · Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Workbook · Module 3 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

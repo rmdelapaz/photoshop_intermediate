@@ -212,7 +212,7 @@ alert("Done: " + files.length + " images resized.");</code></pre>
             <!-- Build -->
             <section id="build" class="lesson-section">
                 <h2>🛠️ Guided Build: A Data-Driven Batch</h2>
-                <p>Design a simple card template with a name (type layer), a photo (image layer), and a "SALE" badge (a layer to show/hide). Prepare a small CSV with columns name, photo, sale: put the photos in the same folder as the CSV, list their file names in the photo column, and write <code>true</code> or <code>false</code> in the sale column.</p>
+                <p>Design a simple card template with a name (type layer), a photo (a plain pixel layer, not a Smart Object: Pixel Replacement only works on pixel layers), and a "SALE" badge (a layer to show/hide). Prepare a small CSV with columns name, photo, sale: put the photos in the same folder as the CSV, list their file names in the photo column, and write <code>true</code> or <code>false</code> in the sale column.</p>
 
                 <div class="card card-info">
                     <h3>Step 1: Name everything <small>· 8 min</small></h3>
@@ -240,7 +240,7 @@ alert("Done: " + files.length + " images resized.");</code></pre>
                     <h3>Step 4: Export the batch <small>· 8 min</small></h3>
                     <ol>
                         <li><strong>File ▸ Export ▸ Data Sets as Files</strong>. In File Naming, choose <strong>Data Set Name</strong> (the <code>name</code> column, thanks to the import option), add any fixed text you like, and export. Photoshop writes one PSD per row.</li>
-                        <li>Optional: run them through your Lesson 6.2 delivery Action to flatten to JPG. Module 6 deliverable: a folder of finished, personalized graphics from one template. 🏆</li>
+                        <li>Optional: flatten them to JPG with <strong>File ▸ Scripts ▸ Image Processor</strong>, or a copy of your Lesson 6.2 delivery Action with its conditional crop and Fit Image steps removed (those would crop and resize the cards). Module 6 deliverable: a folder of finished, personalized graphics from one template. 🏆</li>
                     </ol>
                 </div>
 
@@ -276,7 +276,7 @@ alert("Done: " + files.length + " images resized.");</code></pre>
                 <div class="card" style="border-left:4px solid var(--primary-color);">
                     <h3>Template + data → batch</h3>
                     <ol>
-                        <li>Name layers to match CSV headers exactly</li>
+                        <li>Name each variable to match its CSV header exactly (matching layer names is a helpful habit, not a requirement)</li>
                         <li><strong>Image ▸ Variables ▸ Define</strong>: Text / Pixel / Visibility</li>
                         <li><strong>Image ▸ Variables ▸ Data Sets…</strong> ▸ <strong>Import</strong> the CSV (first column as names; Visibility = true/false); proof rows on canvas</li>
                         <li><strong>File ▸ Export ▸ Data Sets as Files</strong>, named by Data Set Name</li>

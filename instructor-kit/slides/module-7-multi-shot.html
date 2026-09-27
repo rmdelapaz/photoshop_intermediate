@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slides: Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#0b1220; --ink:#eaf1fb; --ink2:#9fb2cd;
+    --accent:#31A8FF; --accent2:#1473E6; --lab:#34d3bd; --warn:#fbbf24;
+    --line:#123a5c; --code:#00182c; color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;overflow:hidden}
+  .deck{height:100%;width:100%;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 8vw;gap:20px}
+  .slide.on{display:flex}
+  h1,h2,h3{font-family:"Archivo",sans-serif;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .slide h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;letter-spacing:-.02em}
+  .slide h2{font-size:clamp(1.5rem,4.2vw,2.8rem);font-weight:800;letter-spacing:-.01em}
+  .slide p.lead{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--ink2);max-width:30ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  ul li{position:relative;padding-left:34px;font-size:clamp(1.05rem,2.3vw,1.6rem)}
+  ul li::before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+  ul.lab li::before{background:var(--lab)}
+  ol.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:12px}
+  ol.steps li{counter-increment:s;position:relative;padding-left:46px;font-size:clamp(1rem,2.1vw,1.45rem)}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--accent2);color:#fff;font-family:"JetBrains Mono",monospace;font-size:.95rem;font-weight:600;display:flex;align-items:center;justify-content:center}
+  code.k,kbd{font-family:"JetBrains Mono",monospace;color:#a9d6ff;font-size:.9em}
+  kbd{border:1px solid var(--line);border-radius:6px;padding:1px 7px;background:var(--code)}
+  .tag{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:clamp(.7rem,1.4vw,.95rem);color:var(--ink2)}
+  .tag .pill{background:var(--accent2);color:#fff;font-weight:700;border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+  .tag .pill.lab{background:var(--lab);color:#062b26} .tag .pill.warn{background:var(--warn);color:#3a2a05}
+  .section{background:linear-gradient(135deg,#0f2447,#0b1220)}
+  .section .big{font-size:clamp(3rem,12vw,8rem);font-family:"Archivo";font-weight:800;color:var(--accent);line-height:.9}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+  @media (max-width:760px){.two{grid-template-columns:1fr}}
+  svg.dia{width:100%;max-width:440px;height:auto}
+  .bar{position:fixed;left:0;top:0;height:4px;background:var(--accent);width:0;transition:width .25s;z-index:5}
+  .count{position:fixed;right:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink2);z-index:5}
+  .nav{position:fixed;inset:auto 0 0 0;display:flex;justify-content:space-between;pointer-events:none;z-index:4}
+  .nav button{pointer-events:auto;background:transparent;border:none;color:transparent;width:22vw;height:100vh;cursor:pointer}
+  .credit{position:fixed;left:16px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--ink2);opacity:.7;z-index:5}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <section class="slide on section">
+    <div class="eyebrow">Photoshop Intermediate · Instructor Kit · Session 7 of 8 · 3 hours</div>
+    <h1>Module 7<br>Multi-Shot Techniques</h1>
+    <p class="lead">Many frames into one still, layers into motion, and the capstone kickoff.</p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Today's plan · 3 hours</div>
+    <h2>Two lessons and a kickoff</h2>
+    <ul>
+      <li><b>L19</b> Panoramas, HDR &amp; focus stacking: beat a single frame</li>
+      <li><b>L20</b> Timeline animation: a loop as GIF + MP4</li>
+      <li><b>Kickoff</b> Lesson 8.1: your capstone brief &amp; plan</li>
+    </ul>
+    <div class="tag"><span class="pill warn">FILES</span> Practice sets in class · your own full-res shoots at home</div>
+  </section>
+
+  <section class="slide section"><div class="big">L19</div><h2>Panoramas, HDR &amp; Focus Stacking</h2><p class="lead">Lesson 7.1 · shoot many, blend to one.</p></section>
+  <section class="slide">
+    <div class="eyebrow">The goal</div>
+    <h2>Three limits of a single frame</h2>
+    <ul>
+      <li>Only so <b>wide</b> → panorama</li>
+      <li>Only so much <b>range</b> → HDR</li>
+      <li>Only so much in <b>focus</b> → focus stack</li>
+    </ul>
+    <div class="tag"><span class="pill">IDEA</span> Shoot several frames; let Photoshop combine them.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Mental model</div>
+    <h2>Align, then blend</h2>
+    <div class="two">
+      <svg class="dia" viewBox="0 0 300 250" role="img" aria-label="Pipeline: source frames, Auto-Align, Blend, one image.">
+        <rect x="20" y="16" width="100" height="44" rx="6" fill="#00284a" stroke="#2a5b85"/>
+        <text x="70" y="43" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#9fb8d3">frames</text>
+        <rect x="100" y="76" width="120" height="44" rx="6" fill="#1473E6"/>
+        <text x="160" y="103" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#ffffff">Auto-Align</text>
+        <rect x="100" y="136" width="120" height="44" rx="6" fill="#1473E6"/>
+        <text x="160" y="163" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#ffffff">Blend</text>
+        <rect x="180" y="196" width="100" height="44" rx="6" fill="#0f3d38" stroke="#34d3bd"/>
+        <text x="230" y="223" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#34d3bd">one image</text>
+        <path d="M70 60 L70 98 L98 98" fill="none" stroke="#6f8fb0" stroke-width="2"/>
+        <line x1="160" y1="120" x2="160" y2="134" stroke="#6f8fb0" stroke-width="2"/>
+        <path d="M220 158 L230 158 L230 194" fill="none" stroke="#6f8fb0" stroke-width="2"/>
+      </svg>
+      <ul>
+        <li>Pano: vary <b>angle</b></li>
+        <li>HDR: vary <b>exposure</b></li>
+        <li>Stack: vary <b>focus</b></li>
+        <li>Hold <b>everything else</b> still</li>
+      </ul>
+    </div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Three front doors</div>
+    <h2>Same engine, three menus</h2>
+    <ul>
+      <li><b>File ▸ Automate ▸ Photomerge</b></li>
+      <li><b>File ▸ Automate ▸ Merge to HDR Pro</b></li>
+      <li><b>File ▸ Scripts ▸ Load Files into Stack</b> → Auto-Align → <b>Auto-Blend Layers…</b></li>
+    </ul>
+    <div class="tag"><span class="pill warn">WATCH</span> Garbage frames in, garbage merge out.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Steps 1–2 · 10 + 12 min</div>
+    <h2>Panorama, then HDR</h2>
+    <ol class="steps">
+      <li>Photomerge ▸ <code class="k">l19-pano/</code> · Layout <b>Auto</b></li>
+      <li>Tick <b>Blend Images Together</b> + <b>Content Aware Fill Transparent Areas</b></li>
+      <li>Merge to HDR Pro ▸ <code class="k">l19-hdr/</code> · tick <b>Remove Ghosts</b></li>
+      <li><b>16 Bit</b> + Local Adaptation = finished now · <b>32 Bit</b> = keep range, Camera Raw later</li>
+    </ol>
+    <div class="tag"><span class="pill">TIP</span> Asked to "Manually Set EV"? f/8 · ISO 100 · 1/250, 1/60, 1/15 s.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Steps 3–4 · 10 + 5 min</div>
+    <h2>Focus stack, then clean the joins</h2>
+    <ol class="steps">
+      <li>Load Files into Stack ▸ <code class="k">l19-stack/</code> · tick <b>Attempt to Automatically Align</b></li>
+      <li>Select <b>all</b> layers ▸ Edit ▸ Auto-Blend Layers… ▸ <b>Stack Images</b> + Seamless Tones and Colors</li>
+      <li><kbd>Ctrl/⌘ 1</kbd> (100%) on every seam, ghost, soft band · heal on a layer</li>
+      <li>One Module 4 unifying grade across all three</li>
+    </ol>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Lab · merge three ways</div>
+    <h2>Done when…</h2>
+    <ul class="lab">
+      <li>A panorama with invisible seams</li>
+      <li>An HDR merge: highlights + shadows recovered, no ghosts</li>
+      <li>A focus stack sharp front to back</li>
+      <li>Edges cropped or filled · joins healed at 100%</li>
+      <li>A consistent grade across all three</li>
+    </ul>
+    <div class="tag"><span class="pill lab">MANTRA</span> Align first, blend second.</div>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Break · 13 minutes</div>
+    <h2>Stretch, refill, rest your eyes</h2>
+    <p class="lead">Ahead: open <code class="k">l20-anim/</code> and read L20's "Frames vs Keyframes."</p>
+  </section>
+
+  <section class="slide section"><div class="big">L20</div><h2>Timeline Animation &amp; Export</h2><p class="lead">Lesson 7.2 · make it move.</p></section>
+  <section class="slide">
+    <div class="eyebrow">Mental model</div>
+    <h2>Flip-book or smooth path?</h2>
+    <ul>
+      <li><b>Frame Animation</b>: discrete frames, exact timing, Tween fills in-betweens</li>
+      <li><b>Video Timeline</b>: keyframes, Photoshop interpolates</li>
+      <li>Short loopy GIF → frames · glides, fades, video → timeline</li>
+    </ul>
+    <div class="tag"><span class="pill">RULE</span> Picking the right one first saves rework.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Window ▸ Timeline</div>
+    <h2>What each layer can animate</h2>
+    <ul>
+      <li>Normal layer: <b>Position · Opacity · Style</b></li>
+      <li>Smart Object: <b>Transform</b> (scale + rotation) instead of Position</li>
+      <li>Keyframes: linear (or Hold) · <b>no ease curve</b></li>
+    </ul>
+    <div class="tag"><span class="pill warn">WATCH</span> Will it grow or rotate? Smart Object first.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Steps 1–2 · 6 + 14 min</div>
+    <h2>Start the timeline, keyframe the moves</h2>
+    <ol class="steps">
+      <li>Load Files into Stack ▸ <code class="k">l20-anim/</code> · badge ▸ <b>Convert to Smart Object</b></li>
+      <li><b>Create Video Timeline</b> · panel menu ▸ Set Timeline Frame Rate ▸ <b>24 fps</b> · trim to 3 s</li>
+      <li>Badge: <b>Transform</b> stopwatch at frame 0 (small) → later, full size</li>
+      <li>Headline: <b>Opacity</b> 0 → 100 + a small upward <b>Position</b> move</li>
+    </ol>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Steps 3–4 · 8 + 6 min</div>
+    <h2>Loop it, ease it, ship it twice</h2>
+    <ol class="steps">
+      <li>Hold the pose, then return every layer to its <b>frame-0 state</b> by the last frame</li>
+      <li>Fake ease: extra keyframe near the end, small change left</li>
+      <li><b>Save for Web (Legacy)</b> <kbd>⇧ Ctrl+Alt S</kbd> / <kbd>⇧ ⌘⌥ S</kbd> → GIF · Looping <b>Forever</b></li>
+      <li><b>File ▸ Export ▸ Render Video</b> → H.264 · square file: Size = Document Size</li>
+    </ol>
+    <div class="tag"><span class="pill warn">WATCH</span> GIF past a couple of MB? Shrink it, shorten it, or ship the MP4.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Lab · a looping animation</div>
+    <h2>Done when…</h2>
+    <ul class="lab">
+      <li>Keyframed Transform (or Position) and Opacity</li>
+      <li>Scaled layers are Smart Objects: still sharp</li>
+      <li>Seamless loop, natural timing</li>
+      <li><code class="k">loop.gif</code> (Forever, small) + <code class="k">loop.mp4</code></li>
+    </ul>
+    <div class="tag"><span class="pill lab">DELIVERABLE</span> Three clean merges + one loop, as GIF and MP4.</div>
+  </section>
+
+  <section class="slide section"><div class="big">8.1</div><h2>Capstone Kickoff: The Brief &amp; the Plan</h2><p class="lead">The capstone begins on paper, not in Photoshop.</p></section>
+  <section class="slide">
+    <div class="eyebrow">The brief is the contract</div>
+    <h2>Six parts, one page</h2>
+    <ul>
+      <li><b>Objective</b> · <b>Audience</b> · <b>Deliverables + specs</b></li>
+      <li><b>Constraints</b> · <b>Success criteria</b> · <b>References</b></li>
+      <li>Pin every adjective to a spec or a reference</li>
+    </ul>
+    <div class="tag"><span class="pill">MANTRA</span> If you can't check it, it isn't in the brief.</div>
+  </section>
+  <section class="slide">
+    <div class="eyebrow">Work block · 32 min</div>
+    <h2>Brief, moodboard, plan</h2>
+    <ol class="steps">
+      <li><b>14m</b> Write the brief; success criteria as a checkable list</li>
+      <li><b>10m</b> Start the moodboard: first 3–4 references, one note each</li>
+      <li><b>8m</b> Plan: stages → module skills, assets, 2–3 milestones</li>
+    </ol>
+    <div class="tag"><span class="pill warn">SCOPE</span> Ambitious but finishable · stretch goals must be cuttable.</div>
+  </section>
+  <section class="slide section">
+    <div class="eyebrow">Before Session 8</div>
+    <h2>Finish the plan, then build</h2>
+    <ul class="lab">
+      <li>Brief done · someone else reads your success criteria</li>
+      <li>Moodboard: 6–12 annotated references · assets gathered, licenses checked</li>
+      <li>Build it (Lesson 8.2): passes, named groups, versioned saves</li>
+      <li>Bring brief, moodboard, plan, and the working file</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Session 8: plan review in pairs, studio, then present.</p>
+  </section>
+
+  <section class="slide section">
+    <div class="eyebrow">Module 7 complete</div>
+    <h2>Wider · higher-range · deeper · moving</h2>
+    <ul class="lab">
+      <li>Panorama, HDR, focus stack: align first, blend second</li>
+      <li>A keyframed loop, delivered as GIF and MP4</li>
+      <li>A capstone with a clear finish line</li>
+    </ul>
+    <p class="lead" style="margin-top:10px">Exit ticket: which variable changes for pano, HDR, and stack?</p>
+  </section>
+
+</div>
+
+<div class="credit">© 2026 Ray de la Paz</div>
+<div class="count" id="count">1 / 21</div>
+<div class="nav"><button id="prev" aria-label="Previous slide"></button><button id="next" aria-label="Next slide"></button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; count.textContent=(i+1)+' / '+slides.length; }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  show(0);
+</script>
+</body>
+</html>

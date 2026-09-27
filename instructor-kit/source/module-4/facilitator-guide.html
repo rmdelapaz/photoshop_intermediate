@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">contains answers &amp; timing · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Facilitator Guide</div>
+    <h1>Module 4 — Commercial Compositing</h1>
+    <p class="sub">How to teach the three lessons that turn a pasted element into an advertising-style key visual: geometry first (horizon, scale, lens), then light (relighting, contact and cast shadows, reflections), then the whole frame (atmosphere and one unifying grade). One file carries all three lessons, and the finished key visual is the module deliverable.</p>
+    <div class="meta-row">
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip"><b>3 h</b> session incl. break</span>
+      <span class="chip">Lessons <b>L10–L12</b> (4.1–4.3)</span>
+      <span class="chip">Level <b>Intermediate</b></span>
+      <span class="chip">Maps to <b>Session 4</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>How to Use This Guide</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li>Same rhythm as every module: <b>Frame</b> → <b>Demo</b> → <b>Guided Build</b> → <b>Check</b>. Each lesson has a guided build, a recipe card (also in <b>Recipes II ▸ Compositing</b>), a completion checklist, and a learning-journal prompt. Self-check quizzes live in the participant workbook; answers are here and in the Answer Key.</li>
+    <li>These learners already finished the intro course: they have cut subjects out, clipped adjustments, painted contact shadows, and run one unifying grade. Module 4 does not re-teach those moves. It adds the <b>geometry</b> they skipped (horizon, vanishing points, lens), the <b>built</b> cast shadow (silhouette, transform, graduated blur), reflections, and depth by contrast. Spend demo time on the new parts.</li>
+    <li><b>Demo on the projector, and step back often.</b> Geometry mistakes are invisible at 300% and obvious at "fit on screen." Zoom in for shadow contact points and reflection alignment; zoom out for horizon and scale.</li>
+    <li><span style="color:var(--lab);font-weight:600">Teal</span> = hands-on, <span style="color:var(--warn);font-weight:600">amber</span> = watch-outs. Shortcuts are given as <b>Windows / Mac</b>, for example <kbd>Ctrl</kbd>+<kbd>T</kbd> / <kbd>⌘</kbd>+<kbd>T</kbd>. Say both out loud.</li>
+    <li>Lesson codes: the kit uses the file numbers <b>L10–L12</b>; the course site calls them <b>Lessons 4.1–4.3</b>. Both appear below.</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="t">The #1 risk of Session 4: one file, three lessons, and geometry that can't be fixed later</div>
+    <p>L10, L11 and L12 all build the <b>same layered file</b> (<code class="inline">m4-key-visual.psd</code>, named in L10 Step 4). An element at the wrong scale or with the wrong horizon in L10 cannot be rescued by L11's shadows or L12's grade: shadows get built around the wrong size and the grade only makes the error prettier. Two safety nets: (1) the synthetic plaza <code class="inline">l10-plaza-background.jpg</code> was rendered with a real camera model, horizon at exactly <b>y = 700 px</b> and one vanishing point at <b>(1260, 700)</b>, so you can check anyone's placement in seconds; (2) keep the instructor-only <code class="inline">labs/module-4/instructor/l10-plaza-answer-overlay.jpg</code> open on your machine. It shows the horizon, the vanishing point, the shadow direction, and correctly sized ghost outlines of the practice figure at three distances. A learner who is lost at 0:50 can copy one of those placements and join L11 on time.</p>
+  </div>
+
+  <div class="sec"><h2>Before Session 4</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ Copy <code class="inline">labs/module-4/practice/</code> to each machine (or a shared drive). Keep <code class="inline">labs/module-4/instructor/</code> on your machine only. As always, never hand out the course site's licensed <code class="inline">images/</code> folder.</li>
+    <li>☐ Remind learners (Session 3 wrap-up or by email) to bring: <b>a background with clear perspective and visible shadows</b> (a street, a room, a tiled floor, a table shot from standing height); <b>a cleanly cut-out element</b> from their Module 1 masking work, as a layered PSD or transparent PNG (full-length person, or a product with flat faces); optionally <b>a glossy-surface photo</b> (wet street, marble floor, polished table) and <b>a deep scene</b> with near, mid and far elements. Details in <code class="inline">labs/module-4/README.md</code>.</li>
+    <li>☐ On every machine, check <b>Preferences ▸ Performance ▸ Use Graphics Processor</b> is on (Photoshop ▸ Settings ▸ Performance on a current Mac). Perspective Warp is grayed out without it, and restarting Photoshop mid-lesson costs five minutes.</li>
+    <li>☐ Check everyone is on a current Photoshop version, where Free Transform scales proportionally by default (holding <kbd>Shift</kbd> switches it <em>off</em>). Older habits will fight this all morning.</li>
+    <li>☐ Open <b>lesson_10.html</b>, <b>lesson_11.html</b>, and <b>lesson_12.html</b> in browser tabs for the before/after sliders, plus <b>recipes.html</b> scrolled to the Compositing cards.</li>
+    <li>☐ Open <code class="inline">l12-key-visual-reference.jpg</code> (instructor folder) to show at the start of L12 as "where we are heading," and the horizon drill answers (<code class="inline">l10-horizon-practice-answers.jpg</code>) for the L10 frame.</li>
+  </ul>
+
+  <div class="sec"><h2>Session 4 Agenda (3 hours)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Clock</th><th>Segment</th><th>Min</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td class="t">0:00–0:10</td><td>Warm-up: recap Module 3 + "what gives a composite away?"</td><td class="t">10</td><td>One line on Module 3 (the 50% gray Soft Light dodge &amp; burn layer returns today in L11). Show a deliberately bad composite; the room names every tell. Sort them on the board into <b>geometry · light · whole frame</b>: today's three lessons.</td></tr>
+      <tr><td class="t">0:10–0:57</td><td><b>L10</b> Match Perspective, Scale &amp; Lens (4.1)</td><td class="t">47</td><td>Build: find the horizon, place and scale one element by the ground-contact rule, warp its planes. Save the layered PSD. Now You starts here, finishes at home.</td></tr>
+      <tr><td class="t">0:57–1:47</td><td><b>L11</b> Light, Shadows &amp; Reflections (4.2)</td><td class="t">50</td><td>Build: read the light, relight with clipped D&amp;B + color, contact shadow, built cast shadow, reflection if glossy. Save.</td></tr>
+      <tr><td class="t">1:47–2:00</td><td>Break</td><td class="t">13</td><td>Leave the plaza answer overlay on the projector; stragglers can check their horizon against it.</td></tr>
+      <tr><td class="t">2:00–2:48</td><td><b>L12</b> Atmosphere &amp; the Unifying Grade (4.3)</td><td class="t">48</td><td>Build: depth by contrast, painted haze, one grade on top, vignette + grain, export. The Module 4 deliverable.</td></tr>
+      <tr><td class="t">2:48–2:55</td><td>Mini-gallery: the checklist in order</td><td class="t">7</td><td>Three or four volunteers show their key visual; the room runs the lesson's checklist aloud: horizon, scale, lens, light, shadow, contact shadow, depth, grade.</td></tr>
+      <tr><td class="t">2:55–3:00</td><td>Wrap-up &amp; exit ticket</td><td class="t">5</td><td>Recap the pipeline, assign homework, preview Session 5 (Design Systems &amp; Type).</td></tr>
+      <tr><td class="t"><b>Total</b></td><td></td><td class="t"><b>180</b></td><td>Take a one-minute stand-and-stretch between L10 and L11; it comes out of L11's frame, not its build.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The site estimates 55 + 60 + 55 = <b>170 minutes</b> for a solo learner; the room has <b>145</b> after warm-up, break, gallery and wrap. The room runs each lesson's frame, demo and Guided Build together and trims the build times you see in each Timing table; the <b>"Now You" solo variations start in class and finish at home</b>. If you run long, protect the <b>L12 build</b>: the exported key visual is the Module 4 deliverable. Cut the mini-gallery first (show one volunteer), then L11 Step 4 (reflection) for anyone whose ground isn't glossy, which the lesson itself marks "if glossy." L10 Step 4 (lens sanity check) can shrink to one question asked aloud.</p>
+
+  <div class="sec"><h2>Module at a Glance</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Lesson</th><th>Topic</th><th>Room time</th><th>Learners leave able to…</th></tr></thead>
+    <tbody>
+      <tr><td class="t">L10 (4.1)</td><td>Match Perspective, Scale &amp; Lens</td><td class="t">47m</td><td>Find the horizon from converging lines, place and scale an element by its ground contact, warp strong planes to the vanishing point</td></tr>
+      <tr><td class="t">L11 (4.2)</td><td>Light, Shadows &amp; Reflections</td><td class="t">50m</td><td>Read and match the scene's light, build a tight contact shadow and a graduated cast shadow, fake a reflection on a glossy surface</td></tr>
+      <tr><td class="t">L12 (4.3)</td><td>Atmosphere &amp; the Unifying Grade</td><td class="t">48m</td><td>Build depth by lowering contrast and adding haze, lay one grade over the whole stack, and deliver a finished key visual</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">One story in one file: <b>make it belong there → make it lit and touching → make it one photograph.</b> The Module 4 summary on the site says it in the same order: perspective first, light and shadow next, atmosphere and one grade last.</p>
+
+  <div class="sec"><h2>Lesson Plans</h2><span class="rule"></span></div>
+
+  <!-- L10 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L10</span><h3>Match Perspective, Scale &amp; Lens (Lesson 4.1)</h3><span class="dur">47 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Find a photo's horizon line and read the camera's eye level from it</li>
+          <li>Match an element's eye level and vanishing points to the background</li>
+          <li>Scale an element correctly using the ground-contact rule, not guesswork</li>
+          <li>Recognize and match a lens: wide vs long, and the distortion each brings</li>
+          <li>Use Perspective Warp and Free Transform to correct a mismatch</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal: it belongs there (lesson slider)</td></tr>
+          <tr><td class="t">5m</td><td>Mental model: everyone shares a horizon (+ drill sheet, panel 1)</td></tr>
+          <tr><td class="t">4m</td><td>Scale by the ground, not the eye</td></tr>
+          <tr><td class="t">4m</td><td>Matching the lens; Perspective Warp's two modes</td></tr>
+          <tr><td class="t">25m</td><td>Guided build: Steps 1–4 (6 + 8 + 8 + 3)</td></tr>
+          <tr><td class="t">2m</td><td>Now You: start "three distances" (finish at home)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (3m).</b> Show the L10 slider: the same figure on the same ground, matched and ignored. <b>Say:</b> "A composite lives or dies in the first ten seconds, and it dies on geometry. Before light, before color, the element has to agree with the scene's horizon, its vanishing points, and its lens. Light can't save a giant."</li>
+          <li><b>Everyone shares a horizon (5m).</b> <b>Say:</b> "Every photograph has a horizon at the camera's eye level, whether or not you can see it. It's the height the lens was at." Put <code class="inline">l10-horizon-practice-sheet.jpg</code> on screen and extend two edges of panel 1 (the corridor) with a marker or the Line tool until they meet. <b>Say:</b> "Receding parallel lines meet at a vanishing point, and that point sits on the horizon. Every element you add must share that one line." Flash panel 3 or 4 (two-point): both vanishing points fall off the panel, yet on the same horizontal line.</li>
+          <li><b>Scale by the ground (4m).</b> Open <code class="inline">l10-plaza-background.jpg</code>. <b>Say:</b> "For people of similar height on the same flat ground, the horizon crosses each of them at the same point on their body. This camera was at standing eye level, so the horizon cuts every person at the eyes, near or far." Point at the red-jacketed man in front and the green figure far back: both have their eyes on the horizon. Then the callout: <b>Say:</b> "Feet on the ground line first. The contact point fixes distance <em>and</em> size."</li>
+          <li><b>Matching the lens (4m).</b> <b>Say:</b> "A wide lens (say 24mm) exaggerates depth and bends verticals near the edges; a long lens (say 200mm) compresses depth and flattens features. Paste a telephoto headshot onto a wide street and it looks subtly wrong even with perspective matched." Show Figure 3: <b>Edit ▸ Perspective Warp</b> has <b>Layout</b> (draw a quad over each plane) and <b>Warp</b> (drag its pins). Then the warning: <b>Say:</b> "Warp fixes geometry, not optics. You can't add depth a long lens removed. If the lenses are wildly different, find a better source photo."</li>
+          <li><b>Step 1: Find the horizon (6m).</b> On a new empty layer, draw along two receding edges with the <b>Line tool</b> (or the Pen tool) and extend them until they meet. <b>Say:</b> "Guides can only be horizontal or vertical, so they can't follow an angled edge; that's why we draw." Show rulers (<kbd>Ctrl</kbd>+<kbd>R</kbd> / <kbd>⌘</kbd>+<kbd>R</kbd>) and drag a horizontal guide through the meeting point. On the plaza the guide lands at y = 700. Confirm it crosses the people at eye height. <b>File ▸ Save As</b> ▸ <code class="inline">m4-key-visual.psd</code>.</li>
+          <li><b>Step 2: Place and scale (8m).</b> <b>File ▸ Place Embedded</b> <code class="inline">l10-figure-cutout.png</code> (or open the learner's cutout and drag the layer in). <b>Say:</b> "Decide where the feet touch the tiles. That point is now fixed." Free Transform (<kbd>Ctrl</kbd>+<kbd>T</kbd> / <kbd>⌘</kbd>+<kbd>T</kbd>); move the reference point to the bottom-center handle so scaling pivots on the feet, then drag a corner until the horizon guide crosses the eyes. <b>Say:</b> "Proportional by default in current versions. Don't hold <kbd>Shift</kbd>: Shift now switches proportional scaling off." The figure lands small (about a fifth of its original size if the feet sit near y = 950). <b>Say:</b> "Much smaller than your gut wanted. That's normal."</li>
+          <li><b>Step 3: Match the perspective (8m).</b> Place <code class="inline">l10-product-box-cutout.png</code>, a carton shot from a high angle. Right-click ▸ <b>Convert to Smart Object</b> so the warp stays editable. <b>Edit ▸ Perspective Warp</b>: in <b>Layout</b> draw a quad on its front face and one on its side; switch to <b>Warp</b>; drag the pins until the box's bottom edges follow the tile grout toward the vanishing point. <b>Say:</b> "If it's grayed out, Use Graphics Processor is off, or you have more than one layer selected." For the figure: <b>Say:</b> "Organic subjects rarely need a warp; a touch of Free Transform ▸ Distort to align the lean is usually enough."</li>
+          <li><b>Step 4: Sanity-check the lens (3m).</b> Step back from the screen. <b>Say:</b> "Does it feel flatter or rounder than its surroundings? If so, a small amount of Lens Correction or a subtle warp nudges it." <b>File ▸ Save</b>. <b>Say:</b> "This file is the geometry base you light in 4.2 and grade in 4.3. Don't flatten it."</li>
+          <li><b>Now You (2m).</b> Start the first variation: the same cut-out person at three distances down the plaza. <b>Say:</b> "If your scaling is right, all three look like the same person walking away." Finish at home.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Place One Element, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on <code class="inline">labs/module-4/practice/l10-plaza-background.jpg</code> with <code class="inline">l10-figure-cutout.png</code> (and <code class="inline">l10-product-box-cutout.png</code> for the Perspective Warp step), or a learner's own background and cutout. Solo variations: three distances; the deliberate wrong horizon (the high-angle box is exactly "a shot taken from a ladder"); a product on a phone-shot table; going further with Filter ▸ Vanishing Point. Details in <code class="inline">labs/module-4/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done (the lesson's checklist):</b> horizon found from the scene's own converging lines; element's ground-contact point placed before scaling; scaled so the horizon crosses it at the correct body height; strong planes warped toward the scene's vanishing point; lens character sanity-checked, no obvious flat/round mismatch.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> a horizon guide placed by eye instead of from a meeting point; feet floating above the tiles (look for a gap between shoe and grout line); a figure whose eyes sit well above or below the guide; Perspective Warp run on a raster layer, which leaves no way back.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Guessing the horizon at the visible skyline.</b> The skyline here is hills; the horizon is the eye level where the lines meet. On most street photos they differ.</li>
+          <li><b>Scaling first, placing second.</b> The contact point decides the size. Fix the feet, then scale from the bottom-center reference point.</li>
+          <li><b>Holding Shift out of intro-course habit.</b> In current versions that <em>distorts</em> the element. If a learner's figure looks stretched, this is why.</li>
+          <li><b>Warping a person.</b> Perspective Warp is for planes (boxes, signs, buildings). A person needs correct scale and eye level, plus at most a small Distort.</li>
+          <li><b>Expecting Warp to fix the lens.</b> It changes geometry, not optics. A big lens mismatch means a different source photo.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) the camera's eye level, the height the lens was at; <b>Q2</b> D) extend two receding edges to their vanishing point and draw a horizontal guide through it; <b>Q3</b> A) set the ground contact first, then scale until the horizon crosses it at eye height; <b>Q4</b> C) it switches proportional scaling off; <b>Q5</b> D) turn on Use Graphics Processor in Preferences ▸ Performance; <b>Q6</b> B) warp fixes geometry, not optics, so pick a source on a similar focal length. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (write now if time, otherwise homework): <em>Find a composite ad or movie poster that feels "off." Can you locate the horizon and spot the element whose eye level disagrees with the rest?</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the "deliberately break it" variation: place the high-angle box unwarped next to a warped copy and describe why the first refuses to sit. Then the lesson's "Going further": <b>Filter ▸ Vanishing Point</b>, define the plaza floor as a plane, and paste a flat graphic so it conforms automatically (floor graphics, wall posters). The horizon drill sheet's panel 6 is homework for everyone, but fast finishers can do it now with their own photo.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> stay on the plaza and the figure; skip the box and Perspective Warp. Give them the two numbers: horizon at y = 700, and "eyes on the guide, feet on a grout line." If they are still lost at the end of the build, let them copy the Z = 8 m placement from the answer overlay so they arrive at L11 with a correct base.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L11 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L11</span><h3>Light, Shadows &amp; Reflections (Lesson 4.2)</h3><span class="dur">50 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Read a scene's light: direction, quality (hard/soft), and color</li>
+          <li>Relight an element with dodge &amp; burn and masked color so it matches</li>
+          <li>Build a believable cast shadow (transform, blur, gradient opacity)</li>
+          <li>Add the tight contact shadow that actually glues feet to the floor</li>
+          <li>Fake a convincing reflection on a glossy surface</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">2m</td><td>The goal: anchored vs floating (lesson slider)</td></tr>
+          <tr><td class="t">5m</td><td>Mental model: read the light first (hard-sun vs overcast references)</td></tr>
+          <tr><td class="t">4m</td><td>Building a cast shadow; shadows are colored, not black</td></tr>
+          <tr><td class="t">3m</td><td>Contact shadows &amp; reflections; the two-shadow habit</td></tr>
+          <tr><td class="t">30m</td><td>Guided build: Steps 1–4 (9 + 5 + 10 + 6)</td></tr>
+          <tr><td class="t">2m</td><td>Now You: start hard sun vs overcast (finish at home)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (2m).</b> Show the L11 slider. <b>Say:</b> "Same object, same spot. No shadow and the brain reads a sticker. A contact shadow plus a cast shadow running away from the light, and it's standing on the floor."</li>
+          <li><b>Read the light first (5m).</b> Open <code class="inline">l11-light-reference-hard-sun.jpg</code> and <code class="inline">l11-light-reference-overcast.jpg</code> side by side. Ask the room the lesson's three questions for each: <b>Where</b> is it coming from (shadows point away from the source)? <b>How hard</b> is it (crisp edges = hard, direct sun; soft edges = overcast or diffused)? <b>What color</b> is it? <b>Say:</b> "Whatever you read, the element must obey. A mismatch here is the second most common composite tell, after scale." Point out on the hard-sun file that the shadow is crisp at the base and softer at the tip.</li>
+          <li><b>Building a cast shadow (4m).</b> Show Figure 2's stack: <b>Contact shadow</b> and <b>Cast shadow</b>, both on <b>Multiply</b>, under the subject. <b>Say:</b> "Multiply keeps the ground texture showing through, so the shadow darkens the tiles instead of painting a flat gray blob on them." Then the warning callout: <b>Say:</b> "Shadows are colored, not black. Outdoors they lean cool and blue because the sky lights them, not the sun. Indoors they pick up the room's bounced color."</li>
+          <li><b>Contact shadows &amp; reflections (3m).</b> <b>Say:</b> "The contact shadow, or ambient occlusion, is the small, dark, barely-blurred smudge exactly where the object meets the ground. It's the single most convincing element in the whole composite." Write the two-shadow habit on the board: <b>cast shadow = where the light is · contact shadow = touching the world</b>. Mention reflections: glossy floors, water, and polished tables owe one.</li>
+          <li><b>Step 1: Read and match the light (9m).</b> Open <code class="inline">m4-key-visual.psd</code>. Read the plaza: sun high on the right, hard, warm; every shadow falls to the left. The practice figure was lit from the <em>left</em> in cool light, so it disagrees. Select the figure layer, <b>Layer ▸ New ▸ Layer</b>, Mode <b>Soft Light</b>, tick <b>Fill with Soft-Light-neutral color (50% gray)</b>, tick <b>Use Previous Layer to Create Clipping Mask</b> (or clip it afterwards with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd> / <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>G</kbd>). <b>Say:</b> "Same 50% gray layer as Lesson 3.2, now clipped to the element." Paint white at low flow on the right side, black on the left. Add a clipped <b>Color Balance</b> or <b>Photo Filter</b> pushing warm toward the scene's sun.</li>
+          <li><b>Step 2: Contact shadow (5m).</b> New layer <em>under</em> the element, <b>Multiply</b>, named <code class="inline">Contact Shadow</code>. Small soft black brush at low flow; darken exactly where the shoes meet the tiles. <b>Say:</b> "Tight, and only lightly blurred."</li>
+          <li><b>Step 3: Cast shadow (10m).</b> <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click the element's layer mask thumbnail (or the layer thumbnail if it has no mask, as with the transparent practice PNG) to load the silhouette. New layer below the element, <b>Edit ▸ Fill</b> with a very dark color, deselect (<kbd>Ctrl</kbd>+<kbd>D</kbd> / <kbd>⌘</kbd>+<kbd>D</kbd>), set <b>Multiply</b>. <b>Say:</b> "Filling a new layer works even when the cut-out uses a mask or is a Smart Object, where Lock Transparent Pixels and a direct fill would not." Free Transform ▸ <b>Distort</b>/<b>Skew</b> it onto the ground, running left, the same way as the lamp posts' shadows. For blur that grows with distance: <b>Filter ▸ Blur Gallery ▸ Tilt-Shift</b> or <b>Field Blur</b> (sharp pin near the feet, strong blur at the far end), or blur a duplicate heavily and blend the two with a gradient mask. Then a gradient mask so it fades, and tint it cool.</li>
+          <li><b>Step 4: Reflection, if glossy (6m).</b> The plaza is matte, so switch to <code class="inline">l11-glossy-floor-scene.jpg</code> to demo. Duplicate the element, <b>Edit ▸ Transform ▸ Flip Vertical</b>, align bases, lower opacity to about <b>25–40%</b>, add Motion Blur or Gaussian Blur that increases downward (Blur Gallery, or a blurred copy blended with a gradient mask), and mask a fade. Point to the pedestal and sphere reflections already in the file as the target. <b>Say:</b> "Get the base alignment perfect; a reflection that starts a few pixels off is instantly wrong." <b>File ▸ Save</b> the layered PSD.</li>
+          <li><b>Now You (2m).</b> Start the hard-sun vs overcast variation: the same object in each light reference. <b>Say:</b> "Feel how completely the shadow's edge and depth have to change." Finish at home.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Light &amp; Anchor, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Learners continue their L10 file (<code class="inline">m4-key-visual.psd</code>) through Steps 1–3. Step 4 applies only if their ground is glossy; everyone else practices it on <code class="inline">labs/module-4/practice/l11-glossy-floor-scene.jpg</code> with the product box or figure, at home if time is short. Solo variations use <code class="inline">l11-light-reference-hard-sun.jpg</code> and <code class="inline">l11-light-reference-overcast.jpg</code>. Details in <code class="inline">labs/module-4/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done (the lesson's checklist):</b> element re-lit to match the scene's direction, hardness, and color; tight contact shadow at the base (Multiply); cast shadow running away from the light, blurred and faded with distance; shadows tinted (not pure black) to match the scene; reflection added if the surface is glossy.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> shadow layers sitting <em>above</em> the element; a cast shadow pointing right (toward the sun); one uniform Gaussian Blur on the whole cast shadow; the D&amp;B layer not clipped (the ↳ is missing and the plaza gets painted too); pure black shadows at 100% opacity.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Shadow direction by guesswork.</b> Read the scene's existing shadows first. On the plaza every lamp post and person shadow falls to the left, so yours must too.</li>
+          <li><b>Using the Drop Shadow layer style as is.</b> It sits at a fixed offset and never lies on the ground in perspective. As a starting point only: Layer ▸ Layer Style ▸ Create Layer splits it onto its own layer, which can then be distorted, blurred and masked.</li>
+          <li><b>Too dark.</b> Match the scene's real shadows, then usually pull back 5–10%. Real shadows carry bounced light.</li>
+          <li><b>Blurring the contact shadow like the cast shadow.</b> The contact shadow stays tight; only the cast shadow gets progressive blur.</li>
+          <li><b>Relighting with the Dodge and Burn tools on the element's pixels.</b> Use the clipped 50% gray Soft Light layer from Lesson 3.2 so it stays editable.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> C) a hard, direct source such as the sun; <b>Q2</b> A) the ground texture shows through, so it darkens the floor instead of painting a gray blob; <b>Q3</b> D) Ctrl/⌘-click the mask thumbnail, fill the selection on a new layer below, deselect, Multiply; <b>Q4</b> B) crisp and dark near the object, softer and paler toward the end; <b>Q5</b> A) cool/blue, because the sky lights it; <b>Q6</b> C) duplicate, Flip Vertical, align bases, 25–40% opacity, blur increasing downward, mask a fade. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal: <em>Look around the room and study one object's shadow. Where is the crisp contact shadow, where does the cast shadow soften, and what color is it? Retelling it in words trains your compositing eye.</em> Pair-share option: partners pick the same object and compare descriptions.</p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the colored-source variation (let a sunset or neon color spill onto the element's lit edge; the glossy scene's magenta neon strip is a ready-made source) and the lesson's "Going further": a subtle <b>rim light</b>, a thin bright edge on a masked layer where the light wraps the element. Also: build the reflection on the glossy scene and nail the base alignment at 200%.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> contact shadow first, then the cast shadow without the progressive blur (one moderate Gaussian Blur plus a gradient mask). Skip the reflection. The lesson's own FAQ backs this up: a good contact shadow sells the grounding even when the cast shadow is subtle.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L12 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L12</span><h3>Atmosphere &amp; the Unifying Grade (Lesson 4.3)</h3><span class="dur">48 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Use atmospheric perspective (haze, fading contrast) to build depth</li>
+          <li>Add fog, light rays, and dust that sit between elements, not just on top</li>
+          <li>Lay a single unifying grade over the whole stack with one adjustment</li>
+          <li>Understand why one grade over everything beats grading each piece</li>
+          <li>Deliver a finished, cohesive advertising-style key visual</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">2m</td><td>The goal: one photograph (lesson slider + instructor reference)</td></tr>
+          <tr><td class="t">4m</td><td>Mental model: distance has a look</td></tr>
+          <tr><td class="t">4m</td><td>The unifying grade; where haze and grade sit in the stack</td></tr>
+          <tr><td class="t">32m</td><td>Guided build: Steps 1–4 (7 + 9 + 8 + 8)</td></tr>
+          <tr><td class="t">2m</td><td>Now You: start "one composite, three grades" (finish at home)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal, Module 4 recap</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (2m).</b> Show the L12 slider: a flat, neutral daytime scene vs the same scene under one grade (cooler shadows, warmer highlights, richer contrast). Then flash <code class="inline">l12-key-visual-reference.jpg</code>. <b>Say:</b> "This is the deliverable. Perfectly placed and lit pieces can still look like separate photos sitting near each other. Atmosphere adds depth; one grade is the final handshake."</li>
+          <li><b>Distance has a look (4m).</b> <b>Say:</b> "The farther something is, the more air washes it out: contrast drops, colors desaturate and shift toward the sky's color, usually cooler and lighter, and edges soften. Mountains on the horizon are pale blue for this reason." Open <code class="inline">l12-far-clocktower-cutout.png</code> and drop it at the far end of the plaza at the right size. <b>Say:</b> "As crisp and saturated as the foreground. It feels pasted forward."</li>
+          <li><b>The unifying grade (4m).</b> Draw Figure 2's stack on the board, top to bottom: <b>★ Unifying Grade · Subject + clipped light/color · Contact + cast shadows (Multiply) · Atmosphere/haze (over the far elements only) · Background</b>. <b>Say:</b> "The grade lives at the top so it rains down on everything. Unify last, grade once: get every piece neutral and correct first, then one dial." Name the options: a Color Lookup (LUT), a Gradient Map at low opacity, or a Curves + Color Balance group.</li>
+          <li><b>Step 1: Set depth by contrast (7m).</b> Identify far, mid and near. On the far element (the clock tower layer), add a clipped Curves: lift the black point slightly and flatten the curve to lower contrast, and nudge it toward the sky color. <b>Say:</b> "Keep the nearest element the crispest and most saturated. The contrast falloff alone reads as distance." <b>Say:</b> "If your far elements are part of the background photo rather than their own layer, clipping to it would flatten the whole background. Use an unclipped Curves with a mask that covers only the distance."</li>
+          <li><b>Step 2: Paint the atmosphere (9m).</b> New layer (Normal mode) above the far elements but below the subject and its shadows. Sample the pale sky near the horizon, soft brush, very low flow, glaze haze over the distance. <b>Say:</b> "Haze builds up in thin coats. If you can see a brushstroke, it's too strong." Optional: a Screen layer for light rays from the sun (upper right on the plaza), blurred and masked to shafts; a whisper of particles.</li>
+          <li><b>Step 3: The unifying grade (8m).</b> At the very top: a <b>Color Lookup</b> LUT, or a Curves + Color Balance group (cool the shadows, warm the highlights, add gentle contrast). Toggle its eye. <b>Say:</b> "Watch every element lock together." Pull the opacity back until it's strong but not garish.</li>
+          <li><b>Step 4: Finish and deliver (8m).</b> A subtle vignette to hold the eye, a touch of glow on the highlights (a merged copy, blurred, on Screen at low opacity), and grain to bind everything to one film stock. <b>File ▸ Save</b> the layered master. Then: flatten a copy (<b>Image ▸ Duplicate</b>, tick Duplicate Merged Layers Only), <b>Edit ▸ Convert to Profile</b> ▸ sRGB, and export (File ▸ Export ▸ Export As ▸ JPG). <b>Say:</b> "That's the Module 4 deliverable: one key visual that reads as one photograph."</li>
+          <li><b>Now You (2m).</b> Start "one composite, three grades": warm blockbuster, cool thriller, faded indie. Finish at home, along with saving the grade as a LUT (Lesson 2.2).</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Depth &amp; Grade (Module 4 deliverable)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Learners finish <code class="inline">m4-key-visual.psd</code> with Steps 1–4 and export the key visual. On the plaza, the far element is <code class="inline">labs/module-4/practice/l12-far-clocktower-cutout.png</code> placed on the hills. The "prove the depth with contrast and haze alone" variation uses <code class="inline">l12-depth-bands-flat.jpg</code>, a five-band landscape with no atmosphere at all. Details in <code class="inline">labs/module-4/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done (the lesson's checklist):</b> element placed with correct perspective and scale (4.1); element lit, with contact and cast shadows (4.2); depth set by lowering contrast and adding haze on far elements; atmosphere (haze, optional rays/particles) between elements; one unifying grade over the whole stack; vignette + grain, exported as a finished key visual.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> haze layers placed above the grade (they escape it and look pasted on); a grade clipped to the subject instead of sitting at the top; heavy fog over the foreground; learners who flattened the master instead of a copy.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Grading each piece separately.</b> They chase their tail forever. Neutral and correct first, then one grade on top.</li>
+          <li><b>Using the grade to hide a bad match.</b> The FAQ's order: horizon, scale, lens, light direction, shadow, contact shadow, depth/haze, grade. Ninety percent of "off" composites fail at scale or the missing contact shadow.</li>
+          <li><b>Haze on everything.</b> Atmosphere goes on the <em>far</em> elements. Haze over the subject flattens the thing the viewer should look at.</li>
+          <li><b>Forgetting the sRGB conversion.</b> A wide-gamut master exported without it looks dull on the web (Module 2 callback).</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> D) contrast drops, colors desaturate and shift toward the sky color, edges soften; <b>Q2</b> B) above the far elements, below the subject, its shadows and the grade; <b>Q3</b> C) one set of adjustments touches every element, so they share one color identity; <b>Q4</b> A) get every piece to neutral and correct; <b>Q5</b> B) a Color Lookup, a low-opacity Gradient Map, or a Curves + Color Balance group; <b>Q6</b> D) vignette, glow and grain, then flatten a copy, convert to sRGB, export. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal: <em>Pick a film still you love. Describe its grade in words (where are the shadows pushed, where the highlights?) and where atmosphere creates its depth. Then try to rebuild that grade on one of your own images.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the deep-scene variation on <code class="inline">l12-depth-bands-flat.jpg</code> (prove depth with contrast and haze alone, before any grade), then save the grade as a LUT (File ▸ Export ▸ Color Lookup Tables, Lesson 2.2) and apply it to that landscape to feel a series identity. The lesson's "exam every senior compositor passes": composite into a scene shot at a completely different time of day, and use only atmosphere and grade to make them agree.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> Step 1 on the clock tower only, one haze layer, and one Color Lookup at reduced opacity; then save and export. Vignette, glow and grain are the last 10%. A grounded, graded key visual with those three moves is a legitimate deliverable.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Mini-Gallery Protocol (7 min)</h2><span class="rule"></span></div>
+  <ol class="steps lab">
+    <li>Three or four volunteers put their exported key visual full-screen for about a minute each.</li>
+    <li>The room runs the lesson's diagnostic checklist aloud, in order: <b>horizon, scale, lens, light direction, shadow, contact shadow, depth/haze, grade.</b> Stop at the first item that fails; that is the fix.</li>
+    <li>The maker names one thing they are proud of and the next thing they would fix.</li>
+    <li>Keep feedback specific and kind: "the eyes sit on the horizon and the contact shadow sells it; the cast shadow could fade sooner" rather than "looks fake."</li>
+  </ol>
+
+  <div class="sec"><h2>Closing the Session</h2><span class="rule"></span></div>
+  <div class="note lab">
+    <div class="t">Module 4 wrap-up (5 min, 2:55–3:00)</div>
+    <p>Recap the pipeline: <b>share one horizon and place by ground contact → match the light and anchor with two shadows → push the distance back and lay one grade over everything.</b> Exit ticket (sticky note): "The contact shadow says ___; the cast shadow says ___." (Touching; where the light is.) Homework, from the lessons' "Before the Next Lesson/Module" lists: find the horizon in five photos (drill sheet panel 6 for one of them); study the contact and cast shadows of three real objects; finish the L10–L12 solo variations started in class; complete one composite through the full 4.1 → 4.2 → 4.3 pipeline and keep the layered file; save the unifying grade as a reusable LUT; write the three journal entries. Preview Session 5 (Module 5, Design Systems &amp; Type): "You've made single images extraordinary. Next we produce at scale: type systems, Smart-Object templates, and a whole campaign from one master file. Keep your key visual handy; it makes a good test image for the templates."</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Instructor Kit · Module 4 · Facilitator Guide · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

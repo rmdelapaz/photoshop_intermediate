@@ -1,0 +1,26 @@
+L21 WARM-UP: THE STICKY-NOTE BRIEF
+Photoshop Intermediate: From Practitioner to Pro · Module 8 · Lesson 8.1
+
+A (fictional) cafe owner left these notes on your desk. Nothing here can be checked,
+so nothing here can ever be "done." Your job: pin every vague phrase to a spec,
+a named constraint, or a reference image. Rewrite it as the six parts of a brief.
+
+    - "Something for the new cold brew, for online."
+    - "Make it pop."
+    - "Modern vibe, but not cold."
+    - "Clean but bold."
+    - "Young people should like it."
+    - "Our colors, I guess?"
+    - "Soon-ish."
+    - "You'll know it when you see it."
+
+Rewrite as:
+  1. Objective ............ one sentence: what must it achieve, and why?
+  2. Audience ............. who, their context, what should make them stop?
+  3. Deliverables + specs . exact outputs, pixel sizes, formats, where they live
+  4. Constraints .......... brand rules, colors, fonts, budget, deadline
+  5. Success criteria ..... a checklist someone else could grade
+  6. References .......... which images give "bold" and "modern" a picture?
+
+Test: could a stranger build against your version and know when it is finished?
+Mantra: if you can't check it, it isn't in the brief.

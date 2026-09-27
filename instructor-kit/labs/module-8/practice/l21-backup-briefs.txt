@@ -1,0 +1,63 @@
+READY-MADE BACKUP BRIEFS · Lesson 8.1
+Use one of these only if you have no project of your own, or you arrive at Session 8
+with little built. The assets named below are in this practice folder. Both brands and
+the film are fictional. You may still add your own photos.
+
+=====================================================================================
+BRIEF A · KEY ART POSTER: "THE SALT ROAD" (a film that does not exist)
+Touches Modules 1, 3, 4, 5.
+=====================================================================================
+1. Objective   A one-sheet key art poster that sells a quiet, tense road-movie thriller.
+2. Audience    Festival-goers scrolling a program page or passing a lobby wall.
+3. Deliverables + specs
+               - Poster 24 x 36 in, 300 ppi (build smaller if your machine struggles,
+                 e.g. 2400 x 3600 px), print PDF to the printer's spec
+               - Screen version 1080 x 1620 px, sRGB JPG
+               - Layered master .psd
+4. Constraints Title "THE SALT ROAD"; a credit block at the bottom; one type family;
+               palette of dusk orange, salt white and deep blue; deadline: Session 8.
+5. Success criteria
+               [ ] The figure stands on the road at the right scale for the horizon
+               [ ] Light on the figure comes from the left, like the low sun
+               [ ] A contact shadow and a long cast shadow to the right
+               [ ] Haze makes the distant hills lighter than the foreground
+               [ ] Title readable at a phone-sized thumbnail
+               [ ] One unifying grade over the whole composite
+6. References   Find 6-12 of your own: dusk road photography, thriller one-sheets,
+               heavy condensed title type.
+Assets: l21-backup-keyart-plate.jpg (the road at dusk, horizon at y 1900 of 3000,
+        sun low on the left), l21-backup-keyart-figure.jpg (a figure on gray, lit from
+        the left, with wind-blown hair for a Select & Mask cutout).
+
+=====================================================================================
+BRIEF B · PRODUCT CAMPAIGN: "HALDEN COLD BREW" (a fictional brand)
+Touches Modules 2, 4, 5, 6.
+=====================================================================================
+1. Objective   Launch the product online with one hero and a sized social set,
+               all from one master.
+2. Audience    Local commuters who follow the cafe on social media, on a phone.
+3. Deliverables + specs
+               - Web hero 3000 x 2000 px, sRGB JPG
+               - Feed post 1080 x 1350 px (4:5) and story 1080 x 1920 px (9:16),
+                 sRGB JPG, key content inside the safe zone
+               - Layered master .psd with artboards
+4. Constraints Brand green #1F4D3F and cream #F3E9DC plus one accent; use the supplied
+               logo (do not redraw it); one type family; deadline: Session 8.
+5. Success criteria
+               [ ] Clean cutout of the can, no fringe at 100%
+               [ ] Light direction on the can matches the window light (from the left)
+               [ ] Contact shadow where the can meets the counter
+               [ ] Product name readable at a phone-sized thumbnail
+               [ ] All sizes exported at spec from one master (an Action is a bonus)
+6. References   Find 6-12 of your own: window-lit product shots, editorial food
+               photography, minimal packaging ads.
+Assets: l21-backup-product.jpg (the can on seamless gray, lit from the left),
+        l21-backup-product-surface.jpg (counter and wall with window light from the
+        left), l21-backup-brand-logo.png (transparent logo).
+
+=====================================================================================
+EDITORIAL PORTRAIT?
+=====================================================================================
+There is no synthetic portrait for this brief here. Reuse your Module 3 retouching
+practice portrait (labs/module-3/practice/) or, better, a portrait you shot yourself
+of someone who has agreed to have it retouched and shown in class.

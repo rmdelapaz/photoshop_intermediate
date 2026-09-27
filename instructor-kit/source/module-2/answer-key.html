@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Answer Key: Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">answers &amp; solutions · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Answer Key</div>
+    <h1>Module 2: Answers &amp; Lab Notes</h1>
+    <p class="sub">Self-check answers with explanations, plus reference notes for each lab: what a correct result looks like, the common wrong results and why they happen, and how to check them quickly at a learner's machine.</p>
+    <div class="meta-row"><span class="chip">Lessons <b>2.1–2.3</b> (L04–L06)</span><span class="chip"><b>18</b> quiz items</span><span class="chip"><b>3</b> guided builds + <b>3</b> solo variations</span></div>
+  </header>
+
+  <div class="note"><div class="t">Numbering matches the workbook</div><p>The participant workbook's self-check items use the same question numbers as this key. The lesson pages themselves don't carry quizzes; these items were written for the kit and test only what L04–L06 teach.</p></div>
+
+  <!-- L04 -->
+  <div class="sec"><h2>L04 · Color Management &amp; Working Spaces (2.1)</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">An image is "color poured into a container." Which two properties define that container?</div><div class="opts"><div class="opt correct">B) Working space (how wide the gamut is) and bit depth (how finely each channel is divided)</div></div><div class="why"><b>Why:</b> The lesson's mental model: the working space sets how wide the container is (which colors it can describe), and bit depth sets how finely it is divided (256 steps per channel in 8-bit, over 32,000 in 16-bit). Format, pixel size and layer count (A, C) are unrelated; the monitor (D) displays the container, it doesn't define it.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">You apply the same aggressive Curves to an 8-bit and a 16-bit copy of a smooth sky. Only the 8-bit copy breaks into bands. Why?</div><div class="opts"><div class="opt correct">D) The edit demands more tonal steps than 8-bit's 256 per channel; 16-bit has about 128 times more</div></div><div class="why"><b>Why:</b> Banding is what happens when an edit demands more tonal steps than the file has. Bit depth is independent of pixel count (A) and of working space (B): you can have 8-bit ProPhoto or 16-bit sRGB. There is no such setting as C.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">A learner's graded photo looks duller on Instagram than in Photoshop. What is the most likely cause?</div><div class="opts"><div class="opt correct">A) The file was left in Adobe RGB or ProPhoto and never Converted to sRGB</div></div><div class="why"><b>Why:</b> The lesson's FAQ: a wide-gamut file shown in an sRGB world. Its numbers get read as sRGB, so the colors look muted. Convert to sRGB before exporting for the web and it matches. Low quality (B) causes blockiness, not dullness; 16-bit (C) and Preserve (D) are the recommended settings.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">It is time to deliver a web JPEG from your layered, 16-bit Adobe RGB master. Which is the correct move?</div><div class="opts"><div class="opt correct">C) On a merged duplicate: Edit ▸ Convert to Profile ▸ sRGB, 8 Bits/Channel, then export</div></div><div class="why"><b>Why:</b> Convert remaps the colors so they keep their appearance; Assign (A) only relabels the container and shifts every color. The lesson makes the web copy with Image ▸ Duplicate (Duplicate Merged Layers Only) so the master stays wide and 16-bit (B and D both damage the master).</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">Before any edit, the Histogram shows a tall spike slammed against the right wall. What does it tell you?</div><div class="opts"><div class="opt correct">B) Highlights are clipped: detail at the bright end is lost</div></div><div class="why"><b>Why:</b> A spike against either wall means clipped tones and lost detail. Underexposure (A) crams the data left; a flat image (C) is a narrow histogram with empty ends. A bright high-key scene (D) sits to the right but should not pile up against the wall.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">Which pairing of working space and job matches the lesson's table?</div><div class="opts"><div class="opt correct">D) ProPhoto RGB for heavy RAW grading and archival masters, always paired with 16-bit</div></div><div class="why"><b>Why:</b> sRGB is for web, social and email; Adobe RGB for print (it holds cyans and greens sRGB clips); ProPhoto for heavy RAW grading and masters, and always with 16-bit or it bands. A pairs ProPhoto with the two things it must never meet: the web and 8-bit.</div></div>
+
+  <div class="note lab"><div class="t">Lab reference: Set Up &amp; Diagnose (<code class="inline">l04-smooth-sky-16bit.tif</code>, <code class="inline">l04-histogram-a…e.jpg</code>, or own image)</div>
+    <p><b>A correct result looks like:</b> Edit ▸ Color Settings reopened shows the learner's deliberate choice (Adobe RGB (1998) or sRGB), a CMYK profile, RGB policy <b>Preserve Embedded Profiles</b> and the mismatch boxes ticked. The working file's tab reads <b>RGB/16</b>. A one-sentence diagnosis is written in the workbook <em>before</em> any adjustment layer exists. Two sky windows side by side after the same hard Curves: the 8-bit copy shows distinct horizontal stripes in the upper sky at 100%, the 16-bit one a smooth gradient. <code class="inline">color-master.psd</code> is still 16-bit and wide; the exported JPEG is sRGB, 8-bit.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>No visible banding.</b> The Curves move was gentle, the view is zoomed out, or the "8-bit" copy was never converted (check the tab). Push the curve's ends far inward and add a second Curves.</li>
+      <li><b>Both copies band.</b> They converted the original to 8-bit first and duplicated afterward. Reopen the TIFF.</li>
+      <li><b>Colors jumped at export.</b> Assign Profile instead of Convert to Profile. Undo and Convert.</li>
+      <li><b>Master is now 8-bit sRGB.</b> The conversion was done on the master and saved. Re-open the practice file (or their own original) and rebuild; stress Image ▸ Duplicate.</li>
+      <li><b>Diagnosis names a tool, not a problem</b> ("add Curves"). Ask: "What's wrong in the histogram?" Aim for "The tones are crammed left and nothing is near white; it needs lifting."</li>
+    </ul>
+    <p><b>How to check it fast:</b> look at the document tab (mode, bit depth, and an asterisk or "#" for a profile mismatch in some versions), and at <b>Edit ▸ Convert to Profile</b>: the Source Space line names the file's current profile.</p>
+  </div>
+  <div class="note lab"><div class="t">Lab reference: Now You (histogram drill + two-way export + template)</div>
+    <p><b>Histogram answers</b> (also in <code class="inline">labs/module-2/instructor/l04-histogram-answers.txt</code>): <b>a</b> flat / low contrast (narrow, empty ends) · <b>b</b> high-key snow scene, correctly exposed (piled right but not against the wall: the trap) · <b>c</b> underexposed (crammed left) · <b>d</b> overexposed with clipped highlights (spike on the right wall) · <b>e</b> crushed shadows (spike on the left wall).</p>
+    <p><b>Two-way export:</b> the Converted copy of <code class="inline">l04-lagoon-adobergb.jpg</code> looks like the original in the browser; the profile-stripped copy is visibly duller, most in the turquoise water, the palm fronds and the "green" and "cyan" swatches. The gray swatch barely changes. A good answer names where the shift showed most. <b>Template:</b> File ▸ New preset saved with 16 bit and Adobe RGB (1998) or ProPhoto RGB under Advanced Options.</p>
+    <p><b>Common wrong results:</b> calling <b>b</b> overexposed; stripping the profile from an sRGB copy and seeing "no difference" (the lesson warns this happens because browsers assume sRGB); a template in ProPhoto at 8-bit.</p>
+  </div>
+
+  <!-- L05 -->
+  <div class="sec"><h2>L05 · Grading with Curves, Gradient Maps &amp; LUTs (2.2)</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">What separates grading from correcting, in the lesson's words?</div><div class="opts"><div class="opt correct">C) Correcting asks "what is wrong?"; grading asks "what should it feel like?" and deliberately remaps tones to chosen colors</div></div><div class="why"><b>Why:</b> Every grade is a remap: you decide what color each tone becomes (teal shadows, gold highlights). The lesson's pro grade barely touches exposure (B) and works with Curves, Gradient Maps and LUTs, not only Camera Raw (A). Correcting comes first to build the neutral base (D).</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">You want the classic teal-and-gold in Curves. In the <b>Blue</b> channel, what do you do?</div><div class="opts"><div class="opt correct">A) Lift the shadow end and drop the highlight end</div></div><div class="why"><b>Why:</b> Lifting the shadow end adds blue to the shadows; dropping the highlight end removes blue from the highlights, which reads as warm yellow. For a truer teal, also lift Green slightly or drop Red slightly in the shadows. B gives yellow shadows and blue highlights, the opposite look.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">Your teal-to-gold Gradient Map looks garish and has flattened all the detail. What does the lesson tell you to do?</div><div class="opts"><div class="opt correct">D) Set the layer to Color or Soft Light and/or drop its opacity to about 15–40%</div></div><div class="why"><b>Why:</b> "Blend it, don't bake it." At 100% Normal a Gradient Map replaces every tone with a ramp color. Lower opacity (the recipe says about 20–30%) or a Color / Soft Light blend lends its palette to the real image underneath.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">Before File ▸ Export ▸ Color Lookup Tables, why do you Shift-click each mask thumbnail and hide non-grade layers?</div><div class="opts"><div class="opt correct">B) The export bakes every visible adjustment layer, and a LUT cannot store a mask</div></div><div class="why"><b>Why:</b> A LUT is one global input-to-output color recipe; it has no idea where a mask was. The export bakes all visible adjustment layers (not just selected ones, so D is wrong), so switch off the masks and hide anything that isn't the grade, then re-enable the masks afterward.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">Your LUT looks perfect on the shot you built it on but wrong on another photo. What is the most likely reason?</div><div class="opts"><div class="opt correct">A) The second photo wasn't corrected to a neutral base first, and a LUT assumes a similar starting point</div></div><div class="why"><b>Why:</b> Straight from the lesson FAQ: correct each image to a neutral base first (in the Lesson 2.1 pipeline), then apply the LUT. A LUT is a starting point, not a finisher, and it certainly travels to other images (B); that's its whole purpose.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">Which order does the lesson's flowchart and build follow?</div><div class="opts"><div class="opt correct">C) Correct to neutral → contrast (S-curve) → color → refine locally with masks → bottle as a LUT</div></div><div class="why"><b>Why:</b> Correct, then grade, then bottle. Contrast is set before color (the checklist's first item), local refinement uses Module 1 masks, and the LUT is exported last, from a grade built on a neutral base.</div></div>
+
+  <div class="note lab"><div class="t">Lab reference: Grade &amp; Bottle It (<code class="inline">l05-portrait-studio.jpg</code> or own portrait → <code class="inline">l05-pier-dusk.jpg</code>)</div>
+    <p><b>A correct result looks like:</b> <code class="inline">grade-working.psd</code>, 16-bit, with (bottom to top) the photo as Background, a neutralizing Curves or Camera Raw correction (the gray card's middle patch reads roughly equal R, G and B in the Info panel), a "contrast" Curves with a gentle S, a color Curves with the Blue shadow end lifted and highlight end dropped (optionally a small Green lift or Red drop in the shadows), a teal-to-gold Gradient Map in Color or Soft Light at about 20–30%, and at least one mask keeping the grade off the face or the highlights. A <code class="inline">.cube</code> exists, and a Color Lookup layer on the pier gives it the same teal shadows and warm highlights.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>The grade looks muddy-green on the portrait.</b> Teal was laid over the uncorrected yellow cast. Correct to neutral first.</li>
+      <li><b>Pier looks wildly different from the portrait's look.</b> A stray layer (or the portrait's heavy correction) was visible at export and got baked in. Re-export with only the grade visible.</li>
+      <li><b>The LUT seems "weaker" than the portrait.</b> Expected when the portrait's grade relied on masks: a LUT can't store them. Discuss it; it's the lesson's point.</li>
+      <li><b>Masks still disabled in the saved master</b> (red X on the thumbnails). Shift-click to re-enable, save.</li>
+      <li><b>Export Color Lookup Tables unavailable or failing.</b> The document isn't a Background + adjustment layers structure. Rebuild it that way; meanwhile use the fallback LUT for the transfer test.</li>
+    </ul>
+    <p><b>How to check it fast:</b> toggle the Gradient Map's eye: if the change is dramatic, it's too strong. Load the learner's .cube onto <code class="inline">l05-grade-test-chart.png</code>: the gray ramp should turn teal at the dark end and warm at the bright end, with the mids near neutral.</p>
+  </div>
+  <div class="note lab"><div class="t">Lab reference: Now You (three LUTs, reverse-engineered look, one LUT across five photos)</div>
+    <p><b>A correct result looks like:</b> three .cube files whose recipes differ in all three dimensions the journal asks about. Typical answers: <b>warm summer</b> = warm/golden highlights, slightly warm shadows, moderate contrast; <b>cold thriller</b> = cyan-blue shadows, cool neutral highlights, higher contrast, often slightly desaturated; <b>faded matte</b> = lifted black point (the RGB curve's shadow end raised), lowered contrast, often a gentle warm or green cast. Across five photos the learner should report at least one where the LUT needed per-image correction first ("a LUT is a starting point, not a finisher").</p>
+    <p><b>Common wrong results:</b> three LUTs that are the same look at different strengths; a faded look built by lowering opacity instead of lifting the black point; no neutral base before applying the LUT to the five photos.</p>
+  </div>
+
+  <!-- L06 -->
+  <div class="sec"><h2>L06 · Match, Split-Tone &amp; Soft-Proof (2.3)</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">What is the most flattering, cinematic split-tone according to the lesson?</div><div class="opts"><div class="opt correct">B) Cool shadows, warm highlights, with the mids kept roughly neutral</div></div><div class="why"><b>Why:</b> Cool shadows and warm highlights mimic warm sunlight and cool skylight, which is how we expect the world to look. Neutral mids keep skin believable. Green/magenta (D) is the lesson's deliberately unusual pairing for the solo variation.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">After split-toning, the skin looks ill. What is going on and what is the fix?</div><div class="opts"><div class="opt correct">D) The color is reaching the midtones where skin lives: keep the split in the extremes, ease the amount, and mask the grade off the face if needed</div></div><div class="why"><b>Why:</b> The lesson's FAQ answer. Skin lives in the mids, so color pushed there reads as sickly. Preserve Luminosity (C) is what the Recipes II split-tone card says to keep ticked; it stops Color Balance from shifting brightness.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">You are matching a companion photo to a reference with Curves. What order does the lesson give?</div><div class="opts"><div class="opt correct">A) Tones first (brightness and contrast), then black point, white point and mid color from the sampled values</div></div><div class="why"><b>Why:</b> "Match tones before colors": a color match laid over mismatched exposure never holds. Then black point, white point and mid color, in that order. Image ▸ Adjustments ▸ Match Color (D) exists for a quick automatic pass, but hand-matching with Curves is more controllable.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">Where do you read the RGB values of the points you dropped with the Color Sampler Tool?</div><div class="opts"><div class="opt correct">C) The Info panel (Window ▸ Info)</div></div><div class="why"><b>Why:</b> Color Sampler points report their values in the Info panel. Comparing the two images' readouts tells you which way each channel must move.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">With soft-proofing on, Gamut Warning (Ctrl/⌘ + Shift + Y) grays out a neon sign. What do you do?</div><div class="opts"><div class="opt correct">B) Lower the saturation there with a masked Hue/Saturation layer until the warning clears</div></div><div class="why"><b>Why:</b> Gray means the press can't reproduce that color. Pulling those areas' saturation down (a masked Hue/Saturation) makes the print match the soft-proof. Assigning a profile (C) just shifts colors; turning off paper simulation (D) hides the problem instead of solving it.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">Which delivery matches the Module 2 deliverable?</div><div class="opts"><div class="opt correct">D) Keep the layered master wide + 16-bit; from merged duplicates, Convert to sRGB (8-bit JPG) for web and to the printer's profile (PDF or TIFF, or tagged RGB if the printer asks) for print</div></div><div class="why"><b>Why:</b> One look, delivered correctly for two destinations, always from duplicates so the master stays wide and 16-bit. A, B and C each damage the master or skip a destination; B also uses Assign, which relabels instead of converting.</div></div>
+
+  <div class="note lab"><div class="t">Lab reference: Split-Tone &amp; Proof, the Module 2 deliverable (<code class="inline">finish-working.psd</code>, <code class="inline">l06-companion-portrait.jpg</code>, <code class="inline">l06-neon-proof.jpg</code>)</div>
+    <p><b>A correct result looks like:</b> <code class="inline">finish-working.psd</code> (still RGB/16, wide space) with a Color Balance layer whose Shadows values lean Cyan and Blue and whose Highlights lean Red and Yellow, Midtones at or near 0; skin reads warmly lit. The companion portrait has a Curves layer that lifts the cast: its gray card's middle patch in the Info panel reads close to the reference's (practice file: before correction the companion's middle patch is strongly blue, roughly R below G below B; after, the three values sit within a few levels of each other and of the reference). The proof setup names a printer profile or SWOP v2, an intent, BPC and Simulate Paper Color; any gamut warnings were handled with a masked Hue/Saturation layer. Two delivered files: an sRGB 8-bit JPEG, and a PDF or TIFF converted to the printer/CMYK profile (or tagged RGB if the printer asked for it).</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Skin looks orange or gray-green.</b> The Color Balance moves were made on Midtones (the default Tone). Zero Midtones, redo on Shadows and Highlights.</li>
+      <li><b>Companion "matched" but still looks different.</b> Channels were moved before brightness and contrast were matched, or the samplers sit on non-comparable points.</li>
+      <li><b>No gamut warning at all.</b> On a gently graded portrait that can be correct. Confirm proof is on (tab shows the simulated profile) and have them run Step 3 on <code class="inline">l06-neon-proof.jpg</code>: the magenta OPEN, the blue arrow, the green arc and probably parts of the orange tube gray out; brick, door and poster don't.</li>
+      <li><b>Whole-image Hue/Saturation.</b> The neon clears, but the whole picture goes dull. Mask it to the flagged areas.</li>
+      <li><b>Only one file delivered, or the master converted.</b> The deliverable is two files from duplicates; the master stays wide and 16-bit.</li>
+    </ul>
+    <p><b>How to check it fast:</b> open the two delivered files and look at the tab (RGB/8 and CMYK/8 or the printer's space); in the master, Edit ▸ Convert to Profile's Source Space should still show the wide working space.</p>
+  </div>
+  <div class="note lab"><div class="t">Lab reference: Now You (three-photo set, two split-tones, vivid soft-proof)</div>
+    <p><b>A correct result looks like:</b> <code class="inline">l06-set-b-tungsten</code> and <code class="inline">l06-set-c-shade</code> matched to <code class="inline">l06-set-a-daylight</code>: the gray cards read neutral and alike, the linen is off-white in all three, the mug is the same blue, the lemon the same yellow. Tungsten needed Blue raised and Red lowered plus brightening; shade needed Blue lowered and a stronger black point (it is lifted and flat). The green/magenta split-tone should feel unsettling or surreal next to the cool/warm one; the learner names the emotion. The vivid-image proof entry names the areas flagged and roughly how much saturation came out.</p>
+    <p><b>Common wrong results:</b> matching only by eye with a global Photo Filter; ignoring the shade frame's lifted blacks; a green/magenta split that is so strong it reads as a color cast rather than a split.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><span class="bio">Instructor Kit · confidential, do not distribute to students · © 2026 Ray de la Paz</span></div>
+    <div class="ver">Answer Key · Module 2 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Answer Key — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">answers &amp; solutions · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Answer Key</div>
+    <h1>Module 4 — Answers &amp; Lab Notes</h1>
+    <p class="sub">Every workbook self-check answered and explained, plus reference notes for each lab: what a correct result looks like, how to check it quickly, and the common wrong results and why they happen.</p>
+    <div class="meta-row"><span class="chip">Lessons <b>10–12</b> (4.1–4.3)</span><span class="chip"><b>18</b> quiz items</span><span class="chip"><b>3</b> hands-on labs</span></div>
+  </header>
+
+  <div class="note"><div class="t">Numbering matches the workbook</div><p>The participant workbook's self-checks are numbered Q1–Q6 within each lesson, so a learner's "L11 Q3" is always this key's L11 Q3. Every answer is taken from what the lesson teaches. Lab checks refer to the synthetic practice files; the geometry of the plaza is exact (horizon y = 700 px, vanishing point at 1260, 700), so placements can be verified with a ruler guide.</p></div>
+
+  <!-- L10 -->
+  <div class="sec"><h2>L10 · Match Perspective, Scale &amp; Lens (4.1)</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">What does a photo's horizon line represent?</div><div class="opts"><div class="opt correct">B) The camera's eye level, the height the lens was at, whether or not it is visible</div></div><div class="why"><b>Why:</b> the horizon is always there, even hidden behind buildings or a hill; it is not the skyline (A). It rarely sits at the frame's center (C) unless the camera was level and centered, and it has nothing to do with focus (D).</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">The horizon is hidden behind buildings. How does the lesson find it?</div><div class="opts"><div class="opt correct">D) Extend two receding edges until they meet, then draw a horizontal guide through that vanishing point</div></div><div class="why"><b>Why:</b> receding parallel lines converge on a vanishing point that sits on the horizon. Guides can only be horizontal or vertical, so they cannot follow the angled edges (C); the edges are drawn with the Line or Pen tool on an empty layer. Perspective Warp (B) changes an element; it does not measure the scene.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">The scene was shot at standing eye level, with people on flat ground. How do you scale a pasted person?</div><div class="opts"><div class="opt correct">A) Set the feet's ground-contact point first, then scale until the horizon crosses their eyes like everyone else's</div></div><div class="why"><b>Why:</b> the contact point fixes distance and size together; the horizon then crosses every similar-height person at the same body height. "Looks about right" (B) never does, the nearest person's pixel height (C) only works if the new figure stands at the same distance, and head-on-horizon (D) would make them shorter than everyone else.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">In current Photoshop versions, what does holding <kbd>Shift</kbd> while dragging a Free Transform corner do?</div><div class="opts"><div class="opt correct">C) Switches proportional scaling off</div></div><div class="why"><b>Why:</b> Free Transform scales proportionally by default in current versions, so Shift now does the opposite of the old habit and distorts the element. Scaling from the center (B) is Alt/⌥.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">Edit ▸ Perspective Warp is grayed out. What does the lesson say to check?</div><div class="opts"><div class="opt correct">D) Turn on Use Graphics Processor in Preferences ▸ Performance</div></div><div class="why"><b>Why:</b> Perspective Warp needs the graphics processor (restart if asked). It also works on one layer at a time, so select a single layer, ideally a Smart Object. Flattening (A) or rasterizing (C) would throw away the editability the lesson wants.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">A telephoto headshot pasted onto a wide-angle street still looks subtly wrong after the perspective is matched. What is true?</div><div class="opts"><div class="opt correct">B) Warp fixes geometry, not optics; a source shot on a focal length close to the background's is the real fix</div></div><div class="why"><b>Why:</b> "You can't add depth a long lens removed." A wide lens exaggerates depth; a long lens compresses it. A small Lens Correction or subtle warp can nudge the feel, but a wild mismatch means choosing a better source.</div></div>
+  <div class="note lab"><div class="t">Lab reference: Place One Element</div>
+    <p><b>A correct result:</b> a layered <code class="inline">m4-key-visual.psd</code> with a horizon guide at y = 700 on the plaza (from two extended lines on their own layer), the figure placed as an embedded Smart Object or layer with its shoes touching a tile and its eyes on the guide. Height follows distance: feet at y ≈ 950 → figure ≈ 270 px tall (about 19% of the 1,422 px cutout); feet at y ≈ 840 → ≈ 150 px. Rule of thumb for this file: figure height ≈ 1.075 × (feet y − 700). If the product box was used, it is a Smart Object with a Perspective Warp applied and its bottom edges follow the grout lines toward (1260, 700).</p>
+    <p><b>How to check fast:</b> drag a ruler guide to 700; look at the eyes. Then zoom to the shoes: a sliver of tile between sole and grout reads as floating. Compare with <code class="inline">instructor/l10-plaza-answer-overlay.jpg</code> (ghost outlines at 8, 16 and 32 m).</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Giant in the foreground</b>: scaled by eye; the horizon crosses the figure at the waist. Rescale from the feet.</li>
+      <li><b>Horizon at the hills</b>: the learner took the visible skyline as the horizon; the true horizon is lower, where the lines meet.</li>
+      <li><b>Stretched figure</b>: Shift held during scaling (proportions switched off).</li>
+      <li><b>Box still "looking down"</b>: warped on its face only; the top plane still disagrees. Add a quad on the side, and accept that a high-angle source has limits (lens/angle, not just geometry).</li>
+      <li><b>Warp can't be revised</b>: applied to a raster layer. Convert to Smart Object first next time.</li>
+    </ul>
+  </div>
+
+  <!-- L11 -->
+  <div class="sec"><h2>L11 · Light, Shadows &amp; Reflections (4.2)</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">The shadows in your background have crisp, sharp edges. What does that tell you about the light?</div><div class="opts"><div class="opt correct">C) It is a hard, direct source, such as the sun</div></div><div class="why"><b>Why:</b> hardness is read from shadow edges: crisp means hard, direct light; soft means overcast or diffused (A). Color (B) and direction (D) are read separately, from the tint and from which way the shadows point.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">Why are the contact and cast shadow layers set to <b>Multiply</b>?</div><div class="opts"><div class="opt correct">A) So the ground texture shows through and the shadow darkens the floor instead of painting a flat gray blob</div></div><div class="why"><b>Why:</b> Multiply only darkens what is underneath, keeping tiles, grain, and grout visible through the shadow. It does not blur (B) or tint (D); the tint is added deliberately.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">Your cut-out uses a layer mask. How does the lesson create the cast-shadow shape?</div><div class="opts"><div class="opt correct">D) Ctrl/⌘-click the mask thumbnail, fill the selection with a very dark color on a new layer below, deselect, set Multiply</div></div><div class="why"><b>Why:</b> filling a new layer works even when the cut-out uses a mask or is a Smart Object, where Lock Transparent Pixels and a direct fill (A) would not. A Drop Shadow style (B) sits at a fixed offset and never lies on the ground in perspective.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">How should a believable cast shadow change as it travels away from the object?</div><div class="opts"><div class="opt correct">B) Crisp and dark near the object, softer and paler toward its end</div></div><div class="why"><b>Why:</b> that is why the lesson blurs more with distance (Blur Gallery ▸ Tilt-Shift or Field Blur, or a blurred duplicate blended with a gradient mask) and fades the opacity with a gradient mask. A uniform shadow (A) is the classic "gray blob."</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">What color should an outdoor shadow lean toward?</div><div class="opts"><div class="opt correct">A) Cool/blue, because the sky, not the sun, lights it</div></div><div class="why"><b>Why:</b> pure black shadows (B) look cut-out. Indoors, shadows pick up the room's bounced light instead. Match the real shadows' color and depth, then usually pull back 5–10%.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">Which is the lesson's reflection recipe for a glossy floor?</div><div class="opts"><div class="opt correct">C) Duplicate, Flip Vertical, align the bases, lower opacity to ~25–40%, blur more with distance, mask a fade</div></div><div class="why"><b>Why:</b> a reflection is a vertical mirror image (not horizontal, B), anchored exactly at the base. A reflection that starts a few pixels off is instantly wrong. Motion Blur or Gaussian Blur that increases downward, plus a masked fade, makes it recede.</div></div>
+  <div class="note lab"><div class="t">Lab reference: Light &amp; Anchor</div>
+    <p><b>A correct result</b> (on the plaza): the figure's <em>right</em> side is brighter than its left (a clipped 50% gray Soft Light layer, ↳ visible), and a clipped Color Balance or Photo Filter warms it toward the late sun. Below the figure: <code class="inline">Contact Shadow</code> (Multiply, tight dark pool under the shoes, barely blurred) and <code class="inline">Cast Shadow</code> (Multiply, filled silhouette distorted onto the tiles and running <b>to the left</b>, parallel to the lamp-post and people shadows, crisp at the shoes and softer and paler at the tip, tinted cool). The plaza's existing shadows are the benchmark for darkness. The PSD is saved layered.</p>
+    <p><b>How to check fast:</b> toggle the shadow layers off: the figure should instantly look pasted. Compare the cast shadow's angle with the nearest lamp-post shadow. On the glossy practice scene, zoom to 200% where the reflection meets the base: no gap, no overlap.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Shadow points right</b>: drawn toward the sun; the scene's own shadows weren't read first.</li>
+      <li><b>Flat gray blob</b>: Normal mode instead of Multiply, or one uniform Gaussian Blur and no gradient fade.</li>
+      <li><b>Shadow over the shoes</b>: the shadow layers sit above the element in the stack.</li>
+      <li><b>The whole plaza got lighter/warmer</b>: the D&amp;B or color layer isn't clipped.</li>
+      <li><b>Too dark</b>: pure black at 100%; lighten to match the real shadows and tint cool.</li>
+      <li><b>Floating reflection</b>: bases not aligned, or Flip Horizontal used instead of Flip Vertical.</li>
+    </ul>
+  </div>
+
+  <!-- L12 -->
+  <div class="sec"><h2>L12 · Atmosphere &amp; the Unifying Grade (4.3)</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">Atmospheric perspective: what happens to things as they get farther away?</div><div class="opts"><div class="opt correct">D) Contrast drops, colors desaturate and shift toward the sky color, and edges soften</div></div><div class="why"><b>Why:</b> the more air between you and an object, the more it is washed out, usually cooler and lighter. That is why horizon mountains look pale blue, and why a far element as crisp as the foreground feels pasted forward.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">Where does the depth-haze layer sit in the stack?</div><div class="opts"><div class="opt correct">B) Above the far elements, below the subject, its shadows, and the grade</div></div><div class="why"><b>Why:</b> "Atmosphere goes between, grade goes on top." Haze above the grade (A) escapes it and looks pasted on; haze over the subject flattens the thing the viewer should look at.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">Why does one grade over the whole stack beat grading each element separately?</div><div class="opts"><div class="opt correct">C) A single set of adjustments touches every element, so they share one color identity, and you tune one dial instead of twenty</div></div><div class="why"><b>Why:</b> shared color is shared identity; the eye reads elements under one grade as one photo. Grading each piece separately means chasing your tail forever. It has nothing to do with memory (A) or shadows (D).</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">What should be true of every piece before you add the unifying grade?</div><div class="opts"><div class="opt correct">A) It is neutral and correct</div></div><div class="why"><b>Why:</b> "Unify last, grade once." The grade is a mood, not a repair; if pieces don't match underneath, the grade just makes the mismatch prettier.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">Which of these can serve as the unifying grade, according to the lesson?</div><div class="opts"><div class="opt correct">B) A Color Lookup (LUT), a low-opacity Gradient Map, or a Curves + Color Balance group at the top</div></div><div class="why"><b>Why:</b> the lesson says it does not matter which, as long as one set of adjustments touches the whole frame. A clipped Hue/Saturation (C) affects only the subject, the opposite of unifying.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">How does the lesson finish and deliver the key visual?</div><div class="opts"><div class="opt correct">D) Vignette, glow and grain, then flatten a copy, convert to sRGB, and export</div></div><div class="why"><b>Why:</b> the layered master stays intact; only a copy is flattened. Converting to sRGB keeps the colors right on the web (Module 2). Flattening the master (A) destroys every editable layer.</div></div>
+  <div class="note lab"><div class="t">Lab reference: Depth &amp; Grade (Module 4 deliverable)</div>
+    <p><b>A correct result:</b> compare with <code class="inline">instructor/l12-key-visual-reference.jpg</code>. The clock tower sits on the distant hills small (roughly 200–250 px tall), with a clipped Curves lowering its contrast and lifting its blacks so it reads pale and bluish like the hills around it, not like a red sticker. A Normal-mode haze layer above the far elements and below the figure and its shadows. At the top of the stack, one grade (Color Lookup or Curves + Color Balance group) with cooler shadows and warmer highlights at reduced opacity; then a subtle vignette, a touch of glow, and grain. The master PSD stays layered; a flattened sRGB JPG is exported.</p>
+    <p><b>How to check fast:</b> toggle the grade: every element should visibly "lock together" when it comes on. Squint at the tower: it should be the lowest-contrast thing in the frame apart from the hills. Open the stack: nothing above the grade except, at most, a grain layer.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Red tower still pops</b>: size is right but contrast wasn't lowered; haze alone won't fix it.</li>
+      <li><b>Foggy foreground</b>: haze painted over everything instead of just the distance.</li>
+      <li><b>Background flattened too</b>: the far-element Curves was clipped to the background plate (fine if the far element is its own layer, wrong if the far element is part of the plate; use a masked, unclipped Curves then).</li>
+      <li><b>Garish look</b>: grade at 100% opacity; pull it back until strong but not garish.</li>
+      <li><b>Only a flat file</b>: the master was flattened. Recover from the last layered save; reinforce "flatten a copy."</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>© 2026 Ray de la Paz</b><span class="bio">Instructor Kit · confidential, do not distribute to students</span></div>
+    <div class="ver">Answer Key · Module 4 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

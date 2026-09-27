@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Answer Key: Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">answers &amp; solutions · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Answer Key</div>
+    <h1>Module 5: Answers &amp; Lab Notes</h1>
+    <p class="sub">Every workbook self-check answered and explained, plus reference notes for each lab: what a correct result looks like, the common wrong results and why they happen, and how to check them quickly while circulating.</p>
+    <div class="meta-row"><span class="chip">Lessons <b>13–15</b> (5.1–5.3)</span><span class="chip"><b>18</b> quiz items</span><span class="chip"><b>3</b> hands-on labs</span></div>
+  </header>
+
+  <div class="note"><div class="t">Numbering matches the workbook</div><p>The participant workbook's self-checks are numbered Q1–Q6 within each lesson, so a learner's "L14 Q3" is always this key's L14 Q3. Every answer is taken from what the lesson teaches. Model results for two labs are in <code class="inline">labs/module-5/instructor/</code>.</p></div>
+
+  <!-- L13 -->
+  <div class="sec"><h2>L13 · Type Systems, Styles &amp; Grids</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">With a 16 px base and a 1.25 ratio, which set of sizes does the lesson's modular scale give you?</div><div class="opts"><div class="opt correct">C) 13 / 16 / 20 / 25 / 31 / 39</div></div><div class="why"><b>Why:</b> multiply 16 by 1.25 repeatedly (20, 25, 31.25, 39.06) and divide once (12.8), rounding to whole pixels. The lesson assigns Caption 13, Body 16, Subhead 20, H2 25, H1 31, Display 39. The other options are even steps (A, B) or doubling (D), not a single ratio.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">The client wants all body text one step larger across a styled layout. What makes this a single edit?</div><div class="opts"><div class="opt correct">A) Editing the Body Paragraph Style once, so every instance updates</div></div><div class="why"><b>Why:</b> a style bottles the full spec under a name; edit the style and every instance re-flows. That is "the difference between a document and a system." Retyping sizes (B) is the eyeball-each-label habit the lesson replaces; Image Size (C) scales everything, not just body.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">How do you build a baseline grid in Photoshop?</div><div class="opts"><div class="opt correct">D) Preferences ▸ Guides, Grid &amp; Slices: Gridline Every = your body leading, Subdivisions 1</div></div><div class="why"><b>Why:</b> Photoshop has no dedicated baseline-grid feature. The document grid set to the body leading (for example 24 px for 16 px body) is the workaround, shown with View ▸ Show ▸ Grid (Ctrl/⌘+'). New Guide Layout (A) makes columns and rows; there is no "Snap To Baseline" (B), and styles don't draw grids (C).</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">Snap To ▸ Grid is on, but your text block's baselines still don't sit on the gridlines. Why, and what do you do?</div><div class="opts"><div class="opt correct">B) Snapping works on layer edges, not baselines; zoom in and align the first baseline by eye with the arrow keys</div></div><div class="why"><b>Why:</b> the lesson is explicit that View ▸ Snap To ▸ Grid snaps a layer's edges, not its baselines. With leading equal to the grid increment (or a multiple), once the first baseline sits on a gridline every following line lands on the grid too. Auto leading (D) is usually 120% of the size and won't match the grid.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">Your chosen typeface has no Bold weight, and your H1 style needs one. What does the lesson say to do?</div><div class="opts"><div class="opt correct">C) Choose a different face that ships a real Bold</div></div><div class="why"><b>Why:</b> "If a typeface ships a real Bold or Italic, use that; if it doesn't, choose a different face." Faux Bold (A) algorithmically smears the regular weight and looks cheap up close; a Stroke style (B) is the same trick by another name.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">What does View ▸ Guides ▸ New Guide Layout create?</div><div class="opts"><div class="opt correct">A) Columns and rows, with gutters and margins, but not a baseline grid</div></div><div class="why"><b>Why:</b> New Guide Layout (older versions: View ▸ New Guide Layout) gives the horizontal division of the page. The baselines come from the document grid in Preferences. Neither creates styles (C) or artboards (D).</div></div>
+  <div class="note lab"><div class="t">Lab reference: A Type System</div>
+    <p><b>A correct result:</b> a PSD whose Paragraph Styles panel lists one named style per role (Display, H1, H2, Subhead, Body, Caption, or similar) plus at least one Character Style (Emphasis or Link). Sizes match a written scale (13 / 16 / 20 / 25 / 31 / 39, or the copy deck's ×3 version: 39 / 48 / 60 / 75 / 93 / 117). Column guides from New Guide Layout are visible, and the document grid (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>'</kbd>) is set to the body leading (24 px, or 72 px at ×3) with Subdivisions 1. The first baseline of each text block sits on a gridline. Two families only; real OpenType on (ligatures visible in "fi"/"fl"); Faux Bold and Faux Italic off. Editing the Body style's size re-flows every body block. Compare with <code class="inline">labs/module-5/instructor/l13-system-layout-INSTRUCTOR.png</code>.</p>
+    <p><b>How to check fast:</b> click a body text layer and look at the Paragraph Styles panel. A style name with a "+" means a local override; no name highlighted means the text isn't styled at all. Toggle the grid and zoom to 200% on one block.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>One block doesn't update when the style changes</b>: it was sized by hand after the style was applied (an override). Clear the override.</li>
+      <li><b>Baselines drift off the grid on line two</b>: leading isn't the grid increment or a multiple of it (often left on Auto).</li>
+      <li><b>Sizes like 18 / 22 / 28 / 36</b>: freehanded, not from the scale. Ask for the written base and ratio.</li>
+      <li><b>Type sizes look wildly wrong in the Character panel</b>: Units &amp; Rulers ▸ Type still in points while the plan is in pixels (or vice versa).</li>
+      <li><b>A "bold" heading that looks smeared</b>: Faux Bold on a regular weight.</li>
+      <li><b>Four families</b>: the ransom note again. Back to one display, one text.</li>
+    </ul>
+  </div>
+
+  <!-- L14 -->
+  <div class="sec"><h2>L14 · Smart-Object Templates &amp; Linked Assets</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">You warped a Smart-Object placeholder and added clipped shadow layers. What happens to that treatment when you use Replace Contents?</div><div class="opts"><div class="opt correct">B) It stays on the container and applies to the new art</div></div><div class="why"><b>Why:</b> the container holds the treatment; the contents are the variable. Transforms, warps, filters and styles on the Smart Object carry straight over to the new art, which is what makes templates possible.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">What is the key difference between an embedded and a linked Smart Object?</div><div class="opts"><div class="opt correct">D) A linked one points to one file on disk that many documents can share; an embedded one is stored inside the PSD</div></div><div class="why"><b>Why:</b> embedded is portable and self-contained, but each copy is independent (one-off protection). Linked (File ▸ Place Linked) is the backbone of a multi-file system: edit the one file and every document using it updates. Both scale without loss and both take Smart Filters (A, B); it is linked, not embedded, that follows the source (C).</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">After Replace Contents, the new design lands too big and misaligned. What's the most likely cause?</div><div class="opts"><div class="opt correct">A) The new art has different pixel dimensions, and the container's transform is applied to it</div></div><div class="why"><b>Why:</b> the container keeps its transform and applies it to whatever you swap in. Export replacement art at the placeholder's exact pixel size, or double-click the placeholder and paste the new design into its existing canvas.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">Where should a mockup's shadows and highlights go?</div><div class="opts"><div class="opt correct">C) On Multiply and Screen layers above the placeholder, clipped to it</div></div><div class="why"><b>Why:</b> "Effects on the container, not the art." Painting shadows into the art (A) or inside the Smart Object (B) means every new design needs them again, or they get swapped out with the contents.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">You're sending a project with linked assets to a colleague. What should you do first?</div><div class="opts"><div class="opt correct">B) File ▸ Package, which collects the linked files with the document</div></div><div class="why"><b>Why:</b> Package gathers all linked files so nothing breaks on another machine. Renaming the files (C) is exactly what breaks links; rasterizing or flattening (A, D) destroys the template.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">You tidied your desktop and moved <code class="inline">logo.png</code> into a new folder. What happens in the documents that link it?</div><div class="opts"><div class="opt correct">D) Photoshop loses the link and the layer shows a warning until you relink it</div></div><div class="why"><b>Why:</b> move or rename a linked file and Photoshop loses it. Right-click the layer ▸ Relink to File to reconnect. The lesson's discipline: keep linked assets in a project folder you don't reshuffle.</div></div>
+  <div class="note lab"><div class="t">Lab reference: A Reusable Template</div>
+    <p><b>A correct result (poster wall):</b> above <code class="inline">l14-mockup-poster-wall.jpg</code>, a Smart Object (badge on the thumbnail) whose contents are 1200 × 1800 px, warped so its corners meet the blank poster's corners (about (930, 250), (1530, 290), (1522, 1172) and (940, 1216) in the 2400 × 1600 scene). Above it, a Multiply layer carrying the fold creases and the diagonal window-bar shadow, and a Screen layer for the lit fold ridges, both clipped (indented with a down-arrow). Replace Contents with any <code class="inline">…-1200x1800.png</code> design lands exactly on the poster with the same folds and shadow; the 1800 × 1200 landscape design lands distorted or misaligned, which is the intended lesson. <b>Tote bag:</b> same structure, with Warp bending the art into the fabric folds and a Multiply layer carrying the diagonal crease. <b>Link test:</b> a document with <code class="inline">logo.png</code> placed linked (link icon on the layer) that refreshes after the source is changed or replaced with <code class="inline">l14-logo-v2.png</code> (same 1600 × 600 px, now teal and gold with a coffee-bean mark).</p>
+    <p><b>How to check fast:</b> ask the learner to run Replace Contents with a different design while you watch. If the treatment holds, the template works.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Shadows darken the wall around the poster</b>: the Multiply layer isn't clipped to the placeholder.</li>
+      <li><b>New art comes in at half size</b>: the placeholder was drawn at about 600 × 900 (the poster's on-screen size), not the art's 1200 × 1800.</li>
+      <li><b>No Smart Object badge</b>: the rectangle was never converted, or was rasterized. Rebuild the placeholder.</li>
+      <li><b>Warp and shadows gone after a swap</b>: they were applied inside the Smart Object (on the art), not on the container.</li>
+      <li><b>Linked logo doesn't update</b>: it was placed embedded, or placed from a different copy (Downloads) than the one that was edited.</li>
+      <li><b>"Can't save as PNG with layers"</b>: the learner added a layer to <code class="inline">logo.png</code>. Edit its single layer directly, or swap the file in the file manager.</li>
+    </ul>
+  </div>
+
+  <!-- L15 -->
+  <div class="sec"><h2>L15 · Campaign from One Master</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">Your campaign has a print poster, a square, a story and a banner. Which do you design first, and why?</div><div class="opts"><div class="opt correct">A) The print poster, the largest, so smaller sizes scale down from it</div></div><div class="why"><b>Why:</b> "Design at the biggest size, export down." Scaling a small master up for print softens everything. Biggest first, always.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">How should the logo get onto all four artboards so one edit updates every one?</div><div class="opts"><div class="opt correct">C) File ▸ Place Linked into each artboard (so every copy points to the same file)</div></div><div class="why"><b>Why:</b> linked Smart Objects mean the shared art exists once and appears everywhere. Embedded copies (B) and pasted pixels (A) are independent; editing the source changes nothing. Export As (D) only renders what is already on each artboard.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">What renders every artboard to its own file in one pass?</div><div class="opts"><div class="opt correct">B) File ▸ Export ▸ Export As with all artboards (or File ▸ Export ▸ Artboards to Files)</div></div><div class="why"><b>Why:</b> Export As renders each artboard to its own file, with format and scale (1×, 2×) set in one dialog. Artboards to Files is the batch alternative. Package (D) gathers linked files for handoff; it doesn't export images.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">How do you adapt the poster design to the 3:1 banner?</div><div class="opts"><div class="opt correct">D) Anchor the focal point first, then spread the elements horizontally around it</div></div><div class="why"><b>Why:</b> recompose, don't squash. Keep the focal point and shared elements, and let the layout breathe differently: stack for the story, center for the square, spread for the banner. Scaling, stretching or cropping the poster (A–C) gives a banner that isn't designed for its shape.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">The printer needs the poster in CMYK, but the social sizes must stay RGB. What's the right approach?</div><div class="opts"><div class="opt correct">A) Keep the master RGB and make the CMYK conversion a separate, final step on an exported copy</div></div><div class="why"><b>Why:</b> every artboard in a document shares one color mode and one resolution, so (B) is impossible, and converting the whole master (C) degrades the screen sizes. Export As does no CMYK conversion (D).</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">You edited and saved the linked logo file, but one artboard still shows the old version. What do you do?</div><div class="opts"><div class="opt correct">C) Layer ▸ Smart Objects ▸ Update All Modified Content</div></div><div class="why"><b>Why:</b> that is the lesson's fix when an artboard doesn't refresh on its own. Placing the logo again (A) creates a second copy and defeats the system.</div></div>
+  <div class="note lab"><div class="t">Lab reference: The Campaign (Module 5 deliverable)</div>
+    <p><b>A correct result:</b> <code class="inline">campaign-master.psd</code> (RGB) in the project folder with four artboards: Poster 3300 × 5100, IG square 1080 × 1080, Story 1080 × 1920, Banner 1500 × 500. On each, the logo and key art are linked Smart Objects (link icons) pointing at files in the same folder; headline and subhead use the L13 Paragraph Styles (the style name shows in the panel). Each artboard is recomposed: poster stacked (key art large, headline, subhead, CTA, logo), square centered, story stacked with all text clear of the top ~250 px and bottom ~340 px bands, banner spread horizontally with key art on one side and headline plus CTA on the other. Export As has produced four files in one pass. The learner can change the linked logo (or key art), save, and show all four artboards updating, then re-export. Compare with <code class="inline">labs/module-5/instructor/l15-campaign-reference-INSTRUCTOR.png</code>.</p>
+    <p><b>How to check fast:</b> open the Layers panel and expand two artboards: the same linked filename should appear in both. Then watch the one-edit proof.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Soft poster</b>: the poster artboard was built small and scaled up, or the key art was enlarged past 100% (the practice PNG is 2400 px wide).</li>
+      <li><b>Only some artboards update</b>: the logo was embedded (or pasted) on those; or the update needs Update All Modified Content.</li>
+      <li><b>Banner is a shrunken poster</b>: squashed, not recomposed.</li>
+      <li><b>Story text under the UI</b>: safe zone ignored. Drop <code class="inline">l15-safe-zones-story.png</code> on top to check, then delete it before export.</li>
+      <li><b>Type sizes differ in spirit across artboards</b>: styles weren't brought in; text was set by hand. Copy a styled layer in from the L13 file.</li>
+      <li><b>Missing links on reopen</b>: files moved or were saved outside the project folder. Relink, or Package next time.</li>
+      <li><b>Master converted to CMYK</b>: screen exports look dull. Undo; CMYK is for an exported copy only.</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    <div class="who"><b>© 2026 Ray de la Paz</b><span class="bio">Instructor Kit · confidential, do not distribute to students</span></div>
+    <div class="ver">Answer Key · Module 5 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

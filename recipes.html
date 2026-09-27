@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Recipes II: short, standalone how-tos for the harder Photoshop tasks — luminosity masks, grading, frequency separation, compositing shadows, data merges, and more. Each links to the module that teaches it in depth.">
+    <meta name="description" content="Recipes II: short, standalone how-tos for the harder Photoshop tasks: luminosity masks, grading, frequency separation, compositing shadows, data merges, and more. Each links to the lesson that teaches it in depth.">
     <meta name="author" content="Ray de la Paz">
     <title>Recipes II Library | Photoshop Intermediate</title>
     <link rel="stylesheet" href="styles/main.css">
@@ -32,13 +32,13 @@
         <div class="container">
             <header>
                 <h1><span class="lesson-eyebrow">Parallel Track</span><span class="lesson-title">↔ Recipes II</span></h1>
-                <p class="lead">The advanced reference to keep open beside the course. Short answers to the harder "how do I do that again?" — luminosity masks, cinematic grades, frequency separation, believable shadows, data merges. Every recipe assumes the intro's foundations and links to the module that teaches the why.</p>
+                <p class="lead">The intermediate reference to keep open beside the course. Short answers to the harder "how do I do that again?" questions: luminosity masks, cinematic grades, frequency separation, believable shadows, data merges. Every recipe assumes the intro course's foundations and links to the lesson that teaches the why.</p>
 
                 <div class="card card-info">
                     <h2>📚 How to Use This</h2>
                     <ul>
                         <li><strong>Search or scan.</strong> Filter by keyword below, or browse the categories.</li>
-                        <li><strong>Follow the quick steps.</strong> Each recipe is the short version — enough to get it done at an intermediate level.</li>
+                        <li><strong>Follow the quick steps.</strong> Each recipe is the short version, enough to get it done at an intermediate level.</li>
                         <li><strong>Go deeper when you want.</strong> The <strong>🔗 Deep dive</strong> link on each card opens the full lesson.</li>
                     </ul>
                     <p><small>New to a topic? The linear <a href="index.html#path">course path</a> teaches these skills in order. Recipes are the reference you keep alongside it.</small></p>
@@ -66,7 +66,7 @@
                         <li><a href="#retouch" class="toc-link">High-End Retouching</a></li>
                         <li><a href="#composite" class="toc-link">Compositing</a></li>
                         <li><a href="#design" class="toc-link">Design Systems &amp; Type</a></li>
-                        <li><a href="#scale" class="toc-link">Automation &amp; Multi-Shot</a></li>
+                        <li><a href="#scale" class="toc-link">Generative, Automation &amp; Multi-Shot</a></li>
                     </ol>
                 </nav>
             </details>
@@ -77,48 +77,49 @@
             <section id="select" class="lesson-section recipe-cat">
                 <h2>🎭 Advanced Selection &amp; Masking</h2>
                 <div class="recipe-grid">
-                    <div class="card recipe" data-tags="luminosity mask tone highlights shadows select by brightness channels calculations">
+                    <div class="card recipe" data-tags="luminosity mask tone highlights shadows lights darks midtones intersect curves select by brightness channels calculations">
                         <h3>Build a luminosity mask</h3>
                         <p class="recipe-when">When you want to grade only the brightest (or darkest) tones.</p>
                         <ol>
-                            <li><kbd>Ctrl/⌘</kbd>-click the <strong>RGB</strong> channel thumbnail to load the highlights as a selection.</li>
-                            <li>To target darks instead, <strong>Select ▸ Inverse</strong>; to tighten, intersect (<kbd>Ctrl/⌘+Shift+Alt</kbd>-click) again.</li>
-                            <li>Add an adjustment layer — the luminosity selection becomes its mask.</li>
+                            <li><kbd>Ctrl/⌘</kbd>-click the <strong>RGB</strong> channel thumbnail to load the highlights (Lights) as a selection.</li>
+                            <li>To tighten the Lights, <kbd>Ctrl/⌘+Shift+Alt/⌥</kbd>-click the RGB thumbnail again (intersect). For darks, <strong>Select ▸ Inverse</strong> (<kbd>Ctrl/⌘+Shift+I</kbd>); to tighten darks, save that selection as a channel (<strong>Select ▸ Save Selection</strong>) and intersect with <em>that</em> channel, not RGB.</li>
+                            <li>Add an adjustment layer (Curves is the classic choice); the luminosity selection becomes its mask.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_01.html">Module 1.1: Luminosity Masks</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_01.html">Lesson 1.1: Luminosity Masks: Select by Tone</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="channel mask contrast extract high pass calculations black white">
+                    <div class="card recipe" data-tags="channel mask contrast extract levels curves red green blue duplicate channel black white invert intricate">
                         <h3>Mask from the best channel</h3>
                         <p class="recipe-when">When a subject separates strongly in one color channel.</p>
                         <ol>
-                            <li>In <strong>Channels</strong>, find the channel with the most subject/background contrast.</li>
-                            <li>Duplicate it, then push contrast hard with <strong>Curves</strong> or Levels to near black-and-white.</li>
-                            <li>Load it as a selection and use it as a mask.</li>
+                            <li>In <strong>Channels</strong>, click Red, Green, and Blue in turn and pick the one with the most subject/background contrast.</li>
+                            <li>Duplicate it, then push contrast hard with <strong>Image ▸ Adjustments ▸ Levels</strong> (or Curves) to near black and white; clean gaps with a hard brush on the channel.</li>
+                            <li><kbd>Ctrl/⌘</kbd>-click the copy to load it, invert if the background loaded (white loads first), click <strong>RGB</strong> to return to the composite, then add a layer mask.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_02.html">Module 1.2: Channel Masking &amp; Blend-If</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_02.html">Lesson 1.2: Channel Masking &amp; Blend-If</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="blend if drop background sky knockout dark light this layer underlying">
+                    <div class="card recipe" data-tags="blend if blendif blending options split slider feather drop background sky knockout dark light this layer underlying">
                         <h3>Drop a tone with Blend-If</h3>
                         <p class="recipe-when">When you want to hide a bright sky or dark backdrop instantly.</p>
                         <ol>
-                            <li>Double-click the layer to open <strong>Blending Options</strong>.</li>
+                            <li>Double-click the layer (on the thumbnail or empty area, not the name) to open <strong>Blending Options</strong>.</li>
                             <li>Under <strong>Blend If</strong>, drag the <em>This Layer</em> white (or black) slider inward.</li>
                             <li><kbd>Alt/⌥</kbd>-drag to split the slider for a soft, halo-free transition.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_02.html">Module 1.2: Channel Masking &amp; Blend-If</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_02.html">Lesson 1.2: Channel Masking &amp; Blend-If</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="hair fur cutout select and mask refine edge decontaminate halo hard">
+                    <div class="card recipe" data-tags="hair fur cutout select subject select and mask smart radius refine edge refine hair decontaminate halo fringe hard mask">
                         <h3>Cut out fine hair cleanly</h3>
                         <p class="recipe-when">When Select Subject leaves a chopped or haloed hairline.</p>
                         <ol>
-                            <li><strong>Select ▸ Subject</strong>, then open <strong>Select and Mask</strong>.</li>
-                            <li>Run the <strong>Refine Edge Brush</strong> along the wispy edge only; nudge <strong>Shift Edge</strong> negative.</li>
-                            <li>Tick <strong>Decontaminate Colors</strong>, Output to New Layer with Layer Mask.</li>
+                            <li><strong>Select ▸ Subject</strong>, then <strong>Select ▸ Select and Mask</strong> (<kbd>Ctrl+Alt+R</kbd> / <kbd>⌘+⌥+R</kbd>).</li>
+                            <li>Turn on <strong>Smart Radius</strong>, run the <strong>Refine Edge Brush</strong> along the wispy edge only, keep Smooth/Feather low, and nudge <strong>Shift Edge</strong> slightly negative. Output to New Layer with Layer Mask.</li>
+                            <li>Rescue missed strands by loading a channel mask and painting white into the layer mask.</li>
+                            <li>Final pass: reopen Select and Mask on the rescued mask, tick <strong>Decontaminate Colors</strong>, and output to New Layer with Layer Mask.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_03.html">Module 1.3: The Hard Cutout</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_03.html">Lesson 1.3: Select &amp; Mask Mastery: The Hard Cutout</a></p>
                     </div>
                 </div>
             </section>
@@ -127,70 +128,71 @@
             <section id="color" class="lesson-section recipe-cat">
                 <h2>🎨 Color, Tone &amp; Grade</h2>
                 <div class="recipe-grid">
-                    <div class="card recipe" data-tags="color management working space srgb adobe rgb profile assign convert 16 bit">
+                    <div class="card recipe" data-tags="color management color settings working space srgb adobe rgb prophoto icc profile gamut assign convert 16 bit preserve embedded">
                         <h3>Set up a safe color pipeline</h3>
                         <p class="recipe-when">When colors shift between apps, screens, or on export.</p>
                         <ol>
-                            <li><strong>Edit ▸ Color Settings</strong>: pick a working space (sRGB for web, Adobe RGB / ProPhoto for wide work).</li>
-                            <li>Work in <strong>16-bit</strong> for grading headroom (Image ▸ Mode).</li>
-                            <li>Deliver with <strong>Convert to Profile</strong>, not Assign — Convert keeps the appearance.</li>
+                            <li><strong>Edit ▸ Color Settings</strong>: pick a working space (sRGB for web, Adobe RGB / ProPhoto for wide work) and set the policies to <strong>Preserve Embedded Profiles</strong>.</li>
+                            <li>Work in <strong>16-bit</strong> for grading headroom (<strong>Image ▸ Mode ▸ 16 Bits/Channel</strong>).</li>
+                            <li>Deliver at the very end, on a duplicate, with <strong>Edit ▸ Convert to Profile</strong>, not Assign. Convert keeps the appearance.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_04.html">Module 2.1: Color Management</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_04.html">Lesson 2.1: Color Management &amp; Working Spaces</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="gradient map grade cinematic duotone tone map color curves look">
+                    <div class="card recipe" data-tags="gradient map grade grading cinematic duotone tone map teal orange gold color curves look">
                         <h3>Grade with a Gradient Map</h3>
                         <p class="recipe-when">When you want a cohesive, tone-mapped color look fast.</p>
                         <ol>
                             <li>Add a <strong>Gradient Map</strong> adjustment layer.</li>
-                            <li>Build a dark-to-light gradient: cool shadow color → warm highlight color.</li>
-                            <li>Drop the layer <strong>opacity</strong> (or set Soft Light) until it's believable.</li>
+                            <li>Build a dark-to-light gradient: cool shadow color → warm highlight color (e.g. teal → gold).</li>
+                            <li>Set the layer to <strong>Color</strong> or <strong>Soft Light</strong> and drop its opacity to about 20–30% so it tints rather than flattens.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_05.html">Module 2.2: Grading, Gradient Maps &amp; LUTs</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_05.html">Lesson 2.2: Grading with Curves, Gradient Maps &amp; LUTs</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="lut color lookup save export cube reuse grade preset apply">
+                    <div class="card recipe" data-tags="lut color lookup lookup table save export cube 3dl reuse grade preset apply mask background layer">
                         <h3>Save &amp; reuse a grade as a LUT</h3>
                         <p class="recipe-when">When you want one grade to travel across images (or into video).</p>
                         <ol>
-                            <li>Build your grade with adjustment layers over a neutral base.</li>
-                            <li><strong>File ▸ Export ▸ Color Lookup Tables</strong> to write a <code>.cube</code>.</li>
+                            <li>Build your grade with adjustment layers above a Background layer.</li>
+                            <li>The export bakes every <em>visible</em> adjustment layer and a LUT can't store a mask, so hide anything that isn't part of the grade and disable masks (<kbd>Shift</kbd>-click each mask thumbnail).</li>
+                            <li><strong>File ▸ Export ▸ Color Lookup Tables</strong> to write a <code>.cube</code>, then re-enable the masks.</li>
                             <li>Apply anywhere with a <strong>Color Lookup</strong> adjustment layer.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_05.html">Module 2.2: Grading, Gradient Maps &amp; LUTs</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_05.html">Lesson 2.2: Grading with Curves, Gradient Maps &amp; LUTs</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="match color two images consistent set curves color sampler reference shoot">
+                    <div class="card recipe" data-tags="match color two images consistent set curves color sampler info panel neutral reference shoot">
                         <h3>Match two images' color</h3>
                         <p class="recipe-when">When a set must read as one shoot.</p>
                         <ol>
                             <li>Match <strong>tones</strong> first (brightness/contrast), then color.</li>
-                            <li>Drop a <strong>Color Sampler</strong> on a comparable point in each image.</li>
-                            <li>Add <strong>Curves</strong> to one and move each channel until its sampled values meet the reference.</li>
+                            <li>Drop a <strong>Color Sampler</strong> on a comparable point in each image and read them in the Info panel.</li>
+                            <li>Add <strong>Curves</strong> to one and move each channel until its sampled values meet the reference: black point, then white point, then mid color.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_06.html">Module 2.3: Match, Split-Tone &amp; Soft-Proof</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_06.html">Lesson 2.3: Match, Split-Tone &amp; Soft-Proof</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="split tone cool shadows warm highlights color balance cinematic film">
+                    <div class="card recipe" data-tags="split tone toning cool shadows warm highlights color balance teal and orange color grading cinematic film">
                         <h3>Split-tone a photo</h3>
                         <p class="recipe-when">When you want cinematic cool shadows and warm highlights.</p>
                         <ol>
-                            <li>Add a <strong>Color Balance</strong> layer.</li>
+                            <li>Add a <strong>Color Balance</strong> layer with <strong>Preserve Luminosity</strong> ticked.</li>
                             <li>On <strong>Shadows</strong> push toward cyan/blue; on <strong>Highlights</strong> toward red/yellow.</li>
                             <li>Keep <strong>Midtones</strong> near neutral so skin stays believable.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_06.html">Module 2.3: Match, Split-Tone &amp; Soft-Proof</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_06.html">Lesson 2.3: Match, Split-Tone &amp; Soft-Proof</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="soft proof print gamut warning cmyk paper simulate proof setup">
+                    <div class="card recipe" data-tags="soft proof proofing print printer profile rendering intent black point compensation gamut warning cmyk paper simulate proof setup">
                         <h3>Soft-proof for print</h3>
                         <p class="recipe-when">When a grade must survive on paper, not just screen.</p>
                         <ol>
-                            <li><strong>View ▸ Proof Setup ▸ Custom</strong>: choose the printer profile, tick <strong>Simulate Paper Color</strong>.</li>
-                            <li>Toggle proof with <kbd>Ctrl/⌘ + Y</kbd>; the image dulls — that's the paper.</li>
+                            <li><strong>View ▸ Proof Setup ▸ Custom</strong>: choose the printer profile, a <strong>Rendering Intent</strong> with <strong>Black Point Compensation</strong>, and tick <strong>Simulate Paper Color</strong>.</li>
+                            <li>Toggle proof with <kbd>Ctrl/⌘ + Y</kbd>; the image dulls, and that's the paper.</li>
                             <li>Turn on <strong>Gamut Warning</strong> (<kbd>Shift+Ctrl/⌘+Y</kbd>) and desaturate flagged areas.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_06.html">Module 2.3: Match, Split-Tone &amp; Soft-Proof</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_06.html">Lesson 2.3: Match, Split-Tone &amp; Soft-Proof</a></p>
                     </div>
                 </div>
             </section>
@@ -199,18 +201,18 @@
             <section id="retouch" class="lesson-section recipe-cat">
                 <h2>🧑‍🎨 High-End Retouching</h2>
                 <div class="recipe-grid">
-                    <div class="card recipe" data-tags="frequency separation skin texture tone low high apply image linear light smooth pores">
+                    <div class="card recipe" data-tags="frequency separation fs skin texture tone low high apply image linear light smooth pores blemish heal healing retouch">
                         <h3>Set up frequency separation</h3>
                         <p class="recipe-when">When you must even skin tone without erasing pores.</p>
                         <ol>
-                            <li>Duplicate twice → <strong>Low</strong> (Gaussian Blur until pores vanish) and <strong>High</strong>.</li>
+                            <li>Duplicate twice → <strong>Low</strong> (bottom) and <strong>High</strong> (top). Hide High, then Gaussian Blur Low until pores vanish; note the radius.</li>
                             <li>On <strong>High</strong>: <strong>Apply Image</strong> with source Low. In 8-bit: Subtract, Scale 2, Offset 128. In 16-bit: Add, tick Invert, Scale 2, Offset 0. Then set the blend mode to <strong>Linear Light</strong>.</li>
-                            <li>Even tone on <strong>Low</strong>; heal blemishes on <strong>High</strong> — never both at once.</li>
+                            <li>Even tone on <strong>Low</strong>; heal blemishes on <strong>High</strong> (Healing Brush, Sample: Current Layer). Never work on both at once.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_07.html">Module 3.1: Skin &amp; Frequency Separation</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_07.html">Lesson 3.1: Skin &amp; Frequency Separation</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="dodge burn sculpt light shadow 50 gray soft light face dimension flow">
+                    <div class="card recipe" data-tags="dodge burn dodge and burn d&amp;b sculpt sculpting contour light shadow 50 gray grey soft light face dimension flow">
                         <h3>Dodge &amp; burn on a gray layer</h3>
                         <p class="recipe-when">When a portrait is clean but flat and needs form.</p>
                         <ol>
@@ -218,21 +220,21 @@
                             <li>Soft brush, <strong>Flow 5–10%</strong>: white to dodge highlights, black to burn recesses.</li>
                             <li>Check in a temporary <strong>Black &amp; White</strong> view; lower opacity to taste.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_08.html">Module 3.2: Dodge &amp; Burn Sculpting</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_08.html">Lesson 3.2: Dodge &amp; Burn Sculpting</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="whiten teeth yellow desaturate hue saturation mask natural smile">
+                    <div class="card recipe" data-tags="whiten whitening teeth yellow teeth desaturate hue saturation mask natural smile">
                         <h3>Whiten teeth naturally</h3>
                         <p class="recipe-when">When teeth read yellow or dull.</p>
                         <ol>
                             <li>Add a <strong>Hue/Saturation</strong> layer; on <strong>Yellows</strong>, drop saturation first.</li>
                             <li>On Master, raise <strong>Lightness</strong> slightly. (Yellow out, then brighten.)</li>
-                            <li>Invert the mask to black and paint the effect onto the teeth only.</li>
+                            <li>Invert the mask to black (<kbd>Ctrl/⌘+I</kbd>) and paint the effect onto the teeth only.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_09.html">Module 3.3: Eyes, Teeth &amp; Hair</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_09.html">Lesson 3.3: Eyes, Teeth &amp; Hair — Natural Finish</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="eyes brighten sharpen iris catchlight curves high pass mask finish">
+                    <div class="card recipe" data-tags="eyes brighten sharpen iris whites sclera catchlight curves high pass mask finish">
                         <h3>Make eyes pop (subtly)</h3>
                         <p class="recipe-when">When eyes need life without looking fake.</p>
                         <ol>
@@ -240,7 +242,7 @@
                             <li>Optionally add a High-Pass-sharpened layer masked to the iris.</li>
                             <li>Never paint out the catchlight, and keep whites off-white.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_09.html">Module 3.3: Eyes, Teeth &amp; Hair</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_09.html">Lesson 3.3: Eyes, Teeth &amp; Hair — Natural Finish</a></p>
                     </div>
                 </div>
             </section>
@@ -249,7 +251,7 @@
             <section id="composite" class="lesson-section recipe-cat">
                 <h2>🖼️ Compositing</h2>
                 <div class="recipe-grid">
-                    <div class="card recipe" data-tags="perspective scale horizon place element vanishing point warp match size">
+                    <div class="card recipe" data-tags="perspective scale horizon horizon line eye level place element vanishing point warp match size">
                         <h3>Scale an element correctly</h3>
                         <p class="recipe-when">When a pasted person or object looks the wrong size.</p>
                         <ol>
@@ -257,32 +259,32 @@
                             <li>Set the element's <strong>ground-contact</strong> point first.</li>
                             <li>Scale so the horizon crosses it at the same body height as the scene's people.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_10.html">Module 4.1: Match Perspective, Scale &amp; Lens</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_10.html">Lesson 4.1: Match Perspective, Scale &amp; Lens</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="cast shadow composite multiply skew blur fade transform ground direction">
+                    <div class="card recipe" data-tags="cast shadow composite multiply skew distort blur gallery tilt shift field blur fade transform ground direction silhouette">
                         <h3>Build a believable cast shadow</h3>
                         <p class="recipe-when">When a composited element casts none and looks pasted.</p>
                         <ol>
-                            <li>Duplicate the element, fill black, set <strong>Multiply</strong>, move below it.</li>
+                            <li><kbd>Ctrl/⌘</kbd>-click the element's layer mask thumbnail (or layer thumbnail) to load its silhouette. On a new layer below it, <strong>Edit ▸ Fill</strong> with a very dark color, deselect, and set <strong>Multiply</strong>.</li>
                             <li>Free Transform ▸ <strong>Distort/Skew</strong> onto the ground, running away from the light.</li>
-                            <li>Increase Gaussian Blur toward the far end and fade its opacity with distance; tint it slightly blue.</li>
+                            <li>For blur that grows with distance, use <strong>Filter ▸ Blur Gallery ▸ Tilt-Shift</strong> or <strong>Field Blur</strong> (sharp near the object, soft at the far end); fade it with a gradient mask and tint it to the scene's shadows (cool outdoors).</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_11.html">Module 4.2: Light, Shadows &amp; Reflections</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_11.html">Lesson 4.2: Light, Shadows &amp; Reflections</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="contact shadow occlusion ground element touch anchor multiply tight">
+                    <div class="card recipe" data-tags="contact shadow occlusion ambient occlusion ground element touch anchor float floating multiply tight">
                         <h3>Anchor with a contact shadow</h3>
                         <p class="recipe-when">When an element still floats even with a cast shadow.</p>
                         <ol>
                             <li>New layer under the element, mode <strong>Multiply</strong>.</li>
                             <li>Small soft black brush at low flow: darken exactly where the base meets the ground.</li>
-                            <li>Keep it tight and barely blurred — this is what reads as "touching".</li>
+                            <li>Keep it tight and barely blurred; this is what reads as "touching."</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_11.html">Module 4.2: Light, Shadows &amp; Reflections</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_11.html">Lesson 4.2: Light, Shadows &amp; Reflections</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="atmosphere depth haze distance contrast desaturate aerial perspective fog">
+                    <div class="card recipe" data-tags="atmosphere depth haze distance contrast desaturate aerial perspective atmospheric fog">
                         <h3>Add depth with atmosphere</h3>
                         <p class="recipe-when">When background elements feel pasted forward.</p>
                         <ol>
@@ -290,7 +292,7 @@
                             <li>Glaze a low-opacity haze in the sky/scene color over them.</li>
                             <li>Keep the nearest element crispest and most saturated.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_12.html">Module 4.3: Atmosphere &amp; the Unifying Grade</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_12.html">Lesson 4.3: Atmosphere &amp; the Unifying Grade</a></p>
                     </div>
 
                     <div class="card recipe" data-tags="unifying grade composite color lookup top stack tie together cohesive one">
@@ -299,9 +301,9 @@
                         <ol>
                             <li>Correct every element to <strong>neutral</strong> first.</li>
                             <li>Put a single grade (Color Lookup, or Curves + Color Balance) at the <strong>top</strong> of the stack.</li>
-                            <li>It rains down on everything below, giving them one shared color.</li>
+                            <li>It affects every layer below, giving them one shared color.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_12.html">Module 4.3: Atmosphere &amp; the Unifying Grade</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_12.html">Lesson 4.3: Atmosphere &amp; the Unifying Grade</a></p>
                     </div>
                 </div>
             </section>
@@ -310,110 +312,110 @@
             <section id="design" class="lesson-section recipe-cat">
                 <h2>🔠 Design Systems &amp; Type</h2>
                 <div class="recipe-grid">
-                    <div class="card recipe" data-tags="type scale modular ratio paragraph character styles hierarchy consistent">
+                    <div class="card recipe" data-tags="type scale modular ratio typography font paragraph character styles hierarchy consistent opentype">
                         <h3>Build a type scale &amp; styles</h3>
                         <p class="recipe-when">When a layout's type sizes feel arbitrary.</p>
                         <ol>
                             <li>Pick a base size and a ratio (e.g. 16 × 1.25) → a modular scale; assign roles.</li>
-                            <li>Set one line per role correctly, then create a named <strong>Paragraph Style</strong> from it.</li>
+                            <li>Style one sample line per role, then create a named <strong>Paragraph Style</strong> (and Character Styles where needed) from it. Use real OpenType weights, never faux bold/italic.</li>
                             <li>Edit a style once and every instance updates.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_13.html">Module 5.1: Type Systems, Styles &amp; Grids</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_13.html">Lesson 5.1: Type Systems, Styles &amp; Grids</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="baseline grid columns guide layout align rhythm new guide layout">
+                    <div class="card recipe" data-tags="baseline grid columns gutter margin guide new guide layout align rhythm leading subdivisions">
                         <h3>Set columns &amp; a baseline guide</h3>
                         <p class="recipe-when">When elements don't line up across a layout.</p>
                         <ol>
                             <li><strong>View ▸ Guides ▸ New Guide Layout</strong> (older versions: View ▸ New Guide Layout): set columns, gutters, and margins.</li>
-                            <li>Photoshop has no true baseline grid. Approximate one in <strong>Preferences ▸ Guides, Grid &amp; Slices</strong> by setting "Gridline Every" to your body leading, then show it with View ▸ Show ▸ Grid.</li>
-                            <li>Text won't snap to it, so align each text block's baselines to the grid by eye.</li>
+                            <li>Photoshop has no true baseline grid. Approximate one in <strong>Preferences ▸ Guides, Grid &amp; Slices</strong>: set <strong>Gridline Every</strong> to your body leading with <strong>Subdivisions</strong> 1, give your text that leading (or a multiple), and show it with <strong>View ▸ Show ▸ Grid</strong> (<kbd>Ctrl/⌘+'</kbd>).</li>
+                            <li>Text won't snap to it, so align each text block's first baseline to a gridline by eye.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_13.html">Module 5.1: Type Systems, Styles &amp; Grids</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_13.html">Lesson 5.1: Type Systems, Styles &amp; Grids</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="mockup smart object placeholder warp replace contents template surface">
+                    <div class="card recipe" data-tags="mockup mock-up mock up smart object placeholder warp replace contents edit contents template surface">
                         <h3>Make a reusable mockup</h3>
                         <p class="recipe-when">When you drop different art onto the same surface repeatedly.</p>
                         <ol>
-                            <li>Put a rectangle where the art goes, <strong>Convert to Smart Object</strong>, and <strong>Warp</strong> it to the surface.</li>
+                            <li>Put a rectangle where the art goes, <strong>Convert to Smart Object</strong>, and <strong>Edit ▸ Transform ▸ Warp</strong> (or Perspective Warp) it to the surface.</li>
                             <li>Add the surface's shadows (Multiply) and highlights (Screen) above it, clipped.</li>
-                            <li>Swap art any time with <strong>Replace Contents</strong> — the treatment stays.</li>
+                            <li>Swap art any time with <strong>Layer ▸ Smart Objects ▸ Replace Contents</strong>; the treatment stays.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_14.html">Module 5.2: Smart-Object Templates &amp; Linked Assets</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_14.html">Lesson 5.2: Smart-Object Templates &amp; Linked Assets</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="campaign artboards linked smart object sizes export as social poster master">
+                    <div class="card recipe" data-tags="campaign artboards linked smart object sizes resize export as artboards to files social instagram banner safe zone poster master">
                         <h3>Spin one design into many sizes</h3>
                         <p class="recipe-when">When a campaign needs poster, square, story, and banner.</p>
                         <ol>
                             <li>Use <strong>Artboards</strong> (one per size); design the largest first.</li>
-                            <li><strong>Place Linked</strong> the shared logo/art into each so one edit updates all.</li>
-                            <li><strong>File ▸ Export ▸ Export As</strong> renders every artboard at once.</li>
+                            <li><strong>Place Linked</strong> the shared logo/art into each so one edit updates all; apply shared Paragraph Styles; recompose per aspect ratio and respect safe zones.</li>
+                            <li><strong>File ▸ Export ▸ Export As</strong> with all artboards selected renders the whole set at once (or use File ▸ Export ▸ Artboards to Files).</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_15.html">Module 5.3: Campaign from One Master</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_15.html">Lesson 5.3: Campaign from One Master</a></p>
                     </div>
                 </div>
             </section>
 
-            <!-- ===== Automation & Multi-Shot ===== -->
+            <!-- ===== Generative, Automation & Multi-Shot ===== -->
             <section id="scale" class="lesson-section recipe-cat">
-                <h2>⚙️ Automation &amp; Multi-Shot</h2>
+                <h2>⚙️ Generative, Automation &amp; Multi-Shot</h2>
                 <div class="recipe-grid">
-                    <div class="card recipe" data-tags="generative fill expand harmonize light match composite remove distraction background extend seams ai">
-                        <h3>Harmonize a composite with generative fill</h3>
+                    <div class="card recipe" data-tags="generative fill generative expand firefly harmonize light match composite remove distraction outpaint background extend seams credits ai">
+                        <h3>Extend, clean &amp; harmonize with generative tools</h3>
                         <p class="recipe-when">When a composite is cramped or has a distraction.</p>
                         <ol>
-                            <li><strong>Generative Expand</strong> (Crop out, empty prompt) for room; audit the new edges.</li>
-                            <li>In current versions, try Photoshop's dedicated <strong>Harmonize</strong> command on a pasted-in element to match its light and color to the scene.</li>
+                            <li><strong>Generative Expand</strong> (Crop tool out past the canvas, empty prompt) for room; audit the new edges.</li>
                             <li><strong>Generative Fill</strong> with an empty prompt to erase a distraction.</li>
+                            <li>In current versions, select a pasted-in element's layer and choose <strong>Harmonize</strong> (contextual task bar or Properties panel; placement varies by release, and it uses generative credits) to match its light and color to the scene. Mask back anything it shouldn't change.</li>
                             <li>Grain/sharpen-match generated areas and hand-blend; keep each result on its own generative layer.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_16.html">Module 6.1: Generative for Compositing</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_16.html">Lesson 6.1: Generative for Compositing</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="action batch conditional landscape portrait automate folder droplet record">
+                    <div class="card recipe" data-tags="action actions batch batch process conditional landscape portrait automate automation fit image resize folder droplet record">
                         <h3>Batch a folder with a conditional</h3>
                         <p class="recipe-when">When mixed landscape/portrait files all need the same prep.</p>
                         <ol>
-                            <li>Record an <strong>Action</strong> with relative steps (File ▸ Automate ▸ <strong>Fit Image</strong> for the long edge, rulers in Percent, sharpen, save).</li>
-                            <li>Panel menu ▸ <strong>Insert Conditional</strong>: If Document Is Landscape play one crop action, else another; drag it to the top.</li>
-                            <li><strong>File ▸ Automate ▸ Batch</strong> over the folder (tick Override Save As, suppress dialogs, log errors).</li>
+                            <li>Record an <strong>Action</strong> with relative steps (File ▸ Automate ▸ <strong>Fit Image</strong> for the long edge, rulers in Percent, sharpen, Flatten Image, save as JPG). Record separate crop actions for landscape and portrait.</li>
+                            <li>Select the first step, then Actions panel menu ▸ <strong>Insert Conditional</strong>: If Document Is Landscape play one crop action, else the other. It lands below the selected step, so drag it to the top so the crop runs before Fit Image.</li>
+                            <li><strong>File ▸ Automate ▸ Batch</strong> over the folder: tick <strong>Override Action "Save As" Commands</strong>, <strong>Suppress File Open Options Dialogs</strong> and <strong>Suppress Color Profile Warnings</strong>, and set Errors to <strong>Log Errors to File</strong>.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_17.html">Module 6.2: Advanced Actions &amp; Conditionals</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_17.html">Lesson 6.2: Advanced Actions &amp; Conditionals</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="data driven variables data set csv text pixel visibility merge personalized batch">
+                    <div class="card recipe" data-tags="data driven variables variable data set csv excel google sheets text pixel visibility merge mail merge personalized batch">
                         <h3>Mass-produce from a spreadsheet</h3>
                         <p class="recipe-when">When you need hundreds of graphics that differ only by data.</p>
                         <ol>
-                            <li><strong>Image ▸ Variables ▸ Define</strong> (Text / Pixel / Visibility); name each variable to match its CSV header.</li>
-                            <li><strong>Image ▸ Variables ▸ Data Sets…</strong> ▸ <strong>Import</strong> the CSV (Visibility = true/false; image paths beside the CSV) and step through rows to proof.</li>
+                            <li><strong>Image ▸ Variables ▸ Define</strong> (Text / Pixel / Visibility); name each variable to match its CSV header exactly (the layer name can match too, but it's the variable name that binds).</li>
+                            <li><strong>Image ▸ Variables ▸ Data Sets…</strong> ▸ <strong>Import</strong> a UTF-8 CSV with a header row; tick <strong>Use First Column For Data Set Names</strong>. Visibility values are true/false; Pixel values are full file paths, or bare file names with the images in the CSV's folder. Step through rows to proof.</li>
                             <li><strong>File ▸ Export ▸ Data Sets as Files</strong> to render every row as a PSD.</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_18.html">Module 6.3: Data-Driven Graphics &amp; Scripting</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_18.html">Lesson 6.3: Data-Driven Graphics &amp; Scripting</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="panorama hdr focus stack photomerge merge to hdr pro auto align auto blend multi shot">
+                    <div class="card recipe" data-tags="panorama stitch hdr bracket bracketing exposure focus stack stacking macro photomerge merge to hdr pro auto align auto blend multi shot">
                         <h3>Merge many frames into one</h3>
                         <p class="recipe-when">When one frame can't hold the width, range, or depth you need.</p>
                         <ol>
                             <li><strong>Panorama:</strong> File ▸ Automate ▸ <strong>Photomerge</strong> (Auto + Blend Images Together + Content Aware Fill Transparent Areas).</li>
-                            <li><strong>HDR:</strong> File ▸ Automate ▸ <strong>Merge to HDR Pro</strong> (bracket, Remove Ghosts).</li>
-                            <li><strong>Focus stack:</strong> File ▸ Scripts ▸ Load Files into Stack → <strong>Auto-Align</strong> → <strong>Edit ▸ Auto-Blend Layers…</strong> (Stack Images).</li>
+                            <li><strong>HDR:</strong> File ▸ Automate ▸ <strong>Merge to HDR Pro</strong> (bracket, Remove Ghosts; 16-bit to tone-map in the dialog, or 32-bit to keep the full range).</li>
+                            <li><strong>Focus stack:</strong> File ▸ Scripts ▸ Load Files into Stack (tick Attempt to Automatically Align, or run <strong>Edit ▸ Auto-Align Layers</strong>) → <strong>Edit ▸ Auto-Blend Layers…</strong> (Stack Images).</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_19.html">Module 7.1: Panoramas, HDR &amp; Focus Stacking</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_19.html">Lesson 7.1: Panoramas, HDR &amp; Focus Stacking</a></p>
                     </div>
 
-                    <div class="card recipe" data-tags="animation gif mp4 timeline keyframe loop export render video save for web motion">
+                    <div class="card recipe" data-tags="animation animated gif mp4 h.264 h264 timeline keyframe loop export render video save for web legacy motion">
                         <h3>Export a looping GIF or MP4</h3>
                         <p class="recipe-when">When a design needs a few seconds of motion.</p>
                         <ol>
-                            <li><strong>Window ▸ Timeline</strong> ▸ Create Video Timeline; keyframe Position/Opacity, or Transform on Smart Objects (stopwatch).</li>
+                            <li><strong>Window ▸ Timeline</strong>, click <strong>Create Video Timeline</strong>; keyframe Position/Opacity/Style, or Transform on Smart Objects (stopwatch).</li>
                             <li>Return every layer to its frame-0 state by the last frame for a seamless loop; fake easing with an extra keyframe near the end of each move.</li>
-                            <li><strong>GIF:</strong> Save for Web (loop Forever). <strong>MP4:</strong> File ▸ Export ▸ Render Video (H.264).</li>
+                            <li><strong>GIF:</strong> File ▸ Export ▸ <strong>Save for Web (Legacy)</strong> (<kbd>Ctrl+Alt+Shift+S</kbd> / <kbd>⌘+⌥+Shift+S</kbd>), Looping Options: Forever. <strong>MP4:</strong> File ▸ Export ▸ Render Video (H.264).</li>
                         </ol>
-                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_20.html">Module 7.2: Timeline Animation &amp; Export</a></p>
+                        <p class="recipe-deep">🔗 Deep dive: <a href="lesson_20.html">Lesson 7.2: Timeline Animation &amp; Export</a></p>
                     </div>
                 </div>
             </section>
@@ -453,11 +455,12 @@
         const setCount = n => { if (countEl) countEl.textContent = n === total ? total + ' recipes' : n + ' of ' + total + ' recipes'; };
         setCount(total);
         input.addEventListener('input', () => {
-            const q = input.value.trim().toLowerCase();
+            const STOP = ['and', '&', 'the', 'a', 'an', 'to', 'of', 'for', 'in', 'on', 'my', 'how', 'do', 'i', 'with'];
+            const words = input.value.trim().toLowerCase().split(/\s+/).filter(w => w && !STOP.includes(w));
             let shown = 0;
             recipes.forEach(c => {
                 const hay = ((c.getAttribute('data-tags') || '') + ' ' + c.textContent).toLowerCase();
-                const match = q === '' || hay.includes(q);
+                const match = words.length === 0 || words.every(w => hay.includes(w) || (w.length > 4 && hay.includes(w.replace(/(ing|es|s)$/, ''))));
                 c.style.display = match ? '' : 'none';
                 if (match) shown++;
             });

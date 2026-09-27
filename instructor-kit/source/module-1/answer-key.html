@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Answer Key: Module 1</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">answers &amp; solutions · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Answer Key</div>
+    <h1>Module 1: Answers &amp; Lab Notes</h1>
+    <p class="sub">Self-check answers with explanations, plus reference notes for each lab: what a correct result looks like, the common wrong results and why they happen, and how to check quickly while circulating.</p>
+    <div class="meta-row"><span class="chip">Lessons <b>L01–L03</b> (1.1–1.3)</span><span class="chip"><b>18</b> quiz items</span><span class="chip"><b>3</b> guided builds + <b>3</b> solo variations</span></div>
+  </header>
+
+  <div class="note"><div class="t">Numbering matches the workbook</div><p>The participant workbook's self-check items use the same question numbers as this key. The lesson pages themselves don't carry quizzes; these items were written for the kit and test only what L01–L03 teach.</p></div>
+
+  <!-- L01 -->
+  <div class="sec"><h2>L01 · Luminosity Masks: Select by Tone</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">What <strong>is</strong> a luminosity mask?</div><div class="opts"><div class="opt correct">B) A selection built from the image's own brightness, saved as a mask</div></div><div class="why"><b>Why:</b> The image paints the stencil: bright pixels become white (selected), dark pixels black (protected). Nothing is hand-painted (A), and it's tone-based, not subject detection (C).</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">How do you load a <strong>Lights</strong> selection?</div><div class="opts"><div class="opt correct">D) Ctrl/⌘-click the RGB thumbnail in the Channels panel</div></div><div class="why"><b>Why:</b> The composite RGB channel gives the perceived luminance, so Ctrl/⌘-clicking it loads the brighter tones as a selection. Ctrl/⌘-clicking a <em>layer</em> thumbnail loads that layer's transparency instead, which on a photo is everything.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">Your luminosity-masked sky darken is spilling onto the land. What's the lesson's fix?</div><div class="opts"><div class="opt correct">A) Undo the layer, reload Lights, and intersect once or twice (Ctrl/⌘ + Shift + Alt/⌥-click RGB) before adding the adjustment</div></div><div class="why"><b>Why:</b> The Lights mask was too broad. Each intersection keeps only what both selections share, pushing the selection into the brightest tones. A hard painted line (B) brings back exactly the seam luminosity masks avoid.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">After taming the sky, how do you select the <strong>dark land</strong> for the second Curves layer?</div><div class="opts"><div class="opt correct">C) Reload the RGB luminosity selection, then invert it (Ctrl/⌘ + Shift + I)</div></div><div class="why"><b>Why:</b> Inverting Lights gives Darks: the shadows become selected and the already-correct sky is black on the new mask. Intersecting Lights (B) goes the other way, into the brightest tones; no selection (D) gives an all-white mask.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">Why use two luminosity-masked Curves instead of one global S-curve?</div><div class="opts"><div class="opt correct">B) A single curve would brighten the sky while it lifts the land; two masked curves move highlights and shadows in opposite directions at once</div></div><div class="why"><b>Why:</b> Straight from the lesson's "Why this beats one global Curves": the two masks let the sky go down while the land comes up, a range no single curve reaches.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">Your luminosity masks look blocky and banded. What's the most likely cause and fix?</div><div class="opts"><div class="opt correct">D) You're working in 8-bit; convert to 16-bit (Image ▸ Mode ▸ 16 Bits/Channel) before building the masks</div></div><div class="why"><b>Why:</b> The lesson FAQ: the extra tonal resolution keeps new masks and adjustments smooth. Converting can't restore detail an 8-bit original never had, but it stops new banding as you edit.</div></div>
+
+  <div class="note lab"><div class="t">Lab reference: Rescue the Landscape (<code class="inline">l01-high-contrast-landscape.jpg</code> or own landscape)</div>
+    <p><b>A correct result looks like:</b> <code class="inline">luminosity-working.psd</code>, 16-bit, with the photo and two Curves layers above it. The sky Curves mask is a grayscale version of the photo (bright sky white, valley near-black, mountains mid-gray); the shadow Curves mask is its negative. The sky shows cloud shapes and a clear gradient where it was nearly white; the dark valley reveals the path, rocks and grass texture; the pale cabin keeps its brightness if the learner intersected. At 100% there's no halo along the pines or the ridgelines.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>A solid white mask, the whole photo darkened.</b> Curves added with no selection, or the layer thumbnail was Ctrl/⌘-clicked in Layers (loading the whole image). Reload from the RGB channel.</li>
+      <li><b>The cabin and far hills went muddy.</b> The Lights mask was too broad for a strong curve. Reload and intersect once or twice.</li>
+      <li><b>A bright rim around the pines or ridgelines.</b> The two masks overlap and fight. Reduce one layer's opacity or re-intersect.</li>
+      <li><b>Banding in the sky gradient.</b> Still in 8-bit. Convert and rebuild.</li>
+      <li><b>Shadows gray and flat.</b> The Darks curve lifted too far; a small lift in the lower third of the curve is enough.</li>
+    </ul>
+    <p><b>Quick check:</b> <kbd>Alt</kbd>/<kbd>⌥</kbd>-click each mask thumbnail. Two photo-like grayscale masks, one the negative of the other, means the method was right.</p>
+  </div>
+  <div class="note lab"><div class="t">Lab reference: Now You (<code class="inline">l01-still-life-window-light.jpg</code> or own portrait/still life)</div>
+    <p><b>A correct result looks like:</b> a Lights-masked (ideally intersected) Curves that lifts only the jug's highlight, lemon speculars and the cloth, with the dark wall and bottle unchanged; a Midtones-masked Curves with gentle added contrast in the mids (the jug's body and the table), nothing clipping. The Midtones mask thumbnail is gray in the midtones and dark at both extremes. The comparison note should say the luminosity mask's edge follows the light while the hand-painted one shows a band or halo somewhere.</p>
+    <p><b>Common wrong results:</b> a "Midtones" mask built as Lights minus Darks (it looks like an intersected Lights mask: bright only in the highlights); the wrong modifier when subtracting (it's Ctrl/⌘ + Alt/⌥-click on the saved channel; Ctrl/⌘ + Shift-click adds instead); a glow so strong the highlights clip to flat white.</p>
+  </div>
+
+  <!-- L02 -->
+  <div class="sec"><h2>L02 · Channel Masking &amp; Blend-If</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">Why can a single color channel work as a mask?</div><div class="opts"><div class="opt correct">A) Each of Red, Green and Blue is a full-resolution grayscale image, and a mask is just a grayscale image</div></div><div class="why"><b>Why:</b> "Three masks you already have": every RGB image is three grayscale pictures stacked. You're shopping among them for the one with the most subject/background separation.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">A bare tree against a blue sky: which channel usually gives the best separation?</div><div class="opts"><div class="opt correct">C) Blue</div></div><div class="why"><b>Why:</b> Skies are blue, so the Blue channel keeps the sky bright while the dark branches stay dark: maximum contrast. Still check all three by eye; that's the habit.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">Why duplicate the winning channel before you run Levels on it?</div><div class="opts"><div class="opt correct">D) The original channel is part of the photo's color; pushing it would damage the image, while the copy is a safe scratch mask</div></div><div class="why"><b>Why:</b> "Duplicate it so you never damage the original." Note C is wrong twice over: adjustment layers cannot target any channel, which is why you use Image ▸ Adjustments ▸ Levels on the copy.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">You pushed Levels hard and the finest twigs disappeared from the mask. What happened?</div><div class="opts"><div class="opt correct">B) You over-pushed: the delicate twigs went white; back off until the big areas are solid and the twigs survive</div></div><div class="why"><b>Why:</b> The lesson's "Do not over-push" warning. The mask only needs to be perfect at the edges; fix big gaps with a hard brush on the channel instead of more Levels.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">You Ctrl/⌘-click your channel copy and the <strong>sky</strong> is selected, not the tree. Why, and what next?</div><div class="opts"><div class="opt correct">A) White loads as the selection; invert (Ctrl/⌘ + Shift + I), click RGB, then add the layer mask on the image layer</div></div><div class="why"><b>Why:</b> Bright = selected, and the sky is the white part of the mask. Invert to get the tree, click RGB to bring back full color, then add the layer mask from the selection.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">You placed a dark texture on a white background over your scene. Which Blend-If move drops the white?</div><div class="opts"><div class="opt correct">D) Drag the This Layer white slider left (Alt/⌥-drag to split it for a soft blend)</div></div><div class="why"><b>Why:</b> "This Layer" white slider inward hides the layer's brightest pixels, so the texture's white vanishes and the scene shows through. The black slider (B) would drop the texture's darks, the part you want to keep.</div></div>
+
+  <div class="note lab"><div class="t">Lab reference: Extract a Tree (<code class="inline">l02-bare-tree-sky.jpg</code> + <code class="inline">l02-new-sky.jpg</code> + <code class="inline">l02-grunge-texture.jpg</code>, or own photos)</div>
+    <p><b>A correct result looks like:</b> <code class="inline">channel-working.psd</code>, 16-bit. Channels panel: Red, Green, Blue untouched plus a <b>Blue copy</b> that is white sky over a black tree and black field. Layers: the tree photo with a layer mask (tree and ground white, sky black), <code class="inline">l02-new-sky.jpg</code> below it, and the grunge texture on top with This Layer's white slider pulled left (split). At 100%, the finest twigs are present over the sunset sky; the texture's white paper is gone and only its speckle and stains remain.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>The photo's colors shifted (yellow cast or harsh contrast).</b> Levels ran on the real Blue channel or on RGB. Undo; run it on the copy only.</li>
+      <li><b>The sky kept, the tree cut out.</b> The selection wasn't inverted after loading. Invert the mask (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>I</kbd> on the mask).</li>
+      <li><b>Thick branches fine, fine twigs missing.</b> Levels over-pushed. Rebuild with a gentler push.</li>
+      <li><b>A pale blue fringe on the twigs over the orange sky.</b> The white point wasn't pulled far enough, so the mask is gray near twigs. A little more Levels, or a slightly darker mask edge; decontamination is L03's tool.</li>
+      <li><b>The texture layer hid the scene.</b> The black slider was moved, or Underlying Layer instead of This Layer.</li>
+    </ul>
+    <p><b>Quick check:</b> click the Red, Green and Blue channel eyeballs: if the original channels look like the original photo, the learner edited only the copy.</p>
+  </div>
+  <div class="note lab"><div class="t">Lab reference: Now You (<code class="inline">l02-fireworks-on-black.jpg</code> over <code class="inline">l02-new-sky.jpg</code>, busy-background extraction, portrait Blue channel)</div>
+    <p><b>A correct result looks like:</b> the fireworks layer with This Layer's <b>black</b> slider moved right and split, so the black sky disappears and the bursts glow over the sunset with no dark box around them; a busy-background extraction that combines a channel mask for most of the edge with hand painting or a luminosity mask for the rest; a note that the portrait's Blue channel exaggerates skin texture (the starting point Module 3 uses). The tool-choice line: blown sky above a bright shirt = luminosity (intersected Lights); leafless tree on blue sky = channel (Blue); smoke on black = Blend-If (drop darks); hair on a busy street = a combination (L03 pipeline).</p>
+    <p><b>Common wrong results:</b> an unsplit black slider leaving a crunchy, stepped edge around each spark; using Screen blend mode instead (it works visually but isn't the Blend-If practice); expecting one channel to be clean against a busy background.</p>
+  </div>
+
+  <!-- L03 -->
+  <div class="sec"><h2>L03 · Select &amp; Mask Mastery: The Hard Cutout</h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">What's the order of the hard-cutout pipeline?</div><div class="opts"><div class="opt correct">C) Rough in, refine, rescue, decontaminate</div></div><div class="why"><b>Why:</b> The mantra: rough in, refine, rescue, decontaminate, in that order. Each step cleans up what the previous one couldn't; decontamination comes last because it rewrites edge pixels.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">Where does the Refine Edge Brush belong?</div><div class="opts"><div class="opt correct">A) Along the boundary between hair and background, never across the solid hair</div></div><div class="why"><b>Why:</b> Dragging it across solid hair turns it translucent and mushy. Stay on the hairline, the only place it belongs.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">In Select &amp; Mask, what do <b>Smart Radius</b> and a slightly higher <b>Radius</b> do for hair?</div><div class="opts"><div class="opt correct">B) They make Photoshop search a wider band around the edge for strands</div></div><div class="why"><b>Why:</b> Edge Detection widens the zone where Photoshop looks for fine detail, and Smart Radius adapts it along the edge. Removing color (C) is Decontaminate Colors; feathering (D) is the Feather slider, which stays low for hair.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">Why is Decontaminate Colors left <strong>off</strong> for the first output?</div><div class="opts"><div class="opt correct">D) It comes last: it rewrites edge pixels and forces a new layer, so you run it on the final, rescued mask</div></div><div class="why"><b>Why:</b> Decontamination rewrites edge pixels, so it can only output to a new layer or document. Running it after the channel-mask rescue means the rescued strands get cleaned too.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">During the rescue, you've loaded the hair channel as a selection. What do you do next?</div><div class="opts"><div class="opt correct">B) Click the layer mask thumbnail and paint white with a soft, low-opacity brush along the hairline</div></div><div class="why"><b>Why:</b> The selection limits the paint to the strands, so white on the mask brings lost detail back. Deleting (A) destroys pixels; painting on the image thumbnail (D) paints the photo itself.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">Your cutout looks fine on white but shows a halo on a dark background. What's the fix?</div><div class="opts"><div class="opt correct">A) Raise the Decontaminate Colors Amount, consider a tiny inward Shift Edge, and test on the darkest background it will sit on</div></div><div class="why"><b>Why:</b> Classic under-decontamination (lesson FAQ). The saturated or dark test background is the pressure test; always test on the darkest background the cutout will actually sit on.</div></div>
+
+  <div class="note lab"><div class="t">Lab reference: The Hard Cutout, Module 1 deliverable (<code class="inline">l03-curly-hair-portrait.jpg</code> + <code class="inline">l03-new-background.jpg</code>, or own portrait)</div>
+    <p><b>A correct result looks like:</b> <code class="inline">cutout-working.psd</code>, 16-bit, with (bottom to top) the hidden original, the new background (or the saturated test Solid Color, hidden or kept for show), the first-pass layer with its rescued mask (hidden by decontamination), and the decontaminated layer with its layer mask on top. The curls keep their bumpy outline and many of the fine flyaways survive as soft, partly transparent strands; against hot magenta or lime there's no teal halo along the curls or on the flyaways; the edge is soft, not razor-cut. The subject sits on the warm bokeh backdrop convincingly (light matching is Module 4's job and isn't required). For comparison, <code class="inline">labs/module-1/instructor/l03-hair-cutout-reference.png</code> shows the ideal edge.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Looked perfect in class, halo at home.</b> The original layer was visible underneath the whole time. Hide it and retest.</li>
+      <li><b>A smooth "helmet" outline, no curls or flyaways.</b> Smooth pushed up, Refine Edge Brush skipped, or used across the solid hair.</li>
+      <li><b>Translucent patches inside the hair.</b> The Refine Edge Brush dragged through the interior. Paint white on the mask to restore.</li>
+      <li><b>Teal glow on the flyaways against the test color.</b> Decontaminate skipped or Amount too low. Reopen Select and Mask on the final mask and raise Amount; a tiny inward Shift Edge helps.</li>
+      <li><b>Teal patches came back during the rescue.</b> The channel selection wasn't inverted (the backdrop was selected), or there was no selection and the brush painted the whole edge white.</li>
+      <li><b>The rescue "didn't do anything."</b> They painted on the image thumbnail, or on the first-pass layer after decontamination had already made a new one.</li>
+    </ul>
+    <p><b>Quick check:</b> ask the learner to toggle the saturated test layer and the hidden original. If the edge still holds with the original hidden and the test color on, it passes.</p>
+  </div>
+  <div class="note lab"><div class="t">Lab reference: Now You, homework (<code class="inline">l03-hair-busy-background.jpg</code>, a non-human subject, dark vs light backgrounds)</div>
+    <p><b>A correct result looks like:</b> on the busy-background file, the channel rescue helps where the foliage is dark behind the auburn hair but fails over the pale bokeh discs, so the learner combines it with hand painting (and names where); the non-human cutout note identifies what it stressed (a glass: transparency and reflections; a fern: many small gaps; a pet: fur like hair); a halo visible on the dark background but not the light one, fixed with more decontamination and a tiny inward Shift Edge. Going further: reopening Select and Mask on a selected layer mask lets you adjust the edge without starting over.</p>
+    <p><b>Common wrong results:</b> expecting one channel to separate hair from a busy background; testing only on white; flattening instead of keeping the layer + mask.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who"><span class="bio">Instructor Kit · confidential, do not distribute to students · © 2026 Ray de la Paz</span></div>
+    <div class="ver">Answer Key · Module 1 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

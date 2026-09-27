@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook · Module 7</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Student workbook —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">write in it · bring it to every session</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Photoshop Intermediate Workbook · Module 7</div>
+    <h1>Multi-Shot Techniques</h1>
+    <p class="sub">Welcome to the Going Further tier. A single frame is only so wide, holds only so much range, and has only so much in focus. Today you beat all three limits by merging several frames into one, then you turn layers into motion. The session ends with the capstone kickoff: you leave with a brief and a plan.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>19–20</b> (7.1–7.2)</span>
+      <span class="chip"><b>2</b> lessons + capstone kickoff · Session 7</span>
+      <span class="chip">Name: ____________________</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to use this workbook</div>
+    <p>Each lesson has <b>By the end you can</b>, <b>Key ideas</b>, a <b>Worked example</b> (the guided build from the lesson), a <b>Your turn</b> checklist with space to write, a <b>Recipe card</b> to keep, a <b>Self-check</b> quiz, and a <b>Journal</b> prompt. Journal after every lesson: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Practice files first, your own sets at home</div>
+    <p>Merges are heavy work for a computer. In class, use the practice sets your instructor gives you (they merge in seconds). Save your own full-resolution shoots for the "Now You" at home, when a long progress bar costs nobody else any time.</p>
+  </div>
+
+  <div class="sec"><h2>Module Progress Tracker</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ <b>L19</b>: I stitched a panorama, merged an HDR bracket, and focus-stacked a series, and checked every join at 100%</li>
+    <li>☐ <b>L20</b>: I keyframed a seamless loop and exported it as a GIF and an MP4</li>
+    <li>☐ <b>Kickoff</b>: I wrote my capstone brief, started my moodboard, and drafted my plan (on the Module 8 workbook's L21 pages)</li>
+    <li>☐ <b>Homework</b>: plan finished, capstone build well underway before Session 8</li>
+  </ul>
+
+  <!-- L19 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L19</span><h3>Panoramas, HDR &amp; Focus Stacking (7.1)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Shoot overlapping frames and stitch a panorama with <b>Photomerge</b></li>
+          <li>Bracket exposures and combine them with <b>Merge to HDR Pro</b> for wider range</li>
+          <li>Shoot a focus series and focus-stack it with <b>Auto-Align + Auto-Blend</b></li>
+          <li>See the shared engine (auto-align, then blend) behind all three</li>
+          <li>Clean the seams, ghosts, and edges these merges leave behind</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Align, then blend.</b> Auto-Align finds common detail and warps the frames into registration. Blend then chooses, per pixel, the best contribution: the overlap for a panorama, the well-exposed tone for HDR, the sharpest region for a stack.</li>
+          <li><b>Change one variable only.</b> Angle for a panorama, shutter (exposure) for HDR, focus distance for a stack. Hold everything else as steady as you can; a tripod and a 2-second timer help most for HDR and stacking.</li>
+          <li><b>Three front doors:</b> File ▸ Automate ▸ <b>Photomerge</b>; File ▸ Automate ▸ <b>Merge to HDR Pro</b>; File ▸ Scripts ▸ <b>Load Files into Stack</b>, then Edit ▸ <b>Auto-Align Layers</b> and Edit ▸ <b>Auto-Blend Layers…</b> (Stack Images).</li>
+          <li><b>HDR output:</b> 16 Bit (or 8 Bit) tone-maps right in the dialog; <b>32 Bit</b> keeps the full range to tone-map later with Camera Raw.</li>
+          <li><b>Garbage frames in, garbage merge out.</b> Too little overlap won't stitch; movement mid-bracket leaves ghosts; a skipped focus distance leaves a soft band.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 520 150" role="img" aria-label="The universal pipeline: source frames go through Auto-Align, then Blend, to make one image. Panorama varies angle, HDR varies exposure, focus stacking varies focus.">
+            <rect x="8" y="22" width="96" height="56" rx="6" fill="#e3efff" stroke="#1473E6" stroke-width="2"/>
+            <rect x="16" y="30" width="30" height="20" fill="#ffffff" stroke="#1473E6"/><rect x="36" y="40" width="30" height="20" fill="#ffffff" stroke="#1473E6"/><rect x="56" y="50" width="30" height="20" fill="#ffffff" stroke="#1473E6"/>
+            <text x="56" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">source frames</text>
+            <line x1="106" y1="50" x2="126" y2="50" stroke="#45536a" stroke-width="1.6"/><polygon points="128,50 120,46 120,54" fill="#45536a"/>
+            <rect x="130" y="22" width="110" height="56" rx="6" fill="#1473E6"/>
+            <text x="185" y="55" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#ffffff">Auto-Align</text>
+            <line x1="242" y1="50" x2="262" y2="50" stroke="#45536a" stroke-width="1.6"/><polygon points="264,50 256,46 256,54" fill="#45536a"/>
+            <rect x="266" y="22" width="110" height="56" rx="6" fill="#1473E6"/>
+            <text x="321" y="55" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#ffffff">Blend</text>
+            <line x1="378" y1="50" x2="398" y2="50" stroke="#45536a" stroke-width="1.6"/><polygon points="400,50 392,46 392,54" fill="#45536a"/>
+            <rect x="402" y="22" width="110" height="56" rx="6" fill="#d7efe9" stroke="#0f766e" stroke-width="1.5"/>
+            <text x="457" y="55" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600" fill="#0f766e">one image</text>
+            <text x="90" y="128" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">pano: vary angle → wider field</text>
+            <text x="260" y="128" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">HDR: vary exposure → range</text>
+            <text x="430" y="128" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">stack: vary focus → depth</text>
+          </svg>
+          <figcaption>One engine, three jobs. Whatever you varied between frames, Photoshop aligns first, then blends the best of each.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: merge three ways</div>
+        <ol class="steps">
+          <li><b>Panorama.</b> File ▸ Automate ▸ Photomerge, Browse to the pan frames, Layout <b>Auto</b>, tick <b>Blend Images Together</b> and <b>Content Aware Fill Transparent Areas</b>, OK. Crop or accept the filled edges; heal any obvious stitch artifact.</li>
+          <li><b>HDR.</b> File ▸ Automate ▸ Merge to HDR Pro, add the bracket, tick <b>Remove Ghosts</b> if anything moved. For a finished file now, set Mode to <b>16 Bit</b> and tone-map in the dialog (keep it believable). To keep every stop, set <b>32 Bit</b> and tone-map later with Camera Raw.</li>
+          <li><b>Focus stack.</b> File ▸ Scripts ▸ Load Files into Stack (tick <b>Attempt to Automatically Align Source Images</b>). Select all layers, Edit ▸ Auto-Blend Layers…, choose <b>Stack Images</b>, tick <b>Seamless Tones and Colors</b>. Mask-fix any soft patch.</li>
+          <li><b>Clean the joins.</b> Zoom to 100% on each result and heal seams, ghosts, or soft bands. Apply a Module 4 unifying grade so all three feel like your work.</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)">Shooting your own: overlap pan frames by roughly 30% (Photomerge doesn't measure it for you); bracket −2 / 0 / +2; step focus in small, even moves from front to back.</p>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: merge three ways</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Use the practice sets (or your own small sets). Tick each item as you finish it:</p>
+        <ul class="tick lab">
+          <li>☐ A stitched panorama with invisible seams</li>
+          <li>☐ An HDR merge with recovered highlights and shadows, no ghosts</li>
+          <li>☐ A focus stack sharp front-to-back</li>
+          <li>☐ Edges cropped/filled, joins healed at 100%</li>
+          <li>☐ A consistent grade across all three</li>
+        </ul>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">What did you find at 100% on each result, and how did you fix it? (pano · HDR · stack)</p>
+        <div class="write tall"></div>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">My HDR settings: Mode ______ · Method ______________ · Remove Ghosts ☐ · What I pulled back to keep it believable:</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <ul class="tick">
+          <li><b>Panorama bows or bends?</b> Try Cylindrical or Spherical in Photomerge's Layout list, keep the horizon centered when you shoot, and straighten with Filter ▸ Adaptive Wide Angle.</li>
+          <li><b>Auto-Blend grayed out?</b> Select <em>all</em> the layers first. And choose Stack Images, not Panorama.</li>
+          <li><b>Photoshop asks you to "Manually Set EV"?</b> Your files lost their exposure data. Enter the values from your instructor's lab sheet (or your camera's settings for your own bracket).</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Recipe card: multi-shot merge</div>
+        <ol class="steps">
+          <li>Panorama: Photomerge (Auto + Blend + Content-Aware edges)</li>
+          <li>HDR: Merge to HDR Pro (bracket, Remove Ghosts, 16-bit tone-map or 32-bit to keep range)</li>
+          <li>Focus stack: Load Files into Stack → Auto-Align → Auto-Blend Layers… (Stack Images)</li>
+          <li>Overlap generously; change only the one intended variable</li>
+          <li>Heal seams/ghosts at 100%, then one shared grade</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> align first, blend second, and one careful shoot beats any repair.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">What do panoramas, HDR, and focus stacking have in common?</div>
+          <div class="opts"><div class="opt">A) Each one needs a 32-bit file to work</div><div class="opt">B) Photoshop auto-aligns the frames, then blends the best of each</div><div class="opt">C) Each uses Generative Fill to invent the missing detail</div><div class="opt">D) Each starts from one frame duplicated several times</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">You are shooting a focus stack. What should change from one frame to the next?</div>
+          <div class="opts"><div class="opt">A) The camera angle</div><div class="opt">B) The shutter speed</div><div class="opt">C) The focus distance</div><div class="opt">D) The white balance</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Your Photomerge result has ragged, transparent edges. Which option would have filled them for you?</div>
+          <div class="opts"><div class="opt">A) Vignette Removal</div><div class="opt">B) Geometric Distortion Correction</div><div class="opt">C) Layout: Reposition</div><div class="opt">D) Content Aware Fill Transparent Areas</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">A bird flew across the window between your three bracketed shots, and the merge shows three faint birds. What do you do?</div>
+          <div class="opts"><div class="opt">A) Tick Remove Ghosts in Merge to HDR Pro</div><div class="opt">B) Switch the Mode to 8 Bit</div><div class="opt">C) Merge the bracket with Photomerge instead</div><div class="opt">D) Raise the Detail slider</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">You want to keep every stop of range now and do the tone-mapping later. Which Merge to HDR Pro setting fits?</div>
+          <div class="opts"><div class="opt">A) 8 Bit, tone-mapped in the dialog</div><div class="opt">B) 32 Bit, then tone-map later in Camera Raw</div><div class="opt">C) 16 Bit with Local Adaptation</div><div class="opt">D) Any mode; HDR Pro always keeps the full range</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Your focus stack is sharp in front and at the back, but a soft band runs across the middle. What is the most likely cause and fix?</div>
+          <div class="opts"><div class="opt">A) Seamless Tones and Colors was ticked; untick it and blend again</div><div class="opt">B) The layers were not Smart Objects; convert them first</div><div class="opt">C) Auto-Align overcorrected; turn it off</div><div class="opt">D) A focus distance was skipped, so reshoot with smaller steps or mask in a sharper frame</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Which single-frame limit frustrates you most: width, range, or depth? Plan the shoot that would beat it with a multi-shot merge.</em> Also note: key concepts · what clicked · questions · ideas to try · how you feel.</p>
+        <div class="write"></div>
+      </div>
+      <div class="note lab">
+        <div class="t">Mindset</div>
+        <p>Multi-shot work rewards patience at the camera more than skill at the keyboard. If a merge fails, it is usually telling you something about the frames, not about you: more overlap, a steadier hand, a smaller focus step. That is information for the next shoot.</p>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L20 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L20</span><h3>Timeline Animation &amp; Export (7.2)</h3><span class="dur">50 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Choose between <b>Frame Animation</b> and the <b>Video Timeline</b></li>
+          <li>Build a frame loop with tweening</li>
+          <li>Animate layer position, opacity, and style with keyframes (and scale, via Smart Objects)</li>
+          <li>Loop cleanly and shape timing so motion feels natural</li>
+          <li>Export a GIF (Save for Web) or an MP4 (Render Video)</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Frame Animation</b> is the flip-book: discrete frames, each a layer arrangement with its own hold time; <b>Tween</b> generates the in-betweens. Best for short, loopy GIFs with exact timing.</li>
+          <li><b>Video Timeline</b> is the smooth path: each layer gets a track; click a property's <b>stopwatch</b> to drop a keyframe, move the playhead, change the value, and Photoshop adds the next keyframe and interpolates between them.</li>
+          <li><b>Tracks depend on the layer.</b> Normal layers get Position, Opacity, and Style. Smart Objects get a <b>Transform</b> track instead of Position, which is how you animate scale and rotation. Warps can't be keyframed.</li>
+          <li><b>No built-in ease.</b> Keyframes interpolate linearly (or Hold, for a sudden jump). Fake an ease with an extra keyframe near the end of a move.</li>
+          <li><b>Two doors out:</b> File ▸ Export ▸ <b>Save for Web (Legacy)</b> for a GIF (256 colors max, heavy); File ▸ Export ▸ <b>Render Video</b> for an H.264 MP4 (smaller, full color).</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 520 140" role="img" aria-label="Two timeline modes. Frame Animation shows four discrete cells with hold times. Video Timeline shows a track with two keyframe diamonds and a smooth path between them.">
+            <text x="120" y="18" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#1473E6">Frame Animation</text>
+            <rect x="14" y="30" width="46" height="46" rx="4" fill="#e3efff" stroke="#1473E6"/><rect x="66" y="30" width="46" height="46" rx="4" fill="#e3efff" stroke="#1473E6"/><rect x="118" y="30" width="46" height="46" rx="4" fill="#e3efff" stroke="#1473E6"/><rect x="170" y="30" width="46" height="46" rx="4" fill="#e3efff" stroke="#1473E6"/>
+            <circle cx="30" cy="60" r="6" fill="#1473E6"/><circle cx="89" cy="52" r="8" fill="#1473E6"/><circle cx="141" cy="46" r="10" fill="#1473E6"/><circle cx="193" cy="44" r="11" fill="#1473E6"/>
+            <text x="37" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">0.1s</text><text x="89" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">0.1s</text><text x="141" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">0.1s</text><text x="193" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">1.0s</text>
+            <text x="120" y="122" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">discrete cells · exact timing</text>
+            <text x="390" y="18" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" fill="#0f766e">Video Timeline</text>
+            <rect x="270" y="40" width="240" height="30" rx="4" fill="#d7efe9" stroke="#0f766e"/>
+            <line x1="300" y1="55" x2="470" y2="55" stroke="#0f766e" stroke-width="2" stroke-dasharray="4 3"/>
+            <polygon points="300,45 310,55 300,65 290,55" fill="#fbbf24" stroke="#8a6200"/><polygon points="470,45 480,55 470,65 460,55" fill="#fbbf24" stroke="#8a6200"/>
+            <text x="300" y="88" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">start</text><text x="470" y="88" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#45536a">end</text>
+            <text x="390" y="122" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#45536a">keyframes · Photoshop fills the middle</text>
+          </svg>
+          <figcaption>Frames give you flip-book control; keyframes give you smooth motion the app fills in between the dots.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: a looping animation</div>
+        <ol class="steps">
+          <li>Open a simple layered design (a logo, a badge, a headline). Convert anything you'll scale to a Smart Object.</li>
+          <li><b>Start the timeline.</b> Window ▸ Timeline, click <b>Create Video Timeline</b>. Panel menu ▸ Set Timeline Frame Rate ▸ <b>24 fps</b>. Set a 2–3 s duration: drag the right end of each layer's bar to the 3-second mark, then drag the work-area end handle (above the ruler) to match.</li>
+          <li><b>Keyframe the moves.</b> On the badge (a Smart Object), twirl open and click the <b>Transform</b> stopwatch at frame 0 with the badge small. Move the playhead, scale it to its final size and spot; a keyframe drops automatically. On the headline, keyframe <b>Opacity</b> 0 → 100 and a small upward <b>Position</b> move so it rises in.</li>
+          <li><b>Loop and shape the timing.</b> Hold the finished pose for a beat, then add keyframes that return each layer to its frame-0 state by the last frame. To fake an ease, add an extra keyframe close to the end of each move with only a small change left. Play back and adjust until it feels natural.</li>
+          <li><b>Export both.</b> Save for Web (Legacy) (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> / <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>) → GIF, Looping <b>Forever</b>, tuned palette. Render Video → <b>H.264</b>. One animation, two delivery formats.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: a looping animation</div>
+        <ul class="tick lab">
+          <li>☐ A video timeline with keyframed Transform (or Position) and Opacity</li>
+          <li>☐ Transformed layers converted to Smart Objects (stay sharp)</li>
+          <li>☐ A seamless loop with natural-feeling timing (extra keyframes for a slow finish)</li>
+          <li>☐ Exported a GIF (looping forever) and an MP4</li>
+          <li>☐ GIF kept short and reasonably small</li>
+        </ul>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">My keyframe plan. For each layer: which property, and what happens at the start, the hold, and the end?</p>
+        <div class="write tall"></div>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">File sizes: GIF ________ · MP4 ________. What did I change to make the GIF smaller?</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <ul class="tick">
+          <li><b>No scale track?</b> It's a normal layer. Convert to Smart Object and the Transform track appears.</li>
+          <li><b>Loop jumps at the wrap-around?</b> The last frame doesn't match the first, or the work area runs past your last keyframes.</li>
+          <li><b>GIF banded or huge?</b> GIF is limited to 256 colors and grows with size, colors, and frames. Crop tight, keep it a few seconds, or deliver an MP4.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Recipe card: animate &amp; export</div>
+        <ol class="steps">
+          <li>Smart-Object anything you'll transform; Window ▸ Timeline</li>
+          <li>Video timeline → keyframe Position / Opacity / Style, or Transform on Smart Objects (stopwatch)</li>
+          <li>Return to the frame-0 pose by the last frame; fake easing with extra keyframes</li>
+          <li>Save for Web → GIF (loop Forever): small &amp; short</li>
+          <li>Render Video → H.264 MP4 for full-color playback</li>
+        </ol>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Mantra:</b> keyframe the start and end, let Photoshop travel the middle.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">You want a smooth glide and fade, and you plan to export an MP4. Which mode do you start in?</div>
+          <div class="opts"><div class="opt">A) Frame Animation</div><div class="opt">B) The Video Timeline</div><div class="opt">C) Artboards</div><div class="opt">D) An Action recorded with playback pauses</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">The badge must grow from small to full size, but its track only shows Position, Opacity, and Style. What do you do?</div>
+          <div class="opts"><div class="opt">A) Keyframe Position instead; it scales the layer too</div><div class="opt">B) Keyframe a Style change</div><div class="opt">C) Convert the badge to a Smart Object so it gets a Transform track</div><div class="opt">D) Rasterize the layer first</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">What makes a loop seamless?</div>
+          <div class="opts"><div class="opt">A) Returning each layer to its frame-0 state by the last frame</div><div class="opt">B) Setting the frame rate to 30 fps</div><div class="opt">C) Adding a Hold keyframe on frame 0</div><div class="opt">D) Setting Looping Options to Once</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">Your motion feels robotic. Photoshop keyframes move at a constant speed. How do you fake an ease?</div>
+          <div class="opts"><div class="opt">A) Choose Ease In from the keyframe's right-click menu</div><div class="opt">B) Switch every keyframe to Hold interpolation</div><div class="opt">C) Raise the frame rate to 60 fps</div><div class="opt">D) Add an extra keyframe near the end of each move with only a small change left</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Where do you export a looping GIF?</div>
+          <div class="opts"><div class="opt">A) File ▸ Export ▸ Export As, GIF</div><div class="opt">B) File ▸ Export ▸ Save for Web (Legacy), GIF, Looping Options: Forever</div><div class="opt">C) File ▸ Export ▸ Render Video, GIF preset</div><div class="opt">D) File ▸ Save As, GIF</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Your gradient-heavy loop bands badly as a GIF and weighs 4 MB. What is the better deliverable?</div>
+          <div class="opts"><div class="opt">A) The same GIF with the colors cut to 16</div><div class="opt">B) A single PNG of the last frame</div><div class="opt">C) An MP4 made with Render Video (H.264)</div><div class="opt">D) The GIF exported at 200% size</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>What is one still design of yours that a few seconds of motion would improve, and which single element should move? Restraint matters in animation too.</em> Also note: key concepts · what clicked · questions · ideas to try · how you feel.</p>
+        <div class="write"></div>
+      </div>
+      <div class="note lab">
+        <div class="t">Mindset</div>
+        <p>Your first loop will probably feel stiff. That is normal: timing is learned by playing it back, nudging one keyframe, and playing it again. A few small moves done well beat a busy animation every time.</p>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Capstone Kickoff: The Brief &amp; the Plan</h2><span class="rule"></span></div>
+  <div class="note">
+    <div class="t">Tonight you start Lesson 8.1 (L21)</div>
+    <p>The last part of the session runs Lesson 8.1 in class. You work on the <b>L21 pages of the Module 8 workbook</b> (your instructor hands them out): a one-page brief with six parts (objective, audience, deliverables + specs, constraints, success criteria, references), a moodboard, and a staged plan. Bring those pages back to Session 8, where you review your plan with a partner before the studio block.</p>
+  </div>
+  <div class="blk"><div class="h">Quick capture: my capstone in one sentence</div>
+    <p style="font-size:.92rem;margin:.2rem 0">Write your objective in one sentence. If you can't say what success looks like in a sentence, the idea isn't ready yet.</p>
+    <div class="write"></div>
+  </div>
+
+  <div class="sec"><h2>Before Session 8: Homework</h2><span class="rule"></span></div>
+  <div class="note warn">
+    <div class="t">Plan on building at home</div>
+    <p>Session 8 opens with a plan review in pairs, then a studio block for <b>finishing</b>, then presentations and critique. It is not enough time to build a capstone from scratch, so arrive with your piece well underway.</p>
+  </div>
+  <div class="blk lab"><div class="h">Part 1: Finish the plan (Lesson 8.1)</div>
+    <ul class="tick lab">
+      <li>☐ My one-page brief has all six parts, and someone else has read my success criteria</li>
+      <li>☐ Every vague word is pinned to a spec or a reference</li>
+      <li>☐ My moodboard has 6–12 references, each annotated with the one thing I'm taking from it</li>
+      <li>☐ My plan maps each stage to a module skill, lists my assets, and has 2–3 milestones; stretch goals are marked optional</li>
+      <li>☐ My source assets are gathered, and I've checked the license on anything I didn't shoot</li>
+      <li>☐ L21 journal: my one-sentence objective</li>
+    </ul>
+  </div>
+  <div class="blk lab"><div class="h">Part 2: Build it (Lesson 8.2)</div>
+    <ul class="tick lab">
+      <li>☐ Worked in passes: block-in, refine, polish</li>
+      <li>☐ Groups and layers named as I went; Smart Objects and adjustment layers kept live</li>
+      <li>☐ Versioned saves so I can always step back</li>
+      <li>☐ I wrote down the one or two things I most want help with in the studio block</li>
+    </ul>
+    <div class="write"></div>
+  </div>
+  <div class="blk lab"><div class="h">Module 7 wrap-up</div>
+    <ul class="tick lab">
+      <li>☐ One multi-shot still of my own (pano, HDR, or stack)</li>
+      <li>☐ One short animation, exported as a GIF and an MP4</li>
+      <li>☐ L19 and L20 journal entries written</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <div class="t">You finished Module 7 🎉</div>
+    <p>You went wider, higher-range, deeper, and into motion, further than most Photoshop users ever go. Only the capstone remains: the project that turns everything you have learned into something you can show the world.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Workbook · Module 7 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

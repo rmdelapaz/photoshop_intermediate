@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before You Begin: Setup Guide · Photoshop Intermediate</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="kit.css">
+<style>
+  table.bring { width:100%; border-collapse:collapse; margin:10px 0; font-size:.9rem; }
+  table.bring th, table.bring td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.bring th { font-family:"JetBrains Mono",monospace; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+  table.bring td.s { font-family:"JetBrains Mono",monospace; font-size:.8rem; color:var(--accent); font-weight:600; white-space:nowrap; }
+  table.bring tr:last-child td { border-bottom:none; }
+  pre.tree { background:var(--surface-2); border:1px solid var(--line); border-radius:9px; padding:12px 16px; font-family:"JetBrains Mono",monospace; font-size:.8rem; line-height:1.55; margin:10px 0; overflow-x:auto; }
+  @media print { table.bring tr { break-inside:avoid; } }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Student handout:</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">send this out before Session 1</span>
+</div>
+
+<div class="sheet">
+
+<header class="mast">
+<div class="kit-eyebrow">Photoshop Intermediate · Before You Begin</div>
+<h1>Get Ready for Professional Work</h1>
+<p class="sub">A 30-minute check to do <b>before the first session</b>. You already know Photoshop; this makes sure your copy, your screen, and your files are ready for 16-bit masking, real color management, and client-style deliverables, so Session 1 starts with a landscape rescue instead of an update bar.</p>
+<div class="meta-row">
+<span class="chip">⏱ <b>~30 min</b> + any update</span>
+<span class="chip">Assumes intro-level Photoshop</span>
+<span class="chip">Windows or macOS</span>
+</div>
+</header>
+
+<div class="note warn">
+<div class="t">Please finish this before class</div>
+<p>Updates and sign-ins can take a while. If you get stuck on a step, note where and we'll sort it out in Session 1's setup check. But please <b>try</b> before you arrive.</p>
+</div>
+
+<div class="sec"><h2>Are You Ready for This Course?</h2><span class="rule"></span></div>
+<p style="font-size:.95rem;color:var(--ink-2)">This course starts where an introductory Photoshop course ends. You should already be comfortable with the skills below. If two or more feel shaky, work through the free <b>Photoshop: From First Win to Finished Work</b> course (rays-photoshop-intro.netlify.app) first, or at least its Modules 1–4.</p>
+<ul class="tick">
+<li>Adjustment layers and <b>layer masks</b>: black hides, white reveals, gray partly reveals</li>
+<li>Selections with Select Subject and <b>Select &amp; Mask</b>, output to a layer mask</li>
+<li><b>Camera Raw</b> and <b>Curves</b> for global tone and color</li>
+<li><b>Smart Objects</b> and Smart Filters</li>
+<li>Basic healing, a simple composite, and saving a layered <code class="inline">.psd</code> plus a flat export</li>
+</ul>
+
+<div class="sec"><h2>What You Need</h2><span class="rule"></span></div>
+<ul class="tick">
+<li><b>A laptop or desktop</b> running Windows or macOS that runs the current Photoshop comfortably (see <b>Hardware Notes</b>), plus its charger.</li>
+<li><b>Adobe Photoshop 2025 or newer</b>, the desktop app, current release recommended. Photoshop on the web, on iPad, and Photoshop Elements are <b>not</b> enough for this course.</li>
+<li><b>An Adobe account</b> with a plan that includes Photoshop, <b>Adobe Fonts</b> (Session 5), and <b>generative credits</b> (Session 6).</li>
+<li><b>A mouse or pen tablet.</b> Masking, retouching, and dodge &amp; burn need precise strokes; a tablet helps most in Session 3.</li>
+<li><b>A notebook or a text file</b> for your learning journal. It feeds your capstone case study in Session 8.</li>
+<li><b>Your own images</b> (see <b>What Images to Bring</b>). Practice files are provided for every lab.</li>
+</ul>
+
+<div class="sec"><h2>Set Up in 5 Steps</h2><span class="rule"></span></div>
+
+<div class="lesson">
+<div class="lesson-head"><span class="lcode">1</span><h3>Update Photoshop</h3><span class="dur">~5 min + update</span></div>
+<div class="lesson-body">
+<ol class="steps">
+<li>Open the <b>Creative Cloud desktop app</b> and sign in. Under <b>Apps ▸ Updates</b>, install any Photoshop update.</li>
+<li>Open Photoshop and check the version: <b>Help ▸ About Photoshop</b> (Windows) or <b>Photoshop ▸ About Photoshop</b> (macOS). It should say <b>2025</b> or newer.</li>
+<li>If Photoshop asks you to sign in or accept terms, do it now, not in class.</li>
+</ol>
+</div>
+</div>
+
+<div class="lesson">
+<div class="lesson-head"><span class="lcode">2</span><h3>Reset the workspace and check the GPU</h3><span class="dur">~5 min</span></div>
+<div class="lesson-body">
+<ol class="steps">
+<li><b>Window ▸ Workspace ▸ Essentials (Default)</b>, then <b>Window ▸ Workspace ▸ Reset Essentials</b>, so the demos match your screen. Save your own workspace first if you have one you love: <b>Window ▸ Workspace ▸ New Workspace</b>.</li>
+<li>Open <b>Window ▸ Channels</b>, <b>Window ▸ Histogram</b>, and <b>Window ▸ Info</b>, and dock them. You will use them in almost every session.</li>
+<li>In Preferences (<b>Edit ▸ Preferences</b> on Windows, <b>Photoshop ▸ Settings</b> on macOS) ▸ <b>Performance</b>, make sure <b>Use Graphics Processor</b> is on. Perspective Warp (Session 4) and several other tools are grayed out without it.</li>
+</ol>
+<div class="note warn"><div class="t">Shared or borrowed computer?</div><p>If tools behave strangely, reset preferences: <b>Preferences ▸ General ▸ Reset Preferences On Quit</b>, then quit and reopen. This never touches your files.</p></div>
+</div>
+</div>
+
+<div class="lesson">
+<div class="lesson-head"><span class="lcode">3</span><h3>Set a few recommended preferences</h3><span class="dur">~5 min</span></div>
+<div class="lesson-body">
+<ul class="tick">
+<li><b>File Handling:</b> turn on <b>Automatically Save Recovery Information Every 10 Minutes</b>, and save working files to <b>your computer</b>, not as cloud documents. Set <b>Maximize PSD and PSB File Compatibility</b> to <b>Always</b> or <b>Ask</b>.</li>
+<li><b>Performance:</b> let Photoshop use about <b>70%</b> of your memory, and set <b>History States</b> to at least <b>50</b>.</li>
+<li><b>Units &amp; Rulers:</b> set Rulers to <b>Pixels</b>. If you change it for a lesson, change it back afterward: several steps and the Session 6 script assume pixels.</li>
+<li><b>Color Settings:</b> open <b>Edit ▸ Color Settings</b> and note which RGB working space it shows. <b>Don't change it yet.</b> We check it together in Session 1 and set it up properly in Session 2.</li>
+</ul>
+<div class="note"><div class="t">Windows vs Mac keys</div><p>The course writes shortcuts as <b>Ctrl/⌘</b> and <b>Alt/⌥</b>: use Ctrl and Alt on Windows, ⌘ Command and ⌥ Option on a Mac.</p></div>
+</div>
+</div>
+
+<div class="lesson">
+<div class="lesson-head"><span class="lcode">4</span><h3>Create a course folder</h3><span class="dur">~5 min</span></div>
+<div class="lesson-body">
+<p>Professional work keeps originals, layered masters, and deliverables apart. The capstone case study (Session 8) also needs your "before" files and screenshots, so start saving them now.</p>
+<pre class="tree">photoshop-intermediate/
+├─ originals/     ← copies of your images; never edit these
+├─ session-1/     ← working .psd masters and exports for Session 1
+├─ session-2/
+│  …
+├─ session-8/     ← your capstone
+└─ journal.txt    ← or a paper notebook</pre>
+<div class="note warn"><div class="t">One rule that saves headaches</div><p>Always work on <b>copies</b>, and batch-process only copies (Session 6). Name files in lowercase with hyphens, the way the lessons do (<code class="inline">luminosity-working.psd</code>, <code class="inline">cutout-working.psd</code>).</p></div>
+</div>
+</div>
+
+<div class="lesson">
+<div class="lesson-head"><span class="lcode">5</span><h3>Confirm it all works</h3><span class="dur">~5 min</span></div>
+<div class="lesson-body">
+<ol class="steps">
+<li><b>File ▸ Open</b> a photo from <code class="inline">originals/</code>, then <b>Image ▸ Mode ▸ 16 Bits/Channel</b>. The title bar should now show <b>RGB/16</b>.</li>
+<li>In the Channels panel, <kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click the <b>RGB</b> thumbnail. Marching ants should appear around the bright areas: that's your first luminosity selection. Deselect.</li>
+<li><b>File ▸ Save As</b> ▸ Photoshop (.psd) into <code class="inline">session-1/</code> as <code class="inline">test-working.psd</code>, choosing <b>Save on your computer</b> if asked.</li>
+<li>Look under <b>Edit</b> for <b>Generative Fill</b> (grayed out until you make a selection; that's normal). If it's missing, or your account shows no generative credits, tell us before Session 6.</li>
+<li>Close the file.</li>
+</ol>
+<div class="note lab"><div class="t">✅ You're ready</div><p>If you saved a 16-bit <code class="inline">.psd</code> to your own folder, you're set for Session 1.</p></div>
+</div>
+</div>
+
+<div class="sec"><h2>What Images to Bring</h2><span class="rule"></span></div>
+<p style="font-size:.95rem;color:var(--ink-2)">Practice files are provided for every lab, but your portfolio is better with your own work. Bring <b>copies</b> at full original size (RAW welcome), not screenshots or images saved from social media, and bring them on your computer, not only on your phone.</p>
+<table class="bring">
+<thead><tr><th>Session</th><th>Bring</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td class="s">S1</td><td>A high-contrast landscape (bright sky, dark ground); a bare tree, power lines, or another intricate subject against a plain bright sky; a portrait with loose or curly hair on a fairly plain background</td><td>Luminosity &amp; channel masks, the hard cutout</td></tr>
+<tr><td class="s">S2</td><td>A favorite photo to grade (a portrait is ideal); a second shot from the same set in different light; one deliberately vivid image. If you print with a lab, the profile it asks for</td><td>Color management, grading, soft-proofing</td></tr>
+<tr><td class="s">S3</td><td><b>A portrait of someone who has agreed</b> to be retouched and shown in class, or a self-portrait: large original, flat-ish light, teeth and loose hair visible. No beauty-filtered photos, and no children</td><td>High-end retouching</td></tr>
+<tr><td class="s">S4</td><td>A background with clear perspective and visible shadows (a street, room, tiled floor, or table), and a clean cutout from your Session 1 work. Optional: a glossy surface and a deep scene</td><td>Commercial compositing</td></tr>
+<tr><td class="s">S5</td><td>Your Session 4 key visual as key art. Optional: your own logo as a transparent PNG</td><td>Type systems &amp; a campaign</td></tr>
+<tr><td class="s">S6</td><td>Your layered Session 4 composite (or a cramped, busy photo); a <b>folder of 8–12 photo copies</b>, a mix of landscape and portrait; a short real list (a roster or lineup) with photos you may use</td><td>Generative tools &amp; automation</td></tr>
+<tr><td class="s">S7</td><td>A simple layered design to animate (your Session 5 master works); optional: your own pan, exposure bracket, or focus series; one or two capstone ideas with reference images</td><td>Multi-shot, animation, capstone kickoff</td></tr>
+<tr><td class="s">S8</td><td>Your capstone master and versions, brief, moodboard, and end-of-pass screenshots, built as homework after Session 7</td><td>Studio, case study, presentation</td></tr>
+</tbody>
+</table>
+<div class="note warn">
+<div class="t">Consent and rights</div>
+<p>Only retouch or show people who have said yes, or yourself. Don't bring confidential or client work. For your capstone, use images you made or have the right to use, check the license on any stock, and use fonts you're licensed to use.</p>
+</div>
+
+<div class="sec"><h2>Hardware Notes</h2><span class="rule"></span></div>
+<ul class="tick">
+<li><b>Check Adobe's current system requirements</b> before you buy or install anything. They change with each release.</li>
+<li><b>Memory:</b> this course works in 16-bit with many layers. <b>16 GB of RAM</b> is strongly recommended; 8 GB will struggle in Sessions 3, 4, and 7.</li>
+<li><b>Disk space:</b> keep 30 GB or more free on your main drive for Photoshop's scratch disk and 16-bit masters.</li>
+<li><b>Graphics:</b> update your graphics drivers, and keep Use Graphics Processor on (step 2).</li>
+<li><b>Screen:</b> 1920 × 1080 or larger. For color-critical work, a <b>calibrated</b> monitor makes grading decisions trustworthy; a hardware calibrator is a good investment but not required.</li>
+<li><b>Color:</b> turn off <b>Night Light</b> (Windows) or <b>Night Shift / True Tone</b> (macOS) during class. They tint your screen and will mislead your color decisions.</li>
+</ul>
+
+<div class="sec"><h2>Accessibility</h2><span class="rule"></span></div>
+<p style="font-size:.95rem;color:var(--ink-2)">Tell us before Session 1 if anything would make the course easier for you. A few things that already help:</p>
+<ul class="tick">
+<li><b>Bigger interface:</b> raise UI Font Size or UI Scaling in Preferences ▸ Interface.</li>
+<li><b>Color vision differences:</b> the <b>Info</b> panel shows exact values under your cursor, the Histogram and Channels show tone without relying on hue, and <b>View ▸ Proof Setup</b> includes color-blindness previews. The color sessions lean on numbers you can read, not only on what looks right.</li>
+<li><b>Keyboard over precise mousing:</b> most tools have single-key shortcuts, collected in the lessons' recipe cards and the online Recipes II library.</li>
+<li><b>Screen readers:</b> Photoshop is highly visual with limited screen-reader support. Please talk to us so we can plan alternatives together.</li>
+<li><b>Pace and breaks:</b> every session has a break, and every lesson stays online, in light or dark mode, to revisit at your own speed.</li>
+</ul>
+
+<div class="sec"><h2>Frequently Asked</h2><span class="rule"></span></div>
+<div class="blk"><div class="h">I learned Photoshop on my own. Am I ready?</div><p style="font-size:.95rem;color:var(--ink-2);margin:.2rem 0">Probably, if you can do everything in <b>Are You Ready for This Course?</b> without looking it up. Masks and Smart Objects are the two that matter most.</p></div>
+<div class="blk"><div class="h">Can I use an older Photoshop or Photoshop Elements?</div><p style="font-size:.95rem;color:var(--ink-2);margin:.2rem 0">Please don't. The generative and Harmonize tools in Session 6 need a current release, and Elements lacks channels, Curves, Variables, and much of what this course teaches.</p></div>
+<div class="blk"><div class="h">Do I need to shoot RAW?</div><p style="font-size:.95rem;color:var(--ink-2);margin:.2rem 0">No, but RAW files and 16-bit editing give you more room in Sessions 1–3. High-quality JPEGs work for every lab.</p></div>
+<div class="blk"><div class="h">What are generative credits?</div><p style="font-size:.95rem;color:var(--ink-2);margin:.2rem 0">Generative tools run in Adobe's cloud and use credits that come with most Photoshop plans. Check your balance before Session 6. School or company accounts sometimes have generative features turned off by an administrator; check early.</p></div>
+<div class="blk"><div class="h">What if I can't finish the setup?</div><p style="font-size:.95rem;color:var(--ink-2);margin:.2rem 0">Come anyway. Note where you got stuck; Session 1 opens with a setup check.</p></div>
+
+
+  <div class="foot">
+    <div class="who">
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Student Setup Guide · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

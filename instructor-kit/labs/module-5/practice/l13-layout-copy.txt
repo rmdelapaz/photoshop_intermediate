@@ -1,0 +1,43 @@
+NORTHWIND · COASTAL COFFEE ROASTERS
+Copy deck for the Lesson 5.1 (L13) type-system layout
+=====================================================
+
+Set every line below with a named Paragraph Style. Do not freehand a size.
+Keep the words exactly as written; the exercise is the SYSTEM, not the copy.
+
+ROLE (lesson scale, 16 px base x 1.25)   TEXT
+----------------------------------------------------------------------------
+Display   39 px    Northwind
+H1        31 px    Slow-roasted, small batch
+Subhead   20 px    COASTAL COFFEE ROASTERS            (tracked caps)
+H2        25 px    Single estate
+Body      16 px    Sourced from single estates and roasted the morning we
+                   ship. Every bag carries its roast date, its farm, and the
+                   name of the person who roasted it.
+H2        25 px    Roasted to order
+Body      16 px    We roast on Mondays and Thursdays, in small batches, and
+                   only what has been ordered. Brew it within three weeks
+                   and taste the difference.
+CTA       20 px    Order a sample box                 (Subhead style +
+                                                        an Emphasis Character Style)
+Caption   13 px    EST. 2019 · PORTLAND
+Caption   13 px    northwindroasters.example
+Tagline   (use H2) Tasted, not guessed.
+
+Numbers on the Lesson 5.1 scale: 13 / 16 / 20 / 25 / 31 / 39.
+Body leading and document grid ("Gridline Every"): 24 px, Subdivisions 1.
+
+PRACTICE DOCUMENT (optional, for a poster-sized page)
+----------------------------------------------------------------------------
+The lesson's 16 px base is sized for a small page. For an 1800 x 2400 px practice
+poster, multiply every number by 3 (the ratio does not change):
+  Caption 39 · Body 48 · Subhead 60 · H2 75 · H1 93 · Display 117
+  Body leading and document grid: 72 px, Subdivisions 1.
+  Columns: View > Guides > New Guide Layout, 6 columns, gutter 48 px,
+  margins 144 top / 120 left / 144 bottom / 120 right.
+
+Fonts: two families only, one display face and one text face (Adobe Fonts).
+Real Bold and Italic weights only; never the Faux Bold / Faux Italic buttons.
+Standard Ligatures and Oldstyle Figures on for the Body style.
+
+Before-file to diagnose: l13-ransom-note-before.png (same words, no system).

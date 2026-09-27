@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook: Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Student workbook —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">write in it · bring it to every session</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Photoshop Intermediate Workbook · Module 5</div>
+    <h1>Design Systems &amp; Type</h1>
+    <p class="sub">From one good image to a small production system. You will build a type system you can change in one place, a mockup template you can refill forever, and a full campaign (poster, square, story, banner) from a single master file.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>13–15</b> (5.1–5.3)</span>
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip">Session <b>5</b></span>
+      <span class="chip">Name: ____________________</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to use this workbook</div>
+    <p>Each lesson has <b>By the end you can</b>, <b>Key ideas</b>, a <b>Worked example</b> (the guided build), a <b>Your turn</b> activity, a <b>Self-check</b>, a <b>Journal</b> prompt and <b>Notes</b>. Shortcuts are written <b>Windows / Mac</b>. Practice files are in <code class="inline">labs/module-5/practice/</code>. Before you start: make one project folder (for example <code class="inline">northwind-campaign/</code>) and keep everything from today in it. Linked files break if you move them.</p>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Growth mindset: taste is a set of decisions</div>
+    <p>"Good taste" in type and layout isn't magic; it's decisions made once and applied consistently. A scale, a pair of typefaces, a grid: each is a rule you can name. Templates feel like extra work the first time and pure magic every time after. Expect the first build to feel slow. That's the setup cost of a system, and it pays you back on every job.</p>
+  </div>
+
+  <div class="sec"><h2>Module Progress Tracker</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ <b>L13</b>: a written scale, named Paragraph/Character Styles, columns + a grid at the body leading; one style edit updates the page</li>
+    <li>☐ <b>L14</b>: a warped Smart-Object mockup with clipped Multiply/Screen layers; art swapped with Replace Contents; a linked logo updated from its source</li>
+    <li>☐ <b>L15</b>: one master with four artboards, linked art, shared styles, exported in one pass; one source edit updates the set 🏆</li>
+  </ul>
+
+  <!-- L13 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L13</span><h3>Type Systems, Styles &amp; Grids (Lesson 5.1)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Build a <b>modular type scale</b> and a clear hierarchy from it</li>
+          <li>Create and apply <b>Paragraph and Character Styles</b></li>
+          <li>Turn on real <b>OpenType</b>: ligatures, true small caps, oldstyle figures</li>
+          <li>Set up <b>columns</b> and a <b>baseline grid</b> (the document grid, spaced at your leading)</li>
+          <li>Pair typefaces from <b>Adobe Fonts</b> with intent</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Modular scale:</b> one base size × one ratio (1.25, 1.333, 1.618). Assign roles to steps and never freehand a size again.</li>
+          <li><b>Four cheap levers of hierarchy:</b> size, weight, color and space. Often weight or space says "this matters" better than size.</li>
+          <li><b>Styles bottle a spec</b> (font, size, leading, tracking, color, OpenType) under a name. Edit the style once and every instance updates.</li>
+          <li><b>No faux styling.</b> Faux Bold and Faux Italic smear a regular weight. Use a real Bold/Italic or choose another face.</li>
+          <li><b>Photoshop has no true baseline grid.</b> Set the document grid to your body leading, give text that leading (or a multiple), and align each block's first baseline by eye.</li>
+          <li><b>Usually two typefaces:</b> one display, one text, chosen to contrast.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 460 210" role="img" aria-label="A modular scale from a 16 pixel base and a 1.25 ratio: Caption 13, Body 16, Subhead 20, H2 25, H1 31, Display 39.">
+            <g font-family="'Source Sans 3',sans-serif" fill="#16202e">
+              <text x="20" y="44" font-family="Archivo,sans-serif" font-weight="800" font-size="39">Display 39</text>
+              <text x="20" y="80" font-family="Archivo,sans-serif" font-weight="700" font-size="31">H1 31</text>
+              <text x="20" y="110" font-family="Archivo,sans-serif" font-weight="700" font-size="25">H2 25</text>
+              <text x="20" y="136" font-weight="600" font-size="20">Subhead 20</text>
+              <text x="20" y="160" font-size="16">Body 16: the reading size it all tunes to</text>
+              <text x="20" y="182" font-size="13" fill="#45536a">Caption 13</text>
+            </g>
+            <g font-family="'JetBrains Mono',monospace" font-size="11" fill="#1473E6" font-weight="600">
+              <text x="360" y="60">× 1.25</text><text x="360" y="92">× 1.25</text><text x="360" y="120">× 1.25</text><text x="360" y="146">× 1.25</text><text x="360" y="170">× 1.25</text>
+            </g>
+            <text x="20" y="204" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6f7c8e">one base size × one ratio → a scale where every pairing already agrees</text>
+          </svg>
+          <figcaption>A modular scale from a 16 px base and a 1.25 ratio. Assign roles to steps; the math guarantees the sizes relate.</figcaption>
+        </figure>
+        <table class="timing">
+          <thead><tr><th>You want…</th><th>Where it lives</th></tr></thead>
+          <tbody>
+            <tr><td>Type sized in pixels</td><td>Preferences ▸ Units &amp; Rulers ▸ Type ▸ Pixels</td></tr>
+            <tr><td>Columns, gutters, margins</td><td>View ▸ Guides ▸ New Guide Layout (older versions: View ▸ New Guide Layout)</td></tr>
+            <tr><td>A baseline grid (workaround)</td><td>Preferences ▸ Guides, Grid &amp; Slices: Gridline Every = body leading, Subdivisions 1; View ▸ Show ▸ Grid (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>'</kbd>)</td></tr>
+            <tr><td>Named styles</td><td>Window ▸ Paragraph Styles and Window ▸ Character Styles (two panels)</td></tr>
+            <tr><td>Ligatures, small caps, oldstyle figures</td><td>Character panel: OpenType buttons along the bottom (or panel menu ▸ OpenType)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk"><div class="h">Worked example: a type system (the guided build)</div>
+        <ol class="steps">
+          <li><b>Set the scale.</b> Units &amp; Rulers ▸ Type ▸ Pixels (or keep points and use the same numbers as pt). Base 16, ratio 1.25 → 13 / 16 / 20 / 25 / 31 / 39. Caption 13, Body 16, Subhead 20, H2 25, H1 31, Display 39.</li>
+          <li><b>Build the grid.</b> New Guide Layout: 3 or 6 columns, a gutter, margins. Then Preferences ▸ Guides, Grid &amp; Slices: Gridline Every 24 px (for 16 px body), Subdivisions 1. Show it with <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>'</kbd>.</li>
+          <li><b>Create styles.</b> Set one line per role correctly (font, size from the scale, leading = grid increment or a multiple, tracking, color, OpenType on). With it selected, create a new Paragraph Style and name it. Repeat per role; add Character Styles for links/emphasis.</li>
+          <li><b>Prove the system.</b> Lay out the page with named styles only. Nudge each block so its first baseline sits on a gridline (zoom in, arrow keys). Edit the Body style by one step and watch the page re-flow. Save the PSD: its styles feed Lesson 5.3.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: write the system before you build it</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Use the copy in <code class="inline">l13-layout-copy.txt</code>. Fill in your scale (lesson numbers, or ×3 for an 1800 × 2400 px practice poster):</p>
+        <table class="timing">
+          <thead><tr><th>Role</th><th>Size</th><th>Leading</th><th>Font &amp; weight</th><th>Style name</th></tr></thead>
+          <tbody>
+            <tr><td>Display</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>H1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>H2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Subhead</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Body</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Caption</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.2rem 0">Base ______ × ratio ______ · Grid (Gridline Every) ______ · Columns ______ gutter ______</p>
+        <p style="font-size:.92rem;margin:.2rem 0">Diagnose <code class="inline">l13-ransom-note-before.png</code>: list every inconsistency you can find (fonts, sizes, alignments, colors, faux styling).</p>
+        <div class="write"></div>
+        <ul class="tick lab">
+          <li>☐ A written modular scale with roles assigned</li>
+          <li>☐ Columns via New Guide Layout + a document grid set to your body leading</li>
+          <li>☐ Paragraph &amp; Character Styles created and named</li>
+          <li>☐ Real OpenType on; no faux bold/italic</li>
+          <li>☐ Editing one style updates every instance</li>
+        </ul>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Text won't snap to the grid? It never will: View ▸ Snap To ▸ Grid snaps a layer's <b>edges</b>, not its baselines. Keep leading equal to the grid increment and align each block's first baseline by eye. Style not updating one block? You changed that block by hand; clear the override in the Paragraph Styles panel.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">With a 16 px base and a 1.25 ratio, which set of sizes does the lesson's modular scale give you?</div>
+          <div class="opts"><div class="opt">A) 12 / 16 / 20 / 24 / 28 / 32</div><div class="opt">B) 14 / 16 / 18 / 20 / 22 / 24</div><div class="opt">C) 13 / 16 / 20 / 25 / 31 / 39</div><div class="opt">D) 16 / 32 / 48 / 64 / 80 / 96</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">The client wants all body text one step larger across a styled layout. What makes this a single edit?</div>
+          <div class="opts"><div class="opt">A) Editing the Body Paragraph Style once, so every instance updates</div><div class="opt">B) Selecting every text layer and typing a new size</div><div class="opt">C) Scaling the whole document with Image Size</div><div class="opt">D) Converting all text to a Smart Object</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">How do you build a baseline grid in Photoshop?</div>
+          <div class="opts"><div class="opt">A) View ▸ Guides ▸ New Guide Layout, Rows = body leading</div><div class="opt">B) Turn on Snap To Baseline in the Paragraph panel</div><div class="opt">C) Photoshop draws one automatically when you create a Paragraph Style</div><div class="opt">D) Preferences ▸ Guides, Grid &amp; Slices: Gridline Every = your body leading, Subdivisions 1</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">Snap To ▸ Grid is on, but your text block's baselines still don't sit on the gridlines. Why, and what do you do?</div>
+          <div class="opts"><div class="opt">A) The grid is broken; restart Photoshop</div><div class="opt">B) Snapping works on layer edges, not baselines; zoom in and align the first baseline by eye with the arrow keys</div><div class="opt">C) Convert the text to shapes so it can snap</div><div class="opt">D) Set the leading to Auto so it matches the grid</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Your chosen typeface has no Bold weight, and your H1 style needs one. What does the lesson say to do?</div>
+          <div class="opts"><div class="opt">A) Click the Faux Bold button in the Character panel</div><div class="opt">B) Add a thin Stroke layer style in the same color</div><div class="opt">C) Choose a different face that ships a real Bold</div><div class="opt">D) Increase the tracking until it looks heavier</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">What does View ▸ Guides ▸ New Guide Layout create?</div>
+          <div class="opts"><div class="opt">A) Columns and rows, with gutters and margins, but not a baseline grid</div><div class="opt">B) A true baseline grid that text snaps to</div><div class="opt">C) A set of named Paragraph Styles</div><div class="opt">D) Artboards at preset sizes</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Find two typefaces you think pair well and articulate why — contrast in structure, shared era, matching x-height? Naming the reason turns taste into a repeatable skill.</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L14 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L14</span><h3>Smart-Object Templates &amp; Linked Assets (Lesson 5.2)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Explain what a <b>Smart Object</b> protects and why it is non-destructive</li>
+          <li>Choose between <b>embedded</b> and <b>linked</b> Smart Objects</li>
+          <li>Build a <b>mockup template</b> with a warped placeholder</li>
+          <li>Use <b>Replace Contents</b> and <b>Place Linked</b> to swap art in one move</li>
+          <li>Update <b>one linked file</b> and have every design using it refresh</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>A container you can refill.</b> Transforms, warps, Smart Filters and layer styles live on the Smart Object; Replace Contents swaps what's inside and keeps all of them.</li>
+          <li><b>The catch:</b> the container's transform is applied to whatever you swap in. Build placeholders at the exact pixel size (or at least the exact aspect ratio) of the art they'll hold.</li>
+          <li><b>Embedded</b> = stored inside the PSD, each copy independent (one-off protection). <b>Linked</b> (File ▸ Place Linked) = points at a file on disk that many documents share (the backbone of a system).</li>
+          <li><b>Effects on the container, not the art.</b> Warp the placeholder; put shadows on a Multiply layer and highlights on a Screen layer above it, clipped.</li>
+          <li><b>Link discipline.</b> Don't move or rename linked files; File ▸ Package gathers them for handoff.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 460 170" role="img" aria-label="A Smart Object container holding Art A, with warp and shadow on the container; Replace Contents swaps in Art B and keeps the same warp and shadow.">
+            <g font-family="'JetBrains Mono',monospace" font-size="11">
+              <rect x="20" y="30" width="150" height="110" rx="10" fill="none" stroke="#1473E6" stroke-width="3"/>
+              <text x="95" y="22" text-anchor="middle" fill="#1473E6" font-weight="600">Smart Object</text>
+              <polygon points="45,55 145,62 140,118 50,124" fill="#f4a261"/>
+              <text x="95" y="96" text-anchor="middle" fill="#16202e" font-weight="600">Art A</text>
+              <text x="95" y="158" text-anchor="middle" fill="#45536a">warp + shadow live on the container</text>
+              <line x1="185" y1="85" x2="265" y2="85" stroke="#0f766e" stroke-width="3"/>
+              <polygon points="265,78 278,85 265,92" fill="#0f766e"/>
+              <text x="230" y="74" text-anchor="middle" fill="#0f766e">Replace</text>
+              <text x="230" y="104" text-anchor="middle" fill="#0f766e">Contents</text>
+              <rect x="290" y="30" width="150" height="110" rx="10" fill="none" stroke="#1473E6" stroke-width="3"/>
+              <polygon points="315,55 415,62 410,118 320,124" fill="#2a9d8f"/>
+              <text x="365" y="96" text-anchor="middle" fill="#ffffff" font-weight="600">Art B</text>
+              <text x="365" y="158" text-anchor="middle" fill="#45536a">same warp + shadow, new art</text>
+            </g>
+          </svg>
+          <figcaption>The container holds the treatment; the contents are swappable.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: a reusable mockup (the guided build)</div>
+        <ol class="steps">
+          <li><b>Place the placeholder.</b> Open <code class="inline">l14-mockup-poster-wall.jpg</code> (or your own surface photo). Rectangle tool (<kbd>U</kbd>), click once and enter the art's exact size: <b>1200 × 1800 px</b> for the practice designs. Right-click ▸ Convert to Smart Object. Free Transform (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>T</kbd>) ▸ Warp (or Perspective Warp) to fit the surface.</li>
+          <li><b>Light it into the scene.</b> A layer set to <b>Multiply</b> above the placeholder: paint the surface's shadows and creases back over the art. A <b>Screen</b> layer for highlights. Clip both to the placeholder (<kbd>Alt</kbd>/<kbd>⌥</kbd>-click the line between the layers).</li>
+          <li><b>Swap in real art.</b> Double-click the placeholder (it opens in its own tab), place your design, save, close. Prefer Place Linked for art that several mockups share.</li>
+          <li><b>Prove reuse.</b> Layer ▸ Smart Objects ▸ Replace Contents with another design at the same pixel size. The perspective, shadows and highlights hold. Save as your template.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: swap test and link test</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Swap each practice design into your placeholder and record what happens:</p>
+        <table class="timing">
+          <thead><tr><th>Design</th><th>Pixel size</th><th>How I swapped it</th><th>Did the warp and lighting hold? Did it fit?</th></tr></thead>
+          <tbody>
+            <tr><td>l14-art-a-sunrise</td><td class="t">1200 × 1800</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>l14-art-b-geometric</td><td class="t">1200 × 1800</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>l14-art-c-typographic</td><td class="t">1200 × 1800</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>l14-art-d-landscape</td><td class="t">1800 × 1200</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.2rem 0"><b>Link test:</b> copy <code class="inline">l14-logo-v1.png</code> into your project folder as <code class="inline">logo.png</code>. In a new document, File ▸ Place Linked it twice. Change <code class="inline">logo.png</code> (edit its single layer and save, or replace it with <code class="inline">l14-logo-v2.png</code> under the same name). What happened in the document? ______________________________________________</p>
+        <ul class="tick lab">
+          <li>☐ Placeholder is a Smart Object, warped to the surface</li>
+          <li>☐ Shadows (Multiply) + highlights (Screen) on the container, clipped</li>
+          <li>☐ Art swaps via Replace Contents / double-click edit</li>
+          <li>☐ Shared art uses Place Linked where appropriate</li>
+          <li>☐ Saved as a reusable template; Package if handing off</li>
+        </ul>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">New art came in too big or squashed? It has different pixel dimensions from the placeholder. Export it at the placeholder's size, or double-click the placeholder and paste it into the existing canvas. A linked layer shows a warning? The file moved or was renamed: right-click ▸ Relink to File, and stop moving it.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">You warped a Smart-Object placeholder and added clipped shadow layers. What happens to that treatment when you use Replace Contents?</div>
+          <div class="opts"><div class="opt">A) It is removed, and you rebuild it for the new art</div><div class="opt">B) It stays on the container and applies to the new art</div><div class="opt">C) It is baked permanently into the old art</div><div class="opt">D) Only the layer styles survive; the warp resets</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">What is the key difference between an embedded and a linked Smart Object?</div>
+          <div class="opts"><div class="opt">A) Embedded objects can be scaled without loss; linked ones cannot</div><div class="opt">B) Linked objects cannot take Smart Filters</div><div class="opt">C) Embedded objects update automatically when the source file changes</div><div class="opt">D) A linked one points to one file on disk that many documents can share; an embedded one is stored inside the PSD</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">After Replace Contents, the new design lands too big and misaligned. What's the most likely cause?</div>
+          <div class="opts"><div class="opt">A) The new art has different pixel dimensions, and the container's transform is applied to it</div><div class="opt">B) The document is in the wrong color mode</div><div class="opt">C) The shadow layers aren't clipped</div><div class="opt">D) Replace Contents only works with PSB files</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">Where should a mockup's shadows and highlights go?</div>
+          <div class="opts"><div class="opt">A) Painted directly into the artwork before placing it</div><div class="opt">B) Inside the Smart Object, on top of the art</div><div class="opt">C) On Multiply and Screen layers above the placeholder, clipped to it</div><div class="opt">D) As a Drop Shadow layer style on the Background layer</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">You're sending a project with linked assets to a colleague. What should you do first?</div>
+          <div class="opts"><div class="opt">A) Rasterize every Smart Object</div><div class="opt">B) File ▸ Package, which collects the linked files with the document</div><div class="opt">C) Rename the linked files so they're easier to find</div><div class="opt">D) Flatten the image</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">You tidied your desktop and moved <code class="inline">logo.png</code> into a new folder. What happens in the documents that link it?</div>
+          <div class="opts"><div class="opt">A) Nothing; Photoshop tracks the file automatically</div><div class="opt">B) The logo is converted to an embedded copy</div><div class="opt">C) The logo layer is deleted</div><div class="opt">D) Photoshop loses the link and the layer shows a warning until you relink it</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Think of a repetitive design task you have done by hand. How would a Smart-Object template and a linked asset have collapsed it into a single edit?</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L15 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L15</span><h3>Campaign from One Master (Lesson 5.3)</h3><span class="dur">60 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Use <b>artboards</b> to hold multiple sizes in one document</li>
+          <li>Share art across artboards with <b>linked Smart Objects</b></li>
+          <li>Adapt one design to portrait, square and landscape <b>without redrawing it</b></li>
+          <li>Export every artboard at once with <b>Export As</b></li>
+          <li>Deliver a coherent, on-brand <b>campaign set</b> from one file</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Master and instances.</b> The master owns the shared truth (key art, logo, tagline, grade); each artboard is a view onto it at one size and crop. Only layout and framing differ.</li>
+          <li><b>Design at the biggest size, export down.</b> Usually the print poster. Scaling a small master up softens everything.</li>
+          <li><b>One color mode, one resolution</b> for every artboard in a document. Keep the master RGB; CMYK for print is a separate final step on an exported copy.</li>
+          <li><b>Recompose, don't squash.</b> Anchor the focal point first; stack for the story, center for the square, spread for the banner. Respect safe zones.</li>
+          <li><b>Adjustment layers can't be linked.</b> For a shared grade, duplicate the layer (or reload the same LUT) into each artboard and update each copy.</li>
+        </ul>
+        <table class="timing">
+          <thead><tr><th>Artboard</th><th>Size (px)</th><th>Shape</th><th>Composition</th></tr></thead>
+          <tbody>
+            <tr><td>Poster</td><td class="t">3300 × 5100</td><td>Portrait</td><td>Design first, at full resolution</td></tr>
+            <tr><td>IG square</td><td class="t">1080 × 1080</td><td>1:1</td><td>Center</td></tr>
+            <tr><td>Story</td><td class="t">1080 × 1920</td><td>9:16</td><td>Stack vertically; clear of UI overlays</td></tr>
+            <tr><td>Banner</td><td class="t">1500 × 500</td><td>3:1</td><td>Spread horizontally; clear of crop edges</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk"><div class="h">Worked example: the campaign (the guided build)</div>
+        <ol class="steps">
+          <li><b>Set up artboards.</b> New document (RGB), Artboards on. Add poster, IG square (1080²), story (1080 × 1920) and banner (1500 × 500), using presets where they exist and custom sizes otherwise. Design the poster first.</li>
+          <li><b>Share the essentials.</b> File ▸ Place Linked the logo and key art into each artboard. Copy a styled text layer in from your L13 file so its Paragraph Styles come along; apply them to each headline and subhead.</li>
+          <li><b>Recompose per size.</b> Anchor the focal point, rearrange around the aspect ratio, respect safe zones. Optional shared grade: the same adjustment layer or the same LUT in a Color Lookup layer at the top of each artboard.</li>
+          <li><b>Export the set.</b> File ▸ Export ▸ Export As, all artboards, format and scale, Export (or File ▸ Export ▸ Artboards to Files). Then open the linked logo or key art, change it visibly, save; every artboard updates (else Layer ▸ Smart Objects ▸ Update All Modified Content). Re-export. Save the master with its linked files in the same folder.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: plan each frame</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Use <code class="inline">l15-campaign-copy.txt</code>. Sketch each artboard's layout before you build: where is the focal point, and what drops out at small sizes?</p>
+        <table class="timing">
+          <thead><tr><th>Artboard</th><th>Focal point anchored at…</th><th>Text kept</th><th>Text dropped</th></tr></thead>
+          <tbody>
+            <tr><td>Poster</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>IG square</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Story</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Banner</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.2rem 0">My one-edit proof: I changed ______________________ in ______________________ and ______ of 4 artboards updated.</p>
+        <ul class="tick lab">
+          <li>☐ One master PSD with poster, square, story and banner artboards</li>
+          <li>☐ Logo &amp; key art placed as linked Smart Objects (shared source)</li>
+          <li>☐ Type driven by the 5.1 Paragraph/Character Styles</li>
+          <li>☐ Each size recomposed for its aspect ratio, safe zones respected</li>
+          <li>☐ All artboards exported in one pass via Export As</li>
+          <li>☐ A single source edit updates the whole set 🏆</li>
+        </ul>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Key art looking soft on the poster? It was scaled past 100%. Use art at or above the poster's size (the practice <code class="inline">l15-key-art.png</code> is 2400 px wide, so keep it at or below 100% there). Printer asks for CMYK? Don't convert the master: artboards share one color mode. Convert an exported copy as the final step.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">Your campaign has a print poster, a square, a story and a banner. Which do you design first, and why?</div>
+          <div class="opts"><div class="opt">A) The print poster, the largest, so smaller sizes scale down from it</div><div class="opt">B) The square, because it's the most common size</div><div class="opt">C) The banner, because it's the hardest to fit</div><div class="opt">D) The order doesn't matter with artboards</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">How should the logo get onto all four artboards so one edit updates every one?</div>
+          <div class="opts"><div class="opt">A) Copy and paste the logo pixels onto each artboard</div><div class="opt">B) File ▸ Place Embedded into each artboard</div><div class="opt">C) File ▸ Place Linked into each artboard (so every copy points to the same file)</div><div class="opt">D) Draw it once on the poster and let Export As add it to the others</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">What renders every artboard to its own file in one pass?</div>
+          <div class="opts"><div class="opt">A) File ▸ Save As, once per artboard</div><div class="opt">B) File ▸ Export ▸ Export As with all artboards (or File ▸ Export ▸ Artboards to Files)</div><div class="opt">C) Image ▸ Duplicate</div><div class="opt">D) File ▸ Package</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">How do you adapt the poster design to the 3:1 banner?</div>
+          <div class="opts"><div class="opt">A) Scale the whole poster down until it fits the height</div><div class="opt">B) Stretch the poster horizontally to 3:1</div><div class="opt">C) Crop a thin strip out of the middle of the poster</div><div class="opt">D) Anchor the focal point first, then spread the elements horizontally around it</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">The printer needs the poster in CMYK, but the social sizes must stay RGB. What's the right approach?</div>
+          <div class="opts"><div class="opt">A) Keep the master RGB and make the CMYK conversion a separate, final step on an exported copy</div><div class="opt">B) Set the poster artboard to CMYK and the others to RGB</div><div class="opt">C) Convert the whole master to CMYK before exporting anything</div><div class="opt">D) Export As converts to CMYK automatically for large artboards</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">You edited and saved the linked logo file, but one artboard still shows the old version. What do you do?</div>
+          <div class="opts"><div class="opt">A) Place the logo again on that artboard</div><div class="opt">B) Close and delete the master, then rebuild it</div><div class="opt">C) Layer ▸ Smart Objects ▸ Update All Modified Content</div><div class="opt">D) File ▸ Package</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Find a brand you admire and list every place its campaign appears (feed, story, print, web). What stays identical across them, and what is recomposed? That is the master-and-instances split in the wild.</em> Also note: key concepts · what clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write tall"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Module 5 Summary</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li>A <b>type system</b> (scale + styles + grid) gives every layout one consistent voice.</li>
+    <li><b>Smart Objects</b> protect art and, via <b>linked files</b>, let one source update many designs.</li>
+    <li><b>Artboards</b> hold every size in one master; <b>Export As</b> ships them together.</li>
+    <li>Design the <b>largest first</b>, share the essentials, <b>recompose</b> per aspect ratio.</li>
+  </ul>
+
+  <div class="note">
+    <div class="t">You finished Module 5 🎉</div>
+    <p>You moved from making one good image to running a small production system: a named type voice (5.1), self-updating templates (5.2), and a full campaign from a single master (5.3). Before Session 6: ship one campaign set (4+ sizes) from a single master, prove a one-edit update, and write your journal entries. Next: Module 6, Generative + Automation, Advanced.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Workbook · Module 5 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

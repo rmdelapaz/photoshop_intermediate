@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide · Module 6</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">contains answers &amp; timing · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Facilitator Guide</div>
+    <h1>Module 6: Generative + Automation, Advanced</h1>
+    <p class="sub">How to teach the three lessons that add speed and scale to everything the course has built so far: generative tools as a fast, fallible compositing assistant (including Harmonize), conditional Actions batched over a mixed folder, and data-driven graphics from a template plus a CSV, with a first readable script. The theme of the day: <b>design the work once, then let the machine repeat it, and keep your judgment for the parts only you can do.</b></p>
+    <div class="meta-row">
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip"><b>Session 6</b> · 3 hrs incl. break</span>
+      <span class="chip">Lessons <b>L16–L18</b></span>
+      <span class="chip">Level <b>Intermediate</b></span>
+      <span class="chip">Needs <b>internet + credits</b> (L16)</span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>How to Use This Guide</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li>Same rhythm as every module: <b>Frame</b> → <b>Demo</b> → <b>Guided build</b> → <b>Solo variation</b> → <b>Check</b>. Each lesson plan gives a timing table, a demo script with <b>Say:</b> lines, the lab, the mistakes to pre-empt, a check for understanding, and differentiation notes.</li>
+    <li><b>Demo live, one step at a time,</b> and let the room do each step before you move on. Name every menu path and both shortcut forms: <kbd>Ctrl</kbd> on Windows is <kbd>⌘</kbd> on Mac, <kbd>Alt</kbd> is <kbd>⌥</kbd>.</li>
+    <li><span style="color:var(--lab);font-weight:600">Teal</span> = hands-on, <span style="color:var(--warn);font-weight:600">amber</span> = watch-outs. Today's watch-outs come in three flavors: <b>environmental</b> (sign-in, credits, network) for L16, <b>"recorded something absolute"</b> for L17, and <b>"the names don't match"</b> for L18.</li>
+    <li>Lesson codes: the kit numbers lessons by file (<b>L16–L18</b>); the site calls them <b>Lessons 6.1–6.3</b>. Quiz answers below match the workbook's Self-checks; the Answer Key explains each one.</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="t">The #1 risk of Module 6: the generative features are not available in the room</div>
+    <p>Generative Fill, Generative Expand, and Harmonize run in Adobe's cloud. Each learner needs <b>Photoshop 2025 or later</b> (Harmonize is a recent addition, and its exact place in the interface can shift between releases), <b>an internet connection</b>, <b>to be signed in to an Adobe account</b>, and <b>generative credits</b> (every Generate spends them). Classroom networks and lab licenses are the usual failure points. <b>At least a day before,</b> on one room machine: sign in, generate once with Generative Fill, once with Generative Expand, and run Harmonize once on a placed layer. On the day, everyone signs in during the warm-up, not when L16 starts.</p>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Fallback plan if credits, sign-in, or network fail</div>
+    <p><b>1. Reorder.</b> L17 (Actions, conditionals, Batch, droplets) and L18 (Variables, Data Sets, scripting) are 100% offline. If the network is down at the start, teach L17 and L18 first and return to L16 when it recovers. <b>2. Share.</b> If only some accounts have credits, pair learners: one generates, both judge the variations, then swap for the Harmonize step. <b>3. Offline equivalents.</b> Run the generative demos from your machine (or a screen recording made during the readiness check) and have learners do the same jobs with tools they already own: <b>room</b> with the Crop tool dragged outward and <b>Fill: Content-Aware Fill</b>; <b>removal</b> with the Remove tool or Content-Aware Fill on a separate layer; <b>connective tissue</b> by hand (Clone Stamp for gravel, a painted contact shadow as in L11 Step 2); <b>Harmonize by hand</b> with the L11 method (a clipped 50% gray Dodge &amp; Burn layer plus a clipped Color Balance or Photo Filter to push the subject's light toward the scene's), then the L12 unifying grade. The compositing judgment survives intact; only the "describe it in words" part is lost. <b>4. Homework.</b> Learners with credits at home repeat the L16 build there.</p>
+  </div>
+
+  <div class="sec"><h2>Before Session 6</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ Copy <code class="inline">labs/module-6/practice/</code> to each machine (or a shared drive). It holds the L16 composite parts, the L17 delivery folder <code class="inline">l17-input/</code> plus <code class="inline">l17-watermark.png</code>, the L18 data folder <code class="inline">l18-data/</code> (card parts, six photos, two CSVs), and <code class="inline">l18-resize-folder.jsx</code>. Keep <code class="inline">labs/module-6/instructor/</code> (the broken CSV and the reference card) on your machine only. As always, never hand out the course site's licensed <code class="inline">images/</code> folder.</li>
+    <li>☐ Remind learners (in the Session 5 wrap-up or by email) to bring: their <b>layered Module 4 composite</b> (or any busy, cramped photo); a folder of <b>8 to 12 photos, mixed landscape and portrait, as copies</b>; optionally their own watermark or logo PNG; and for L18 a <b>short real list</b> (team roster, event lineup) with photos they have permission to use. Details in <code class="inline">labs/module-6/README.md</code>.</li>
+    <li>☐ Check every machine is on <b>Photoshop 2025 or later</b> (Help ▸ About Photoshop on Windows, Photoshop ▸ About Photoshop on Mac), and run the generative readiness check above.</li>
+    <li>☐ On one room machine, confirm you can run a script (File ▸ Scripts ▸ Browse) and create and run a droplet (File ▸ Automate ▸ Create Droplet). Managed lab images sometimes block one or the other; better to find out now.</li>
+    <li>☐ Open <b>lesson_16.html</b>, <b>lesson_17.html</b>, <b>lesson_18.html</b>, and <b>recipes.html</b> (the "Generative, Automation &amp; Multi-Shot" cards) in browser tabs for the sliders and the recipe cards.</li>
+    <li>☐ Prepare your own demo folder: a copy of <code class="inline">l17-input/</code>, an empty <code class="inline">l17-output/</code> beside it, and a second copy of <code class="inline">l17-input/</code> named <code class="inline">script-test/</code> for the L18 script (the script writes its <code class="inline">web_</code> files into the folder it reads from).</li>
+  </ul>
+
+  <div class="sec"><h2>Session 6 Agenda (3 hours)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Clock</th><th>Segment</th><th>Min</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="t">0:00–0:10</td><td>Warm-up: sign-in check + Module 5 recap</td><td class="t">10</td><td>Everyone opens Photoshop and confirms they are signed in (fix problems now). Two volunteers show their Module 5 campaign set and prove a one-edit update. Frame the day: "assist, repeat, scale."</td></tr>
+      <tr><td class="t">0:10–1:00</td><td><b>L16</b> Generative for Compositing</td><td class="t">50</td><td>Build: give a cramped composite room, remove the sign, grow connective tissue, Harmonize, finish by hand. Now You starts in class, finishes at home.</td></tr>
+      <tr><td class="t">1:00–1:45</td><td><b>L17</b> Advanced Actions &amp; Conditionals</td><td class="t">45</td><td>Build: a Web Delivery Action with a landscape/portrait conditional, batched over <code class="inline">l17-input/</code>, then a droplet.</td></tr>
+      <tr><td class="t">1:45–1:58</td><td>Break</td><td class="t">13</td><td>Leave the L17 checklist on the projector. Early finishers open <code class="inline">l18-data/</code> and look at <code class="inline">l18-cards.csv</code> in a text editor.</td></tr>
+      <tr><td class="t">1:58–2:52</td><td><b>L18</b> Data-Driven Graphics &amp; Scripting</td><td class="t">54</td><td>Build: a card template bound to a CSV, exported as one file per row (the <b>Module 6 deliverable</b>); read and run the sample script.</td></tr>
+      <tr><td class="t">2:52–3:00</td><td>Wrap-up &amp; exit ticket</td><td class="t">8</td><td>Recap the arc, assign homework, preview Session 7 (Multi-Shot + capstone kickoff).</td></tr>
+      <tr><td class="t"><b>Total</b></td><td></td><td class="t"><b>180</b></td><td>Generations take seconds each; fill that time by narrating what you are judging, not by starting the next step.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The lesson pages estimate 55 + 50 + 60 = 165 minutes for a solo learner; the room has 149 minutes of lesson time after the warm-up, break, and wrap. The room runs each lesson's frame, demo, and Guided Build together, and each <b>"Now You" solo variation starts in class and finishes at home</b>. If you run long, protect the <b>L18 guided build and export</b> (it is the Module 6 deliverable): shorten L16 Step 3 to one connective-tissue pass, demo the L17 droplet rather than having everyone build one, and move the L18 script run to homework (it is also in the lesson's "Before the Next Module" list).</p>
+
+  <div class="sec"><h2>Module at a Glance</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Lesson</th><th>Topic</th><th>Time</th><th>Learners leave able to…</th></tr></thead>
+    <tbody>
+      <tr><td class="t">L16 (6.1)</td><td>Generative for Compositing</td><td class="t">50m</td><td>Give a composite room with Generative Expand, remove and connect with Generative Fill, Harmonize a placed subject, and finish the generated pixels by hand</td></tr>
+      <tr><td class="t">L17 (6.2)</td><td>Advanced Actions &amp; Conditionals</td><td class="t">45m</td><td>Record a relative delivery Action, branch it by orientation with Insert Conditional, batch a mixed folder hands-off, and make a droplet</td></tr>
+      <tr><td class="t">L18 (6.3)</td><td>Data-Driven Graphics &amp; Scripting</td><td class="t">54m</td><td>Bind Text, Pixel, and Visibility variables to CSV columns, proof and export one graphic per row, and read and adapt a simple ExtendScript</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The module is one story: <b>let a model do the tedious pixels (6.1) → let an Action do the repeated steps (6.2) → let data do the repeated designs (6.3).</b> Each lesson ends where the previous tool hits its wall: generation cannot repeat a workflow, Actions cannot read a spreadsheet, and Variables cannot loop or decide. Say that out loud at each transition.</p>
+
+  <div class="sec"><h2>Lesson Plans</h2><span class="rule"></span></div>
+
+  <!-- L16 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L16</span><h3>Generative for Compositing (Lesson 6.1)</h3><span class="dur">50 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Frame generative fill as a compositing tool, not a replacement for craft</li>
+          <li>Extend a background with <b>Generative Expand</b> to fit a layout</li>
+          <li>Remove distractions and fill gaps with <b>Generative Fill</b> + a prompt</li>
+          <li>Generate <b>connective elements</b> (shadow ground, foliage, debris) to sell a composite</li>
+          <li>Use <b>Harmonize</b> to match a placed element's light and color to its background</li>
+          <li>Judge, mask, and hand-finish generative output, and respect its limits and licensing</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal (lesson slider) + mental model: a fast, fallible assistant</td></tr>
+          <tr><td class="t">3m</td><td>The generative workflow + Harmonize: where each command lives</td></tr>
+          <tr><td class="t">3m</td><td>Limits, ethics &amp; licensing; "it won't fix a weak composite"</td></tr>
+          <tr><td class="t">34m</td><td>Guided build: Steps 1–5 (6 + 8 + 8 + 6 + 6)</td></tr>
+          <tr><td class="t">3m</td><td>Now You: start "generate the same fill five times" (finish at home)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (1m).</b> Show the L16 slider: cramped and signed on one side, extended and clean on the other. <b>Say:</b> "Generative fill did the grunt work, new sky and ground and the sign gone, so the time goes into composition instead of cloning. Fill the gaps, not the vision."</li>
+          <li><b>Mental model (2m).</b> Write the loop on the board: <b>Select → prompt (short or empty) → 3 variations, pick the best → mask + finish by hand.</b> <b>Say:</b> "Treat it like a talented but literal intern. Superb at plausible texture, sky, grass, pavement, walls, and at removals. Unreliable at specifics: hands, text, exact brands, precise counts. It never ships raw."</li>
+          <li><b>Where things live (3m).</b> <b>Say:</b> "Make a selection and the contextual task bar offers Generative Fill. For Expand, it's the Crop tool with Fill set to Generative Expand in the options bar. Harmonize appears when a placed layer sits above a background: in the task bar or the layer's Properties panel. All three write to a new layer and cost credits." Show the Properties panel's variations list once.</li>
+          <li><b>Limits and licensing (3m).</b> Faces, hands, readable text, logos, product details, and repeat patterns drift; generated regions can be softer than the capture; artifacts hide until 100%. <b>Say:</b> "Adobe designs its Firefly models to be commercially safe, but current versions can also offer third-party partner models with different terms. For client work, know which model you used and check the terms. And for journalism or documentary work, generative changes may be off-limits." Then the warning box: <b>Say:</b> "It fills texture; it doesn't reason about your scene. Wrong perspective, light, or scale from Module 4 is still yours to fix."</li>
+          <li><b>Set up (part of Step 1).</b> Open <code class="inline">l16-cramped-scene.jpg</code>, <b>File ▸ Save As</b> <code class="inline">l16-composite-working.psd</code>. <b>File ▸ Place Embedded</b> <code class="inline">l16-pasted-subject.png</code> and drag it hard against the right edge with the feet near the bottom, as in <code class="inline">l16-cramped-composite-preview.jpg</code>. Name the layer <code class="inline">subject</code>. <b>Say:</b> "This is the awkward composite: framed too tight, a SALE sign fighting for attention, and a figure lit cold from the left in a warm scene lit from the right, with no shadow."</li>
+          <li><b>Step 1: Give it room (6m).</b> Hide the <code class="inline">subject</code> layer (<b>Say:</b> "so the model continues the plaza, not the person"). Crop tool (<kbd>C</kbd>), options bar <b>Fill: Generative Expand</b>, drag the left and right edges outward (a modest amount), commit, leave the prompt empty, <b>Generate</b>. Cycle the variations in the Properties panel and keep the cleanest. Show the subject again. Zoom to 100% (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>1</kbd>) and pan along both seams looking for repeats: the buildings and the wall's joints are the tell.</li>
+          <li><b>Step 2: Remove distractions (8m).</b> Click the Background layer. Lasso (<kbd>L</kbd>) around the SALE sign and its post <em>and its cast shadow</em>, with a little margin. <b>Say:</b> "Leave the shadow behind and you've removed the sign but kept the evidence." Task bar ▸ Generative Fill, empty prompt, Generate. If a variation leaves a smudge, regenerate, or clean it with the Healing Brush on a new layer.</li>
+          <li><b>Step 3: Grow connective tissue (8m).</b> Draw a flat, wide selection on the ground around and just left of the subject's feet (sun from the right means shadows fall left). Prompt <code class="inline">gravel with small shadows</code>, Generate. Paint the generative layer's mask so it only contributes near the feet. <b>Say:</b> "Short prompt, small selection. Ask for a whole scene and it flails." If no variation gives a believable contact shadow, paint one by hand on a layer below the subject, exactly as in L11.</li>
+          <li><b>Step 4: Harmonize the subject (6m).</b> Select the <code class="inline">subject</code> layer, then <b>Harmonize</b> in the contextual task bar or the Properties panel. Compare the variations with the original by toggling the eye. Keep the best, then mask back to the original wherever Harmonize changed something it shouldn't: an edge, the face, the jacket's zip line. <b>Say:</b> "Same rule as every generative result: compare, keep, mask, finish."</li>
+          <li><b>Step 5: Finish by hand (6m).</b> Add matching grain and a touch of sharpening to the generated regions; dodge &amp; burn to marry their light to the scene. Then one unifying grade over everything (the Module 4 finish, L12). <b>Say:</b> "The single step that makes a generative fill invisible is matching the grain." Save the layered file with every generative layer and mask intact.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Harmonize a Composite, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on the learner's own layered Module 4 composite, or on the practice parts (<code class="inline">l16-cramped-scene.jpg</code> + <code class="inline">l16-pasted-subject.png</code>, placed as in <code class="inline">l16-cramped-composite-preview.jpg</code>), saved as <code class="inline">l16-composite-working.psd</code>. Solo variation: generate the same fill five times and study the differences; remove three increasingly hard distractions from <code class="inline">l16-three-distractions.jpg</code> (a sign, a person, a hard shadow across the bicycle) and note where the AI succeeds and where they take over; turn a phone snapshot into a wide banner with Generative Expand. Start in class, finish at home. Details in <code class="inline">labs/module-6/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> every result on its own generative layer (nothing flattened); lasso selections with margin that include the sign's shadow; learners actually cycling variations; masks painted on the generative layers; someone zoomed to 100% on each seam.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's six-item checklist: canvas extended and edges audited; a distraction removed cleanly; a connective element generated and masked in; the subject harmonized (or light matched by hand) with unwanted changes masked out; generated regions grain- and sharpen-matched and hand-blended; one unifying grade over the whole result.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>"Generative Fill is grayed out" or "Harmonize isn't there."</b> Check sign-in, network, and version first. For Harmonize, the target must be a single pixel or Smart Object layer sitting above a background; a group, an adjustment layer, or the Background itself won't offer it. The lesson's FAQ: its location can shift between releases, so search Help ▸ Photoshop Help or the Discover panel. Two minutes of debugging, then the fallback plan.</li>
+          <li><b>Expanding with the subject visible.</b> The model tries to continue the person at the edge. Hide the subject while expanding and removing.</li>
+          <li><b>Removing the sign but not its shadow.</b> A shadow with nothing casting it is a bigger tell than the sign was.</li>
+          <li><b>One giant selection with a long prompt.</b> Mushy, low-detail results. Several small, well-selected passes with short prompts.</li>
+          <li><b>Accepting Harmonize wholesale.</b> It can alter edges, faces, and product details. Compare with the original and mask back what it shouldn't touch.</li>
+          <li><b>Flattening before blending.</b> Once flattened, the variations and masks are gone. Keep every generative layer until the seams are finished.</li>
+          <li><b>Judging at fit-to-screen.</b> Soft patches, repeats, and seams show only at 100%.</li>
+          <li><b>Expecting it to fix structure.</b> A subject with the wrong perspective or scale stays wrong after any amount of generation. Fix it by hand first (L10).</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> C) Select, prompt short or empty, pick the best variation, then mask and finish by hand; <b>Q2</b> A) Crop tool with Fill: Generative Expand, drag the edges outward, commit, Generate; <b>Q3</b> D) Lasso the sign, its post, and its shadow with a little margin, empty prompt, Generate; <b>Q4</b> B) Matching a placed element's light, color, and shadows to its background; <b>Q5</b> D) Add matching grain and a touch of sharpening; <b>Q6</b> A) Which model produced it (Firefly or a partner model) and its terms for your account and deliverable. Cold-call: "The subject's perspective is wrong. Which generative tool fixes that?" (None: fix it by hand first.) Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min, finish at home if needed): <em>Where does generative fill genuinely save you time, and where does trusting it cost you more time cleaning up than doing it by hand? Draw your own line between the two.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the lesson's "Going further": generate a busy background, then composite a cleanly cut subject (Module 1 masking) on top, so the subject stays pixel-perfect and only the surroundings are AI. Or the banner challenge: a snapshot to a wide banner by expanding in bites, with every seam fixed by hand until it is undetectable.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> Steps 1, 2, and 4 only: room, one removal, Harmonize, each checked at 100%. Skip connective tissue and hand-paint the contact shadow instead (they know how from L11). The must-haves are "separate layers, compare variations, mask back."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L17 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L17</span><h3>Advanced Actions &amp; Conditionals (Lesson 6.2)</h3><span class="dur">45 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Record a clean, reusable Action and re-order or re-record steps</li>
+          <li>Insert stops, menu items, and modal pauses for input</li>
+          <li>Add a <b>Conditional</b> so one Action handles landscape and portrait differently</li>
+          <li>Batch an Action across a folder and save out automatically</li>
+          <li>Build a <b>droplet</b>, a drag-and-drop executable for your workflow</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal (lesson slider) + mental model: record, branch, batch</td></tr>
+          <tr><td class="t">3m</td><td>The Actions panel tour + "record relative, not absolute"</td></tr>
+          <tr><td class="t">3m</td><td>What a Conditional can and cannot test; Batch settings for a hands-off run</td></tr>
+          <tr><td class="t">30m</td><td>Guided build: Steps 1–4 (9 + 10 + 6 + 5)</td></tr>
+          <tr><td class="t">2m</td><td>Now You: pick one challenge (finish at home)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (1m).</b> Show the L17 slider: 200 images by hand versus one Action batched. <b>Say:</b> "If you've done a task twice, Photoshop can do it a thousand times. The setup cost is paid back the second time you run it."</li>
+          <li><b>Mental model (2m).</b> Board: <b>Record → if landscape? → Crop Wide / Crop Tall → Batch.</b> <b>Say:</b> "An Action is a recorded macro. A Conditional is an <em>if</em> inside it. A Batch points it at a folder. A droplet is that batch as an icon." Then the two reliability rules: record relative (percentages and Fit Image, not fixed pixels), and remember that Actions capture what you did, not what you meant, so record on a representative file and test on odd ones.</li>
+          <li><b>The panel (3m).</b> Window ▸ Actions. Point out the set folder, record, play, stop, the checkmark column (the step runs), and the dialog toggle (the step pauses for input). Double-click a step to re-record its values; drag steps to re-order. <b>Say:</b> "Image Size records fixed dimensions. Fit Image scales by the long edge, so it survives a portrait file."</li>
+          <li><b>Conditionals and Batch (3m).</b> Read the list from the lesson: Document Is Landscape, Portrait, or Square; Document Mode Is RGB or CMYK; Document Is 16 Bits Per Channel; Document Has Layers; Layer Is Type or Smart Object. <b>Say:</b> "There is no condition for pixel size or for a layer's name. When you need that, you need a script, which is next lesson." Then the hands-off Batch settings: Override Action "Save As" Commands, Suppress File Open Options Dialogs, Suppress Color Profile Warnings, Errors: Log Errors To File.</li>
+          <li><b>Step 1: Record the core (9m).</b> Open <code class="inline">l17-input/l17-delivery-01.jpg</code> (landscape). Actions panel: new set <code class="inline">Delivery</code>, new action <code class="inline">Web Delivery</code>, <b>Record</b>. File ▸ Automate ▸ <b>Fit Image</b> 2000 × 2000 px; Filter ▸ Sharpen ▸ <b>Unsharp Mask</b> (80% / 1.0 / 0, as in the lesson's figure); File ▸ <b>Place Embedded</b> <code class="inline">l17-watermark.png</code>, position it, commit; <b>Layer ▸ Flatten Image</b>; File ▸ <b>Save As</b> JPEG, quality 10, into <code class="inline">l17-output/</code>. <b>Stop.</b> <b>Say:</b> "Flatten is what lets Save As offer JPEG: a JPG can't hold the watermark layer. Skip it and the batch saves the wrong format or stops." (See the note in the Answer Key.)</li>
+          <li><b>Step 2: Add the branch (10m).</b> Preferences ▸ Units &amp; Rulers ▸ <b>Percent</b>. Record two tiny helper actions in the same set: <code class="inline">Crop Wide</code> (on the landscape file, a Crop tool crop, for example to 16:9) and <code class="inline">Crop Tall</code> (on <code class="inline">l17-delivery-02.jpg</code>, for example to 4:5). The lesson leaves the exact crops to you; pick shapes the room can recognize. Undo the test crops. In Web Delivery, select the <b>first</b> step, then panel menu ▸ <b>Insert Conditional…</b>: If Current <b>Document Is Landscape</b>, Then Play Action <b>Crop Wide</b>, Else Play Action <b>Crop Tall</b>. <b>Say:</b> "It lands <em>below</em> the selected step, so drag it to the top: crop first, then Fit Image, so the long edge is still 2000."</li>
+          <li><b>Step 3: Batch it (6m).</b> File ▸ Automate ▸ <b>Batch</b>: Set Delivery, Action Web Delivery, Source Folder <code class="inline">l17-input/</code>, Destination Folder <code class="inline">l17-output/</code>, tick <b>Override Action "Save As" Commands</b>, both Suppress boxes, Errors: Log Errors To File, and a naming pattern (document name + extension). Turn off the Unsharp Mask dialog toggle if it's on. OK, and let the room watch the white keylines: landscape files lose their top and bottom edges to Crop Wide, portrait files to Crop Tall. <b>Say:</b> "The square file, 03, isn't landscape, so it takes the Else branch. That's what 'test on your weirdest file' is for."</li>
+          <li><b>Step 4: Make a droplet (5m).</b> File ▸ Automate ▸ <b>Create Droplet</b>, point it at Web Delivery, save it to the desktop with the same Batch-style options. Drag a folder onto it. <b>Say:</b> "It runs when files are dropped on it; it doesn't watch a folder. Hand it to a colleague who never opens a menu." Finally, set Units &amp; Rulers back to your usual unit (Pixels) before moving on.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: A Delivery Action, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on a copy of <code class="inline">l17-input/</code> (eight JPEGs: four landscape, three portrait, one square, long edges 2000 to 3000 px, each labeled with its number, orientation, and size and framed by a white keyline) with <code class="inline">l17-watermark.png</code> kept <b>outside</b> the input folder and an empty <code class="inline">l17-output/</code> beside it; or the learner's own mixed folder of copies. Solo variation: three sizes into three subfolders in one run (Batch Destination <b>None</b>), a Document Has Layers conditional, or a colleague-proof droplet with a Stop step. Details in <code class="inline">labs/module-6/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> the red record dot actually on before the first step; Fit Image, not Image Size; Units &amp; Rulers set to Percent <em>before</em> recording the crops; the conditional dragged to the top; Override ticked in Batch; eight files in <code class="inline">l17-output/</code> and the input folder unchanged.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's five-item checklist: a recorded, relative delivery Action (Fit Image, percent-based crops); a conditional branching landscape versus portrait; a batch that runs the folder hands-off with Override Save As; errors logged and no mid-run dialogs; a working droplet on the desktop.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Recording Image Size or a pixel-positioned crop.</b> Works on the recording file, breaks on the rest. Fit Image for size; Percent units before recording crops.</li>
+          <li><b>Expecting a percent crop to give the same ratio everywhere.</b> It trims the same <em>share</em> of each image. On files of different ratios the result differs a little; that's why the branch exists, and why you test on odd files.</li>
+          <li><b>Conditional left below the first step.</b> Fit Image runs first, then the crop shrinks the long edge below 2000. Drag the conditional to the top.</li>
+          <li><b>Watermark inside the input folder.</b> Batch processes it too, and the Place step may point at a file that moves. Keep it in a fixed place outside the input folder.</li>
+          <li><b>Batch stops halfway on a dialog.</b> A dialog toggle is still on (often Unsharp Mask), or a profile/open-options warning appeared. Toggles off, both Suppress boxes on, errors logged to a file.</li>
+          <li><b>Files land in the wrong folder.</b> Override Action "Save As" Commands not ticked; Batch obeyed the recorded Save As instead.</li>
+          <li><b>Forgetting to press Stop</b>, so browsing and fixes are recorded too. Delete the stray steps from the panel.</li>
+          <li><b>Rulers left in Percent for the rest of the course.</b> Every later dialog reads oddly (and scripts that read document size can misbehave). Reset to Pixels at the end of L17.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) Fit Image scales the long edge, so it works on landscape and portrait files alike; <b>Q2</b> C) Set Preferences ▸ Units &amp; Rulers to Percent; <b>Q3</b> D) Document Is Portrait; <b>Q4</b> A) Drag it to the top of the list so the crop runs before Fit Image; <b>Q5</b> C) Override Action "Save As" Commands, both Suppress options, and Log Errors To File; <b>Q6</b> B) None, and let the Action's own Save As steps decide. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min): <em>List three repetitive tasks in your own workflow. For each, could an Action do it, or do you need a conditional or a script? Sorting them is the start of automating your practice.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the three-sizes Action (thumb, web, print into three subfolders; Batch Destination None, because Override sends every save to one folder), or a Document Has Layers conditional that plays the full delivery on layered masters and a lighter "already flat" version otherwise. Going further: list the tasks Actions couldn't handle; they are L18's opening.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> record Web Delivery and batch it <em>without</em> the conditional first (Fit Image handles both orientations on its own). Once that batch works, add the two crop helpers and the conditional. If recording goes wrong, delete the bad step and re-record only that step rather than starting over.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L18 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L18</span><h3>Data-Driven Graphics &amp; Scripting (Lesson 6.3)</h3><span class="dur">54 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Define <b>Variables</b> that bind layers to data: text, visibility, and pixel replacement</li>
+          <li>Import a <b>Data Set</b> from a CSV and preview each row on the canvas</li>
+          <li><b>Export Data Sets as Files</b> to render one graphic per row</li>
+          <li>Understand where scripting begins and read a simple <b>ExtendScript</b> / JS example</li>
+          <li>Choose between Actions, Variables, and scripts for a given job</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>The goal (lesson slider) + mental model: template + data, three variable types</td></tr>
+          <tr><td class="t">4m</td><td>Variables &amp; Data Sets tour + the naming rules</td></tr>
+          <tr><td class="t">5m</td><td>Where scripting begins: read <code class="inline">resize-folder.jsx</code> aloud, line by line</td></tr>
+          <tr><td class="t">34m</td><td>Guided build: build the template, then Steps 1–4 (6 + 10 + 9 + 9)</td></tr>
+          <tr><td class="t">3m</td><td>Now You: run the sample script on a test folder (finish at home)</td></tr>
+          <tr><td class="t">5m</td><td>Self-check, recipe card, journal, Module 6 summary</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (1m).</b> Show the L18 slider. <b>Say:</b> "When the brief is 500 name badges, you stop designing files and start designing a template plus data. Ten or ten thousand costs the same effort."</li>
+          <li><b>Mental model (2m).</b> Board: <b>data.csv columns → variables → layers.</b> Write the three types: <b>Text Replacement</b> (swap the words in a type layer), <b>Pixel Replacement</b> (swap the image in a layer, with fit rules), <b>Visibility</b> (show or hide a layer). <b>Say:</b> "There are exactly three kinds. Almost any personalized-graphics job breaks down into those three."</li>
+          <li><b>Tour and naming rules (4m).</b> Image ▸ Variables ▸ Define; Image ▸ Variables ▸ Data Sets… ▸ Import; File ▸ Export ▸ Data Sets as Files. Open <code class="inline">l18-cards.csv</code> in a text editor on the projector. <b>Say:</b> "Each variable binds to the CSV column whose header matches its variable name. A stray space or a capital letter breaks it. Variable names can't contain spaces and must start with a letter, underscore, or colon. Visibility values are <code class="inline">true</code> or <code class="inline">false</code>; Photoshop rejects yes/no. Pixel values are full paths, or just file names with the images in the same folder as the CSV." Point out that the photo file names in the CSV match the files in <code class="inline">l18-data/</code> exactly.</li>
+          <li><b>Where scripting begins (5m).</b> Show the lesson's <code class="inline">resize-folder.jsx</code> and read it as English: pick a folder; list its JPGs and PNGs; for each one open it, compute a scale for a 2000 px long edge, resize, save a <code class="inline">web_</code> copy at JPEG quality 10, close without saving. <b>Say:</b> "You can already follow this. That's the point: reading and adapting a snippet is a real skill before you ever write one. Scripts do loops, math, renaming by pattern, and decisions that Actions and Variables can't." Mention the two flavors: classic ExtendScript <code class="inline">.jsx</code> and newer UXP <code class="inline">.psjs</code>, both via File ▸ Scripts ▸ Browse.</li>
+          <li><b>Build the template (part of Step 1).</b> Open <code class="inline">l18-data/l18-card-background.jpg</code>, <b>Save As</b> <code class="inline">l18-card-template.psd</code> inside <code class="inline">l18-data/</code>. Open <code class="inline">l18-ana.jpg</code> and drag it in as a normal pixel layer, sized to fill the white-framed window (it is 800 × 800 px, the same as the window). Type layer <code class="inline">Ana</code> centered in the name band. <b>File ▸ Place Embedded</b> <code class="inline">l18-sale-badge.png</code> at the top-right corner of the photo. <b>Say:</b> "Pixel Replacement needs a pixel layer. If you placed the photo as a Smart Object, Layer ▸ Rasterize ▸ Smart Object first."</li>
+          <li><b>Step 1: Name everything (6m).</b> Rename the layers exactly <code class="inline">name</code>, <code class="inline">photo</code>, <code class="inline">sale</code>. <b>Say:</b> "The variables get the same names, and the CSV headers must match the variable names. Matching the layer names too is a helpful habit, not a requirement."</li>
+          <li><b>Step 2: Define variables (10m).</b> Image ▸ Variables ▸ Define. Layer <code class="inline">name</code>: tick <b>Text Replacement</b>, variable name <code class="inline">name</code>. Layer <code class="inline">photo</code>: tick <b>Pixel Replacement</b>, variable name <code class="inline">photo</code>, method <b>Fit</b> (the options are Fit, Fill, As Is, and Conform). Layer <code class="inline">sale</code>: tick <b>Visibility</b>, variable name <code class="inline">sale</code>.</li>
+          <li><b>Step 3: Import and proof (9m).</b> Switch to the Data Sets page (Image ▸ Variables ▸ Data Sets…), <b>Import</b> <code class="inline">l18-cards.csv</code>, tick <b>Use First Column For Data Set Names</b>. With <b>Preview</b> on, step through the rows: Ana has the badge, Ben doesn't, Cy does. <b>Say:</b> "The name tag inside each photo is there for proofing: the tag must match the name on the card." Then the troubleshooting demo with <code class="inline">instructor/l18-cards-broken.csv</code> (import it into a copy of the template, or talk through it on the projector): header <code class="inline">Name</code> with a capital N, <code class="inline">yes</code>/<code class="inline">no</code> in the sale column, and a photo name that doesn't exist (<code class="inline">l18-benn.jpg</code>). <b>Say:</b> "Those three faults are 90% of 'why didn't it bind?'"</li>
+          <li><b>Step 4: Export the batch (9m).</b> File ▸ Export ▸ <b>Data Sets as Files</b>: choose an output folder (for example <code class="inline">l18-cards-out/</code>), Data Set: All Data Sets, File Naming: <b>Data Set Name</b> plus any fixed text. Export. Photoshop writes one PSD per row. <b>Say:</b> "Six cards from one template. The deliverable is this folder." Optional finish: run the PSDs through the L17 delivery Action to flatten to JPG; see the note in Mistakes about the Action's crop.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: A Data-Driven Batch (Module 6 deliverable), then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on the practice parts in <code class="inline">l18-data/</code> (card background, six 800 × 800 photos named <code class="inline">l18-ana.jpg</code> … <code class="inline">l18-fay.jpg</code>, the sale badge, and <code class="inline">l18-cards.csv</code> with the columns <code class="inline">name,photo,sale</code>), or on the learner's own template and a small CSV of their own. Solo variation: a second visibility variable (the VIP ribbon, <code class="inline">l18-vip-ribbon.png</code>) and a color swap via a visible/hidden tint layer, both driven by <code class="inline">l18-cards-vip.csv</code> (columns <code class="inline">name,photo,sale,vip,tint</code>); 20 social cards for a real list; and the script challenge on a <b>copy</b> of a test folder. Details in <code class="inline">labs/module-6/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> the photo layer is a pixel layer, not a Smart Object; variable names exactly <code class="inline">name</code>, <code class="inline">photo</code>, <code class="inline">sale</code>; the template saved in the same folder as the CSV and photos; Preview on and several rows proofed before exporting; File Naming set to Data Set Name.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's Module 6 checklist: variable names (and layers) matching the CSV headers exactly; Text, Pixel, and Visibility variables defined; the CSV imported as a data set with several rows proofed on canvas; Data Sets exported as files with a clear naming pattern; (optional) finished via a delivery Action or droplet.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Pixel Replacement isn't offered for the photo layer.</b> It's a Smart Object (Place makes one) or a type/shape layer. Rasterize it, or drag the photo in from an open document.</li>
+          <li><b>Header and variable name don't match.</b> <code class="inline">Name</code> vs <code class="inline">name</code>, a trailing space, or a space inside the name. The variable name is what binds, not the layer name.</li>
+          <li><b>Visibility written as yes/no, Y/N, or 1/0.</b> Only <code class="inline">true</code> and <code class="inline">false</code>.</li>
+          <li><b>"Can't find the image."</b> The photo file names in the CSV don't match the files exactly, or the images aren't in the CSV's folder. Bare file names only work beside the CSV; otherwise use full paths.</li>
+          <li><b>Spreadsheet app saves the CSV oddly.</b> Keep it UTF-8 with a header row. If Excel or Numbers changed it, open it in a text editor and check.</li>
+          <li><b>Running the cards through the L17 Web Delivery Action as-is.</b> Its conditional crop trims a share of every card (they are portrait, so they get Crop Tall), and Fit Image enlarges a 1080 × 1350 card to a 2000 px long edge. For cards, duplicate the Action and delete the conditional and Fit Image steps (keep a Flatten before the Save As), or use File ▸ Scripts ▸ Image Processor.</li>
+          <li><b>Running the sample script on the only copy of a folder.</b> It writes its <code class="inline">web_</code> files into the same folder, and a second run processes those too. Always a test copy. And if rulers are still in Percent from L17, set them back to Pixels first: the script reads the document's width and height, and those follow the ruler unit.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> D) Text Replacement, Pixel Replacement, and Visibility; <b>Q2</b> B) The variable name matching the CSV column header exactly; <b>Q3</b> A) <code class="inline">true</code> or <code class="inline">false</code>; <b>Q4</b> C) The images sit in the CSV's folder and the names match exactly (otherwise use full paths); <b>Q5</b> D) File ▸ Export ▸ Data Sets as Files, naming by Data Set Name; <b>Q6</b> B) Resize every file in a folder, skipping any whose name already starts with <code class="inline">web_</code>. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min): <em>What in your work is really "one design, many values"? Sketch the template and the columns its data set would need. Seeing jobs as template-plus-data is the mindset shift of this module.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the VIP ribbon and tint layer from <code class="inline">l18-cards-vip.csv</code> (Ben, Eli, and Fay are VIP; Cy and Eli are tinted); then the script challenge: change the long edge and output format, and add a line that skips files already starting with <code class="inline">web_</code>. Going further: a data set feeding a template whose art lives in linked Smart Objects (Module 5), exported by an Action (L17), a genuine production pipeline.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> one variable first. Define only the Text Replacement on <code class="inline">name</code>, import, and step through the rows. When that works, add <code class="inline">sale</code> (Visibility), then <code class="inline">photo</code> (Pixel). Re-import the CSV after each change to the definitions. The script reading is "follow along," not "type along."</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Closing the Session</h2><span class="rule"></span></div>
+  <div class="note lab">
+    <div class="t">Module 6 wrap-up (8 min, 2:52–3:00)</div>
+    <p>Recap the arc: <b>a model for the tedious pixels → an Action for the repeated steps → data for the repeated designs → a script when you need loops, math, or logic.</b> Ask the room for one job that belongs to each tool.</p>
+    <p><b>Exit ticket</b> (on a sticky note): "One job in my work that is really one design, many values, and the column headers its CSV would need." Collect them; they make a good opener for the capstone brief next week.</p>
+    <p><b>Homework</b>, from the three lessons' "Before the Next…" lists: save the finished, layered L16 composite with generative layers and masks intact, and note one task where generation saved time and one where you had to take over; batch Web Delivery over a mixed folder with no mid-run dialogs and test the droplet on a fresh set; <b>ship one data-driven batch of 10 or more outputs from a single template</b>; adapt the sample script and run it on a test folder; finish the three solo variations as far as time allows; write the Learning Journal entries.</p>
+    <p><b>Preview Session 7 (Module 7, Multi-Shot Techniques):</b> "You can now output at volume. Next we combine many frames into one: panoramas, HDR, focus stacking, and a short looping animation. The session also kicks off your capstone: we'll run Lesson 8.1, the brief and the plan, in class." Ask learners to bring any overlapping, bracketed, or focus-stack frames they have (practice sets are provided) and to start thinking about which capstone brief they want.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Instructor Kit · Module 6 · Facilitator Guide · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

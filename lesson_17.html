@@ -148,22 +148,23 @@
                             <span class="ps-dot" style="background:#28c840;"></span>
                             <span style="margin-left:6px;">Actions</span>
                         </div>
-                        <svg viewBox="0 0 440 190" role="img" aria-label="Actions panel showing a Web Delivery action with recorded steps: an orientation conditional, Fit Image, unsharp mask, place watermark, save as JPG.">
-                            <rect width="440" height="190" fill="#2f2f2f"/>
+                        <svg viewBox="0 0 440 208" role="img" aria-label="Actions panel showing a Web Delivery action with recorded steps: an orientation conditional, Fit Image, unsharp mask, place watermark, flatten image, save as JPG.">
+                            <rect width="440" height="208" fill="#2f2f2f"/>
                             <text x="16" y="26" style="fill:#e2e8f0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold">📁 Delivery set</text>
                             <rect x="16" y="34" width="408" height="22" fill="#1473E6"/><text x="30" y="49" style="fill:#fff" font-family="Segoe UI, sans-serif" font-size="11">▾ Web Delivery</text>
                             <g font-family="Segoe UI, sans-serif" font-size="11" fill="#e2e8f0">
                                 <text x="40" y="74">✓ If Document Is Landscape…</text>
                                 <text x="40" y="94">✓ Fit Image — 2000 × 2000 px</text>
-                                <text x="40" y="114">▣ Unsharp Mask — 80% / 1.0 / 0</text>
+                                <text x="40" y="114">✓ Unsharp Mask — 80% / 1.0 / 0</text>
                                 <text x="40" y="134">✓ Place — watermark.png</text>
-                                <text x="40" y="154">✓ Save As — JPG (quality 10)</text>
+                                <text x="40" y="154">✓ Flatten Image</text>
+                                <text x="40" y="174">✓ Save As — JPG (quality 10)</text>
                             </g>
                             <!-- transport -->
-                            <circle cx="30" cy="176" r="6" fill="#e11d48"/><polygon points="52,170 52,182 62,176" fill="#e2e8f0"/><rect x="74" y="170" width="10" height="12" fill="#e2e8f0"/>
-                            <text x="96" y="180" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">record · play · stop</text>
+                            <circle cx="30" cy="194" r="6" fill="#e11d48"/><polygon points="52,188 52,200 62,194" fill="#e2e8f0"/><rect x="74" y="188" width="10" height="12" fill="#e2e8f0"/>
+                            <text x="96" y="198" style="fill:#9aa4ad" font-family="Segoe UI, sans-serif" font-size="10.5">record · play · stop</text>
                         </svg>
-                        <figcaption>Figure 2: A recorded delivery Action. The conditional runs first, then Fit Image scales the long edge to 2000 px. Checkmarks mean the step runs; the dialog toggle (▣, shown on Unsharp Mask) makes a step pause for input. Re-record any step by double-clicking it.</figcaption>
+                        <figcaption>Figure 2: A recorded delivery Action. The conditional runs first, then Fit Image scales the long edge to 2000 px. Checkmarks mean the step runs. Flatten Image before Save As merges the watermark so the file can be saved as a JPG. A step with its dialog toggle on (▣, in the column beside the checkmark) pauses for input, so every toggle is left off here for a hands-off batch. Re-record any step by double-clicking it.</figcaption>
                     </div>
                 </figure>
                 <div class="card card-warning">
@@ -192,14 +193,14 @@
                     <h3>Step 1: Record the core <small>· 10 min</small></h3>
                     <ol>
                         <li>Window ▸ Actions ▸ new set "Delivery", new action "Web Delivery", Record.</li>
-                        <li><strong>File ▸ Automate ▸ Fit Image</strong> at 2000 × 2000 px (it scales the long edge to 2000), Unsharp Mask, Place your watermark PNG, Save As JPG. Stop recording.</li>
+                        <li><strong>File ▸ Automate ▸ Fit Image</strong> at 2000 × 2000 px (it scales the long edge to 2000), Unsharp Mask, Place your watermark PNG, <strong>Layer ▸ Flatten Image</strong> (a JPG can't hold layers), Save As JPG. Stop recording.</li>
                     </ol>
                 </div>
 
                 <div class="card card-info">
                     <h3>Step 2: Add the branch <small>· 10 min</small></h3>
                     <ol>
-                        <li>Set <strong>Preferences ▸ Units &amp; Rulers</strong> to Percent, then record two tiny helper actions in the same set: "Crop Wide" and "Crop Tall".</li>
+                        <li>Set <strong>Preferences ▸ Units &amp; Rulers</strong> to Percent, then record two tiny helper actions in the same set: "Crop Wide" (for example a 16:9 crop) and "Crop Tall" (for example 4:5). When they're recorded, set Units &amp; Rulers back to <strong>Pixels</strong> (scripts and later lessons assume pixels).</li>
                         <li>In Web Delivery, select the first step, then panel menu ▸ <strong>Insert Conditional</strong>: If <em>Document Is Landscape</em> play Crop Wide, else Crop Tall.</li>
                         <li>The conditional lands below the selected step, so drag it to the top of the list. Crop first, then Fit Image, so the final long edge is still 2000 px.</li>
                     </ol>

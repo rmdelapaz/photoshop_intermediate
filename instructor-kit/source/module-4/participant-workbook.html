@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbook — Module 4</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Student workbook —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">write in it · bring it to every session</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Photoshop Intermediate Workbook · Module 4</div>
+    <h1>Commercial Compositing</h1>
+    <p class="sub">An element is only believable when it agrees with the photo it lands in: the same horizon, the same light, the same air, the same grade. You will build one advertising-style key visual across three lessons: place it (4.1), light and anchor it (4.2), then give it depth and one grade (4.3). It is one layered file, so save often and never flatten the master.</p>
+    <div class="meta-row">
+      <span class="chip">Lessons <b>10–12</b> (4.1–4.3)</span>
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip">Session <b>4</b></span>
+      <span class="chip">Name: ____________________</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <div class="t">How to use this workbook</div>
+    <p>Each lesson has <b>By the end you can</b>, <b>Key ideas</b>, a <b>Worked example</b>, a <b>Your turn</b> activity (do it in Photoshop and write what happened), a <b>Self-check</b>, a <b>Journal</b> prompt, and <b>Notes</b>. Shortcuts are written <b>Windows / Mac</b>. Practice files are in <code class="inline">labs/module-4/practice/</code>, or use your own background and a cutout from your Module 1 work. Your working file for all three lessons: <code class="inline">m4-key-visual.psd</code>.</p>
+  </div>
+
+  <div class="note lab">
+    <div class="t">Growth mindset: your eye is the tool you are training</div>
+    <p>After today you will see horizons, contact shadows, and haze everywhere: in ads, on posters, in the room around you. That is not distraction; it is the skill. Every composite you study, good or bad, now teaches you something, and every "why does this look off?" you can answer is a step toward work nobody can tell was composited.</p>
+  </div>
+
+  <div class="sec"><h2>Module Progress Tracker</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ <b>L10 (4.1)</b>: my element shares the scene's horizon, stands on the ground at the right size, and its planes run to the vanishing point</li>
+    <li>☐ <b>L11 (4.2)</b>: my element is relit to match, with a tight contact shadow, a graduated cast shadow, and a reflection if the floor is glossy</li>
+    <li>☐ <b>L12 (4.3)</b>: far elements recede with contrast and haze; one grade on top; vignette + grain; key visual exported 🏆</li>
+  </ul>
+
+  <!-- L10 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L10</span><h3>Match Perspective, Scale &amp; Lens (4.1)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Find a photo's <b>horizon line</b> and read the camera's eye level from it</li>
+          <li>Match an element's eye level and <b>vanishing points</b> to the background</li>
+          <li>Scale an element with the <b>ground-contact rule</b>, not guesswork</li>
+          <li>Recognize and match a <b>lens</b>: wide vs long, and the distortion each brings</li>
+          <li>Correct a mismatch with <b>Perspective Warp</b> and <b>Free Transform</b></li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Every photo has one horizon</b> at the camera's eye level (the height the lens was at), visible or not. Every added element must share it.</li>
+          <li><b>Find it from the scene's own lines.</b> Receding parallel edges (road edges, window rows, a table's sides) converge on a <b>vanishing point</b>, and that point sits on the horizon.</li>
+          <li><b>Scale by the ground, not the eye.</b> For people of similar height on the same flat ground, the horizon crosses each of them at the same body height (the eyes, when the camera was at standing eye level). Set the feet first; the distance then sets the size.</li>
+          <li><b>Lens character:</b> a wide lens (e.g. 24mm) exaggerates depth and bends verticals near the edges; a long lens (e.g. 200mm) compresses depth and flattens features. <b>Warp fixes geometry, not optics.</b></li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 520 210" role="img" aria-label="Two receding edges of a road meet at a vanishing point on the horizon line. Three figures stand on the road at different distances; the horizon crosses all three at eye height.">
+            <rect x="0" y="0" width="520" height="92" fill="#e3efff"/>
+            <rect x="0" y="92" width="520" height="118" fill="#f4f6fa"/>
+            <g stroke="#45536a" stroke-width="2" fill="none">
+              <line x1="40" y1="210" x2="147" y2="139"/><line x1="147" y1="139" x2="218" y2="92" stroke-dasharray="5 4"/>
+              <line x1="400" y1="210" x2="291" y2="139"/><line x1="291" y1="139" x2="218" y2="92" stroke-dasharray="5 4"/>
+            </g>
+            <line x1="0" y1="92" x2="520" y2="92" stroke="#b45309" stroke-width="2.5"/>
+            <circle cx="218" cy="92" r="6" fill="none" stroke="#b45309" stroke-width="2.5"/>
+            <g fill="#1473E6">
+              <rect x="96" y="80" width="18" height="100" rx="6"/><circle cx="105" cy="90" r="9"/>
+              <rect x="300" y="86" width="10" height="56" rx="4"/><circle cx="305" cy="91" r="5.5"/>
+              <rect x="246" y="89" width="5" height="26" rx="2"/><circle cx="248.5" cy="91.5" r="3"/>
+            </g>
+            <g font-family="'JetBrains Mono',monospace" font-size="11">
+              <text x="330" y="84" fill="#b45309">horizon = eye level</text>
+              <text x="150" y="80" fill="#b45309">vanishing point</text>
+              <text x="12" y="200" fill="#45536a">feet set first, then scale</text>
+            </g>
+          </svg>
+          <figcaption>The horizon cuts every standing figure at the eyes, near or far. Distance sets the size.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: the plaza practice file</div>
+        <p style="font-size:.92rem;margin:.2rem 0">In <code class="inline">l10-plaza-background.jpg</code> the tile grout, the window rows and the lamp-post line all converge on one point near the middle of the frame. A horizontal guide through that point is the horizon. Check it: the three people already in the plaza (red jacket near, blue coat middle, green top far) all have their eyes on that guide.</p>
+        <ol class="steps">
+          <li>New empty layer. <b>Line tool</b> (or Pen) along two receding edges, extended until they meet. Show rulers with <kbd>Ctrl</kbd>+<kbd>R</kbd> / <kbd>⌘</kbd>+<kbd>R</kbd>; drag a horizontal guide through the meeting point. (Guides can only be horizontal or vertical, so they can't follow an angled edge.)</li>
+          <li>Place the figure. Choose the tile where the shoes touch the ground; that contact point is now fixed.</li>
+          <li><kbd>Ctrl</kbd>+<kbd>T</kbd> / <kbd>⌘</kbd>+<kbd>T</kbd>, scale from the feet until the guide crosses the eyes. Scaling is proportional by default in current versions, so <b>don't hold <kbd>Shift</kbd></b> (it now switches proportional scaling off).</li>
+          <li>Boxes, signs, buildings: Convert to Smart Object, <b>Edit ▸ Perspective Warp</b>: <b>Layout</b> mode, draw a quad on each face; <b>Warp</b> mode, drag the pins toward the vanishing point. People: a touch of <b>Free Transform ▸ Distort</b> for the lean is usually enough.</li>
+          <li>Step back. Flatter or rounder than the surroundings? A small Lens Correction or subtle warp. <b>Save the layered PSD.</b></li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: place one element</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Place your element (or <code class="inline">l10-figure-cutout.png</code>, then <code class="inline">l10-product-box-cutout.png</code>) into your background (or the plaza). Save as <code class="inline">m4-key-visual.psd</code>. Record:</p>
+        <table class="timing">
+          <tbody>
+            <tr><td>Two edges I extended to find the vanishing point</td><td style="width:55%">&nbsp;</td></tr>
+            <tr><td>Horizon height (y on the ruler)</td><td>&nbsp;</td></tr>
+            <tr><td>Where the horizon crosses the people already there</td><td>&nbsp;</td></tr>
+            <tr><td>Where I set my element's ground contact</td><td>&nbsp;</td></tr>
+            <tr><td>Final scale % (and what surprised me about it)</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <ul class="tick lab">
+          <li>☐ Horizon found from the scene's own converging lines</li>
+          <li>☐ Element's ground-contact point placed before scaling</li>
+          <li>☐ Scaled so the horizon crosses it at the correct body height</li>
+          <li>☐ Strong planes warped toward the scene's vanishing point</li>
+          <li>☐ Lens character sanity-checked, no obvious flat/round mismatch</li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Drill:</b> on <code class="inline">l10-horizon-practice-sheet.jpg</code>, extend the lines in panels 1–5 and mark each horizon. In panels 3 and 4 both vanishing points fall off the panel; they still sit on one horizontal line. Use panel 6 for one of your own photos.</p>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Perspective Warp grayed out?</b> Turn on Use Graphics Processor in Preferences ▸ Performance (restart if asked), and select a single layer, ideally a Smart Object. And remember: you can't add depth a long lens removed. If the lenses are wildly different, find a better source photo.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">What does a photo's horizon line represent?</div>
+          <div class="opts"><div class="opt">A) The line where sky meets land, and only when you can see it</div><div class="opt">B) The camera's eye level, the height the lens was at, whether or not it is visible</div><div class="opt">C) The vertical center of the frame</div><div class="opt">D) The line where the sharpest focus falls</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">The horizon is hidden behind buildings. How does the lesson find it?</div>
+          <div class="opts"><div class="opt">A) Drag a guide to the exact middle of the image</div><div class="opt">B) Run Perspective Warp in Layout mode on the background</div><div class="opt">C) Drag guides along the angled edges of the road</div><div class="opt">D) Extend two receding edges until they meet, then draw a horizontal guide through that vanishing point</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">The scene was shot at standing eye level, with people on flat ground. How do you scale a pasted person?</div>
+          <div class="opts"><div class="opt">A) Set the feet's ground-contact point first, then scale until the horizon crosses their eyes like everyone else's</div><div class="opt">B) Scale until it looks about right</div><div class="opt">C) Match the pixel height of the nearest person in the scene</div><div class="opt">D) Scale until the top of the head touches the horizon</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">In current Photoshop versions, what does holding <kbd>Shift</kbd> while dragging a Free Transform corner do?</div>
+          <div class="opts"><div class="opt">A) Constrains proportions</div><div class="opt">B) Scales from the center</div><div class="opt">C) Switches proportional scaling off</div><div class="opt">D) Nothing; it only matters for rotation</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Edit ▸ Perspective Warp is grayed out. What does the lesson say to check?</div>
+          <div class="opts"><div class="opt">A) Flatten the image first</div><div class="opt">B) Convert the document to 8-bit</div><div class="opt">C) Rasterize the Smart Object</div><div class="opt">D) Turn on Use Graphics Processor in Preferences ▸ Performance</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">A telephoto headshot pasted onto a wide-angle street still looks subtly wrong after the perspective is matched. What is true?</div>
+          <div class="opts"><div class="opt">A) Perspective Warp can restore the depth the long lens removed</div><div class="opt">B) Warp fixes geometry, not optics; a source shot on a focal length close to the background's is the real fix</div><div class="opt">C) A Drop Shadow will hide the difference</div><div class="opt">D) Scaling it larger cancels the lens compression</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Find a composite ad or movie poster that feels "off." Can you locate the horizon and spot the element whose eye level disagrees with the rest?</em> Also note: key concepts · techniques that clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L11 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L11</span><h3>Light, Shadows &amp; Reflections (4.2)</h3><span class="dur">60 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Read a scene's light: <b>direction</b>, <b>quality</b> (hard/soft), and <b>color</b></li>
+          <li>Relight an element with <b>dodge &amp; burn</b> and masked color so it matches</li>
+          <li>Build a believable <b>cast shadow</b> (transform, blur, gradient opacity)</li>
+          <li>Add the tight <b>contact shadow</b> that glues feet to the floor</li>
+          <li>Fake a convincing <b>reflection</b> on a glossy surface</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Read the light first.</b> Where is it coming from (existing shadows point away from the source)? How hard (crisp shadow edges = hard, direct sun; soft edges = overcast or diffused)? What color (warm sun, cool shade, green from foliage)? The element must obey all three.</li>
+          <li><b>Two shadows, two jobs.</b> The cast shadow tells you where the light is; the contact shadow tells you the object is touching the world. Skip either and something feels wrong.</li>
+          <li><b>Real shadows change along their length:</b> crisp and dark where they touch the object, soft and pale where they end.</li>
+          <li><b>Shadows are colored, not black.</b> Outdoor shadows lean cool/blue (lit by the sky); indoor shadows pick up the room's bounced color.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 420 176" role="img" aria-label="Layer stack: subject cut-out on top, then contact shadow on Multiply, then cast shadow on Multiply, then the locked background.">
+            <g font-family="'JetBrains Mono',monospace" font-size="11.5">
+              <rect x="30" y="10" width="330" height="30" rx="4" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/><text x="44" y="30" fill="#1473E6" font-weight="600">Subject (cut-out) + clipped D&amp;B, color</text>
+              <rect x="30" y="48" width="330" height="36" rx="4" fill="#d7efe9" stroke="#0f766e"/><text x="44" y="63" fill="#0f766e" font-weight="600">Contact shadow · Multiply</text><text x="44" y="78" fill="#0f766e" font-size="10">tiny, dark, ~2 px blur, right under the base</text>
+              <rect x="30" y="92" width="330" height="36" rx="4" fill="#d7efe9" stroke="#0f766e"/><text x="44" y="107" fill="#0f766e" font-weight="600">Cast shadow · Multiply</text><text x="44" y="122" fill="#0f766e" font-size="10">skewed away from light, blur + fade with distance</text>
+              <rect x="30" y="136" width="330" height="30" rx="4" fill="#ffffff" stroke="#bcc7d6"/><text x="44" y="156" fill="#6f7c8e">Background 🔒</text>
+            </g>
+          </svg>
+          <figcaption>Two shadow layers on Multiply under the subject: the ground texture keeps showing through.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: building the cast shadow</div>
+        <ol class="steps">
+          <li><kbd>Ctrl</kbd>/<kbd>⌘</kbd>-click the element's <b>layer mask thumbnail</b> (or the layer thumbnail if it has no mask) to load its silhouette.</li>
+          <li>New layer <b>below</b> the element. <b>Edit ▸ Fill</b> with a very dark color, deselect, set the layer to <b>Multiply</b>. (Filling a new layer works even for a masked cut-out or a Smart Object.)</li>
+          <li><b>Free Transform ▸ Distort/Skew</b> it onto the ground, running away from the light.</li>
+          <li>Blur that grows with distance: <b>Filter ▸ Blur Gallery ▸ Tilt-Shift</b> or <b>Field Blur</b> (sharp pins near the object, strong blur at the far end), or blur a duplicate heavily and blend the two with a gradient mask.</li>
+          <li>Gradient mask so it fades out; tint it toward the scene's shadow color (cool/blue outdoors). Match its depth to the real shadows, then usually pull back 5–10%.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: light &amp; anchor</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Before you touch the element, read your scene (or the plaza, or the two light references) and fill in the table:</p>
+        <table class="timing">
+          <tbody>
+            <tr><td>Light direction (which way do shadows fall?)</td><td style="width:50%">&nbsp;</td></tr>
+            <tr><td>Hardness (crisp or soft shadow edges?)</td><td>&nbsp;</td></tr>
+            <tr><td>Light color / shadow color</td><td>&nbsp;</td></tr>
+            <tr><td>Which side of my element must get brighter?</td><td>&nbsp;</td></tr>
+            <tr><td>Is the ground glossy? (If yes: reflection)</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.92rem;margin:.4rem 0 .2rem">Then: a clipped <b>50% gray Soft Light</b> layer (Layer ▸ New ▸ Layer, Mode Soft Light, tick Fill with 50% gray, clip it) to dodge the lit side and burn the other; a clipped <b>Color Balance</b> or <b>Photo Filter</b> for the light's color; contact shadow; cast shadow; reflection if glossy. Save the layered PSD.</p>
+        <ul class="tick lab">
+          <li>☐ Element re-lit to match the scene's direction, hardness, and color</li>
+          <li>☐ Tight contact shadow at the base (Multiply)</li>
+          <li>☐ Cast shadow running away from the light, blurred + faded with distance</li>
+          <li>☐ Shadows tinted (not pure black) to match the scene</li>
+          <li>☐ Reflection added if the surface is glossy</li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-2)"><b>Reflection recipe</b> (try it on <code class="inline">l11-glossy-floor-scene.jpg</code>): duplicate the element, <b>Edit ▸ Transform ▸ Flip Vertical</b>, align the bases perfectly, opacity about <b>25–40%</b>, Motion Blur or Gaussian Blur that increases downward, mask a fade.</p>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">The <b>Drop Shadow</b> layer style sits at a fixed offset and never lies on the ground in perspective. If you start from it, use Layer ▸ Layer Style ▸ Create Layer to split it onto its own layer, then distort, blur, and mask it like a hand-built shadow.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">The shadows in your background have crisp, sharp edges. What does that tell you about the light?</div>
+          <div class="opts"><div class="opt">A) It is overcast or diffused</div><div class="opt">B) It is warm-colored</div><div class="opt">C) It is a hard, direct source, such as the sun</div><div class="opt">D) It is behind the camera</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">Why are the contact and cast shadow layers set to <b>Multiply</b>?</div>
+          <div class="opts"><div class="opt">A) So the ground texture shows through and the shadow darkens the floor instead of painting a flat gray blob</div><div class="opt">B) Because Multiply blurs the layer automatically</div><div class="opt">C) Because Free Transform ▸ Distort only works on Multiply layers</div><div class="opt">D) So the shadow turns cool automatically</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Your cut-out uses a layer mask. How does the lesson create the cast-shadow shape?</div>
+          <div class="opts"><div class="opt">A) Lock Transparent Pixels on the element and fill it black</div><div class="opt">B) Apply the Drop Shadow layer style and leave it as is</div><div class="opt">C) Duplicate the element and drag Brightness to −100</div><div class="opt">D) Ctrl/⌘-click the mask thumbnail, fill the selection with a very dark color on a new layer below, deselect, set Multiply</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">How should a believable cast shadow change as it travels away from the object?</div>
+          <div class="opts"><div class="opt">A) It stays equally dark and sharp all the way</div><div class="opt">B) Crisp and dark near the object, softer and paler toward its end</div><div class="opt">C) Softer near the object, sharper at the tip</div><div class="opt">D) Darkest at the tip</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">What color should an outdoor shadow lean toward?</div>
+          <div class="opts"><div class="opt">A) Cool/blue, because the sky, not the sun, lights it</div><div class="opt">B) Pure black</div><div class="opt">C) The color of the object casting it</div><div class="opt">D) Warm orange, like the sun</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">Which is the lesson's reflection recipe for a glossy floor?</div>
+          <div class="opts"><div class="opt">A) A Drop Shadow at 100% opacity, offset downward</div><div class="opt">B) Duplicate, Flip Horizontal, keep it at full opacity</div><div class="opt">C) Duplicate, Flip Vertical, align the bases, lower opacity to ~25–40%, blur more with distance, mask a fade</div><div class="opt">D) Paint it by hand with the Mixer Brush</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Look around the room and study one object's shadow. Where is the crisp contact shadow, where does the cast shadow soften, and what color is it? Retelling it in words trains your compositing eye.</em> Also note: key concepts · techniques that clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <!-- L12 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L12</span><h3>Atmosphere &amp; the Unifying Grade (4.3)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">By the end you can</div>
+        <ul class="tick">
+          <li>Use <b>atmospheric perspective</b> (haze, fading contrast) to build depth</li>
+          <li>Add fog, light rays, and dust that sit <b>between</b> elements, not just on top</li>
+          <li>Lay a single <b>unifying grade</b> over the whole stack</li>
+          <li>Explain why one grade over everything beats grading each piece</li>
+          <li>Deliver a finished, cohesive <b>key visual</b></li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Key ideas</div>
+        <ul class="tick">
+          <li><b>Distance has a look.</b> The farther something is, the more air washes it out: contrast drops, colors desaturate and shift toward the sky's color (usually cooler and lighter), edges soften.</li>
+          <li>A background element as crisp and saturated as the foreground feels <b>pasted forward</b>. Push it back with lower contrast and a little haze.</li>
+          <li><b>Atmosphere goes between, grade goes on top.</b> Haze sits above the far elements and below the subject and its shadows; the grade sits at the very top and rains down on everything.</li>
+          <li><b>Unify last, grade once.</b> Get every piece neutral and correct first, then one grade. One dial beats twenty.</li>
+        </ul>
+        <figure class="fig">
+          <svg viewBox="0 0 420 214" role="img" aria-label="The Module 4 layer stack from top to bottom: unifying grade, subject with clipped light and color, contact and cast shadows, atmosphere haze over far elements only, background.">
+            <g font-family="'JetBrains Mono',monospace" font-size="11.5">
+              <rect x="30" y="8" width="300" height="30" rx="4" fill="#1473E6"/><text x="44" y="28" fill="#ffffff" font-weight="600">★ Unifying Grade (LUT / Curves)</text>
+              <rect x="30" y="46" width="300" height="30" rx="4" fill="#e3efff" stroke="#1473E6" stroke-width="1.6"/><text x="44" y="66" fill="#1473E6" font-weight="600">Subject + clipped light/color</text>
+              <rect x="30" y="84" width="300" height="30" rx="4" fill="#d7efe9" stroke="#0f766e"/><text x="44" y="104" fill="#0f766e">Contact + cast shadows · Multiply</text>
+              <rect x="30" y="122" width="300" height="42" rx="4" fill="#f4f6fa" stroke="#d6dee9"/><text x="44" y="140" fill="#45536a">Atmosphere / haze · low opacity</text><text x="44" y="156" fill="#6f7c8e" font-size="10">over the far elements only</text>
+              <rect x="30" y="172" width="300" height="30" rx="4" fill="#ffffff" stroke="#bcc7d6"/><text x="44" y="192" fill="#6f7c8e">Background 🔒</text>
+              <text x="340" y="27" fill="#1473E6" font-size="10">on top of</text><text x="340" y="40" fill="#1473E6" font-size="10">everything</text>
+              <text x="340" y="146" fill="#45536a" font-size="10">between</text>
+            </g>
+          </svg>
+          <figcaption>The grade rains down on everything below it, atmosphere included; that shared color is what unifies.</figcaption>
+        </figure>
+      </div>
+      <div class="blk"><div class="h">Worked example: the four finishing steps</div>
+        <table class="timing">
+          <thead><tr><th>Step</th><th>What you do</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Depth by contrast</td><td>Clipped Curves on far elements: lower contrast, lift the blacks slightly, a touch of sky color. Nearest element stays crispest.</td><td>The contrast falloff alone reads as distance</td></tr>
+            <tr><td>2 · Atmosphere</td><td>New layer (Normal), soft brush, scene/sky color, very low flow, glazed over the far elements. Optional rays or particles on Screen.</td><td>Fills the space between elements: a world, not stacked layers</td></tr>
+            <tr><td>3 · Unifying grade</td><td>At the top: a Color Lookup, or a Curves + Color Balance group (cool shadows, warm highlights, gentle contrast). Pull opacity back.</td><td>One shared color = one photograph</td></tr>
+            <tr><td>4 · Finish &amp; deliver</td><td>Subtle vignette, a touch of glow, grain. Flatten a copy, convert to sRGB, export.</td><td>Holds the eye; binds everything to one "film stock"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="blk lab"><div class="h">Your turn: depth &amp; grade (Module 4 deliverable)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Label your scene's depth bands before you add a single layer. On the plaza, place <code class="inline">l12-far-clocktower-cutout.png</code> on the distant hills first; it arrives far too crisp.</p>
+        <table class="timing">
+          <tbody>
+            <tr><td>My far element(s)</td><td style="width:55%">&nbsp;</td></tr>
+            <tr><td>My mid element(s)</td><td>&nbsp;</td></tr>
+            <tr><td>My near element (crispest, most saturated)</td><td>&nbsp;</td></tr>
+            <tr><td>Haze color I sampled (from where?)</td><td>&nbsp;</td></tr>
+            <tr><td>My grade in words (shadows pushed to… highlights to…)</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        <ul class="tick lab">
+          <li>☐ Element placed with correct perspective &amp; scale (4.1)</li>
+          <li>☐ Element lit, with contact and cast shadows (4.2)</li>
+          <li>☐ Depth set by lowering contrast / adding haze on far elements</li>
+          <li>☐ Atmosphere (haze, optional rays/particles) between elements</li>
+          <li>☐ One unifying grade over the whole stack</li>
+          <li>☐ Vignette + grain; exported as a finished key visual 🏆</li>
+        </ul>
+      </div>
+      <div class="blk warn"><div class="h">Watch out</div>
+        <p style="font-size:.9rem;margin:.2rem 0">A haze layer placed <b>above</b> the grade escapes it and looks pasted on. And if the composite still looks "off," run the checklist in order: horizon, scale, lens, light direction, shadow, contact shadow, depth/haze, grade. Ninety percent of "off" composites fail at scale or the missing contact shadow; fix those before blaming the grade.</p>
+      </div>
+      <div class="blk"><div class="h">Self-check</div>
+        <div class="q"><div class="qn">Q1</div><div class="qt">Atmospheric perspective: what happens to things as they get farther away?</div>
+          <div class="opts"><div class="opt">A) They get darker and more saturated</div><div class="opt">B) Their edges get sharper</div><div class="opt">C) They get warmer and higher in contrast</div><div class="opt">D) Contrast drops, colors desaturate and shift toward the sky color, and edges soften</div></div></div>
+        <div class="q"><div class="qn">Q2</div><div class="qt">Where does the depth-haze layer sit in the stack?</div>
+          <div class="opts"><div class="opt">A) At the very top, above the grade</div><div class="opt">B) Above the far elements, below the subject, its shadows, and the grade</div><div class="opt">C) Clipped to the subject</div><div class="opt">D) Below the background layer</div></div></div>
+        <div class="q"><div class="qn">Q3</div><div class="qt">Why does one grade over the whole stack beat grading each element separately?</div>
+          <div class="opts"><div class="opt">A) It uses less memory</div><div class="opt">B) Color Lookup layers only work at the top of a stack</div><div class="opt">C) A single set of adjustments touches every element, so they share one color identity, and you tune one dial instead of twenty</div><div class="opt">D) It removes the need for shadows</div></div></div>
+        <div class="q"><div class="qn">Q4</div><div class="qt">What should be true of every piece before you add the unifying grade?</div>
+          <div class="opts"><div class="opt">A) It is neutral and correct</div><div class="opt">B) It is flattened into the background</div><div class="opt">C) It is converted to 8-bit</div><div class="opt">D) It already has a vignette</div></div></div>
+        <div class="q"><div class="qn">Q5</div><div class="qt">Which of these can serve as the unifying grade, according to the lesson?</div>
+          <div class="opts"><div class="opt">A) A Drop Shadow layer style on the subject</div><div class="opt">B) A Color Lookup (LUT), a low-opacity Gradient Map, or a Curves + Color Balance group at the top</div><div class="opt">C) A Hue/Saturation layer clipped to the subject</div><div class="opt">D) A Gaussian Blur on the background</div></div></div>
+        <div class="q"><div class="qn">Q6</div><div class="qt">How does the lesson finish and deliver the key visual?</div>
+          <div class="opts"><div class="opt">A) Flatten the master and save over the PSD</div><div class="opt">B) Export the layered PSD straight to the web</div><div class="opt">C) Take a screenshot of the canvas</div><div class="opt">D) Vignette, glow and grain, then flatten a copy, convert to sRGB, and export</div></div></div>
+      </div>
+      <div class="blk"><div class="h">Journal</div>
+        <p style="font-size:.92rem;margin:.2rem 0"><em>Pick a film still you love. Describe its grade in words (where are the shadows pushed, where the highlights?) and where atmosphere creates its depth. Then try to rebuild that grade on one of your own images.</em> Also note: key concepts · techniques that clicked · questions · ideas to try · your progress and feelings.</p>
+        <div class="write"></div>
+      </div>
+      <div class="blk"><div class="h">Notes</div><div class="notes-lines"></div></div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Module 4 Summary</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li><b>Perspective first:</b> share one horizon, place by ground contact, match the lens.</li>
+    <li><b>Light &amp; shadow next:</b> match direction, hardness and color, then anchor with a contact shadow and a cast shadow.</li>
+    <li><b>Atmosphere builds depth:</b> lower contrast and add haze on far elements.</li>
+    <li><b>One unifying grade</b> over the whole stack makes separate photos read as one frame.</li>
+  </ul>
+
+  <div class="sec"><h2>Before the Next Session</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ Find the horizon in five photos by extending their receding lines (use panel 6 of the drill sheet for one)</li>
+    <li>☐ Study the contact and cast shadows of three real objects around you</li>
+    <li>☐ Finish the solo variations you started in class</li>
+    <li>☐ Complete one composite through the full 4.1 → 4.2 → 4.3 pipeline and keep the layered file</li>
+    <li>☐ Save your unifying grade as a reusable LUT (File ▸ Export ▸ Color Lookup Tables, Lesson 2.2)</li>
+    <li>☐ Write your three Learning Journal entries</li>
+  </ul>
+
+  <div class="note">
+    <div class="t">You finished Module 4 🎉</div>
+    <p>You can now take elements shot at different times, in different light, on different lenses, and assemble them into one believable image: matched in geometry, married in light and shadow, and unified by atmosphere and grade. Commercial compositing is one of the highest-paid Photoshop skills, and you now own its full pipeline. Next session: Module 5, Design Systems &amp; Type.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Workbook · Module 4 · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

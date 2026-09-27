@@ -1,0 +1,20 @@
+Lesson 2.1 histogram drills: ANSWERS (instructor only)
+Have learners read Window > Histogram BEFORE naming a fix.
+
+l04-histogram-a.jpg  ->  flat / low contrast
+    histogram: narrow histogram in the middle, empty at both ends
+l04-histogram-b.jpg  ->  high-key snow scene, correctly exposed
+    histogram: piled to the right but NOT slammed against the right wall; the trap: bright subject, not overexposure
+l04-histogram-c.jpg  ->  underexposed
+    histogram: crammed into the left half, nothing in the right third
+l04-histogram-d.jpg  ->  overexposed with clipped highlights
+    histogram: tall spike against the right wall
+l04-histogram-e.jpg  ->  crushed / clipped shadows
+    histogram: tall spike against the left wall
+
+One-sentence edit plans (examples):
+a: stretch the tones: set a black and white point / S-curve.
+b: leave the exposure alone; at most a gentle mid lift. A bright scene should read bright.
+c: lift exposure/midtones; watch noise in the shadows.
+d: the sky and white fence are gone (clipped); recover what little is left, re-shoot if possible.
+e: the trees and barn door are solid black; lift shadows, accept lost detail.

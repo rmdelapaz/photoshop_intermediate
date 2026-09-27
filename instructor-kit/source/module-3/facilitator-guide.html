@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide: Module 3</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">contains answers &amp; timing · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Facilitator Guide</div>
+    <h1>Module 3: High-End Retouching</h1>
+    <p class="sub">How to teach the three lessons that make up a professional portrait pipeline: frequency separation at production depth (the correct Apply Image math for the bit depth, a radius chosen from pore size), dodge and burn on a 50% gray Soft Light layer that follows the bone structure, and the local, masked, restrained finish on eyes, teeth, and hair. One portrait runs through the whole session, from <code class="inline">skin-retouched.psd</code> to <code class="inline">portrait-sculpted.psd</code> to the finished Module 3 deliverable. The technique is the easy half; the judgment of where to stop is what you are really teaching.</p>
+    <div class="meta-row">
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip"><b>3 hrs</b> session</span>
+      <span class="chip">Lessons <b>L07–L09</b></span>
+      <span class="chip">Level <b>Intermediate</b></span>
+      <span class="chip">Maps to <b>Session 3</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>How to Use This Guide</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li>Same rhythm as every module: <b>Frame</b> → <b>Demo</b> → <b>Guided build</b> → <b>Now You</b> → <b>Check</b>. Every lesson ends with a recipe card, a checklist, and a journal prompt; use them as your closers.</li>
+    <li><b>Demo on the practice portrait, never on a learner's face.</b> The illustrated practice faces (<code class="inline">l07-</code>, <code class="inline">l08-</code>, <code class="inline">l09-</code> files) carry known flaws placed on purpose: blotchy tone, blemishes, pores, flat light, dull eyes, yellowed teeth, flyaways. Your demo always works, and nobody's appearance is discussed in front of the room.</li>
+    <li>These learners have done a basic frequency separation and dodge and burn in the intro course. Skip the "what is a layer mask" material and spend the time on the <b>why</b> behind the settings: why the Apply Image numbers change with bit depth, why the radius follows the pore size, why the light map follows the bones.</li>
+    <li><span style="color:var(--lab);font-weight:600">Teal</span> = hands-on, <span style="color:var(--warn);font-weight:600">amber</span> = watch-outs. In Module 3 the watch-outs are <b>the wrong Apply Image recipe for the bit depth</b>, <b>working on the wrong layer</b> (Low vs High, gray layer vs photo), and <b>overdoing it</b> (poreless skin, chalky dodging, glowing eyes, toothpaste-white teeth).</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="t">Consent, respect, and how we talk about faces</div>
+    <p>Portrait retouching is personal, and at this level it gets powerful enough to change how someone looks. Set three ground rules in the warm-up and hold them all session: <b>1)</b> Only edit portraits of yourself, of people who agreed to be edited <em>and</em> shown in class, or free-license portraits whose license allows it. <b>2)</b> Nobody's portrait goes on the projector without their say-so. <b>3)</b> In critique, <b>talk about the edit, never the person's looks</b>: "the dodge on the cheekbone is streaky," not "their skin is bad." The lesson's own position is the course position: technique is neutral, context sets the line, keep the person recognizably themselves, and be honest with clients about what was changed.</p>
+  </div>
+
+  <div class="sec"><h2>Before Session 3</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ Copy <code class="inline">labs/module-3/practice/</code> to each machine (or a shared drive): <code class="inline">l07-portrait-retouch.jpg</code>, <code class="inline">l07-beauty-closeup.jpg</code>, <code class="inline">l07-candid-distance.jpg</code>, <code class="inline">l08-portrait-clean-flat.jpg</code>, <code class="inline">l08-apple-flat.jpg</code>, <code class="inline">l09-portrait-sculpted.jpg</code>. Keep <code class="inline">labs/module-3/instructor/</code> for yourself: <code class="inline">l07-flaw-map-INSTRUCTOR.png</code> marks every blemish, tone patch, flyaway, and permanent feature on the practice face; <code class="inline">l08-light-map-INSTRUCTOR.png</code> shows where it wants dodging and burning. As always, never hand out the course site's licensed <code class="inline">images/</code> folder.</li>
+    <li>☐ Remind learners (in the Session 2 wrap-up or by email) to bring <b>one consented portrait</b> as a large original file, ideally with a flatly lit face, visible teeth, and some loose hair. For the L07 Now You, a second portrait at a different distance (a close beauty shot and a candid at arm's length) helps. Details in <code class="inline">labs/module-3/README.md</code>. Anyone who would rather not use a real face does the whole module on the practice files.</li>
+    <li>☐ Open a practice file and check <b>Image ▸ Mode</b>: it opens as <b>8 Bits/Channel</b>. The lesson recommends 16-bit and gives a different Apply Image recipe for it, so decide now which you demo. This guide demos 16-bit (convert with <b>Image ▸ Mode ▸ 16 Bits/Channel</b> right after opening) and shows the 8-bit numbers on the slide as the contrast case.</li>
+    <li>☐ Rehearse the L07 separation once on <code class="inline">l07-portrait-retouch.jpg</code> within the week. It is the one demo in the module where a single wrong field in Apply Image turns the room's screens into a gray mess.</li>
+    <li>☐ Open <b>lesson_07.html</b>, <b>lesson_08.html</b>, <b>lesson_09.html</b>, and <b>recipes.html</b> (the High-End Retouching cards) in browser tabs for the before/after sliders and the recipe cards.</li>
+  </ul>
+
+  <div class="sec"><h2>Session 3 Agenda (3 hours)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Clock</th><th>Segment</th><th>Min</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="t">0:00–0:12</td><td>Warm-up: Module 2 recap, ground rules</td><td class="t">12</td><td>"What does 16-bit buy you?" (today it changes the Apply Image numbers). Consent and critique rules. Everyone opens a portrait (own or practice), runs global corrections if needed, and checks Image ▸ Mode.</td></tr>
+      <tr><td class="t">0:12–1:05</td><td><b>L07 (Lesson 3.1)</b> Skin &amp; Frequency Separation</td><td class="t">53</td><td>Build: Low + High, tone on Low, blemishes on High, group opacity. Save <code class="inline">skin-retouched.psd</code>.</td></tr>
+      <tr><td class="t">1:05–1:52</td><td><b>L08 (Lesson 3.2)</b> Dodge &amp; Burn Sculpting</td><td class="t">47</td><td>Build: 50% gray Soft Light layer, burn, dodge, B&amp;W check. Save <code class="inline">portrait-sculpted.psd</code>.</td></tr>
+      <tr><td class="t">1:52–2:05</td><td>Break</td><td class="t">13</td><td>Everyone saves first. Leave the L08 checklist on the projector for stragglers.</td></tr>
+      <tr><td class="t">2:05–2:52</td><td><b>L09 (Lesson 3.3)</b> Eyes, Teeth &amp; Hair: Natural Finish</td><td class="t">47</td><td>Build: masked Curves + High Pass eyes, Hue/Sat teeth, hair layer, flip-and-toggle review in pairs. The Module 3 deliverable.</td></tr>
+      <tr><td class="t">2:52–3:00</td><td>Wrap-up &amp; exit ticket</td><td class="t">8</td><td>Recap the pipeline order, assign homework, preview Session 4.</td></tr>
+      <tr><td class="t"><b>Total</b></td><td></td><td class="t"><b>180</b></td><td>The pair review inside L09 doubles as a short critique; volunteers only for the projector.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The lesson pages estimate 55 + 50 + 55 = 160 minutes for a solo learner; the room has 147 once the warm-up, break, and wrap are in. The room runs each lesson's frame, demo, and Guided Build together, and each <b>Now You</b> starts in class and finishes at home. If you run long, protect the L09 guided build and final review (it is the Module 3 deliverable) and the L07 checkpoint where the stack adds back to the original. Cut in this order: the L09 optional iris sharpening, the L08 Now You start, then the L07 Now You start. All three Now You variations are homework anyway.</p>
+
+  <div class="sec"><h2>Module at a Glance</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Lesson</th><th>Topic</th><th>Time</th><th>Learners leave able to…</th></tr></thead>
+    <tbody>
+      <tr><td class="t">L07 (3.1)</td><td>Skin &amp; Frequency Separation</td><td class="t">53m</td><td>Build a correct Low/High pair for the file's bit depth, even tone on Low, heal blemishes on High, and keep real pores at 100%</td></tr>
+      <tr><td class="t">L08 (3.2)</td><td>Dodge &amp; Burn Sculpting</td><td class="t">47m</td><td>Sculpt a face on a 50% gray Soft Light layer at low flow, following the existing light, checked in black and white</td></tr>
+      <tr><td class="t">L09 (3.3)</td><td>Eyes, Teeth &amp; Hair: Natural Finish</td><td class="t">47m</td><td>Finish eyes, teeth, and hair with local, masked, gentle edits and judge the natural line with a mirrored view</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The module is one story on one face, and the order is the workflow: <b>global corrections → frequency separation (clean) → dodge &amp; burn (sculpt) → eyes/teeth/hair (finish).</b> Cleaning after sculpting undoes your light; finishing before cleaning wastes effort. Say the order out loud at the start and at the end of the session.</p>
+
+  <div class="sec"><h2>Lesson Plans</h2><span class="rule"></span></div>
+
+  <!-- L07 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L07</span><h3>Skin &amp; Frequency Separation (Lesson 3.1)</h3><span class="dur">53 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Explain what frequency separation splits an image into (low = tone and color, high = texture) and why it matters</li>
+          <li>Build a correct Low (blurred) and High (Apply Image, Linear Light) pair, with the Apply Image settings matched to the bit depth</li>
+          <li>Even out blotchy skin on the Low layer without smearing pores</li>
+          <li>Remove a blemish on the High layer without leaving a soft patch</li>
+          <li>Know when frequency separation is the wrong tool, and dial it back so the skin stays human</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">5m</td><td>The goal (lesson slider) + mental model: two frequencies</td></tr>
+          <tr><td class="t">6m</td><td>Building the separation: the finished stack and the bit-depth warning</td></tr>
+          <tr><td class="t">10m</td><td>Guided build Step 1: make the two layers (demo + room)</td></tr>
+          <tr><td class="t">10m</td><td>Guided build Step 2: even the tone on Low</td></tr>
+          <tr><td class="t">8m</td><td>Guided build Step 3: remove blemishes on High</td></tr>
+          <tr><td class="t">5m</td><td>Guided build Step 4: dial it back, check pores, save <code class="inline">skin-retouched.psd</code></td></tr>
+          <tr><td class="t">5m</td><td>Now You (start): the radius follows the pore size</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (2m).</b> Show the L07 slider. <b>Say:</b> "Look at what did <em>not</em> change: the texture. Tone is calm, blemishes are gone, and every pore is still there. That restraint is the whole point of frequency separation."</li>
+          <li><b>Two frequencies (3m).</b> Draw two sheets. <b>Low</b>: the slow, gradual changes (cheek to shadow, a patch of redness, an uneven tan). <b>High</b>: the fast, tiny changes (pores, fine hairs, the grain). <b>Say:</b> "A blur or a soft brush destroys both at once, which is why it looks like melted plastic. Split them, and you calm the tone on one layer and touch texture only on the other." Remind them this is the spiral from the intro course: same idea, production depth.</li>
+          <li><b>The stack and the math (6m).</b> Put the finished stack on the board: <b>High Frequency</b> (Linear Light, texture only) over <b>Low Frequency</b> (Normal, Gaussian Blur) over the untouched Background. <b>Say:</b> "Apply Image subtracts the blurred Low layer itself, so the radius matches automatically; there is no second radius to enter. What has to match is the bit depth." Write both recipes side by side: <b>8-bit</b>: Blending Subtract, Scale 2, Offset 128. <b>16-bit</b>: Blending Add, <b>Invert</b> ticked, Scale 2, Offset 0. <b>Say:</b> "Use the 8-bit numbers on a 16-bit file and the stack will not add back to the original. Check the title bar before you open Apply Image." Mention the High Pass shortcut only as the approximate fallback: same radius as the blur, and only approximate.</li>
+          <li><b>Step 1: make the layers (10m).</b> Open <code class="inline">l07-portrait-retouch.jpg</code>, <b>Image ▸ Mode ▸ 16 Bits/Channel</b>. <b>Say:</b> "Global corrections first, always. Frequency separation is a local cleanup, not a substitute for exposure and white balance." Duplicate the layer twice (<kbd>Ctrl/⌘ + J</kbd>, twice). Name the lower copy <code class="inline">Low</code> and the upper <code class="inline">High</code>. Hide <code class="inline">High</code> (the recipe card's tip: otherwise you can't see the blur). Select <code class="inline">Low</code>: <b>Filter ▸ Blur ▸ Gaussian Blur</b>, zoom to 100% on a cheek, raise the radius slowly. <b>Say:</b> "Stop the moment the pores vanish but the features stay. On this file that's around 5 or 6 pixels. Write your number down." Show <code class="inline">High</code>, select it, <b>Image ▸ Apply Image</b>: Layer <b>Low</b>, Channel <b>RGB</b>, Blending <b>Add</b>, <b>Invert</b> ticked, Scale <b>2</b>, Offset <b>0</b>. Read each field aloud. OK, then set the blend mode to <b>Linear Light</b>. <b>Say:</b> "Checkpoint. It looks exactly like the original again. If yours doesn't, hands up now, before anyone paints."</li>
+          <li><b>Step 2: even the tone on Low (10m).</b> Select <code class="inline">Low</code>. Healing Brush, big and soft, <b>Sample: Current Layer</b>; <kbd>Alt</kbd>/<kbd>⌥</kbd>-click calm skin and gently push the redness beside the nose toward its neighbors. Then show the alternative: Mixer Brush at low opacity with Sample All Layers off. Do the cheek redness and the muddy patch under one eye. Toggle <code class="inline">High</code>'s eye off and on. <b>Say:</b> "Because you're only on the color layer, texture never moves. The pores are exactly as sharp as before."</li>
+          <li><b>Step 3: blemishes on High (8m).</b> Select <code class="inline">High</code>. Healing Brush (or Clone Stamp), <b>Sample: Current Layer</b>, <kbd>Alt</kbd>/<kbd>⌥</kbd>-click clean texture near a blemish and heal over it. Do two on the cheek. <b>Say:</b> "Only the texture changes; the tone underneath stays put, so there's no soft patch or color smear where the spot was." If a faint pink ghost remains, go back to Low and even it: that is the two-layer logic in action.</li>
+          <li><b>Step 4: dial it back (5m).</b> Select both layers, group them (<kbd>Ctrl/⌘ + G</kbd>), lower the group's opacity to about 80%. Zoom to 100% and pan across the face. <b>Say:</b> "Real pores everywhere? Good. If it looks poreless, you smoothed too hard. Letting a little of the original through is what keeps it human." <b>File ▸ Save As</b> → <code class="inline">skin-retouched.psd</code>, layers intact: <b>Say:</b> "Lesson 3.2 opens this exact file."</li>
+          <li><b>Now You (5m, finish at home).</b> Hand out <code class="inline">l07-beauty-closeup.jpg</code> and <code class="inline">l07-candid-distance.jpg</code> (or learners' own two portraits). Each learner finds the radius where the pores just vanish on both and writes both numbers in the workbook. <b>Say:</b> "The close shot needs a bigger radius because its pores are bigger in pixels, and it needs far more restraint."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Retouch the Skin, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on the learner's own consented portrait (after global corrections) or <code class="inline">l07-portrait-retouch.jpg</code>, following the lesson's four steps and saving <code class="inline">skin-retouched.psd</code>. Now You on <code class="inline">l07-beauty-closeup.jpg</code> + <code class="inline">l07-candid-distance.jpg</code> or two of their own portraits; the over-smooth-and-rescue, the plain-soft-brush comparison, and the Action recording are homework. Details in <code class="inline">labs/module-3/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> the checkpoint (the stack looks identical to the original before any painting); the title bar's bit depth matching the recipe used; <code class="inline">Low</code> below <code class="inline">High</code>; the right layer highlighted for each fix; <b>Sample: Current Layer</b> on the Healing Brush.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's six-item checklist: a correct Low + High (Linear Light) separation with Apply Image matched to the bit depth; tone evened on Low only; blemishes removed on High only; group opacity pulled back; real pores at 100%; <code class="inline">skin-retouched.psd</code> saved with layers.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Gray mess or a shifted image after Apply Image.</b> Almost always the wrong recipe for the bit depth (the lesson FAQ's number one), then Linear Light not set, then <b>Layer</b> in Apply Image not set to <code class="inline">Low</code>. Check the title bar: 8-bit = Subtract / Scale 2 / Offset 128; 16-bit = Add / Invert / Scale 2 / Offset 0. Fastest fix: delete <code class="inline">High</code>, duplicate the original again, redo Apply Image.</li>
+          <li><b>High shows eyes, lips, and face shapes.</b> The blur radius was too large, so real features moved into the texture layer. Rebuild with a smaller radius. A High layer that is almost blank means the opposite: the radius is too small and the pores stayed on Low.</li>
+          <li><b>Can't see the blur.</b> <code class="inline">High</code> is still visible on top. Hide it while blurring <code class="inline">Low</code>, then show it for Apply Image.</li>
+          <li><b>Healing on the wrong layer, or with the wrong Sample.</b> Heal on High with Sample: All Layers (or Current &amp; Below) drags color onto the texture layer and leaves a smear. Mantra: <b>tone on Low, texture on High, each with Sample: Current Layer.</b></li>
+          <li><b>Poreless, plastic skin.</b> Heavy strokes on Low that flatten the face's shading, or a group left at 100%. Lower the group opacity to 70–85% and look at 100% zoom, not fit-to-screen.</li>
+          <li><b>Skipping global corrections.</b> Trying to fix an overall color cast on Low, patch by patch. Fix exposure and white balance first (Module 2), then separate.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) Tone and color: the gradual shifts, patches of redness, and shading; <b>Q2</b> D) Just until the pores vanish but the features stay, and note the radius; <b>Q3</b> A) Blending Add, Invert ticked, Scale 2, Offset 0; <b>Q4</b> C) On Low, with a big soft Healing Brush (Sample: Current Layer) or a low-opacity Mixer Brush; <b>Q5</b> A) The blur radius on Low was too large, so real features moved into the texture layer; <b>Q6</b> D) The close beauty shot, because its pores are bigger in pixels. Full explanations in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (homework): <em>Look at a magazine cover and a phone-beauty-filter selfie. Both smooth skin; describe, in frequency terms, why one reads as expensive and the other as fake.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the rest of the Now You: over-smooth one face on purpose, then rescue it with group opacity; do the same fix with a plain soft brush and no separation and compare side by side; then the lesson's "going further": record the whole layer setup as an Action (Module 6 automates this properly). Stretch: build the 8-bit recipe on an 8-bit copy and the 16-bit recipe on a 16-bit copy and confirm both add back perfectly.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> stay on the practice file (the radius is known: about 5–6 px) and 8-bit, which is one fewer checkbox. Pair them with a neighbor who is past the checkpoint. Success = the checkpoint plus one evened patch on Low; the High fix and the group opacity are the next rung.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L08 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L08</span><h3>Dodge &amp; Burn Sculpting (Lesson 3.2)</h3><span class="dur">47 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Explain why dodge and burn adds form that smoothing can't</li>
+          <li>Build a non-destructive 50% gray Soft Light dodge and burn layer</li>
+          <li>Work at low flow to build light gradually instead of streaking it on</li>
+          <li>Sculpt the planes of a face: cheekbones, jaw, nose bridge, brow</li>
+          <li>Check the work in black and white to judge form without color</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">5m</td><td>The goal (flat vs sculpted sphere slider) + painting with light</td></tr>
+          <tr><td class="t">5m</td><td>The face map + the 50% gray layer and the B&amp;W check</td></tr>
+          <tr><td class="t">3m</td><td>Guided build Step 1: add the gray layer</td></tr>
+          <tr><td class="t">10m</td><td>Guided build Step 2: burn the recesses</td></tr>
+          <tr><td class="t">10m</td><td>Guided build Step 3: dodge the highlights</td></tr>
+          <tr><td class="t">6m</td><td>Guided build Step 4: judge in B&amp;W, temper, save <code class="inline">portrait-sculpted.psd</code></td></tr>
+          <tr><td class="t">4m</td><td>Now You (start): three lighting moods or a non-face object</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (2m).</b> Show the L08 slider: a flat sphere and a sculpted one. <b>Say:</b> "A little burn in the core shadow and a dab of dodge on the highlight, and you get obvious volume. Even, clean skin from L07 can still look flat. This is how we give the face its third dimension back."</li>
+          <li><b>Painting with light (3m).</b> <b>Say:</b> "A camera flattens a face; our brains read depth from where light falls. Dodging lightens and pulls a plane toward the viewer. Burning darkens and pushes it back. We exaggerate the light the lens already captured." Then the professional habit: <b>low and slow</b>. <b>Say:</b> "You don't lighten a cheekbone in one stroke. Many passes, each a whisper. Streaky dodge and burn is just impatient dodge and burn."</li>
+          <li><b>The map and the gray layer (5m).</b> Draw the face map: <b>dodge</b> forehead, cheekbones, nose (bridge and tip), brow bone; <b>burn</b> eye sockets, sides of the nose, under the cheekbones, under the jaw. <b>Say:</b> "Follow the bone structure the light already implies. Don't invent a light source." Then why the gray layer: the Dodge and Burn tools edit pixels directly and are hard to undo; a 50% gray layer in Soft Light is invisible until you paint on it, and every stroke stays adjustable, reversible, and maskable. Finish with the check: <b>Say:</b> "Color hides uneven sculpting. A temporary Black &amp; White layer on top shows every lump and streak."</li>
+          <li><b>Step 1: the gray layer (3m).</b> Open <code class="inline">skin-retouched.psd</code> (or <code class="inline">l08-portrait-clean-flat.jpg</code>). Select the top of the stack; with the L07 group collapsed, click the group itself so the new layer lands above it, not inside it. <b>Layer ▸ New ▸ Layer</b>, <b>Mode: Soft Light</b>, tick <b>Fill with Soft-Light-neutral color (50% gray)</b>, name it <code class="inline">Dodge &amp; Burn</code>. Brush (<kbd>B</kbd>): soft round, <b>Hardness 0</b>, <b>Flow 5–10%</b>, <b>Opacity 100%</b>. <kbd>D</kbd> for default colors. <b>Say:</b> "Flow, not opacity, is what we keep low today. Each pass adds a little, and passes build up."</li>
+          <li><b>Step 2: burn the recesses (10m).</b> Black foreground (<kbd>X</kbd> swaps). Build shadow gently in the eye sockets, along the sides of the nose, under the cheekbones, under the jaw. Point out the practice file's window light comes from the viewer's left. <b>Say:</b> "Burn the right side a touch more than the left: we're amplifying the light that's there." Let the room work in parallel for most of these minutes.</li>
+          <li><b>Step 3: dodge the highlights (10m).</b> <kbd>X</kbd> for white. Lift the tops of the cheekbones, the bridge and tip of the nose, the center of the forehead, the brow bone. <b>Say:</b> "Amplifying, not inventing. The left cheekbone gets more than the right." <kbd>Alt</kbd>/<kbd>⌥</kbd>-click the gray layer's eye to show your light map alone, then again to return.</li>
+          <li><b>Step 4: judge and temper (6m).</b> Add a temporary <b>Black &amp; White</b> adjustment layer on top. Toggle it: <b>Say:</b> "See that lump under the left cheekbone? Color hid it." Fix it with a few passes, turn the B&amp;W layer off, and lower the gray layer's opacity until the sculpting is felt but not seen. Delete the temporary Black &amp; White layer, <b>File ▸ Save As</b> → <code class="inline">portrait-sculpted.psd</code>. <b>Say:</b> "Lesson 3.3 finishes this file."</li>
+          <li><b>Now You (4m, finish at home).</b> Two choices to start: sculpt the same face into three moods (soft beauty, dramatic side light, gentle top light), or sculpt <code class="inline">l08-apple-flat.jpg</code>. <b>Say:</b> "Product retouchers live on dodge and burn. The principle is identical."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Sculpt the Face, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on <code class="inline">skin-retouched.psd</code> from L07 (or <code class="inline">l08-portrait-clean-flat.jpg</code> for anyone whose L07 file isn't ready). Learners first write the light direction and their three dodge and three burn zones in the workbook, then follow the four steps and save <code class="inline">portrait-sculpted.psd</code>. Now You on the same face or <code class="inline">l08-apple-flat.jpg</code>; the over-dodge-and-rescue and the coarse/fine two-layer split are homework.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> Soft Light mode <em>and</em> the 50% gray fill; the gray layer highlighted while painting (not the photo, not a layer inside the L07 group); Flow 5–10% in the options bar; strokes that follow the existing light; a B&amp;W check actually done.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's six-item checklist: a 50% gray Soft Light layer; recesses burned and highlights dodged, following the real light; built at low flow with no visible streaks or edges; checked in black and white and corrected; layer opacity tuned so the effect is subtle; saved as <code class="inline">portrait-sculpted.psd</code>.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>The gray layer lands inside the L07 group.</b> The top layer of the expanded group was selected, so the new layer inherits the group's opacity. Drag it above the group, or collapse the group and select it before adding the layer.</li>
+          <li><b>Solid gray over the photo.</b> The mode stayed on Normal. Set the layer to Soft Light. (A transparent layer instead means the fill checkbox was skipped; it only appears after choosing Soft Light in the dialog.)</li>
+          <li><b>Streaks and blotches.</b> Flow at 100% or a hard brush. Undo, set Hardness 0 and Flow 5–10%, and brush over the plane many times.</li>
+          <li><b>Painting on the photo.</b> White and black paint appears directly on the face. Undo, select the gray layer.</li>
+          <li><b>Inventing light.</b> Dodging the shadow side "because it looks dark," or a symmetric map on a face lit from one side. Follow the light that's already there.</li>
+          <li><b>Chalky, overdone sculpting.</b> If you can point to it, it's too strong. Lower the layer opacity; that is the finishing move, not an admission of failure.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> C) Darkens (burns) that area and pushes that plane back; <b>Q2</b> A) Soft round, Hardness 0, Flow 5–10%, Opacity 100%; <b>Q3</b> D) The eye sockets, the sides of the nose, under the cheekbones, and under the jaw; <b>Q4</b> B) Color hides uneven sculpting; without it, lumps and streaks in the light become obvious; <b>Q5</b> C) Lower the gray layer's opacity until the sculpting is felt but not seen; <b>Q6</b> A) It's non-destructive and maskable, and you can dial the whole effect up or down afterward. Full explanations in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (homework): <em>Study a portrait you admire and, without touching the file, describe where its retoucher likely dodged and where they burned. Training your eye to see the light is half the skill.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the lesson's "going further": split the work into two gray layers, one coarse (big global light shaping) and one fine (a catch-light, individual lashes). Then over-dodge on purpose until it goes chalky and rescue it with opacity and a mask on the gray layer.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> three zones done well: burn under the cheekbones and under the jaw, dodge the nose bridge. Put <code class="inline">l08-light-map-INSTRUCTOR.png</code> on your screen for them (not the projector) if they are stuck on where to paint. Skip the three-moods variation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L09 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L09</span><h3>Eyes, Teeth &amp; Hair: Natural Finish (Lesson 3.3)</h3><span class="dur">47 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Brighten and sharpen eyes with a masked local edit</li>
+          <li>Whiten teeth by removing yellow first, then brightening, not the reverse</li>
+          <li>Tame flyaway hair and fill gaps without a helmet-hair look</li>
+          <li>Apply every finish through a mask so nothing bleeds where it shouldn't</li>
+          <li>Judge the natural line: the point where more becomes worse</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">4m</td><td>The goal (the last five percent) + local, masked, restrained</td></tr>
+          <tr><td class="t">11m</td><td>Guided build Step 1: eyes (Curves + optional High Pass)</td></tr>
+          <tr><td class="t">9m</td><td>Guided build Step 2: teeth (Hue/Saturation)</td></tr>
+          <tr><td class="t">9m</td><td>Guided build Step 3: hair (empty layer, Clone/Heal)</td></tr>
+          <tr><td class="t">8m</td><td>Guided build Step 4: final review, flip and toggle, in pairs</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal</td></tr>
+          <tr><td class="t">2m</td><td>Now You briefing (homework): three portraits, timed</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The last five percent (2m).</b> Show the L09 slider. <b>Say:</b> "The skin is untouched in this comparison. Only the eyes and teeth changed, and it's enough to make the face read as more awake. Done with restraint it lifts a portrait; overdone, it screams 'edited.' This lesson is about knowing exactly where to stop."</li>
+          <li><b>Local, masked, restrained (2m).</b> <b>Say:</b> "Every finish has one shape: make an adjustment, hide it behind a black mask, paint it back only where it belongs." Then the warning box: real eye whites are faintly gray or pink, real teeth faintly warm. <b>Say:</b> "Aim for clean, never glowing. Back off until you doubt you did anything, then stop there."</li>
+          <li><b>Step 1: eyes (11m).</b> Open <code class="inline">portrait-sculpted.psd</code> (or <code class="inline">l09-portrait-sculpted.jpg</code>). Add a <b>Curves</b> adjustment layer, lift the midtones a little. Invert the mask to black (<kbd>Ctrl/⌘ + I</kbd>), then paint white with a small soft brush over the iris and the whites. Then the optional sharpen: select the top layer and make a merged copy of everything below (<kbd>Ctrl + Alt + Shift + E</kbd> / <kbd>⌘ + ⌥ + ⇧ + E</kbd>), <b>Filter ▸ Other ▸ High Pass</b> at about 1–3 px, set the layer to <b>Overlay</b> or <b>Soft Light</b> so the gray drops out. <kbd>Alt</kbd>/<kbd>⌥</kbd>-click the Add Layer Mask button for a black mask and paint white over the iris only. <b>Say:</b> "Keep the catchlight sacred. Never paint it out; it's the life in the eye."</li>
+          <li><b>Step 2: teeth (9m).</b> Add a <b>Hue/Saturation</b> layer. Choose <b>Yellows</b>, drop the saturation; then switch to <b>Master</b> and raise the lightness slightly. <b>Say:</b> "Yellow out first, brightness second. Brighten a yellow tooth and you get a bright yellow tooth." Invert the mask to black (<kbd>Ctrl/⌘ + I</kbd>) and paint the effect onto the teeth only, feathering the gum line so there's no hard edge. On the practice file, the gums sit right above the teeth: zoom in.</li>
+          <li><b>Step 3: hair (9m).</b> Add an empty layer on top. Clone Stamp or Healing Brush, <b>Sample: All Layers</b>. Remove two flyaways against the background with short strokes that follow the hair direction. Then fill the thin gap in the hair on the viewer's right by cloning nearby strands along their natural flow. <b>Say:</b> "Leave a few stray hairs. Perfectly smooth hair looks like a wig." If anyone's hair layer ended up <em>below</em> the Curves or Hue/Sat layers, their clone samples the adjustments too; the fix is to keep it on top (or use the options bar's Ignore Adjustment Layers toggle).</li>
+          <li><b>Step 4: final review (8m, pairs).</b> Zoom out to fit. <b>View ▸ Flip Horizontal</b>. <b>Say:</b> "A mirrored view exposes anything overdone. It only flips the view, not the pixels, so choose it again to come back. <b>Image ▸ Image Rotation ▸ Flip Canvas Horizontal</b> also works, but it flips the real pixels, so you must flip back before saving." Then toggle all Module 3 work off and on. Pairs swap seats for two minutes each and answer one question aloud: <b>"Does the after look like a good day, or like a retouch?"</b> Critique the edit, never the face. Save the finished layered file.</li>
+          <li><b>Now You (2m briefing).</b> Homework: finish three portraits back to back and time it; make a deliberately over-finished version beside the restrained one; finish one shot for a magazine and for a LinkedIn headshot. "Going further": save the three finishing layers as a template group.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Finish the Portrait (the Module 3 deliverable)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">On <code class="inline">portrait-sculpted.psd</code> (or <code class="inline">l09-portrait-sculpted.jpg</code>): masked Curves on the eyes, optional High Pass sharpen masked to the iris, Hue/Sat on the teeth (Yellows down, then Master lightness up), an empty hair layer for flyaways and the gap, then the flip-and-toggle review in pairs. The lesson doesn't name the final file; have learners <b>File ▸ Save As</b> a new layered PSD (for example <code class="inline">portrait-finished.psd</code>) so <code class="inline">portrait-sculpted.psd</code> stays as a checkpoint.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> black masks on the Curves and Hue/Sat layers (mask thumbnail, not a white one); Yellows chosen before the saturation drop; the catchlight untouched; the hair layer on top with Sample: All Layers; a few strays left.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the Module 3 checklist: even skin from 3.1; form restored with dodge and burn from 3.2; eyes brightened and sharpened through a mask; teeth de-yellowed then gently lifted, masked; flyaways tamed with a few strays left, on their own layer; passes the flip-and-mirror test and reads natural, not retouched.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>The whole face got brighter.</b> The Curves mask is still white. Select the mask thumbnail and press <kbd>Ctrl/⌘ + I</kbd>, then paint white only on the eyes.</li>
+          <li><b>Bright yellow teeth, or blue-white teeth.</b> Brightened before removing yellow, or the Yellows saturation and Master lightness pushed too far. Yellow out first, lift gently, stop at "faintly warm."</li>
+          <li><b>Gray halo or crunchy iris.</b> The High Pass copy is on Normal (set Overlay or Soft Light), the radius is too large, or the mask covers the lids and lashes. Small radius, iris only.</li>
+          <li><b>Catchlight painted out.</b> Healing or cloning over the eye, or a mask that dims it. Undo; the catchlight stays.</li>
+          <li><b>Helmet hair.</b> Every stray cloned away, or long strokes that ignore the hair's flow. Short strokes along the strands; leave some strays.</li>
+          <li><b>Forgot to flip back.</b> They used Flip Canvas Horizontal and saved the mirrored pixels. Flip the canvas back and resave; next time use <b>View ▸ Flip Horizontal</b>.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> A) Make an adjustment, hide it behind a black mask, and paint it back only where it belongs; <b>Q2</b> D) Drop Yellows saturation first, then raise Master lightness slightly; <b>Q3</b> B) Merged copy, High Pass at about 1–3 px, blend Overlay or Soft Light, black mask painted white over the iris only; <b>Q4</b> C) On an empty layer, Clone/Heal with Sample: All Layers, short strokes along the hair's direction, leaving a few strays; <b>Q5</b> D) View ▸ Flip Horizontal flips only the view; Flip Canvas flips the pixels, so you must flip back before saving; <b>Q6</b> B) Global corrections → frequency separation → dodge &amp; burn → eyes/teeth/hair. Full explanations in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (in class if time, else homework): <em>Where is your natural line? Describe a finish you have seen (an ad, a friend's photo) that crossed it, and name exactly which move gave it away.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the template group from "going further": group the three finishing layers, name it <code class="inline">Finish</code>, and drag it into <code class="inline">l09-portrait-sculpted.jpg</code> or a second portrait, then repaint only the masks. Then the magazine vs LinkedIn pair: same face, two amounts.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> eyes (Curves only, no High Pass) and teeth. Those two finishes plus the flip test are a complete deliverable; the hair layer can come at home. Keep them on the practice file, where the flyaways are obvious and against a plain background.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Closing the Session</h2><span class="rule"></span></div>
+  <div class="note lab">
+    <div class="t">Module 3 wrap-up (8 min, 2:52–3:00)</div>
+    <p>Everyone should leave with three layered files: <code class="inline">skin-retouched.psd</code>, <code class="inline">portrait-sculpted.psd</code>, and the finished portrait. Recap the pipeline, in order: <b>global corrections → frequency separation (clean) → dodge &amp; burn (sculpt) → eyes/teeth/hair (finish).</b> Exit ticket (on a sticky note): "Tone on ___, texture on ___, and I stop when ___." Homework from the lesson's "Before the Next Module": take one portrait through the complete 3.1 → 3.2 → 3.3 pipeline and keep the layered file; save the finishing layers as a reusable group; finish the three Now You variations started today; write the journal entries. Preview Session 4 (Module 4, Commercial Compositing): "You can now perfect a single subject. Next we combine them: matching perspective, light, shadow, and atmosphere so two photos shot on different days look like one impossible scene."</p>
+  </div>
+  <div class="note">
+    <div class="t">Growth-mindset moment</div>
+    <p>Restraint is the hardest retouching skill, and it doesn't feel like progress while you're practicing it: learners spend ten minutes on a cheekbone and can barely see the change. Name that out loud: "If you doubt you did anything, toggle the layer. That gap between 'I can barely see it' and 'wow, the before looks flat' is exactly what clients pay for." Celebrate the room's first clean checkpoint in L07 and the first flip test that passes.</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <span class="bio">© 2026 Ray de la Paz · Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Instructor Kit · Module 3 · Facilitator Guide · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+INSTRUCTOR ONLY: ONE GOOD ANSWER TO l21-vague-brief.txt
+(There are many good answers. Accept any version where every line is checkable.)
+
+1. OBJECTIVE
+   Launch Halden Cold Brew (a fictional cafe brand) online: one hero image that makes a
+   phone-scrolling customer stop and read the product name.
+
+2. AUDIENCE
+   Local 20-35-year-old commuters who follow the cafe on social media; they see it on a
+   phone, in a feed, for about one second.
+   ("Young people should like it" -> a named group, a device, a viewing time.)
+
+3. DELIVERABLES + SPECS
+   - Web hero banner 3000 x 2000 px, sRGB JPG
+   - Feed post 1080 x 1350 px (4:5), sRGB JPG
+   - Story 1080 x 1920 px (9:16), sRGB JPG, key content inside the safe zone
+   - Layered master .psd with artboards
+   ("Something for online" -> three named sizes, one color space, one master.)
+
+4. CONSTRAINTS
+   - Brand colors: deep green #1F4D3F, cream #F3E9DC; one accent allowed
+   - One type family, two weights at most
+   - Use the supplied logo file; do not redraw it
+   - Final files due Friday, 5 p.m.
+   ("Our colors, I guess?" -> hex values. "Soon-ish" -> a date and a time.)
+
+5. SUCCESS CRITERIA (a checklist)
+   [ ] Product name readable on a phone-sized thumbnail (about 300 px wide)
+   [ ] One focal point: the can; it survives the squint test
+   [ ] Light direction on the can matches the scene (window light from the left)
+   [ ] Contact shadow present; nothing floats
+   [ ] Warm grade: no pure-blue shadows anywhere
+   [ ] All three sizes exported at spec from one master
+   ("Make it pop" -> readable at thumbnail size + one focal point.
+    "You'll know it when you see it" -> this list.)
+
+6. REFERENCES / MOODBOARD (6-12, each annotated)
+   - Morning-window light on a counter  -> the light direction and warmth
+   - An editorial food photo with lots of negative space -> "clean"
+   - A poster with one heavy sans headline -> "bold"
+   - A matte, low-contrast color grade -> "modern, but not cold"
+   ("Clean but bold", "modern vibe, but not cold" -> pictures, each with a reason.)

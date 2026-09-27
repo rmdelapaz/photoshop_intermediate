@@ -1,0 +1,48 @@
+NORTHWIND · SUNRISE BLEND LAUNCH
+Campaign brief for Lesson 5.3 (L15), the Module 5 deliverable
+=============================================================
+
+One master PSD, four artboards, shared art and type. Build the poster first.
+
+ARTBOARDS (New document, RGB, Artboard on)
+  Poster      3300 x 5100 px    (print; design this one first, at full size)
+  IG square   1080 x 1080 px
+  Story       1080 x 1920 px    (keep text clear of the top and bottom UI overlays)
+  Banner      1500 x  500 px    (keep text clear of the crop edges)
+
+SHARED ART (File > Place Linked; keep these files in ONE project folder, never move them)
+  Logo        logo.png          (a copy of l14-logo-v1.png, or your own logo from L14)
+  Key art     l15-key-art.png   (transparent hero: cup, steam, sun) or your Module 4 composite
+  Background  l15-background-light.jpg   (swap for l15-background-dark.jpg for the dark set)
+
+SHARED TYPE (your Lesson 5.1 Paragraph Styles; copy a styled text layer in to bring them)
+  Headline (H1 / Display)   Sunrise Blend
+  Subhead                   Slow-roasted, small batch
+  Tagline (H2)              Tasted, not guessed.
+  CTA (Subhead + Emphasis)  Order a sample box
+  Caption                   northwindroasters.example
+
+  Use fewer words on smaller sizes. The banner usually needs only the logo,
+  the headline and the CTA; the story and the square can drop the caption.
+
+RECOMPOSE, DON'T SQUASH
+  Poster  (portrait)   stack: key art large, headline, subhead, CTA, logo low
+  Square  (1:1)        center the key art; headline above or below it
+  Story   (9:16)       stack vertically; everything inside the safe zone
+  Banner  (3:1)        spread horizontally: key art one side, headline + CTA the other
+
+OPTIONAL SHARED GRADE
+  The same adjustment layer (or a Color Lookup layer with your Module 4 LUT) at the
+  top of each artboard. Adjustment layers cannot be linked: update each copy.
+
+EXPORT
+  File > Export > Export As, all artboards, PNG or JPG, 1x.
+  (File > Export > Artboards to Files is the batch alternative.)
+
+PROVE IT
+  Open logo.png, make a visible change (or paste in l14-logo-v2.png), save.
+  Every artboard updates (else Layer > Smart Objects > Update All Modified Content).
+  Re-export the whole set.
+
+Safe-zone overlays (guides only, delete before export):
+  l15-safe-zones-story.png, l15-safe-zones-banner.png

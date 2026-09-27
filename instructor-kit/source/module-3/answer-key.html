@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Answer Key: Module 3</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">answers &amp; solutions · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Answer Key</div>
+    <h1>Module 3: Answers &amp; Lab Notes</h1>
+    <p class="sub">Every self-check answered and explained, reference answers for the write-in exercises on the practice files, and lab notes: what a correct result looks like, the common wrong results and why they happen, and how to check each one quickly at a learner's screen.</p>
+    <div class="meta-row"><span class="chip">Lessons <b>L07–L09</b> (3.1–3.3)</span><span class="chip"><b>18</b> quiz items</span><span class="chip"><b>3</b> hands-on labs</span></div>
+  </header>
+
+  <div class="note"><div class="t">Numbering matches the workbook</div><p>The course lessons have no built-in quizzes, so the self-checks were written for this kit from each lesson's content. The workbook and this key use the same question numbers and option letters.</p></div>
+  <div class="note warn"><div class="t">Grading portrait work</div><p>Grade the <em>edit</em>, never the subject's appearance. Written and spoken feedback should name a technique ("the burn under the left cheekbone has a hard edge"), not a feature of the person. Permanent features (freckles, moles, lines) left in place are correct, not missed work.</p></div>
+
+  <!-- L07 -->
+  <div class="sec"><h2>L07 · Skin &amp; Frequency Separation <span style="font-size:.7rem;color:var(--ink-3);font-family:'JetBrains Mono',monospace">(Lesson 3.1 · workbook self-check)</span></h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">In frequency separation, what does the <b>low</b>-frequency layer hold?</div><div class="opts"><div class="opt correct">B) Tone and color: the gradual shifts, patches of redness, and shading</div></div><div class="why"><b>Why:</b> Low frequency is the slow change (cheek to shadow, redness, an uneven tan). Pores, fine hairs, and grain are high frequency (A). The neutral gray texture map (D) describes the High layer.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">How far should you raise the Gaussian Blur on the Low layer?</div><div class="opts"><div class="opt correct">D) Just until the pores vanish but the features stay, and note the radius</div></div><div class="why"><b>Why:</b> The lesson's rule, often 4–8 px. Blurring the features away (A) moves them into High; a fixed number (B) ignores pore size. Flat gray (C) is what High looks like after Apply Image, not a blur target.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">Your file is <b>16 Bits/Channel</b>. Which Apply Image settings build the High layer from Low?</div><div class="opts"><div class="opt correct">A) Blending Add, Invert ticked, Scale 2, Offset 0</div></div><div class="why"><b>Why:</b> That is the 16-bit recipe. B is the 8-bit recipe; on a 16-bit file it won't add back to the original. There is no second radius to enter because Apply Image subtracts the blurred Low layer itself. Then set High to Linear Light.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">You want to calm the redness around the nose without moving any pores. Where and how?</div><div class="opts"><div class="opt correct">C) On Low, with a big soft Healing Brush (Sample: Current Layer) or a low-opacity Mixer Brush</div></div><div class="why"><b>Why:</b> Redness is tone, so it lives on Low, and because you're only on the color layer, the texture never moves. Healing on High with All Layers (A) drags color onto the texture layer; the Background (B) isn't part of the separation; blurring High (D) erases pores.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">Your High layer shows the eyes, lips, and the shape of the face, not just fine texture. What happened?</div><div class="opts"><div class="opt correct">A) The blur radius on Low was too large, so real features moved into the texture layer</div></div><div class="why"><b>Why:</b> Straight from the lesson FAQ. Rebuild with a smaller radius until High is mostly flat gray with only fine detail. The opposite symptom, a nearly blank High layer, means the radius was too small (B). Linear Light (C) is correct; bit depth (D) affects whether the stack adds back, not what lands on High.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">You retouch a close beauty shot and a candid taken at arm's length. Which usually needs the larger blur radius?</div><div class="opts"><div class="opt correct">D) The close beauty shot, because its pores are bigger in pixels</div></div><div class="why"><b>Why:</b> The radius follows pore size in pixels, which is the point of the Now You. The close shot also needs far more restraint. Bit depth (C) changes the Apply Image numbers, not the radius.</div></div>
+  <div class="note"><div class="t">Exercise reference: which layer fixes it? (practice file)</div><p>On <code class="inline">l07-portrait-retouch.jpg</code> (see <code class="inline">l07-flaw-map-INSTRUCTOR.png</code>). <b>Low, tone and color (orange A–I on the map):</b> redness on the nose, both cheeks, and the chin; an uneven warm patch on the forehead; a muddy shadow under each eye; a sallow patch at the viewer's-left temple; a purplish patch on the viewer's-right jaw. <b>High, texture (red 1–10):</b> ten raised red blemishes across the forehead, cheeks, jaw, and chin, two of them with a pale head. <b>Neither (keep):</b> about 36 freckles across the nose and upper cheeks, the mole beside the mouth, and the two laugh lines. The flyaways, stray hairs at the temples, and the gap in the hair are texture too, but they belong to L09's hair layer; accept either column. For learners' own portraits, accept any sort that puts tone on Low and texture on High; challenge anything permanent in either column.</p></div>
+  <div class="note"><div class="t">Exercise reference: the radius follows the pores</div><p>Approximate radii at which the pores just vanish on the practice files: <b>main portrait</b> about 5–6 px; <b>close beauty shot</b> about 10–12 px (pores roughly twice as large in pixels); <b>candid at arm's length</b> about 2–3 px. Accept anything within a pixel or two that follows the same order. The written comparison should say the close shot needs the biggest radius <em>and</em> the most restraint; the plain soft-brush version loses the pores along with the redness.</p></div>
+  <div class="note lab"><div class="t">Lab notes: Retouch the Skin</div>
+    <p><b>Correct result:</b> the Layers panel shows the untouched Background, then a group holding <code class="inline">Low</code> (Normal, blurred) and <code class="inline">High</code> (Linear Light, gray texture) at roughly 70–85% opacity. Before any painting, the stack looked identical to the original. After: the redness, under-eye mud, sallow temple, and purplish jaw are calmer but still faintly present; the ten blemishes are gone with no soft patch or color smear; freckles, mole, and laugh lines remain; at 100% zoom the pore grain is continuous across the face. Saved as <code class="inline">skin-retouched.psd</code> with layers.</p>
+    <p><b>How to check fast:</b> hide the group (the original returns), show it (calmer tone, same grain). Hide only <code class="inline">High</code>: Low should look soft and poreless. Check the title bar against the recipe they say they used.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Gray mess or shifted contrast before any painting.</b> The 8-bit recipe on a 16-bit file (or the reverse), Linear Light not set, or Apply Image's Layer not <code class="inline">Low</code>. Delete High, duplicate the original again, redo.</li>
+      <li><b>Features visible on High.</b> Blur radius too large. On the main practice file anything much above 8 px starts pulling the lids and lips onto High.</li>
+      <li><b>Color smear where a blemish was.</b> Healed on High with Sample: All Layers or Current &amp; Below. Redo with Sample: Current Layer.</li>
+      <li><b>A faint pink ghost where a blemish was.</b> Not an error: the blemish had some tone as well as texture. Even that spot on Low.</li>
+      <li><b>Poreless, plastic skin.</b> Group at 100%, or heavy painting on Low that flattened the shading. Lower the group; redo Low with lighter strokes.</li>
+      <li><b>Freckles or the mole removed.</b> The clean sweep. They're permanent; heal them back from the Background or undo.</li>
+    </ul>
+  </div>
+
+  <!-- L08 -->
+  <div class="sec"><h2>L08 · Dodge &amp; Burn Sculpting <span style="font-size:.7rem;color:var(--ink-3);font-family:'JetBrains Mono',monospace">(Lesson 3.2 · workbook self-check)</span></h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">On a 50% gray layer set to Soft Light, what does painting with <b>black</b> do?</div><div class="opts"><div class="opt correct">C) Darkens (burns) that area and pushes that plane back</div></div><div class="why"><b>Why:</b> In Soft Light, mid-gray is invisible; slightly darker than gray burns and slightly lighter dodges. At Flow 5–10% the black builds up as a gentle shadow, not paint (D). A describes white.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">Which brush setup matches the lesson?</div><div class="opts"><div class="opt correct">A) Soft round, Hardness 0, Flow 5–10%, Opacity 100%</div></div><div class="why"><b>Why:</b> Low flow lets many passes build light gradually; Hardness 0 leaves no edge. Hard brushes and full flow (B, C) are the usual cause of streaks. The Dodge tool (D) edits pixels directly.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">According to the lesson's face map, which planes do you <b>burn</b>?</div><div class="opts"><div class="opt correct">D) The eye sockets, the sides of the nose, under the cheekbones, and under the jaw</div></div><div class="why"><b>Why:</b> Burn what should recede. A, B, and C are all dodge zones: cheekbone tops, nose bridge and tip, forehead center, brow bone.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">Why add a temporary Black &amp; White adjustment layer while you work?</div><div class="opts"><div class="opt correct">B) Color hides uneven sculpting; without it, lumps and streaks in the light become obvious</div></div><div class="why"><b>Why:</b> It's a diagnostic view, deleted before saving. The deliverable is in color (A); Soft Light works on color images (C); the gray layer stays invisible regardless (D).</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">You finish sculpting and a friend can point to exactly where you dodged. What's the lesson's fix?</div><div class="opts"><div class="opt correct">C) Lower the gray layer's opacity until the sculpting is felt but not seen</div></div><div class="why"><b>Why:</b> The lesson's two rules: very low flow while painting, and lower the layer's opacity at the end. "If a client can point to your sculpting, it is too strong." Duplicating (A) or adding more (D) makes it stronger; Normal mode (B) shows solid gray.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">For client work you might revise, why does the gray layer beat the Dodge and Burn tools?</div><div class="opts"><div class="opt correct">A) It's non-destructive and maskable, and you can dial the whole effect up or down afterward</div></div><div class="why"><b>Why:</b> The lesson FAQ: the tools are fine for quick throwaway edits, but they change pixels directly. B, C, and D are false.</div></div>
+  <div class="note"><div class="t">Exercise reference: read the light first (practice file)</div><p>On the practice portrait the window light comes from the <b>viewer's left</b>: the background is brighter on the left, the left side of the hair is lighter, the catchlights sit upper-left in each pupil, and the nose shadow falls on the viewer's right. A good plan dodges the forehead center, nose bridge, and left cheekbone most (the right cheekbone less), and burns the viewer's-right temple, under the right cheekbone, and the right jaw most. <code class="inline">l08-light-map-INSTRUCTOR.png</code> shows a reference map. Typical final gray-layer opacity: 40–80%; judge by the "felt, not seen" test, not the number. For the three-moods variation, accept any answer where the side-light version burns one whole side and the top-light version lifts the forehead and nose while burning under the brows, nose, and jaw.</p></div>
+  <div class="note lab"><div class="t">Lab notes: Sculpt the Face</div>
+    <p><b>Correct result:</b> above the L07 group (not inside it) sits one layer in Soft Light filled with 50% gray, carrying soft white and black strokes, at reduced opacity. With it on, the face has more obvious volume: cheekbones and nose bridge lifted, the sockets, sides of the nose, and hollows under the cheekbones and jaw deeper, stronger on the side away from the light. No streaks, hard edges, or blotches, even under a Black &amp; White check. No Black &amp; White layer left in the file. Saved as <code class="inline">portrait-sculpted.psd</code>.</p>
+    <p><b>How to check fast:</b> <kbd>Alt</kbd>/<kbd>⌥</kbd>-click the gray layer's eye to see the map alone: it should look like soft clouds that follow the bones, not stripes. Then toggle the layer: the "off" state should look flat by comparison.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Sculpting is weaker than expected, or the group opacity changes it.</b> The gray layer landed inside the L07 group. Drag it out, above the group.</li>
+      <li><b>Solid gray veil.</b> Mode left on Normal.</li>
+      <li><b>Visible stripes.</b> Flow too high or a hard brush; one heavy pass instead of many light ones.</li>
+      <li><b>Paint on the face, gray layer untouched.</b> The photo or a layer inside the group was selected.</li>
+      <li><b>Flat or odd-looking face.</b> Symmetric sculpting on a face lit from one side, or dodging the shadow side. Follow the existing light.</li>
+      <li><b>Chalky highlights.</b> Over-dodging. Lower the layer's opacity or mask back the worst spots.</li>
+    </ul>
+  </div>
+
+  <!-- L09 -->
+  <div class="sec"><h2>L09 · Eyes, Teeth &amp; Hair: Natural Finish <span style="font-size:.7rem;color:var(--ink-3);font-family:'JetBrains Mono',monospace">(Lesson 3.3 · workbook self-check)</span></h2><span class="rule"></span></div>
+  <div class="q"><div class="qn">Q1</div><div class="qt">What shape does every finishing move in this lesson share?</div><div class="opts"><div class="opt correct">A) Make an adjustment, hide it behind a black mask, and paint it back only where it belongs</div></div><div class="why"><b>Why:</b> "Nothing global, everything local." B is global; C is the L07 technique; D is destructive.</div></div>
+  <div class="q"><div class="qn">Q2</div><div class="qt">What's the correct order for whitening teeth with a Hue/Saturation layer?</div><div class="opts"><div class="opt correct">D) Drop Yellows saturation first, then raise Master lightness slightly</div></div><div class="why"><b>Why:</b> "Yellow out first, brightness second." Brightening first (A) gives a bright yellow tooth; pushing lightness hard (C) gives the glowing, toothpaste-white look the lesson warns against.</div></div>
+  <div class="q"><div class="qn">Q3</div><div class="qt">Which is the lesson's method for sharpening the iris?</div><div class="opts"><div class="opt correct">B) Merged copy, High Pass at about 1–3 px, blend Overlay or Soft Light, black mask painted white over the iris only</div></div><div class="why"><b>Why:</b> The blend mode makes the gray drop out; the black mask keeps the sharpening on the iris. A and C are unmasked; D sharpens (and risks damaging) the catchlight, which the lesson calls sacred.</div></div>
+  <div class="q"><div class="qn">Q4</div><div class="qt">How do you tame flyaway hair the lesson's way?</div><div class="opts"><div class="opt correct">C) On an empty layer, Clone/Heal with Sample: All Layers, short strokes along the hair's direction, leaving a few strays</div></div><div class="why"><b>Why:</b> A dedicated layer keeps it reversible; All Layers lets the empty layer read the image below. Removing every stray (A) looks like a wig; B is destructive; D softens the whole hairline.</div></div>
+  <div class="q"><div class="qn">Q5</div><div class="qt">What's the difference between <b>View ▸ Flip Horizontal</b> and <b>Image ▸ Image Rotation ▸ Flip Canvas Horizontal</b>?</div><div class="opts"><div class="opt correct">D) View ▸ Flip Horizontal flips only the view; Flip Canvas flips the pixels, so you must flip back before saving</div></div><div class="why"><b>Why:</b> Straight from Step 4. Both are useful for the mirrored audit, but only the View command is safe to forget about.</div></div>
+  <div class="q"><div class="qn">Q6</div><div class="qt">On a real job, in what order do the Module 3 steps go?</div><div class="opts"><div class="opt correct">B) Global corrections → frequency separation → dodge &amp; burn → eyes/teeth/hair</div></div><div class="why"><b>Why:</b> The lesson FAQ: cleaning after sculpting undoes your light; finishing before cleaning wastes effort. The pipeline order is the workflow.</div></div>
+  <div class="note"><div class="t">Exercise reference: finishing settings (practice file)</div><p>On <code class="inline">l09-portrait-sculpted.jpg</code> the eye whites start dull and slightly gray (about RGB 206, 198, 188) with faint pink veins, and the teeth start clearly yellow (about RGB 226, 204, 152). Reasonable results: a gentle Curves midtone lift painted into the iris and whites; High Pass 1–3 px on Overlay or Soft Light, iris only; Yellows saturation pulled down substantially and Master lightness raised only a few points. The eye whites should still read faintly gray or pink and the teeth faintly warm. Hair: 17 flyaways against the background plus two stray hairs over the temples (blue circles on the flaw map) and a thin gap in the hair on the viewer's right. Most flyaways removed, a few deliberately kept, and the gap filled along the strands' downward flow. For the magazine vs LinkedIn pair, accept any answer where the LinkedIn version is visibly lighter-handed.</p></div>
+  <div class="note lab"><div class="t">Lab notes: Finish the Portrait (Module 3 deliverable)</div>
+    <p><b>Correct result:</b> on top of the L07 group and the L08 gray layer sit: a Curves layer with a black mask painted white over the irises and whites; optionally a High Pass layer (Overlay or Soft Light) with a black mask painted over the irises only; a Hue/Saturation layer (Yellows desaturated, Master lightness slightly up) with a black mask painted over the teeth, soft at the gum line; an empty-looking hair layer with the cloned strands. Catchlights intact. The whole thing passes the flip test, and toggling all Module 3 work off makes the before look tired rather than making the after look retouched. Saved as a new layered PSD so <code class="inline">portrait-sculpted.psd</code> stays as a checkpoint.</p>
+    <p><b>How to check fast:</b> look at the mask thumbnails (black with small white marks), then toggle each finishing layer on its own. Each should be a small, local change you have to look for.</p>
+    <p><b>Common wrong results and why:</b></p>
+    <ul class="tick">
+      <li><b>Whole face brighter.</b> The Curves mask was never inverted.</li>
+      <li><b>Glowing eyes or white-white teeth.</b> Curves or Master lightness pushed too far. Pull back until "clean," not "glowing."</li>
+      <li><b>Bright yellow teeth.</b> Lightness raised but Yellows saturation not reduced (or edited on Master instead of Yellows).</li>
+      <li><b>Gray halo around the eyes.</b> High Pass layer left on Normal, radius too large, or the mask spills onto lids and lashes.</li>
+      <li><b>Missing catchlight.</b> Cloned or masked over. Undo; it stays.</li>
+      <li><b>Double adjustment in cloned hair (brighter or grayer patches).</b> The hair layer sits below the Curves or Hue/Sat layer and cloned with All Layers. Move it to the top, or use the options bar's Ignore Adjustment Layers toggle.</li>
+      <li><b>Helmet hair.</b> Every stray removed, or long strokes across the flow.</li>
+      <li><b>Mirrored file saved.</b> Flip Canvas used and not flipped back.</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <span class="bio">© 2026 Ray de la Paz · Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Instructor Kit · Module 3 · Answer Key · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

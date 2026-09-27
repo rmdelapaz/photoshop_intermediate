@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide: Module 2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">contains answers &amp; timing · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Facilitator Guide</div>
+    <h1>Module 2: Color &amp; Tone, Deep</h1>
+    <p class="sub">How to teach the three lessons that take color from "looks fine on my screen" to a professional pipeline: set up the container (working space and bit depth) and diagnose before editing, author a cinematic grade and bottle it as a LUT, then split-tone, match a companion image, soft-proof for print and deliver one look to two destinations. One file (<code class="inline">grade-working.psd</code>, then <code class="inline">finish-working.psd</code>) carries the grade from L05 into L06, so protect it.</p>
+    <div class="meta-row">
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip"><b>3 hrs</b> session</span>
+      <span class="chip">Lessons <b>L04–L06</b> (2.1–2.3)</span>
+      <span class="chip">Level <b>Intermediate</b></span>
+      <span class="chip">Maps to <b>Session 2</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>How to Use This Guide</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li>Same rhythm as Module 1: <b>Frame</b> → <b>Demo</b> → <b>Guided build</b> → <b>Solo variation</b> → <b>Check</b>. Every lesson ends with a recipe card, a completion checklist and a journal prompt; use them as your closers.</li>
+    <li><b>Demo the clicks on the projector; judge color on your own screen.</b> This is the one module where the projector actively lies. Show <em>where</em> things are and <em>what order</em> they go in; send learners to their own monitors to judge <em>how much</em>.</li>
+    <li>These learners already know Curves, masks and Camera Raw from the intro. The new material is mostly <b>invisible</b>: profiles, bit depth, conversions, gamut. Make it visible every time: the banding test, the lagoon file with and without its profile, the gamut warning graying out neon. Seeing beats explaining.</li>
+    <li><span style="color:var(--lab);font-weight:600">Teal</span> = hands-on, <span style="color:var(--warn);font-weight:600">amber</span> = watch-outs. In Module 2 the watch-outs are <b>Assign instead of Convert</b>, <b>editing the master instead of a duplicate</b>, and <b>overcooked grades</b> (Gradient Map at 100%, split-tone in the mids).</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="t">The #1 risk of Module 2: "it changed color when I…"</div>
+    <p>Every profile dialog is a chance to relabel a file by accident. The two costly clicks are <b>Assign Profile</b> where <b>Convert to Profile</b> was meant, and answering an open-time mismatch dialog with <b>"Convert document's colors to the working space"</b> or <b>"Discard the embedded profile"</b> without reading it. Give the room one rule and write it on the board: <b>"When Photoshop asks about a profile, read the dialog out loud before clicking. On open: use the embedded profile. At the end: Convert, on a duplicate."</b> Also ask learners to switch off Night Light (Windows) or True Tone / Night Shift (Mac) and set brightness to about the middle; a warm screen makes every grade too cool.</p>
+  </div>
+
+  <div class="sec"><h2>Before Session 2</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ Copy <code class="inline">labs/module-2/practice/</code> to each machine (or a shared drive): the 16-bit sky TIFF, five histogram drills, the lagoon pair (tagged and untagged), the studio portrait, the pier, the grade test chart, the companion portrait, the three-frame match set and the neon soft-proof file. Keep <code class="inline">labs/module-2/instructor/</code> (histogram answers, fallback LUT) on your machine only. As always, never hand out the course site's licensed <code class="inline">images/</code> folder.</li>
+    <li>☐ Remind learners (in the Session 1 wrap-up or by email) to bring: <b>a favorite photo they want to grade</b> (a portrait is ideal, because L06 split-tones the same file), <b>a second photo that should sit in the same set</b>, and <b>one deliberately vivid image</b> (neon, sunset, saturated product). Largest original files, not messaging-app copies. Details in <code class="inline">labs/module-2/README.md</code>.</li>
+    <li>☐ On every machine, open <b>Edit ▸ Color Settings</b> once and note what is there. If your lab machines are shared, decide in advance whether learners may change them (they should, for this session) and how you will reset them afterward.</li>
+    <li>☐ Do a dry run of <b>File ▸ Export ▸ Color Lookup Tables</b> on a Background layer + one Curves layer, so you have seen the dialog before learners do. Load <code class="inline">labs/module-2/instructor/l05-teal-gold-fallback.cube</code> once in a Color Lookup layer so you know it works on your version.</li>
+    <li>☐ Find out which press or printer profile your learners are likely to use (a local lab, an online printer). If none, <b>U.S. Web Coated (SWOP) v2</b> is the lesson's stand-in and ships with Photoshop.</li>
+    <li>☐ Open <b>lesson_04.html</b>, <b>lesson_05.html</b> and <b>lesson_06.html</b> in browser tabs for the before/after sliders and figures.</li>
+  </ul>
+
+  <div class="sec"><h2>Session 2 Agenda (3 hours)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Clock</th><th>Segment</th><th>Min</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="t">0:00–0:10</td><td>Warm-up: Module 1 recap + screen check</td><td class="t">10</td><td>Two volunteers show their hard cutout. Quick recall: "which mask would you use for a bright sky?" (a luminosity mask). Screen settings reminder; state today's destination: one look, two deliveries.</td></tr>
+      <tr><td class="t">0:10–0:55</td><td><b>L04</b> (Lesson 2.1) Color Management &amp; Working Spaces</td><td class="t">45</td><td>Build: Color Settings, histogram diagnosis, the banding proof, a correct sRGB export. Solo variation starts here, finishes at home.</td></tr>
+      <tr><td class="t">0:55–1:50</td><td><b>L05</b> (Lesson 2.2) Grading with Curves, Gradient Maps &amp; LUTs</td><td class="t">55</td><td>Build: a teal-and-gold grade on the portrait, saved as <code class="inline">grade-working.psd</code>, bottled as a <code class="inline">.cube</code> and poured onto the pier.</td></tr>
+      <tr><td class="t">1:50–2:02</td><td><b>Break</b></td><td class="t">12</td><td>Everyone saves <code class="inline">grade-working.psd</code> before leaving the seat.</td></tr>
+      <tr><td class="t">2:02–2:52</td><td><b>L06</b> (Lesson 2.3) Match, Split-Tone &amp; Soft-Proof</td><td class="t">50</td><td>Build: split-tone, match the companion, soft-proof, deliver web + print (the Module 2 deliverable). Solo variation is homework.</td></tr>
+      <tr><td class="t">2:52–3:00</td><td>Wrap-up &amp; exit ticket</td><td class="t">8</td><td>One volunteer shows their web JPG next to the soft-proofed master. Recap, homework, preview Session 3.</td></tr>
+      <tr><td class="t"><b>Total</b></td><td></td><td class="t"><b>180</b></td><td>Add a one-minute stand-and-stretch inside L06, between Step 2 and Step 3.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The lesson pages estimate 50 + 60 + 55 = 165 minutes for a solo learner; the room has 150 once the warm-up, break and wrap are in. The difference comes out of the "Now You" solo variations: each one <b>starts in class and finishes at home</b> (L04's five-histogram drill and two-way export, L05's three LUTs, L06's three-photo match). If you run long, protect the L06 Guided Build, especially <b>Step 4, deliver both files</b>: that is the Module 2 deliverable. Shorten the L04 Color Settings tour first (the figure on the lesson page carries it), then the L05 local-refinement step.</p>
+
+  <div class="sec"><h2>Module at a Glance</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Lesson</th><th>Topic</th><th>Time</th><th>Learners leave able to…</th></tr></thead>
+    <tbody>
+      <tr><td class="t">L04 (2.1)</td><td>Color Management &amp; Working Spaces</td><td class="t">45m</td><td>Set Color Settings deliberately, work in 16-bit, diagnose from the histogram in one sentence, and Convert (not Assign) to sRGB on a duplicate for the web</td></tr>
+      <tr><td class="t">L05 (2.2)</td><td>Grading with Curves, Gradient Maps &amp; LUTs</td><td class="t">55m</td><td>Build a grade in order (neutral base, contrast, per-channel color, a blended Gradient Map, a masked refinement) and export it as a reusable LUT</td></tr>
+      <tr><td class="t">L06 (2.3)</td><td>Match, Split-Tone &amp; Soft-Proof</td><td class="t">50m</td><td>Split-tone by zone, match a companion image with Color Sampler + Curves, soft-proof and fix gamut warnings, and deliver web + print files</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The module is one story: <b>build a container you can trust → author a look and bottle it → finish it and ship it correctly to screen and paper.</b> The mantras stack up: <em>capture wide, edit deep, convert down last</em> · <em>correct, then grade, then bottle</em> · <em>what you see is only trustworthy once you have proofed it.</em></p>
+
+  <div class="sec"><h2>Lesson Plans</h2><span class="rule"></span></div>
+
+  <!-- L04 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L04</span><h3>Color Management &amp; Working Spaces (Lesson 2.1)</h3><span class="dur">45 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Explain working spaces (sRGB, Adobe RGB, ProPhoto) and pick the right one for the job</li>
+          <li>Say why you edit in 16-bit and what banding actually is</li>
+          <li>Read the histogram and diagnose an image before touching a slider</li>
+          <li>Set up Photoshop's Color Settings once, correctly, for the rest of the course</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">4m</td><td>The goal (banding slider) + mental model: a color container</td></tr>
+          <tr><td class="t">6m</td><td>Which working space? Convert vs. Assign (lagoon demo)</td></tr>
+          <tr><td class="t">3m</td><td>Color Settings, as a diagram</td></tr>
+          <tr><td class="t">24m</td><td>Guided build: Steps 1–4 (6 + 8 + 6 + 4)</td></tr>
+          <tr><td class="t">3m</td><td>Now You: start the histogram drill (finish at home with the two-way export)</td></tr>
+          <tr><td class="t">5m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (2m).</b> Drag the L04 slider slowly across the banded sky. <b>Say:</b> "Same adjustment on both sides. The only difference is the container. This is the least glamorous lesson in the course and quietly the most important: get the pipeline right and every grade after it is trustworthy."</li>
+          <li><b>A color container (2m).</b> Draw a box on the board. Its <b>width</b> is the working space (gamut); the <b>lines inside it</b> are the bit depth. <b>Say:</b> "8-bit gives you 256 steps per channel; 16-bit gives you over 32,000. And a number like R 220 means nothing until you know the container: 220 in sRGB is a different real-world color from 220 in Adobe RGB. Color management is just keeping track of the container." Show Figure 1: <b>capture wide, edit wide and deep, convert down to the destination at the very end.</b></li>
+          <li><b>Which working space? (3m).</b> Walk the three-row table: <b>sRGB</b> for web, social, email ("assume the internet is sRGB"); <b>Adobe RGB</b> for print (it holds cyans and greens sRGB clips); <b>ProPhoto</b> for heavy RAW grading and archival masters, <b>always with 16-bit</b>. <b>Say:</b> "Bigger isn't automatically better. ProPhoto in 8-bit bands badly, and much of it is imaginary color no device shows."</li>
+          <li><b>Convert vs. Assign (3m).</b> Open <code class="inline">l04-lagoon-adobergb.jpg</code> (answer the mismatch dialog with <b>Use the embedded profile</b>). Then open <code class="inline">l04-lagoon-untagged.jpg</code>: same numbers, no label, and the water and parrot look duller. <b>Say:</b> "Identical pixel values. The only thing missing is the container label, so Photoshop reads them as the wrong space." On the untagged copy, <b>Edit ▸ Assign Profile</b> and pick Adobe RGB (1998): it snaps to match. <b>Say:</b> "That's the one honest use of Assign: labeling a file whose real space you know. At the end of a job you never relabel; you <b>Convert</b>, which remaps the numbers so the color keeps its appearance."</li>
+          <li><b>Color Settings as a diagram (3m).</b> Show Figure 3, then open <b>Edit ▸ Color Settings</b> live. Point at the four decisions: RGB working space, CMYK (your press profile or the default), <b>Preserve Embedded Profiles</b>, and the mismatch check boxes (<b>Ask When Opening</b>). <b>Say:</b> "Preserve means a file's own tag is respected. The warnings mean you always know which container you're in."</li>
+          <li><b>Step 1: configure the pipeline (6m).</b> Everyone sets RGB to <b>Adobe RGB (1998)</b> for print-capable work (or sRGB if strictly web), CMYK to their provider's press profile (for example <b>Coated GRACoL 2006</b> or <b>Coated FOGRA39</b>) or the default, policies to <b>Preserve Embedded Profiles</b>, mismatch warnings on. Then open <code class="inline">l04-smooth-sky-16bit.tif</code> or their own image and check the title bar: <b>RGB/16</b>. <b>Say:</b> "Anything you'll grade hard: <b>Image ▸ Mode ▸ 16 Bits/Channel</b>."</li>
+          <li><b>Step 2: diagnose from the histogram (8m).</b> <b>Window ▸ Histogram</b>. Open <code class="inline">l04-histogram-a.jpg</code> and think aloud: "Crammed left? Right? A spike against a wall? Narrow?" <b>Say:</b> "Now one sentence: what does this image need? That sentence is your edit plan." Learners write their sentence for their own image (or <code class="inline">l04-histogram-c.jpg</code>) in the workbook. <b>Say:</b> "Amateurs grab a slider and push; pros read, name, then reach. Thirty seconds of diagnosis saves ten minutes of flailing."</li>
+          <li><b>Step 3: prove the container matters (6m).</b> On the sky TIFF: <b>Image ▸ Duplicate</b>, then on the copy <b>Image ▸ Mode ▸ 8 Bits/Channel</b>. On both, add the same aggressive Curves (drag the shadow and highlight ends inward hard), then a strong brighten. Zoom to 100% on the upper sky. <b>Say:</b> "Stripes on the 8-bit copy. Silk on the 16-bit. That's why the pipeline is not optional." Tip: arrange the two windows side by side (<b>Window ▸ Arrange ▸ 2-up Vertical</b>).</li>
+          <li><b>Step 4: export correctly (4m).</b> Save the layered master as <code class="inline">color-master.psd</code> (wide space, 16-bit). Then <b>Image ▸ Duplicate</b>, tick <b>Duplicate Merged Layers Only</b>; on the copy <b>Edit ▸ Convert to Profile</b> ▸ sRGB, <b>Image ▸ Mode ▸ 8 Bits/Channel</b>, and export. <b>Say:</b> "File ▸ Export ▸ Export As can also convert to sRGB for you. Either way the master is untouched, and the color you graded is the color the world sees."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Set Up &amp; Diagnose, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on the learner's own favorite image (or <code class="inline">l04-smooth-sky-16bit.tif</code> for the banding proof and <code class="inline">l04-histogram-a…e.jpg</code> for diagnosis). Solo variation: read the five histogram drills cold (guess, then check; answers in <code class="inline">labs/module-2/instructor/l04-histogram-answers.txt</code>), then at home export <code class="inline">l04-lagoon-adobergb.jpg</code> (or their own Adobe RGB/ProPhoto version) two ways, Converted to sRGB and with the profile stripped, view both in a browser, and set up a wide-gamut 16-bit document template. Details in <code class="inline">labs/module-2/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> Color Settings actually changed (not just opened and cancelled); "RGB/16" in the title bar; a written one-sentence diagnosis before any edit; the 8-bit copy showing bands at 100%.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's five-item checklist: Color Settings configured with a deliberate working space; working file 16-bit; a one-sentence histogram diagnosis; banding seen with their own eyes; web export Converted to sRGB, not assigned.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Assign where Convert was meant.</b> Symptom: the colors jump the moment they pick sRGB. Undo, and use <b>Edit ▸ Convert to Profile</b>. Assign relabels; Convert remaps.</li>
+          <li><b>Clicking through the open-time dialog.</b> With Preserve Embedded Profiles and the mismatch warnings on, nearly every file will ask. The answer for this course is <b>Use the embedded profile (instead of the working space)</b>.</li>
+          <li><b>"I don't see banding."</b> The Curves move wasn't aggressive enough, they're zoomed out, or the file was never set to 8-bit. Push harder (stack a second Curves), zoom to 100% on the upper sky.</li>
+          <li><b>Converting the master.</b> They Convert to sRGB and 8-bit on <code class="inline">color-master.psd</code> itself and save. The wide, deep master is gone. Always <b>Image ▸ Duplicate</b> first.</li>
+          <li><b>ProPhoto in 8-bit.</b> Someone "plays safe" with ProPhoto and leaves the file 8-bit. That combination bands the worst.</li>
+          <li><b>Misreading a high-key image as overexposed.</b> A bright scene piles to the right but shouldn't slam into the wall. Histogram drill <code class="inline">b</code> is built to catch this.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) Working space (how wide the gamut is) and bit depth (how finely each channel is divided); <b>Q2</b> D) The edit demands more tonal steps than 8-bit's 256 per channel; 16-bit has about 128 times more; <b>Q3</b> A) The file was left in Adobe RGB or ProPhoto and never Converted to sRGB; <b>Q4</b> C) On a merged duplicate: Edit ▸ Convert to Profile ▸ sRGB, 8 Bits/Channel, then export; <b>Q5</b> B) Highlights are clipped: detail at the bright end is lost; <b>Q6</b> D) ProPhoto RGB for heavy RAW grading and archival masters, always paired with 16-bit. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3 min, finish at home if needed): <em>Have you ever had colors "change" on export or a print come back wrong? Now that you understand containers, what was probably going on?</em> Invite one story from the room; almost everyone has one.</p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the lesson's "Going further": if their monitor is calibrated, turn calibration off for a minute and watch a careful grade fall apart. Or open the lagoon in ProPhoto (<b>Convert to Profile</b> ▸ ProPhoto RGB) in 8-bit and then 16-bit, run the Step 3 Curves on each, and report which container bands. Have them save the 16-bit wide-gamut template now (<b>File ▸ New</b>, 16 bit, Advanced Options ▸ Color Profile).</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> reduce it to two habits: <b>16-bit while editing</b> and <b>Convert to sRGB on a duplicate at the end</b>. Let them leave the working space on sRGB (the lesson allows it for strictly web work). Hand them the recipe card and the board rule about reading dialogs aloud.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L05 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L05</span><h3>Grading with Curves, Gradient Maps &amp; LUTs (Lesson 2.2)</h3><span class="dur">55 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Grade with per-channel Curves for precise color in shadows, mids and highlights</li>
+          <li>Use a Gradient Map to remap tones to a color ramp</li>
+          <li>Apply and save a LUT (Color Lookup) to reuse a grade consistently</li>
+          <li>Keep the whole grade non-destructive and dialable</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">4m</td><td>The goal (pier slider) + mental model: remapping color</td></tr>
+          <tr><td class="t">5m</td><td>Gradient Maps and LUTs: what each is (test-chart demo)</td></tr>
+          <tr><td class="t">5m</td><td>Set-up: open in the 2.1 pipeline, correct to a neutral base, Save As <code class="inline">grade-working.psd</code></td></tr>
+          <tr><td class="t">30m</td><td>Guided build: Steps 1–4 (10 + 8 + 6 + 6)</td></tr>
+          <tr><td class="t">5m</td><td>Now You: start the first of three LUTs (finish at home)</td></tr>
+          <tr><td class="t">6m</td><td>Self-check, recipe card, journal</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (2m).</b> Drag the L05 pier slider. <b>Say:</b> "Exposure barely moved. What changed is every color relationship: deeper teal water and sky, richer contrast, one mood. That's a look, not a fix."</li>
+          <li><b>Remapping color (2m).</b> <b>Say:</b> "Correcting asks 'what's wrong?' Grading asks 'what should it feel like?' Technically every grade is a remap: you decide what color each tone becomes. Shadows don't have to stay neutral." Name the three tools from surgical to sweeping: <b>per-channel Curves</b>, <b>Gradient Map</b>, <b>LUT</b>. Show Figure 1: <b>correct → contrast → color → refine locally → bottle it.</b></li>
+          <li><b>Tones in, colors out (5m).</b> Open <code class="inline">l05-grade-test-chart.png</code>. Add a <b>Gradient Map</b> adjustment layer with a teal-to-gold ramp: the gray ramp at the top becomes the ramp exactly. <b>Say:</b> "Darkest pixels get the left color, brightest get the right." Now it looks garish. Set the layer to <b>Color</b> or <b>Soft Light</b> and drop opacity to about 20–30%. <b>Say:</b> "Blend it, don't bake it." Then hide it, add a <b>Color Lookup</b> layer, open the 3DLUT File menu and try two of the shipped looks on the chart. <b>Say:</b> "A LUT is a saved recipe: this input color becomes that output color, for every color. Photoshop ships dozens; today you'll save your own."</li>
+          <li><b>Neutral base (5m).</b> Everyone opens <code class="inline">l05-portrait-studio.jpg</code> (or their own portrait), sets <b>Image ▸ Mode ▸ 16 Bits/Channel</b>, and corrects the yellow cast and underexposure with a Curves layer (gray eyedropper on the <code class="inline">GRAY CARD</code> middle patch) or <b>Filter ▸ Camera Raw Filter</b>. <b>Save As</b> <code class="inline">grade-working.psd</code>. <b>Say:</b> "A portrait is ideal because in Lesson 2.3 we split-tone this same file. And a neutral base is what makes a look portable."</li>
+          <li><b>Step 1: contrast, then color (10m).</b> Curves layer with a gentle <b>RGB S-curve</b>. Then a <b>new</b> Curves layer, switch to <b>Blue</b>: lift the shadow end, drop the highlight end. <b>Say:</b> "Blue alone gives blue and yellow. For a truer teal, lift Green slightly or drop Red slightly in the shadows." Name the layers ("contrast", "teal-gold"). Say it again: <b>contrast before color</b>.</li>
+          <li><b>Step 2: a Gradient Map accent (8m).</b> Gradient Map, teal-to-gold ramp, blend <b>Color</b> or <b>Soft Light</b>, opacity <b>~20–30%</b>. <b>Say:</b> "It unifies the palette without flattening. If you can see the Gradient Map, it's too strong."</li>
+          <li><b>Step 3: refine locally (6m).</b> Mask the teal-gold Curves or the Gradient Map so skin stays natural while the background goes moody (paint black on the face with a soft brush, low opacity). <b>Say:</b> "Module 1 pays off here. A luminosity mask from Lesson 1.1 is perfect for keeping the grade out of the brightest highlights."</li>
+          <li><b>Step 4: bottle it (6m).</b> <b>File ▸ Save</b> first (Lesson 2.3 reopens this file). <b>Say:</b> "The export bakes every visible adjustment layer, not just the selected ones, and a LUT can't store a mask." <kbd>Shift</kbd>-click each mask thumbnail to disable it (a red X appears), hide anything that isn't part of the grade, keep the Background + adjustment-layer structure, then <b>File ▸ Export ▸ Color Lookup Tables</b> and save a <code class="inline">.cube</code>. Re-enable the masks. Open <code class="inline">l05-pier-dusk.jpg</code>, add a Color Lookup layer, <b>Load 3D LUT…</b>, pick the .cube. <b>Say:</b> "That's your grade, reusable forever. Building the grade is craft; saving it is professionalism."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Grade &amp; Bottle It, then Now You</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on <code class="inline">l05-portrait-studio.jpg</code> or the learner's own portrait (landscape is allowed, but they'll need a portrait to receive the grade in L06), saved as <code class="inline">grade-working.psd</code>; LUT transfer test on <code class="inline">l05-pier-dusk.jpg</code> or a second own photo. Solo variation (start in class, finish at home): three distinct LUTs (warm-summer, cold-thriller, faded-matte) applied to the same photo; reverse-engineer a film still with per-channel Curves; one LUT across five photos, noting per-image tweaks. If a learner's export fails, hand them <code class="inline">labs/module-2/instructor/l05-teal-gold-fallback.cube</code> so they can still do the transfer test, then troubleshoot the export at the break.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> a neutral gray card <em>before</em> any grading; separate, named layers for contrast and color; a Gradient Map that is blended, not at 100% Normal; masks disabled (red X) at export time; a .cube that actually transfers.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's six-item checklist: contrast before color; per-channel Curves grade; Gradient Map at reduced opacity or a blend mode; at least one mask; LUT exported and re-applied to a second image; <code class="inline">grade-working.psd</code> saved for Lesson 2.3.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Grading on top of the cast.</b> They skip the neutral base; the "teal" fights a yellow cast and the LUT won't travel. Gray eyedropper on the card first.</li>
+          <li><b>Contrast and color on one Curves layer.</b> It works, but they can't dial either independently. Two named layers.</li>
+          <li><b>Gradient Map at 100% Normal.</b> Garish and detail-killing. Color or Soft Light, 20–30%.</li>
+          <li><b>Export Color Lookup Tables grayed out.</b> Adobe documents the export for a document with a Background layer plus adjustment layers. If a learner's photo is a Smart Object or an ordinary layer, or there are no adjustment layers yet, rebuild to that structure (a quick fix: <b>Layer ▸ New ▸ Background from Layer</b> on the photo).</li>
+          <li><b>The LUT includes the correction or a stray layer.</b> Everything visible is baked. If the transfer looks wrong on the pier, check what was visible during export. (Including the neutral-base correction is allowed, but then the LUT also "corrects" the next image; discuss which they want.)</li>
+          <li><b>Forgetting to re-enable the masks.</b> Their saved master now has an unmasked grade. <kbd>Shift</kbd>-click again, then Save.</li>
+          <li><b>Over-pushed channel curves.</b> A few pixels of drag is already a strong grade. Judge on your own screen, not the projector.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> C) Correcting asks "what is wrong?"; grading asks "what should it feel like?" and deliberately remaps tones to chosen colors; <b>Q2</b> A) Lift the shadow end and drop the highlight end; <b>Q3</b> D) Set the layer to Color or Soft Light and/or drop its opacity to about 15–40%; <b>Q4</b> B) The export bakes every visible adjustment layer, and a LUT cannot store a mask; <b>Q5</b> A) The second photo wasn't corrected to a neutral base first, and a LUT assumes a similar starting point; <b>Q6</b> C) Correct to neutral → contrast (S-curve) → color → refine locally with masks → bottle as a LUT. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (3–5 min): <em>Describe the "look" you are drawn to as an editor in terms of shadow color, highlight color, and contrast. Naming your taste is the first step to building it into a LUT.</em> Pair-share: each learner names a film or photographer whose look they'd reverse-engineer.</p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the lesson's "Going further": stack a subtle Gradient Map under a Color Lookup and mask both. Or build the cold-thriller LUT now and pour both LUTs onto the test chart to compare how each remaps the hue field. Ask: "Where does your LUT break skin tones?" (Check the chart's skin patches.)</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> Curves only: one S-curve, one Blue-channel split, then straight to Step 4. Skip the Gradient Map and the mask for now (the recipe card covers them). The must-haves are a saved <code class="inline">grade-working.psd</code> and one LUT that transfers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L06 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L06</span><h3>Match, Split-Tone &amp; Soft-Proof (Lesson 2.3)</h3><span class="dur">50 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Match color across two images so a set feels like one shoot</li>
+          <li>Refine a split-tone (warm highlights, cool shadows) with Color Balance / Curves</li>
+          <li>Soft-proof for a printer and read the gamut warning</li>
+          <li>Deliver a graded image as both a web file and a print-ready file</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">4m</td><td>The goal (portrait slider) + mental model: split-tone by zone</td></tr>
+          <tr><td class="t">4m</td><td>Matching two images: Color Sampler, Info panel, tones before colors</td></tr>
+          <tr><td class="t">4m</td><td>Soft-proofing: Customize Proof Condition, Gamut Warning (neon demo)</td></tr>
+          <tr><td class="t">34m</td><td>Guided build: Steps 1–4 (10 + 10 + 8 + 6), the Module 2 deliverable</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal (Now You is homework)</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>The goal (2m).</b> Drag the L06 slider. <b>Say:</b> "Cooler shadows, warmer highlights, a polished editorial feel. And this is the deliverable lesson: by the end you ship one look to two destinations."</li>
+          <li><b>Split-tone by zone (2m).</b> Sketch the ramp from Figure 1: cool on the dark end, neutral mids, warm on the bright end. <b>Say:</b> "It mimics warm sunlight and cool skylight, which is how we expect the world to look. Keep the mids roughly neutral so skin stays believable. Color Balance gives you explicit Shadows / Midtones / Highlights buttons; per-channel Curves do the same by which end you bend."</li>
+          <li><b>Matching (4m).</b> Put <code class="inline">l06-set-a-daylight.jpg</code> and <code class="inline">l06-set-b-tungsten.jpg</code> side by side. Pick the <b>Color Sampler Tool</b> (in the Eyedropper group, <kbd>Shift</kbd> + <kbd>I</kbd> cycles) and click the middle patch of the gray card in each. Open <b>Window ▸ Info</b>. <b>Say:</b> "The differences tell you which way each channel must move." Point at the rule: <b>match tones before colors</b>, then black point, white point, mid color. Mention <b>Image ▸ Adjustments ▸ Match Color</b> as the quick automatic pass. <b>Say:</b> "Hand-matching with Curves is more controllable, and it's what survives client scrutiny."</li>
+          <li><b>Soft-proofing (4m).</b> Open <code class="inline">l06-neon-proof.jpg</code>. <b>View ▸ Proof Setup ▸ Custom</b>: Device to Simulate <b>U.S. Web Coated (SWOP) v2</b>, Rendering Intent <b>Relative Colorimetric</b> (or Perceptual), <b>Black Point Compensation</b> on, <b>Simulate Paper Color</b> on. The image dulls. <b>Say:</b> "That's the paper." Toggle proof with <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Y</kbd>. Then <b>View ▸ Gamut Warning</b> (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Y</kbd>): the neon grays out, the brick, door and poster don't. <b>Say:</b> "Neon dies on paper. Pull its saturation down until the warning clears, and the print will match the proof."</li>
+          <li><b>Set-up (in Step 1's time).</b> Open <code class="inline">grade-working.psd</code> from L05 and <b>Save As</b> <code class="inline">finish-working.psd</code>. If someone graded a landscape in L05, they drag their L05 grading layers onto the corrected portrait instead (select the layers, drag them onto the other document's tab).</li>
+          <li><b>Step 1: split-tone it (10m).</b> Add a <b>Color Balance</b> layer (Preserve Luminosity ticked). <b>Shadows</b>: push toward cyan and blue a little. <b>Highlights</b>: toward red and yellow. <b>Midtones</b>: near neutral. <b>Say:</b> "Judge on skin. Warmly lit, not sunburnt. Ease off until it's believable."</li>
+          <li><b>Step 2: match a companion (10m).</b> Open <code class="inline">l06-companion-portrait.jpg</code> (or their own second photo). Drop a Color Sampler on a comparable point in each (gray card middle patch, then the lit cheek). Add Curves to the companion; first the RGB curve for brightness and contrast, then each channel until its sampled values approach the reference's. <b>Say:</b> "Now they read as one shoot." (Stand-and-stretch minute here.)</li>
+          <li><b>Step 3: soft-proof (8m).</b> Back on <code class="inline">finish-working.psd</code>: <b>View ▸ Proof Setup ▸ Custom</b> with their printer's profile (or SWOP v2), intent, BPC, Simulate Paper Color; proof on (<kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Y</kbd>). Gamut Warning on. Anything gray gets a <b>masked Hue/Saturation</b> layer with Saturation pulled down until it clears. Learners whose portrait shows no warning repeat this on the neon file or their own vivid image.</li>
+          <li><b>Step 4: deliver both files (6m).</b> <b>Save</b> the layered master first; it stays wide and 16-bit. <b>Web:</b> <b>Image ▸ Duplicate</b> (Duplicate Merged Layers Only), <b>Convert to Profile</b> ▸ sRGB, <b>8 Bits/Channel</b>, export a JPG. <b>Print:</b> another merged duplicate, <b>Convert to Profile</b> ▸ the printer/CMYK profile (or keep tagged RGB if the printer asks for it), save as PDF or TIFF. <b>Say:</b> "Module 2 deliverable: one look, delivered correctly for two destinations."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: Split-Tone &amp; Proof (Module 2 deliverable)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Guided build on <code class="inline">finish-working.psd</code> (from <code class="inline">grade-working.psd</code>), companion match with <code class="inline">l06-companion-portrait.jpg</code> or an own second photo, soft-proof on the master (plus <code class="inline">l06-neon-proof.jpg</code> if the master shows no warnings). Solo variation is homework: match <code class="inline">l06-set-a/b/c</code> (or three own photos shot in different light) into one set; split-tone the same image cool/warm and green/magenta; soft-proof a deliberately vivid image and note how much saturation it surrenders; save the split-tone as a LUT. Details in <code class="inline">labs/module-2/README.md</code>.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> Color Balance moves on the Shadows and Highlights radio buttons (not all on Midtones); Color Sampler readouts in the Info panel; proof actually on (the title bar shows the simulated profile); Hue/Saturation masked, not global; two merged duplicates, master untouched.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done:</b> the lesson's five-item checklist: a believable split-tone; a second image matched to the set; soft-proofed with a deliberate intent and paper simulation, gamut warnings resolved; a web (sRGB) and a print (CMYK/printer-profile) file delivered; layered master kept wide + 16-bit.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>All the Color Balance moves on Midtones.</b> That's the default radio button, and it tints the skin. Switch Tone to Shadows, then Highlights.</li>
+          <li><b>Sickly skin.</b> The split is reaching the mids. Ease the amount, keep it in the extremes, and mask the grade off the face if needed.</li>
+          <li><b>Matching color before tone.</b> The channels never settle because the exposures differ. RGB curve first.</li>
+          <li><b>Sampling different things.</b> A cheek in one and a backdrop in the other gives nonsense numbers. Comparable points only: the gray card patches are the safest.</li>
+          <li><b>Proof "does nothing".</b> Proof Colors is toggled off. When it's on, the document tab or title bar shows the simulated profile after the color mode; toggle with <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Y</kbd>. A soft, low-saturation image may also change only slightly: try the neon file.</li>
+          <li><b>Converting the master to CMYK.</b> Then there is no wide RGB master left, and some adjustment layers behave differently or aren't available in CMYK. Always a merged duplicate.</li>
+          <li><b>Gamut warning left on while judging color.</b> The gray overlay hides the image. Toggle it off to judge, on to check.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) Cool shadows, warm highlights, with the mids kept roughly neutral; <b>Q2</b> D) The color is reaching the midtones where skin lives: keep the split in the extremes, ease the amount, and mask the grade off the face if needed; <b>Q3</b> A) Tones first (brightness and contrast), then black point, white point and mid color from the sampled values; <b>Q4</b> C) The Info panel (Window ▸ Info); <b>Q5</b> B) Lower the saturation there with a masked Hue/Saturation layer until the warning clears; <b>Q6</b> D) Keep the layered master wide + 16-bit; from merged duplicates, Convert to sRGB (8-bit JPG) for web and to the printer's profile (PDF or TIFF, or tagged RGB if the printer asks) for print. Full set in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (5 min, in the wrap-up): <em>If you have ever printed a photo that disappointed you, what do you now suspect went out of gamut? How would soft-proofing have caught it?</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers:</b> the lesson's "Going further": save the split-tone as a LUT (Lesson 2.2 method) so it and the soft-proof workflow become a repeatable delivery pipeline. Or compare Relative Colorimetric and Perceptual on the neon file with proof on and note which one they'd hand a client, and why.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> split-tone with Color Balance (two radio buttons, small moves) and the web delivery first; that is a complete, valid result. Add the print duplicate with SWOP v2 as a stand-in. The companion match can move to homework with the recipe card.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Closing the Session</h2><span class="rule"></span></div>
+  <div class="note lab">
+    <div class="t">Module 2 wrap-up (8 min, 2:52–3:00)</div>
+    <p>One volunteer puts their web JPG (in a browser) next to the soft-proofed master: the room should see the same look, with the print version slightly quieter. Recap the arc: <b>a trustworthy container → a grade you can bottle → a finish that survives screen and paper.</b> Exit ticket (on a sticky note): "At the end of a job I ___ to Profile, never ___." (Convert, Assign.) Homework from the lesson's "Before the Next Module": deliver one image as both a web and a print-ready file; match a small set of photos into one consistent look (the <code class="inline">l06-set</code> frames count); finish the three solo variations started today (five histograms, three LUTs, the set of three); write the three journal entries. Preview Session 3 (Module 3, High-End Retouching): "Color mastered, we turn to people: frequency separation, dodge and burn, a natural finish. Bring a high-resolution portrait you have permission to retouch."</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <span class="bio">© 2026 Ray de la Paz · Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Instructor Kit · Module 2 · Facilitator Guide · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

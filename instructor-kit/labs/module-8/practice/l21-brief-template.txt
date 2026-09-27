@@ -1,0 +1,60 @@
+CAPSTONE BRIEF (ONE PAGE) · Lesson 8.1
+Photoshop Intermediate: From Practitioner to Pro
+
+Name: ____________________    Project: ____________________    Date: __________
+
+Keep it to one page. Force every adjective to a spec or a reference.
+Mantra: if you can't check it, it isn't in the brief.
+
+1. OBJECTIVE (one sentence: what this must achieve, and why)
+   ______________________________________________________________________
+
+2. AUDIENCE (who it is for; their context; what should make them stop)
+   ______________________________________________________________________
+
+3. DELIVERABLES + SPECS (exact outputs, sizes, formats, and where they will live)
+   - ________  ____ x ____ px / in   ___ ppi   color: ______   format: ______
+   - ________  ____ x ____ px / in   ___ ppi   color: ______   format: ______
+   - Layered master: ______________________.psd
+
+4. CONSTRAINTS (brand rules, colors, fonts, budget, and the deadline)
+   Colors: ____________   Fonts: ____________   Deadline: ____________
+   Other: ______________________________________________________________
+
+5. SUCCESS CRITERIA (a checklist you could hand to someone else to grade)
+   [ ] ________________________________________________
+   [ ] ________________________________________________
+   [ ] ________________________________________________
+   [ ] ________________________________________________
+   [ ] ________________________________________________
+
+6. REFERENCES / MOODBOARD (6-12 images; the one thing you take from each)
+   1. ______________ -> ______________     7. ______________ -> ______________
+   2. ______________ -> ______________     8. ______________ -> ______________
+   3. ______________ -> ______________     9. ______________ -> ______________
+   4. ______________ -> ______________    10. ______________ -> ______________
+   5. ______________ -> ______________    11. ______________ -> ______________
+   6. ______________ -> ______________    12. ______________ -> ______________
+
+THE PLAN (stages -> module skills)
+   Stage                         Module skill                  Assets to source/shoot
+   Assets & cutouts ............ Module 1 · masking            ______________________
+   Color base .................. Module 2 · grade/space        ______________________
+   Subject retouch ............. Module 3                      ______________________
+   Composite ................... Module 4 · light/shadow/atmos ______________________
+   Type & system ............... Module 5                      ______________________
+   Automate & export ........... Module 6 · maybe 7            ______________________
+   Present ..................... Module 8.3                    ______________________
+   (Not every project needs every stage. Cross out the ones yours does not.)
+
+   Assets I did not shoot: license and credit terms checked?  [ ] yes
+
+MILESTONES (two or three, and a realistic finish date)
+   1. ______________________  by ________
+   2. ______________________  by ________
+   3. ______________________  by ________
+   Finish date: ________
+
+STRETCH GOALS (optional; each must be cuttable without breaking the deliverable)
+   - ______________________________________________
+   - ______________________________________________

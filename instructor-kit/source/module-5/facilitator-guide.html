@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide: Module 5</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../kit.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="lbl">Instructor copy —</span>
+  <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+  <span class="hint">contains answers &amp; timing · not for students</span>
+</div>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div class="kit-eyebrow">Instructor Kit · Facilitator Guide</div>
+    <h1>Module 5: Design Systems &amp; Type</h1>
+    <p class="sub">How to teach the three lessons that turn one good design into a small production system: a type system built from a modular scale, named styles and a grid (L13), Smart-Object templates and linked assets that update themselves (L14), and a full campaign (poster, square, story, banner) from one master file (L15). This module opens the Commercial Work tier's production thinking: decide once, reuse everywhere.</p>
+    <div class="meta-row">
+      <span class="chip"><b>3</b> lessons</span>
+      <span class="chip"><b>3 hrs</b> session incl. break</span>
+      <span class="chip">Lessons <b>L13–L15</b></span>
+      <span class="chip">Level <b>Intermediate</b></span>
+      <span class="chip">Maps to <b>Session 5</b></span>
+    </div>
+  </header>
+
+  <div class="sec"><h2>How to Use This Guide</h2><span class="rule"></span></div>
+  <ul class="tick">
+    <li>Same rhythm as every module: <b>Frame</b> → <b>Demo</b> → <b>Guided build</b> → <b>Check</b>. The lesson's "Now You" solo variation starts in class when there is time and <b>finishes at home</b>. Every lesson ends with a recipe card, a checklist and a journal prompt; use them as your closers.</li>
+    <li><b>One brand runs through the whole session.</b> The practice files follow "Northwind · Coastal Coffee Roasters," the example from Lesson 5.1. The type styles from L13 and the logo from L14 feed the L15 campaign, so learners should keep everything in <b>one project folder</b> from the first minute.</li>
+    <li><b>Name the mindset shift.</b> Modules 1–4 were about making one image excellent. Module 5 is about making decisions once and letting a system carry them: a style, a template, a linked file, a master. Say it out loud: "Today we stop editing things and start building things that edit themselves."</li>
+    <li><span style="color:var(--lab);font-weight:600">Teal</span> = hands-on, <span style="color:var(--warn);font-weight:600">amber</span> = watch-outs. In this module the watch-outs are mostly <em>structure</em> problems: a linked file that moved, replacement art at the wrong size, text that "won't snap," a master built small and scaled up.</li>
+    <li>Shortcuts are given as <b>Windows / Mac</b>: <kbd>Ctrl</kbd>/<kbd>⌘</kbd>, <kbd>Alt</kbd>/<kbd>⌥</kbd>. Tool letters used today: Type <kbd>T</kbd>, Move / Artboard <kbd>V</kbd>, Rectangle <kbd>U</kbd>, Free Transform <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>T</kbd>, show grid <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>'</kbd>.</li>
+  </ul>
+
+  <div class="note warn">
+    <div class="t">The #1 risk of Session 5: files that wander</div>
+    <p>Linked Smart Objects are the backbone of L14 and L15, and they break the moment a linked file is <b>moved or renamed</b>. Learners who save to the desktop, then "tidy up" into a folder, lose every link and lose the lesson's payoff. Start the session by having everyone create one project folder (suggested name <code class="inline">northwind-campaign/</code>) and copy <code class="inline">l14-logo-v1.png</code> into it as <code class="inline">logo.png</code>. <b>Say:</b> "Everything you make today lives in this folder, and nothing in it moves. The power of links comes with the discipline of not moving them." The second trap is Replace Contents with art of a different size: keep the practice designs at the placeholder's exact pixel size (the filenames say it: <code class="inline">…-1200x1800.png</code>).</p>
+  </div>
+
+  <div class="sec"><h2>Before Session 5</h2><span class="rule"></span></div>
+  <ul class="tick lab">
+    <li>☐ Copy <code class="inline">labs/module-5/practice/</code> to each machine (or a shared drive). Keep <code class="inline">labs/module-5/instructor/</code> (the two model results) for your screen only. Never hand out the course site's licensed <code class="inline">images/</code> folder.</li>
+    <li>☐ Remind learners (in the Session 4 wrap-up or by email) to bring: their <b>Module 4 composite</b> (the layered PSD, or a full-resolution export) as campaign key art; optionally their <b>own logo</b> as a transparent PNG; optionally a <b>photo of a surface to brand</b> (a mug, a poster on a wall, a laptop lid); and the <b>LUT</b> they saved in Module 4 if they want a shared grade. Details in <code class="inline">labs/module-5/README.md</code>.</li>
+    <li>☐ Check every machine is <b>signed in to Creative Cloud</b> so <b>Adobe Fonts</b> can activate fonts (L13 pairs a display face and a text face). Activate two families on the demo machine in advance in case the network is slow.</li>
+    <li>☐ Check the Photoshop version so menus match the lesson: in current versions the columns command is <b>View ▸ Guides ▸ New Guide Layout</b> (older versions: View ▸ New Guide Layout). Artboards, Place Linked and File ▸ Package are in every recent release.</li>
+    <li>☐ Set your demo machine's <b>Preferences ▸ Units &amp; Rulers ▸ Type</b> to <b>Pixels</b> (L13 Step 1), and know where <b>Preferences ▸ Guides, Grid &amp; Slices</b> is on both platforms (Edit ▸ Preferences on Windows, Photoshop ▸ Settings/Preferences on Mac).</li>
+    <li>☐ Open <b>lesson_13.html</b>, <b>lesson_14.html</b> and <b>lesson_15.html</b> in browser tabs for the before/after sliders, and have <code class="inline">l13-ransom-note-before.png</code> ready to project.</li>
+  </ul>
+
+  <div class="sec"><h2>Session 5 Agenda (3 hours)</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Clock</th><th>Segment</th><th>Min</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="t">0:00–0:10</td><td>Warm-up: Module 4 recap + project folder</td><td class="t">10</td><td>Two or three Module 4 composites on screen: "Next session this becomes a campaign." Everyone creates <code class="inline">northwind-campaign/</code> and copies the logo in.</td></tr>
+      <tr><td class="t">0:10–0:57</td><td><b>L13</b> (Lesson 5.1) Type Systems, Styles &amp; Grids</td><td class="t">47</td><td>Build: a one-page layout driven by a scale, a grid and named styles.</td></tr>
+      <tr><td class="t">0:57–1:42</td><td><b>L14</b> (Lesson 5.2) Smart-Object Templates &amp; Linked Assets</td><td class="t">45</td><td>Build: a reusable mockup template plus a linked-logo update.</td></tr>
+      <tr><td class="t">1:42–1:55</td><td>Break</td><td class="t">13</td><td>Leave the L14 checklist on the projector for stragglers.</td></tr>
+      <tr><td class="t">1:55–2:55</td><td><b>L15</b> (Lesson 5.3) Campaign from One Master</td><td class="t">60</td><td>Build: poster, square, story and banner artboards, exported in one pass (the Module 5 deliverable). Ends with a 4-minute "one edit" showcase.</td></tr>
+      <tr><td class="t">2:55–3:00</td><td>Wrap-up &amp; exit ticket</td><td class="t">5</td><td>Recap the arc, assign homework, preview Session 6.</td></tr>
+      <tr><td class="t"><b>Total</b></td><td></td><td class="t"><b>180</b></td><td>No separate gallery: the "one edit updates everything" showcase inside L15 plays that role.</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">The lesson pages estimate 55 + 55 + 60 = 170 minutes for a solo learner; the room has about 152 once warm-up, break and wrap are taken out. The room runs each lesson's frame, demo and Guided Build; the "Now You" solo variations start in class if there is time and finish at home. If you run long, <b>protect the L15 guided build and the one-edit proof</b> (it is the Module 5 deliverable): trim the L13 build to three roles (Display, H1, Body) and let learners add the rest at home, and in L14 skip the tote bag and build the poster-wall template only.</p>
+
+  <div class="sec"><h2>Module at a Glance</h2><span class="rule"></span></div>
+  <table class="timing">
+    <thead><tr><th>Lesson</th><th>Topic</th><th>Time</th><th>Learners leave able to…</th></tr></thead>
+    <tbody>
+      <tr><td class="t">L13 (5.1)</td><td>Type Systems, Styles &amp; Grids</td><td class="t">47m</td><td>Build a modular scale, create Paragraph and Character Styles, use real OpenType, and lay text on columns plus a document grid set to the body leading</td></tr>
+      <tr><td class="t">L14 (5.2)</td><td>Smart-Object Templates &amp; Linked Assets</td><td class="t">45m</td><td>Build a warped Smart-Object mockup, swap art with Replace Contents, and update many placements from one linked file</td></tr>
+      <tr><td class="t">L15 (5.3)</td><td>Campaign from One Master</td><td class="t">60m</td><td>Hold four sizes on artboards, share art by Place Linked, recompose per aspect ratio, and export every artboard in one pass</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-2)">One story: <b>decide the type once (styles) → decide the treatment once (templates) → decide the campaign once (a master with linked art).</b> The through-line is the lesson mantra: make the decision once, name it, and let the system carry it everywhere.</p>
+
+  <div class="sec"><h2>Lesson Plans</h2><span class="rule"></span></div>
+
+  <!-- L13 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L13</span><h3>Type Systems, Styles &amp; Grids (Lesson 5.1)</h3><span class="dur">47 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Build a modular type scale and a clear hierarchy from it</li>
+          <li>Create and apply Paragraph and Character Styles so type is consistent and editable</li>
+          <li>Turn on real OpenType features: ligatures, true small caps, oldstyle figures</li>
+          <li>Set up columns and a baseline grid (Photoshop's document grid, spaced at your leading) so text sits on a shared rhythm</li>
+          <li>Pair typefaces from Adobe Fonts with intent, not by accident</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>Frame: one voice, not twenty (ransom note vs system)</td></tr>
+          <tr><td class="t">4m</td><td>Mental model: the modular scale and the four levers</td></tr>
+          <tr><td class="t">4m</td><td>Demo: styles and real OpenType</td></tr>
+          <tr><td class="t">4m</td><td>Demo: columns plus a document grid at the body leading</td></tr>
+          <tr><td class="t">2m</td><td>Demo: edit one style, watch the page re-flow</td></tr>
+          <tr><td class="t">26m</td><td>Guided build: a type system (Steps 1–4)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal prompt</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>Frame: one voice, not twenty (3m).</b> Project <code class="inline">l13-ransom-note-before.png</code>, then the lesson's slider. <em>Ask:</em> "Count the fonts. Count the alignments." <b>Say:</b> "Same words, completely different credibility. The ransom note isn't ugly because of any one choice. It's ugly because nothing agrees with anything. A type system replaces 'eyeball each label' with decisions you make once and reuse everywhere."</li>
+          <li><b>The modular scale (4m).</b> Write on the board: base 16 × ratio 1.25. Multiply up and down: <b>13 / 16 / 20 / 25 / 31 / 39</b>. Assign roles: Caption 13, Body 16, Subhead 20, H2 25, H1 31, Display 39. <b>Say:</b> "You never freehand a size again. The math guarantees any two sizes already agree." Then the four cheap levers: <b>size, weight, color, space</b>. <b>Say:</b> "Often a weight change or more space says 'this matters' more elegantly than making it bigger."</li>
+          <li><b>Units first (part of Step 1).</b> Preferences ▸ Units &amp; Rulers ▸ Type ▸ <b>Pixels</b>. <b>Say:</b> "Photoshop measures type in points by default. We'll work in pixels like the lesson; if you keep points, use the same numbers as pt."</li>
+          <li><b>Styles and OpenType (4m).</b> Set one Body line: text face, 16 px, leading 24 px, tracking 0. Open the Character panel; show the <b>OpenType buttons</b> in the row at the bottom (also panel menu ▸ OpenType): Standard Ligatures, Oldstyle Figures, Small Caps. Type "fi fl" to show real ligatures. Then Window ▸ <b>Paragraph Styles</b>: with the line selected, create a new style from it and name it <b>Body</b>. Show Window ▸ <b>Character Styles</b> is a separate panel, for a word-level Emphasis or Link. <b>Say:</b> "A style bottles the whole spec: font, size, leading, tracking, color, OpenType. And never press Faux Bold or Faux Italic: they smear a regular weight. No real bold in the family? Pick another face."</li>
+          <li><b>Columns plus a grid (4m).</b> View ▸ Guides ▸ <b>New Guide Layout</b> (older versions: View ▸ New Guide Layout): 3 or 6 columns, a gutter, margins. <b>Say:</b> "That's columns and rows, not a baseline grid. Photoshop has no baseline-grid feature like InDesign's, and text never snaps its baselines to a grid." Then Preferences ▸ Guides, Grid &amp; Slices: <b>Gridline Every 24 px</b>, <b>Subdivisions 1</b>. Show it with View ▸ Show ▸ Grid (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>'</kbd>). Zoom in and nudge a text layer with the arrow keys until its first baseline sits on a gridline. <b>Say:</b> "Leading equals the grid, so once the first baseline is on a line, every line after it lands on the grid too. Snap To ▸ Grid snaps a layer's edges, not its baselines, so check by eye."</li>
+          <li><b>Prove the system (2m).</b> With a few styled blocks on the page, edit the <b>Body</b> style's size by one step. Everything re-flows. <b>Say:</b> "That propagation is the win. When the client says 'body a point bigger everywhere,' this is one edit, not forty."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: A Type System (26 min)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Learners follow Steps 1–4 using the copy in <code class="inline">labs/module-5/practice/l13-layout-copy.txt</code> (Display, H1, Subhead, H2, Body, CTA, Caption). New document at a target size, two Adobe Fonts (one display, one text). The copy deck offers the lesson's numbers and, for an 1800 × 2400 px practice poster, the same scale ×3 (Body 48 on a 72 px grid). Save as a PSD (suggested: <code class="inline">northwind-campaign/type-system.psd</code>); its styles feed L15.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done (the lesson's checklist):</b> a written modular scale with roles assigned; columns via New Guide Layout plus a document grid set to the body leading; Paragraph and Character Styles created and named; real OpenType on, no faux bold or italic; editing one style updates every instance.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> text set by hand after the styles exist (the Paragraph Styles panel shows a "+" override next to the style name); a leading that isn't the grid increment or a multiple of it; Faux Bold toggled on; three or more families. Put <code class="inline">labs/module-5/instructor/l13-system-layout-INSTRUCTOR.png</code> on your screen as the model.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>"My text won't snap to the grid."</b> It never will: Photoshop has no true baseline grid. Keep leading equal to the grid increment, align each block's first baseline by eye, zoomed in.</li>
+          <li><b>Local overrides.</b> Changing the size of styled text by hand breaks the link to the style. Clear the override (Paragraph Styles panel) and edit the style instead.</li>
+          <li><b>Points vs pixels confusion.</b> Units &amp; Rulers ▸ Type still on Points while the plan says px. Change the preference or use the same numbers as pt, consistently.</li>
+          <li><b>Faux styling.</b> Faux Bold and Faux Italic distort letterforms. Real weight or a different face.</li>
+          <li><b>Typesetting a brochure.</b> A paragraph or two on a poster, yes. Long, text-heavy documents belong in InDesign.</li>
+          <li><b>The ransom note again.</b> Usually two families: one display, one text. Three is advanced; four is almost always the ransom note.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> C) 13 / 16 / 20 / 25 / 31 / 39; <b>Q2</b> A) edit the style once and every instance updates; <b>Q3</b> D) Preferences ▸ Guides, Grid &amp; Slices, Gridline Every = body leading, Subdivisions 1; <b>Q4</b> B) Snap To Grid snaps layer edges, not baselines, so align the first baseline by eye; <b>Q5</b> C) use a face that has a real Bold, not Faux Bold; <b>Q6</b> A) columns and rows with gutters and margins, not a baseline grid. Full explanations in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal (finish at home if needed): <em>Find two typefaces you think pair well and articulate why — contrast in structure, shared era, matching x-height? Naming the reason turns taste into a repeatable skill.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers (if time / homework):</b> the lesson's solo variations: build the same layout with ratios 1.2 and 1.618 and compare the mood; restrict to one typeface and build hierarchy with weight and space only; rebuild an ugly flyer (or <code class="inline">l13-ransom-note-before.png</code>) on a scale and grid, keeping the content identical. Going further: audition a display + text pair in Adobe Fonts using the classification and property filters (x-height, contrast), then lock them into the styles.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> three roles only (Display, H1, Body), one grid, one column guide layout. The must-have is one named style edited once and seen updating everywhere. Hand them the recipe card and the copy deck's numbers so the math isn't a barrier.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L14 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L14</span><h3>Smart-Object Templates &amp; Linked Assets (Lesson 5.2)</h3><span class="dur">45 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Explain what a Smart Object protects and why it is non-destructive</li>
+          <li>Choose between embedded and linked Smart Objects for a job</li>
+          <li>Build a mockup template with a warped Smart-Object placeholder</li>
+          <li>Use Replace Contents and Place Linked to swap art in one move</li>
+          <li>Update one linked file and have every design using it refresh</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>Frame: change once, update everywhere (lesson slider)</td></tr>
+          <tr><td class="t">3m</td><td>Mental model: a container you can refill; embedded vs linked</td></tr>
+          <tr><td class="t">7m</td><td>Demo: placeholder, warp, Multiply/Screen, Replace Contents</td></tr>
+          <tr><td class="t">3m</td><td>Demo: a linked logo updating in two places; Package</td></tr>
+          <tr><td class="t">25m</td><td>Guided build: a reusable template (Steps 1–4)</td></tr>
+          <tr><td class="t">4m</td><td>Self-check, recipe card, journal prompt</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>Frame (3m).</b> Lesson slider: one linked source feeding three deliverables vs three baked-in copies. <b>Say:</b> "A design you can only use once is a craft. A design that updates itself across ten files is a system. The linked model costs a little setup and repays it every time the art changes, which on real jobs is constantly."</li>
+          <li><b>A container you can refill (3m).</b> <b>Say:</b> "A Smart Object is a container. Scale it down and back up, it stays sharp. Filter it, the filter becomes a Smart Filter you can retune. Transforms, warps, filters and styles live on the container; Replace Contents swaps what's inside and keeps all of that." Then the catch: <b>Say:</b> "The container's transform is applied to whatever you swap in. Different pixel dimensions, different result. Build placeholders at the exact size of the art they'll hold." Embedded vs linked: embedded is stored inside the PSD, each copy independent; linked (File ▸ Place Linked) points at a file on disk that many documents share.</li>
+          <li><b>Placeholder and warp (Steps 1, 3m).</b> Open <code class="inline">l14-mockup-poster-wall.jpg</code>. Rectangle tool (<kbd>U</kbd>), click once on the canvas and enter <b>1200 × 1800 px</b>, the exact size of the practice designs. <b>Say:</b> "Exact size of the art, not the size it looks on the wall. You size it to the surface next." Right-click the layer ▸ <b>Convert to Smart Object</b>. <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>T</kbd>, scale it down over the blank poster, then right-click ▸ <b>Warp</b> and drag the four corners onto the poster's corners (Perspective Warp also works).</li>
+          <li><b>Light it (Step 2, 2m).</b> Above the placeholder, a new layer set to <b>Multiply</b>; paint the poster's fold shadows and the window-bar shadow back over it (sample the dark from the photo). A new layer set to <b>Screen</b> for the lit fold ridges. <kbd>Alt</kbd>/<kbd>⌥</kbd>-click between each layer and the placeholder to <b>clip</b> it. <b>Say:</b> "Effects on the container and the layers around it, never baked into the art. The art stays a clean, swappable rectangle."</li>
+          <li><b>Swap (Steps 3–4, 2m).</b> Double-click the placeholder thumbnail: it opens in its own tab. Place <code class="inline">l14-art-a-sunrise-1200x1800.png</code>, save, close: it lands on the wall, warped and lit. Then <b>Layer ▸ Smart Objects ▸ Replace Contents</b> ▸ <code class="inline">l14-art-b-geometric-1200x1800.png</code>. Finally Replace Contents with <code class="inline">l14-art-d-landscape-1800x1200.png</code> and let the room see it come in wrong. <b>Say:</b> "Different shape, different result. For odd-sized art, double-click the placeholder and paste into its existing canvas instead." Undo.</li>
+          <li><b>Linked logo (3m).</b> New document (a quick "brand sheet"). <b>File ▸ Place Linked</b> ▸ <code class="inline">northwind-campaign/logo.png</code>; place it twice at different sizes. Point out the link badge in the Layers panel. Now update the source: open <code class="inline">logo.png</code>, change it (for example Image ▸ Adjustments ▸ Hue/Saturation on its single layer) and File ▸ Save; or, in the file manager, copy <code class="inline">l14-logo-v2.png</code> over <code class="inline">logo.png</code>. Back in the brand sheet, both placements refresh (if not: Layer ▸ Smart Objects ▸ <b>Update All Modified Content</b>). Then mention <b>File ▸ Package</b>: <b>Say:</b> "Package collects every linked file so nothing breaks on another machine. Move or rename a linked file and Photoshop loses it; the layer shows a warning, and Relink to File fixes it."</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: A Reusable Template (25 min)</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Learners follow Steps 1–4 on <code class="inline">l14-mockup-poster-wall.jpg</code> (or their own surface photo; <code class="inline">l14-mockup-tote-bag.jpg</code> is the harder, curved alternative that genuinely needs Warp). Swap in at least two of the <code class="inline">…-1200x1800.png</code> designs, then prove the size trap with the landscape design. Save as a reusable template (suggested: <code class="inline">northwind-campaign/mockup-template.psd</code>) and make sure <code class="inline">logo.png</code> sits in the project folder for L15.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done (the lesson's checklist):</b> the placeholder is a Smart Object, warped to the surface; shadows (Multiply) and highlights (Screen) on the container, clipped; art swaps via Replace Contents or double-click edit; shared art uses Place Linked where appropriate; saved as a reusable template, and Packaged if handing off.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> a placeholder rasterized by accident (no Smart Object badge); shadow layers not clipped (they darken the wall too); a placeholder drawn at poster-on-screen size (about 600 × 900) so the art comes in at half size; the logo placed from Downloads instead of the project folder.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Treatment baked into the art.</b> Warping or shadowing the design itself means the next design needs it all again. Treat the container.</li>
+          <li><b>Replacement art at the wrong size.</b> The container's transform applies to new contents. Export art at the placeholder's exact pixel size, or paste into the existing canvas.</li>
+          <li><b>Moved or renamed linked files.</b> The link breaks. Keep one project folder, don't reshuffle, Package before handoff.</li>
+          <li><b>Embedded when linked was meant.</b> Place Embedded copies the art into the PSD; editing the original file changes nothing. Check for the link badge.</li>
+          <li><b>Expecting a PNG to keep layers.</b> If they edit <code class="inline">logo.png</code> by adding layers, saving asks for another format. Change the single layer directly, or swap the file in the file manager.</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> B) they stay on the container and apply to the new art; <b>Q2</b> D) a linked Smart Object points to one file on disk that many documents share; <b>Q3</b> A) the container's transform is applied to art with different pixel dimensions; <b>Q4</b> C) on Multiply and Screen layers above the placeholder, clipped to it; <b>Q5</b> B) File ▸ Package; <b>Q6</b> D) the link breaks and the layer shows a warning (Relink to File). Full explanations in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal: <em>Think of a repetitive design task you have done by hand. How would a Smart-Object template and a linked asset have collapsed it into a single edit?</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers (if time / homework):</b> the lesson's solo variations: a three-surface mockup (front, side, angled; try the wall and the tote together) fed by one shared linked file; a "brand sheet" PSD with a linked logo, updated from the source and seen refreshing on reopen; a favorite filter turned into a Smart Filter and retuned later. Going further: nest Smart Objects so a whole sub-design, with its L13 type system, becomes one swappable unit.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> poster wall only, and Free Transform corners rather than Warp if Warp is fighting them (the poster is flat). One Multiply shadow layer, clipped. The must-haves are a Smart-Object placeholder and one successful Replace Contents.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- L15 -->
+  <section class="lesson">
+    <div class="lesson-head"><span class="lcode">L15</span><h3>Campaign from One Master (Lesson 5.3)</h3><span class="dur">60 min</span></div>
+    <div class="lesson-body">
+      <div class="blk"><div class="h">Objectives</div>
+        <ul class="tick">
+          <li>Use artboards to hold multiple sizes in one document</li>
+          <li>Share art across artboards with linked Smart Objects</li>
+          <li>Adapt one design to portrait, square and landscape without redrawing it</li>
+          <li>Export every artboard at once with Export As and presets</li>
+          <li>Deliver a coherent, on-brand campaign set from one file</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Timing</div>
+        <table class="timing"><tbody>
+          <tr><td class="t">3m</td><td>Frame: one idea, every size (lesson slider)</td></tr>
+          <tr><td class="t">4m</td><td>Mental model: master and instances; biggest first; one color mode</td></tr>
+          <tr><td class="t">8m</td><td>Demo: artboards, Place Linked, styles, recompose, Export As</td></tr>
+          <tr><td class="t">38m</td><td>Guided build: the campaign (Steps 1–4)</td></tr>
+          <tr><td class="t">4m</td><td>Showcase: one source edit, every artboard updates, re-export</td></tr>
+          <tr><td class="t">3m</td><td>Self-check, recipe card, journal prompt</td></tr>
+        </tbody></table>
+      </div>
+      <div class="blk"><div class="h">Teaching sequence &amp; live-demo script</div>
+        <ol class="steps">
+          <li><b>Frame (3m).</b> Lesson slider: four drifting files (<em>poster_v3, insta_FINAL, banner_old, story_v2</em>) vs one master with four artboards. <b>Say:</b> "A real brief is never one image. It's a poster, a square, a story and a banner, all on-brand and due together. Consistency stops being willpower and becomes structure."</li>
+          <li><b>Master and instances (4m).</b> <b>Say:</b> "The master owns the shared truth: key art, logo, tagline, grade. Each artboard is a view onto it at a specific size and crop. Same idea as 5.1's styles and 5.2's templates, scaled up." Two rules on the board: <b>design at the biggest size, export down</b> (usually the print poster), and <b>every artboard shares one color mode and one resolution</b>. <b>Say:</b> "Keep the master RGB. If the printer wants CMYK, that's a separate, final step on an exported copy."</li>
+          <li><b>Artboards (Step 1, 2m).</b> File ▸ New, RGB, <b>Artboards</b> ticked. Build the poster at <b>3300 × 5100 px</b> (11 × 17 in at 300 ppi), then add IG square <b>1080 × 1080</b>, story <b>1080 × 1920</b> and banner <b>1500 × 500</b> with the Artboard tool (under the Move tool) using its options-bar presets where they exist and custom sizes otherwise. Save as <code class="inline">northwind-campaign/campaign-master.psd</code>.</li>
+          <li><b>Share the essentials (Step 2, 2m).</b> Select the poster artboard, <b>File ▸ Place Linked</b> the logo and <code class="inline">l15-key-art.png</code> (or a Module 4 composite). Repeat for each artboard (or duplicate the linked layer with <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>J</kbd> and drag it onto the next artboard: a duplicate still points at the same file). Copy a styled text layer in from <code class="inline">type-system.psd</code>: its Paragraph Styles come with it. <b>Say:</b> "Placed by reference, not copied. It exists once and appears everywhere."</li>
+          <li><b>Recompose, don't squash (Step 3, 2m).</b> On the banner: anchor the focal point first (key art left), then headline and CTA spread to the right. On the story: stack vertically and keep text inside the safe zone (drop <code class="inline">l15-safe-zones-story.png</code> on top as a temporary guide, then delete it). <b>Say:</b> "Every size clearly the same idea, not literally the same crop."</li>
+          <li><b>Export the set (Step 4, 2m).</b> <b>File ▸ Export ▸ Export As</b>: every artboard is listed; pick format (PNG or JPG) and scale (1×; 2× if the platform wants it), Export. Mention <b>File ▸ Export ▸ Artboards to Files</b> as the batch alternative. Show the four files in the folder.</li>
+        </ol>
+      </div>
+      <div class="blk lab"><div class="h">Lab: The Campaign (38 min), Module 5 deliverable</div>
+        <p style="font-size:.92rem;margin:.2rem 0">Learners follow Steps 1–4 using <code class="inline">labs/module-5/practice/l15-campaign-copy.txt</code> (sizes, copy, recomposition notes), the linked <code class="inline">logo.png</code> from L14, <code class="inline">l15-key-art.png</code> or their Module 4 composite, <code class="inline">l15-background-light.jpg</code>, and their L13 styles. Optional shared grade: the same adjustment layer at the top of each artboard, or the Module 4 LUT loaded into a Color Lookup layer on each (adjustment layers can't be linked, so each copy is updated by hand). Save the master PSD with its linked files in the same project folder.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Definition of done (the lesson's checklist):</b> one master PSD with poster, square, story and banner artboards; logo and key art placed as linked Smart Objects; type driven by the 5.1 Paragraph/Character Styles; each size recomposed for its aspect ratio, safe zones respected; all artboards exported in one pass via Export As; a single source edit updates the whole set.</p>
+        <p style="font-size:.9rem;color:var(--ink-2);margin:.2rem 0"><b>Circulate for:</b> the poster artboard built small and scaled up; the key art upscaled past 100% on the poster (the practice PNG is 2400 px wide, so keep it at or below 100%); a banner that's the poster squashed; logo placed embedded on some artboards; text in the story's top or bottom band. Model result on your screen: <code class="inline">labs/module-5/instructor/l15-campaign-reference-INSTRUCTOR.png</code>.</p>
+      </div>
+      <div class="blk"><div class="h">Showcase: one edit, every artboard (4 min)</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Two or three volunteers (or you) run the lesson's proof live: open the linked logo (or key art), make a visible change, save. Back in the master, every artboard updates (if one doesn't: Layer ▸ Smart Objects ▸ Update All Modified Content). Re-export with Export As. The room names what stayed identical across sizes and what was recomposed.</p>
+      </div>
+      <div class="blk warn"><div class="h">Mistakes to pre-empt</div>
+        <ul class="tick">
+          <li><b>Small master, scaled up.</b> Scaling up for print softens everything. Biggest first, always.</li>
+          <li><b>Squashing instead of recomposing.</b> A 3:1 banner is not a shrunken poster. Anchor the focal point, rearrange the rest.</li>
+          <li><b>Expecting per-artboard color modes.</b> All artboards share one mode and one ppi. RGB master; CMYK for print is a separate final step.</li>
+          <li><b>Trying to link an adjustment layer.</b> It can't be linked. Duplicate it into each artboard or reload the same LUT; update each copy if the look changes.</li>
+          <li><b>Safe zones ignored.</b> Story UI overlays cover the top and bottom; banners crop at the edges. Keep text clear.</li>
+          <li><b>Moving the project folder mid-build.</b> Links break (see the module risk note).</li>
+        </ul>
+      </div>
+      <div class="blk"><div class="h">Check for understanding: self-check + journal</div>
+        <p style="font-size:.9rem;margin:.2rem 0">Answers: <b>Q1</b> A) the print poster, the largest; <b>Q2</b> C) Place Linked it into each artboard; <b>Q3</b> B) File ▸ Export ▸ Export As with all artboards; <b>Q4</b> D) anchor the focal point and spread the elements horizontally; <b>Q5</b> A) keep the master RGB and convert an exported copy to CMYK as a final step; <b>Q6</b> C) Layer ▸ Smart Objects ▸ Update All Modified Content. Full explanations in the Answer Key.</p>
+        <p style="font-size:.9rem;margin:.2rem 0">Journal: <em>Find a brand you admire and list every place its campaign appears (feed, story, print, web). What stays identical across them, and what is recomposed? That is the master-and-instances split in the wild.</em></p>
+      </div>
+      <div class="blk"><div class="h">Differentiation</div>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Fast finishers (if time / homework):</b> the lesson's solo variations: two more sizes (a billboard and an email header, sized to the destination's spec) without recreating any shared element; a light and a dark variant of the whole set by swapping one linked background (<code class="inline">l15-background-light.jpg</code> → <code class="inline">l15-background-dark.jpg</code> with Relink to File; a Color Overlay layer style on the linked logo keeps it readable on dark); Package the project and have a "client" change the linked logo on their machine. Going further: pair it with data-driven graphics (Module 6) for localized versions.</p>
+        <p style="font-size:.9rem;margin:.2rem 0"><b>Struggling learners:</b> two artboards first (poster and square), both fed by the same linked logo and key art, exported with Export As. Add the story and banner once that works. The must-have is the one-edit proof: change the source, see both update.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Closing the Session</h2><span class="rule"></span></div>
+  <div class="note lab">
+    <div class="t">Module 5 wrap-up (5 min, 2:55–3:00)</div>
+    <p>Recap the arc: <b>a named type voice (5.1) → self-updating templates (5.2) → a full campaign from a single master (5.3).</b> Exit ticket (on a sticky note): "One thing I decided once today and will never set by hand again is ___." Homework from the lessons' "Before the Next…" lists: ship one campaign set (4+ sizes) from a single master file; prove a one-edit update propagates across every artboard; finish any solo variation started in class; write the three journal entries. Remind learners to keep <code class="inline">northwind-campaign/</code> intact (and to use File ▸ Package if they move it to another machine). Preview Session 6 (Module 6, Generative + Automation, Advanced): "You have systems for consistency; next you get systems for speed and volume: generative compositing, conditional Actions, and data-driven graphics that produce dozens of variations from one template."</p>
+  </div>
+
+  <div class="foot">
+    <div class="who">
+      <b>© 2026 Ray de la Paz</b>
+      <span class="bio">Photoshop Intermediate: From Practitioner to Pro</span>
+    </div>
+    <div class="ver">Instructor Kit · Module 5 · Facilitator Guide · v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
